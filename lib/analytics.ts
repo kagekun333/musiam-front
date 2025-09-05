@@ -4,31 +4,39 @@
 import posthog from "posthog-js";
 import { useEffect, useRef } from "react";
 
-// Window 型を拡張（any を使わない）
+type CaptureOpts = { send_instantly?: boolean };
+type PostHogLike = {
+  capture: (name: string, props?: Record<string, unknown>, opts?: CaptureOpts) => void;
+  identify?: (id: string) => void;
+  reset?: () => void;
+};
+
 declare global {
   interface Window {
-    posthog?: typeof posthog;
+    posthog?: PostHogLike;
   }
 }
 
-/**
- * PostHog 初期化（クライアント側1回だけ）
- * - EU クラスタをデフォルト（NEXT_PUBLIC_POSTHOG_HOST があればそれを優先）
- * - window.posthog に公開してデバッグしやすく
- * - ESLint の no-explicit-any に抵触しない書き方
- */
 export function Analytics() {
-  const initializedRef = useRef(false);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    if (initializedRef.current) return;
+    if (initialized.current) return;
 
     const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    const host =
-      process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
+    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
+
+    // デバッグログ（本番でも最初だけ出ます）
+    console.log("[MUSIAM][PostHog] init start", { hasKey: Boolean(key), host });
 
     if (!key) {
-      // キー未設定なら何もしない（本番環境変数を確認）
+      // キーが無くても window.posthog は「ダミー」を公開しておく（Console検証用）
+      window.posthog = {
+        capture: (n) =>
+          console.warn(`[MUSIAM][PostHog] KEY missing, skipped capture(${n})`),
+      };
+      console.warn("[MUSIAM][PostHog] NEXT_PUBLIC_POSTHOG_KEY is missing");
+      initialized.current = true;
       return;
     }
 
@@ -36,14 +44,14 @@ export function Analytics() {
       api_host: host,
       autocapture: true,
       capture_pageview: true,
-      // debug は必要な時だけ true に（本番は通常 false 推奨）
-      // debug: true,
+      // debug: true, // 必要な時だけ
     });
 
-    // DevTools から確認できるように（型安全に window に公開）
-    window.posthog = posthog;
+    // Console から window.posthog.capture(...) できるように公開
+    window.posthog = posthog as unknown as PostHogLike;
 
-    initializedRef.current = true;
+    console.log("[MUSIAM][PostHog] init done");
+    initialized.current = true;
   }, []);
 
   return null;
