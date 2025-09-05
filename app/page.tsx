@@ -1,7 +1,9 @@
+// app/page.tsx
 "use client";
 
 import Link from "next/link";
 import { events, rooms, EventItem, RoomItem } from "@/lib/data";
+import posthog from "posthog-js";
 
 export default function HomePage() {
   return (
@@ -15,12 +17,14 @@ export default function HomePage() {
         <div className="flex justify-center gap-4 mt-6">
           <Link
             href="/events"
+            onClick={() => posthog.capture("CTA_CLICK", { cta: "events" })}
             className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
           >
             イベントを見る
           </Link>
           <Link
             href="/rooms"
+            onClick={() => posthog.capture("CTA_CLICK", { cta: "rooms" })}
             className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition"
           >
             体験ルームへ
@@ -30,18 +34,9 @@ export default function HomePage() {
 
       {/* Value 提示 */}
       <section className="grid md:grid-cols-3 gap-6">
-        <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl font-semibold">体験</h3>
-          <p className="text-gray-400 mt-2">音・光・意識を没入的に体感する</p>
-        </div>
-        <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl font-semibold">記録</h3>
-          <p className="text-gray-400 mt-2">データと物語で残す</p>
-        </div>
-        <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-          <h3 className="text-xl font-semibold">シェア</h3>
-          <p className="text-gray-400 mt-2">仲間と共鳴し合う空間へ</p>
-        </div>
+        <ValueCard title="体験" desc="音・光・意識を没入的に体感する" />
+        <ValueCard title="記録" desc="データと物語で残す" />
+        <ValueCard title="シェア" desc="仲間と共鳴し合う空間へ" />
       </section>
 
       {/* 近日イベント */}
@@ -60,6 +55,14 @@ export default function HomePage() {
               <div className="mt-2 text-xs text-gray-500">
                 {e.tags.join(", ")}
               </div>
+              <button
+                onClick={() =>
+                  posthog.capture("EVENT_CARD_CLICK", { id: e.id, title: e.title })
+                }
+                className="mt-3 text-sm text-blue-400 hover:underline"
+              >
+                詳細を見る →
+              </button>
             </div>
           ))}
         </div>
@@ -78,6 +81,9 @@ export default function HomePage() {
               <p className="text-gray-400 text-sm">{r.desc}</p>
               <Link
                 href={`/rooms/${r.slug}`}
+                onClick={() =>
+                  posthog.capture("ROOM_ENTER", { id: r.id, slug: r.slug })
+                }
                 className="inline-block mt-3 text-sm text-blue-400 hover:underline"
               >
                 入室する →
@@ -87,5 +93,15 @@ export default function HomePage() {
         </div>
       </section>
     </main>
+  );
+}
+
+/* 小コンポーネント */
+function ValueCard({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="p-6 rounded-xl bg-white/5 border border-white/10">
+      <h3 className="text-xl font-semibold">{title}</h3>
+      <p className="text-gray-400 mt-2">{desc}</p>
+    </div>
   );
 }
