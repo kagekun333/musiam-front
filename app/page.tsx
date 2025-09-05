@@ -8,7 +8,7 @@ import posthog from "posthog-js";
 export default function HomePage() {
   return (
     <main className="p-10 max-w-5xl mx-auto space-y-16">
-      {/* Hero セクション */}
+      {/* Hero */}
       <section className="text-center space-y-4">
         <h1 className="text-4xl font-bold">伯爵 MUSIAM</h1>
         <p className="text-lg text-gray-400">音と意識の体験をつなぐ、デジタル・ミュージアム</p>
@@ -38,7 +38,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Value 提示 */}
+      {/* Value */}
       <section className="grid md:grid-cols-3 gap-6">
         <ValueCard title="体験" desc="音・光・意識を没入的に体感する" />
         <ValueCard title="記録" desc="データと物語で残す" />
@@ -46,31 +46,31 @@ export default function HomePage() {
       </section>
 
       {/* 近日イベント */}
-<section>
-  <h2 className="text-2xl font-bold mb-4">近日イベント</h2>
-  <div className="grid md:grid-cols-3 gap-6">
-    {events.slice(0, 3).map((e: EventItem) => (
-      <Link
-        key={e.id}
-        href={`/events?e=${encodeURIComponent(e.id)}`} // 一覧へ遷移（将来は /events/[id] に）
-        onClick={() =>
-          posthog.capture("EVENT_CARD_CLICK", { id: e.id, title: e.title })
-        }
-        className="block p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition"
-      >
-        <h3 className="text-lg font-semibold">{e.title}</h3>
-        <p className="text-gray-400 text-sm">
-          {e.date} @ {e.place}
-        </p>
-        <div className="mt-2 text-xs text-gray-500">{e.tags.join(", ")}</div>
-        <span className="mt-3 inline-block text-sm text-blue-400 hover:underline">
-          詳細を見る →
-        </span>
-      </Link>
-    ))}
-  </div>
-</section>
-
+      <section>
+        <h2 className="text-2xl font-bold mb-4">近日イベント</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {events.slice(0, 3).map((e: EventItem) => (
+            <Link
+              key={e.id}
+              href={`/events/${e.id}`}           // ← ここで詳細ページへ遷移
+              prefetch={false}
+              onClick={() =>
+                posthog.capture("EVENT_CARD_CLICK", { id: e.id, title: e.title })
+              }
+              className="block p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition"
+            >
+              <h3 className="text-lg font-semibold">{e.title}</h3>
+              <p className="text-gray-400 text-sm">
+                {e.date} @ {e.place}
+              </p>
+              <div className="mt-2 text-xs text-gray-500">{e.tags.join(", ")}</div>
+              <span className="mt-3 inline-block text-sm text-blue-400 hover:underline">
+                詳細を見る →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* 体験ルーム紹介 */}
       <section>
@@ -84,11 +84,7 @@ export default function HomePage() {
                 href={`/rooms/${r.slug}`}
                 prefetch={false}
                 onClick={() =>
-                  posthog.capture(
-                    "ROOM_ENTER",
-                    { id: r.id, slug: r.slug },
-                    { send_instantly: true }
-                  )
+                  posthog.capture("ROOM_ENTER", { id: r.id, slug: r.slug }, { send_instantly: true })
                 }
                 className="inline-block mt-3 text-sm text-blue-400 hover:underline"
               >
