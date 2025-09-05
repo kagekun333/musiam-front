@@ -1,8 +1,8 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@/components/Analytics";
-import Link from "next/link";   // ← 追加
+import Link from "next/link";
+import { Analytics } from "@/lib/analytics";  // ← 正しい方だけ残す
 
 export const metadata: Metadata = {
   title: "MUSIAM",
