@@ -2,40 +2,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@/components/Analytics";
+import Link from "next/link";   // ← 追加
 
 export const metadata: Metadata = {
   title: "MUSIAM",
   description: "音×意識のミュージアム",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
       <body className="min-h-screen bg-white text-black">
-        {/* ナビゲーション */}
         <nav className="flex gap-6 p-4 border-b sticky top-0 bg-white/80 backdrop-blur">
-          <a href="/" className="hover:underline">
-            Home
-          </a>
-          <a href="/about" className="hover:underline">
-            About
-          </a>
-          <a href="/events" className="hover:underline">
-            Events
-          </a>
-          <a href="/rooms" className="hover:underline">
-            Rooms
-          </a>
+          <Link href="/" className="hover:underline">Home</Link>
+          <Link href="/about" className="hover:underline">About</Link>
+          <Link href="/events" className="hover:underline">Events</Link>
+          <Link href="/rooms" className="hover:underline">Rooms</Link>
         </nav>
-
-        {/* ページ本体 */}
         {children}
-
-        {/* アナリティクス */}
         <Analytics />
       </body>
     </html>
