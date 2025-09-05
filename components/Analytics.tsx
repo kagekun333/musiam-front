@@ -1,3 +1,4 @@
+// components/Analytics.tsx
 "use client";
 
 import { useEffect } from "react";
@@ -5,12 +6,23 @@ import posthog from "posthog-js";
 
 export function Analytics() {
   useEffect(() => {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY || "", {phc_qCDMzrFUtucfCtBAdIm04fB14D8rwVjVbwk6PdNpQ
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com",
+    // 必ず env から読み取る（直書きしない）
+    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY || "";
+    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com";
+
+    if (!key) {
+      // キーが未設定なら初期化しない（ローカル/プレビューで安全）
+      return;
+    }
+
+    posthog.init(key, {
+      api_host: host,
+      // 任意: セッション自動計測などのオプションは必要に応じて
+      // capture_pageview: true,
+      // capture_pageleave: true,
     });
   }, []);
 
-  return null; // 画面に何も表示しない
+  // 画面に何も表示しない
+  return null;
 }
-
-
