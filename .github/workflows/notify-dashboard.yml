@@ -160,7 +160,8 @@ jobs:
             -e "s|\${ROOM_ESC}|${ROOM_ESC}|g" \
             -e "s|\${CVR}|${CVR}|g" \
             -e "s|\${CARD_CLICKS}|${CARD_CLICKS}|g" \
-            -e "s|\${EVENTS_PV}|${EVENTS_PV}|g"
+            -e "s|\${EVENTS_PV}|${EVENTS_PV}|g" \
+            payload.json
           cat payload.json
 
       - name: Send to Slack
