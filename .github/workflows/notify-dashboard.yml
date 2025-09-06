@@ -18,6 +18,13 @@ permissions:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}          # 例: https://eu.posthog.com
+      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
 
     steps:
       - name: Validate secrets
@@ -32,6 +39,88 @@ jobs:
 
       - name: Checkout (keeps run metadata consistent)
         uses: actions/checkout@v4
+
+      # ① 前日KPIをPostHog(HogQL)から取得 → 環境変数にセット
+      - name: Fetch KPI (last 24h) via PostHog HogQL
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ph() {
+            local Q="$1"
+            curl -sS -X POST \
+              -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
+              -H "Content-Type: application/json" \
+              "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
+              --data-binary @- <<'JSON'
+          {
+            "query": { "kind": "HogQLQuery", "query": ${Q} }
+          }
+          JSON
+          }
+
+          # CTA breakdown
+          CTA_Q=$(jq -cn --arg q "SELECT properties.cta AS cta, count() AS clicks
+            FROM events
+            WHERE event = 'CTA_CLICK' AND timestamp > now() - INTERVAL 1 DAY
+            GROUP BY cta ORDER BY clicks DESC" '$q')
+          CTA_JSON=$(ph "$CTA_Q")
+          CTA_ROWS=$(echo "$CTA_JSON" | jq -r '.results[]? | @base64')
+          CTA_LINES=""
+          if [ -n "${CTA_ROWS}" ]; then
+            while IFS= read -r r; do
+              row=$(echo "$r" | base64 --decode)
+              cta=$(echo "$row" | jq -r '.[0] // "unknown"')
+              clicks=$(echo "$row" | jq -r '.[1] // 0')
+              CTA_LINES="${CTA_LINES}• *${cta}*: ${clicks}\n"
+            done <<< "$CTA_ROWS"
+          else
+            CTA_LINES="• (no data)\n"
+          fi
+
+          # ROOM_ENTER Top3
+          ROOM_Q=$(jq -cn --arg q "SELECT properties.slug AS slug, count() AS enters
+            FROM events
+            WHERE event = 'ROOM_ENTER' AND timestamp > now() - INTERVAL 1 DAY
+            GROUP BY slug ORDER BY enters DESC LIMIT 3" '$q')
+          ROOM_JSON=$(ph "$ROOM_Q")
+          ROOM_ROWS=$(echo "$ROOM_JSON" | jq -r '.results[]? | @base64')
+          ROOM_LINES=""
+          if [ -n "${ROOM_ROWS}" ]; then
+            while IFS= read -r r; do
+              row=$(echo "$r" | base64 --decode)
+              slug=$(echo "$row" | jq -r '.[0] // "unknown"')
+              enters=$(echo "$row" | jq -r '.[1] // 0')
+              ROOM_LINES="${ROOM_LINES}• *${slug}*: ${enters}\n"
+            done <<< "$ROOM_ROWS"
+          else
+            ROOM_LINES="• (no data)\n"
+          fi
+
+          # 粗CVR（EVENT_CARD_CLICK → /events/* pageview 比）
+          CVR_Q=$(jq -cn --arg q "SELECT
+              countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
+              countIf(event = '\$pageview' AND matchOrSearch(properties.\$current_url, '/events(/|\\\\?)')) AS events_pv
+            FROM events WHERE timestamp > now() - INTERVAL 1 DAY" '$q')
+          CVR_JSON=$(ph "$CVR_Q")
+          CARD_CLICKS=$(echo "$CVR_JSON" | jq -r '.results[0][0] // 0')
+          EVENTS_PV=$(echo "$CVR_JSON" | jq -r '.results[0][1] // 0')
+          if [ "${CARD_CLICKS}" -gt 0 ]; then
+            CVR=$(awk "BEGIN { printf \"%.1f\", (${EVENTS_PV} / ${CARD_CLICKS}) * 100 }")
+          else
+            CVR="0.0"
+          fi
+
+          # 改行→\n へ変換し、GITHUB_ENV に書き込む
+          CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
+          ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
+          {
+            echo "CTA_ESC=${CTA_ESC}"
+            echo "ROOM_ESC=${ROOM_ESC}"
+            echo "CVR=${CVR}"
+            echo "CARD_CLICKS=${CARD_CLICKS}"
+            echo "EVENTS_PV=${EVENTS_PV}"
+          } >> "$GITHUB_ENV"
 
       - name: Compose Slack payload
         shell: bash
@@ -52,17 +141,33 @@ jobs:
                 { "type": "mrkdwn", "text": "*Repo:*\n${REPO}" },
                 { "type": "mrkdwn", "text": "*Run:*\n<${RUN_URL}|${COMMIT_SHORT}>" }
               ]},
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } }
+              { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } },
+              { "type": "divider" },
+              { "type": "section", "text": { "type": "mrkdwn", "text": "*CTA (last 24h)*\n${CTA_ESC}" } },
+              { "type": "section", "text": { "type": "mrkdwn", "text": "*ROOM_ENTER Top3 (last 24h)*\n${ROOM_ESC}" } },
+              { "type": "context", "elements": [
+                { "type": "mrkdwn", "text": "*EVENT → /events/* PV ratio (rough CVR):* ${CVR}%  (clicks=${CARD_CLICKS}, pv=${EVENTS_PV})" }
+              ]}
             ]
           }
           JSON
-          sed -i "s|\${DASHBOARD_URL}|${DASHBOARD_URL}|g; s|\${REPO}|${REPO}|g; s|\${RUN_URL}|${RUN_URL}|g; s|\${COMMIT_SHORT}|${COMMIT_SHORT}|g" payload.json
+          sed -i \
+            -e "s|\${DASHBOARD_URL}|${DASHBOARD_URL}|g" \
+            -e "s|\${REPO}|${REPO}|g" \
+            -e "s|\${RUN_URL}|${RUN_URL}|g" \
+            -e "s|\${COMMIT_SHORT}|${COMMIT_SHORT}|g" \
+            -e "s|\${CTA_ESC}|${CTA_ESC}|g" \
+            -e "s|\${ROOM_ESC}|${ROOM_ESC}|g" \
+            -e "s|\${CVR}|${CVR}|g" \
+            -e "s|\${CARD_CLICKS}|${CARD_CLICKS}|g" \
+            -e "s|\${EVENTS_PV}|${EVENTS_PV}|g"
           cat payload.json
 
       - name: Send to Slack
         shell: bash
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           set -euo pipefail
-          curl -sS -X POST -H 'Content-type: application/json' --data @payload.json "$SLACK_WEBHOOK_URL"
+          curl -fSs -i -X POST \
+            -H 'Content-type: application/json' \
+            --data @payload.json \
+            "$SLACK_WEBHOOK_URL"
