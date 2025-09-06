@@ -17,9 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
-      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}              # 例: https://eu.posthog.com
-      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}  # 例: 87345
+      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}          # Personal API Key
+      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}                # 例: https://eu.posthog.com
+      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}    # 例: 87345 (数値)
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
 
@@ -44,14 +44,57 @@ jobs:
             sudo apt-get install -y jq
           fi
 
-      - name: Fetch KPI (last 24h) via PostHog HogQL
+      # ========== ① 健全性チェック（ここで落ちたら“接続/ID/リージョン違い”） ==========
+      - name: Sanity probe (7 days events must exist)
+        id: sanity
         shell: bash
         run: |
           set -euo pipefail
 
           ph() {
             local SQL="$1"
-            # HogQL をJSON化してPOST（heredoc不使用）
+            jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}' \
+            | curl -sS -X POST \
+                -H "Authorization: Bearer '"${POSTHOG_API_KEY}"'" \
+                -H "Content-Type: application/json" \
+                "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
+                --data-binary @-
+          }
+
+          echo "::group::POSTHOG_META"
+          echo "POSTHOG_HOST=$POSTHOG_HOST"
+          echo "POSTHOG_PROJECT_ID=$POSTHOG_PROJECT_ID"
+          echo "::endgroup::"
+
+          # 直近7日で events が1件以上あるか
+          EV7_JSON=$(ph "SELECT count() AS c FROM events WHERE timestamp >= now() - INTERVAL 7 DAY")
+          echo "::group::RAW EV7_JSON"; echo "$EV7_JSON" | jq .; echo "::endgroup::"
+
+          # オブジェクト/配列 両対応で取り出し
+          EV7=$(echo "$EV7_JSON" | jq -r '((.results.results // .results // [{}])[0] // {})
+              | if (type=="object") and has("c") then (.c // 0)
+                elif (type!="object") and (length>=1) then .[0]
+                else 0 end')
+
+          echo "EV7_COUNT=$EV7"
+          if [ "${EV7:-0}" -eq 0 ]; then
+            echo "::error::No events in last 7 days for this HOST/PROJECT. Likely secrets mismatch."
+            echo "Hints:"
+            echo " - POSTHOG_HOST should be your region (e.g., https://eu.posthog.com)"
+            echo " - POSTHOG_PROJECT_ID must match the numeric ID in your PostHog URL: /project/<ID>/..."
+            echo " - POSTHOG_API_KEY must be a Personal API Key that has access to THIS project"
+            exit 1
+          fi
+
+      # ========== ② KPI 抽出（24h）。Sanity OK の場合のみ進む ==========
+      - name: Fetch KPI (last 24h) via HogQL
+        id: kpi
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          ph() {
+            local SQL="$1"
             jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}' \
             | curl -sS -X POST \
                 -H "Authorization: Bearer '"${POSTHOG_API_KEY}"'" \
@@ -61,38 +104,31 @@ jobs:
           }
 
           # --- CTA (24h)
-          CTA_SQL="SELECT properties.cta AS cta, count() AS clicks
-                   FROM events
-                   WHERE event = 'CTA_CLICK'
-                     AND timestamp >= now() - INTERVAL 1 DAY
-                   GROUP BY cta
-                   ORDER BY clicks DESC"
-          CTA_JSON=$(ph "$CTA_SQL")
+          CTA_JSON=$(ph "SELECT properties.cta AS cta, count() AS clicks
+                         FROM events
+                         WHERE event = 'CTA_CLICK'
+                           AND timestamp >= now() - INTERVAL 1 DAY
+                         GROUP BY cta
+                         ORDER BY clicks DESC")
 
           # --- Rooms Top3（ROOM_ENTER / slug優先＋$pathname/ pathname/ url）
-          ROOM_SQL="SELECT coalesce(properties.slug, properties.\$pathname, properties.pathname, properties.url) AS room,
-                           count() AS enters
-                    FROM events
-                    WHERE event = 'ROOM_ENTER'
-                      AND timestamp >= now() - INTERVAL 1 DAY
-                    GROUP BY room
-                    ORDER BY enters DESC
-                    LIMIT 3"
-          ROOM_JSON=$(ph "$ROOM_SQL")
+          ROOM_JSON=$(ph "SELECT coalesce(properties.slug, properties.\$pathname, properties.pathname, properties.url) AS room,
+                                 count() AS enters
+                          FROM events
+                          WHERE event = 'ROOM_ENTER'
+                            AND timestamp >= now() - INTERVAL 1 DAY
+                          GROUP BY room
+                          ORDER BY enters DESC
+                          LIMIT 3")
 
           # --- 粗CVR（EVENT_CARD_CLICK → /events* の $pageview）
-          CVR_SQL="SELECT
-                      countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-                      countIf(event = '\$pageview' AND properties.\$pathname LIKE '/events%') AS events_pv
-                   FROM events
-                   WHERE timestamp >= now() - INTERVAL 1 DAY"
-          CVR_JSON=$(ph "$CVR_SQL")
+          CVR_JSON=$(ph "SELECT
+                           countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
+                           countIf(event = '\$pageview' AND properties.\$pathname LIKE '/events%') AS events_pv
+                         FROM events
+                         WHERE timestamp >= now() - INTERVAL 1 DAY")
 
-          # --- RAW JSON（デバッグ用：原因特定に役立つ。落ち着いたら削除OK）
-          echo "::group::POSTHOG_META"
-          echo "POSTHOG_HOST=$POSTHOG_HOST"
-          echo "POSTHOG_PROJECT_ID=$POSTHOG_PROJECT_ID"
-          echo "::endgroup::"
+          # RAW 出力（一度形を見たい時用。安定したら消してOK）
           echo "::group::RAW CTA_JSON";  echo "$CTA_JSON"  | jq .; echo "::endgroup::"
           echo "::group::RAW ROOM_JSON"; echo "$ROOM_JSON" | jq .; echo "::endgroup::"
           echo "::group::RAW CVR_JSON";  echo "$CVR_JSON"  | jq .; echo "::endgroup::"
@@ -104,8 +140,7 @@ jobs:
             fi
           done
 
-          # --- 結果配列（object/array 両対応）→ 文字列化
-          # CTA
+          # 両対応パース → 文字列整形
           CTA_ROWS=$(echo "$CTA_JSON" | jq -c '(.results.results // .results) // []')
           if [ "$(echo "$CTA_ROWS" | jq 'length')" -gt 0 ]; then
             CTA_LINES=$(echo "$CTA_ROWS" | jq -r '
@@ -121,7 +156,6 @@ jobs:
             CTA_LINES="• (no data)\n"
           fi
 
-          # ROOMS
           ROOM_ROWS=$(echo "$ROOM_JSON" | jq -c '(.results.results // .results) // []')
           if [ "$(echo "$ROOM_ROWS" | jq 'length')" -gt 0 ]; then
             ROOM_LINES=$(echo "$ROOM_ROWS" | jq -r '
@@ -137,7 +171,6 @@ jobs:
             ROOM_LINES="• (no data)\n"
           fi
 
-          # CVR
           CARD_CLICKS=$(echo "$CVR_JSON" | jq -r '
             ((.results.results // .results // [{}])[0] // {})
             | if (type=="object") and has("card_clicks") then (.card_clicks // 0)
@@ -154,7 +187,7 @@ jobs:
             CVR="0.0"
           fi
 
-          # --- 環境変数に格納（改行→\n）
+          # 改行→\n で環境変数化（次ステップで使う）
           CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           {
@@ -175,17 +208,16 @@ jobs:
         run: |
           set -euo pipefail
           COMMIT_SHORT=${COMMIT:0:7}
-
           jq -nc \
-            --arg repo         "$REPO" \
-            --arg run_url      "$RUN_URL" \
+            --arg repo "$REPO" \
+            --arg run_url "$RUN_URL" \
             --arg commit_short "$COMMIT_SHORT" \
-            --arg dash         "$DASHBOARD_URL" \
-            --arg cta          "$CTA_ESC" \
-            --arg rooms        "$ROOM_ESC" \
-            --arg cvr          "$CVR" \
-            --arg clicks       "$CARD_CLICKS" \
-            --arg pv           "$EVENTS_PV" \
+            --arg dash "$DASHBOARD_URL" \
+            --arg cta "$CTA_ESC" \
+            --arg rooms "$ROOM_ESC" \
+            --arg cvr "$CVR" \
+            --arg clicks "$CARD_CLICKS" \
+            --arg pv "$EVENTS_PV" \
             '{
               text: "MUSIAM — Daily dashboard",
               blocks: [
