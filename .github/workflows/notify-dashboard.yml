@@ -11,7 +11,7 @@ concurrency:
   group: notify-dashboard
   cancel-in-progress: true
 
-# 明示的に権限を指定
+# 最小権限
 permissions:
   contents: read
 
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout (keeps run metadata consistent)
         uses: actions/checkout@v4
 
-      # ① 前日KPIをPostHog(HogQL)から取得 → 環境変数にセット
+      # ① 前日KPIをPostHog(HogQL)で取得 → 環境変数に注入
       - name: Fetch KPI (last 24h) via PostHog HogQL
         shell: bash
         run: |
@@ -59,11 +59,13 @@ jobs:
           JSON
           }
 
-          # CTA breakdown
+          # CTA 内訳（24h）
           CTA_Q=$(jq -cn --arg q "SELECT properties.cta AS cta, count() AS clicks
             FROM events
-            WHERE event = 'CTA_CLICK' AND timestamp > now() - INTERVAL 1 DAY
-            GROUP BY cta ORDER BY clicks DESC" '$q')
+            WHERE event = 'CTA_CLICK'
+              AND timestamp >= now() - INTERVAL 1 DAY
+            GROUP BY cta
+            ORDER BY clicks DESC" '$q')
           CTA_JSON=$(ph "$CTA_Q")
           CTA_ROWS=$(echo "$CTA_JSON" | jq -r '.results[]? | @base64')
           CTA_LINES=""
@@ -78,30 +80,35 @@ jobs:
             CTA_LINES="• (no data)\n"
           fi
 
-          # ROOM_ENTER Top3
-          ROOM_Q=$(jq -cn --arg q "SELECT properties.slug AS slug, count() AS enters
+          # Rooms Top3（$pageview + $pathname で判定、24h）
+          ROOM_Q=$(jq -cn --arg q "SELECT properties.\$pathname AS room, count() AS enters
             FROM events
-            WHERE event = 'ROOM_ENTER' AND timestamp > now() - INTERVAL 1 DAY
-            GROUP BY slug ORDER BY enters DESC LIMIT 3" '$q')
+            WHERE event = '\$pageview'
+              AND properties.\$pathname LIKE '/rooms/%'
+              AND timestamp >= now() - INTERVAL 1 DAY
+            GROUP BY room
+            ORDER BY enters DESC
+            LIMIT 3" '$q')
           ROOM_JSON=$(ph "$ROOM_Q")
           ROOM_ROWS=$(echo "$ROOM_JSON" | jq -r '.results[]? | @base64')
           ROOM_LINES=""
           if [ -n "${ROOM_ROWS}" ]; then
             while IFS= read -r r; do
               row=$(echo "$r" | base64 --decode)
-              slug=$(echo "$row" | jq -r '.[0] // "unknown"')
+              room=$(echo "$row" | jq -r '.[0] // "unknown"')
               enters=$(echo "$row" | jq -r '.[1] // 0')
-              ROOM_LINES="${ROOM_LINES}• *${slug}*: ${enters}\n"
+              ROOM_LINES="${ROOM_LINES}• *${room}*: ${enters}\n"
             done <<< "$ROOM_ROWS"
           else
             ROOM_LINES="• (no data)\n"
           fi
 
-          # 粗CVR（EVENT_CARD_CLICK → /events/* pageview 比）
+          # 粗CVR（EVENT_CARD_CLICK → /events のPV、24h）
           CVR_Q=$(jq -cn --arg q "SELECT
               countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-              countIf(event = '\$pageview' AND matchOrSearch(properties.\$current_url, '/events(/|\\\\?)')) AS events_pv
-            FROM events WHERE timestamp > now() - INTERVAL 1 DAY" '$q')
+              countIf(event = '\$pageview' AND startsWith(properties.\$pathname, '/events')) AS events_pv
+            FROM events
+            WHERE timestamp >= now() - INTERVAL 1 DAY" '$q')
           CVR_JSON=$(ph "$CVR_Q")
           CARD_CLICKS=$(echo "$CVR_JSON" | jq -r '.results[0][0] // 0')
           EVENTS_PV=$(echo "$CVR_JSON" | jq -r '.results[0][1] // 0')
@@ -111,7 +118,7 @@ jobs:
             CVR="0.0"
           fi
 
-          # 改行→\n へ変換し、GITHUB_ENV に書き込む
+          # 改行→\n にして GITHUB_ENV へ
           CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           {
@@ -144,7 +151,7 @@ jobs:
               { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } },
               { "type": "divider" },
               { "type": "section", "text": { "type": "mrkdwn", "text": "*CTA (last 24h)*\n${CTA_ESC}" } },
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*ROOM_ENTER Top3 (last 24h)*\n${ROOM_ESC}" } },
+              { "type": "section", "text": { "type": "mrkdwn", "text": "*Rooms Top3 by pageviews (last 24h)*\n${ROOM_ESC}" } },
               { "type": "context", "elements": [
                 { "type": "mrkdwn", "text": "*EVENT → /events/* PV ratio (rough CVR):* ${CVR}%  (clicks=${CARD_CLICKS}, pv=${EVENTS_PV})" }
               ]}
