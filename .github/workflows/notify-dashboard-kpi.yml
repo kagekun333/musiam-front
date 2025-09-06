@@ -1,4 +1,4 @@
-name: Notify dashboard to Slack (KPI)
+name: Notify dashboard to Slack (KPI) — CTA DEBUG ONLY
 
 on:
   workflow_dispatch:
@@ -20,8 +20,6 @@ jobs:
       POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
       POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}          # 例: https://eu.posthog.com
       POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
 
     steps:
       - name: Checkout
@@ -34,119 +32,50 @@ jobs:
             sudo apt-get install -y jq
           fi
 
-      - name: Fetch KPI (last 24h) via PostHog HogQL [DEBUG]
+      - name: Fetch KPI (DEBUG: CTA only)
         shell: bash
         run: |
           set -euo pipefail
 
-          ph() {
-            local SQL="$1"
-            local BODY
-            BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
+          # 1) CTA_CLICK のシンプルSQL
+          SQL="SELECT properties.cta AS cta, count() AS clicks
+               FROM events
+               WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY
+               GROUP BY cta
+               ORDER BY clicks DESC"
 
-            # レスポンス本文は out.json に、HTTPコードは http_code 変数へ
-            local http_code
-            http_code=$(curl -sS -o out.json -w '%{http_code}' -X POST \
-              -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
-              -H "Content-Type: application/json" \
-              "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
-              --data "$BODY")
+          # 2) JSONボディ生成（jqで安全にラップ）
+          BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
 
-            echo "::group::POSTHOG RESPONSE ($http_code)"
-            cat out.json; echo
-            echo "::endgroup::"
+          # 3) 呼び出し。本文は out.json、HTTPコードは http_code へ
+          http_code=$(curl -sS -o out.json -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
+            -H "Content-Type: application/json" \
+            "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
+            --data "$BODY")
 
-            # 200 以外は即エラーで停止（jqに渡さない）
-            if [ "$http_code" -ne 200 ]; then
-              echo "::error::HTTP $http_code from PostHog. Check HOST/PROJECT_ID/API_KEY."
-              exit 1
-            fi
+          echo "::notice title=HTTP::$http_code"
+          echo "::group::RAW CTA_JSON"
+          cat out.json; echo
+          echo "::endgroup::"
 
-            # 正常時は標準出力に純粋なJSONだけを返す
-            cat out.json
-          }
-
-          # --- 1) CTA breakdown
-          CTA_JSON=$(ph "SELECT properties.cta AS cta, count() AS clicks
-                         FROM events
-                         WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY
-                         GROUP BY cta
-                         ORDER BY clicks DESC")
-          echo "::group::RAW CTA_JSON (pretty)"; echo "$CTA_JSON" | jq .; echo "::endgroup::"
-
-          # --- 2) Rooms Top3（ROOM_ENTER / slug優先＋$pathname/ pathname/ url）
-          ROOM_JSON=$(ph "SELECT coalesce(properties.slug, properties.\\$pathname, properties.pathname, properties.url) AS room,
-                                 count() AS enters
-                          FROM events
-                          WHERE event = 'ROOM_ENTER' AND timestamp >= now() - INTERVAL 1 DAY
-                          GROUP BY room
-                          ORDER BY enters DESC
-                          LIMIT 3")
-          echo "::group::RAW ROOM_JSON (pretty)"; echo "$ROOM_JSON" | jq .; echo "::endgroup::"
-
-          # --- 3) 粗CVR（EVENT_CARD_CLICK → /events* の $pageview）
-          CVR_JSON=$(ph "SELECT
-                           countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-                           countIf(event = '\\$pageview' AND properties.\\$pathname LIKE '/events%') AS events_pv
-                         FROM events
-                         WHERE timestamp >= now() - INTERVAL 1 DAY")
-          echo "::group::RAW CVR_JSON (pretty)"; echo "$CVR_JSON" | jq .; echo "::endgroup::"
-
-          # ここから整形（.results / .results.results 両対応）
-          CTA_ROWS=$(echo "$CTA_JSON" | jq -c '(.results.results // .results) // []')
-          if [ "$(echo "$CTA_ROWS" | jq 'length')" -gt 0 ]; then
-            CTA_LINES=$(echo "$CTA_ROWS" | jq -r '
-              map(
-                if type=="object" and has("cta") and has("clicks")
-                  then "• *\(.cta // \"unknown\")*: \(.clicks // 0)\n"
-                elif (type!="object") and (length>=2)
-                  then "• *\(.0 // \"unknown\")*: \(.1 // 0)\n"
-                else empty
-                end
-              ) | join("") | if length==0 then "• (no data)\n" else . end')
-          else
-            CTA_LINES="• (no data)\n"
+          # 4) 200以外は即終了（jqに渡さない）
+          if [ "$http_code" -ne 200 ]; then
+            echo "::error::HTTP $http_code from PostHog. Check HOST / PROJECT_ID / API_KEY"
+            exit 1
           fi
 
-          ROOM_ROWS=$(echo "$ROOM_JSON" | jq -c '(.results.results // .results) // []')
-          if [ "$(echo "$ROOM_ROWS" | jq 'length')" -gt 0 ]; then
-            ROOM_LINES=$(echo "$ROOM_ROWS" | jq -r '
-              map(
-                if type=="object" and has("room") and has("enters")
-                  then "• *\(.room // \"unknown\")*: \(.enters // 0)\n"
-                elif (type!="object") and (length>=2)
-                  then "• *\(.0 // \"unknown\")*: \(.1 // 0)\n"
-                else empty
-                end
-              ) | join("") | if length==0 then "• (no data)\n" else . end')
-          else
-            ROOM_LINES="• (no data)\n"
-          fi
+          # 5) ざっくり整形（.results / .results.results 両対応）
+          rows=$(jq -c '(.results.results // .results) // []' out.json)
 
-          CARD_CLICKS=$(echo "$CVR_JSON" | jq -r '
-            ((.results.results // .results // [{}])[0] // {})
-            | if (type=="object") and has("card_clicks") then (.card_clicks // 0)
-              elif (type!="object") and (length>=1) then .[0]
-              else 0 end')
-          EVENTS_PV=$(echo "$CVR_JSON" | jq -r '
-            ((.results.results // .results // [{}])[0] // {})
-            | if (type=="object") and has("events_pv") then (.events_pv // 0)
-              elif (type!="object") and (length>=2) then .[1]
-              else 0 end')
-
-          if [ "${CARD_CLICKS}" -gt 0 ]; then
-            CVR=$(awk "BEGIN { printf \"%.1f\", (${EVENTS_PV} / ${CARD_CLICKS}) * 100 }")
-          else
-            CVR="0.0"
-          fi
-
-          # 改行→\n にして次ステップへ渡す
-          CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
-          ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
-          {
-            echo "CTA_ESC=${CTA_ESC}"
-            echo "ROOM_ESC=${ROOM_ESC}"
-            echo "CVR=${CVR}"
-            echo "CARD_CLICKS=${CARD_CLICKS}"
-            echo "EVENTS_PV=${EVENTS_PV}"
-          } >> "$GITHUB_ENV"
+          echo "::group::PARSED CTA"
+          echo "$rows" | jq -r '
+            map(
+              if type=="object" and has("cta") and has("clicks")
+                then "• \(.cta // \"unknown\"): \(.clicks // 0)"
+              elif (type!="object") and (length>=2)
+                then "• \(.0 // \"unknown\"): \(.1 // 0)"
+              else empty
+              end
+            )[]' || true
+          echo "::endgroup::"
