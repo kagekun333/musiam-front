@@ -2,16 +2,14 @@ name: Notify dashboard to Slack
 
 on:
   workflow_dispatch:
-  # 毎日 00:00 UTC（日本時間 09:00）
+  # 毎日 00:00 UTC（= 09:00 JST）
   schedule:
     - cron: "0 0 * * *"
 
-# 重複実行を防止
 concurrency:
   group: notify-dashboard
   cancel-in-progress: true
 
-# 最小権限
 permissions:
   contents: read
 
@@ -37,10 +35,9 @@ jobs:
           [[ -n "${SLACK_WEBHOOK_URL:-}" ]] || { echo "::error::Missing SLACK_WEBHOOK_URL"; exit 1; }
           [[ -n "${DASHBOARD_URL:-}" ]] || { echo "::error::Missing DASHBOARD_URL"; exit 1; }
 
-      - name: Checkout (keeps run metadata consistent)
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # ① 前日KPIをPostHog(HogQL)で取得 → 環境変数に注入
       - name: Fetch KPI (last 24h) via PostHog HogQL
         shell: bash
         run: |
@@ -59,7 +56,7 @@ jobs:
           JSON
           }
 
-          # CTA 内訳（24h）
+          # ① CTA 内訳（24h）
           CTA_Q=$(jq -cn --arg q "SELECT properties.cta AS cta, count() AS clicks
             FROM events
             WHERE event = 'CTA_CLICK'
@@ -80,11 +77,12 @@ jobs:
             CTA_LINES="• (no data)\n"
           fi
 
-          # Rooms Top3（$pageview + $pathname で判定、24h）
-          ROOM_Q=$(jq -cn --arg q "SELECT properties.\$pathname AS room, count() AS enters
+          # ② Rooms Top3（ROOM_ENTER を使用。なければ url / $pathname を併用）
+          ROOM_Q=$(jq -cn --arg q "SELECT
+              coalesce(properties.slug, properties.\$pathname, properties.url) AS room,
+              count() AS enters
             FROM events
-            WHERE event = '\$pageview'
-              AND properties.\$pathname LIKE '/rooms%'
+            WHERE event = 'ROOM_ENTER'
               AND timestamp >= now() - INTERVAL 1 DAY
             GROUP BY room
             ORDER BY enters DESC
@@ -103,10 +101,12 @@ jobs:
             ROOM_LINES="• (no data)\n"
           fi
 
-          # 粗CVR（EVENT_CARD_CLICK → /events のPV、24h）
+          # ③ 粗CVR（EVENT_CARD_CLICK → /events* の Pageview）
+          # Pageview は環境によって 'Pageview' または '$pageview' のことがあるため両対応
           CVR_Q=$(jq -cn --arg q "SELECT
               countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-              countIf(event = '\$pageview' AND properties.\$pathname LIKE '/events%') AS events_pv
+              countIf((event = 'Pageview' OR event = '\$pageview')
+                      AND (properties.\$pathname LIKE '/events%' OR properties.pathname LIKE '/events%')) AS events_pv
             FROM events
             WHERE timestamp >= now() - INTERVAL 1 DAY" '$q')
           CVR_JSON=$(ph "$CVR_Q")
@@ -118,7 +118,7 @@ jobs:
             CVR="0.0"
           fi
 
-          # 改行→\n にして GITHUB_ENV へ
+          # 改行を \n に変換し GITHUB_ENV に注入
           CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           {
@@ -151,7 +151,7 @@ jobs:
               { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } },
               { "type": "divider" },
               { "type": "section", "text": { "type": "mrkdwn", "text": "*CTA (last 24h)*\n${CTA_ESC}" } },
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*Rooms Top3 by pageviews (last 24h)*\n${ROOM_ESC}" } },
+              { "type": "section", "text": { "type": "mrkdwn", "text": "*Rooms Top3 (ROOM_ENTER, last 24h)*\n${ROOM_ESC}" } },
               { "type": "context", "elements": [
                 { "type": "mrkdwn", "text": "*EVENT → /events/* PV ratio (rough CVR):* ${CVR}%  (clicks=${CARD_CLICKS}, pv=${EVENTS_PV})" }
               ]}
