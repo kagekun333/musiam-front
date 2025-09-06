@@ -1,27 +1,48 @@
 name: Notify dashboard to Slack
 
 on:
-  # 手動実行
   workflow_dispatch:
-  # 毎日 00:00 UTC（日本時間 09:00）に実行
+  # 毎日 00:00 UTC（日本時間 09:00）
   schedule:
     - cron: "0 0 * * *"
+
+# 重複実行を防止
+concurrency:
+  group: notify-dashboard
+  cancel-in-progress: true
+
+# 明示的に権限を指定
+permissions:
+  contents: read
 
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout (no code needed, but keeps run metadata consistent)
+      - name: Validate secrets
+        shell: bash
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+        run: |
+          set -euo pipefail
+          [[ -n "${SLACK_WEBHOOK_URL:-}" ]] || { echo "::error::Missing SLACK_WEBHOOK_URL"; exit 1; }
+          [[ -n "${DASHBOARD_URL:-}" ]] || { echo "::error::Missing DASHBOARD_URL"; exit 1; }
+
+      - name: Checkout (keeps run metadata consistent)
         uses: actions/checkout@v4
 
       - name: Compose Slack payload
+        shell: bash
         env:
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
           REPO: ${{ github.repository }}
           COMMIT: ${{ github.sha }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
+          set -euo pipefail
+          COMMIT_SHORT=${COMMIT:0:7}
           cat > payload.json <<'JSON'
           {
             "text": "MUSIAM — Daily dashboard",
@@ -35,12 +56,13 @@ jobs:
             ]
           }
           JSON
-          COMMIT_SHORT=${COMMIT:0:7}
           sed -i "s|\${DASHBOARD_URL}|${DASHBOARD_URL}|g; s|\${REPO}|${REPO}|g; s|\${RUN_URL}|${RUN_URL}|g; s|\${COMMIT_SHORT}|${COMMIT_SHORT}|g" payload.json
           cat payload.json
 
       - name: Send to Slack
+        shell: bash
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
+          set -euo pipefail
           curl -sS -X POST -H 'Content-type: application/json' --data @payload.json "$SLACK_WEBHOOK_URL"
