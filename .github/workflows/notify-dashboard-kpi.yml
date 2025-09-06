@@ -3,7 +3,7 @@ name: Notify dashboard to Slack (KPI)
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"  # 09:00 JST
+    - cron: "0 0 * * *"  # 09:00 JST (UTC 00:00)
 
 permissions:
   contents: read
@@ -18,8 +18,8 @@ jobs:
     timeout-minutes: 5
     env:
       POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}
-      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
+      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}              # 例: https://eu.posthog.com
+      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}  # 例: 87345
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
 
@@ -28,14 +28,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          [[ -n "${POSTHOG_API_KEY:-}" ]]   || { echo "::error::Missing POSTHOG_API_KEY"; exit 1; }
-          [[ -n "${POSTHOG_HOST:-}" ]]      || { echo "::error::Missing POSTHOG_HOST"; exit 1; }
-          [[ -n "${POSTHOG_PROJECT_ID:-}" ]]|| { echo "::error::Missing POSTHOG_PROJECT_ID"; exit 1; }
-          [[ -n "${SLACK_WEBHOOK_URL:-}" ]] || { echo "::error::Missing SLACK_WEBHOOK_URL"; exit 1; }
-          [[ -n "${DASHBOARD_URL:-}" ]]     || { echo "::error::Missing DASHBOARD_URL"; exit 1; }
+          [[ -n "${POSTHOG_API_KEY:-}"      ]] || { echo "::error::Missing POSTHOG_API_KEY"; exit 1; }
+          [[ -n "${POSTHOG_HOST:-}"         ]] || { echo "::error::Missing POSTHOG_HOST"; exit 1; }
+          [[ -n "${POSTHOG_PROJECT_ID:-}"   ]] || { echo "::error::Missing POSTHOG_PROJECT_ID"; exit 1; }
+          [[ -n "${SLACK_WEBHOOK_URL:-}"    ]] || { echo "::error::Missing SLACK_WEBHOOK_URL"; exit 1; }
+          [[ -n "${DASHBOARD_URL:-}"        ]] || { echo "::error::Missing DASHBOARD_URL"; exit 1; }
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y jq
+          fi
 
       - name: Fetch KPI (last 24h) via PostHog HogQL
         shell: bash
@@ -81,12 +88,23 @@ jobs:
                    WHERE timestamp >= now() - INTERVAL 1 DAY"
           CVR_JSON=$(ph "$CVR_SQL")
 
-          # --- RAW JSON（デバッグ用）
+          # --- RAW JSON（デバッグ用：原因特定に役立つ。落ち着いたら削除OK）
+          echo "::group::POSTHOG_META"
+          echo "POSTHOG_HOST=$POSTHOG_HOST"
+          echo "POSTHOG_PROJECT_ID=$POSTHOG_PROJECT_ID"
+          echo "::endgroup::"
           echo "::group::RAW CTA_JSON";  echo "$CTA_JSON"  | jq .; echo "::endgroup::"
           echo "::group::RAW ROOM_JSON"; echo "$ROOM_JSON" | jq .; echo "::endgroup::"
           echo "::group::RAW CVR_JSON";  echo "$CVR_JSON"  | jq .; echo "::endgroup::"
 
-          # --- 結果配列（object/array 両対応）
+          for name in CTA_JSON ROOM_JSON CVR_JSON; do
+            if echo "${!name}" | jq -e '.error? // empty' >/dev/null; then
+              echo "::error::${name} API error: $(echo "${!name}" | jq -r '.error')"
+              exit 1
+            fi
+          done
+
+          # --- 結果配列（object/array 両対応）→ 文字列化
           # CTA
           CTA_ROWS=$(echo "$CTA_JSON" | jq -c '(.results.results // .results) // []')
           if [ "$(echo "$CTA_ROWS" | jq 'length')" -gt 0 ]; then
