@@ -1,0 +1,46 @@
+name: Notify dashboard to Slack
+
+on:
+  # 手動実行
+  workflow_dispatch:
+  # 毎日 00:00 UTC（日本時間 09:00）に実行
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (no code needed, but keeps run metadata consistent)
+        uses: actions/checkout@v4
+
+      - name: Compose Slack payload
+        env:
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+          REPO: ${{ github.repository }}
+          COMMIT: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          cat > payload.json <<'JSON'
+          {
+            "text": "MUSIAM — Daily dashboard",
+            "blocks": [
+              { "type": "header", "text": { "type": "plain_text", "text": "MUSIAM — Daily dashboard" } },
+              { "type": "section", "fields": [
+                { "type": "mrkdwn", "text": "*Repo:*\n${REPO}" },
+                { "type": "mrkdwn", "text": "*Run:*\n<${RUN_URL}|${COMMIT_SHORT}>" }
+              ]},
+              { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } }
+            ]
+          }
+          JSON
+          COMMIT_SHORT=${COMMIT:0:7}
+          sed -i "s|\${DASHBOARD_URL}|${DASHBOARD_URL}|g; s|\${REPO}|${REPO}|g; s|\${RUN_URL}|${RUN_URL}|g; s|\${COMMIT_SHORT}|${COMMIT_SHORT}|g" payload.json
+          cat payload.json
+
+      - name: Send to Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -sS -X POST -H 'Content-type: application/json' --data @payload.json "$SLACK_WEBHOOK_URL"
