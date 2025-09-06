@@ -84,7 +84,7 @@ jobs:
           ROOM_Q=$(jq -cn --arg q "SELECT properties.\$pathname AS room, count() AS enters
             FROM events
             WHERE event = '\$pageview'
-              AND properties.\$pathname LIKE '/rooms/%'
+              AND properties.\$pathname LIKE '/rooms%'
               AND timestamp >= now() - INTERVAL 1 DAY
             GROUP BY room
             ORDER BY enters DESC
@@ -106,7 +106,7 @@ jobs:
           # 粗CVR（EVENT_CARD_CLICK → /events のPV、24h）
           CVR_Q=$(jq -cn --arg q "SELECT
               countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-              countIf(event = '\$pageview' AND startsWith(properties.\$pathname, '/events')) AS events_pv
+              countIf(event = '\$pageview' AND properties.\$pathname LIKE '/events%') AS events_pv
             FROM events
             WHERE timestamp >= now() - INTERVAL 1 DAY" '$q')
           CVR_JSON=$(ph "$CVR_Q")
