@@ -1,17 +1,16 @@
-name: Notify dashboard to Slack
+name: Notify dashboard to Slack (KPI)
 
 on:
   workflow_dispatch:
-  # 毎日 00:00 UTC（= 09:00 JST）
   schedule:
-    - cron: "0 0 * * *"
-
-concurrency:
-  group: notify-dashboard
-  cancel-in-progress: true
+    - cron: "0 0 * * *"  # 09:00 JST
 
 permissions:
   contents: read
+
+concurrency:
+  group: notify-dashboard-kpi
+  cancel-in-progress: true
 
 jobs:
   notify:
@@ -27,9 +26,6 @@ jobs:
     steps:
       - name: Validate secrets
         shell: bash
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
         run: |
           set -euo pipefail
           [[ -n "${SLACK_WEBHOOK_URL:-}" ]] || { echo "::error::Missing SLACK_WEBHOOK_URL"; exit 1; }
@@ -44,26 +40,19 @@ jobs:
           set -euo pipefail
 
           ph() {
-            local Q="$1"
-            curl -sS -X POST \
-              -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
-              -H "Content-Type: application/json" \
-              "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
-              --data-binary @- <<'JSON'
-          {
-            "query": { "kind": "HogQLQuery", "query": ${Q} }
-          }
-          JSON
+            local SQL="$1"
+            # SQL を HogQL JSON に包んで送信（ヒアドキュメント不使用）
+            jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}' \
+            | curl -sS -X POST \
+                -H "Authorization: Bearer '"${POSTHOG_API_KEY}"'" \
+                -H "Content-Type: application/json" \
+                "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
+                --data-binary @-
           }
 
           # --- CTA (24h)
-          CTA_Q=$(jq -cn --arg q "SELECT properties.cta AS cta, count() AS clicks
-            FROM events
-            WHERE event = 'CTA_CLICK'
-              AND timestamp >= now() - INTERVAL 1 DAY
-            GROUP BY cta
-            ORDER BY clicks DESC" '$q')
-          CTA_JSON=$(ph "$CTA_Q")
+          CTA_SQL="SELECT properties.cta AS cta, count() AS clicks FROM events WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY GROUP BY cta ORDER BY clicks DESC"
+          CTA_JSON=$(ph "$CTA_SQL")
           CTA_ROWS=$(echo "$CTA_JSON" | jq -r '(.results.results // .results)[]? | @base64')
           CTA_LINES=""
           if [ -n "${CTA_ROWS}" ]; then
@@ -77,17 +66,9 @@ jobs:
             CTA_LINES="• (no data)\n"
           fi
 
-          # --- Rooms Top3（ROOM_ENTER / slug優先＋保険で $pathname/ pathname/ url）
-          ROOM_Q=$(jq -cn --arg q "SELECT
-              coalesce(properties.slug, properties.\$pathname, properties.pathname, properties.url) AS room,
-              count() AS enters
-            FROM events
-            WHERE event = 'ROOM_ENTER'
-              AND timestamp >= now() - INTERVAL 1 DAY
-            GROUP BY room
-            ORDER BY enters DESC
-            LIMIT 3" '$q')
-          ROOM_JSON=$(ph "$ROOM_Q")
+          # --- Rooms Top3（ROOM_ENTER / slug優先＋保険で $pathname / pathname / url）
+          ROOM_SQL="SELECT coalesce(properties.slug, properties.\$pathname, properties.pathname, properties.url) AS room, count() AS enters FROM events WHERE event = 'ROOM_ENTER' AND timestamp >= now() - INTERVAL 1 DAY GROUP BY room ORDER BY enters DESC LIMIT 3"
+          ROOM_JSON=$(ph "$ROOM_SQL")
           ROOM_ROWS=$(echo "$ROOM_JSON" | jq -r '(.results.results // .results)[]? | @base64')
           ROOM_LINES=""
           if [ -n "${ROOM_ROWS}" ]; then
@@ -102,12 +83,8 @@ jobs:
           fi
 
           # --- 粗CVR（EVENT_CARD_CLICK → /events* の $pageview）
-          CVR_Q=$(jq -cn --arg q "SELECT
-              countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-              countIf(event = '\$pageview' AND properties.\$pathname LIKE '/events%') AS events_pv
-            FROM events
-            WHERE timestamp >= now() - INTERVAL 1 DAY" '$q')
-          CVR_JSON=$(ph "$CVR_Q")
+          CVR_SQL="SELECT countIf(event = 'EVENT_CARD_CLICK') AS card_clicks, countIf(event = '\$pageview' AND properties.\$pathname LIKE '/events%') AS events_pv FROM events WHERE timestamp >= now() - INTERVAL 1 DAY"
+          CVR_JSON=$(ph "$CVR_SQL")
           CARD_CLICKS=$(echo "$CVR_JSON" | jq -r '((.results.results // .results)[0][0]) // 0')
           EVENTS_PV=$(echo "$CVR_JSON" | jq -r '((.results.results // .results)[0][1]) // 0')
           if [ "${CARD_CLICKS}" -gt 0 ]; then
@@ -127,7 +104,7 @@ jobs:
             echo "EVENTS_PV=${EVENTS_PV}"
           } >> "$GITHUB_ENV"
 
-      - name: Compose Slack payload
+      - name: Compose Slack payload (no heredoc)
         shell: bash
         env:
           DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
@@ -137,36 +114,37 @@ jobs:
         run: |
           set -euo pipefail
           COMMIT_SHORT=${COMMIT:0:7}
-          cat > payload.json <<'JSON'
-          {
-            "text": "MUSIAM — Daily dashboard",
-            "blocks": [
-              { "type": "header", "text": { "type": "plain_text", "text": "MUSIAM — Daily dashboard" } },
-              { "type": "section", "fields": [
-                { "type": "mrkdwn", "text": "*Repo:*\n${REPO}" },
-                { "type": "mrkdwn", "text": "*Run:*\n<${RUN_URL}|${COMMIT_SHORT}>" }
-              ]},
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } },
-              { "type": "divider" },
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*CTA (last 24h)*\n${CTA_ESC}" } },
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*Rooms Top3 (ROOM_ENTER, last 24h)*\n${ROOM_ESC}" } },
-              { "type": "context", "elements": [
-                { "type": "mrkdwn", "text": "*EVENT → /events/* PV ratio (rough CVR):* ${CVR}%  (clicks=${CARD_CLICKS}, pv=${EVENTS_PV})" }
-              ]}
-            ]
-          }
-          JSON
-          sed -i \
-            -e "s|\${DASHBOARD_URL}|${DASHBOARD_URL}|g" \
-            -e "s|\${REPO}|${REPO}|g" \
-            -e "s|\${RUN_URL}|${RUN_URL}|g" \
-            -e "s|\${COMMIT_SHORT}|${COMMIT_SHORT}|g" \
-            -e "s|\${CTA_ESC}|${CTA_ESC}|g" \
-            -e "s|\${ROOM_ESC}|${ROOM_ESC}|g" \
-            -e "s|\${CVR}|${CVR}|g" \
-            -e "s|\${CARD_CLICKS}|${CARD_CLICKS}|g" \
-            -e "s|\${EVENTS_PV}|${EVENTS_PV}|g" \
-            payload.json
+
+          jq -nc \
+            --arg repo         "$REPO" \
+            --arg run_url      "$RUN_URL" \
+            --arg commit_short "$COMMIT_SHORT" \
+            --arg dash         "$DASHBOARD_URL" \
+            --arg cta          "$CTA_ESC" \
+            --arg rooms        "$ROOM_ESC" \
+            --arg cvr          "$CVR" \
+            --arg clicks       "$CARD_CLICKS" \
+            --arg pv           "$EVENTS_PV" \
+            '{
+              text: "MUSIAM — Daily dashboard",
+              blocks: [
+                { type: "header", text: { type: "plain_text", text: "MUSIAM — Daily dashboard" } },
+                { type: "section", fields: [
+                    { type: "mrkdwn", text: "*Repo:*\n\($repo)" },
+                    { type: "mrkdwn", text: "*Run:*\n<\($run_url)|\($commit_short)>" }
+                  ]
+                },
+                { type: "section", text: { type: "mrkdwn", text: "*Open dashboard:* <\($dash)|PostHog Dashboard>" } },
+                { type: "divider" },
+                { type: "section", text: { type: "mrkdwn", text: "*CTA (last 24h)*\n\($cta)" } },
+                { type: "section", text: { type: "mrkdwn", text: "*Rooms Top3 (ROOM_ENTER, last 24h)*\n\($rooms)" } },
+                { type: "context", elements: [
+                    { type: "mrkdwn", text: "*EVENT → /events/* PV ratio (rough CVR):* \($cvr)%  (clicks=\($clicks), pv=\($pv))" }
+                  ]
+                }
+              ]
+            }' > payload.json
+
           cat payload.json
 
       - name: Send to Slack
