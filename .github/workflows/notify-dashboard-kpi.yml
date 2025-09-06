@@ -34,32 +34,47 @@ jobs:
             sudo apt-get install -y jq
           fi
 
-      - name: Fetch KPI (last 24h) via PostHog HogQL
+      - name: Fetch KPI (last 24h) via PostHog HogQL [DEBUG]
         shell: bash
         run: |
           set -euo pipefail
 
           ph() {
-            local Q="$1"
-            echo "=== HogQL ==="
-            echo "$Q"
-            jq -nc --arg q "$Q" '{"query":{"kind":"HogQLQuery","query":$q}}' \
-            | curl -sS -X POST \
-                -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
-                -H "Content-Type: application/json" \
-                "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
-                --data-raw @-
+            local SQL="$1"
+            local BODY
+            BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
+
+            # レスポンス本文は out.json に、HTTPコードは http_code 変数へ
+            local http_code
+            http_code=$(curl -sS -o out.json -w '%{http_code}' -X POST \
+              -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
+              -H "Content-Type: application/json" \
+              "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
+              --data "$BODY")
+
+            echo "::group::POSTHOG RESPONSE ($http_code)"
+            cat out.json; echo
+            echo "::endgroup::"
+
+            # 200 以外は即エラーで停止（jqに渡さない）
+            if [ "$http_code" -ne 200 ]; then
+              echo "::error::HTTP $http_code from PostHog. Check HOST/PROJECT_ID/API_KEY."
+              exit 1
+            fi
+
+            # 正常時は標準出力に純粋なJSONだけを返す
+            cat out.json
           }
 
-          # --- CTA breakdown (24h)
+          # --- 1) CTA breakdown
           CTA_JSON=$(ph "SELECT properties.cta AS cta, count() AS clicks
                          FROM events
                          WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY
                          GROUP BY cta
                          ORDER BY clicks DESC")
-          echo "::group::RAW CTA_JSON"; echo "$CTA_JSON" | jq .; echo "::endgroup::"
+          echo "::group::RAW CTA_JSON (pretty)"; echo "$CTA_JSON" | jq .; echo "::endgroup::"
 
-          # --- Rooms Top3（ROOM_ENTER / slug優先＋$pathname/ pathname/ url）
+          # --- 2) Rooms Top3（ROOM_ENTER / slug優先＋$pathname/ pathname/ url）
           ROOM_JSON=$(ph "SELECT coalesce(properties.slug, properties.\\$pathname, properties.pathname, properties.url) AS room,
                                  count() AS enters
                           FROM events
@@ -67,25 +82,17 @@ jobs:
                           GROUP BY room
                           ORDER BY enters DESC
                           LIMIT 3")
-          echo "::group::RAW ROOM_JSON"; echo "$ROOM_JSON" | jq .; echo "::endgroup::"
+          echo "::group::RAW ROOM_JSON (pretty)"; echo "$ROOM_JSON" | jq .; echo "::endgroup::"
 
-          # --- 粗CVR（EVENT_CARD_CLICK → /events* の $pageview）
+          # --- 3) 粗CVR（EVENT_CARD_CLICK → /events* の $pageview）
           CVR_JSON=$(ph "SELECT
                            countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
                            countIf(event = '\\$pageview' AND properties.\\$pathname LIKE '/events%') AS events_pv
                          FROM events
                          WHERE timestamp >= now() - INTERVAL 1 DAY")
-          echo "::group::RAW CVR_JSON"; echo "$CVR_JSON" | jq .; echo "::endgroup::"
+          echo "::group::RAW CVR_JSON (pretty)"; echo "$CVR_JSON" | jq .; echo "::endgroup::"
 
-          # エラーチェック
-          for name in CTA_JSON ROOM_JSON CVR_JSON; do
-            if echo "${!name}" | jq -e '.error? // empty' >/dev/null; then
-              echo "::error::${name} API error: $(echo "${!name}" | jq -r '.error')"
-              exit 1
-            fi
-          done
-
-          # 結果配列（.results または .results.results の両対応）→ 文字列化
+          # ここから整形（.results / .results.results 両対応）
           CTA_ROWS=$(echo "$CTA_JSON" | jq -c '(.results.results // .results) // []')
           if [ "$(echo "$CTA_ROWS" | jq 'length')" -gt 0 ]; then
             CTA_LINES=$(echo "$CTA_ROWS" | jq -r '
@@ -126,13 +133,14 @@ jobs:
             | if (type=="object") and has("events_pv") then (.events_pv // 0)
               elif (type!="object") and (length>=2) then .[1]
               else 0 end')
+
           if [ "${CARD_CLICKS}" -gt 0 ]; then
             CVR=$(awk "BEGIN { printf \"%.1f\", (${EVENTS_PV} / ${CARD_CLICKS}) * 100 }")
           else
             CVR="0.0"
           fi
 
-          # 改行→\n で環境変数化（次ステップで使用）
+          # 改行→\n にして次ステップへ渡す
           CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
           {
@@ -142,53 +150,3 @@ jobs:
             echo "CARD_CLICKS=${CARD_CLICKS}"
             echo "EVENTS_PV=${EVENTS_PV}"
           } >> "$GITHUB_ENV"
-
-      - name: Compose Slack payload
-        shell: bash
-        env:
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-          REPO: ${{ github.repository }}
-          COMMIT: ${{ github.sha }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          set -euo pipefail
-          COMMIT_SHORT=${COMMIT:0:7}
-          jq -nc \
-            --arg repo "$REPO" \
-            --arg run_url "$RUN_URL" \
-            --arg commit_short "$COMMIT_SHORT" \
-            --arg dash "$DASHBOARD_URL" \
-            --arg cta "$CTA_ESC" \
-            --arg rooms "$ROOM_ESC" \
-            --arg cvr "$CVR" \
-            --arg clicks "$CARD_CLICKS" \
-            --arg pv "$EVENTS_PV" \
-            '{
-              text: "MUSIAM — Daily dashboard",
-              blocks: [
-                { type: "header", text: { type: "plain_text", text: "MUSIAM — Daily dashboard" } },
-                { type: "section", fields: [
-                    { type: "mrkdwn", text: "*Repo:*\n\($repo)" },
-                    { type: "mrkdwn", text: "*Run:*\n<\($run_url)|\($commit_short)>" }
-                  ]
-                },
-                { type: "section", text: { type: "mrkdwn", text: "*Open dashboard:* <\($dash)|PostHog Dashboard>" } },
-                { type: "divider" },
-                { type: "section", text: { type: "mrkdwn", text: "*CTA (last 24h)*\n\($cta)" } },
-                { type: "section", text: { type: "mrkdwn", text: "*Rooms Top3 (ROOM_ENTER, last 24h)*\n\($rooms)" } },
-                { type: "context", elements: [
-                    { type: "mrkdwn", text: "*EVENT → /events/* PV ratio (rough CVR):* \($cvr)%  (clicks=\($clicks), pv=\($pv))" }
-                  ]
-                }
-              ]
-            }' > payload.json
-          cat payload.json
-
-      - name: Send to Slack
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fSs -i -X POST \
-            -H 'Content-type: application/json' \
-            --data @payload.json \
-            "$SLACK_WEBHOOK_URL"
