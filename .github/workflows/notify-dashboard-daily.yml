@@ -1,25 +1,31 @@
-name: Notify dashboard to Slack (KPI) - CTA DEBUG ONLY
+name: Notify dashboard to Slack (KPI) - Daily 09:00 JST
 
 on:
+  schedule:
+    - cron: "0 0 * * *"  # 09:00 JST（UTC 00:00）
   workflow_dispatch:
+
+concurrency:
+  group: kpi-daily
+  cancel-in-progress: true
 
 jobs:
   notify:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
       POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}
       POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-      # デバッグ時だけ 1 に
-      # DEBUG_KPI: "0"
 
-      # 必要に応じて上書き可
-      # KPI_WINDOW_HOURS: "24"
-      # KPI_EVENT: "CTA_CLICK"
-      # KPI_PROP: "cta"
-      # KPI_LIMIT: "10"
+      # お好みで調整
+      KPI_WINDOW_HOURS: "24"
+      KPI_EVENT: "CTA_CLICK"
+      KPI_PROP: "cta"
+      KPI_LIMIT: "10"
+      DEBUG_KPI: "0"
 
     steps:
       - uses: actions/checkout@v4
