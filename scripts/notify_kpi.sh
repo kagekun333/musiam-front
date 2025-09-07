@@ -75,48 +75,51 @@ printf "%s\n" "$lines"
 echo "::endgroup::"
 
 # ---------- Slack (Block Kit) ----------
-if [ -n "$DASHBOARD_URL_TRIM" ]; then
-  payload=$(jq -nc \
-    --arg title "🔎 CTA Clicks — last ${WINDOW_HOURS}h" \
-    --arg total "*Total:* ${total}" \
-    --arg lines "$lines" \
-    --arg when "$now_utc • $now_jst" \
-    --arg url "$DASHBOARD_URL_TRIM" '
-    {
-      blocks: [
-        {type:"header", text:{type:"plain_text", text:$title}},
-        {type:"section", text:{type:"mrkdwn", text:$total}},
-        {type:"section", text:{type:"mrkdwn", text:$lines}},
-        {type:"context", elements:[{type:"mrkdwn", text:$when}]},
-        {type:"actions", elements:[{type:"button", text:{type:"plain_text", text:"Open Dashboard"}, url:$url}]}
-      ]
-    }')
-else
-  payload=$(jq -nc \
-    --arg title "🔎 CTA Clicks — last ${WINDOW_HOURS}h" \
-    --arg total "*Total:* ${total}" \
-    --arg lines "$lines" \
-    --arg when "$now_utc • $now_jst" '
-    {
-      blocks: [
-        {type:"header", text:{type:"plain_text", text:$title}},
-        {type:"section", text:{type:"mrkdwn", text:$total}},
-        {type:"section", text:{type:"mrkdwn", text:$lines}},
-        {type:"context", elements:[{type:"mrkdwn", text:$when}]}
-      ]
-    }')
-fi
+# --- Slack送信（デバッグ付き） ---
+payload=$(jq -nc --arg text "$msg" '{text:$text}')
+
+# デバッグ: payloadを可視化（シークレットは含まれない）
+echo "::group::Slack payload (text)"
+echo "$payload" | jq .
+echo "::endgroup::"
 
 code=$(curl -sS -o slack_out.txt -w '%{http_code}' \
   -X POST -H 'Content-type: application/json' \
   --data "$payload" "$SLACK_WEBHOOK_URL")
 
 echo "Slack code: $code"
+echo "::group::Slack response body"; cat slack_out.txt; echo; echo "::endgroup::"
+
+# 失敗したら Block Kit に自動フォールバック（URL改行も除去）
+DASHBOARD_URL_TRIM=$(printf '%s' "${DASHBOARD_URL:-}" | tr -d '\r\n' | awk '{$1=$1;print}')
+
 if [ "$code" -ne 200 ]; then
-  echo "::group::Slack response"
-  cat slack_out.txt
-  echo; echo "::endgroup::"
-  exit 1
+  echo "Slack text failed ($code). Falling back to Block Kit."
+  payload=$(jq -nc \
+    --arg title "🔎 CTA Clicks — last ${KPI_WINDOW_HOURS:-24}h" \
+    --arg lines "$lines" \
+    --arg when "$(date -u +"%Y-%m-%d %H:%M UTC")" \
+    --arg url "$DASHBOARD_URL_TRIM" '
+    {
+      text: $lines,
+      blocks: [
+        {type:"header", text:{type:"plain_text", text:$title}},
+        {type:"section", text:{type:"mrkdwn", text:$lines}},
+        {type:"context", elements:[{type:"mrkdwn", text:$when}]}
+      ] + ( ($url|length>0)
+        ? [ {type:"actions", elements:[{type:"button", text:{type:"plain_text", text:"Open Dashboard"}, url:$url}] } ]
+        : [] )
+    }')
+
+  echo "::group::Slack payload (blocks)"; echo "$payload" | jq .; echo "::endgroup::"
+
+  code=$(curl -sS -o slack_out.txt -w '%{http_code}' \
+    -X POST -H 'Content-type: application/json' \
+    --data "$payload" "$SLACK_WEBHOOK_URL")
+
+  echo "Slack code (blocks): $code"
+  echo "::group::Slack response body"; cat slack_out.txt; echo; echo "::endgroup::"
 fi
 
+[ "$code" -eq 200 ] || { echo "Slack webhook error"; exit 1; }
 echo "Slack posted."
