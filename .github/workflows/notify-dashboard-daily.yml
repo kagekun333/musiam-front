@@ -14,18 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     env:
+
       POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
       POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}
       POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+      
+      USE_BLOCKS: "0"   # ← 安全運用（必要時に "1" に切替）
+      DEBUG_KPI: "0"    # ← もうOFFでOK（必要時だけ1に）
 
       # お好みで調整
       KPI_WINDOW_HOURS: "24"
       KPI_EVENT: "CTA_CLICK"
       KPI_PROP: "cta"
       KPI_LIMIT: "10"
-      DEBUG_KPI: "0"
+      
 
     steps:
       - uses: actions/checkout@v4
