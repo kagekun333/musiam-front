@@ -3,7 +3,7 @@ name: Notify dashboard to Slack (KPI) — CTA DEBUG ONLY
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # 09:00 JST
+    - cron: "0 0 * * *"  # 09:00 JST
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 5
     env:
       POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}          # 例: https://eu.posthog.com
+      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}          # 例: https://eu.posthog.com（末尾スラなし）
       POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
 
     steps:
@@ -32,12 +32,40 @@ jobs:
             sudo apt-get install -y jq
           fi
 
-      - name: "Fetch KPI (DEBUG: CTA only)"
+      # 1) Secrets がワークフローに届いているか（値はマスク表示）
+      - name: Debug secrets (masked)
         shell: bash
         run: |
           set -euo pipefail
+          echo "HOST=${POSTHOG_HOST}"
+          echo "PROJECT_ID=${POSTHOG_PROJECT_ID}"
+          # キーの長さと先頭6文字だけ（残りはマスク）
+          echo "API_KEY_LEN=${#POSTHOG_API_KEY}"
+          echo "API_KEY_HEAD=$(printf '%s' "${POSTHOG_API_KEY}" | sed 's/^\(......\).*/\1********/')"          
 
-          # 1) CTA_CLICK のシンプルSQL（ヒアドキュメントで安全に埋め込み）
+      # 2) SELECT 1（最小クエリ）で 200 を出せるかチェック
+      - name: Smoke test — SELECT 1
+        shell: bash
+        run: |
+          set -euo pipefail
+          BODY='{"query":{"kind":"HogQLQuery","query":"SELECT 1"}}'
+          http_code=$(curl -sS -o out.json -w '%{http_code}' -X POST \
+            -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
+            -H "Content-Type: application/json" \
+            "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
+            --data "$BODY")
+          echo "::notice title=HTTP::$http_code"
+          echo "::group::RAW SELECT1"; cat out.json; echo; echo "::endgroup::"
+          if [ "$http_code" -ne 200 ]; then
+            echo "::error::HTTP $http_code on SELECT 1 → HOST/PROJECT_ID/API_KEY の不整合"
+            exit 1
+          fi
+
+      # 3) CTA の最小テスト
+      - name: Fetch KPI (DEBUG: CTA only)
+        shell: bash
+        run: |
+          set -euo pipefail
           SQL=$(cat <<'SQL'
           SELECT properties.cta AS cta, count() AS clicks
           FROM events
@@ -46,31 +74,19 @@ jobs:
           ORDER BY clicks DESC
           SQL
           )
-
-          # 2) JSONボディ生成（jqで安全にラップ）
           BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
-
-          # 3) 呼び出し。本文は out.json、HTTPコードは http_code へ
           http_code=$(curl -sS -o out.json -w '%{http_code}' -X POST \
             -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
             -H "Content-Type: application/json" \
             "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
             --data "$BODY")
-
           echo "::notice title=HTTP::$http_code"
-          echo "::group::RAW CTA_JSON"
-          cat out.json; echo
-          echo "::endgroup::"
-
-          # 4) ステータスチェック
+          echo "::group::RAW CTA_JSON"; cat out.json; echo; echo "::endgroup::"
           if [ "$http_code" -ne 200 ]; then
-            echo "::error::HTTP $http_code from PostHog. Verify POSTHOG_HOST / POSTHOG_PROJECT_ID / POSTHOG_API_KEY"
+            echo "::error::HTTP $http_code from PostHog (CTA)"
             exit 1
           fi
-
-          # 5) ざっくり整形（.results / .results.results 両対応）
           rows=$(jq -c '(.results.results // .results) // []' out.json)
-
           echo "::group::PARSED CTA"
           echo "$rows" | jq -r '
             map(
