@@ -1,17 +1,16 @@
-name: Notify dashboard to Slack
+name: Notify dashboard to Slack (Daily KPI)
 
 on:
-  workflow_dispatch:
-  # 毎日 00:00 UTC（= 09:00 JST）
+  workflow_dispatch: {}
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 0 * * *" # 09:00 JST
+
+permissions:
+  contents: read
 
 concurrency:
   group: notify-dashboard
   cancel-in-progress: true
-
-permissions:
-  contents: read
 
 jobs:
   notify:
@@ -19,163 +18,114 @@ jobs:
     timeout-minutes: 5
     env:
       POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}          # 例: https://eu.posthog.com
-      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
+      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}             # 例: https://eu.posthog.com
+      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }} # 数字ID
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
 
     steps:
       - name: Validate secrets
+        run: |
+          : "${POSTHOG_API_KEY?Missing POSTHOG_API_KEY}"
+          : "${POSTHOG_HOST?Missing POSTHOG_HOST}"
+          : "${POSTHOG_PROJECT_ID?Missing POSTHOG_PROJECT_ID}"
+          : "${SLACK_WEBHOOK_URL?Missing SLACK_WEBHOOK_URL}"
+          : "${DASHBOARD_URL?Missing DASHBOARD_URL}"
+
+      - name: Ensure jq & curl
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+
+      - name: Build KPI message (HogQL → JSON → text)
+        id: kpi
         shell: bash
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
         run: |
           set -euo pipefail
-          [[ -n "${SLACK_WEBHOOK_URL:-}" ]] || { echo "::error::Missing SLACK_WEBHOOK_URL"; exit 1; }
-          [[ -n "${DASHBOARD_URL:-}" ]] || { echo "::error::Missing DASHBOARD_URL"; exit 1; }
 
-      - name: Checkout
-        uses: actions/checkout@v4
+          base="${POSTHOG_HOST%/}/api/projects/${POSTHOG_PROJECT_ID}/query"
+          auth="Authorization: Bearer ${POSTHOG_API_KEY}"
 
-      - name: Fetch KPI (last 24h) via PostHog HogQL
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          ph() {
-            local Q="$1"
-            curl -sS -X POST \
-              -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
+          call_hogql () {
+            local q="$1"
+            curl -sS -X POST "$base" \
               -H "Content-Type: application/json" \
-              "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
-              --data-binary @- <<'JSON'
-          {
-            "query": { "kind": "HogQLQuery", "query": ${Q} }
-          }
-          JSON
+              -H "$auth" \
+              --data "$(jq -n --arg q "$q" '{query: {kind:"HogQLQuery", query:$q}}')"
           }
 
-          # ① CTA 内訳（24h）
-          CTA_Q=$(jq -cn --arg q "SELECT properties.cta AS cta, count() AS clicks
-            FROM events
-            WHERE event = 'CTA_CLICK'
-              AND timestamp >= now() - INTERVAL 1 DAY
-            GROUP BY cta
-            ORDER BY clicks DESC" '$q')
-          CTA_JSON=$(ph "$CTA_Q")
-          CTA_ROWS=$(echo "$CTA_JSON" | jq -r '.results[]? | @base64')
-          CTA_LINES=""
-          if [ -n "${CTA_ROWS}" ]; then
-            while IFS= read -r r; do
-              row=$(echo "$r" | base64 --decode)
-              cta=$(echo "$row" | jq -r '.[0] // "unknown"')
-              clicks=$(echo "$row" | jq -r '.[1] // 0')
-              CTA_LINES="${CTA_LINES}• *${cta}*: ${clicks}\n"
-            done <<< "$CTA_ROWS"
+          # 1) 昨日24hの CTA 内訳
+          Q1=$'SELECT properties.cta AS cta, count() AS clicks
+               FROM events
+               WHERE event = \'CTA_CLICK\' AND timestamp >= now() - INTERVAL 1 DAY
+               GROUP BY cta
+               ORDER BY clicks DESC
+               LIMIT 5'
+          R1=$(call_hogql "$Q1" || true)
+
+          # 2) EVENT_CARD_CLICK → /events/* Pageview のCVR（ざっくり）
+          #   ※ 期間中の総クリック数と、/events へのPVを使った近似CVR
+          Q2a=$'SELECT count() AS clicks
+                FROM events
+                WHERE event = \'EVENT_CARD_CLICK\' AND timestamp >= now() - INTERVAL 1 DAY'
+          Q2b=$'SELECT count() AS pv
+                FROM events
+                WHERE event = \'$pageview\'
+                  AND timestamp >= now() - INTERVAL 1 DAY
+                  AND match(properties.$current_url, \'\\/events(\\/|$)\')'
+          R2a=$(call_hogql "$Q2a" || true)
+          R2b=$(call_hogql "$Q2b" || true)
+
+          # 3) 人気ルーム Top3
+          Q3=$'SELECT properties.slug AS slug, count() AS enters
+               FROM events
+               WHERE event = \'ROOM_ENTER\' AND timestamp >= now() - INTERVAL 1 DAY
+               GROUP BY slug
+               ORDER BY enters DESC
+               LIMIT 3'
+          R3=$(call_hogql "$Q3" || true)
+
+          # --- 整形（失敗時は空扱い） ---
+          cta="$(echo "${R1:-}" | jq -r '[.results[]? | "\(.[0]): \(.[1])"] | join(", ")' 2>/dev/null || true)"
+          clicks="$(echo "${R2a:-}" | jq -r '.results[0][0] // 0' 2>/dev/null || echo 0)"
+          pv_events="$(echo "${R2b:-}" | jq -r '.results[0][0] // 0' 2>/dev/null || echo 0)"
+
+          # CVRは 0割回避
+          if [ "${clicks}" -gt 0 ]; then
+            cvr=$(awk -v c="$clicks" -v p="$pv_events" 'BEGIN{ if(c==0){print "0.0%"} else {printf "%.1f%%", (p/c)*100} }')
           else
-            CTA_LINES="• (no data)\n"
+            cvr="0.0%"
           fi
 
-          # ② Rooms Top3（ROOM_ENTER を使用。なければ url / $pathname を併用）
-          ROOM_Q=$(jq -cn --arg q "SELECT
-              coalesce(properties.slug, properties.\$pathname, properties.url) AS room,
-              count() AS enters
-            FROM events
-            WHERE event = 'ROOM_ENTER'
-              AND timestamp >= now() - INTERVAL 1 DAY
-            GROUP BY room
-            ORDER BY enters DESC
-            LIMIT 3" '$q')
-          ROOM_JSON=$(ph "$ROOM_Q")
-          ROOM_ROWS=$(echo "$ROOM_JSON" | jq -r '.results[]? | @base64')
-          ROOM_LINES=""
-          if [ -n "${ROOM_ROWS}" ]; then
-            while IFS= read -r r; do
-              row=$(echo "$r" | base64 --decode)
-              room=$(echo "$row" | jq -r '.[0] // "unknown"')
-              enters=$(echo "$row" | jq -r '.[1] // 0')
-              ROOM_LINES="${ROOM_LINES}• *${room}*: ${enters}\n"
-            done <<< "$ROOM_ROWS"
-          else
-            ROOM_LINES="• (no data)\n"
-          fi
+          rooms="$(echo "${R3:-}" | jq -r '[.results[]? | "#\(.[:1][] // "" )", "\(.[])" ] | . as $a | []' 2>/dev/null || true)"
+          # 上のワンライナーは複雑になりがちなので素直に作る
+          rooms_text="$(echo "${R3:-}" | jq -r '
+            if (.results|length)==0 then "" else
+            ( [ range(0; (if (.results|length)>3 then 3 else (.results|length) end)) as $i
+                | "\($i+1). \(.results[$i][0]) — \(.results[$i][1])"
+              ] | join("\n") ) end
+          ' 2>/dev/null || true)"
 
-          # ③ 粗CVR（EVENT_CARD_CLICK → /events* の Pageview）
-          # Pageview は環境によって 'Pageview' または '$pageview' のことがあるため両対応
-          CVR_Q=$(jq -cn --arg q "SELECT
-              countIf(event = 'EVENT_CARD_CLICK') AS card_clicks,
-              countIf((event = 'Pageview' OR event = '\$pageview')
-                      AND (properties.\$pathname LIKE '/events%' OR properties.pathname LIKE '/events%')) AS events_pv
-            FROM events
-            WHERE timestamp >= now() - INTERVAL 1 DAY" '$q')
-          CVR_JSON=$(ph "$CVR_Q")
-          CARD_CLICKS=$(echo "$CVR_JSON" | jq -r '.results[0][0] // 0')
-          EVENTS_PV=$(echo "$CVR_JSON" | jq -r '.results[0][1] // 0')
-          if [ "${CARD_CLICKS}" -gt 0 ]; then
-            CVR=$(awk "BEGIN { printf \"%.1f\", (${EVENTS_PV} / ${CARD_CLICKS}) * 100 }")
-          else
-            CVR="0.0"
-          fi
+          # Slack本文
+          title="MUSIAM — Daily KPI (24h)"
+          today_utc=$(date -u +"%Y-%m-%d")
+          kpi_text="*${title}*  \n_UTC ${today_utc}_\n\n• *CTA*: ${cta:-"(no data)"}\n• *CVR (EVENT→/events)*: ${cvr}\n• *Rooms Top3*\n${rooms_text:-"(no data)"}\n\n<${DASHBOARD_URL}|Open dashboard>"
 
-          # 改行を \n に変換し GITHUB_ENV に注入
-          CTA_ESC=$(printf "%b" "$CTA_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
-          ROOM_ESC=$(printf "%b" "$ROOM_LINES" | sed ':a;N;$!ba;s/\n/\\n/g')
-          {
-            echo "CTA_ESC=${CTA_ESC}"
-            echo "ROOM_ESC=${ROOM_ESC}"
-            echo "CVR=${CVR}"
-            echo "CARD_CLICKS=${CARD_CLICKS}"
-            echo "EVENTS_PV=${EVENTS_PV}"
-          } >> "$GITHUB_ENV"
+          # 出力
+          echo "kpi=${kpi_text//$'\n'/'\n'}" >> "$GITHUB_OUTPUT"
 
-      - name: Compose Slack payload
-        shell: bash
-        env:
-          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
-          REPO: ${{ github.repository }}
-          COMMIT: ${{ github.sha }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      - name: Post to Slack
+        if: always()
         run: |
           set -euo pipefail
-          COMMIT_SHORT=${COMMIT:0:7}
-          cat > payload.json <<'JSON'
-          {
-            "text": "MUSIAM — Daily dashboard",
-            "blocks": [
-              { "type": "header", "text": { "type": "plain_text", "text": "MUSIAM — Daily dashboard" } },
-              { "type": "section", "fields": [
-                { "type": "mrkdwn", "text": "*Repo:*\n${REPO}" },
-                { "type": "mrkdwn", "text": "*Run:*\n<${RUN_URL}|${COMMIT_SHORT}>" }
-              ]},
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*Open dashboard:* <${DASHBOARD_URL}|PostHog Dashboard>" } },
-              { "type": "divider" },
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*CTA (last 24h)*\n${CTA_ESC}" } },
-              { "type": "section", "text": { "type": "mrkdwn", "text": "*Rooms Top3 (ROOM_ENTER, last 24h)*\n${ROOM_ESC}" } },
-              { "type": "context", "elements": [
-                { "type": "mrkdwn", "text": "*EVENT → /events/* PV ratio (rough CVR):* ${CVR}%  (clicks=${CARD_CLICKS}, pv=${EVENTS_PV})" }
-              ]}
-            ]
-          }
-          JSON
-          sed -i \
-            -e "s|\${DASHBOARD_URL}|${DASHBOARD_URL}|g" \
-            -e "s|\${REPO}|${REPO}|g" \
-            -e "s|\${RUN_URL}|${RUN_URL}|g" \
-            -e "s|\${COMMIT_SHORT}|${COMMIT_SHORT}|g" \
-            -e "s|\${CTA_ESC}|${CTA_ESC}|g" \
-            -e "s|\${ROOM_ESC}|${ROOM_ESC}|g" \
-            -e "s|\${CVR}|${CVR}|g" \
-            -e "s|\${CARD_CLICKS}|${CARD_CLICKS}|g" \
-            -e "s|\${EVENTS_PV}|${EVENTS_PV}|g" \
-            payload.json
-          cat payload.json
+          payload=$(jq -n --arg t "${{ steps.kpi.outputs.kpi || '' }}" \
+            '{text: ( $t | select(length>0) ) }')
 
-      - name: Send to Slack
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fSs -i -X POST \
-            -H 'Content-type: application/json' \
-            --data @payload.json \
+          # 失敗/空の場合はリンクのみ
+          if [ "$(echo "$payload" | jq -r '.text // empty')" = "" ]; then
+            payload=$(jq -n --arg url "$DASHBOARD_URL" '{text: ("🔔 MUSIAM — Daily dashboard\n<"+$url+"|Open>")}')
+          fi
+
+          curl -i -X POST -H 'Content-type: application/json' \
+            --data "$payload" \
             "$SLACK_WEBHOOK_URL"
