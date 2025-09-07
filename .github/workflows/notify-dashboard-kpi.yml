@@ -1,81 +1,12 @@
-name: Notify dashboard to Slack (KPI) — CTA DEBUG ONLY
+name: Notify dashboard to Slack (KPI) - CTA DEBUG ONLY
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"  # 09:00 JST
-
-permissions:
-  contents: read
-
-concurrency:
-  group: notify-dashboard-kpi
-  cancel-in-progress: true
 
 jobs:
   notify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    env:
-      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
-      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}          # 例: https://eu.posthog.com
-      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Ensure jq
-        run: |
-          if ! command -v jq >/dev/null 2>&1; then
-            sudo apt-get update
-            sudo apt-get install -y jq
-          fi
-
-      - name: Fetch KPI (DEBUG: CTA only)
+      - uses: actions/checkout@v4
+      - run: echo "step-1"
         shell: bash
-        run: |
-          set -euo pipefail
-
-          # 1) CTA_CLICK のシンプルSQL
-          SQL="SELECT properties.cta AS cta, count() AS clicks
-               FROM events
-               WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY
-               GROUP BY cta
-               ORDER BY clicks DESC"
-
-          # 2) JSONボディ生成（jqで安全にラップ）
-          BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
-
-          # 3) 呼び出し。本文は out.json、HTTPコードは http_code へ
-          http_code=$(curl -sS -o out.json -w '%{http_code}' -X POST \
-            -H "Authorization: Bearer ${POSTHOG_API_KEY}" \
-            -H "Content-Type: application/json" \
-            "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
-            --data "$BODY")
-
-          echo "::notice title=HTTP::$http_code"
-          echo "::group::RAW CTA_JSON"
-          cat out.json; echo
-          echo "::endgroup::"
-
-          # 4) 200以外は即終了（jqに渡さない）
-          if [ "$http_code" -ne 200 ]; then
-            echo "::error::HTTP $http_code from PostHog. Check HOST / PROJECT_ID / API_KEY"
-            exit 1
-          fi
-
-          # 5) ざっくり整形（.results / .results.results 両対応）
-          rows=$(jq -c '(.results.results // .results) // []' out.json)
-
-          echo "::group::PARSED CTA"
-          echo "$rows" | jq -r '
-            map(
-              if type=="object" and has("cta") and has("clicks")
-                then "• \(.cta // \"unknown\"): \(.clicks // 0)"
-              elif (type!="object") and (length>=2)
-                then "• \(.0 // \"unknown\"): \(.1 // 0)"
-              else empty
-              end
-            )[]' || true
-          echo "::endgroup::"
