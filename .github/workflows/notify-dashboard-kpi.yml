@@ -25,4 +25,6 @@ jobs:
           fi
 
       - name: Fetch & notify KPI (CTA 24h)
+        env:
+          DEBUG_KPI: "1"   # ← 追加（詳細ログON）
         run: bash scripts/notify_kpi.sh
