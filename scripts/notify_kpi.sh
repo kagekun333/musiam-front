@@ -29,17 +29,34 @@ echo "PostHog HTTP: $HTTP"
 [ "$HTTP" -eq 200 ] || { echo "PostHog API error"; cat out.json; exit 1; }
 
 # --- 結果整形（.results / .results.results 両対応） ---
-rows=$(jq -c '(.results.results // .results) // []' out.json)
+# 返却JSONのタイプを軽くログ
+echo "JSON type: $(jq -r 'type' out.json)"
+
+# 1) まず配列ならそのまま、オブジェクトなら .results / .results.results を拾う
+rows=$(jq -c '
+  if type=="array" then .
+  else
+    (.results?.results? // .results? // .) // []
+  end
+' out.json)
+
+# 2) 表示用テキストに整形（オブジェクト配列 / 配列の配列 どちらも対応）
 lines=$(echo "$rows" | jq -r '
   map(
-    if type=="object" and has("cta") and has("clicks")
-      then {cta:(.cta // "unknown"), clicks:(.clicks // 0)}
-    elif (type!="object") and (length>=2)
-      then {cta:(.[0] // "unknown"), clicks:(.[1] // 0)}
+    if type=="object" then
+      {cta:(.cta // .properties?.cta // "unknown"),
+       clicks:(.clicks // .count // 0)}
+    elif (type!="object") and (length>=2) then
+      {cta:(.[0] // "unknown"), clicks:(.[1] // 0)}
     else empty end
-  ) | sort_by(-.clicks) | .[:10] | .[]
+  )
+  | sort_by(-.clicks) | .[:10] | .[]
   | "- \(.cta): \(.clicks) clicks"
 ')
+
+# 空なら見出しだけにならないようフォールバック
+[ -n "$lines" ] || lines="(no CTA clicks in last 24h)"
+
 
 now_utc=$(date -u +"%Y-%m-%d %H:%M UTC")
 [ -n "${DASHBOARD_URL:-}" ] && link=" <${DASHBOARD_URL}|Open Dashboard>" || link=""
