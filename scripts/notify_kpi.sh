@@ -25,16 +25,17 @@ echo "WINDOW_HOURS=${WINDOW_HOURS} EVENT=${EVENT_NAME} PROP=${PROP_KEY} TOP_N=${
 echo "::endgroup::"
 
 # ===== HogQL =====
-read -r -d '' SQL <<SQL
+SQL="$(cat <<SQL
 SELECT properties.${PROP_KEY} AS cta, count() AS clicks
 FROM events
 WHERE event = '${EVENT_NAME}' AND timestamp >= now() - INTERVAL ${WINDOW_HOURS} HOUR
 GROUP BY cta
 ORDER BY clicks DESC
 SQL
-
+)"
 echo "::group::HogQL"; echo "$SQL"; echo "::endgroup::"
 
+# ここを忘れない！HogQLをクエリボディ化
 BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
 
 # ===== Query =====
@@ -83,7 +84,7 @@ DASHBOARD_URL_TRIM=$(printf '%s' "${DASHBOARD_URL:-}" | tr -d '\r\n' | awk '{$1=
 
 echo "::group::Preview"; echo "Total: $total"; printf "%s\n" "$lines"; echo "::endgroup::"
 
-# ===== Slack: first try (Block Kit,改行安全) =====
+# ===== Slack: Block Kit =====
 payload=$(jq -nc \
   --arg title "🔎 CTA Clicks — last ${WINDOW_HOURS}h" \
   --arg total "*Total:* ${total}" \
@@ -105,7 +106,6 @@ payload=$(jq -nc \
   )
 }')
 
-# デバッグ表示（シークレットなし）
 echo "::group::Slack payload (blocks)"; echo "$payload" | jq .; echo "::endgroup::"
 
 code=$(curl -sS -o slack_out.txt -w '%{http_code}' \
@@ -114,7 +114,6 @@ code=$(curl -sS -o slack_out.txt -w '%{http_code}' \
 echo "Slack code: $code"
 echo "::group::Slack response body"; cat slack_out.txt; echo; echo "::endgroup::"
 
-# フォールバック（まれなinvalid_payload対策）
 if [ "$code" -ne 200 ]; then
   msg=$'🔎 *CTA Clicks — last '"${WINDOW_HOURS}"$'h*\n'"$lines"$'\n\n'"$now_utc"
   if [ -n "$DASHBOARD_URL_TRIM" ]; then msg+=" <${DASHBOARD_URL_TRIM}|Open Dashboard>"; fi
@@ -129,7 +128,6 @@ fi
 
 [ "$code" -eq 200 ] || { echo "Slack webhook error"; exit 1; }
 
-# GHAサマリー（任意だが便利）
 {
   echo "## CTA Clicks — last ${WINDOW_HOURS}h"
   echo ""
