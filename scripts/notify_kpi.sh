@@ -24,6 +24,7 @@ HTTP=$(curl -sS -o out.json -w '%{http_code}' -X POST \
   "${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query" \
   --data "$BODY")
 
+
 echo "PostHog HTTP: $HTTP"
 [ "$HTTP" -eq 200 ] || { echo "PostHog API error"; cat out.json; exit 1; }
 
