@@ -2,11 +2,27 @@ name: Notify dashboard to Slack (KPI) - CTA DEBUG ONLY
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"  # 09:00 JST
 
 jobs:
   notify:
     runs-on: ubuntu-latest
+    env:
+      POSTHOG_API_KEY: ${{ secrets.POSTHOG_API_KEY }}
+      POSTHOG_HOST: ${{ secrets.POSTHOG_HOST }}            # 例: https://eu.posthog.com
+      POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}  # Incoming Webhook
+      DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}          # 任意
+
     steps:
       - uses: actions/checkout@v4
-      - run: echo "step-1"
-        shell: bash
+
+      - name: Ensure jq
+        run: |
+          if ! command -v jq >/dev/null 2>&1; then
+            sudo apt-get update && sudo apt-get install -y jq
+          fi
+
+      - name: Fetch & notify KPI (CTA 24h)
+        run: bash scripts/notify_kpi.sh
