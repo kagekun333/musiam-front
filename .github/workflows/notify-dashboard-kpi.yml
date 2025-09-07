@@ -3,7 +3,7 @@ name: Notify dashboard to Slack (KPI) — CTA DEBUG ONLY
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"  # 09:00 JST
+    - cron: "0 0 * * *" # 09:00 JST
 
 permissions:
   contents: read
@@ -32,17 +32,20 @@ jobs:
             sudo apt-get install -y jq
           fi
 
-      - name: Fetch KPI (DEBUG: CTA only)
+      - name: "Fetch KPI (DEBUG: CTA only)"
         shell: bash
         run: |
           set -euo pipefail
 
-          # 1) CTA_CLICK のシンプルSQL
-          SQL="SELECT properties.cta AS cta, count() AS clicks
-               FROM events
-               WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY
-               GROUP BY cta
-               ORDER BY clicks DESC"
+          # 1) CTA_CLICK のシンプルSQL（ヒアドキュメントで安全に埋め込み）
+          SQL=$(cat <<'SQL'
+          SELECT properties.cta AS cta, count() AS clicks
+          FROM events
+          WHERE event = 'CTA_CLICK' AND timestamp >= now() - INTERVAL 1 DAY
+          GROUP BY cta
+          ORDER BY clicks DESC
+          SQL
+          )
 
           # 2) JSONボディ生成（jqで安全にラップ）
           BODY=$(jq -nc --arg q "$SQL" '{"query":{"kind":"HogQLQuery","query":$q}}')
@@ -59,9 +62,9 @@ jobs:
           cat out.json; echo
           echo "::endgroup::"
 
-          # 4) 200以外は即終了（jqに渡さない）
+          # 4) ステータスチェック
           if [ "$http_code" -ne 200 ]; then
-            echo "::error::HTTP $http_code from PostHog. Check HOST / PROJECT_ID / API_KEY"
+            echo "::error::HTTP $http_code from PostHog. Verify POSTHOG_HOST / POSTHOG_PROJECT_ID / POSTHOG_API_KEY"
             exit 1
           fi
 
