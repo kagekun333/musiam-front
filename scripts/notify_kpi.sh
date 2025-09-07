@@ -84,58 +84,49 @@ DASHBOARD_URL_TRIM=$(printf '%s' "${DASHBOARD_URL:-}" | tr -d '\r\n' | awk '{$1=
 
 echo "::group::Preview"; echo "Total: $total"; printf "%s\n" "$lines"; echo "::endgroup::"
 
-# ===== Slack: Block Kit =====
-payload=$(jq -nc \
-  --arg title "🔎 CTA Clicks — last ${WINDOW_HOURS}h" \
-  --arg total "*Total:* ${total}" \
-  --arg lines "$lines" \
-  --arg when "$now_utc • $now_jst" \
-  --arg url "$DASHBOARD_URL_TRIM" '
-{
-  blocks: (
-    [
-      {type:"header", text:{type:"plain_text", text:$title}},
-      {type:"section", text:{type:"mrkdwn", text:$total}},
-      {type:"section", text:{type:"mrkdwn", text:$lines}},
-      {type:"context", elements:[{type:"mrkdwn", text:$when}]}
-    ] +
-    ( ($url|length>0)
-      ? [ {type:"actions", elements:[{type:"button", text:{type:"plain_text", text:"Open Dashboard"}, url:$url}] } ]
-      : []
-    )
-  )
-}')
+# ===== Slack: payload build (Block Kitは任意で) =====
+USE_BLOCKS="${USE_BLOCKS:-0}"
 
-echo "::group::Slack payload (blocks)"; echo "$payload" | jq .; echo "::endgroup::"
+if [ "$USE_BLOCKS" = "1" ]; then
+  # jqは三項演算子が使えないので if/then/else で書く
+  payload=$(jq -nc \
+    --arg title "🔎 CTA Clicks — last ${WINDOW_HOURS}h" \
+    --arg total "*Total:* ${total}" \
+    --arg lines "$lines" \
+    --arg when "$now_utc • $now_jst" \
+    --arg url "$DASHBOARD_URL_TRIM" '
+    ($url | length > 0) as $hasUrl
+    | {
+        blocks:
+          ([
+            {type:"header", text:{type:"plain_text", text:$title}},
+            {type:"section", text:{type:"mrkdwn", text:$total}},
+            {type:"section", text:{type:"mrkdwn", text:$lines}},
+            {type:"context", elements:[{type:"mrkdwn", text:$when}]}
+          ]
+          + (if $hasUrl then
+               [{type:"actions",
+                 elements:[{type:"button",
+                            text:{type:"plain_text", text:"Open Dashboard"},
+                            url:$url}]}]
+             else
+               []
+             end))
+      }')
+else
+  # テキスト投稿（堅牢・壊れにくい）
+  msg=$'🔎 *CTA Clicks — last '"${WINDOW_HOURS}"$'h*\n'"$lines"$'\n\n'"$now_utc"
+  if [ -n "$DASHBOARD_URL_TRIM" ]; then msg+=" <${DASHBOARD_URL_TRIM}|Open Dashboard>"; fi
+  payload=$(jq -nc --arg text "$msg" '{text:$text}')
+fi
 
+# 送信＆ログ
+echo "::group::Slack payload"; echo "$payload" | jq .; echo "::endgroup::"
 code=$(curl -sS -o slack_out.txt -w '%{http_code}' \
   -X POST -H 'Content-type: application/json' \
   --data "$payload" "$SLACK_WEBHOOK_URL")
 echo "Slack code: $code"
 echo "::group::Slack response body"; cat slack_out.txt; echo; echo "::endgroup::"
 
-if [ "$code" -ne 200 ]; then
-  msg=$'🔎 *CTA Clicks — last '"${WINDOW_HOURS}"$'h*\n'"$lines"$'\n\n'"$now_utc"
-  if [ -n "$DASHBOARD_URL_TRIM" ]; then msg+=" <${DASHBOARD_URL_TRIM}|Open Dashboard>"; fi
-  payload=$(jq -nc --arg text "$msg" '{text:$text}')
-  echo "::group::Slack payload (text)"; echo "$payload" | jq .; echo "::endgroup::"
-  code=$(curl -sS -o slack_out.txt -w '%{http_code}' \
-    -X POST -H 'Content-type: application/json' \
-    --data "$payload" "$SLACK_WEBHOOK_URL")
-  echo "Slack code (text): $code"
-  echo "::group::Slack response body"; cat slack_out.txt; echo; echo "::endgroup::"
-fi
-
 [ "$code" -eq 200 ] || { echo "Slack webhook error"; exit 1; }
-
-{
-  echo "## CTA Clicks — last ${WINDOW_HOURS}h"
-  echo ""
-  echo "**Total:** ${total}"
-  echo ""
-  echo '```'
-  printf "%s\n" "$lines"
-  echo '```'
-} >> "${GITHUB_STEP_SUMMARY:-/dev/null}"
-
 echo "Slack posted."

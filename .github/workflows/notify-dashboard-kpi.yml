@@ -12,6 +12,11 @@ jobs:
       POSTHOG_PROJECT_ID: ${{ secrets.POSTHOG_PROJECT_ID }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+      USE_BLOCKS: "0"       # 安全運用。ボタン付にしたい時だけ "1"
+      DEBUG_KPI: "0"        # ふだんは0（必要時だけ1）
+
+
+
       # デバッグ時だけ 1 に
       # DEBUG_KPI: "0"
 
