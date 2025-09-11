@@ -1,0 +1,5 @@
+# backups / scratch
+backup/**
+**/*.broken.*
+**/*.backup.*
+_archive/**
