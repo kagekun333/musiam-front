@@ -1,0 +1,16 @@
+name: 🐞 Bug
+description: バグ報告
+labels: ["bug"]
+body:
+  - type: input
+    id: env
+    attributes: { label: 環境, placeholder: OS/Browser/Branch }
+  - type: textarea
+    id: actual
+    attributes: { label: 実際の挙動, placeholder: 何が起きたか（ログやスクショ歓迎） }
+  - type: textarea
+    id: expected
+    attributes: { label: 期待する挙動, placeholder: 本来どうあるべき？ }
+  - type: textarea
+    id: steps
+    attributes: { label: 再現手順, placeholder: 1) ... 2) ... }

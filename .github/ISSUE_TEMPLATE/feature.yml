@@ -1,0 +1,14 @@
+name: ✨ Feature
+description: 新機能の提案
+labels: ["feature"]
+body:
+  - type: textarea
+    id: goal
+    attributes: { label: 目的(Why), placeholder: なぜ必要？誰が嬉しい？KPIは？ }
+    validations: { required: true }
+  - type: textarea
+    id: spec
+    attributes: { label: 仕様(What), placeholder: 画面/挙動/API/完了条件(DoD) }
+  - type: textarea
+    id: tasks
+    attributes: { label: タスク(How), placeholder: チェックリスト形式で書く }
