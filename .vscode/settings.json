@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["/public/gates/manifest.json"],
+      "url": "./schemas/gates.manifest.schema.json"
+    }
+  ]
+}

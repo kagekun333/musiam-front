@@ -1,0 +1,8 @@
+/* Global styles for MUSIAM */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* base tweaks */
+html, body { height: 100%; }
+body { background: #fff; -webkit-font-smoothing: antialiased; }

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hakusyaku.xyz/schemas/gates.manifest.schema.json",
+  "title": "MUSIAM Gates Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["defaultSort", "items"],
+  "properties": {
+    "defaultSort": {
+      "type": "string",
+      "enum": ["order", "title", "createdAt", "updatedAt"]
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/GateItem" }
+    }
+  },
+  "$defs": {
+    "LinkMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "nft": { "type": "string", "format": "uri" },
+        "listen": { "type": "string", "format": "uri" },
+        "read": { "type": "string", "format": "uri" },
+        "watch": { "type": "string", "format": "uri" },
+        "buy": { "type": "string", "format": "uri" },
+        "donate": { "type": "string", "format": "uri" }
+      }
+    },
+    "GateItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file", "title", "order"],
+      "properties": {
+        "file": { "type": "string", "pattern": "^[^\\s]+\\.(png|jpg|jpeg|webp|avif)$" },
+        "title": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 300 },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 24 },
+          "uniqueItems": true
+        },
+        "order": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "links": { "$ref": "#/$defs/LinkMap" }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate Handoff (Windows)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ".musiam/gen-handoff.ps1"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Copy Handoff to Clipboard (Windows)",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-NoProfile", "-Command", "Get-Content .musiam\HANDOFF.md | Set-Clipboard"],
+      "problemMatcher": []
+    }
+  ]
+}

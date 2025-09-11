@@ -1,0 +1,31 @@
+{
+  "defaultSort": "order",
+  "items": [
+    {
+      "file": "exhibition_gate.jpg",
+      "title": "展示の門（Exhibition Gate）",
+      "description": "無限の展示が、あなたを待つ。",
+      "tags": ["exhibition", "cosmic"],
+      "order": 20,
+      "links": {
+        "nft": "https://example.com/nft/exhibition",
+        "watch": "https://example.com/trailer"
+      },
+      "createdAt": "2025-09-08T00:00:00Z",
+      "updatedAt": "2025-09-11T00:00:00Z"
+    },
+    {
+      "file": "oracle_gate.jpg",
+      "title": "占いの門（Oracle Gate）",
+      "description": "運命を読み、道をひらく。",
+      "tags": ["torii", "oracle"],
+      "order": 30,
+      "links": {
+        "nft": "https://example.com/nft/oracle",
+        "listen": "https://music.example.com/abi"
+      },
+      "createdAt": "2025-09-08T00:00:00Z",
+      "updatedAt": "2025-09-11T00:00:00Z"
+    }
+  ]
+}
