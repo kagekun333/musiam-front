@@ -1,7 +1,7 @@
 name: weekly-digest
+
 on:
-  schedule:
-    - cron: "0 7 * * 1"
+  schedule: [{ cron: "0 7 * * 1" }]   # 月曜 07:00 UTC = Berlin 夏9:00/冬8:00
   workflow_dispatch:
 
 permissions:
@@ -11,30 +11,26 @@ permissions:
 jobs:
   digest:
     runs-on: ubuntu-latest
-    permissions:            # 念のため job 単位でも明示
-      contents: read
-      issues: write
     steps:
-      - name: Checkout
+      - name: Checkout (full history)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Collect commits (last 7 days)
         run: |
-          echo "## 週次ダイジェスト (last 7 days)" > digest.md
+          git log --since='7 days ago' --pretty=format:'- %h %s' > digest.md
           echo "" >> digest.md
-          git log --since='7 days ago' --pretty=format:'- %h %s (%ad)' --date=short >> digest.md
-          echo "" >> digest.md
-          echo "### Next week (draft)" >> digest.md
+          echo "## Next week (draft)" >> digest.md
           echo "- [ ] Top priority" >> digest.md
           echo "- [ ] Second" >> digest.md
           echo "- [ ] Validation" >> digest.md
 
-      - name: Open or update issue
+      - name: Create weekly issue
         uses: peter-evans/create-issue-from-file@v5
         with:
-          title: "週次ダイジェスト - ${{ github.repository }} - ${{ github.run_id }}"
-          content-filepath: digest.md    # ← ここがポイント
+          title: "週次ダイジェスト (${{ github.repository }}) - ${{ github.run_id }}"
+          content-file: digest.md
           labels: report
           assignees: ${{ github.actor }}
+          token: ${{ secrets.GITHUB_TOKEN }}
