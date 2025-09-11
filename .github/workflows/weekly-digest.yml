@@ -1,0 +1,39 @@
+
+name: weekly-digest
+on:
+  schedule:
+    # GitHub Actions runs on UTC; 07:00 UTC = 09:00 in Berlin (summer), 08:00 (winter)
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Collect commits (last 7 days)
+        run: |
+          echo "## 週次ダイジェスト (last 7 days)" > digest.md
+          echo "" >> digest.md
+          git log --since='7 days ago' --pretty=format:'- %h %s (%ad)' --date=short >> digest.md
+          echo "" >> digest.md
+          echo "### Next week (draft)" >> digest.md
+          echo "- [ ] Top priority" >> digest.md
+          echo "- [ ] Second" >> digest.md
+          echo "- [ ] Validation" >> digest.md
+
+      - name: Open or update issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "週次ダイジェスト - ${{ github.repository }} - ${{ github.run_id }}"
+          content-file: digest.md
+          labels: report
+          assignees: ${{ github.actor }}
