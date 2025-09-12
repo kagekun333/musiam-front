@@ -1,8 +1,15 @@
+// src/pages/index.tsx
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main className="container mx-auto max-w-3xl px-4 py-10">
-      <h1 className="text-3xl font-bold">MUSIAM</h1>
-      <p className="mt-2 text-gray-600">伯爵の作品宇宙へようこそ。上のナビから各門へ。</p>
+    <main className="p-8">
+      <h1 className="text-2xl font-bold mb-6">MUSIAM</h1>
+      <ul className="list-disc pl-6 space-y-2">
+        <li><Link href="/gates">Gates</Link></li>
+        <li><Link href="/guide">Guide</Link></li>
+        <li><Link href="/oracle">Oracle</Link></li>
+      </ul>
     </main>
   );
 }
