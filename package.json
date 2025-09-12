@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build --turbopack",
+    "build": "next build ",
     "lint": "next lint",
     "dev": "next dev",
     "start": "next start",
@@ -27,18 +27,21 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@eslint/js": "^9.35.0",
+    "@next/eslint-plugin-next": "^15.5.3",
+    "@tailwindcss/postcss": "^4.1.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "eslint": "^9.35.0",
     "eslint-config-next": "15.5.2",
     "husky": "^9.1.7",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5"
+    "typescript": "^5",
+    "typescript-eslint": "^8.43.0"
   }
 }
