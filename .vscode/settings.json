@@ -4,5 +4,7 @@
       "fileMatch": ["/public/gates/manifest.json"],
       "url": "./schemas/gates.manifest.schema.json"
     }
-  ]
+  ],
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore"
 }

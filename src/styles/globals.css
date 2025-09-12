@@ -1,8 +1,10 @@
-/* Global styles for MUSIAM */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-/* base tweaks */
+/* 以降は今まで通りでOK */
 html, body { height: 100%; }
-body { background: #fff; -webkit-font-smoothing: antialiased; }
+body {
+  /* @apply は v4 でも使えます */
+  @apply bg-black text-zinc-200 antialiased;
+  background-image: radial-gradient(800px 400px at 50% -10%, rgba(139,92,246,0.12), transparent 60%);
+}
+.hr-line { @apply h-px w-full bg-zinc-800/70; }
