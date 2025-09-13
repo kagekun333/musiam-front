@@ -26,11 +26,12 @@ jobs:
           echo "- [ ] Second" >> digest.md
           echo "- [ ] Validation" >> digest.md
 
-      - name: Create weekly issue
-        uses: peter-evans/create-issue-from-file@v5
-        with:
+           - name: Create weekly issue
+             uses: peter-evans/create-issue-from-file@v5
+             with:
           title: "週次ダイジェスト (${{ github.repository }}) - ${{ github.run_id }}"
-          content-file: digest.md
+          content-filepath: digest.md
           labels: report
           assignees: ${{ github.actor }}
           token: ${{ secrets.GITHUB_TOKEN }}
+

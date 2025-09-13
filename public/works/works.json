@@ -1,0 +1,69 @@
+{
+  "items":[
+    {
+      "id":"gate-galaxy",
+      "title":"Galaxy Overture",
+      "type":"music",
+      "cover":"/gates/galaxy.jpg",
+      "summary":"星雲のイントロダクション",
+      "tags":["ambient","space","intro"],
+      "links":{"listen":"https://example.com/listen/galaxy"},
+      "releasedAt":"2024-10-01",
+      "weight":1.0,
+      "previewUrl":"/gates/galaxy.jpg",
+      "og":"星雲に吸い込まれる0:15の断片"
+    },
+    {
+      "id":"gate-torii",
+      "title":"Torii Sketch",
+      "type":"art",
+      "cover":"/gates/torii.jpg",
+      "summary":"朱の門をくぐる小品",
+      "tags":["sketch","japan","gate"],
+      "links":{"read":"https://example.com/read/torii"},
+      "releasedAt":"2025-01-15",
+      "weight":0.95,
+      "previewUrl":"/gates/torii.jpg",
+      "og":"朱の門をくぐる1枚"
+    },
+    {
+      "id":"gate-gothic",
+      "title":"Gothic Door",
+      "type":"art",
+      "cover":"/gates/gothic-door.jpg",
+      "summary":"ゴシックの門",
+      "tags":["sketch","gothic","door"],
+      "links":{"read":"https://example.com/read/gothic"},
+      "releasedAt":"2025-02-01",
+      "weight":0.9,
+      "previewUrl":"/gates/gothic-door.jpg",
+      "og":"ゴシックの門"
+    },
+    {
+      "id":"gate-galaxy-2",
+      "title":"Galaxy Overture 2",
+      "type":"music",
+      "cover":"/gates/galaxy.jpg",
+      "summary":"星雲のイントロダクション",
+      "tags":["ambient","space","intro"],
+      "links":{"listen":"https://example.com/listen/galaxy-2"},
+      "releasedAt":"2024-10-02",
+      "weight":1.0,
+      "previewUrl":"/gates/galaxy.jpg",
+      "og":"星雲に吸い込まれる0:15の断片"
+    },
+    {
+      "id":"gate-torii-2",
+      "title":"Torii Sketch 2",
+      "type":"art",
+      "cover":"/gates/torii.jpg",
+      "summary":"朱の門をくぐる小品",
+      "tags":["sketch","japan","gate"],
+      "links":{"read":"https://example.com/read/torii-2"},
+      "releasedAt":"2025-01-16",
+      "weight":0.95,
+      "previewUrl":"/gates/torii.jpg",
+      "og":"朱の門をくぐる1枚"
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 
 type GateItem = {
@@ -38,21 +37,23 @@ export default function GatesLanding() {
   }, []);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
-      <div className="mb-8 flex items-center justify-between">
-        <h1 className="text-2xl font-bold">展示の門（Exhibition Gates）</h1>
-        <Link
-          href="/gates"
-          className="rounded-xl bg-black px-4 py-2 text-white hover:opacity-90"
-        >
-          全ての展示を見る
-        </Link>
+    <main className="mx-auto max-w-7xl px-6 pt-16 pb-12">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl md:text-4xl font-extrabold tracking-wide">
+          3 GATES
+        </h1>
+        {/* 右上の「全ての展示を見る」は撤去 */}
       </div>
 
-      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Cards */}
+      <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((g) => (
-          <li key={g.file} className="rounded-2xl border p-4">
-            <div className="relative mb-3 aspect-square overflow-hidden rounded-xl">
+          <li
+            key={g.file}
+            className="rounded-3xl border border-white/10 bg-black/20 backdrop-blur-sm p-4 shadow-lg transition-transform hover:scale-[1.01]"
+          >
+            <div className="relative mb-4 aspect-square overflow-hidden rounded-2xl">
               <Image
                 src={`/gates/${g.file}`}
                 alt={g.title}
@@ -62,16 +63,19 @@ export default function GatesLanding() {
                 priority={false}
               />
             </div>
-            <h3 className="text-lg font-semibold">{g.title}</h3>
+
+            <h3 className="text-lg md:text-xl font-semibold">{g.title}</h3>
+
             {g.description && (
-              <p className="mt-1 text-sm text-gray-600">{g.description}</p>
+              <p className="mt-1 text-sm text-white/70">{g.description}</p>
             )}
+
             {g.tags?.length ? (
               <div className="mt-3 flex flex-wrap gap-2">
                 {g.tags.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-gray-100 px-2 py-1 text-xs"
+                    className="rounded-full border border-white/15 bg-white/5 px-2 py-1 text-xs text-white/80"
                   >
                     #{t}
                   </span>
@@ -81,6 +85,6 @@ export default function GatesLanding() {
           </li>
         ))}
       </ul>
-    </section>
+    </main>
   );
 }

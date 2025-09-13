@@ -2,25 +2,11 @@
   "defaultSort": "order",
   "items": [
     {
-      "file": "galaxy.jpg",
-      "title": "展示の門（Exhibition Gate）",
-      "description": "無限の展示が、あなたを待つ。",
-      "tags": ["exhibition","cosmic"],
-      "order": 20
-    },
-    {
-      "file": "torii.jpg",
-      "title": "占いの門（Oracle Gate）",
-      "description": "運命を読み、道をひらく。",
-      "tags": ["torii","oracle"],
-      "order": 30
-    },
-    {
-      "file": "gothic-door.jpg",
-      "title": "伯爵の門（Count’s Gate）",
-      "description": "館の大扉が、選ばれし者を迎える。",
-      "tags": ["count","gate"],
-      "order": 10
+      "file": "new-gate.jpg",
+      "title": "新しい門（New Gate）",
+      "description": "新しい世界が、開かれる。",
+      "tags": ["new","gate"],
+      "order": 40
     }
   ]
 }
