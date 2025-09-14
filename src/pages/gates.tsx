@@ -12,7 +12,7 @@ export default function GatesPage() {
     <main style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 24px" }}>
       <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 24 }}>3 GATES</h1>
 
-      {/* Tailwind なし。素の CSS Grid で確実に 3 カード化 */}
+      {/* Tailwindなし・素のCSS Gridで確実に3カード */}
       <ul
         style={{
           display: "grid",
@@ -24,11 +24,31 @@ export default function GatesPage() {
         }}
       >
         {GATES.map((g) => (
-          <li key={g.file} style={{ borderRadius: 16, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", padding: 16 }}>
-            <Link href={g.href} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
-              <div style={{ width: "100%", aspectRatio: "1 / 1", overflow: "hidden", borderRadius: 12, marginBottom: 12 }}>
+          <li
+            key={g.file}
+            style={{
+              borderRadius: 16,
+              background: "rgba(255,255,255,0.05)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              padding: 16,
+            }}
+          >
+            <Link
+              href={g.href}
+              style={{ textDecoration: "none", color: "inherit", display: "block" }}
+              onClick={() => (window as any)?.posthog?.capture?.("gate_click", { file: g.file, to: g.href })}
+            >
+              <div
+                style={{
+                  width: "100%",
+                  aspectRatio: "1 / 1",
+                  overflow: "hidden",
+                  borderRadius: 12,
+                  marginBottom: 12,
+                }}
+              >
                 <img
-                  src={`/gates/${g.file}`}
+                  src={`/gates/${g.file}`}  // ← バグ修正: テンプレ文字列
                   alt={g.title}
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
