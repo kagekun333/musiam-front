@@ -1,0 +1,3 @@
+# Replace @YOUR_GH_USERNAME
+/public/gates/manifest.json @kagekun333
+/src/lib/recommender.ts     @kagekun333

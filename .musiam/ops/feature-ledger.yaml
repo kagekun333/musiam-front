@@ -1,0 +1,34 @@
+features:
+  - key: gates_fallback
+    name: 3 GATES 固定表示（fallback）
+    entrypoints: [src/pages/gates.tsx]
+    current_status: present
+    decision: keep
+    last_verified: today
+
+  - key: groq_chat
+    name: Groq 会話API + /chat
+    entrypoints: [src/pages/api/chat-groq.ts, src/pages/chat.tsx]
+    env: [GROQ_API_KEY, GROQ_API_BASE_URL, GROQ_MODEL]
+    current_status: present
+    decision: keep
+    last_verified: today
+
+  - key: exhibition_page
+    name: Exhibition（プレースホルダ）
+    entrypoints: [src/pages/exhibition.tsx]
+    current_status: present
+    decision: keep
+
+  - key: oracle_page
+    name: Oracle（プレースホルダ）
+    entrypoints: [src/pages/oracle.tsx]
+    current_status: present
+    decision: keep
+
+  - key: posthog_analytics
+    name: 入場者計測（PostHog）
+    entrypoints: [src/pages/_app.tsx]
+    env: [NEXT_PUBLIC_POSTHOG_HOST, NEXT_PUBLIC_POSTHOG_KEY]
+    current_status: missing   # ← まだ未接続
+    decision: restore

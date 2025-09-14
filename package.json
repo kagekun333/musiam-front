@@ -9,7 +9,8 @@
     "start": "next start",
     "validate:gates": "node scripts/validate-gates-manifest.mjs",
     "typecheck": "tsc --noEmit",
-    "prebuild": "npm run validate:gates"
+    "prebuild": "npm run validate:gates",
+    "preflight": "node .musiam/ops/preflight.js"
   },
   "dependencies": {
     "@sanity/client": "^7.11.0",

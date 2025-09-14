@@ -1,0 +1,3 @@
+LOCKED:
+  - public/gates/manifest.json   # スキーマ変更禁止（href等を足さない）
+  - src/lib/recommender.ts       # 推薦ロジックは触らない
