@@ -1,16 +1,29 @@
 import type { AppProps } from "next/app";
-import Nav from "@/components/Nav";
-import "@/styles/globals.css";
-import { UnifrakturCook, Cormorant_Garamond } from "next/font/google";
+import { useEffect } from "react";
+import posthog from "posthog-js";
+import { useRouter } from "next/router";
 
-const gothic = UnifrakturCook({ weight: "700", subsets: ["latin"], variable: "--font-unifraktur" });
-const serif = Cormorant_Garamond({ weight: ["400","600"], subsets: ["latin"], variable: "--font-cormorant" });
+export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <div className={`${gothic.variable} ${serif.variable} font-serif`}>
-      <Nav />
-      <Component {...pageProps} />
-    </div>
-  );
+  useEffect(() => {
+    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY as string | undefined;
+    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST as string | undefined;
+    if (!key || !host) return;
+
+    posthog.init(key, {
+      api_host: host,
+      capture_pageview: true, // 初回ロードのみ自動
+      person_profiles: "identified_only",
+    });
+
+    const onRoute = (url: string) => posthog.capture("$pageview", { $current_url: url });
+    router.events.on("routeChangeComplete", onRoute);
+    return () => router.events.off("routeChangeComplete", onRoute);
+  }, [router.events]);
+
+  // 任意：手動イベント送信用にwindowへ出す
+  useEffect(() => { (window as any).posthog = posthog; }, []);
+
+  return <Component {...pageProps} />;
 }
