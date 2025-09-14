@@ -1,5 +1,6 @@
 // src/pages/exhibition.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
+import { track } from "@/lib/metrics";
 
 type Work = {
   id: string;
@@ -29,7 +30,7 @@ export default function ExhibitionPage() {
     })();
   }, []);
 
-  // 並べ替え：新着優先 → weight
+  // 新着優先 → weight
   const sorted = useMemo(() => {
     const arr = [...items];
     arr.sort((a, b) => {
@@ -47,7 +48,7 @@ export default function ExhibitionPage() {
     <main className="p-6 max-w-6xl mx-auto">
       <h1 className="text-3xl font-bold mb-4">Exhibition</h1>
 
-      {/* WOW（自動再生） */}
+      {/* WOW（自動再生＋計測） */}
       {featured && (
         <section className="mb-8 rounded-xl overflow-hidden border">
           {featured.previewUrl?.match(/\.(mp4|webm|mov|m4v)$/i) ? (
@@ -58,12 +59,20 @@ export default function ExhibitionPage() {
               loop
               playsInline
               onPlay={() => {
-                if (!wow.current) wow.current = true;
+                if (!wow.current) { track("wow_play", { id: featured.id }); wow.current = true; }
               }}
               className="w-full h-auto"
             />
           ) : featured.previewUrl?.match(/\.(mp3|wav|ogg)$/i) ? (
-            <audio src={featured.previewUrl!} autoPlay loop className="w-full" />
+            <audio
+              src={featured.previewUrl!}
+              autoPlay
+              loop
+              onPlay={() => {
+                if (!wow.current) { track("wow_play", { id: featured.id }); wow.current = true; }
+              }}
+              className="w-full"
+            />
           ) : (
             <img src={featured.cover} alt={featured.title} className="w-full h-auto" />
           )}
@@ -84,26 +93,10 @@ export default function ExhibitionPage() {
                 </div>
               ) : null}
               <div className="flex flex-wrap gap-2 mt-2">
-                {w.links?.listen && (
-                  <a className="px-3 py-1 border rounded" target="_blank" href={w.links.listen}>
-                    Listen
-                  </a>
-                )}
-                {w.links?.watch && (
-                  <a className="px-3 py-1 border rounded" target="_blank" href={w.links.watch}>
-                    Watch
-                  </a>
-                )}
-                {w.links?.read && (
-                  <a className="px-3 py-1 border rounded" target="_blank" href={w.links.read}>
-                    Read
-                  </a>
-                )}
-                {w.links?.nft && (
-                  <a className="px-3 py-1 border rounded" target="_blank" href={w.links.nft}>
-                    NFT
-                  </a>
-                )}
+                {w.links?.listen && <a className="px-3 py-1 border rounded" target="_blank" href={w.links.listen}>Listen</a>}
+                {w.links?.watch  && <a className="px-3 py-1 border rounded" target="_blank" href={w.links.watch}>Watch</a>}
+                {w.links?.read   && <a className="px-3 py-1 border rounded" target="_blank" href={w.links.read}>Read</a>}
+                {w.links?.nft    && <a className="px-3 py-1 border rounded" target="_blank" href={w.links.nft}>NFT</a>}
               </div>
             </div>
           </article>
