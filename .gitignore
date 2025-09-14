@@ -43,3 +43,7 @@ next-env.d.ts
 # MUSIAM reports
 .musiam/reports/
 
+
+# track env examples
+!.env.example
+
