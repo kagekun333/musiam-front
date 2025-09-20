@@ -10,7 +10,8 @@
     "validate:gates": "node scripts/validate-gates-manifest.mjs",
     "typecheck": "tsc --noEmit",
     "prebuild": "npm run validate:gates",
-    "preflight": "node .musiam/ops/preflight.js"
+    "preflight": "node .musiam/ops/preflight.js",
+    "mood:gen": "node scripts/generate-mood-tags.mjs"
   },
   "dependencies": {
     "@sanity/client": "^7.11.0",
@@ -22,7 +23,8 @@
     "posthog-node": "^5.8.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "zod": "^4.1.5"
+    "zod": "^4.1.5",
+    "openai": "^4.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
