@@ -1,0 +1,57 @@
+{
+  "name": "musiam-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build ",
+    "lint": "next lint",
+    "dev": "next dev",
+    "start": "next start",
+    "validate:gates": "node scripts/validate-gates-manifest.mjs",
+    "typecheck": "tsc --noEmit",
+    "prebuild": "npm run validate:gates",
+    "preflight": "node .musiam/ops/preflight.js",
+    "test:e2e": "playwright test",
+    "work:new": "node .musiam/ops/work-new.mjs",
+
+    "works:validate": "node scripts/validate-works-tsv.mjs import/all.tsv",
+    "works:generate": "node scripts/tsv-to-works-json.mjs import/all.tsv public/works/works.json",
+    "work:bulk": "node scripts/work-bulk.mjs import/all.tsv"
+
+
+  },
+  "dependencies": {
+    "@sanity/client": "^7.11.0",
+    "@sanity/image-url": "^1.2.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.12",
+    "next": "15.5.2",
+    "posthog-js": "^1.261.7",
+    "posthog-node": "^5.8.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.35.0",
+    "@next/eslint-plugin-next": "^15.5.3",
+    "@playwright/test": "^1.55.0",
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "15.5.2",
+    "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5",
+    "typescript-eslint": "^8.43.0"
+  }
+}

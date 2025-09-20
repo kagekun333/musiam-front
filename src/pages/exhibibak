@@ -1,0 +1,329 @@
+"use client";
+
+import { useEffect, useMemo, useRef, useState } from "react";
+import { track } from "@/lib/metrics";
+
+// 追加：cover URL 正規化（すべての入口を潰す）
+function normalizeCover(src: string) {
+  if (!src) return src;
+  if (src.startsWith("http")) return src;  // 外部URLはそのまま
+
+  let s = src.replace(/\\/g, "/").trim();
+
+  // "public/..." or "/public/..." を "/..." に変換
+  s = s.replace(/^\/?public\//, "/");
+
+  // 既に "/works/covers/..." ならOK
+  if (s.startsWith("/works/covers/")) return s;
+
+  // 先頭スラッシュ無しの "works/covers/..." を補正
+  if (s.startsWith("works/covers/")) return "/" + s;
+
+  // ファイル名だけが来た場合 → /works/covers/ に載せる
+  if (!s.startsWith("/")) return "/works/covers/" + s;
+
+  // その他の "/something" はそのまま
+  return s;
+}
+function parseTags(tags?: string[] | string) {
+  const out: Record<string,string> = {};
+  const arr = Array.isArray(tags) ? tags : (tags ? String(tags).split(/[;,]\s*/) : []);
+  for (const t of arr) {
+    const m = String(t).match(/^([^:]+):\s*(.+)$/);
+    if (m) out[m[1].trim()] = m[2].trim();
+  }
+  return out;
+}
+
+// “0円扱い”をまとめて判定（¥0 / 0 / 0円 / free など）
+function isZeroPrice(v?: string) {
+  if (!v) return false;
+  const s = v.toLowerCase().replace(/\s/g,'');
+  return /^¥?0(?:円)?$/.test(s) || s === '0' || s === 'free' || s === 'gratis';
+}
+
+// Amazon の小さいサムネ (_AC_UY218_) を高解像度 (_SL1200_) に変換
+function hiResIfAmazon(url: string) {
+  if (!url) return url;
+  if (!/^https?:\/\//i.test(url)) return url; // 絶対URL以外は触らない
+  const m = url.match(/^https:\/\/m\.media\.amazon\.com\/images\/I\/([^._]+)\./);
+  return m ? `https://m.media-amazon.com/images/I/${m[1]}._SL1600_.jpg` : url;
+}
+function inferSpotifyUrl(w: Work): string | undefined {
+  // すでに listen が Spotify URL ならそれを使う
+  if (w.links?.listen && /spotify\.com/i.test(w.links.listen)) return w.links.listen;
+
+  // cover ファイル名から ID を抽出
+  const m = (w.cover || "").match(/spotify_([A-Za-z0-9]+)\.jpg$/);
+  if (m) return `https://open.spotify.com/track/${m[1]}`;
+
+  return undefined;
+}
+
+
+
+type Work = {
+  id: string;
+  title: string;
+  type: "music" | "video" | "art" | "book" | "article";
+  cover: string;
+  tags?: string[];
+  links?: Partial<Record<"listen" | "watch" | "read" | "nft", string>>;
+  releasedAt?: string; // "YYYY-MM-DD"
+  weight?: number;
+  previewUrl?: string;
+};
+
+type WorksDoc = { items: Work[] };
+
+// タイプごとの基本アスペクト
+const aspectByType: Record<Work["type"], string> = {
+  music: "1 / 1",   // 正方形
+  video: "16 / 9",  // 横長
+  art: "4 / 3",     // 写真・アートはこれを既定に
+  book: "5 / 8",    // 縦長
+  article: "16 / 9" // 記事はサムネ横長想定
+};
+
+// タグで上書きできる柔軟ロジック
+function tagAspectOverride(tags?: string[]): string | null {
+  if (!tags?.length) return null;
+  const lower = tags.map(t => t.toLowerCase());
+
+  // 「アート1.1」表記のゆらぎ対策（art1.1 / art-1.1 / art11）
+  if (lower.some(t => t === "art1.1" || t === "art-1.1" || t === "art11")) {
+    return "1 / 1.1";
+  }
+
+  // 汎用パターン: aspect:WxH / aspect:W:H / aspect:WxH
+  for (const t of lower) {
+    const m = t.match(/^aspect:(\d+(?:\.\d+)?)[x:](\d+(?:\.\d+)?)$/);
+    if (m) {
+      const w = Number(m[1]);
+      const h = Number(m[2]);
+      if (Number.isFinite(w) && Number.isFinite(h) && w > 0 && h > 0) {
+        return `${w} / ${h}`;
+      }
+    }
+  }
+
+  // 別名ショートハンド（必要に応じて拡張可）
+  if (lower.includes("square")) return "1 / 1";
+  if (lower.includes("portrait")) return "2 / 3";
+  if (lower.includes("landscape")) return "16 / 9";
+
+  return null;
+}
+
+function getAspectForWork(w: Work): string {
+  return tagAspectOverride(w.tags) ?? (aspectByType[w.type] ?? "4 / 3");
+}
+
+export default function ExhibitionPage() {
+  const [all, setAll] = useState<Work[]>([]);
+  const [typeF, setTypeF] = useState<string>("all");
+  const [tagF, setTagF] = useState<string>("all");
+  const [sortKey, setSortKey] = useState<"releasedAt" | "weight">("releasedAt");
+  const [wowTracked, setWowTracked] = useState(false);
+  const wowTimerRef = useRef<number | null>(null);
+
+  // /public から読込
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/works/works.json", { cache: "no-store" });
+        const json: WorksDoc = await res.json();
+        if (!cancelled) setAll(Array.isArray(json?.items) ? json.items : []);
+      } catch {
+        if (!cancelled) setAll([]);
+      }
+    })();
+    return () => {
+      cancelled = true;
+      if (wowTimerRef.current) window.clearTimeout(wowTimerRef.current);
+    };
+  }, []);
+
+  // タグ一覧
+  const allTags = useMemo(() => {
+    const s = new Set<string>();
+    for (const w of all) (w.tags || []).forEach(t => s.add(t));
+    return ["all", ...Array.from(s).sort()];
+  }, [all]);
+
+  // WOW（previewあり最初 / なければ先頭）
+  const wow = useMemo(() => {
+    return all.find(w => !!w.previewUrl) || all[0];
+  }, [all]);
+
+  // ビュー用配列（フィルタ・ソート）
+  const view = useMemo(() => {
+    let v = [...all];
+    if (typeF !== "all") v = v.filter(w => w.type === (typeF as Work["type"]));
+    if (tagF !== "all") v = v.filter(w => (w.tags || []).includes(tagF));
+    v.sort((a, b) => {
+      if (sortKey === "releasedAt") {
+        const ad = a.releasedAt ? Date.parse(a.releasedAt) : 0;
+        const bd = b.releasedAt ? Date.parse(b.releasedAt) : 0;
+        return bd - ad;
+      }
+      // weight desc（undefined -> 0）
+      return (b.weight ?? 0) - (a.weight ?? 0);
+    });
+    return v;
+  }, [all, typeF, tagF, sortKey]);
+
+  // WOW計測（onPlay or 10秒後のどちらか一度だけ）
+  useEffect(() => {
+    if (!wow || wowTracked) return;
+    wowTimerRef.current = window.setTimeout(() => {
+      track("wow_play", { id: wow.id });
+      setWowTracked(true);
+    }, 10_000);
+    return () => { if (wowTimerRef.current) window.clearTimeout(wowTimerRef.current); };
+  }, [wow, wowTracked]);
+
+  return (
+    <main style={{ maxWidth: 1100, margin: "40px auto", padding: "0 16px" }}>
+      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 12 }}>Exhibition</h1>
+      <p style={{ opacity: .7, marginBottom: 24 }}>WOW preview + filter/sort + grid</p>
+
+      {/* WOW */}
+      {wow && (
+        <section style={{ marginBottom: 24 }}>
+          <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", background: "#111" }}>
+            {wow.previewUrl ? (
+              <video
+                src={wow.previewUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{ width: "100%", display: "block", maxHeight: 480, objectFit: "cover" }}
+                onPlay={() => {
+                  if (!wowTracked) {
+                    track("wow_play", { id: wow.id });
+                    setWowTracked(true);
+                  }
+                }}
+              />
+            ) : (
+              // 画像フォールバック：タイプ/タグに応じた比率で表示
+              <div style={{
+                position: "relative",
+                width: "100%",
+                aspectRatio: getAspectForWork(wow),
+                background: "#111"
+              }}>
+                <img
+  src={hiResIfAmazon(normalizeCover(wow.cover))}
+  alt={wow.title}
+  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
+/>
+
+              </div>
+            )}
+
+            {/* キャプション */}
+            <div style={{
+              position: "absolute", left: 12, bottom: 12, padding: "8px 12px",
+              background: "rgba(0,0,0,.55)", color: "#fff", borderRadius: 8
+            }}>
+              <div style={{ fontWeight: 700 }}>{wow.title}</div>
+              <div style={{ fontSize: 12, opacity: .85 }}>
+                {wow.type}{wow.releasedAt ? ` • ${wow.releasedAt}` : ""}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Controls */}
+      <section style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 16 }}>
+        <label>Type:&nbsp;
+          <select value={typeF} onChange={e => setTypeF(e.target.value)}>
+            {["all", "music", "video", "art", "book", "article"].map(t => <option key={t} value={t}>{t}</option>)}
+          </select>
+        </label>
+        <label>Tag:&nbsp;
+          <select value={tagF} onChange={e => setTagF(e.target.value)}>
+            {allTags.map(t => <option key={t} value={t}>{t}</option>)}
+          </select>
+        </label>
+        <label>Sort:&nbsp;
+          <select value={sortKey} onChange={e => setSortKey(e.target.value as any)}>
+            <option value="releasedAt">releasedAt desc</option>
+            <option value="weight">weight desc</option>
+          </select>
+        </label>
+      </section>
+
+      {/* Grid */}
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          gap: 16
+        }}
+      >
+        {view.map(w => (
+          <article key={w.id} style={{ border: "1px solid #222", borderRadius: 12, overflow: "hidden" }}>
+            {/* タイプ/タグに応じた比率ボックス */}
+            <div style={{
+              position: "relative",
+              width: "100%",
+              aspectRatio: getAspectForWork(w),
+              background: "#111"
+            }}>
+             <img
+  src={hiResIfAmazon(normalizeCover(w.cover))}
+  alt={w.title}
+  loading="lazy"
+  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }}
+/>
+
+
+            </div>
+
+            <div style={{ padding: 12 }}>
+              <div style={{ fontWeight: 700, marginBottom: 6 }}>{w.title}</div>
+              {(() => {
+  const meta = parseTags(w.tags);
+  const price = meta.price;
+  const asin  = meta.ASIN || meta.asin;
+
+  return (
+    <div style={{ fontSize: 12, opacity: .75, marginBottom: 8 }}>
+      {w.type}
+      {w.releasedAt ? ` • ${w.releasedAt}` : ""}
+      {!isZeroPrice(price) && price ? ` • price:${price}` : ""}
+    </div>
+  );
+})()}
+
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {w.links?.listen && <a href={w.links.listen} target="_blank" rel="noreferrer">Listen</a>}
+                {w.links?.watch && <a href={w.links.watch} target="_blank" rel="noreferrer">Watch</a>}
+                {w.links?.read && <a href={w.links.read} target="_blank" rel="noreferrer">Read</a>}
+                {w.links?.nft && <a href={w.links.nft} target="_blank" rel="noreferrer">NFT</a>}
+
+                {(() => {
+    const meta = parseTags(w.tags);
+    const asin = meta?.ASIN || meta?.asin;
+    const amazonUrl = (!w.links?.read && asin) ? `https://www.amazon.co.jp/dp/${asin}` : undefined;
+    return amazonUrl ? <a href={amazonUrl} target="_blank" rel="noreferrer">Amazon</a> : null;
+     {/* 音楽カードで listen が無い場合だけ Spotify を補完 */}
+  {w.type === "music" && !w.links?.listen && (() => {
+    const sp = inferSpotifyUrl(w);
+    return sp ? <a href={sp} target="_blank" rel="noreferrer">Spotify</a> : null;
+  })()}
+  })()}
+              </div>
+            </div>
+          </article>
+        ))}
+      </section>
+    </main>
+  );
+}

@@ -1,5 +1,8 @@
 // src/pages/oracle.tsx
 import { useEffect, useMemo, useState } from "react";
+const isBrowser = () =>
+  typeof window !== "undefined" && typeof window.localStorage !== "undefined";
+
 
 type Work = {
   id: string;
@@ -51,7 +54,9 @@ export default function OraclePage() {
   const [seed, setSeed] = useState<number>(() => {
     const d = new Date();
     const base = Number(`${d.getFullYear()}${d.getMonth()+1}${d.getDate()}`);
-    const vc = Number(localStorage.getItem("visitCount") || 0);
+    const vc = isBrowser()
+     ? Number(window.localStorage.getItem("visitCount") || "0")
+     : 0;
     return base + vc;
   });
   const [want, setWant] = useState<string[]>([]); // まずは空でOK
@@ -67,9 +72,13 @@ export default function OraclePage() {
   }, []);
 
   useEffect(() => {
-    const vc = Number(localStorage.getItem("visitCount") || 0) + 1;
-    localStorage.setItem("visitCount", String(vc));
-  }, []);
+  if (!isBrowser()) return;
+  const prev = Number(window.localStorage.getItem("visitCount") || "0");
+  const next = prev + 1;
+  window.localStorage.setItem("visitCount", String(next));
+}, []); // ★ここは「空配列」だけ。余計な式や関数呼び出しを入れない
+
+
 
   const top3 = useMemo(() => pickTopN(all, want, 3, seed), [all, want, seed]);
 
