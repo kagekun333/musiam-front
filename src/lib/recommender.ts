@@ -1,42 +1,72 @@
 // src/lib/recommender.ts
-import type { Work } from "./loadWorks";
+import fs from "node:fs";
+import path from "node:path";
 
-const daySeed = () => {
-  const d = new Date();
-  return Number(
-    `${d.getFullYear()}${(d.getMonth() + 1).toString().padStart(2, "0")}${d
-      .getDate()
-      .toString()
-      .padStart(2, "0")}`
-  );
+export type LinkObj = { spotify?: string; amazon?: string; url?: string };
+export type Work = {
+  title: string;
+  type?: string;
+  cover?: string;
+  link?: string | LinkObj;
+  tags?: string[];
+  moodTags?: string[];
+  moodSeeds?: string[];
+  description?: string;
 };
 
-const rng = (seed: number) => {
-  let s = seed | 0;
-  return () => ((s = (s * 1664525 + 1013904223) | 0), (s >>> 0) / 4294967296);
-};
+export type RecoWork = Pick<Work, "title"|"type"|"cover"|"link">;
 
-export function scoreWork(w: Work, want: string[], seed = daySeed()) {
-  const now = Date.now();
-  const days = Math.max(1, (now - new Date(w.releasedAt).getTime()) / 86_400_000);
-  const tagHit = want.reduce((a, t) => a + (w.tags?.includes(t) ? 1 : 0), 0);
-  const recency = 1 / Math.sqrt(days);
-  const weight = w.weight ?? 1.0;
-  const rand = rng(seed + (w.id?.length ?? 0))();
-  return tagHit * 1.2 + recency * 0.8 + weight * 0.6 + rand * 0.2;
+export function loadAllWorks(): Work[] {
+  const p = path.resolve("public/works/works.json");
+  const raw = fs.readFileSync(p, "utf8");
+  const data = JSON.parse(raw);
+  return Array.isArray(data) ? data : (data.items || data.data || data.works || []);
 }
 
-export function recommend(all: Work[], want: string[], k = 3, seed = daySeed()): Work[] {
-  return [...all]
-    .sort((a, b) => scoreWork(b, want, seed) - scoreWork(a, want, seed))
-    .slice(0, k);
+// 簡易スコア：moodTags一致を最優先→moodSeeds→tags。タイブレークはシード付き乱択。
+export function recommend(works: Work[], target: string[], k = 3, seed = 1234): RecoWork[] {
+  const tgt = new Set((target || []).map((s) => String(s)));
+  const rng = mulberry32(seed);
+
+  const scored = works.map((w) => {
+    const mt = new Set((w.moodTags || []).map(String));
+    const ms = new Set((w.moodSeeds || []).map(String));
+    const tg = new Set((w.tags || []).map(String));
+
+    const hitMT = countIntersect(mt, tgt);
+    const hitMS = countIntersect(ms, tgt);
+    const hitTG = countIntersect(tg, tgt);
+
+    // 重みはMT>MS>tags
+    const score = hitMT * 3 + hitMS * 2 + hitTG * 1 + rng() * 0.001;
+    return { w, score, hitMT, hitMS, hitTG };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+
+  const out: RecoWork[] = [];
+  const seen = new Set<string>();
+  for (const s of scored) {
+    const key = s.w.title;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ title: s.w.title, type: s.w.type, cover: s.w.cover, link: s.w.link });
+    if (out.length >= k) break;
+  }
+  return out;
 }
 
-export function extractTags(input: string): string[] {
-  const words = (input || "")
-    .toLowerCase()
-    .split(/[^a-z0-9#]+/i)
-    .filter(Boolean);
-  const uniq = Array.from(new Set(words)).filter((w) => w.length >= 2);
-  return uniq.slice(0, 8);
+function countIntersect(a: Set<string>, b: Set<string>) {
+  let c = 0;
+  for (const x of a) if (b.has(x)) c++;
+  return c;
+}
+
+function mulberry32(a: number) {
+  return function () {
+    let t = (a += 0x6D2B79F5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }

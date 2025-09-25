@@ -1,3 +1,4 @@
+// src/pages/_app.tsx
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import posthog from "posthog-js";
@@ -13,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
     posthog.init(key, {
       api_host: host,
-      capture_pageview: true, // 初回ロードのみ自動
+      capture_pageview: true,
       person_profiles: "identified_only",
     });
 
@@ -22,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
     return () => router.events.off("routeChangeComplete", onRoute);
   }, [router.events]);
 
-  // 任意：手動イベント送信用にwindowへ出す
   useEffect(() => { (window as any).posthog = posthog; }, []);
 
   return <Component {...pageProps} />;
