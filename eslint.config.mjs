@@ -3,11 +3,18 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import nextPlugin from "@next/eslint-plugin-next";
 
+const nextRecommended = nextPlugin.configs.recommended;
+
 export default [
   { ignores: ["backup/**", "_archive/**", ".next/**", "node_modules/**", "dist/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  nextPlugin.configs.recommended,
+  {
+    plugins: {
+      "@next/next": nextPlugin,
+    },
+    rules: nextRecommended.rules,
+  },
   {
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
