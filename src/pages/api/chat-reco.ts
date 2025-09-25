@@ -68,8 +68,7 @@ function toCards(reco: RecoWork[], worksAll: any[]): RecoCard[] {
 
 /* ===== 言語判定（カード/ワーク単位）— Edition/文字種優先、ドメインは補助 ===== */
 function titleLooksEnglish(t: string): boolean {
-  const ascii = (t.match(/[\u0000-\u007F]/g) || []).length;
-
+  const ascii = (t.match(/\p{ASCII}/gu) || []).length;
   const non = Math.max(1, t.length - ascii);
   return ascii / (ascii + non) > 0.85;
 }
