@@ -68,7 +68,8 @@ function toCards(reco: RecoWork[], worksAll: any[]): RecoCard[] {
 
 /* ===== 言語判定（カード/ワーク単位）— Edition/文字種優先、ドメインは補助 ===== */
 function titleLooksEnglish(t: string): boolean {
-  const ascii = (t.match(/[\x00-\x7F]/g) || []).length;
+  const ascii = (t.match(/[\u0000-\u007F]/g) || []).length;
+
   const non = Math.max(1, t.length - ascii);
   return ascii / (ascii + non) > 0.85;
 }
@@ -123,7 +124,7 @@ function composeOneBookTwoMusic(cards: RecoCard[], userLang: "en" | "ja"): RecoC
   const musics = cards.filter((c) => c.type === "music");
   if (books.length === 0 || musics.length < 2) return cards;
 
-  let book: RecoCard | undefined =
+  const book: RecoCard | undefined =
     books.find((b) => detectItemLang(b) === userLang) ||
     books.find((b) => detectItemLang(b) === "und") ||
     books[0];
@@ -400,7 +401,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const catalog = loadAllWorks();
       const worksAll = await loadAllWorksCached();
 
-      let recos = recommend(catalog, moodTags, 36, seed);
+      const recos = recommend(catalog, moodTags, 36, seed);
       let cards = toCards(recos, worksAll);
       cards = prioritizeByAudienceLanguage(cards, lang);
 
@@ -454,7 +455,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const catalog = loadAllWorks();
       const worksAll = await loadAllWorksCached();
 
-      let recos = recommend(catalog, moodTags, 36, seed);
+      const recos = recommend(catalog, moodTags, 36, seed);
       let cards = toCards(recos, worksAll);
       cards = prioritizeByAudienceLanguage(cards, lang);
       let composed = composeOneBookTwoMusic(cards, lang);
