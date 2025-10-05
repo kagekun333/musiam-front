@@ -1,0 +1,801 @@
+First: Great Blessing
+七寶浮圖塔
+You will be esteemed like a noble pagoda
+高峰頂上安
+Firmly settled at the mountain peak
+眾人皆仰望
+Many will look up to you
+莫作等閒看
+TBD
+Second: Small Blessing
+月被浮雲翳
+TBD
+立事自昏迷
+TBD
+幸乞隂公祐
+TBD
+何慮不開眉
+TBD
+Third: Misfortune
+愁惱損忠良
+TBD
+青霄一炷香
+TBD
+雖然防小過
+TBD
+閑慮覺時長
+TBD
+Fourth: Good Fortune
+累有興雲志
+TBD
+君恩祿未封
+TBD
+若逢侯手印
+TBD
+好事始總總
+TBD
+Fifth: Misfortune
+家道未能昌
+TBD
+危危保禍殃
+TBD
+暗雲侵月桂
+TBD
+佳人一炷香
+TBD
+Sixth: Late Blessing
+宅墓鬼凶多
+TBD
+人事有爻訛
+TBD
+傷財防損失
+TBD
+祈福始中和
+TBD
+Seventh: Misfortune
+登舟待便風
+TBD
+月色暗朦朧
+TBD
+欲輾香輪去
+TBD
+高山千萬重
+TBD
+Eighth: Great Blessing
+勿頭中見尾
+TBD
+文華須得理
+TBD
+禾刀自偶然
+TBD
+當遇非常喜
+TBD
+Ninth: Great Blessing
+有名須得遇
+TBD
+三望一朝遷
+TBD
+貴人來指處
+TBD
+華菓應時鮮
+TBD
+Tenth: Great Blessing
+舊用多成破
+TBD
+新更始見財
+TBD
+改求雲外望
+TBD
+枯木遇春開
+TBD
+Twenty-First: Good Fortune
+有祿興家業
+TBD
+文華達帝都
+TBD
+雲中乘好箭
+TBD
+兼得貴人扶
+TBD
+Twenty-Second: Good Fortune
+楊柳遇春時
+TBD
+殘花發舊枝
+TBD
+重重霜雪裡
+TBD
+黃金色更輝
+TBD
+Twenty-Third: Good Fortune
+手把大陽輝
+TBD
+東君發舊枝
+TBD
+稼苗方欲秀
+TBD
+猶更上雲梯
+TBD
+Twenty-Fourth: Misfortune
+玉石未分時
+TBD
+憂心轉更悲
+TBD
+前途通大道
+TBD
+花發應殘枝
+TBD
+Twenty-Fifth: Good Fortune
+年乖數亦孤
+TBD
+久病未能蘇
+TBD
+岸危舟未發
+TBD
+龍臥失明珠
+TBD
+Twenty-Sixth: Good Fortune
+破改重成望
+TBD
+前途喜亦寧
+TBD
+貴人相助處
+TBD
+祿馬照前程
+TBD
+Twenty-Seventh: Good Fortune
+怪異防憂惱
+TBD
+人宅見分離
+TBD
+惜華還值雨
+TBD
+杯酒惹閑非
+TBD
+Twenty-Eighth: Misfortune
+離暗出明時
+TBD
+麻衣變綠衣
+TBD
+舊憂終是退
+TBD
+遇祿應交輝
+TBD
+Twenty-Ninth: Good Fortune
+家道生荊棘
+TBD
+兒孫防虎威
+TBD
+香前祈福厚
+TBD
+方得免分離
+TBD
+Thirty: Half Blessing
+月出漸分明
+TBD
+家財每每興
+TBD
+何言先有滯
+TBD
+更變立功名
+TBD
+Thirty-First: Late Blessing
+洗出經年否
+TBD
+光華得再清
+TBD
+所求終吉利
+TBD
+重日照前程
+TBD
+Thirty-Second: Good Fortune
+漸漸濃雲散
+TBD
+看看月再明
+TBD
+逢春華菓秀
+TBD
+雨過竹重青
+TBD
+Thirty-Third: Good Fortune
+紅雲隨步起
+TBD
+一箭中青霄
+TBD
+鹿行千里遠
+TBD
+爭知去路遙
+TBD
+Thirty-Fourth: Good Fortune
+三女莫相逢
+TBD
+盟言說未通
+TBD
+門裡心肝掛
+TBD
+縞素子重重
+TBD
+Thirty-Fifth: Good Fortune
+枯木逢春生
+TBD
+前途必利亨
+TBD
+亦得佳人箭
+TBD
+乘車祿自行
+TBD
+Thirty-Sixth: Late Blessing
+將軍有異聲
+TBD
+進兵萬里程
+TBD
+爭知臨敵處
+TBD
+道勝却虛名
+TBD
+Thirty-Seventh: Half Blessing
+望祿應重山
+TBD
+花紅喜悅顏
+TBD
+舉頭看皎月
+TBD
+漸出黑雲間
+TBD
+Thirty-Eighth: Half Blessing
+意速無船渡
+TBD
+波深必誤身
+TBD
+切須回舊路
+TBD
+方可免災迍
+TBD
+Thirty-Ninth: Misfortune
+憂轗漸消融
+TBD
+求名得再通
+TBD
+寶財臨祿位
+TBD
+當遇主人公
+TBD
+Forty: Lesser Late Blessing
+仙鶴立高枝
+TBD
+防他暗箭虧
+TBD
+井畔剛刀利
+TBD
+戶內更防危
+TBD
+Forty-First: Late Blessing
+鯤鯨未變時
+TBD
+且守碧潭溪
+TBD
+風雲興巨浪
+TBD
+一息過天涯
+TBD
+Forty-Second: Good Fortune
+似玉藏深石
+TBD
+休將故眼看
+TBD
+一朝良匠別
+TBD
+方見寶光寒
+TBD
+Forty-Third: Good Fortune
+枯木逢春艷
+TBD
+芳菲再發林
+TBD
+雲間方見月
+TBD
+前遇貴人欽
+TBD
+Forty-Fourth: Good Fortune
+臘木春將至
+TBD
+芳菲喜再新
+TBD
+鯤鯨興巨浪
+TBD
+舉鉤祿為真
+TBD
+Forty-Fifth: Good Fortune
+射鹿須乘箭
+TBD
+故僧引路歸
+TBD
+遇道同仙籍
+TBD
+光華映晚暉
+TBD
+Forty-Sixth: Misfortune
+先損後有益
+TBD
+如月之剝蝕
+TBD
+玉兔待重生
+TBD
+光華當滿室
+TBD
+Forty-Seventh: Good Fortune
+陰靉未能通
+TBD
+求名亦未逢
+TBD
+幸然須有變
+TBD
+一箭中雙鴻
+TBD
+Forty-Eighth: Small Blessing
+月照天書靜
+TBD
+雲生霧彩霞
+TBD
+久想離庭客
+TBD
+無事惹咨嗟
+TBD
+Forty-Ninth: Good Fortune
+望用方心腹
+TBD
+家鄉被火災
+TBD
+憂危三五度
+TBD
+由損斷頭財
+TBD
+Fifty: Good Fortune
+中正方成道
+TBD
+姦邪恐惹愆
+TBD
+壺中盛妙藥
+TBD
+非久去煩煎
+TBD
+Fifty-First: Good Fortune
+有物不周旋
+TBD
+須防損半邊
+TBD
+家鄉煙火裡
+TBD
+祈福始安然
+TBD
+Fifty-Second: Misfortune
+桂華春將到
+TBD
+雲天好進程
+TBD
+貴人相遇處
+TBD
+暗月再分明
+TBD
+Fifty-Third: Good Fortune
+月桂將相滿
+TBD
+追鹿映山溪
+TBD
+貴人乘遠箭
+TBD
+好事始相宜
+TBD
+Fifty-Fourth: Misfortune
+盤中黑白子
+TBD
+一著要先機
+TBD
+天龍降甘澤
+TBD
+喜出舊根基
+TBD
+Fifty-Fifth: Good Fortune
+有意興高顯
+TBD
+祿馬引前程
+TBD
+得遇雲中箭
+TBD
+芝蘭滿路生
+TBD
+Fifty-Sixth: Lesser Late Blessing
+雷發震天昏
+TBD
+佳人獨掩門
+TBD
+交加文書上
+TBD
+無事也遭迍
+TBD
+Fifty-Seventh: Good Fortune
+更望身前立
+TBD
+何期在晚成
+TBD
+若遇重山去
+TBD
+財祿自相迎
+TBD
+Fifty-Eighth: Misfortune
+見祿隔前溪
+TBD
+勞心休更迷
+TBD
+一朝逢好渡
+TBD
+鸞鳳入雲飛
+TBD
+Fifty-Ninth: Misfortune
+正好中秋月
+TBD
+蟾蜍皎潔間
+TBD
+暗雲知何處
+TBD
+故故兩相攀
+TBD
+Sixty: Small Blessing
+有達宜更變
+TBD
+重山利政逢
+TBD
+前途相偶合
+TBD
+財祿保亨通
+TBD
+Sixty-First: Half Blessing
+修進甚功辛
+TBD
+勞生未得時
+TBD
+騰身遊碧漢
+TBD
+方得遇高枝
+TBD
+Sixty-Second: Great Blessing
+有僭須惹訟
+TBD
+兼有事交加
+TBD
+門裡防人危
+TBD
+災臨莫嘆嗟
+TBD
+Sixty-Third: Misfortune
+久困漸能安
+TBD
+雲書降印權
+TBD
+殘花終結實
+TBD
+時亨祿自遷
+TBD
+Sixty-Fourth: Misfortune
+身同意不同
+TBD
+月蝕暗長空
+TBD
+輪雖常在手
+TBD
+魚水未相逢
+TBD
+Sixty-Fifth: Late Blessing
+雲散月重明
+TBD
+天書得誌誠
+TBD
+雖然多阻滯
+TBD
+花發再重榮
+TBD
+Sixty-Sixth: Misfortune
+生涯喜又憂
+TBD
+未老先白頭
+TBD
+勞心千百度
+TBD
+芳遇貴人留
+TBD
+Sixty-Seventh: Misfortune
+欲渡長江闊
+TBD
+波深未自儔
+TBD
+前津逢浪靜
+TBD
+重整鉤鰲鉤
+TBD
+Sixty-Eighth: Good Fortune
+有徑江海隔
+TBD
+車行峻嶺危
+TBD
+亦防多進退
+TBD
+猶恐小人虧
+TBD
+Sixty-Ninth: Misfortune
+去住心無定
+TBD
+行藏亦未寧
+TBD
+一輪清皎潔
+TBD
+却被黑雲乘
+TBD
+Seventy: Misfortune
+高危安可涉
+TBD
+平坦是延年
+TBD
+守道當逢泰
+TBD
+風雲不偶然
+TBD
+Seventy-First: Misfortune
+舊愆何日解
+TBD
+戶內保嬋娟
+TBD
+要逢十一口
+TBD
+遇鼠過牛邊
+TBD
+Seventy-Second: Good Fortune
+災轗時時退
+TBD
+名顯四方揚
+TBD
+改故重乘祿
+TBD
+昴高福自昌
+TBD
+Seventy-Third: Good Fortune
+何故生荊棘
+TBD
+家人意漸疏
+TBD
+久困重輪下
+TBD
+黃金未出渠
+TBD
+Seventy-Fourth: Misfortune
+安居且慮危
+TBD
+情深主別離
+TBD
+風飄波浪急
+TBD
+鴛鴦各自飛
+TBD
+Seventy-Fifth: Misfortune
+苦病兼防辱
+TBD
+乘危亦未穌
+TBD
+若見一陽後
+TBD
+方可作良圖
+TBD
+Seventy-Sixth: Good Fortune
+水滯少波濤
+TBD
+飛鴻落羽毛
+TBD
+重憂心緒亂
+TBD
+閑事惹風騷
+TBD
+Seventy-Seventh: Misfortune
+枯木未生枝
+TBD
+獨步上雲岐
+TBD
+豈知身未穩
+TBD
+獨自惹閑非
+TBD
+Seventy-Eighth: Great Blessing
+異夢生英傑
+TBD
+前來事可疑
+TBD
+芳菲春日暖
+TBD
+依舊發殘枝
+TBD
+Seventy-Ninth: Good Fortune
+明月暗雲浮
+TBD
+花紅一半枯
+TBD
+惹事傷心處
+TBD
+行舟莫遠圖
+TBD
+Eighty: Great Blessing
+雷發庭前草
+TBD
+炎火向天飛
+TBD
+一心來趕祿
+TBD
+爭奈掩朱扉
+TBD
+Eighty-First: Small Blessing
+道業未成時
+TBD
+何期兩不宜
+TBD
+事煩心緒亂
+TBD
+做徘徊思
+TBD
+Eighty-Second: Misfortune
+戶內防重厄
+TBD
+花菓見分枝
+TBD
+嚴霜纔過後
+TBD
+方可始相宜
+TBD
+Eighty-Third: Misfortune
+久暗漸分明
+TBD
+登江綠水澄
+TBD
+芝書從遠降
+TBD
+終得異人成
+TBD
+Eighty-Fourth: Misfortune
+蛇虎正交羅
+TBD
+牛生二尾多
+TBD
+交歲方成慶
+TBD
+上下不能和
+TBD
+Eighty-Fifth: Great Blessing
+孤舟欲過岸
+TBD
+浪急渡人空
+TBD
+女人立流水
+TBD
+望月意情濃
+TBD
+Eighty-Sixth: Great Blessing
+富貴天之祐
+TBD
+何須苦用心
+TBD
+前程應顯跡
+TBD
+久用得高臨
+TBD
+Eighty-Seventh: Great Blessing
+累滯未能穌
+TBD
+求名莫遠圖
+TBD
+登舟波浪急
+TBD
+咫尺隔天衢
+TBD
+Eighty-Eighth: Misfortune
+但存公道正
+TBD
+何愁理去忠
+TBD
+松柏蒼蒼翠
+TBD
+前山祿馬重
+TBD
+Eighty-Ninth: Great Blessing
+殘月未還光
+TBD
+樽前非語傷
+TBD
+戶中有人厄
+TBD
+祈福保青陽
+TBD
+Ninety: Great Blessing
+深山多養道
+TBD
+忠正帝王宣
+TBD
+鳳遂鸞飛去
+TBD
+昇高過九天
+TBD
+Ninety-First: Good Fortune
+道合須成合
+TBD
+先憂事更多
+TBD
+所求財寶盛
+TBD
+更變得中和
+TBD
+Ninety-Second: Good Fortune
+火發應連天
+TBD
+新愁惹舊愆
+TBD
+欲求千里外
+TBD
+要渡更無船
+TBD
+Ninety-Third: Good Fortune
+舉步出雲端
+TBD
+高枝未可攀
+TBD
+昇頭看皎月
+TBD
+猶在黑雲間
+TBD
+Ninety-Fourth: Half Blessing
+否極方無泰
+TBD
+花開值晚秋
+TBD
+人情不調備
+TBD
+財寶鬼來偷
+TBD
+Ninety-Fifth: Good Fortune
+望用何愁晚
+TBD
+求名漸得寧
+TBD
+雲梯終有望
+TBD
+歸路入蓬瀛
+TBD
+Ninety-Sixth: Great Blessing
+花發應陽臺
+TBD
+車行進寶財
+TBD
+執文朝帝殿
+TBD
+走馬聽聲雷
+TBD
+Ninety-Seventh: Misfortune
+鑿石方逢玉
+TBD
+淘沙始見金
+TBD
+青霄終有路
+TBD
+只恐不堅心
+TBD
+Ninety-Eighth: Misfortune
+作事不和同
+TBD
+臨危更主凶
+TBD
+佳人生苦根
+TBD
+閑慮兩三重
+TBD
+Ninety-Ninth: Great Blessing
+一片無瑕玉
+TBD
+從今好琢磨
+TBD
+得遇高人識
+TBD
+方逢喜氣多
+TBD

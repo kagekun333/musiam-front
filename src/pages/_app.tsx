@@ -1,29 +1,29 @@
-// src/pages/_app.tsx
+// import posthog from "posthog-js";   ← ← これ消す
+
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import posthog from "posthog-js";
 import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY as string | undefined;
-    const host = process.env.NEXT_PUBLIC_POSTHOG_HOST as string | undefined;
-    if (!key || !host) return;
+    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+    if (!key || typeof window === "undefined") return;
 
-    posthog.init(key, {
-      api_host: host,
-      capture_pageview: true,
-      person_profiles: "identified_only",
-    });
+    (async () => {
+      const { default: posthog } = await import("posthog-js");
+      posthog.init(key, {
+        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
+        capture_pageview: false,
+      });
 
-    const onRoute = (url: string) => posthog.capture("$pageview", { $current_url: url });
-    router.events.on("routeChangeComplete", onRoute);
-    return () => router.events.off("routeChangeComplete", onRoute);
+      // ルーティング時のPV
+      const handleRoute = () => posthog.capture("$pageview");
+      router.events.on("routeChangeComplete", handleRoute);
+      return () => router.events.off("routeChangeComplete", handleRoute);
+    })();
   }, [router.events]);
-
-  useEffect(() => { (window as any).posthog = posthog; }, []);
 
   return <Component {...pageProps} />;
 }

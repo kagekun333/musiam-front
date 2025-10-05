@@ -1,0 +1,1426 @@
+[
+  {
+    "id": "001",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\001\\原文001.txt",
+    "detail": "原文001.txt"
+  },
+  {
+    "id": "001",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\001\\原文001.txt",
+    "detail": "原文001.txt"
+  },
+  {
+    "id": "002",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\002\\原文002.txt",
+    "detail": "原文002.txt"
+  },
+  {
+    "id": "002",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\002\\原文002.txt",
+    "detail": "原文002.txt"
+  },
+  {
+    "id": "003",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\003\\原文003.txt",
+    "detail": "原文003.txt"
+  },
+  {
+    "id": "003",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\003\\原文003.txt",
+    "detail": "原文003.txt"
+  },
+  {
+    "id": "004",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\004\\原文004.txt",
+    "detail": "原文004.txt"
+  },
+  {
+    "id": "004",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\004\\原文004.txt",
+    "detail": "原文004.txt"
+  },
+  {
+    "id": "005",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\005\\原文005.txt",
+    "detail": "原文005.txt"
+  },
+  {
+    "id": "005",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\005\\原文005.txt",
+    "detail": "原文005.txt"
+  },
+  {
+    "id": "006",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\006\\原文006.txt",
+    "detail": "原文006.txt"
+  },
+  {
+    "id": "006",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\006\\原文006.txt",
+    "detail": "原文006.txt"
+  },
+  {
+    "id": "007",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\007\\原文007.txt",
+    "detail": "原文007.txt"
+  },
+  {
+    "id": "007",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\007\\原文007.txt",
+    "detail": "原文007.txt"
+  },
+  {
+    "id": "008",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\008\\原文008.txt",
+    "detail": "原文008.txt"
+  },
+  {
+    "id": "008",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\008\\原文008.txt",
+    "detail": "原文008.txt"
+  },
+  {
+    "id": "009",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\009\\原文009.txt",
+    "detail": "原文009.txt"
+  },
+  {
+    "id": "009",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\009\\原文009.txt",
+    "detail": "原文009.txt"
+  },
+  {
+    "id": "010",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\010\\原文010.txt",
+    "detail": "原文010.txt"
+  },
+  {
+    "id": "010",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\010\\原文010.txt",
+    "detail": "原文010.txt"
+  },
+  {
+    "id": "011",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\011\\原文011.txt",
+    "detail": "原文011.txt"
+  },
+  {
+    "id": "011",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\011\\原文011.txt",
+    "detail": "原文011.txt"
+  },
+  {
+    "id": "012",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\012\\原文012.txt",
+    "detail": "原文012.txt"
+  },
+  {
+    "id": "012",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\012\\原文012.txt",
+    "detail": "原文012.txt"
+  },
+  {
+    "id": "013",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\013\\原文013.txt",
+    "detail": "原文013.txt"
+  },
+  {
+    "id": "013",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\013\\原文013.txt",
+    "detail": "原文013.txt"
+  },
+  {
+    "id": "014",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\014\\原文014.txt",
+    "detail": "原文014.txt"
+  },
+  {
+    "id": "014",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\014\\原文014.txt",
+    "detail": "原文014.txt"
+  },
+  {
+    "id": "015",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\015\\原文015.txt",
+    "detail": "原文015.txt"
+  },
+  {
+    "id": "015",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\015\\原文015.txt",
+    "detail": "原文015.txt"
+  },
+  {
+    "id": "016",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\016\\原文016.txt",
+    "detail": "原文016.txt"
+  },
+  {
+    "id": "016",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\016\\原文016.txt",
+    "detail": "原文016.txt"
+  },
+  {
+    "id": "017",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\017\\原文017.txt",
+    "detail": "原文017.txt"
+  },
+  {
+    "id": "017",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\017\\原文017.txt",
+    "detail": "原文017.txt"
+  },
+  {
+    "id": "018",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\018\\原文018.txt",
+    "detail": "原文018.txt"
+  },
+  {
+    "id": "018",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\018\\原文018.txt",
+    "detail": "原文018.txt"
+  },
+  {
+    "id": "019",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\019\\原文019.txt",
+    "detail": "原文019.txt"
+  },
+  {
+    "id": "019",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\019\\原文019.txt",
+    "detail": "原文019.txt"
+  },
+  {
+    "id": "020",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\020\\原文020.txt",
+    "detail": "原文020.txt"
+  },
+  {
+    "id": "020",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\020\\原文020.txt",
+    "detail": "原文020.txt"
+  },
+  {
+    "id": "021",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\021\\原文021.txt",
+    "detail": "原文021.txt"
+  },
+  {
+    "id": "021",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\021\\原文021.txt",
+    "detail": "原文021.txt"
+  },
+  {
+    "id": "022",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\022\\原文022.txt",
+    "detail": "原文022.txt"
+  },
+  {
+    "id": "022",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\022\\原文022.txt",
+    "detail": "原文022.txt"
+  },
+  {
+    "id": "023",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\023\\原文023.txt",
+    "detail": "原文023.txt"
+  },
+  {
+    "id": "023",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\023\\原文023.txt",
+    "detail": "原文023.txt"
+  },
+  {
+    "id": "024",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\024\\原文024.txt",
+    "detail": "原文024.txt"
+  },
+  {
+    "id": "024",
+    "lang": "ja",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\024\\ja.txt",
+    "issue": "almost_identical"
+  },
+  {
+    "id": "024",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\024\\原文024.txt",
+    "detail": "原文024.txt"
+  },
+  {
+    "id": "025",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\025\\原文025.txt",
+    "detail": "原文025.txt"
+  },
+  {
+    "id": "025",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\025\\原文025.txt",
+    "detail": "原文025.txt"
+  },
+  {
+    "id": "026",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\026\\原文026.txt",
+    "detail": "原文026.txt"
+  },
+  {
+    "id": "026",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\026\\原文026.txt",
+    "detail": "原文026.txt"
+  },
+  {
+    "id": "027",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\027\\原文027.txt",
+    "detail": "原文027.txt"
+  },
+  {
+    "id": "027",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\027\\原文027.txt",
+    "detail": "原文027.txt"
+  },
+  {
+    "id": "028",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\028\\原文028.txt",
+    "detail": "原文028.txt"
+  },
+  {
+    "id": "028",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\028\\原文028.txt",
+    "detail": "原文028.txt"
+  },
+  {
+    "id": "029",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\029\\原文029.txt",
+    "detail": "原文029.txt"
+  },
+  {
+    "id": "029",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\029\\原文029.txt",
+    "detail": "原文029.txt"
+  },
+  {
+    "id": "030",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\030\\原文030.txt",
+    "detail": "原文030.txt"
+  },
+  {
+    "id": "030",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\030\\原文030.txt",
+    "detail": "原文030.txt"
+  },
+  {
+    "id": "031",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\031\\原文031.txt",
+    "detail": "原文031.txt"
+  },
+  {
+    "id": "031",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\031\\原文031.txt",
+    "detail": "原文031.txt"
+  },
+  {
+    "id": "032",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\032\\原文032.txt",
+    "detail": "原文032.txt"
+  },
+  {
+    "id": "032",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\032\\原文032.txt",
+    "detail": "原文032.txt"
+  },
+  {
+    "id": "033",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\033\\原文033.txt",
+    "detail": "原文033.txt"
+  },
+  {
+    "id": "033",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\033\\原文033.txt",
+    "detail": "原文033.txt"
+  },
+  {
+    "id": "034",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\034\\原文034.txt",
+    "detail": "原文034.txt"
+  },
+  {
+    "id": "034",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\034\\原文034.txt",
+    "detail": "原文034.txt"
+  },
+  {
+    "id": "035",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\035\\原文035.txt",
+    "detail": "原文035.txt"
+  },
+  {
+    "id": "035",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\035\\原文035.txt",
+    "detail": "原文035.txt"
+  },
+  {
+    "id": "036",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\036\\原文036.txt",
+    "detail": "原文036.txt"
+  },
+  {
+    "id": "036",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\036\\原文036.txt",
+    "detail": "原文036.txt"
+  },
+  {
+    "id": "037",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\037\\原文037.txt",
+    "detail": "原文037.txt"
+  },
+  {
+    "id": "037",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\037\\原文037.txt",
+    "detail": "原文037.txt"
+  },
+  {
+    "id": "038",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\038\\原文038.txt",
+    "detail": "原文038.txt"
+  },
+  {
+    "id": "038",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\038\\原文038.txt",
+    "detail": "原文038.txt"
+  },
+  {
+    "id": "039",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\039\\原文039.txt",
+    "detail": "原文039.txt"
+  },
+  {
+    "id": "039",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\039\\原文039.txt",
+    "detail": "原文039.txt"
+  },
+  {
+    "id": "040",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\040\\原文040.txt",
+    "detail": "原文040.txt"
+  },
+  {
+    "id": "040",
+    "lang": "ja",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\040\\ja.txt",
+    "issue": "almost_identical"
+  },
+  {
+    "id": "040",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\040\\原文040.txt",
+    "detail": "原文040.txt"
+  },
+  {
+    "id": "041",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\041\\原文041.txt",
+    "detail": "原文041.txt"
+  },
+  {
+    "id": "041",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\041\\原文041.txt",
+    "detail": "原文041.txt"
+  },
+  {
+    "id": "042",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\042\\原文042.txt",
+    "detail": "原文042.txt"
+  },
+  {
+    "id": "042",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\042\\原文042.txt",
+    "detail": "原文042.txt"
+  },
+  {
+    "id": "043",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\043\\原文043.txt",
+    "detail": "原文043.txt"
+  },
+  {
+    "id": "043",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\043\\原文043.txt",
+    "detail": "原文043.txt"
+  },
+  {
+    "id": "044",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\044\\原文044.txt",
+    "detail": "原文044.txt"
+  },
+  {
+    "id": "044",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\044\\原文044.txt",
+    "detail": "原文044.txt"
+  },
+  {
+    "id": "045",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\045\\原文045.txt",
+    "detail": "原文045.txt"
+  },
+  {
+    "id": "045",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\045\\原文045.txt",
+    "detail": "原文045.txt"
+  },
+  {
+    "id": "046",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\046\\原文046.txt",
+    "detail": "原文046.txt"
+  },
+  {
+    "id": "046",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\046\\原文046.txt",
+    "detail": "原文046.txt"
+  },
+  {
+    "id": "047",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\047\\原文047.txt",
+    "detail": "原文047.txt"
+  },
+  {
+    "id": "047",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\047\\原文047.txt",
+    "detail": "原文047.txt"
+  },
+  {
+    "id": "048",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\048\\原文048.txt",
+    "detail": "原文048.txt"
+  },
+  {
+    "id": "048",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\048\\原文048.txt",
+    "detail": "原文048.txt"
+  },
+  {
+    "id": "049",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\049\\原文049.txt",
+    "detail": "原文049.txt"
+  },
+  {
+    "id": "049",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\049\\原文049.txt",
+    "detail": "原文049.txt"
+  },
+  {
+    "id": "050",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\050\\原文050.txt",
+    "detail": "原文050.txt"
+  },
+  {
+    "id": "050",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\050\\原文050.txt",
+    "detail": "原文050.txt"
+  },
+  {
+    "id": "051",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\051\\原文051.txt",
+    "detail": "原文051.txt"
+  },
+  {
+    "id": "051",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\051\\原文051.txt",
+    "detail": "原文051.txt"
+  },
+  {
+    "id": "052",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\052\\原文052.txt",
+    "detail": "原文052.txt"
+  },
+  {
+    "id": "052",
+    "lang": "ja",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\052\\ja.txt",
+    "issue": "almost_identical"
+  },
+  {
+    "id": "052",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\052\\原文052.txt",
+    "detail": "原文052.txt"
+  },
+  {
+    "id": "053",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\053\\原文053.txt",
+    "detail": "原文053.txt"
+  },
+  {
+    "id": "053",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\053\\原文053.txt",
+    "detail": "原文053.txt"
+  },
+  {
+    "id": "054",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\054\\原文054.txt",
+    "detail": "原文054.txt"
+  },
+  {
+    "id": "054",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\054\\原文054.txt",
+    "detail": "原文054.txt"
+  },
+  {
+    "id": "055",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\055\\原文055.txt",
+    "detail": "原文055.txt"
+  },
+  {
+    "id": "055",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\055\\原文055.txt",
+    "detail": "原文055.txt"
+  },
+  {
+    "id": "056",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\056\\原文056.txt",
+    "detail": "原文056.txt"
+  },
+  {
+    "id": "056",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\056\\原文056.txt",
+    "detail": "原文056.txt"
+  },
+  {
+    "id": "057",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\057\\原文057.txt",
+    "detail": "原文057.txt"
+  },
+  {
+    "id": "057",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\057\\原文057.txt",
+    "detail": "原文057.txt"
+  },
+  {
+    "id": "058",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\058\\原文058.txt",
+    "detail": "原文058.txt"
+  },
+  {
+    "id": "058",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\058\\原文058.txt",
+    "detail": "原文058.txt"
+  },
+  {
+    "id": "059",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\059\\原文059.txt",
+    "detail": "原文059.txt"
+  },
+  {
+    "id": "059",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\059\\原文059.txt",
+    "detail": "原文059.txt"
+  },
+  {
+    "id": "060",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\060\\原文060.txt",
+    "detail": "原文060.txt"
+  },
+  {
+    "id": "060",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\060\\原文060.txt",
+    "detail": "原文060.txt"
+  },
+  {
+    "id": "061",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\061\\原文061.txt",
+    "detail": "原文061.txt"
+  },
+  {
+    "id": "061",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\061\\原文061.txt",
+    "detail": "原文061.txt"
+  },
+  {
+    "id": "062",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\062\\原文062.txt",
+    "detail": "原文062.txt"
+  },
+  {
+    "id": "062",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\062\\原文062.txt",
+    "detail": "原文062.txt"
+  },
+  {
+    "id": "063",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\063\\原文063.txt",
+    "detail": "原文063.txt"
+  },
+  {
+    "id": "063",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\063\\原文063.txt",
+    "detail": "原文063.txt"
+  },
+  {
+    "id": "064",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\064\\原文064.txt",
+    "detail": "原文064.txt"
+  },
+  {
+    "id": "064",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\064\\原文064.txt",
+    "detail": "原文064.txt"
+  },
+  {
+    "id": "065",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\065\\原文065.txt",
+    "detail": "原文065.txt"
+  },
+  {
+    "id": "065",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\065\\原文065.txt",
+    "detail": "原文065.txt"
+  },
+  {
+    "id": "066",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\066\\原文066.txt",
+    "detail": "原文066.txt"
+  },
+  {
+    "id": "066",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\066\\原文066.txt",
+    "detail": "原文066.txt"
+  },
+  {
+    "id": "067",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\067\\原文067.txt",
+    "detail": "原文067.txt"
+  },
+  {
+    "id": "067",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\067\\原文067.txt",
+    "detail": "原文067.txt"
+  },
+  {
+    "id": "068",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\068\\原文068.txt",
+    "detail": "原文068.txt"
+  },
+  {
+    "id": "068",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\068\\原文068.txt",
+    "detail": "原文068.txt"
+  },
+  {
+    "id": "069",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\069\\原文069.txt",
+    "detail": "原文069.txt"
+  },
+  {
+    "id": "069",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\069\\原文069.txt",
+    "detail": "原文069.txt"
+  },
+  {
+    "id": "070",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\070\\原文070.txt",
+    "detail": "原文070.txt"
+  },
+  {
+    "id": "070",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\070\\原文070.txt",
+    "detail": "原文070.txt"
+  },
+  {
+    "id": "071",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\071\\原文071.txt",
+    "detail": "原文071.txt"
+  },
+  {
+    "id": "071",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\071\\原文071.txt",
+    "detail": "原文071.txt"
+  },
+  {
+    "id": "072",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\072\\原文072.txt",
+    "detail": "原文072.txt"
+  },
+  {
+    "id": "072",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\072\\原文072.txt",
+    "detail": "原文072.txt"
+  },
+  {
+    "id": "073",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\073\\原文073.txt",
+    "detail": "原文073.txt"
+  },
+  {
+    "id": "073",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\073\\原文073.txt",
+    "detail": "原文073.txt"
+  },
+  {
+    "id": "074",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\074\\原文074.txt",
+    "detail": "原文074.txt"
+  },
+  {
+    "id": "074",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\074\\原文074.txt",
+    "detail": "原文074.txt"
+  },
+  {
+    "id": "075",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\075\\原文075.txt",
+    "detail": "原文075.txt"
+  },
+  {
+    "id": "075",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\075\\原文075.txt",
+    "detail": "原文075.txt"
+  },
+  {
+    "id": "076",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\076\\原文076.txt",
+    "detail": "原文076.txt"
+  },
+  {
+    "id": "076",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\076\\原文076.txt",
+    "detail": "原文076.txt"
+  },
+  {
+    "id": "077",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\077\\原文077.txt",
+    "detail": "原文077.txt"
+  },
+  {
+    "id": "077",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\077\\原文077.txt",
+    "detail": "原文077.txt"
+  },
+  {
+    "id": "078",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\078\\原文078.txt",
+    "detail": "原文078.txt"
+  },
+  {
+    "id": "078",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\078\\原文078.txt",
+    "detail": "原文078.txt"
+  },
+  {
+    "id": "079",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\079\\原文079.txt",
+    "detail": "原文079.txt"
+  },
+  {
+    "id": "079",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\079\\原文079.txt",
+    "detail": "原文079.txt"
+  },
+  {
+    "id": "080",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\080\\原文080.txt",
+    "detail": "原文080.txt"
+  },
+  {
+    "id": "080",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\080\\原文080.txt",
+    "detail": "原文080.txt"
+  },
+  {
+    "id": "081",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\081\\原文081.txt",
+    "detail": "原文081.txt"
+  },
+  {
+    "id": "081",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\081\\原文081.txt",
+    "detail": "原文081.txt"
+  },
+  {
+    "id": "082",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\082\\原文082.txt",
+    "detail": "原文082.txt"
+  },
+  {
+    "id": "082",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\082\\原文082.txt",
+    "detail": "原文082.txt"
+  },
+  {
+    "id": "083",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\083\\原文083.txt",
+    "detail": "原文083.txt"
+  },
+  {
+    "id": "083",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\083\\原文083.txt",
+    "detail": "原文083.txt"
+  },
+  {
+    "id": "084",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\084\\原文084.txt",
+    "detail": "原文084.txt"
+  },
+  {
+    "id": "084",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\084\\原文084.txt",
+    "detail": "原文084.txt"
+  },
+  {
+    "id": "085",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\085\\原文085.txt",
+    "detail": "原文085.txt"
+  },
+  {
+    "id": "085",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\085\\原文085.txt",
+    "detail": "原文085.txt"
+  },
+  {
+    "id": "086",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\086\\原文086.txt",
+    "detail": "原文086.txt"
+  },
+  {
+    "id": "086",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\086\\原文086.txt",
+    "detail": "原文086.txt"
+  },
+  {
+    "id": "087",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\087\\原文087.txt",
+    "detail": "原文087.txt"
+  },
+  {
+    "id": "087",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\087\\原文087.txt",
+    "detail": "原文087.txt"
+  },
+  {
+    "id": "088",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\088\\原文088.txt",
+    "detail": "原文088.txt"
+  },
+  {
+    "id": "088",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\088\\原文088.txt",
+    "detail": "原文088.txt"
+  },
+  {
+    "id": "089",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\089\\原文089.txt",
+    "detail": "原文089.txt"
+  },
+  {
+    "id": "089",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\089\\原文089.txt",
+    "detail": "原文089.txt"
+  },
+  {
+    "id": "090",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\090\\原文090.txt",
+    "detail": "原文090.txt"
+  },
+  {
+    "id": "090",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\090\\原文090.txt",
+    "detail": "原文090.txt"
+  },
+  {
+    "id": "091",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\091\\原文091.txt",
+    "detail": "原文091.txt"
+  },
+  {
+    "id": "091",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\091\\原文091.txt",
+    "detail": "原文091.txt"
+  },
+  {
+    "id": "092",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\092\\原文092.txt",
+    "detail": "原文092.txt"
+  },
+  {
+    "id": "092",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\092\\原文092.txt",
+    "detail": "原文092.txt"
+  },
+  {
+    "id": "093",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\093\\原文093.txt",
+    "detail": "原文093.txt"
+  },
+  {
+    "id": "093",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\093\\原文093.txt",
+    "detail": "原文093.txt"
+  },
+  {
+    "id": "094",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\094\\原文094.txt",
+    "detail": "原文094.txt"
+  },
+  {
+    "id": "094",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\094\\原文094.txt",
+    "detail": "原文094.txt"
+  },
+  {
+    "id": "095",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\095\\原文095.txt",
+    "detail": "原文095.txt"
+  },
+  {
+    "id": "095",
+    "lang": "ja",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\095\\ja.txt",
+    "issue": "almost_identical"
+  },
+  {
+    "id": "095",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\095\\原文095.txt",
+    "detail": "原文095.txt"
+  },
+  {
+    "id": "096",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\096\\原文096.txt",
+    "detail": "原文096.txt"
+  },
+  {
+    "id": "096",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\096\\原文096.txt",
+    "detail": "原文096.txt"
+  },
+  {
+    "id": "097",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\097\\原文097.txt",
+    "detail": "原文097.txt"
+  },
+  {
+    "id": "097",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\097\\原文097.txt",
+    "detail": "原文097.txt"
+  },
+  {
+    "id": "098",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\098\\原文098.txt",
+    "detail": "原文098.txt"
+  },
+  {
+    "id": "098",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\098\\原文098.txt",
+    "detail": "原文098.txt"
+  },
+  {
+    "id": "099",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\099\\原文099.txt",
+    "detail": "原文099.txt"
+  },
+  {
+    "id": "099",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\099\\原文099.txt",
+    "detail": "原文099.txt"
+  },
+  {
+    "id": "100",
+    "lang": "ja",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\100\\原文100.txt",
+    "detail": "原文100.txt"
+  },
+  {
+    "id": "100",
+    "lang": "en",
+    "issue": "info_src_chosen",
+    "path": "C:\\Users\\Nicol\\musiam-front\\src\\data\\kannon100\\100\\原文100.txt",
+    "detail": "原文100.txt"
+  }
+]

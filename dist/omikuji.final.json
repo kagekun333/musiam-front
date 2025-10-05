@@ -1,0 +1,3002 @@
+[
+  {
+    "id": 1,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第一　大吉",
+    "header_en": "First: Great Luck",
+    "lines": [
+      {
+        "orig": "七寶浮圖塔",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "高峰頂上安",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "眾人皆仰望",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "莫作等閒看",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 2,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第二　小吉",
+    "header_en": "Second: Small Luck",
+    "lines": [
+      {
+        "orig": "月被浮雲翳",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "立事自昏迷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "幸乞隂公祐",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "何慮不開眉",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 3,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第三　凶",
+    "header_en": "Third: Bad Luck",
+    "lines": [
+      {
+        "orig": "愁惱損忠良",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "青霄一炷香",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雖然防小過",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "閑慮覺時長",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 4,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四　吉",
+    "header_en": "Fourth: Good Luck",
+    "lines": [
+      {
+        "orig": "累有興雲志",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "君恩祿未封",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "若逢侯手印",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "好事始總總",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 5,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五　凶",
+    "header_en": "Fifth: Bad Luck",
+    "lines": [
+      {
+        "orig": "家道未能昌",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "危危保禍殃",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "暗雲侵月桂",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "佳人一炷香",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 6,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第六　末吉",
+    "header_en": "Sixth: Later Luck",
+    "lines": [
+      {
+        "orig": "宅墓鬼凶多",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "人事有爻訛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "傷財防損失",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "祈福始中和",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 7,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七　凶",
+    "header_en": "Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "登舟待便風",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "月色暗朦朧",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "欲輾香輪去",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "高山千萬重",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 8,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八　大吉",
+    "header_en": "Eighth: Great Luck",
+    "lines": [
+      {
+        "orig": "勿頭中見尾",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "文華須得理",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "禾刀自偶然",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "當遇非常喜",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 9,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九　大吉",
+    "header_en": "Ninth: Great Luck",
+    "lines": [
+      {
+        "orig": "有名須得遇",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "三望一朝遷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "貴人來指處",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "華菓應時鮮",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 10,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十　大吉",
+    "header_en": "Tenth: Great Luck",
+    "lines": [
+      {
+        "orig": "舊用多成破",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "新更始見財",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "改求雲外望",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "枯木遇春開",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 11,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十一　大吉",
+    "header_en": "Eleven: Great Luck",
+    "lines": [
+      {
+        "orig": "有祿興家業",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "文華達帝都",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲中乘好箭",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "兼得貴人扶",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 12,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十二　大吉",
+    "header_en": "Twelve: Great Luck",
+    "lines": [
+      {
+        "orig": "楊柳遇春時",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "殘花發舊枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "重重霜雪裡",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "黃金色更輝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 13,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十三　大吉",
+    "header_en": "Thirteen: Great Luck",
+    "lines": [
+      {
+        "orig": "手把大陽輝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "東君發舊枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "稼苗方欲秀",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "猶更上雲梯",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 14,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第十四　末吉",
+    "header_en": "Fourteen: Later Luck",
+    "lines": [
+      {
+        "orig": "玉石未分時",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "憂心轉更悲",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前途通大道",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "花發應殘枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 15,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第十五　凶",
+    "header_en": "Fifteen: Bad Luck",
+    "lines": [
+      {
+        "orig": "年乖數亦孤",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "久病未能蘇",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "岸危舟未發",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "龍臥失明珠",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 16,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第十六　吉",
+    "header_en": "Sixteen: Good Luck",
+    "lines": [
+      {
+        "orig": "破改重成望",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前途喜亦寧",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "貴人相助處",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "祿馬照前程",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 17,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第十七　凶",
+    "header_en": "Seventeen: Bad Luck",
+    "lines": [
+      {
+        "orig": "怪異防憂惱",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "人宅見分離",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "惜華還值雨",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "杯酒惹閑非",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 18,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第十八　吉",
+    "header_en": "Eighteen: Good Luck",
+    "lines": [
+      {
+        "orig": "離暗出明時",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "麻衣變綠衣",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "舊憂終是退",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "遇祿應交輝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 19,
+    "rank_ja": "末小吉",
+    "rank_en": "Slight Later Luck",
+    "header_ja": "第十九　末小吉",
+    "header_en": "Nineteen: Slight Later Luck",
+    "lines": [
+      {
+        "orig": "家道生荊棘",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "兒孫防虎威",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "香前祈福厚",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方得免分離",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 20,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十　吉",
+    "header_en": "Twenty: Good Luck",
+    "lines": [
+      {
+        "orig": "月出漸分明",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "家財每每興",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "何言先有滯",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "更變立功名",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 21,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十一　吉",
+    "header_en": "Twenty-First: Good Luck",
+    "lines": [
+      {
+        "orig": "洗出經年否",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "光華得再清",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "所求終吉利",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "重日照前程",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 22,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十二　吉",
+    "header_en": "Twenty-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "漸漸濃雲散",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "看看月再明",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "逢春華菓秀",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雨過竹重青",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 23,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十三　吉",
+    "header_en": "Twenty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "紅雲隨步起",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一箭中青霄",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "鹿行千里遠",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "爭知去路遙",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 24,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第二十四　凶",
+    "header_en": "Twenty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "三女莫相逢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "盟言說未通",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "門裡心肝掛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "縞素子重重",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 25,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十五　吉",
+    "header_en": "Twenty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "枯木逢春生",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前途必利亨",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "亦得佳人箭",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "乘車祿自行",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 26,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十六　吉",
+    "header_en": "Twenty-Sixth: Good Luck",
+    "lines": [
+      {
+        "orig": "將軍有異聲",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "進兵萬里程",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "爭知臨敵處",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "道勝却虛名",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 27,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十七　吉",
+    "header_en": "Twenty-Seventh: Good Luck",
+    "lines": [
+      {
+        "orig": "望祿應重山",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "花紅喜悅顏",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "舉頭看皎月",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "漸出黑雲間",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 28,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第二十八　凶",
+    "header_en": "Twenty-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "意速無船渡",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "波深必誤身",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "切須回舊路",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方可免災迍",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 29,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十九　吉",
+    "header_en": "Twenty-Ninth: Good Luck",
+    "lines": [
+      {
+        "orig": "憂轗漸消融",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "求名得再通",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "寶財臨祿位",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "當遇主人公",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 30,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第三十　半吉",
+    "header_en": "Thirty: Mixed Luck",
+    "lines": [
+      {
+        "orig": "仙鶴立高枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "防他暗箭虧",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "井畔剛刀利",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "戶內更防危",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 31,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第三十一　末吉",
+    "header_en": "Thirty-First: Later Luck",
+    "lines": [
+      {
+        "orig": "鯤鯨未變時",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "且守碧潭溪",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "風雲興巨浪",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一息過天涯",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 32,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十二　吉",
+    "header_en": "Thirty-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "似玉藏深石",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "休將故眼看",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一朝良匠別",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方見寶光寒",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 33,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十三　吉",
+    "header_en": "Thirty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "枯木逢春艷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "芳菲再發林",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲間方見月",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前遇貴人欽",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 34,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十四　吉",
+    "header_en": "Thirty-Fourth: Good Luck",
+    "lines": [
+      {
+        "orig": "臘木春將至",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "芳菲喜再新",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "鯤鯨興巨浪",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "舉鉤祿為真",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 35,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十五　吉",
+    "header_en": "Thirty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "射鹿須乘箭",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "故僧引路歸",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "遇道同仙籍",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "光華映晚暉",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 36,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第三十六　末吉",
+    "header_en": "Thirty-Sixth: Later Luck",
+    "lines": [
+      {
+        "orig": "先損後有益",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "如月之剝蝕",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "玉兔待重生",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "光華當滿室",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 37,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第三十七　半吉",
+    "header_en": "Thirty-Seventh: Mixed Luck",
+    "lines": [
+      {
+        "orig": "陰靉未能通",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "求名亦未逢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "幸然須有變",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一箭中雙鴻",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 38,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第三十八　半吉",
+    "header_en": "Thirty-Eighth: Mixed Luck",
+    "lines": [
+      {
+        "orig": "月照天書靜",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲生霧彩霞",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "久想離庭客",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "無事惹咨嗟",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 39,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第三十九　凶",
+    "header_en": "Thirty-Ninth: Bad Luck",
+    "lines": [
+      {
+        "orig": "望用方心腹",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "家鄉被火災",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "憂危三五度",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "由損斷頭財",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 40,
+    "rank_ja": "末小吉",
+    "rank_en": "Slight Later Luck",
+    "header_ja": "第四十　末小吉",
+    "header_en": "Forty: Slight Later Luck",
+    "lines": [
+      {
+        "orig": "中正方成道",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "姦邪恐惹愆",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "壺中盛妙藥",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "非久去煩煎",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 41,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第四十一　末吉",
+    "header_en": "Forty-First: Later Luck",
+    "lines": [
+      {
+        "orig": "有物不周旋",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "須防損半邊",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "家鄉煙火裡",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "祈福始安然",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 42,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十二　吉",
+    "header_en": "Forty-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "桂華春將到",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲天好進程",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "貴人相遇處",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "暗月再分明",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 43,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十三　吉",
+    "header_en": "Forty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "月桂將相滿",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "追鹿映山溪",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "貴人乘遠箭",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "好事始相宜",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 44,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十四　吉",
+    "header_en": "Forty-Fourth: Good Luck",
+    "lines": [
+      {
+        "orig": "盤中黑白子",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一著要先機",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "天龍降甘澤",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "喜出舊根基",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 45,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十五　吉",
+    "header_en": "Forty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "有意興高顯",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "祿馬引前程",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "得遇雲中箭",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "芝蘭滿路生",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 46,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第四十六　凶",
+    "header_en": "Forty-Sixth: Bad Luck",
+    "lines": [
+      {
+        "orig": "雷發震天昏",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "佳人獨掩門",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "交加文書上",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "無事也遭迍",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 47,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十七　吉",
+    "header_en": "Forty-Seventh: Good Luck",
+    "lines": [
+      {
+        "orig": "更望身前立",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "何期在晚成",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "若遇重山去",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "財祿自相迎",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 48,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第四十八　小吉",
+    "header_en": "Forty-Eighth: Small Luck",
+    "lines": [
+      {
+        "orig": "見祿隔前溪",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "勞心休更迷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一朝逢好渡",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "鸞鳳入雲飛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 49,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十九　吉",
+    "header_en": "Forty-Ninth: Good Luck",
+    "lines": [
+      {
+        "orig": "正好中秋月",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "蟾蜍皎潔間",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "暗雲知何處",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "故故兩相攀",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 50,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十　吉",
+    "header_en": "Fifty: Good Luck",
+    "lines": [
+      {
+        "orig": "有達宜更變",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "重山利政逢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前途相偶合",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "財祿保亨通",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 51,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十一　吉",
+    "header_en": "Fifty-First: Good Luck",
+    "lines": [
+      {
+        "orig": "修進甚功辛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "勞生未得時",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "騰身遊碧漢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方得遇高枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 52,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十二　凶",
+    "header_en": "Fifty-Second: Bad Luck",
+    "lines": [
+      {
+        "orig": "有僭須惹訟",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "兼有事交加",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "門裡防人危",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "災臨莫嘆嗟",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 53,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十三　吉",
+    "header_en": "Fifty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "久困漸能安",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲書降印權",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "殘花終結實",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "時亨祿自遷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 54,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十四　凶",
+    "header_en": "Fifty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "身同意不同",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "月蝕暗長空",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "輪雖常在手",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "魚水未相逢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 55,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十五　吉",
+    "header_en": "Fifty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "雲散月重明",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "天書得誌誠",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雖然多阻滯",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "花發再重榮",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 56,
+    "rank_ja": "末小吉",
+    "rank_en": "Slight Later Luck",
+    "header_ja": "第五十六　末小吉",
+    "header_en": "Fifty-Sixth: Slight Later Luck",
+    "lines": [
+      {
+        "orig": "生涯喜又憂",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "未老先白頭",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "勞心千百度",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "芳遇貴人留",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 57,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十七　吉",
+    "header_en": "Fifty-Seventh: Good Luck",
+    "lines": [
+      {
+        "orig": "欲渡長江闊",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "波深未自儔",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前津逢浪靜",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "重整鉤鰲鉤",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 58,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十八　凶",
+    "header_en": "Fifty-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "有徑江海隔",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "車行峻嶺危",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "亦防多進退",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "猶恐小人虧",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 59,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十九　凶",
+    "header_en": "Fifty-Ninth: Bad Luck",
+    "lines": [
+      {
+        "orig": "去住心無定",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "行藏亦未寧",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一輪清皎潔",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "却被黑雲乘",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 60,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第六十　小吉",
+    "header_en": "Sixty: Small Luck",
+    "lines": [
+      {
+        "orig": "高危安可涉",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "平坦是延年",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "守道當逢泰",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "風雲不偶然",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 61,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第六十一　半吉",
+    "header_en": "Sixty-First: Mixed Luck",
+    "lines": [
+      {
+        "orig": "舊愆何日解",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "戶內保嬋娟",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "要逢十一口",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "遇鼠過牛邊",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 62,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第六十二　大吉",
+    "header_en": "Sixty-Second: Great Luck",
+    "lines": [
+      {
+        "orig": "災轗時時退",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "名顯四方揚",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "改故重乘祿",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "昴高福自昌",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 63,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十三　凶",
+    "header_en": "Sixty-Third: Bad Luck",
+    "lines": [
+      {
+        "orig": "何故生荊棘",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "家人意漸疏",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "久困重輪下",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "黃金未出渠",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 64,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十四　凶",
+    "header_en": "Sixty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "安居且慮危",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "情深主別離",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "風飄波浪急",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "鴛鴦各自飛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 65,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第六十五　末吉",
+    "header_en": "Sixty-Fifth: Later Luck",
+    "lines": [
+      {
+        "orig": "苦病兼防辱",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "乘危亦未穌",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "若見一陽後",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方可作良圖",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 66,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十六　凶",
+    "header_en": "Sixty-Sixth: Bad Luck",
+    "lines": [
+      {
+        "orig": "水滯少波濤",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "飛鴻落羽毛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "重憂心緒亂",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "閑事惹風騷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 67,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十七　凶",
+    "header_en": "Sixty-Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "枯木未生枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "獨步上雲岐",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "豈知身未穩",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "獨自惹閑非",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 68,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第六十八　吉",
+    "header_en": "Sixty-Eighth: Good Luck",
+    "lines": [
+      {
+        "orig": "異夢生英傑",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前來事可疑",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "芳菲春日暖",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "依舊發殘枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 69,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十九　凶",
+    "header_en": "Sixty-Ninth: Bad Luck",
+    "lines": [
+      {
+        "orig": "明月暗雲浮",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "花紅一半枯",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "惹事傷心處",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "行舟莫遠圖",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 70,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十　凶",
+    "header_en": "Seventy: Bad Luck",
+    "lines": [
+      {
+        "orig": "雷發庭前草",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "炎火向天飛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "一心來趕祿",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "爭奈掩朱扉",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 71,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十一　凶",
+    "header_en": "Seventy-First: Bad Luck",
+    "lines": [
+      {
+        "orig": "道業未成時",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "何期兩不宜",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "事煩心緒亂",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "做徘徊思",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 72,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十二　吉",
+    "header_en": "Seventy-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "戶內防重厄",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "花菓見分枝",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "嚴霜纔過後",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方可始相宜",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 73,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十三　吉",
+    "header_en": "Seventy-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "久暗漸分明",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "登江綠水澄",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "芝書從遠降",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "終得異人成",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 74,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十四　凶",
+    "header_en": "Seventy-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "蛇虎正交羅",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "牛生二尾多",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "交歲方成慶",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "上下不能和",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 75,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十五　凶",
+    "header_en": "Seventy-Fifth: Bad Luck",
+    "lines": [
+      {
+        "orig": "孤舟欲過岸",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "浪急渡人空",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "女人立流水",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "望月意情濃",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 76,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十六　吉",
+    "header_en": "Seventy-Sixth: Good Luck",
+    "lines": [
+      {
+        "orig": "富貴天之祐",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "何須苦用心",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前程應顯跡",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "久用得高臨",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 77,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十七　凶",
+    "header_en": "Seventy-Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "累滯未能穌",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "求名莫遠圖",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "登舟波浪急",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "咫尺隔天衢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 78,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第七十八　大吉",
+    "header_en": "Seventy-Eighth: Great Luck",
+    "lines": [
+      {
+        "orig": "但存公道正",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "何愁理去忠",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "松柏蒼蒼翠",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前山祿馬重",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 79,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十九　吉",
+    "header_en": "Seventy-Ninth: Good Luck",
+    "lines": [
+      {
+        "orig": "殘月未還光",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "樽前非語傷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "戶中有人厄",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "祈福保青陽",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 80,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十　大吉",
+    "header_en": "Eighty: Great Luck",
+    "lines": [
+      {
+        "orig": "深山多養道",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "忠正帝王宣",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "鳳遂鸞飛去",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "昇高過九天",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 81,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第八十一　小吉",
+    "header_en": "Eighty-First: Small Luck",
+    "lines": [
+      {
+        "orig": "道合須成合",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "先憂事更多",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "所求財寶盛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "更變得中和",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 82,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十二　凶",
+    "header_en": "Eighty-Second: Bad Luck",
+    "lines": [
+      {
+        "orig": "火發應連天",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "新愁惹舊愆",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "欲求千里外",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "要渡更無船",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 83,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十三　凶",
+    "header_en": "Eighty-Third: Bad Luck",
+    "lines": [
+      {
+        "orig": "舉步出雲端",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "高枝未可攀",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "昇頭看皎月",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "猶在黑雲間",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 84,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十四　凶",
+    "header_en": "Eighty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "否極方無泰",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "花開值晚秋",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "人情不調備",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "財寶鬼來偷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 85,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十五　大吉",
+    "header_en": "Eighty-Fifth: Great Luck",
+    "lines": [
+      {
+        "orig": "望用何愁晚",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "求名漸得寧",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲梯終有望",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "歸路入蓬瀛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 86,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十六　大吉",
+    "header_en": "Eighty-Sixth: Great Luck",
+    "lines": [
+      {
+        "orig": "花發應陽臺",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "車行進寶財",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "執文朝帝殿",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "走馬聽聲雷",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 87,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十七　大吉",
+    "header_en": "Eighty-Seventh: Great Luck",
+    "lines": [
+      {
+        "orig": "鑿石方逢玉",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "淘沙始見金",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "青霄終有路",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "只恐不堅心",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 88,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十八　凶",
+    "header_en": "Eighty-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "作事不和同",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "臨危更主凶",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "佳人生苦根",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "閑慮兩三重",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 89,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十九　大吉",
+    "header_en": "Eighty-Ninth: Great Luck",
+    "lines": [
+      {
+        "orig": "一片無瑕玉",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "從今好琢磨",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "得遇高人識",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方逢喜氣多",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 90,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九十　大吉",
+    "header_en": "Ninety: Great Luck",
+    "lines": [
+      {
+        "orig": "一信向天飛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "秦川舟自歸",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前途成好事",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "應得貴人推",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 91,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十一　吉",
+    "header_en": "Ninety-First: Good Luck",
+    "lines": [
+      {
+        "orig": "改變前途去",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "月桂又逢圓",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "雲中乘祿至",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "凡事可宜先",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 92,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十二　吉",
+    "header_en": "Ninety-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "自幼常為旅",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "逢春駿馬驕",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "前程宜進步",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "得箭降青霄",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 93,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十三　吉",
+    "header_en": "Ninety-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "有魚臨旱池",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "跳躍入波濤",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "隔中須有望",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "先且慮塵勞",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 94,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第九十四　半吉",
+    "header_en": "Ninety-Fourth: Mixed Luck",
+    "lines": [
+      {
+        "orig": "事忌樽前語",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "人防小輩交",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "幸乞陰公祐",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "方免事敵爻",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 95,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十五　吉",
+    "header_en": "Ninety-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "志氣勤修業",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "祿位未造逢",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "若聞金雞語",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "乘船得便風",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 96,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九十六　大吉",
+    "header_en": "Ninety-Sixth: Great Luck",
+    "lines": [
+      {
+        "orig": "雞逐鳳同飛",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "高林整羽儀",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "棹舟須濟岸",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "寶貨滿船歸",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 97,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第九十七　凶",
+    "header_en": "Ninety-Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "霧罩重樓屋",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "佳人水上行",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "白雲歸去路",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "不見月波澄",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 98,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第九十八　凶",
+    "header_en": "Ninety-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "欲理新絲亂",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "閑愁足是非",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "只困羅網裡",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "相見幾人悲",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 99,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九十九　大吉",
+    "header_en": "Ninety-Ninth: Great Luck",
+    "lines": [
+      {
+        "orig": "紅日當門照",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "暗月再重圓",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "遇珍須得寶",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "頗有稱心田",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 100,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第百　凶",
+    "header_en": "One Hundredth: Bad Luck",
+    "lines": [
+      {
+        "orig": "祿走白雲間",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "攜琴走遠山",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "不遇神仙面",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      },
+      {
+        "orig": "空惹意闌珊",
+        "ja": "（訳準備中）",
+        "en": "TBD"
+      }
+    ],
+    "tail": []
+  }
+]

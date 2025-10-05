@@ -1,0 +1,18 @@
+{
+  "Wish": ["Wishes", "Desire", "Hope", "Hopes", "Intention", "Petition"],
+  "Health": ["Well-being", "Condition", "Recovery", "Convalescence"],
+  "Lost Items": ["Lost Item", "Missing Item", "Lost Property", "Misplaced Item", "Lost-and-found"],
+  "Person Awaited": ["Awaited Person", "Person awaited", "Expected Person", "Expected Visitor", "The one you are waiting for"],
+  "New Home & Moving": ["New Home", "New House", "House Building", "Building a House", "Moving", "Move", "Relocation (home)", "New Home & Relocation"],
+  "Travel": ["Trip", "Journey", "Voyage", "Itinerary"],
+  "Business": ["Trade", "Commerce", "Sales", "Dealings", "Venture"],
+  "Studies": ["Study", "Academics", "Schoolwork", "Exams", "Learning"],
+  "Market": ["Markets", "Market Trend", "Price Trend", "Stock", "Share Market"],
+  "Dispute": ["Conflict", "Lawsuit", "Litigation", "Quarrel", "Contest"],
+  "Love": ["Romance", "Relationship", "Affection", "Dating", "Partnership"],
+  "Relocation": ["Moving House", "Change of Residence", "Resettlement", "Move"],
+  "Childbirth": ["Delivery", "Birth", "Maternity", "Labor"],
+  "Illness": ["Sickness", "Disease", "Ailment", "Health (Illness)"],
+  "Marriage": ["Match", "Marriage Talk", "Proposal", "Engagement", "Marriage & Relationship"],
+  "Work": ["Job", "Occupation", "Employment", "Duties", "Career"]
+}

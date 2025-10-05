@@ -1,0 +1,2804 @@
+musiam-front
+├── .clinerules
+├── .github
+│   ├── ISSUE_TEMPLATE
+│   │   ├── bug.yml
+│   │   └── feature.yml
+│   ├── workflows
+│   │   ├── notify-dashboard-daily.yml
+│   │   ├── notify-dashboard-kpi.yml
+│   │   ├── notify-dashboard.yml
+│   │   ├── quality.yml
+│   │   ├── release-please.yml
+│   │   └── weekly-digest.yml
+│   ├── CODEOWNERS
+│   └── pull_request_template.md
+├── .husky
+│   └── commit-msg
+├── .musiam
+│   ├── ops
+│   │   ├── feature-ledger.yaml
+│   │   └── preflight.js
+│   ├── reports
+│   │   ├── QUESTIONS.md
+│   │   ├── step-A.md
+│   │   └── step-B.md
+│   ├── rules
+│   │   └── locks.yaml
+│   ├── snapshot
+│   │   ├── components
+│   │   │   └── Analytics.tsx
+│   │   ├── lib
+│   │   │   ├── analytics.ts
+│   │   │   └── data.ts
+│   │   ├── works
+│   │   │   ├── covers
+│   │   │   │   ├── amazon_B0CW1JNY9Z.jpg
+│   │   │   │   ├── amazon_B0D8JJSSLV.jpg
+│   │   │   │   ├── amazon_B0DH6H6L8W.jpg
+│   │   │   │   ├── amazon_B0DMY6JQGK.jpg
+│   │   │   │   ├── amazon_B0DVMSQYV7.jpg
+│   │   │   │   ├── amazon_B0DVMZHQ1G.jpg
+│   │   │   │   ├── amazon_B0DVQCSWW7.jpg
+│   │   │   │   ├── amazon_B0DVQVD9F8.jpg
+│   │   │   │   ├── amazon_B0DVVGRRC9.jpg
+│   │   │   │   ├── amazon_B0DVXQ3QDY.jpg
+│   │   │   │   ├── amazon_B0DVZN6LGJ.jpg
+│   │   │   │   ├── amazon_B0DW17W6CS.jpg
+│   │   │   │   ├── amazon_B0DW1DSF6F.jpg
+│   │   │   │   ├── amazon_B0DW1JVWMZ.jpg
+│   │   │   │   ├── amazon_B0DW1LDFH8.jpg
+│   │   │   │   ├── amazon_B0DW2FQJ7C.jpg
+│   │   │   │   ├── amazon_B0DW661NJH.jpg
+│   │   │   │   ├── amazon_B0DW6B1TG8.jpg
+│   │   │   │   ├── amazon_B0DWFYCHWG.jpg
+│   │   │   │   ├── amazon_B0DWG3ZDS5.jpg
+│   │   │   │   ├── amazon_B0DWHJBH11.jpg
+│   │   │   │   ├── amazon_B0DWHKYS1Q.jpg
+│   │   │   │   ├── amazon_B0DWJB9N9R.jpg
+│   │   │   │   ├── amazon_B0DWKKW2BL.jpg
+│   │   │   │   ├── amazon_B0DWKKYFYQ.jpg
+│   │   │   │   ├── amazon_B0DWLM6TCP.jpg
+│   │   │   │   ├── amazon_B0DWLMJ9VX.jpg
+│   │   │   │   ├── amazon_B0DWM1H64J.jpg
+│   │   │   │   ├── amazon_B0DWPKQHS1.jpg
+│   │   │   │   ├── amazon_B0DWQNMH26.jpg
+│   │   │   │   ├── amazon_B0DWT68WCS.jpg
+│   │   │   │   ├── amazon_B0DWV3Q75N.jpg
+│   │   │   │   ├── amazon_B0DWV4PP4C.jpg
+│   │   │   │   ├── amazon_B0DWZ1XDSL.jpg
+│   │   │   │   ├── amazon_B0DWZKKKKQ.jpg
+│   │   │   │   ├── amazon_B0DX3GVLP2.jpg
+│   │   │   │   ├── amazon_B0DX3RFWYR.jpg
+│   │   │   │   ├── amazon_B0DX4HPVCS.jpg
+│   │   │   │   ├── amazon_B0DX6T7D4R.jpg
+│   │   │   │   ├── amazon_B0DX7F639B.jpg
+│   │   │   │   ├── amazon_B0DXB4SGF8.jpg
+│   │   │   │   ├── amazon_B0DXC95SNR.jpg
+│   │   │   │   ├── amazon_B0DXCBQ48H.jpg
+│   │   │   │   ├── amazon_B0DXCNC26S.jpg
+│   │   │   │   ├── amazon_B0DXD7G3WQ.jpg
+│   │   │   │   ├── amazon_B0DXDQVFC2.jpg
+│   │   │   │   ├── amazon_B0DXK4S563.jpg
+│   │   │   │   ├── amazon_B0DXL5VR8Z.jpg
+│   │   │   │   ├── amazon_B0DXN87H25.jpg
+│   │   │   │   ├── amazon_B0DXQD4WK4.jpg
+│   │   │   │   ├── amazon_B0DXSD92DR.jpg
+│   │   │   │   ├── amazon_B0DXSFXP8W.jpg
+│   │   │   │   ├── amazon_B0DXY2Y54C.jpg
+│   │   │   │   ├── amazon_B0DXYP64RM.jpg
+│   │   │   │   ├── amazon_B0DY1L8WTT.jpg
+│   │   │   │   ├── amazon_B0DY1LM6K3.jpg
+│   │   │   │   ├── amazon_B0DY1NS1MK.jpg
+│   │   │   │   ├── amazon_B0DY4JJBL3.jpg
+│   │   │   │   ├── amazon_B0DY51C9HF.jpg
+│   │   │   │   ├── amazon_B0DY572QPT.jpg
+│   │   │   │   ├── amazon_B0DY5FVBPZ.jpg
+│   │   │   │   ├── amazon_B0DY6BJ8Y4.jpg
+│   │   │   │   ├── amazon_B0DY6FPFN4.jpg
+│   │   │   │   ├── amazon_B0DY79ZP3B.jpg
+│   │   │   │   ├── amazon_B0DY81KM94.jpg
+│   │   │   │   ├── amazon_B0DYF5MC53.jpg
+│   │   │   │   ├── amazon_B0DYG2SFPK.jpg
+│   │   │   │   ├── amazon_B0DYG96HDJ.jpg
+│   │   │   │   ├── amazon_B0DYNS9DDS.jpg
+│   │   │   │   ├── amazon_B0DYP9PB6G.jpg
+│   │   │   │   ├── amazon_B0DYRZ5ZWX.jpg
+│   │   │   │   ├── amazon_B0DYVM11N2.jpg
+│   │   │   │   ├── amazon_B0DYWH9GND.jpg
+│   │   │   │   ├── amazon_B0DYX3SKVR.jpg
+│   │   │   │   ├── amazon_B0DYYFWDTD.jpg
+│   │   │   │   ├── amazon_B0DYYHN2MV.jpg
+│   │   │   │   ├── amazon_B0DYZ9C7WQ.jpg
+│   │   │   │   ├── amazon_B0DYZYB7LL.jpg
+│   │   │   │   ├── amazon_B0DZ1789X1.jpg
+│   │   │   │   ├── amazon_B0DZ2X1BSV.jpg
+│   │   │   │   ├── amazon_B0DZ71DWFR.jpg
+│   │   │   │   ├── amazon_B0DZ7LY1MZ.jpg
+│   │   │   │   ├── amazon_B0DZ83T6BP.jpg
+│   │   │   │   ├── amazon_B0DZ9ML84H.jpg
+│   │   │   │   ├── amazon_B0DZH9GL8Z.jpg
+│   │   │   │   ├── amazon_B0DZHT2T1Q.jpg
+│   │   │   │   ├── amazon_B0DZHVF5HQ.jpg
+│   │   │   │   ├── amazon_B0DZV3W86F.jpg
+│   │   │   │   ├── amazon_B0DZW2ZLK9.jpg
+│   │   │   │   ├── amazon_B0DZXTH5PX.jpg
+│   │   │   │   ├── amazon_B0F13S68N9.jpg
+│   │   │   │   ├── amazon_B0F1436Y38.jpg
+│   │   │   │   ├── amazon_B0F17HLBYP.jpg
+│   │   │   │   ├── amazon_B0F1DFVBK8.jpg
+│   │   │   │   ├── amazon_B0F1DQ2W53.jpg
+│   │   │   │   ├── amazon_B0F1DSSV63.jpg
+│   │   │   │   ├── amazon_B0F1H7NRSF.jpg
+│   │   │   │   ├── amazon_B0F1HHJF3Q.jpg
+│   │   │   │   ├── amazon_B0F1L1V1D7.jpg
+│   │   │   │   ├── amazon_B0F1L1X3WF.jpg
+│   │   │   │   ├── amazon_B0F1L2BN3C.jpg
+│   │   │   │   ├── amazon_B0F1M42Z65.jpg
+│   │   │   │   ├── amazon_B0F1M4NSTS.jpg
+│   │   │   │   ├── amazon_B0F1M4PZJY.jpg
+│   │   │   │   ├── amazon_B0F1QX9FLP.jpg
+│   │   │   │   ├── amazon_B0F1R45W2J.jpg
+│   │   │   │   ├── amazon_B0F1V6ZB4Q.jpg
+│   │   │   │   ├── amazon_B0F1V7XK1X.jpg
+│   │   │   │   ├── amazon_B0F1VB35Z3.jpg
+│   │   │   │   ├── amazon_B0F1YS23X3.jpg
+│   │   │   │   ├── amazon_B0F1YVQ91C.jpg
+│   │   │   │   ├── amazon_B0F1YXC9VD.jpg
+│   │   │   │   ├── amazon_B0F1ZLGKGF.jpg
+│   │   │   │   ├── amazon_B0F1ZPMWST.jpg
+│   │   │   │   ├── amazon_B0F1ZSR1BH.jpg
+│   │   │   │   ├── amazon_B0F225KKDD.jpg
+│   │   │   │   ├── amazon_B0F24RWK75.jpg
+│   │   │   │   ├── amazon_B0F24WQSZ8.jpg
+│   │   │   │   ├── amazon_B0F26NGPMX.jpg
+│   │   │   │   ├── amazon_B0F26QST3N.jpg
+│   │   │   │   ├── amazon_B0F26RT1BQ.jpg
+│   │   │   │   ├── amazon_B0F2831616.jpg
+│   │   │   │   ├── amazon_B0F287TGGK.jpg
+│   │   │   │   ├── amazon_B0F2885P61.jpg
+│   │   │   │   ├── amazon_B0F2CKGG3V.jpg
+│   │   │   │   ├── amazon_B0F2CPNM6J.jpg
+│   │   │   │   ├── amazon_B0F2D6SWMQ.jpg
+│   │   │   │   ├── amazon_B0F2G8L4MC.jpg
+│   │   │   │   ├── amazon_B0F2GJYRYX.jpg
+│   │   │   │   ├── amazon_B0F2LBF7JV.jpg
+│   │   │   │   ├── amazon_B0F89H5N5R.jpg
+│   │   │   │   ├── amazon_B0FBKGB14H.jpg
+│   │   │   │   ├── amazon_B0FBKGNYLF.jpg
+│   │   │   │   ├── amazon_B0FC6ZDG2B.jpg
+│   │   │   │   ├── spotify_022wqGt3TzfjInPuDgHGXf.jpg
+│   │   │   │   ├── spotify_0bKqzi1CGYLZLtvuBNe9JJ.jpg
+│   │   │   │   ├── spotify_0DY8PdgvrCOpmwiAS29BOC.jpg
+│   │   │   │   ├── spotify_0eQBKgO27jTHhNVIXa5X9w.jpg
+│   │   │   │   ├── spotify_0Ez1XIOAg9PtFPPsVHq6LE.jpg
+│   │   │   │   ├── spotify_0iEnJ5xSU4Vw3nlPsTm65C.jpg
+│   │   │   │   ├── spotify_0isH27stV7eiEpIbqfhood.jpg
+│   │   │   │   ├── spotify_0LTdEUBDXKp0ukdBwu920m.jpg
+│   │   │   │   ├── spotify_0n4YxepwuViPkKvIuLXtwR.jpg
+│   │   │   │   ├── spotify_0SH6Zmt7Av8PPtuqkLg4TQ.jpg
+│   │   │   │   ├── spotify_0wjFGEluVKlMBDXIJCqfxx.jpg
+│   │   │   │   ├── spotify_0xFg8ajuaOzEBQo0liMlmm.jpg
+│   │   │   │   ├── spotify_141vJmYqWFv1HumS7qAfJP.jpg
+│   │   │   │   ├── spotify_1OZ2YPhTCoARTJhDvNMGFR.jpg
+│   │   │   │   ├── spotify_1prDtJ6sGIsTnWf7WNz01k.jpg
+│   │   │   │   ├── spotify_1RzEY0tHXb4UBoDCSalS82.jpg
+│   │   │   │   ├── spotify_1SuBNsNDFxrVIqx1w6QPCp.jpg
+│   │   │   │   ├── spotify_1tYT2nC7NEuDsIZpOcYe6V.jpg
+│   │   │   │   ├── spotify_1U9IhtMiNRzQYWRljq7bCv.jpg
+│   │   │   │   ├── spotify_1uL8jJpLyWksK5fmbo4h7M.jpg
+│   │   │   │   ├── spotify_1x9fzVC6hKn7wqC4g8P10d.jpg
+│   │   │   │   ├── spotify_1XwKmXUOJvKlMZsHYivNMa.jpg
+│   │   │   │   ├── spotify_1ZK0R1AvFQRxv8gaf8jELE.jpg
+│   │   │   │   ├── spotify_21lzJnsQNFFHr8VnO2LDlP.jpg
+│   │   │   │   ├── spotify_21OfYlH3ruYEy3nhjLIzLe.jpg
+│   │   │   │   ├── spotify_22EAvJjUOsVARGBiVYM7Rp.jpg
+│   │   │   │   ├── spotify_2DMwcXtZzZaeazATCTW5Xx.jpg
+│   │   │   │   ├── spotify_2gfjQQo1O4SwvImWKdms6v.jpg
+│   │   │   │   ├── spotify_2i6R2POXI6klc2uPO7lcNU.jpg
+│   │   │   │   ├── spotify_2l9dDxNYzAYLBuz4Ba3PsZ.jpg
+│   │   │   │   ├── spotify_2NzVd7OCP9ebxkno1JRHz1.jpg
+│   │   │   │   ├── spotify_2RnupJhMbIIWbDlVI7sztU.jpg
+│   │   │   │   ├── spotify_2S2gCXmyK3bNE5kvUJx2ZS.jpg
+│   │   │   │   ├── spotify_2yQqQMLKiK4LRcY1WgS0K9.jpg
+│   │   │   │   ├── spotify_2ZsdWdyaB93gtJNli70SwF.jpg
+│   │   │   │   ├── spotify_2ZVWt7YAF5mZzbZvMJ1Ltw.jpg
+│   │   │   │   ├── spotify_32VcCw9LpFPGkCE3huxm57.jpg
+│   │   │   │   ├── spotify_347sXoECXdT0u83hs6pS4c.jpg
+│   │   │   │   ├── spotify_3A5yTh8N4Tq3Rv5nuzIA0o.jpg
+│   │   │   │   ├── spotify_3DJ3uOxQn83hehvMo3evJ0.jpg
+│   │   │   │   ├── spotify_3f4tKu7hRTK4QvMglr0Vp6.jpg
+│   │   │   │   ├── spotify_3hO4nw0OeayRLngGgRTxp5.jpg
+│   │   │   │   ├── spotify_3ilFortklmnZtMVdGlDEIJ.jpg
+│   │   │   │   ├── spotify_3M8bvY8mc3vvOlidjMEzeY.jpg
+│   │   │   │   ├── spotify_3S408IfZTBxwVgeEbsbgA1.jpg
+│   │   │   │   ├── spotify_3v4kqJ3xISv20Pz9LkgJ0A.jpg
+│   │   │   │   ├── spotify_3Y8rn06dnemCwYImVJ8bOw.jpg
+│   │   │   │   ├── spotify_46hXpfgSX1mNAsEpLDzBKT.jpg
+│   │   │   │   ├── spotify_48CpewBB34PqCXNkKpwyGS.jpg
+│   │   │   │   ├── spotify_4GtdD71vSh1NCycz68o3Qq.jpg
+│   │   │   │   ├── spotify_4mwchyGU34nRMbRfXQPOXS.jpg
+│   │   │   │   ├── spotify_4OHP2J2VEHK857gxTWldyY.jpg
+│   │   │   │   ├── spotify_4p4mU4kRIiz4Fx9t1UDQZj.jpg
+│   │   │   │   ├── spotify_4tXKe7OhReAZ816mh77kMQ.jpg
+│   │   │   │   ├── spotify_4ufCM11iUrig4C80QTuBos.jpg
+│   │   │   │   ├── spotify_4UmMbxajVR7P6Y2PkUlWcz.jpg
+│   │   │   │   ├── spotify_4UUixz3ZGUGGsfsibiC28O.jpg
+│   │   │   │   ├── spotify_52JId6qH24iKvc80SEhvOs.jpg
+│   │   │   │   ├── spotify_56JcESzEx4fyEaD6Q2R9FD.jpg
+│   │   │   │   ├── spotify_59YJm0mIOlLABiERkXuuOv.jpg
+│   │   │   │   ├── spotify_5A3JeouJdYUvPDX9XJ8B2D.jpg
+│   │   │   │   ├── spotify_5A9cUb39IyoauCwzw1Cxzj.jpg
+│   │   │   │   ├── spotify_5aGGBhJUTQB3Od42b2mF4J.jpg
+│   │   │   │   ├── spotify_5AvhDOUFsIR2S8CBTPpcbh.jpg
+│   │   │   │   ├── spotify_5byNE6fjzp5vXg6oehTo4J.jpg
+│   │   │   │   ├── spotify_5CEkAU5wV7bVBZnhH3TPK5.jpg
+│   │   │   │   ├── spotify_5d13PBfivFkvV5R5XHby33.jpg
+│   │   │   │   ├── spotify_5e8xTCcPJWfd2SUHsjd1BW.jpg
+│   │   │   │   ├── spotify_5OC1hfTuAHt1wg93tODS1A.jpg
+│   │   │   │   ├── spotify_5OX6j3Bj6uyg4FfTev1unJ.jpg
+│   │   │   │   ├── spotify_5PfhjEQKqoRbjcg21IUSu1.jpg
+│   │   │   │   ├── spotify_5rqG5d38FNepLbHA7XKBco.jpg
+│   │   │   │   ├── spotify_5w2TCL7kNlJhORBRg2MzNS.jpg
+│   │   │   │   ├── spotify_5ZtHYQh1WpcjEAu0019LVV.jpg
+│   │   │   │   ├── spotify_620pEoFScFihktgQKNpFns.jpg
+│   │   │   │   ├── spotify_68cAykNTHHbqKsRln1G9Yx.jpg
+│   │   │   │   ├── spotify_6EwYY1zSl5Yg4YkZ5xTj0P.jpg
+│   │   │   │   ├── spotify_6ieblSpD1w7XZtz0jwj1dH.jpg
+│   │   │   │   ├── spotify_6kRbVwarAYUh70ME0HD9Fu.jpg
+│   │   │   │   ├── spotify_6pGMCq1e5LVlnghDXBWSRc.jpg
+│   │   │   │   ├── spotify_6ukIB4oJJZdhUwKr9OOqzF.jpg
+│   │   │   │   ├── spotify_6Xe09PFCcEOUrA88HJFas1.jpg
+│   │   │   │   ├── spotify_6Xf0QNYo1QDMSXb9zKmPxU.jpg
+│   │   │   │   ├── spotify_6YXPuf1wRqLig9Vj2Mlly5.jpg
+│   │   │   │   ├── spotify_73zctCCiKO1QQA5xiKnu5p.jpg
+│   │   │   │   ├── spotify_749Tw6EZCBlZM52tE2JVYt.jpg
+│   │   │   │   ├── spotify_75DrnUJQGstoPG5xEWXEbW.jpg
+│   │   │   │   ├── spotify_77ncToDQp6awSbPW5eHFYh.jpg
+│   │   │   │   ├── spotify_79CuhhEhb0GtBzgkk7fwsY.jpg
+│   │   │   │   ├── spotify_7dfWSCmfYjzF18crQhgWe7.jpg
+│   │   │   │   ├── spotify_7FaerJfPBZWkMywv7pfF1H.jpg
+│   │   │   │   ├── spotify_7JMygveKz6BrrDaioF1zxl.jpg
+│   │   │   │   ├── spotify_7kGQPjFEt6GhnIGwKR4t2U.jpg
+│   │   │   │   ├── spotify_7LIlsNpzXZBZH2edcK4RQQ.jpg
+│   │   │   │   └── spotify_7mKszvDbJnjM0AMkwLOyHe.jpg
+│   │   │   ├── data
+│   │   │   │   └── musiam_works_master.FINAL.tsv
+│   │   │   ├── previews
+│   │   │   └── works.json
+│   │   ├── all.tsv
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── gen-handoff.ps1
+│   ├── gen-handoff.sh
+│   └── HANDOFF.md
+├── .vscode
+│   ├── settings.json
+│   └── tasks.json
+├── backup
+│   └── src
+│       ├── app
+│       │   ├── gates
+│       │   │   └── page.20250911_230344.tsx
+│       │   ├── oracle
+│       │   │   └── page.20250911_230344.tsx
+│       │   └── page.20250911_230344.tsx
+│       └── app.20250911_230344
+│           ├── about
+│           │   └── page.tsx
+│           ├── api
+│           │   └── abi-chat
+│           │       └── route.ts
+│           ├── chat
+│           │   └── page.tsx
+│           ├── count-abi
+│           │   ├── page.broken.backup.tsx
+│           │   └── page.tsx
+│           ├── events
+│           │   └── page.tsx
+│           ├── gallery
+│           │   └── page.tsx
+│           ├── home-legacy
+│           │   └── page.tsx
+│           ├── rooms
+│           │   └── page.tsx
+│           ├── favicon.ico
+│           ├── globals.css
+│           └── layout.tsx
+├── components
+│   └── Analytics.tsx
+├── exports
+│   ├── omikuji_cards
+│   │   └── ja
+│   │       ├── 001.png
+│   │       ├── 002.png
+│   │       ├── 003.png
+│   │       ├── 004.png
+│   │       ├── 005.png
+│   │       ├── 006.png
+│   │       ├── 007.png
+│   │       ├── 008.png
+│   │       ├── 009.png
+│   │       ├── 010.png
+│   │       ├── 011.png
+│   │       ├── 012.png
+│   │       ├── 013.png
+│   │       ├── 014.png
+│   │       ├── 015.png
+│   │       ├── 016.png
+│   │       ├── 017.png
+│   │       ├── 018.png
+│   │       ├── 019.png
+│   │       ├── 020.png
+│   │       ├── 021.png
+│   │       ├── 022.png
+│   │       ├── 023.png
+│   │       ├── 024.png
+│   │       ├── 025.png
+│   │       ├── 026.png
+│   │       ├── 027.png
+│   │       ├── 028.png
+│   │       ├── 029.png
+│   │       ├── 030.png
+│   │       ├── 031.png
+│   │       ├── 032.png
+│   │       ├── 033.png
+│   │       ├── 034.png
+│   │       ├── 035.png
+│   │       ├── 036.png
+│   │       ├── 037.png
+│   │       ├── 038.png
+│   │       ├── 039.png
+│   │       ├── 040.png
+│   │       ├── 041.png
+│   │       ├── 042.png
+│   │       ├── 043.png
+│   │       ├── 044.png
+│   │       ├── 045.png
+│   │       ├── 046.png
+│   │       ├── 047.png
+│   │       ├── 048.png
+│   │       ├── 049.png
+│   │       ├── 050.png
+│   │       ├── 051.png
+│   │       ├── 052.png
+│   │       ├── 053.png
+│   │       ├── 054.png
+│   │       ├── 055.png
+│   │       ├── 056.png
+│   │       ├── 057.png
+│   │       ├── 058.png
+│   │       ├── 059.png
+│   │       ├── 060.png
+│   │       ├── 061.png
+│   │       ├── 062.png
+│   │       ├── 063.png
+│   │       ├── 064.png
+│   │       ├── 065.png
+│   │       ├── 066.png
+│   │       ├── 067.png
+│   │       ├── 068.png
+│   │       ├── 069.png
+│   │       ├── 070.png
+│   │       ├── 071.png
+│   │       ├── 072.png
+│   │       ├── 073.png
+│   │       ├── 074.png
+│   │       ├── 075.png
+│   │       ├── 076.png
+│   │       ├── 077.png
+│   │       ├── 078.png
+│   │       ├── 079.png
+│   │       ├── 080.png
+│   │       ├── 081.png
+│   │       ├── 082.png
+│   │       ├── 083.png
+│   │       ├── 084.png
+│   │       ├── 085.png
+│   │       ├── 086.png
+│   │       ├── 087.png
+│   │       ├── 088.png
+│   │       ├── 089.png
+│   │       ├── 090.png
+│   │       ├── 091.png
+│   │       ├── 092.png
+│   │       ├── 093.png
+│   │       ├── 094.png
+│   │       ├── 095.png
+│   │       ├── 096.png
+│   │       ├── 097.png
+│   │       ├── 098.png
+│   │       ├── 099.png
+│   │       └── 100.png
+│   └── omikujicard
+│       ├── en_back_001.png
+│       ├── en_back_002.png
+│       ├── en_back_003.png
+│       ├── en_back_004.png
+│       ├── en_back_005.png
+│       ├── en_back_006.png
+│       ├── en_back_007.png
+│       ├── en_back_008.png
+│       ├── en_back_009.png
+│       ├── en_back_010.png
+│       ├── en_back_011.png
+│       ├── en_back_012.png
+│       ├── en_back_013.png
+│       ├── en_back_014.png
+│       ├── en_back_015.png
+│       ├── en_back_016.png
+│       ├── en_back_017.png
+│       ├── en_back_018.png
+│       ├── en_back_019.png
+│       ├── en_back_020.png
+│       ├── en_back_021.png
+│       ├── en_back_022.png
+│       ├── en_back_023.png
+│       ├── en_back_024.png
+│       ├── en_back_025.png
+│       ├── en_back_026.png
+│       ├── en_back_027.png
+│       ├── en_back_028.png
+│       ├── en_back_029.png
+│       ├── en_back_030.png
+│       ├── en_back_031.png
+│       ├── en_back_032.png
+│       ├── en_back_033.png
+│       ├── en_back_034.png
+│       ├── en_back_035.png
+│       ├── en_back_036.png
+│       ├── en_back_037.png
+│       ├── en_back_038.png
+│       ├── en_back_039.png
+│       ├── en_back_040.png
+│       ├── en_back_041.png
+│       ├── en_back_042.png
+│       ├── en_back_043.png
+│       ├── en_back_044.png
+│       ├── en_back_045.png
+│       ├── en_back_046.png
+│       ├── en_back_047.png
+│       ├── en_back_048.png
+│       ├── en_back_049.png
+│       ├── en_back_050.png
+│       ├── en_back_051.png
+│       ├── en_back_052.png
+│       ├── en_back_053.png
+│       ├── en_back_054.png
+│       ├── en_back_055.png
+│       ├── en_back_056.png
+│       ├── en_back_057.png
+│       ├── en_back_058.png
+│       ├── en_back_059.png
+│       ├── en_back_060.png
+│       ├── en_back_061.png
+│       ├── en_back_062.png
+│       ├── en_back_063.png
+│       ├── en_back_064.png
+│       ├── en_back_065.png
+│       ├── en_back_066.png
+│       ├── en_back_067.png
+│       ├── en_back_068.png
+│       ├── en_back_069.png
+│       ├── en_back_070.png
+│       ├── en_back_071.png
+│       ├── en_back_072.png
+│       ├── en_back_073.png
+│       ├── en_back_074.png
+│       ├── en_back_075.png
+│       ├── en_back_076.png
+│       ├── en_back_077.png
+│       ├── en_back_078.png
+│       ├── en_back_079.png
+│       ├── en_back_080.png
+│       ├── en_back_081.png
+│       ├── en_back_082.png
+│       ├── en_back_083.png
+│       ├── en_back_084.png
+│       ├── en_back_085.png
+│       ├── en_back_086.png
+│       ├── en_back_087.png
+│       ├── en_back_088.png
+│       ├── en_back_089.png
+│       ├── en_back_090.png
+│       ├── en_back_091.png
+│       ├── en_back_092.png
+│       ├── en_back_093.png
+│       ├── en_back_094.png
+│       ├── en_back_095.png
+│       ├── en_back_096.png
+│       ├── en_back_097.png
+│       ├── en_back_098.png
+│       ├── en_back_099.png
+│       ├── en_back_100.png
+│       ├── en_front_001.png
+│       ├── en_front_002.png
+│       ├── en_front_003.png
+│       ├── en_front_004.png
+│       ├── en_front_005.png
+│       ├── en_front_006.png
+│       ├── en_front_007.png
+│       ├── en_front_008.png
+│       ├── en_front_009.png
+│       ├── en_front_010.png
+│       ├── en_front_011.png
+│       ├── en_front_012.png
+│       ├── en_front_013.png
+│       ├── en_front_014.png
+│       ├── en_front_015.png
+│       ├── en_front_016.png
+│       ├── en_front_017.png
+│       ├── en_front_018.png
+│       ├── en_front_019.png
+│       ├── en_front_020.png
+│       ├── en_front_021.png
+│       ├── en_front_022.png
+│       ├── en_front_023.png
+│       ├── en_front_024.png
+│       ├── en_front_025.png
+│       ├── en_front_026.png
+│       ├── en_front_027.png
+│       ├── en_front_028.png
+│       ├── en_front_029.png
+│       ├── en_front_030.png
+│       ├── en_front_031.png
+│       ├── en_front_032.png
+│       ├── en_front_033.png
+│       ├── en_front_034.png
+│       ├── en_front_035.png
+│       ├── en_front_036.png
+│       ├── en_front_037.png
+│       ├── en_front_038.png
+│       ├── en_front_039.png
+│       ├── en_front_040.png
+│       ├── en_front_041.png
+│       ├── en_front_042.png
+│       ├── en_front_043.png
+│       ├── en_front_044.png
+│       ├── en_front_045.png
+│       ├── en_front_046.png
+│       ├── en_front_047.png
+│       ├── en_front_048.png
+│       ├── en_front_049.png
+│       ├── en_front_050.png
+│       ├── en_front_051.png
+│       ├── en_front_052.png
+│       ├── en_front_053.png
+│       ├── en_front_054.png
+│       ├── en_front_055.png
+│       ├── en_front_056.png
+│       ├── en_front_057.png
+│       ├── en_front_058.png
+│       ├── en_front_059.png
+│       ├── en_front_060.png
+│       ├── en_front_061.png
+│       ├── en_front_062.png
+│       ├── en_front_063.png
+│       ├── en_front_064.png
+│       ├── en_front_065.png
+│       ├── en_front_066.png
+│       ├── en_front_067.png
+│       ├── en_front_068.png
+│       ├── en_front_069.png
+│       ├── en_front_070.png
+│       ├── en_front_071.png
+│       ├── en_front_072.png
+│       ├── en_front_073.png
+│       ├── en_front_074.png
+│       ├── en_front_075.png
+│       ├── en_front_076.png
+│       ├── en_front_077.png
+│       ├── en_front_078.png
+│       ├── en_front_079.png
+│       ├── en_front_080.png
+│       ├── en_front_081.png
+│       ├── en_front_082.png
+│       ├── en_front_083.png
+│       ├── en_front_084.png
+│       ├── en_front_085.png
+│       ├── en_front_086.png
+│       ├── en_front_087.png
+│       ├── en_front_088.png
+│       ├── en_front_089.png
+│       ├── en_front_090.png
+│       ├── en_front_091.png
+│       ├── en_front_092.png
+│       ├── en_front_093.png
+│       ├── en_front_094.png
+│       ├── en_front_095.png
+│       ├── en_front_096.png
+│       ├── en_front_097.png
+│       ├── en_front_098.png
+│       ├── en_front_099.png
+│       ├── en_front_100.png
+│       ├── ja_back_001.png
+│       ├── ja_back_002.png
+│       ├── ja_back_003.png
+│       ├── ja_back_004.png
+│       ├── ja_back_005.png
+│       ├── ja_back_006.png
+│       ├── ja_back_007.png
+│       ├── ja_back_008.png
+│       ├── ja_back_009.png
+│       ├── ja_back_010.png
+│       ├── ja_back_011.png
+│       ├── ja_back_012.png
+│       ├── ja_back_013.png
+│       ├── ja_back_014.png
+│       ├── ja_back_015.png
+│       ├── ja_back_016.png
+│       ├── ja_back_017.png
+│       ├── ja_back_018.png
+│       ├── ja_back_019.png
+│       ├── ja_back_020.png
+│       ├── ja_back_021.png
+│       ├── ja_back_022.png
+│       ├── ja_back_023.png
+│       ├── ja_back_024.png
+│       ├── ja_back_025.png
+│       ├── ja_back_026.png
+│       ├── ja_back_027.png
+│       ├── ja_back_028.png
+│       ├── ja_back_029.png
+│       ├── ja_back_030.png
+│       ├── ja_back_031.png
+│       ├── ja_back_032.png
+│       ├── ja_back_033.png
+│       ├── ja_back_034.png
+│       ├── ja_back_035.png
+│       ├── ja_back_036.png
+│       ├── ja_back_037.png
+│       ├── ja_back_038.png
+│       ├── ja_back_039.png
+│       ├── ja_back_040.png
+│       ├── ja_back_041.png
+│       ├── ja_back_042.png
+│       ├── ja_back_043.png
+│       ├── ja_back_044.png
+│       ├── ja_back_045.png
+│       ├── ja_back_046.png
+│       ├── ja_back_047.png
+│       ├── ja_back_048.png
+│       ├── ja_back_049.png
+│       ├── ja_back_050.png
+│       ├── ja_back_051.png
+│       ├── ja_back_052.png
+│       ├── ja_back_053.png
+│       ├── ja_back_054.png
+│       ├── ja_back_055.png
+│       ├── ja_back_056.png
+│       ├── ja_back_057.png
+│       ├── ja_back_058.png
+│       ├── ja_back_059.png
+│       ├── ja_back_060.png
+│       ├── ja_back_061.png
+│       ├── ja_back_062.png
+│       ├── ja_back_063.png
+│       ├── ja_back_064.png
+│       ├── ja_back_065.png
+│       ├── ja_back_066.png
+│       ├── ja_back_067.png
+│       ├── ja_back_068.png
+│       ├── ja_back_069.png
+│       ├── ja_back_070.png
+│       ├── ja_back_071.png
+│       ├── ja_back_072.png
+│       ├── ja_back_073.png
+│       ├── ja_back_074.png
+│       ├── ja_back_075.png
+│       ├── ja_back_076.png
+│       ├── ja_back_077.png
+│       ├── ja_back_078.png
+│       ├── ja_back_079.png
+│       ├── ja_back_080.png
+│       ├── ja_back_081.png
+│       ├── ja_back_082.png
+│       ├── ja_back_083.png
+│       ├── ja_back_084.png
+│       ├── ja_back_085.png
+│       ├── ja_back_086.png
+│       ├── ja_back_087.png
+│       ├── ja_back_088.png
+│       ├── ja_back_089.png
+│       ├── ja_back_090.png
+│       ├── ja_back_091.png
+│       ├── ja_back_092.png
+│       ├── ja_back_093.png
+│       ├── ja_back_094.png
+│       ├── ja_back_095.png
+│       ├── ja_back_096.png
+│       ├── ja_back_097.png
+│       ├── ja_back_098.png
+│       ├── ja_back_099.png
+│       ├── ja_back_100.png
+│       ├── ja_front_001.png
+│       ├── ja_front_002.png
+│       ├── ja_front_003.png
+│       ├── ja_front_004.png
+│       ├── ja_front_005.png
+│       ├── ja_front_006.png
+│       ├── ja_front_007.png
+│       ├── ja_front_008.png
+│       ├── ja_front_009.png
+│       ├── ja_front_010.png
+│       ├── ja_front_011.png
+│       ├── ja_front_012.png
+│       ├── ja_front_013.png
+│       ├── ja_front_014.png
+│       ├── ja_front_015.png
+│       ├── ja_front_016.png
+│       ├── ja_front_017.png
+│       ├── ja_front_018.png
+│       ├── ja_front_019.png
+│       ├── ja_front_020.png
+│       ├── ja_front_021.png
+│       ├── ja_front_022.png
+│       ├── ja_front_023.png
+│       ├── ja_front_024.png
+│       ├── ja_front_025.png
+│       ├── ja_front_026.png
+│       ├── ja_front_027.png
+│       ├── ja_front_028.png
+│       ├── ja_front_029.png
+│       ├── ja_front_030.png
+│       ├── ja_front_031.png
+│       ├── ja_front_032.png
+│       ├── ja_front_033.png
+│       ├── ja_front_034.png
+│       ├── ja_front_035.png
+│       ├── ja_front_036.png
+│       ├── ja_front_037.png
+│       ├── ja_front_038.png
+│       ├── ja_front_039.png
+│       ├── ja_front_040.png
+│       ├── ja_front_041.png
+│       ├── ja_front_042.png
+│       ├── ja_front_043.png
+│       ├── ja_front_044.png
+│       ├── ja_front_045.png
+│       ├── ja_front_046.png
+│       ├── ja_front_047.png
+│       ├── ja_front_048.png
+│       ├── ja_front_049.png
+│       ├── ja_front_050.png
+│       ├── ja_front_051.png
+│       ├── ja_front_052.png
+│       ├── ja_front_053.png
+│       ├── ja_front_054.png
+│       ├── ja_front_055.png
+│       ├── ja_front_056.png
+│       ├── ja_front_057.png
+│       ├── ja_front_058.png
+│       ├── ja_front_059.png
+│       ├── ja_front_060.png
+│       ├── ja_front_061.png
+│       ├── ja_front_062.png
+│       ├── ja_front_063.png
+│       ├── ja_front_064.png
+│       ├── ja_front_065.png
+│       ├── ja_front_066.png
+│       ├── ja_front_067.png
+│       ├── ja_front_068.png
+│       ├── ja_front_069.png
+│       ├── ja_front_070.png
+│       ├── ja_front_071.png
+│       ├── ja_front_072.png
+│       ├── ja_front_073.png
+│       ├── ja_front_074.png
+│       ├── ja_front_075.png
+│       ├── ja_front_076.png
+│       ├── ja_front_077.png
+│       ├── ja_front_078.png
+│       ├── ja_front_079.png
+│       ├── ja_front_080.png
+│       ├── ja_front_081.png
+│       ├── ja_front_082.png
+│       ├── ja_front_083.png
+│       ├── ja_front_084.png
+│       ├── ja_front_085.png
+│       ├── ja_front_086.png
+│       ├── ja_front_087.png
+│       ├── ja_front_088.png
+│       ├── ja_front_089.png
+│       ├── ja_front_090.png
+│       ├── ja_front_091.png
+│       ├── ja_front_092.png
+│       ├── ja_front_093.png
+│       ├── ja_front_094.png
+│       ├── ja_front_095.png
+│       ├── ja_front_096.png
+│       ├── ja_front_097.png
+│       ├── ja_front_098.png
+│       ├── ja_front_099.png
+│       └── ja_front_100.png
+├── import
+│   └── all.tsv
+├── lib
+│   ├── analytics.ts
+│   ├── data.ts
+│   ├── groq.ts
+│   ├── json.ts
+│   ├── net.ts
+│   ├── rate.ts
+│   ├── trace.ts
+│   └── works.ts
+├── public
+│   ├── gates
+│   │   ├── galaxy.jpg
+│   │   ├── gothic-door.jpg
+│   │   ├── manifest.json
+│   │   └── torii.jpg
+│   ├── images
+│   │   ├── kannon100
+│   │   │   ├── 001
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 002
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 003
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 004
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 005
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 006
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 007
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 008
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 009
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 010
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 011
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 012
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 013
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 014
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 015
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 016
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 017
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 018
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 019
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 020
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 021
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 022
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 023
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 024
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 025
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 026
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 027
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 028
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 029
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 030
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 031
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 032
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 033
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 034
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 035
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 036
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 037
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 038
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 039
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 040
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 041
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 042
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 043
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 044
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 045
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 046
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 047
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 048
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 049
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 050
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 051
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 052
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 053
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 054
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 055
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 056
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 057
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 058
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 059
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 060
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 061
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 062
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 063
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 064
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 065
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 066
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 067
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 068
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 069
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 070
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 071
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 072
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 073
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 074
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 075
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 076
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 077
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 078
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 079
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 080
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 081
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 082
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 083
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 084
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 085
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 086
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 087
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 088
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 089
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 090
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 091
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 092
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 093
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 094
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 095
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 096
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 097
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 098
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   ├── 099
+│   │   │   │   ├── back.jpg
+│   │   │   │   └── front.jpg
+│   │   │   └── 100
+│   │   │       ├── back.jpg
+│   │   │       └── front.jpg
+│   │   └── kannon100_en
+│   ├── works
+│   │   ├── covers
+│   │   │   ├── amazon_B0CW1JNY9Z.jpg
+│   │   │   ├── amazon_B0D8JJSSLV.jpg
+│   │   │   ├── amazon_B0DH6H6L8W.jpg
+│   │   │   ├── amazon_B0DMY6JQGK.jpg
+│   │   │   ├── amazon_B0DVMSQYV7.jpg
+│   │   │   ├── amazon_B0DVMZHQ1G.jpg
+│   │   │   ├── amazon_B0DVQCSWW7.jpg
+│   │   │   ├── amazon_B0DVQVD9F8.jpg
+│   │   │   ├── amazon_B0DVVGRRC9.jpg
+│   │   │   ├── amazon_B0DVXQ3QDY.jpg
+│   │   │   ├── amazon_B0DVZN6LGJ.jpg
+│   │   │   ├── amazon_B0DW17W6CS.jpg
+│   │   │   ├── amazon_B0DW1DSF6F.jpg
+│   │   │   ├── amazon_B0DW1JVWMZ.jpg
+│   │   │   ├── amazon_B0DW1LDFH8.jpg
+│   │   │   ├── amazon_B0DW2FQJ7C.jpg
+│   │   │   ├── amazon_B0DW661NJH.jpg
+│   │   │   ├── amazon_B0DW6B1TG8.jpg
+│   │   │   ├── amazon_B0DWFYCHWG.jpg
+│   │   │   ├── amazon_B0DWG3ZDS5.jpg
+│   │   │   ├── amazon_B0DWHJBH11.jpg
+│   │   │   ├── amazon_B0DWHKYS1Q.jpg
+│   │   │   ├── amazon_B0DWJB9N9R.jpg
+│   │   │   ├── amazon_B0DWKKW2BL.jpg
+│   │   │   ├── amazon_B0DWKKYFYQ.jpg
+│   │   │   ├── amazon_B0DWLM6TCP.jpg
+│   │   │   ├── amazon_B0DWLMJ9VX.jpg
+│   │   │   ├── amazon_B0DWM1H64J.jpg
+│   │   │   ├── amazon_B0DWPKQHS1.jpg
+│   │   │   ├── amazon_B0DWQNMH26.jpg
+│   │   │   ├── amazon_B0DWT68WCS.jpg
+│   │   │   ├── amazon_B0DWV3Q75N.jpg
+│   │   │   ├── amazon_B0DWV4PP4C.jpg
+│   │   │   ├── amazon_B0DWZ1XDSL.jpg
+│   │   │   ├── amazon_B0DWZKKKKQ.jpg
+│   │   │   ├── amazon_B0DX3GVLP2.jpg
+│   │   │   ├── amazon_B0DX3RFWYR.jpg
+│   │   │   ├── amazon_B0DX4HPVCS.jpg
+│   │   │   ├── amazon_B0DX6T7D4R.jpg
+│   │   │   ├── amazon_B0DX7F639B.jpg
+│   │   │   ├── amazon_B0DXB4SGF8.jpg
+│   │   │   ├── amazon_B0DXC95SNR.jpg
+│   │   │   ├── amazon_B0DXCBQ48H.jpg
+│   │   │   ├── amazon_B0DXCNC26S.jpg
+│   │   │   ├── amazon_B0DXD7G3WQ.jpg
+│   │   │   ├── amazon_B0DXDQVFC2.jpg
+│   │   │   ├── amazon_B0DXK4S563.jpg
+│   │   │   ├── amazon_B0DXL5VR8Z.jpg
+│   │   │   ├── amazon_B0DXN87H25.jpg
+│   │   │   ├── amazon_B0DXQD4WK4.jpg
+│   │   │   ├── amazon_B0DXSD92DR.jpg
+│   │   │   ├── amazon_B0DXSFXP8W.jpg
+│   │   │   ├── amazon_B0DXY2Y54C.jpg
+│   │   │   ├── amazon_B0DXYP64RM.jpg
+│   │   │   ├── amazon_B0DY1L8WTT.jpg
+│   │   │   ├── amazon_B0DY1LM6K3.jpg
+│   │   │   ├── amazon_B0DY1NS1MK.jpg
+│   │   │   ├── amazon_B0DY4JJBL3.jpg
+│   │   │   ├── amazon_B0DY51C9HF.jpg
+│   │   │   ├── amazon_B0DY572QPT.jpg
+│   │   │   ├── amazon_B0DY5FVBPZ.jpg
+│   │   │   ├── amazon_B0DY6BJ8Y4.jpg
+│   │   │   ├── amazon_B0DY6FPFN4.jpg
+│   │   │   ├── amazon_B0DY79ZP3B.jpg
+│   │   │   ├── amazon_B0DY81KM94.jpg
+│   │   │   ├── amazon_B0DYF5MC53.jpg
+│   │   │   ├── amazon_B0DYG2SFPK.jpg
+│   │   │   ├── amazon_B0DYG96HDJ.jpg
+│   │   │   ├── amazon_B0DYNS9DDS.jpg
+│   │   │   ├── amazon_B0DYP9PB6G.jpg
+│   │   │   ├── amazon_B0DYRZ5ZWX.jpg
+│   │   │   ├── amazon_B0DYVM11N2.jpg
+│   │   │   ├── amazon_B0DYWH9GND.jpg
+│   │   │   ├── amazon_B0DYX3SKVR.jpg
+│   │   │   ├── amazon_B0DYYFWDTD.jpg
+│   │   │   ├── amazon_B0DYYHN2MV.jpg
+│   │   │   ├── amazon_B0DYZ9C7WQ.jpg
+│   │   │   ├── amazon_B0DYZYB7LL.jpg
+│   │   │   ├── amazon_B0DZ1789X1.jpg
+│   │   │   ├── amazon_B0DZ2X1BSV.jpg
+│   │   │   ├── amazon_B0DZ71DWFR.jpg
+│   │   │   ├── amazon_B0DZ7LY1MZ.jpg
+│   │   │   ├── amazon_B0DZ83T6BP.jpg
+│   │   │   ├── amazon_B0DZ9ML84H.jpg
+│   │   │   ├── amazon_B0DZH9GL8Z.jpg
+│   │   │   ├── amazon_B0DZHT2T1Q.jpg
+│   │   │   ├── amazon_B0DZHVF5HQ.jpg
+│   │   │   ├── amazon_B0DZV3W86F.jpg
+│   │   │   ├── amazon_B0DZW2ZLK9.jpg
+│   │   │   ├── amazon_B0DZXTH5PX.jpg
+│   │   │   ├── amazon_B0F13S68N9.jpg
+│   │   │   ├── amazon_B0F1436Y38.jpg
+│   │   │   ├── amazon_B0F17HLBYP.jpg
+│   │   │   ├── amazon_B0F1DFVBK8.jpg
+│   │   │   ├── amazon_B0F1DQ2W53.jpg
+│   │   │   ├── amazon_B0F1DSSV63.jpg
+│   │   │   ├── amazon_B0F1H7NRSF.jpg
+│   │   │   ├── amazon_B0F1HHJF3Q.jpg
+│   │   │   ├── amazon_B0F1L1V1D7.jpg
+│   │   │   ├── amazon_B0F1L1X3WF.jpg
+│   │   │   ├── amazon_B0F1L2BN3C.jpg
+│   │   │   ├── amazon_B0F1M42Z65.jpg
+│   │   │   ├── amazon_B0F1M4NSTS.jpg
+│   │   │   ├── amazon_B0F1M4PZJY.jpg
+│   │   │   ├── amazon_B0F1QX9FLP.jpg
+│   │   │   ├── amazon_B0F1R45W2J.jpg
+│   │   │   ├── amazon_B0F1V6ZB4Q.jpg
+│   │   │   ├── amazon_B0F1V7XK1X.jpg
+│   │   │   ├── amazon_B0F1VB35Z3.jpg
+│   │   │   ├── amazon_B0F1YS23X3.jpg
+│   │   │   ├── amazon_B0F1YVQ91C.jpg
+│   │   │   ├── amazon_B0F1YXC9VD.jpg
+│   │   │   ├── amazon_B0F1ZLGKGF.jpg
+│   │   │   ├── amazon_B0F1ZPMWST.jpg
+│   │   │   ├── amazon_B0F1ZSR1BH.jpg
+│   │   │   ├── amazon_B0F225KKDD.jpg
+│   │   │   ├── amazon_B0F24RWK75.jpg
+│   │   │   ├── amazon_B0F24WQSZ8.jpg
+│   │   │   ├── amazon_B0F26NGPMX.jpg
+│   │   │   ├── amazon_B0F26QST3N.jpg
+│   │   │   ├── amazon_B0F26RT1BQ.jpg
+│   │   │   ├── amazon_B0F2831616.jpg
+│   │   │   ├── amazon_B0F287TGGK.jpg
+│   │   │   ├── amazon_B0F2885P61.jpg
+│   │   │   ├── amazon_B0F2CKGG3V.jpg
+│   │   │   ├── amazon_B0F2CPNM6J.jpg
+│   │   │   ├── amazon_B0F2D6SWMQ.jpg
+│   │   │   ├── amazon_B0F2G8L4MC.jpg
+│   │   │   ├── amazon_B0F2GJYRYX.jpg
+│   │   │   ├── amazon_B0F2LBF7JV.jpg
+│   │   │   ├── amazon_B0F89H5N5R.jpg
+│   │   │   ├── amazon_B0FBKGB14H.jpg
+│   │   │   ├── amazon_B0FBKGNYLF.jpg
+│   │   │   ├── amazon_B0FC6ZDG2B.jpg
+│   │   │   ├── spotify_022wqGt3TzfjInPuDgHGXf.jpg
+│   │   │   ├── spotify_0bKqzi1CGYLZLtvuBNe9JJ.jpg
+│   │   │   ├── spotify_0DY8PdgvrCOpmwiAS29BOC.jpg
+│   │   │   ├── spotify_0eQBKgO27jTHhNVIXa5X9w.jpg
+│   │   │   ├── spotify_0Ez1XIOAg9PtFPPsVHq6LE.jpg
+│   │   │   ├── spotify_0iEnJ5xSU4Vw3nlPsTm65C.jpg
+│   │   │   ├── spotify_0isH27stV7eiEpIbqfhood.jpg
+│   │   │   ├── spotify_0LTdEUBDXKp0ukdBwu920m.jpg
+│   │   │   ├── spotify_0n4YxepwuViPkKvIuLXtwR.jpg
+│   │   │   ├── spotify_0SH6Zmt7Av8PPtuqkLg4TQ.jpg
+│   │   │   ├── spotify_0wjFGEluVKlMBDXIJCqfxx.jpg
+│   │   │   ├── spotify_0xFg8ajuaOzEBQo0liMlmm.jpg
+│   │   │   ├── spotify_141vJmYqWFv1HumS7qAfJP.jpg
+│   │   │   ├── spotify_1OZ2YPhTCoARTJhDvNMGFR.jpg
+│   │   │   ├── spotify_1prDtJ6sGIsTnWf7WNz01k.jpg
+│   │   │   ├── spotify_1RzEY0tHXb4UBoDCSalS82.jpg
+│   │   │   ├── spotify_1SuBNsNDFxrVIqx1w6QPCp.jpg
+│   │   │   ├── spotify_1tYT2nC7NEuDsIZpOcYe6V.jpg
+│   │   │   ├── spotify_1U9IhtMiNRzQYWRljq7bCv.jpg
+│   │   │   ├── spotify_1uL8jJpLyWksK5fmbo4h7M.jpg
+│   │   │   ├── spotify_1x9fzVC6hKn7wqC4g8P10d.jpg
+│   │   │   ├── spotify_1XwKmXUOJvKlMZsHYivNMa.jpg
+│   │   │   ├── spotify_1ZK0R1AvFQRxv8gaf8jELE.jpg
+│   │   │   ├── spotify_21lzJnsQNFFHr8VnO2LDlP.jpg
+│   │   │   ├── spotify_21OfYlH3ruYEy3nhjLIzLe.jpg
+│   │   │   ├── spotify_22EAvJjUOsVARGBiVYM7Rp.jpg
+│   │   │   ├── spotify_2DMwcXtZzZaeazATCTW5Xx.jpg
+│   │   │   ├── spotify_2gfjQQo1O4SwvImWKdms6v.jpg
+│   │   │   ├── spotify_2i6R2POXI6klc2uPO7lcNU.jpg
+│   │   │   ├── spotify_2l9dDxNYzAYLBuz4Ba3PsZ.jpg
+│   │   │   ├── spotify_2NzVd7OCP9ebxkno1JRHz1.jpg
+│   │   │   ├── spotify_2RnupJhMbIIWbDlVI7sztU.jpg
+│   │   │   ├── spotify_2S2gCXmyK3bNE5kvUJx2ZS.jpg
+│   │   │   ├── spotify_2yQqQMLKiK4LRcY1WgS0K9.jpg
+│   │   │   ├── spotify_2ZsdWdyaB93gtJNli70SwF.jpg
+│   │   │   ├── spotify_2ZVWt7YAF5mZzbZvMJ1Ltw.jpg
+│   │   │   ├── spotify_32VcCw9LpFPGkCE3huxm57.jpg
+│   │   │   ├── spotify_347sXoECXdT0u83hs6pS4c.jpg
+│   │   │   ├── spotify_3A5yTh8N4Tq3Rv5nuzIA0o.jpg
+│   │   │   ├── spotify_3DJ3uOxQn83hehvMo3evJ0.jpg
+│   │   │   ├── spotify_3f4tKu7hRTK4QvMglr0Vp6.jpg
+│   │   │   ├── spotify_3hO4nw0OeayRLngGgRTxp5.jpg
+│   │   │   ├── spotify_3ilFortklmnZtMVdGlDEIJ.jpg
+│   │   │   ├── spotify_3M8bvY8mc3vvOlidjMEzeY.jpg
+│   │   │   ├── spotify_3S408IfZTBxwVgeEbsbgA1.jpg
+│   │   │   ├── spotify_3v4kqJ3xISv20Pz9LkgJ0A.jpg
+│   │   │   ├── spotify_3Y8rn06dnemCwYImVJ8bOw.jpg
+│   │   │   ├── spotify_46hXpfgSX1mNAsEpLDzBKT.jpg
+│   │   │   ├── spotify_48CpewBB34PqCXNkKpwyGS.jpg
+│   │   │   ├── spotify_4GtdD71vSh1NCycz68o3Qq.jpg
+│   │   │   ├── spotify_4mwchyGU34nRMbRfXQPOXS.jpg
+│   │   │   ├── spotify_4OHP2J2VEHK857gxTWldyY.jpg
+│   │   │   ├── spotify_4p4mU4kRIiz4Fx9t1UDQZj.jpg
+│   │   │   ├── spotify_4tXKe7OhReAZ816mh77kMQ.jpg
+│   │   │   ├── spotify_4ufCM11iUrig4C80QTuBos.jpg
+│   │   │   ├── spotify_4UmMbxajVR7P6Y2PkUlWcz.jpg
+│   │   │   ├── spotify_4UUixz3ZGUGGsfsibiC28O.jpg
+│   │   │   ├── spotify_52JId6qH24iKvc80SEhvOs.jpg
+│   │   │   ├── spotify_56JcESzEx4fyEaD6Q2R9FD.jpg
+│   │   │   ├── spotify_59YJm0mIOlLABiERkXuuOv.jpg
+│   │   │   ├── spotify_5A3JeouJdYUvPDX9XJ8B2D.jpg
+│   │   │   ├── spotify_5A9cUb39IyoauCwzw1Cxzj.jpg
+│   │   │   ├── spotify_5aGGBhJUTQB3Od42b2mF4J.jpg
+│   │   │   ├── spotify_5AvhDOUFsIR2S8CBTPpcbh.jpg
+│   │   │   ├── spotify_5byNE6fjzp5vXg6oehTo4J.jpg
+│   │   │   ├── spotify_5CEkAU5wV7bVBZnhH3TPK5.jpg
+│   │   │   ├── spotify_5d13PBfivFkvV5R5XHby33.jpg
+│   │   │   ├── spotify_5e8xTCcPJWfd2SUHsjd1BW.jpg
+│   │   │   ├── spotify_5OC1hfTuAHt1wg93tODS1A.jpg
+│   │   │   ├── spotify_5OX6j3Bj6uyg4FfTev1unJ.jpg
+│   │   │   ├── spotify_5PfhjEQKqoRbjcg21IUSu1.jpg
+│   │   │   ├── spotify_5rqG5d38FNepLbHA7XKBco.jpg
+│   │   │   ├── spotify_5w2TCL7kNlJhORBRg2MzNS.jpg
+│   │   │   ├── spotify_5ZtHYQh1WpcjEAu0019LVV.jpg
+│   │   │   ├── spotify_620pEoFScFihktgQKNpFns.jpg
+│   │   │   ├── spotify_68cAykNTHHbqKsRln1G9Yx.jpg
+│   │   │   ├── spotify_6EwYY1zSl5Yg4YkZ5xTj0P.jpg
+│   │   │   ├── spotify_6ieblSpD1w7XZtz0jwj1dH.jpg
+│   │   │   ├── spotify_6kRbVwarAYUh70ME0HD9Fu.jpg
+│   │   │   ├── spotify_6pGMCq1e5LVlnghDXBWSRc.jpg
+│   │   │   ├── spotify_6ukIB4oJJZdhUwKr9OOqzF.jpg
+│   │   │   ├── spotify_6Xe09PFCcEOUrA88HJFas1.jpg
+│   │   │   ├── spotify_6Xf0QNYo1QDMSXb9zKmPxU.jpg
+│   │   │   ├── spotify_6YXPuf1wRqLig9Vj2Mlly5.jpg
+│   │   │   ├── spotify_73zctCCiKO1QQA5xiKnu5p.jpg
+│   │   │   ├── spotify_749Tw6EZCBlZM52tE2JVYt.jpg
+│   │   │   ├── spotify_75DrnUJQGstoPG5xEWXEbW.jpg
+│   │   │   ├── spotify_77ncToDQp6awSbPW5eHFYh.jpg
+│   │   │   ├── spotify_79CuhhEhb0GtBzgkk7fwsY.jpg
+│   │   │   ├── spotify_7dfWSCmfYjzF18crQhgWe7.jpg
+│   │   │   ├── spotify_7FaerJfPBZWkMywv7pfF1H.jpg
+│   │   │   ├── spotify_7JMygveKz6BrrDaioF1zxl.jpg
+│   │   │   ├── spotify_7kGQPjFEt6GhnIGwKR4t2U.jpg
+│   │   │   ├── spotify_7LIlsNpzXZBZH2edcK4RQQ.jpg
+│   │   │   └── spotify_7mKszvDbJnjM0AMkwLOyHe.jpg
+│   │   ├── data
+│   │   │   └── musiam_works_master.FINAL.tsv
+│   │   ├── previews
+│   │   ├── works.backup.json
+│   │   ├── works.backup.step1.json
+│   │   └── works.json
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
+├── schemas
+│   └── gates.manifest.schema.json
+├── scripts
+│   ├── _backup
+│   │   ├── migrate_kannon100_to_split.20250928092211.bak.mjs
+│   │   └── migrate_kannon100_to_split.20250928092535.round2.bak.mjs
+│   ├── omikuji
+│   │   ├── config
+│   │   │   ├── category_alias.en.json
+│   │   │   ├── category_alias.ja.json
+│   │   │   └── rank.ja2en.json
+│   │   ├── add_line_translations.py
+│   │   ├── check_line_translations_zero.mjs
+│   │   ├── detect_translated_base.mjs
+│   │   ├── doctor_en_blocks.mjs
+│   │   ├── export_final_json.mjs
+│   │   ├── fill_placeholders.mjs
+│   │   ├── finalize_omikuji.ps1
+│   │   ├── fix_en_headers_linehead.mjs
+│   │   ├── fix_header100_from_qa.mjs
+│   │   ├── merge_missing_into_translations.mjs
+│   │   ├── normalize_categories.mjs
+│   │   ├── ordinal_selfcheck.mjs
+│   │   ├── patch_one_hundredth_in_qa.mjs
+│   │   ├── patch_split_100.mjs
+│   │   ├── qa_validate.mjs
+│   │   ├── README_SYNC.md
+│   │   ├── rebuild_block.mjs
+│   │   ├── rewrite_en_headers_by_rank.mjs
+│   │   ├── strip_bom.mjs
+│   │   ├── strip_inline_by_core.mjs
+│   │   ├── strip_inline_translations.mjs
+│   │   ├── sync_omikuji.py
+│   │   ├── translations_en.json
+│   │   ├── translations_ja.json
+│   │   └── why_guard.mjs
+│   ├── add_formal_fields.js
+│   ├── attach_ranks.js
+│   ├── build_kannon.mjs
+│   ├── build_omikuji_bundle.mjs
+│   ├── check_kannon.js
+│   ├── check_kannon.js.bak_20250927_171024
+│   ├── convert_kannon_csv_to_json.js
+│   ├── convert_kannon_csv_to_json.ts
+│   ├── export_cards_all.mjs
+│   ├── export_cards_all.mjs.bak
+│   ├── export_cards_jpg.mjs
+│   ├── export_cards.mjs
+│   ├── extract_between_images.js
+│   ├── extract_fortunes.mjs
+│   ├── extract_kannon_items.mjs
+│   ├── fill_omikuji_translations.py
+│   ├── fix_bundle_heading_from_core.mjs
+│   ├── gen_omikuji_cards.ts
+│   ├── generate-descriptions.mjs
+│   ├── generate-mood-tags.mjs
+│   ├── generate-tree.mjs
+│   ├── kannon_audit.mjs
+│   ├── kannon_pick_redo.mjs
+│   ├── kannon_redo.mjs
+│   ├── migrate_kannon100_to_split.mjs
+│   ├── normalize_kannon_headers.mjs
+│   ├── normalize_kannon_txt.mjs
+│   ├── notify_kpi.sh
+│   ├── omikuji_audit_fs.mjs
+│   ├── omikuji_auto_grade_refine.py
+│   ├── omikuji_gate_pipeline.py
+│   ├── omikuji_gate_pipeline.py.bak
+│   ├── omikuji_overrides.json
+│   ├── omikuji_rank_fix.mjs
+│   ├── omikuji_repair.mjs
+│   ├── omikuji_translate.mjs
+│   ├── omikuji_validate_v2.js
+│   ├── omikuji_validate.mjs
+│   ├── patch_migrate_functions.mjs
+│   ├── patch_migrate_round2.mjs
+│   ├── patch_missing_kannon.py
+│   ├── postprocess_from_json.js
+│   ├── remove_tail_from_abi.mjs
+│   ├── rescrape_text_only.js
+│   ├── rescrape_text_only.js.bak_20250927_172449
+│   ├── rescrape_text_only.js.bak_20250927_172841
+│   ├── scrape_kannon_gap_text.mjs
+│   ├── scrape_kannon100.py
+│   ├── scrape.js
+│   ├── setup-step1.ps1
+│   ├── setup-step1.sh
+│   ├── spotify-genre-seed-tags.mjs
+│   ├── spotify-seed-tags.mjs
+│   ├── sync_from_core_bak.mjs
+│   ├── sync_kannon_images.mjs
+│   ├── translate_kannon.js
+│   ├── validate_omikuji.mjs
+│   ├── validate-gates-manifest.mjs
+│   └── work-bulk.mjs
+├── src
+│   ├── app
+│   ├── components
+│   │   ├── omikuji
+│   │   │   ├── OmikujiCardView.tsx
+│   │   │   ├── patterns.ts
+│   │   │   └── theme.ts
+│   │   ├── FlipCard.tsx
+│   │   ├── GateCard.tsx
+│   │   ├── GatesGrid.tsx
+│   │   ├── GatesLanding.tsx
+│   │   └── Nav.tsx
+│   ├── data
+│   │   ├── kannon100
+│   │   │   ├── 001
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文001.txt
+│   │   │   ├── 002
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文002.txt
+│   │   │   ├── 003
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文003.txt
+│   │   │   ├── 004
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文004.txt
+│   │   │   ├── 005
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文005.txt
+│   │   │   ├── 006
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文006.txt
+│   │   │   ├── 007
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文007.txt
+│   │   │   ├── 008
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文008.txt
+│   │   │   ├── 009
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文009.txt
+│   │   │   ├── 010
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文010.txt
+│   │   │   ├── 011
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文011.txt
+│   │   │   ├── 012
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文012.txt
+│   │   │   ├── 013
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文013.txt
+│   │   │   ├── 014
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文014.txt
+│   │   │   ├── 015
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文015.txt
+│   │   │   ├── 016
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文016.txt
+│   │   │   ├── 017
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文017.txt
+│   │   │   ├── 018
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文018.txt
+│   │   │   ├── 019
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文019.txt
+│   │   │   ├── 020
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文020.txt
+│   │   │   ├── 021
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文021.txt
+│   │   │   ├── 022
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文022.txt
+│   │   │   ├── 023
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文023.txt
+│   │   │   ├── 024
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文024.txt
+│   │   │   ├── 025
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文025.txt
+│   │   │   ├── 026
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文026.txt
+│   │   │   ├── 027
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文027.txt
+│   │   │   ├── 028
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文028.txt
+│   │   │   ├── 029
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文029.txt
+│   │   │   ├── 030
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文030.txt
+│   │   │   ├── 031
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文031.txt
+│   │   │   ├── 032
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文032.txt
+│   │   │   ├── 033
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文033.txt
+│   │   │   ├── 034
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文034.txt
+│   │   │   ├── 035
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文035.txt
+│   │   │   ├── 036
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文036.txt
+│   │   │   ├── 037
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文037.txt
+│   │   │   ├── 038
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文038.txt
+│   │   │   ├── 039
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文039.txt
+│   │   │   ├── 040
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文040.txt
+│   │   │   ├── 041
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文041.txt
+│   │   │   ├── 042
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文042.txt
+│   │   │   ├── 043
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文043.txt
+│   │   │   ├── 044
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文044.txt
+│   │   │   ├── 045
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文045.txt
+│   │   │   ├── 046
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文046.txt
+│   │   │   ├── 047
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文047.txt
+│   │   │   ├── 048
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文048.txt
+│   │   │   ├── 049
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文049.txt
+│   │   │   ├── 050
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文050.txt
+│   │   │   ├── 051
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文051.txt
+│   │   │   ├── 052
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文052.txt
+│   │   │   ├── 053
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文053.txt
+│   │   │   ├── 054
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文054.txt
+│   │   │   ├── 055
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文055.txt
+│   │   │   ├── 056
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文056.txt
+│   │   │   ├── 057
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文057.txt
+│   │   │   ├── 058
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文058.txt
+│   │   │   ├── 059
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文059.txt
+│   │   │   ├── 060
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文060.txt
+│   │   │   ├── 061
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文061.txt
+│   │   │   ├── 062
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文062.txt
+│   │   │   ├── 063
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文063.txt
+│   │   │   ├── 064
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文064.txt
+│   │   │   ├── 065
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文065.txt
+│   │   │   ├── 066
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文066.txt
+│   │   │   ├── 067
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文067.txt
+│   │   │   ├── 068
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文068.txt
+│   │   │   ├── 069
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文069.txt
+│   │   │   ├── 070
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文070.txt
+│   │   │   ├── 071
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文071.txt
+│   │   │   ├── 072
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文072.txt
+│   │   │   ├── 073
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文073.txt
+│   │   │   ├── 074
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文074.txt
+│   │   │   ├── 075
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文075.txt
+│   │   │   ├── 076
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文076.txt
+│   │   │   ├── 077
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文077.txt
+│   │   │   ├── 078
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文078.txt
+│   │   │   ├── 079
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文079.txt
+│   │   │   ├── 080
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文080.txt
+│   │   │   ├── 081
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文081.txt
+│   │   │   ├── 082
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文082.txt
+│   │   │   ├── 083
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文083.txt
+│   │   │   ├── 084
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文084.txt
+│   │   │   ├── 085
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文085.txt
+│   │   │   ├── 086
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文086.txt
+│   │   │   ├── 087
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文087.txt
+│   │   │   ├── 088
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文088.txt
+│   │   │   ├── 089
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文089.txt
+│   │   │   ├── 090
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文090.txt
+│   │   │   ├── 091
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文091.txt
+│   │   │   ├── 092
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文092.txt
+│   │   │   ├── 093
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文093.txt
+│   │   │   ├── 094
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文094.txt
+│   │   │   ├── 095
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文095.txt
+│   │   │   ├── 096
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文096.txt
+│   │   │   ├── 097
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文097.txt
+│   │   │   ├── 098
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文098.txt
+│   │   │   ├── 099
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文099.txt
+│   │   │   ├── 100
+│   │   │   │   ├── back.jpg
+│   │   │   │   ├── en.txt
+│   │   │   │   ├── en.txt.bak
+│   │   │   │   ├── en.txt.prev
+│   │   │   │   ├── en.txt.prev2
+│   │   │   │   ├── front.jpg
+│   │   │   │   ├── ja.txt
+│   │   │   │   ├── ja.txt.bak
+│   │   │   │   ├── ja.txt.prev
+│   │   │   │   ├── ja.txt.prev2
+│   │   │   │   └── 原文100.txt
+│   │   │   ├── _check_report.csv
+│   │   │   ├── en.txt.bak
+│   │   │   ├── ja_001-100.txt
+│   │   │   ├── ja.txt.bak
+│   │   │   ├── kannon100.csv
+│   │   │   └── kannon100.json
+│   │   ├── omikuji
+│   │   │   ├── schema
+│   │   │   ├── abi.json
+│   │   │   ├── audit.json
+│   │   │   ├── core.json
+│   │   │   ├── en.txt
+│   │   │   ├── en.with_trans.txt
+│   │   │   ├── ja.txt
+│   │   │   ├── ja.with_trans.txt
+│   │   │   ├── line_translation_missing.json
+│   │   │   └── sync_report.json
+│   │   └── rank_map.json
+│   ├── features
+│   │   └── oracle
+│   │       ├── map-reading-tags.ts
+│   │       ├── omikuji-engine.ts
+│   │       ├── omikuji-text.ts
+│   │       ├── reading.ts
+│   │       ├── reasons.ts
+│   │       ├── scoring.ts
+│   │       ├── seed.ts
+│   │       ├── types.ts
+│   │       ├── useOracleData.ts
+│   │       └── useOracleMetrics.ts
+│   ├── lib
+│   │   ├── analytics.tsx
+│   │   ├── hash.ts
+│   │   ├── loadGates.ts
+│   │   ├── loadWorks.ts
+│   │   ├── metrics.ts
+│   │   ├── omikuji.ts
+│   │   ├── omikujiPoem.ts
+│   │   ├── persona.ts
+│   │   ├── reco.ts
+│   │   ├── recommender.ts
+│   │   └── spec.ts
+│   ├── pages
+│   │   ├── api
+│   │   │   ├── omikuji
+│   │   │   │   ├── _diag.ts
+│   │   │   │   ├── [id].ts
+│   │   │   │   └── random.ts
+│   │   │   ├── chat-groq.ts
+│   │   │   ├── chat-reco.ts
+│   │   │   └── healthz.ts
+│   │   ├── oracle
+│   │   │   ├── [lang].tsx
+│   │   │   ├── [lang].tsx.bak
+│   │   │   ├── index.backup.tsx
+│   │   │   ├── index.tsx
+│   │   │   └── omikuji-demo.tsx
+│   │   ├── _app.tsx
+│   │   ├── _document.tsx
+│   │   ├── chat.tsx
+│   │   ├── exhibibak
+│   │   ├── exhibition.tsx
+│   │   ├── gates.tsx
+│   │   ├── guide.tsx
+│   │   └── omikuji.tsx
+│   ├── pages_legacy
+│   │   ├── oracle
+│   │   └── oracle.disabled.tsx
+│   ├── styles
+│   │   ├── globals.css
+│   │   └── oracle.module.css
+│   └── types
+│       ├── gates.ts
+│       └── omikuji.ts
+├── tempdata
+│   ├── extract_kannon_items_report.json
+│   ├── kannon_100_raw.json
+│   ├── kannon_100.csv
+│   ├── kannon_audit.csv
+│   ├── kannon_audit.json
+│   ├── kannon_by_heading_preview.txt
+│   ├── kannon_middle_preview.txt
+│   ├── kannon_redo_targets.json
+│   ├── kannon_segments_preview.txt
+│   ├── omikuji_fs_report.csv
+│   ├── omikuji_fs_report.json
+│   ├── qa_omikuji.json
+│   └── qa_report.json
+├── .env
+├── .env.example
+├── .env.local
+├── .eslintignore
+├── .gitattributes
+├── .gitignore
+├── commitlint.config.cjs
+├── eslint.config.mjs
+├── filelist.txt
+├── jsconfig.json
+├── musiam-front-2025-09-26.zip
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── project-structure-latest.txt
+├── README_STEP1.md
+├── README_STEP2.md
+├── README_STEP3.md
+├── README_STEP4.md
+├── README.md
+├── replacements.txt
+├── tailwind.config.js
+├── TREE.md
+├── TREE.txt
+├── tsconfig.json
+└── tsconfig.tsbuildinfo

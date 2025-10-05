@@ -1,0 +1,150 @@
+// scripts/rescrape_text_only.js
+// 画像は触らず、各URLから本文だけ取り直して 原文NNN.txt を生成
+const fs = require("fs");
+const path = require("path");
+const axios = require("axios");
+const cheerio = require("cheerio");
+const iconv = require("iconv-lite");
+const pLimit = require("p-limit");
+
+const DATA_DIR  = path.join(__dirname, "..", "src", "data", "kannon100");
+const JSON_PATH = path.join(DATA_DIR, "kannon100.json");
+const INDEX_URL = "http://www.chance.org.tw/籤詩集/淺草觀音寺一百籤/籤詩網‧淺草觀音寺一百籤.htm";
+
+const HEADING_RE = /第[一二三四五六七八九十百零〇\d]+\s*(?:大吉|中吉|小吉|吉|末吉|末小吉|半吉|凶|大凶)/;
+const TITLE_RE   = /^[一-龥]{2,12}$/;
+const SENT_END   = /[。．.!！?？]/;
+const LABEL_KEYS = ["願望","疾病","盼望的人","遺失物","失物","蓋新居","搬家","嫁娶","旅行","交往","商売","求財","學業","訴訟","萬事"];
+const MAX_BLANKS = 3;   // タイトル→説明の間に許す空行
+const WANT_PAIRS = 4;   // 目標ペア数（足りなくてもそのまま保存）
+
+function ensureDir(d){ if (!fs.existsSync(d)) fs.mkdirSync(d, {recursive:true}); }
+
+async function getHtml(url){
+  const r = await axios.get(url, {
+    responseType: "arraybuffer",
+    headers: {
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+      "Referer": INDEX_URL,
+      "Accept-Encoding": "identity",
+    },
+    timeout: 30000
+  });
+  // Big5前提でデコード（失敗時はutf8 fallback）
+  try { return iconv.decode(r.data, "big5"); } catch { return r.data.toString("utf8"); }
+}
+
+function toLines($){
+  // 行単位で素直に拾う（改行を持ちやすい要素中心）
+  const sels = "p,div,span,li,center,b,strong";
+  const lines = $(sels).map((i,el)=>$(el).text()).get()
+    .map(s => (s||"").replace(/\r/g,"").replace(/\u00a0/g," ").replace(/[ \t]+/g," ").replace(/[　]+/g," ").trim())
+    .filter(Boolean);
+  return lines;
+}
+
+function isNoise(s){
+  if (!s) return true;
+  if (/https?:\/\//i.test(s)) return true;
+  if (/LIVE直播|PDF|研究室|JAXA|Youtube|youtube/i.test(s)) return true;
+  if (/^\d{4}\.\d{1,2}\.\d{1,2}/.test(s)) return true;
+  if (/^\./.test(s)) return true;
+  return false;
+}
+
+function extractHeading(lines){
+  for (const s of lines){ const m = s.match(HEADING_RE); if (m) return m[0].replace(/\s+/g,""); }
+  return "";
+}
+
+function extractPairs(lines){
+  const pairs = [];
+  for (let i=0;i<lines.length;i++){
+    const t = lines[i];
+    if (!t) continue;
+    // 同一行に「タイトル 説明。」タイプ
+    const m = t.match(/^([一-龥]{2,12})[ 　]+(.+?)$/);
+    if (m && SENT_END.test(m[2])){ pairs.push([m[1], m[2]]); if (pairs.length>=WANT_PAIRS) break; continue; }
+    // タイトル行 → 次行以降で説明
+    if (!TITLE_RE.test(t)) continue;
+    let j=i+1, blanks=0, expl="";
+    while (j<lines.length && blanks<=MAX_BLANKS){
+      const s = lines[j];
+      if (!s){ blanks++; j++; continue; }
+      if (TITLE_RE.test(s)) break;
+      if (SENT_END.test(s)){ expl=s; break; }
+      const comb = s+" "+(lines[j+1]||"");
+      if (SENT_END.test(comb)){ expl=comb; break; }
+      j++;
+    }
+    if (expl){ pairs.push([t, expl]); if (pairs.length>=WANT_PAIRS) break; }
+  }
+  return pairs;
+}
+
+function extractLabels(lines){
+  const out=[];
+  for (let i=0;i<lines.length;i++){
+    const s = lines[i];
+    if (!s) continue;
+    for (const k of LABEL_KEYS){
+      if (s.startsWith(k+"：") || s.startsWith(k+":")){ out.push(s); break; }
+      if (s===k+"：" || s===k+":"){
+        const next=(lines[i+1]||"").trim(); if (next) out.push(`${k}：${next}`);
+      }
+    }
+  }
+  return out;
+}
+function extractCaution(lines){
+  for (const s of lines){
+    if (/萬事|謹慎|小心|當心|粗心大意/.test(s)){
+      const m = s.match(/.*?[。．.!！?？]/); return m?m[0]:s;
+    }
+  }
+  return "";
+}
+function buildDoc(heading,pairs,labels,caution){
+  const b=[];
+  if (heading) b.push(heading,"");
+  for (const [t,e] of pairs){ b.push(t); b.push(e); b.push(""); }
+  for (const L of labels) b.push(L);
+  if (labels.length) b.push("");
+  if (caution) b.push(caution);
+  return b.join("\n").trim()+"\n";
+}
+
+async function main(){
+  const arr = JSON.parse(fs.readFileSync(JSON_PATH,"utf8"));
+  const limit = pLimit(4);
+  let ok=0, weak=0;
+
+  const jobs = arr.map(rec => limit(async () => {
+    const n  = rec.number;
+    const id = String(n).padStart(3,"0");
+    const url = rec.url;
+    const dir = path.join(DATA_DIR, id);
+    ensureDir(dir);
+    try{
+      const html = await getHtml(url);
+      const $ = cheerio.load(html, { decodeEntities:false });
+      const all  = toLines($);
+      const core = all.filter(s => !isNoise(s));
+      const heading = extractHeading(core);
+      const pairs   = extractPairs(core);
+      const labels  = extractLabels(core);
+      const caution = extractCaution(core);
+      const outTxt  = buildDoc(heading, pairs, labels, caution);
+      fs.writeFileSync(path.join(dir, `原文${id}.txt`), outTxt, "utf8");
+      if (heading && pairs.length>=2) ok++; else weak++;
+      process.stdout.write(`\r[+] ${id} done  (pairs:${pairs.length}, labels:${labels.length})      `);
+    }catch(e){
+      weak++;
+      console.warn(`\n[warn] ${id}: ${e.message}`);
+    }
+  }));
+
+  await Promise.all(jobs);
+  console.log(`\n--- text re-scrape report ---\nOK:${ok}  weak:${weak}`);
+}
+main();
