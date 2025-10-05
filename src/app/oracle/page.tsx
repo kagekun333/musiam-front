@@ -2,9 +2,15 @@
 
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useMemo, useCallback } from "react";
+import { useEffect, useMemo, useCallback, Suspense } from "react";
 
-export default function OracleGate() {
+// これで静的生成を避け、CSR前提に
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const runtime = "nodejs";
+
+// useSearchParams() を使う本体は Suspense 配下に置く
+function OracleGateInner() {
   const sp = useSearchParams();
   const router = useRouter();
 
@@ -22,7 +28,10 @@ export default function OracleGate() {
   // 2) 記憶言語があり、クエリが無ければそのまま遷移
   useEffect(() => {
     if (!isValidLang(queryLang)) {
-      const saved = (typeof window !== "undefined" && localStorage.getItem("omikuji_lang")) as "ja" | "en" | null;
+      const saved = (typeof window !== "undefined" && localStorage.getItem("omikuji_lang")) as
+        | "ja"
+        | "en"
+        | null;
       if (isValidLang(saved)) {
         router.replace(`/oracle/omikuji?lang=${saved}`);
       }
@@ -47,13 +56,11 @@ export default function OracleGate() {
         <p className="mt-2 text-sm text-zinc-600">
           言語を選んでください / Choose your language
         </p>
-        <p className="mt-1 text-xs text-zinc-500">
-          ※ 本日は1回まで（当日中の再表示は可）
-        </p>
+        <p className="mt-1 text-xs text-zinc-500">※ 本日は1回まで（当日中の再表示は可）</p>
       </header>
 
       <section className="flex flex-col gap-4 sm:flex-row">
-        {/* ボタン：日本語 */}
+        {/* 日本語 */}
         <button
           onClick={() => choose("ja")}
           className="flex-1 rounded-xl border border-zinc-300 bg-white px-6 py-4 text-left shadow-sm transition
@@ -64,7 +71,7 @@ export default function OracleGate() {
           <div className="text-xs text-zinc-600">JA — Enter the oracle in Japanese</div>
         </button>
 
-        {/* ボタン：English */}
+        {/* English */}
         <button
           onClick={() => choose("en")}
           className="flex-1 rounded-xl border border-zinc-300 bg-white px-6 py-4 text-left shadow-sm transition
@@ -76,7 +83,7 @@ export default function OracleGate() {
         </button>
       </section>
 
-      {/* 明示的リンク（ボタンが苦手な人向けのFallback） */}
+      {/* 明示的リンク（Fallback） */}
       <div className="mt-6 flex gap-4 text-sm">
         <Link className="text-blue-700 underline" href="/oracle/omikuji?lang=ja" prefetch>
           日本語で開く
@@ -97,5 +104,14 @@ export default function OracleGate() {
         </button>
       </div>
     </main>
+  );
+}
+
+// ページは Suspense でラップ
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="p-6 text-sm text-zinc-500">Loading…</div>}>
+      <OracleGateInner />
+    </Suspense>
   );
 }
