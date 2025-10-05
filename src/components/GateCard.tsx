@@ -54,3 +54,4 @@ export default function GateCard({ item }: { item: GateItem }) {
   );
 }
 
+

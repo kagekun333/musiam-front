@@ -1,0 +1,3002 @@
+[
+  {
+    "id": 1,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第一　大吉",
+    "header_en": "First: Great Luck",
+    "lines": [
+      {
+        "orig": "七寶浮圖塔",
+        "ja": "七宝の浮図塔",
+        "en": "seven treasures floating pagoda"
+      },
+      {
+        "orig": "高峰頂上安",
+        "ja": "高峰の頂に安らか",
+        "en": "peaceful atop the high peak"
+      },
+      {
+        "orig": "眾人皆仰望",
+        "ja": "人々は皆仰ぎ見る",
+        "en": "everyone gazes up"
+      },
+      {
+        "orig": "莫作等閒看",
+        "ja": "軽視してはならない",
+        "en": "do not view it as ordinary"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 2,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第二　小吉",
+    "header_en": "Second: Small Luck",
+    "lines": [
+      {
+        "orig": "月被浮雲翳",
+        "ja": "月は浮雲に覆われ",
+        "en": "moon covered by floating clouds"
+      },
+      {
+        "orig": "立事自昏迷",
+        "ja": "事を立てて自ら迷う",
+        "en": "establishing matters leads to confusion"
+      },
+      {
+        "orig": "幸乞隂公祐",
+        "ja": "幸い陰公の助けを乞う",
+        "en": "luckily seeking help from the shadow"
+      },
+      {
+        "orig": "何慮不開眉",
+        "ja": "何を憂うことがあろう",
+        "en": "what worries could prevent joy"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 3,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第三　凶",
+    "header_en": "Third: Bad Luck",
+    "lines": [
+      {
+        "orig": "愁惱損忠良",
+        "ja": "愁い悩み忠良を損なう",
+        "en": "sorrow harms loyalty"
+      },
+      {
+        "orig": "青霄一炷香",
+        "ja": "青空に一炷の香",
+        "en": "one stick of incense in blue sky"
+      },
+      {
+        "orig": "雖然防小過",
+        "ja": "小さな過ちを防ぐも",
+        "en": "though preventing small faults"
+      },
+      {
+        "orig": "閑慮覺時長",
+        "ja": "閑に思えば時は長し",
+        "en": "in leisure time feels time long"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 4,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四　吉",
+    "header_en": "Fourth: Good Luck",
+    "lines": [
+      {
+        "orig": "累有興雲志",
+        "ja": "たびたび雲を興す志あり",
+        "en": "Often arises the will to raise clouds"
+      },
+      {
+        "orig": "君恩祿未封",
+        "ja": "君の恩と禄はまだ賜らず",
+        "en": "Favor and reward have not yet been granted"
+      },
+      {
+        "orig": "若逢侯手印",
+        "ja": "もし侯の手印に逢えば",
+        "en": "If the seal of the lord is received"
+      },
+      {
+        "orig": "好事始總總",
+        "ja": "良き事は始めて次々と起こる",
+        "en": "Good things then begin to gather"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 5,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五　凶",
+    "header_en": "Fifth: Bad Luck",
+    "lines": [
+      {
+        "orig": "家道未能昌",
+        "ja": "家道はまだ栄えず",
+        "en": "family path not yet prosperous"
+      },
+      {
+        "orig": "危危保禍殃",
+        "ja": "危うくして禍を保つ",
+        "en": "dangerously preserving misfortune"
+      },
+      {
+        "orig": "暗雲侵月桂",
+        "ja": "暗雲が月桂を侵す",
+        "en": "dark clouds invade the laurel"
+      },
+      {
+        "orig": "佳人一炷香",
+        "ja": "佳人は一炷の香",
+        "en": "beautiful person one stick of incense"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 6,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第六　末吉",
+    "header_en": "Sixth: Later Luck",
+    "lines": [
+      {
+        "orig": "宅墓鬼凶多",
+        "ja": "宅墓には鬼が多く",
+        "en": "many spirits haunt the tomb"
+      },
+      {
+        "orig": "人事有爻訛",
+        "ja": "人事には爻の誤りあり",
+        "en": "human affairs have errors"
+      },
+      {
+        "orig": "傷財防損失",
+        "ja": "財を傷つけ損失を防ぐ",
+        "en": "injuring wealth preventing loss"
+      },
+      {
+        "orig": "祈福始中和",
+        "ja": "祈り福は始まる中和",
+        "en": "praying for blessings begins harmony"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 7,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七　凶",
+    "header_en": "Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "登舟待便風",
+        "ja": "舟に登り便風を待つ",
+        "en": "boarding the boat waiting for wind"
+      },
+      {
+        "orig": "月色暗朦朧",
+        "ja": "月の色は暗く朦朧",
+        "en": "moonlight dark and hazy"
+      },
+      {
+        "orig": "欲輾香輪去",
+        "ja": "香輪を転がして去りたい",
+        "en": "wanting to roll the fragrant wheel"
+      },
+      {
+        "orig": "高山千萬重",
+        "ja": "高山は千重万重",
+        "en": "high mountains countless layers"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 8,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八　大吉",
+    "header_en": "Eighth: Great Luck",
+    "lines": [
+      {
+        "orig": "勿頭中見尾",
+        "ja": "頭の中で尾を見てはならぬ",
+        "en": "do not see the tail in the head"
+      },
+      {
+        "orig": "文華須得理",
+        "ja": "文華は理を得るべし",
+        "en": "literature must attain reason"
+      },
+      {
+        "orig": "禾刀自偶然",
+        "ja": "禾刀は偶然に自ずから",
+        "en": "the grain knife comes by chance"
+      },
+      {
+        "orig": "當遇非常喜",
+        "ja": "非常の喜びに出会うべし",
+        "en": "should encounter extraordinary joy"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 9,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九　大吉",
+    "header_en": "Ninth: Great Luck",
+    "lines": [
+      {
+        "orig": "有名須得遇",
+        "ja": "名声は出会いを得るべき",
+        "en": "fame must meet with chance"
+      },
+      {
+        "orig": "三望一朝遷",
+        "ja": "三度の望み一朝に移る",
+        "en": "three hopes shift in one morning"
+      },
+      {
+        "orig": "貴人來指處",
+        "ja": "貴人が来て指し示す場所",
+        "en": "noble ones point to the place"
+      },
+      {
+        "orig": "華菓應時鮮",
+        "ja": "華やかな果実は時に応じて新鮮",
+        "en": "flowers and fruits are fresh in season"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 10,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十　大吉",
+    "header_en": "Tenth: Great Luck",
+    "lines": [
+      {
+        "orig": "舊用多成破",
+        "ja": "古い使い方は多く破れる",
+        "en": "old ways often lead to ruin"
+      },
+      {
+        "orig": "新更始見財",
+        "ja": "新たに始めて財を見出す",
+        "en": "new beginnings reveal wealth"
+      },
+      {
+        "orig": "改求雲外望",
+        "ja": "改めて雲外を望む",
+        "en": "seek beyond the clouds anew"
+      },
+      {
+        "orig": "枯木遇春開",
+        "ja": "枯れ木が春に出会い開く",
+        "en": "dry trees bloom upon spring's arrival"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 11,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十一　大吉",
+    "header_en": "Eleven: Great Luck",
+    "lines": [
+      {
+        "orig": "有祿興家業",
+        "ja": "禄があれば家業が興る",
+        "en": "wealth brings prosperity to the home"
+      },
+      {
+        "orig": "文華達帝都",
+        "ja": "文華は帝都に達する",
+        "en": "culture reaches the imperial capital"
+      },
+      {
+        "orig": "雲中乘好箭",
+        "ja": "雲中で良い矢を乗せる",
+        "en": "arrows ride well among the clouds"
+      },
+      {
+        "orig": "兼得貴人扶",
+        "ja": "貴人の助けを得る",
+        "en": "also gain support from the noble"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 12,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十二　大吉",
+    "header_en": "Twelve: Great Luck",
+    "lines": [
+      {
+        "orig": "楊柳遇春時",
+        "ja": "柳が春に出会う時",
+        "en": "willows meet springtime's arrival"
+      },
+      {
+        "orig": "殘花發舊枝",
+        "ja": "残花が古い枝に咲く",
+        "en": "wilted flowers bloom on old branches"
+      },
+      {
+        "orig": "重重霜雪裡",
+        "ja": "重なる霜雪の中で",
+        "en": "amidst layers of frost and snow"
+      },
+      {
+        "orig": "黃金色更輝",
+        "ja": "黄金色がさらに輝く",
+        "en": "golden hues shine even brighter"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 13,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第十三　大吉",
+    "header_en": "Thirteen: Great Luck",
+    "lines": [
+      {
+        "orig": "手把大陽輝",
+        "ja": "手に大陽の輝きを持つ",
+        "en": "hands grasp the sun's bright glow"
+      },
+      {
+        "orig": "東君發舊枝",
+        "ja": "東君が古い枝を発する",
+        "en": "the eastern lord brings forth old branches"
+      },
+      {
+        "orig": "稼苗方欲秀",
+        "ja": "苗が今まさに秀でようとする",
+        "en": "seedlings are about to flourish"
+      },
+      {
+        "orig": "猶更上雲梯",
+        "ja": "なおさらに雲の梯子を上る",
+        "en": "still ascend the cloud ladder"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 14,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第十四　末吉",
+    "header_en": "Fourteen: Later Luck",
+    "lines": [
+      {
+        "orig": "玉石未分時",
+        "ja": "玉と石が分かれない時",
+        "en": "when jade and stone are undivided"
+      },
+      {
+        "orig": "憂心轉更悲",
+        "ja": "憂いはさらに悲しみに転じる",
+        "en": "worries turn to deeper sorrow"
+      },
+      {
+        "orig": "前途通大道",
+        "ja": "前途は大通りに通じる",
+        "en": "the path ahead leads to the great road"
+      },
+      {
+        "orig": "花發應殘枝",
+        "ja": "花は残りの枝に応じて咲く",
+        "en": "flowers bloom on the remaining branches"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 15,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第十五　凶",
+    "header_en": "Fifteen: Bad Luck",
+    "lines": [
+      {
+        "orig": "年乖數亦孤",
+        "ja": "年が乖離し数も孤独",
+        "en": "years diverge and numbers are lonely"
+      },
+      {
+        "orig": "久病未能蘇",
+        "ja": "長い病は未だに蘇らず",
+        "en": "long illness has not yet revived"
+      },
+      {
+        "orig": "岸危舟未發",
+        "ja": "岸は危険舟は未だ出ず",
+        "en": "the shore is perilous the boat has not set sail"
+      },
+      {
+        "orig": "龍臥失明珠",
+        "ja": "龍が横たわり明珠を失う",
+        "en": "the dragon lies lost without its pearl"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 16,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第十六　吉",
+    "header_en": "Sixteen: Good Luck",
+    "lines": [
+      {
+        "orig": "破改重成望",
+        "ja": "破れたものを改めて望む",
+        "en": "hope to reform what is broken"
+      },
+      {
+        "orig": "前途喜亦寧",
+        "ja": "前途は喜びと安寧",
+        "en": "the future brings joy and peace"
+      },
+      {
+        "orig": "貴人相助處",
+        "ja": "貴人が助ける場所",
+        "en": "the place where noble ones assist"
+      },
+      {
+        "orig": "祿馬照前程",
+        "ja": "禄馬が前途を照らす",
+        "en": "wealth and horses illuminate the path"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 17,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第十七　凶",
+    "header_en": "Seventeen: Bad Luck",
+    "lines": [
+      {
+        "orig": "怪異防憂惱",
+        "ja": "奇異を防ぎ憂いを悩ます",
+        "en": "strange things prevent worries"
+      },
+      {
+        "orig": "人宅見分離",
+        "ja": "人の家に分離を見て",
+        "en": "homes see separation"
+      },
+      {
+        "orig": "惜華還值雨",
+        "ja": "花を惜しみ雨に値する",
+        "en": "cherish flowers worth the rain"
+      },
+      {
+        "orig": "杯酒惹閑非",
+        "ja": "杯と酒が閑を惹く",
+        "en": "cup and wine attract idleness"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 18,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第十八　吉",
+    "header_en": "Eighteen: Good Luck",
+    "lines": [
+      {
+        "orig": "離暗出明時",
+        "ja": "暗から明るい時に離れ",
+        "en": "from darkness to bright times"
+      },
+      {
+        "orig": "麻衣變綠衣",
+        "ja": "麻の衣が緑の衣に変わる",
+        "en": "hemp clothes turn to green"
+      },
+      {
+        "orig": "舊憂終是退",
+        "ja": "古い憂いは終わり退く",
+        "en": "old worries finally retreat"
+      },
+      {
+        "orig": "遇祿應交輝",
+        "ja": "遇い栄え交わる輝き",
+        "en": "encounter fortune should shine"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 19,
+    "rank_ja": "末小吉",
+    "rank_en": "Slight Later Luck",
+    "header_ja": "第十九　末小吉",
+    "header_en": "Nineteen: Slight Later Luck",
+    "lines": [
+      {
+        "orig": "家道生荊棘",
+        "ja": "家の道に荊棘が生じ",
+        "en": "family path grows thorns"
+      },
+      {
+        "orig": "兒孫防虎威",
+        "ja": "子孫は虎の威を防ぎ",
+        "en": "descendants guard against tigers"
+      },
+      {
+        "orig": "香前祈福厚",
+        "ja": "香の前で祈り福を厚く",
+        "en": "before incense pray for blessings"
+      },
+      {
+        "orig": "方得免分離",
+        "ja": "こそ分離を免れる",
+        "en": "thus avoid separation"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 20,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十　吉",
+    "header_en": "Twenty: Good Luck",
+    "lines": [
+      {
+        "orig": "月出漸分明",
+        "ja": "月が出て次第に明るく",
+        "en": "moon rises gradually brightens"
+      },
+      {
+        "orig": "家財每每興",
+        "ja": "家財は毎回興る",
+        "en": "family wealth often flourishes"
+      },
+      {
+        "orig": "何言先有滯",
+        "ja": "何を言う先に滞る",
+        "en": "what is said first is delayed"
+      },
+      {
+        "orig": "更變立功名",
+        "ja": "さらに変わり名を立てる",
+        "en": "further change establishes fame"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 21,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十一　吉",
+    "header_en": "Twenty-First: Good Luck",
+    "lines": [
+      {
+        "orig": "洗出經年否",
+        "ja": "洗い出す経年の否",
+        "en": "wash out the years of doubt"
+      },
+      {
+        "orig": "光華得再清",
+        "ja": "光華は再び清らかに",
+        "en": "brilliance becomes clear again"
+      },
+      {
+        "orig": "所求終吉利",
+        "ja": "求めるものは終わり吉利",
+        "en": "what is sought ends in good fortune"
+      },
+      {
+        "orig": "重日照前程",
+        "ja": "重なる日が前程を照らす",
+        "en": "bright days illuminate the path"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 22,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十二　吉",
+    "header_en": "Twenty-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "漸漸濃雲散",
+        "ja": "徐々に濃い雲が散る",
+        "en": "gradually thick clouds disperse"
+      },
+      {
+        "orig": "看看月再明",
+        "ja": "月を見て再び明るく",
+        "en": "look at the moon again brightens"
+      },
+      {
+        "orig": "逢春華菓秀",
+        "ja": "春に出会い花と果実が秀で",
+        "en": "meet spring flowers and fruits shine"
+      },
+      {
+        "orig": "雨過竹重青",
+        "ja": "雨が過ぎ竹が重く青い",
+        "en": "after rain bamboo grows lush green"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 23,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十三　吉",
+    "header_en": "Twenty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "紅雲隨步起",
+        "ja": "紅い雲が歩みに随い起き",
+        "en": "red clouds rise with each step"
+      },
+      {
+        "orig": "一箭中青霄",
+        "ja": "一矢が青空に中る",
+        "en": "an arrow strikes the blue sky"
+      },
+      {
+        "orig": "鹿行千里遠",
+        "ja": "鹿は千里を遠く行く",
+        "en": "deer travel far a thousand miles"
+      },
+      {
+        "orig": "爭知去路遙",
+        "ja": "争って知る去る道は遥か",
+        "en": "who knows the road ahead is long"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 24,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第二十四　凶",
+    "header_en": "Twenty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "三女莫相逢",
+        "ja": "三女は相逢うなかれ",
+        "en": "three maidens should not meet"
+      },
+      {
+        "orig": "盟言說未通",
+        "ja": "盟言はまだ通じず",
+        "en": "oath words have not yet reached"
+      },
+      {
+        "orig": "門裡心肝掛",
+        "ja": "門の内に心肝を掛け",
+        "en": "inside the door heart hangs"
+      },
+      {
+        "orig": "縞素子重重",
+        "ja": "縞の素子が重なり",
+        "en": "striped fabric layers upon layers"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 25,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十五　吉",
+    "header_en": "Twenty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "枯木逢春生",
+        "ja": "枯れ木が春に出会い生まれる",
+        "en": "dry tree meets spring to live"
+      },
+      {
+        "orig": "前途必利亨",
+        "ja": "前途は必ず利を得る",
+        "en": "the future must bring success"
+      },
+      {
+        "orig": "亦得佳人箭",
+        "ja": "また佳人の矢を得る",
+        "en": "also gain the beauty's arrow"
+      },
+      {
+        "orig": "乘車祿自行",
+        "ja": "車に乗り禄を自ら得る",
+        "en": "ride the carriage to gain fortune"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 26,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十六　吉",
+    "header_en": "Twenty-Sixth: Good Luck",
+    "lines": [
+      {
+        "orig": "將軍有異聲",
+        "ja": "将軍に異なる声あり",
+        "en": "the general has a different voice"
+      },
+      {
+        "orig": "進兵萬里程",
+        "ja": "進軍は万里の程",
+        "en": "advance troops for thousands of miles"
+      },
+      {
+        "orig": "爭知臨敵處",
+        "ja": "争って敵に臨む処",
+        "en": "who knows the place to face the foe"
+      },
+      {
+        "orig": "道勝却虛名",
+        "ja": "道は勝ち虚名を却ける",
+        "en": "the path wins yet discards false fame"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 27,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十七　吉",
+    "header_en": "Twenty-Seventh: Good Luck",
+    "lines": [
+      {
+        "orig": "望祿應重山",
+        "ja": "祿を望むは重い山",
+        "en": "seeking fortune is like a heavy mountain"
+      },
+      {
+        "orig": "花紅喜悅顏",
+        "ja": "花は紅く喜びの顔",
+        "en": "red flowers bring joyful faces"
+      },
+      {
+        "orig": "舉頭看皎月",
+        "ja": "頭を上げて皎月を見る",
+        "en": "raise head to see the bright moon"
+      },
+      {
+        "orig": "漸出黑雲間",
+        "ja": "徐々に黒雲の間に出る",
+        "en": "gradually emerges from black clouds"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 28,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第二十八　凶",
+    "header_en": "Twenty-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "意速無船渡",
+        "ja": "意は速く船なし渡る",
+        "en": "intent is swift without a boat"
+      },
+      {
+        "orig": "波深必誤身",
+        "ja": "波が深ければ必ず身を誤る",
+        "en": "deep waves will surely endanger"
+      },
+      {
+        "orig": "切須回舊路",
+        "ja": "切に旧路を回るべし",
+        "en": "must urgently return to the old path"
+      },
+      {
+        "orig": "方可免災迍",
+        "ja": "そうすれば災難を免れる",
+        "en": "only then can avoid disaster"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 29,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第二十九　吉",
+    "header_en": "Twenty-Ninth: Good Luck",
+    "lines": [
+      {
+        "orig": "憂轗漸消融",
+        "ja": "憂いは徐々に消え融ける",
+        "en": "worries gradually melt away"
+      },
+      {
+        "orig": "求名得再通",
+        "ja": "名を求め再び通じる",
+        "en": "seeking fame to connect again"
+      },
+      {
+        "orig": "寶財臨祿位",
+        "ja": "宝と財が禄位に臨む",
+        "en": "treasures and wealth approach fortune"
+      },
+      {
+        "orig": "當遇主人公",
+        "ja": "主人公に出会うべき",
+        "en": "should meet the main character"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 30,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第三十　半吉",
+    "header_en": "Thirty: Mixed Luck",
+    "lines": [
+      {
+        "orig": "仙鶴立高枝",
+        "ja": "仙鶴が高い枝に立つ",
+        "en": "immortal crane stands on high branch"
+      },
+      {
+        "orig": "防他暗箭虧",
+        "ja": "他の暗い矢の損を防ぐ",
+        "en": "guard against hidden arrows' loss"
+      },
+      {
+        "orig": "井畔剛刀利",
+        "ja": "井の畔に鋭い刀あり",
+        "en": "sharp blade by the well's edge"
+      },
+      {
+        "orig": "戶內更防危",
+        "ja": "戸内でも更に危険を防ぐ",
+        "en": "inside the door further guard against danger"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 31,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第三十一　末吉",
+    "header_en": "Thirty-First: Later Luck",
+    "lines": [
+      {
+        "orig": "鯤鯨未變時",
+        "ja": "鯤鯨がまだ変わらぬ時",
+        "en": "when the giant fish has not changed"
+      },
+      {
+        "orig": "且守碧潭溪",
+        "ja": "碧潭の溪を守るべし",
+        "en": "must guard the azure stream"
+      },
+      {
+        "orig": "風雲興巨浪",
+        "ja": "風雲が興り巨浪を起こす",
+        "en": "winds and clouds stir up great waves"
+      },
+      {
+        "orig": "一息過天涯",
+        "ja": "一息で天涯を越える",
+        "en": "a breath crosses the horizon"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 32,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十二　吉",
+    "header_en": "Thirty-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "似玉藏深石",
+        "ja": "玉のように深い石に隠れ",
+        "en": "like jade hidden in deep stone"
+      },
+      {
+        "orig": "休將故眼看",
+        "ja": "古い目で見ることはやめよ",
+        "en": "do not look with old eyes"
+      },
+      {
+        "orig": "一朝良匠別",
+        "ja": "一朝良匠が別れ",
+        "en": "one day a good craftsman departs"
+      },
+      {
+        "orig": "方見寶光寒",
+        "ja": "初めて宝の光寒を見よ",
+        "en": "only then see the cold light of treasure"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 33,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十三　吉",
+    "header_en": "Thirty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "枯木逢春艷",
+        "ja": "枯れ木が春に出会う美しさ",
+        "en": "dry tree meets spring beauty"
+      },
+      {
+        "orig": "芳菲再發林",
+        "ja": "芳しい花が再び林に咲く",
+        "en": "fragrance blooms again in the forest"
+      },
+      {
+        "orig": "雲間方見月",
+        "ja": "雲の間から月が見える",
+        "en": "moon appears between the clouds"
+      },
+      {
+        "orig": "前遇貴人欽",
+        "ja": "前に貴人に出会い敬う",
+        "en": "met a noble person with respect"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 34,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十四　吉",
+    "header_en": "Thirty-Fourth: Good Luck",
+    "lines": [
+      {
+        "orig": "臘木春將至",
+        "ja": "冬木に春が近づく",
+        "en": "winter tree spring is approaching"
+      },
+      {
+        "orig": "芳菲喜再新",
+        "ja": "芳しい花が再び新たに",
+        "en": "fragrance joyfully renews again"
+      },
+      {
+        "orig": "鯤鯨興巨浪",
+        "ja": "鯤鯨が巨浪を起こす",
+        "en": "whale stirs up giant waves"
+      },
+      {
+        "orig": "舉鉤祿為真",
+        "ja": "釣り針を上げて真実を得る",
+        "en": "raise the hook to gain truth"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 35,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第三十五　吉",
+    "header_en": "Thirty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "射鹿須乘箭",
+        "ja": "鹿を射るには矢を使う",
+        "en": "to shoot deer one must use arrows"
+      },
+      {
+        "orig": "故僧引路歸",
+        "ja": "昔の僧が道を引いて帰る",
+        "en": "old monk leads the way home"
+      },
+      {
+        "orig": "遇道同仙籍",
+        "ja": "道に出会い仙人の籍を得る",
+        "en": "meet the path and gain immortal status"
+      },
+      {
+        "orig": "光華映晚暉",
+        "ja": "光が夕日の中に映える",
+        "en": "light shines in the evening glow"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 36,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第三十六　末吉",
+    "header_en": "Thirty-Sixth: Later Luck",
+    "lines": [
+      {
+        "orig": "先損後有益",
+        "ja": "先に損し後に利益がある",
+        "en": "first loss then there is gain"
+      },
+      {
+        "orig": "如月之剝蝕",
+        "ja": "二月のように剥がれ落ちる",
+        "en": "like February's peeling away"
+      },
+      {
+        "orig": "玉兔待重生",
+        "ja": "玉の兎が再生を待つ",
+        "en": "jade rabbit awaits rebirth"
+      },
+      {
+        "orig": "光華當滿室",
+        "ja": "光が部屋を満たす",
+        "en": "light fills the entire room"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 37,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第三十七　半吉",
+    "header_en": "Thirty-Seventh: Mixed Luck",
+    "lines": [
+      {
+        "orig": "陰靉未能通",
+        "ja": "陰の雲が通らない",
+        "en": "dark clouds cannot pass through"
+      },
+      {
+        "orig": "求名亦未逢",
+        "ja": "名を求めても出会えない",
+        "en": "seeking fame yet not encountering"
+      },
+      {
+        "orig": "幸然須有變",
+        "ja": "幸いにも変化が必要",
+        "en": "luckily change is necessary"
+      },
+      {
+        "orig": "一箭中雙鴻",
+        "ja": "一矢で二羽の鴻を射る",
+        "en": "one arrow hits two swans"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 38,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第三十八　半吉",
+    "header_en": "Thirty-Eighth: Mixed Luck",
+    "lines": [
+      {
+        "orig": "月照天書靜",
+        "ja": "月が天の書を静かに照らす",
+        "en": "moon illuminates the heavenly book"
+      },
+      {
+        "orig": "雲生霧彩霞",
+        "ja": "雲が霧と彩霞を生む",
+        "en": "clouds create mist and rosy clouds"
+      },
+      {
+        "orig": "久想離庭客",
+        "ja": "長い間庭を離れた客",
+        "en": "longing for the guest away from home"
+      },
+      {
+        "orig": "無事惹咨嗟",
+        "ja": "無事が嘆きを引き起こす",
+        "en": "peace brings forth sighs"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 39,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第三十九　凶",
+    "header_en": "Thirty-Ninth: Bad Luck",
+    "lines": [
+      {
+        "orig": "望用方心腹",
+        "ja": "望みは心の腹を使う",
+        "en": "hope uses the heart's core"
+      },
+      {
+        "orig": "家鄉被火災",
+        "ja": "故郷が火災に遭う",
+        "en": "hometown suffers from fire"
+      },
+      {
+        "orig": "憂危三五度",
+        "ja": "危険を三度五度心配する",
+        "en": "worry about danger three to five times"
+      },
+      {
+        "orig": "由損斷頭財",
+        "ja": "損失で頭を断たれる財",
+        "en": "loss cuts off wealth"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 40,
+    "rank_ja": "末小吉",
+    "rank_en": "Slight Later Luck",
+    "header_ja": "第四十　末小吉",
+    "header_en": "Forty: Slight Later Luck",
+    "lines": [
+      {
+        "orig": "中正方成道",
+        "ja": "中正が道を成す",
+        "en": "balance creates the path"
+      },
+      {
+        "orig": "姦邪恐惹愆",
+        "ja": "邪悪が過ちを引き起こす",
+        "en": "evil may cause mistakes"
+      },
+      {
+        "orig": "壺中盛妙藥",
+        "ja": "壺の中に妙薬が満ちる",
+        "en": "jar holds marvelous medicine"
+      },
+      {
+        "orig": "非久去煩煎",
+        "ja": "長く煩わしさを去ることはない",
+        "en": "not long to leave behind troubles"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 41,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第四十一　末吉",
+    "header_en": "Forty-First: Later Luck",
+    "lines": [
+      {
+        "orig": "有物不周旋",
+        "ja": "物が周りを回らず",
+        "en": "Things do not revolve around each other"
+      },
+      {
+        "orig": "須防損半邊",
+        "ja": "半分を損なうのを防ぐべし",
+        "en": "Must guard against losing half"
+      },
+      {
+        "orig": "家鄉煙火裡",
+        "ja": "故郷の煙火の中で",
+        "en": "In the smoke and fire of home"
+      },
+      {
+        "orig": "祈福始安然",
+        "ja": "安らかに祈りを始める",
+        "en": "Begin to pray for peace"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 42,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十二　吉",
+    "header_en": "Forty-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "桂華春將到",
+        "ja": "桂の花が春に近づく",
+        "en": "Laurel blossoms approach spring"
+      },
+      {
+        "orig": "雲天好進程",
+        "ja": "雲の天は進むのに良い",
+        "en": "Cloudy skies favor the journey"
+      },
+      {
+        "orig": "貴人相遇處",
+        "ja": "貴人が出会う場所",
+        "en": "Where the noble meet"
+      },
+      {
+        "orig": "暗月再分明",
+        "ja": "暗い月が再び明らかに",
+        "en": "The dark moon becomes clear again"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 43,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十三　吉",
+    "header_en": "Forty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "月桂將相滿",
+        "ja": "月桂が満ちようとしている",
+        "en": "Laurel will soon be full"
+      },
+      {
+        "orig": "追鹿映山溪",
+        "ja": "鹿を追い山の渓に映す",
+        "en": "Chasing deer reflects in the stream"
+      },
+      {
+        "orig": "貴人乘遠箭",
+        "ja": "貴人が遠い矢に乗る",
+        "en": "Noble rides the distant arrow"
+      },
+      {
+        "orig": "好事始相宜",
+        "ja": "良い事が始まるのに適す",
+        "en": "Good things begin to align"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 44,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十四　吉",
+    "header_en": "Forty-Fourth: Good Luck",
+    "lines": [
+      {
+        "orig": "盤中黑白子",
+        "ja": "盤の中の黒と白の子",
+        "en": "Black and white pieces on the board"
+      },
+      {
+        "orig": "一著要先機",
+        "ja": "一手が先手を要す",
+        "en": "One move must seize the opportunity"
+      },
+      {
+        "orig": "天龍降甘澤",
+        "ja": "天の龍が甘い恵みを降ろす",
+        "en": "Heavenly dragon brings sweet blessings"
+      },
+      {
+        "orig": "喜出舊根基",
+        "ja": "喜びは古い基盤から出る",
+        "en": "Joy arises from old foundations"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 45,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十五　吉",
+    "header_en": "Forty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "有意興高顯",
+        "ja": "意図が高く現れる",
+        "en": "Intentions rise high and clear"
+      },
+      {
+        "orig": "祿馬引前程",
+        "ja": "禄馬が前の道を引く",
+        "en": "Fortune horse leads the path"
+      },
+      {
+        "orig": "得遇雲中箭",
+        "ja": "雲中の矢に出会う",
+        "en": "Encountering arrows in the clouds"
+      },
+      {
+        "orig": "芝蘭滿路生",
+        "ja": "芝と蘭が道を満たす",
+        "en": "Moss and orchids fill the road"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 46,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第四十六　凶",
+    "header_en": "Forty-Sixth: Bad Luck",
+    "lines": [
+      {
+        "orig": "雷發震天昏",
+        "ja": "雷が発し天が震える",
+        "en": "Thunder strikes and heaven trembles"
+      },
+      {
+        "orig": "佳人獨掩門",
+        "ja": "美人が独りで門を閉じる",
+        "en": "Beauty alone closes the door"
+      },
+      {
+        "orig": "交加文書上",
+        "ja": "文書が交わる上で",
+        "en": "Documents intertwine above"
+      },
+      {
+        "orig": "無事也遭迍",
+        "ja": "無事もまた遭遇する",
+        "en": "Even peace encounters troubles"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 47,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十七　吉",
+    "header_en": "Forty-Seventh: Good Luck",
+    "lines": [
+      {
+        "orig": "更望身前立",
+        "ja": "さらに前に立つことを望む",
+        "en": "Hope to stand before"
+      },
+      {
+        "orig": "何期在晚成",
+        "ja": "何を期して遅れて成る",
+        "en": "What to expect in late success"
+      },
+      {
+        "orig": "若遇重山去",
+        "ja": "重い山に出会うなら",
+        "en": "If meeting heavy mountains"
+      },
+      {
+        "orig": "財祿自相迎",
+        "ja": "財と禄が自ら迎える",
+        "en": "Wealth and fortune welcome themselves"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 48,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第四十八　小吉",
+    "header_en": "Forty-Eighth: Small Luck",
+    "lines": [
+      {
+        "orig": "見祿隔前溪",
+        "ja": "禄が前の渓に隔たる",
+        "en": "Wealth is separated by the stream"
+      },
+      {
+        "orig": "勞心休更迷",
+        "ja": "心を労し迷いを休める",
+        "en": "Rest the troubled mind from confusion"
+      },
+      {
+        "orig": "一朝逢好渡",
+        "ja": "ある朝良い渡しに出会う",
+        "en": "One morning meets a good crossing"
+      },
+      {
+        "orig": "鸞鳳入雲飛",
+        "ja": "鳳凰が雲に入って飛ぶ",
+        "en": "Phoenix enters the clouds and flies"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 49,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第四十九　吉",
+    "header_en": "Forty-Ninth: Good Luck",
+    "lines": [
+      {
+        "orig": "正好中秋月",
+        "ja": "ちょうど中秋の月",
+        "en": "just right the mid autumn moon"
+      },
+      {
+        "orig": "蟾蜍皎潔間",
+        "ja": "蟾蜍の明るい間",
+        "en": "toad shines in the clear space"
+      },
+      {
+        "orig": "暗雲知何處",
+        "ja": "暗雲はどこに",
+        "en": "dark clouds know where"
+      },
+      {
+        "orig": "故故兩相攀",
+        "ja": "故に二つ攀じる",
+        "en": "thus both cling to each other"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 50,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十　吉",
+    "header_en": "Fifty: Good Luck",
+    "lines": [
+      {
+        "orig": "有達宜更變",
+        "ja": "達成すれば変わるべき",
+        "en": "if achieved should change"
+      },
+      {
+        "orig": "重山利政逢",
+        "ja": "重なる山に政が出会う",
+        "en": "mountains meet with governance"
+      },
+      {
+        "orig": "前途相偶合",
+        "ja": "前途は偶然に合う",
+        "en": "the future coincides unexpectedly"
+      },
+      {
+        "orig": "財祿保亨通",
+        "ja": "財と禄は保たれ通る",
+        "en": "wealth and rank are preserved smoothly"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 51,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十一　吉",
+    "header_en": "Fifty-First: Good Luck",
+    "lines": [
+      {
+        "orig": "修進甚功辛",
+        "ja": "修行は非常に辛い",
+        "en": "cultivation is very arduous"
+      },
+      {
+        "orig": "勞生未得時",
+        "ja": "生を労して時を得ず",
+        "en": "toil in life has no time"
+      },
+      {
+        "orig": "騰身遊碧漢",
+        "ja": "身を高くして碧漢を遊ぶ",
+        "en": "rise and roam in the azure river"
+      },
+      {
+        "orig": "方得遇高枝",
+        "ja": "高い枝に出会う",
+        "en": "then meet the high branches"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 52,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十二　凶",
+    "header_en": "Fifty-Second: Bad Luck",
+    "lines": [
+      {
+        "orig": "有僭須惹訟",
+        "ja": "僭越は訴訟を引き起こす",
+        "en": "usurpation must provoke lawsuits"
+      },
+      {
+        "orig": "兼有事交加",
+        "ja": "事が重なり合う",
+        "en": "matters overlap and combine"
+      },
+      {
+        "orig": "門裡防人危",
+        "ja": "門の内で人の危険を防ぐ",
+        "en": "inside the door guard against danger"
+      },
+      {
+        "orig": "災臨莫嘆嗟",
+        "ja": "災害が来ても嘆くな",
+        "en": "when disaster comes do not lament"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 53,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十三　吉",
+    "header_en": "Fifty-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "久困漸能安",
+        "ja": "長い困難が徐々に安定",
+        "en": "long troubles gradually find peace"
+      },
+      {
+        "orig": "雲書降印權",
+        "ja": "雲の書が印を降ろす",
+        "en": "cloud writings descend with authority"
+      },
+      {
+        "orig": "殘花終結實",
+        "ja": "残花は結実する",
+        "en": "withering flowers ultimately bear fruit"
+      },
+      {
+        "orig": "時亨祿自遷",
+        "ja": "時が来れば禄は自ずと移る",
+        "en": "when the time comes fortune shifts naturally"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 54,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十四　凶",
+    "header_en": "Fifty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "身同意不同",
+        "ja": "身は同じ意は異なる",
+        "en": "body is the same intent is different"
+      },
+      {
+        "orig": "月蝕暗長空",
+        "ja": "月蝕は暗い長い空",
+        "en": "eclipse darkens the vast sky"
+      },
+      {
+        "orig": "輪雖常在手",
+        "ja": "輪は常に手にある",
+        "en": "the wheel is always in hand"
+      },
+      {
+        "orig": "魚水未相逢",
+        "ja": "魚と水はまだ出会わず",
+        "en": "fish and water have not yet met"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 55,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十五　吉",
+    "header_en": "Fifty-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "雲散月重明",
+        "ja": "雲が散り月が再び明るい",
+        "en": "clouds disperse the moon shines bright"
+      },
+      {
+        "orig": "天書得誌誠",
+        "ja": "天の書が誠を得る",
+        "en": "heavenly writings gain sincerity"
+      },
+      {
+        "orig": "雖然多阻滯",
+        "ja": "多くの阻害があっても",
+        "en": "although there are many obstacles"
+      },
+      {
+        "orig": "花發再重榮",
+        "ja": "花は再び栄える",
+        "en": "flowers bloom and flourish again"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 56,
+    "rank_ja": "末小吉",
+    "rank_en": "Slight Later Luck",
+    "header_ja": "第五十六　末小吉",
+    "header_en": "Fifty-Sixth: Slight Later Luck",
+    "lines": [
+      {
+        "orig": "生涯喜又憂",
+        "ja": "生涯は喜びと憂い",
+        "en": "life is filled with joy and sorrow"
+      },
+      {
+        "orig": "未老先白頭",
+        "ja": "老いる前に白髪",
+        "en": "before old age white hair appears"
+      },
+      {
+        "orig": "勞心千百度",
+        "ja": "心を労わし千回",
+        "en": "toil the mind a thousand times"
+      },
+      {
+        "orig": "芳遇貴人留",
+        "ja": "芳しい出会いは貴人を留める",
+        "en": "pleasant encounters retain noble friends"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 57,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第五十七　吉",
+    "header_en": "Fifty-Seventh: Good Luck",
+    "lines": [
+      {
+        "orig": "欲渡長江闊",
+        "ja": "長江を渡りたい",
+        "en": "wish to cross the wide Yangtze"
+      },
+      {
+        "orig": "波深未自儔",
+        "ja": "波は深く自らは無理",
+        "en": "waves are deep not yet self-reliant"
+      },
+      {
+        "orig": "前津逢浪靜",
+        "ja": "前の港で波静かに",
+        "en": "at the front dock waves are calm"
+      },
+      {
+        "orig": "重整鉤鰲鉤",
+        "ja": "再び釣り針を整え",
+        "en": "rearranging the fishing hook again"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 58,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十八　凶",
+    "header_en": "Fifty-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "有徑江海隔",
+        "ja": "道は江海を隔て",
+        "en": "a path separates river and sea"
+      },
+      {
+        "orig": "車行峻嶺危",
+        "ja": "車は険しい山を行く",
+        "en": "the cart travels the steep mountain"
+      },
+      {
+        "orig": "亦防多進退",
+        "ja": "進退を防ぐ必要あり",
+        "en": "also need to guard against retreat"
+      },
+      {
+        "orig": "猶恐小人虧",
+        "ja": "小人に損を恐れ",
+        "en": "still fear loss from petty people"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 59,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第五十九　凶",
+    "header_en": "Fifty-Ninth: Bad Luck",
+    "lines": [
+      {
+        "orig": "去住心無定",
+        "ja": "去るか留まるか心定まらず",
+        "en": "to leave or stay heart is unsettled"
+      },
+      {
+        "orig": "行藏亦未寧",
+        "ja": "行動もまた安らかでない",
+        "en": "actions and hiding are not at peace"
+      },
+      {
+        "orig": "一輪清皎潔",
+        "ja": "一輪の月は清らか",
+        "en": "a round moon is pure and bright"
+      },
+      {
+        "orig": "却被黑雲乘",
+        "ja": "しかし黒雲に覆われ",
+        "en": "yet overshadowed by dark clouds"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 60,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第六十　小吉",
+    "header_en": "Sixty: Small Luck",
+    "lines": [
+      {
+        "orig": "高危安可涉",
+        "ja": "高く危険な所は渡れず",
+        "en": "high and dangerous cannot be crossed"
+      },
+      {
+        "orig": "平坦是延年",
+        "ja": "平坦な道は延命",
+        "en": "the flat path extends life"
+      },
+      {
+        "orig": "守道當逢泰",
+        "ja": "道を守れば安泰に出会う",
+        "en": "guarding the way leads to peace"
+      },
+      {
+        "orig": "風雲不偶然",
+        "ja": "風雲は偶然ではない",
+        "en": "wind and clouds are not by chance"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 61,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第六十一　半吉",
+    "header_en": "Sixty-First: Mixed Luck",
+    "lines": [
+      {
+        "orig": "舊愆何日解",
+        "ja": "古い過ちいつ解消する",
+        "en": "when will old mistakes be resolved"
+      },
+      {
+        "orig": "戶內保嬋娟",
+        "ja": "家の中で美しさを保つ",
+        "en": "preserving beauty within the home"
+      },
+      {
+        "orig": "要逢十一口",
+        "ja": "十一の口に出会う必要あり",
+        "en": "need to meet at the eleven mouths"
+      },
+      {
+        "orig": "遇鼠過牛邊",
+        "ja": "鼠が牛のそばを通る",
+        "en": "the rat passes by the cow"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 62,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第六十二　大吉",
+    "header_en": "Sixty-Second: Great Luck",
+    "lines": [
+      {
+        "orig": "災轗時時退",
+        "ja": "災難は時に退く",
+        "en": "disasters retreat from time to time"
+      },
+      {
+        "orig": "名顯四方揚",
+        "ja": "名は四方に広がる",
+        "en": "fame spreads in all directions"
+      },
+      {
+        "orig": "改故重乘祿",
+        "ja": "古きを改めて再び栄える",
+        "en": "renewing the old to regain fortune"
+      },
+      {
+        "orig": "昴高福自昌",
+        "ja": "昴は高く福は自ら栄える",
+        "en": "the Pleiades rise and fortune flourishes"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 63,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十三　凶",
+    "header_en": "Sixty-Third: Bad Luck",
+    "lines": [
+      {
+        "orig": "何故生荊棘",
+        "ja": "なぜ荊棘が生じるのか",
+        "en": "why do thorns arise"
+      },
+      {
+        "orig": "家人意漸疏",
+        "ja": "家族の心は次第に疎遠",
+        "en": "family's hearts grow increasingly distant"
+      },
+      {
+        "orig": "久困重輪下",
+        "ja": "長く重い輪の下に困る",
+        "en": "long troubled under the heavy wheel"
+      },
+      {
+        "orig": "黃金未出渠",
+        "ja": "黄金はまだ出ていない",
+        "en": "gold has not yet emerged"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 64,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十四　凶",
+    "header_en": "Sixty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "安居且慮危",
+        "ja": "安住しつつ危険を考える",
+        "en": "settling down while considering danger"
+      },
+      {
+        "orig": "情深主別離",
+        "ja": "情は深く主は別れ",
+        "en": "deep feelings lead to separation"
+      },
+      {
+        "orig": "風飄波浪急",
+        "ja": "風は舞い波は急流",
+        "en": "the wind blows and waves rush"
+      },
+      {
+        "orig": "鴛鴦各自飛",
+        "ja": "鴛鴦はそれぞれ飛ぶ",
+        "en": "mandarins fly their separate ways"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 65,
+    "rank_ja": "末吉",
+    "rank_en": "Later Luck",
+    "header_ja": "第六十五　末吉",
+    "header_en": "Sixty-Fifth: Later Luck",
+    "lines": [
+      {
+        "orig": "苦病兼防辱",
+        "ja": "苦しみと侮辱を防ぐ",
+        "en": "suffering and preventing disgrace"
+      },
+      {
+        "orig": "乘危亦未穌",
+        "ja": "危険に乗るも未だ救われず",
+        "en": "riding danger yet not saved"
+      },
+      {
+        "orig": "若見一陽後",
+        "ja": "もし陽が見えたなら",
+        "en": "if one sees the sun after"
+      },
+      {
+        "orig": "方可作良圖",
+        "ja": "良い計画を立てられる",
+        "en": "then can make good plans"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 66,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十六　凶",
+    "header_en": "Sixty-Sixth: Bad Luck",
+    "lines": [
+      {
+        "orig": "水滯少波濤",
+        "ja": "水は滞り波は少なく",
+        "en": "water stagnates with little waves"
+      },
+      {
+        "orig": "飛鴻落羽毛",
+        "ja": "飛ぶ雁が羽を落とし",
+        "en": "flying wild geese drop feathers"
+      },
+      {
+        "orig": "重憂心緒亂",
+        "ja": "重い憂い心は乱れ",
+        "en": "heavy worries disturb the heart"
+      },
+      {
+        "orig": "閑事惹風騷",
+        "ja": "無駄事が風を引き起こす",
+        "en": "trivial matters stir up trouble"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 67,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十七　凶",
+    "header_en": "Sixty-Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "枯木未生枝",
+        "ja": "枯れ木はまだ枝を生まず",
+        "en": "dry tree has not yet sprouted"
+      },
+      {
+        "orig": "獨步上雲岐",
+        "ja": "独りで雲の岐路を上る",
+        "en": "walking alone up the cloud path"
+      },
+      {
+        "orig": "豈知身未穩",
+        "ja": "身が安定していないとは",
+        "en": "how could one know the body is unsteady"
+      },
+      {
+        "orig": "獨自惹閑非",
+        "ja": "独りで無駄な非を惹く",
+        "en": "alone attracting idle blame"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 68,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第六十八　吉",
+    "header_en": "Sixty-Eighth: Good Luck",
+    "lines": [
+      {
+        "orig": "異夢生英傑",
+        "ja": "異なる夢が英傑を生む",
+        "en": "strange dreams give rise to heroes"
+      },
+      {
+        "orig": "前來事可疑",
+        "ja": "前の事は疑わしい",
+        "en": "previous matters are questionable"
+      },
+      {
+        "orig": "芳菲春日暖",
+        "ja": "芳しい春の日は暖かく",
+        "en": "fragrant spring days are warm"
+      },
+      {
+        "orig": "依舊發殘枝",
+        "ja": "依然として残りの枝を発する",
+        "en": "still sprouting from remaining branches"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 69,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第六十九　凶",
+    "header_en": "Sixty-Ninth: Bad Luck",
+    "lines": [
+      {
+        "orig": "明月暗雲浮",
+        "ja": "明るい月と暗い雲が浮かぶ",
+        "en": "bright moon and dark clouds float"
+      },
+      {
+        "orig": "花紅一半枯",
+        "ja": "花は赤く半分枯れ",
+        "en": "flowers red half withered"
+      },
+      {
+        "orig": "惹事傷心處",
+        "ja": "事を惹き心を傷める",
+        "en": "stirring troubles hurt the heart"
+      },
+      {
+        "orig": "行舟莫遠圖",
+        "ja": "舟を行かせ遠くを図るな",
+        "en": "do not plan far while sailing"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 70,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十　凶",
+    "header_en": "Seventy: Bad Luck",
+    "lines": [
+      {
+        "orig": "雷發庭前草",
+        "ja": "雷が庭の草を発し",
+        "en": "thunder strikes the grass before"
+      },
+      {
+        "orig": "炎火向天飛",
+        "ja": "炎の火が天に向かって飛ぶ",
+        "en": "flames fly towards the sky"
+      },
+      {
+        "orig": "一心來趕祿",
+        "ja": "一心で禄を追い求め",
+        "en": "with one heart chasing fortune"
+      },
+      {
+        "orig": "爭奈掩朱扉",
+        "ja": "どうしても朱の扉を覆う",
+        "en": "yet how to cover the red door"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 71,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十一　凶",
+    "header_en": "Seventy-First: Bad Luck",
+    "lines": [
+      {
+        "orig": "道業未成時",
+        "ja": "道業が未だ成らぬ時",
+        "en": "when the path is not yet complete"
+      },
+      {
+        "orig": "何期兩不宜",
+        "ja": "何を期しても二つは宜しくない",
+        "en": "what to expect both are not suitable"
+      },
+      {
+        "orig": "事煩心緒亂",
+        "ja": "事は煩わしく心は乱れ",
+        "en": "matters are troublesome heart is chaotic"
+      },
+      {
+        "orig": "做徘徊思",
+        "ja": "徘徊し思いを巡らす",
+        "en": "wandering and pondering thoughts"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 72,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十二　吉",
+    "header_en": "Seventy-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "戶內防重厄",
+        "ja": "戸内で重い厄を防ぎ",
+        "en": "inside the door preventing heavy misfortune"
+      },
+      {
+        "orig": "花菓見分枝",
+        "ja": "花と果実が枝を分かち",
+        "en": "flowers and fruits divide the branches"
+      },
+      {
+        "orig": "嚴霜纔過後",
+        "ja": "厳しい霜がやっと過ぎ",
+        "en": "severe frost has just passed"
+      },
+      {
+        "orig": "方可始相宜",
+        "ja": "ようやく相応しい時が来る",
+        "en": "only then can it be suitable"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 73,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十三　吉",
+    "header_en": "Seventy-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "久暗漸分明",
+        "ja": "長い暗闇が徐々に明るくなる",
+        "en": "long darkness gradually becomes clear"
+      },
+      {
+        "orig": "登江綠水澄",
+        "ja": "江に登り緑水が澄む",
+        "en": "climbing the river green water is clear"
+      },
+      {
+        "orig": "芝書從遠降",
+        "ja": "芝の書が遠くから降りる",
+        "en": "grass writings descend from afar"
+      },
+      {
+        "orig": "終得異人成",
+        "ja": "ついに異なる人に出会う",
+        "en": "finally meeting a different person"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 74,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十四　凶",
+    "header_en": "Seventy-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "蛇虎正交羅",
+        "ja": "蛇と虎が交わる網",
+        "en": "snake and tiger entangled in net"
+      },
+      {
+        "orig": "牛生二尾多",
+        "ja": "牛は二つの尾を持つ",
+        "en": "ox born with two tails many"
+      },
+      {
+        "orig": "交歲方成慶",
+        "ja": "歳が交わると祝う",
+        "en": "when years intersect celebration"
+      },
+      {
+        "orig": "上下不能和",
+        "ja": "上下が和解できない",
+        "en": "up and down cannot reconcile"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 75,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十五　凶",
+    "header_en": "Seventy-Fifth: Bad Luck",
+    "lines": [
+      {
+        "orig": "孤舟欲過岸",
+        "ja": "孤独な舟が岸を越えようとする",
+        "en": "lonely boat wishes to cross shore"
+      },
+      {
+        "orig": "浪急渡人空",
+        "ja": "波が急で人は空",
+        "en": "waves rush crossing person empty"
+      },
+      {
+        "orig": "女人立流水",
+        "ja": "女性が流れに立つ",
+        "en": "woman stands by flowing water"
+      },
+      {
+        "orig": "望月意情濃",
+        "ja": "月を望む思いが深い",
+        "en": "gazing at moon feelings run deep"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 76,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十六　吉",
+    "header_en": "Seventy-Sixth: Good Luck",
+    "lines": [
+      {
+        "orig": "富貴天之祐",
+        "ja": "富と貴は天の助け",
+        "en": "wealth and honor are heaven's aid"
+      },
+      {
+        "orig": "何須苦用心",
+        "ja": "何を苦しむ必要がある",
+        "en": "why must one suffer in heart"
+      },
+      {
+        "orig": "前程應顯跡",
+        "ja": "前の道は明らかに現れる",
+        "en": "future path should show traces"
+      },
+      {
+        "orig": "久用得高臨",
+        "ja": "長く使えば高く臨む",
+        "en": "long use leads to high ascent"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 77,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第七十七　凶",
+    "header_en": "Seventy-Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "累滯未能穌",
+        "ja": "滞りが解消できない",
+        "en": "accumulated hindrance cannot clear"
+      },
+      {
+        "orig": "求名莫遠圖",
+        "ja": "名を求めて遠くを図るな",
+        "en": "seeking fame do not plan far"
+      },
+      {
+        "orig": "登舟波浪急",
+        "ja": "舟に乗る波が急",
+        "en": "boarding boat waves are swift"
+      },
+      {
+        "orig": "咫尺隔天衢",
+        "ja": "近くに天の道が隔たる",
+        "en": "within reach separated by heaven"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 78,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第七十八　大吉",
+    "header_en": "Seventy-Eighth: Great Luck",
+    "lines": [
+      {
+        "orig": "但存公道正",
+        "ja": "ただ公正な道を存じる",
+        "en": "only uphold the righteous path"
+      },
+      {
+        "orig": "何愁理去忠",
+        "ja": "何を悩む忠を去ること",
+        "en": "why worry about loyalty departing"
+      },
+      {
+        "orig": "松柏蒼蒼翠",
+        "ja": "松と柏は青々とした緑",
+        "en": "pines and cypresses lush green"
+      },
+      {
+        "orig": "前山祿馬重",
+        "ja": "前の山に馬が重なる",
+        "en": "front mountain heavy with horses"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 79,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第七十九　吉",
+    "header_en": "Seventy-Ninth: Good Luck",
+    "lines": [
+      {
+        "orig": "殘月未還光",
+        "ja": "残月はまだ光を返さない",
+        "en": "waning moon has not returned light"
+      },
+      {
+        "orig": "樽前非語傷",
+        "ja": "樽の前で言葉は傷つく",
+        "en": "before the jar words cause pain"
+      },
+      {
+        "orig": "戶中有人厄",
+        "ja": "戸の中に人が厄を持つ",
+        "en": "inside the door someone bears misfortune"
+      },
+      {
+        "orig": "祈福保青陽",
+        "ja": "福を祈り青陽を保つ",
+        "en": "praying for blessings to keep bright"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 80,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十　大吉",
+    "header_en": "Eighty: Great Luck",
+    "lines": [
+      {
+        "orig": "深山多養道",
+        "ja": "深い山は道を多く養う",
+        "en": "deep mountains nurture many paths"
+      },
+      {
+        "orig": "忠正帝王宣",
+        "ja": "忠正な帝王が宣言する",
+        "en": "loyal and just emperor proclaims"
+      },
+      {
+        "orig": "鳳遂鸞飛去",
+        "ja": "鳳凰と鸞が飛び去る",
+        "en": "phoenix and luan fly away"
+      },
+      {
+        "orig": "昇高過九天",
+        "ja": "高く昇り九天を超える",
+        "en": "rising high surpassing nine heavens"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 81,
+    "rank_ja": "小吉",
+    "rank_en": "Small Luck",
+    "header_ja": "第八十一　小吉",
+    "header_en": "Eighty-First: Small Luck",
+    "lines": [
+      {
+        "orig": "道合須成合",
+        "ja": "道が合えば必ず成る",
+        "en": "When paths align they must unite"
+      },
+      {
+        "orig": "先憂事更多",
+        "ja": "先に憂い事多し",
+        "en": "First worry brings more troubles"
+      },
+      {
+        "orig": "所求財寶盛",
+        "ja": "求める財宝は豊か",
+        "en": "What is sought is wealth abundant"
+      },
+      {
+        "orig": "更變得中和",
+        "ja": "更に変わり中和得る",
+        "en": "Then change brings balance anew"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 82,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十二　凶",
+    "header_en": "Eighty-Second: Bad Luck",
+    "lines": [
+      {
+        "orig": "火發應連天",
+        "ja": "火が発すれば天に連なる",
+        "en": "When fire ignites it reaches sky"
+      },
+      {
+        "orig": "新愁惹舊愆",
+        "ja": "新たな愁い旧い過ちを惹く",
+        "en": "New sorrows provoke old faults"
+      },
+      {
+        "orig": "欲求千里外",
+        "ja": "千里の外を求め",
+        "en": "Desiring what lies far away"
+      },
+      {
+        "orig": "要渡更無船",
+        "ja": "渡るには船も無く",
+        "en": "To cross there is no vessel"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 83,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十三　凶",
+    "header_en": "Eighty-Third: Bad Luck",
+    "lines": [
+      {
+        "orig": "舉步出雲端",
+        "ja": "一歩を踏み出し雲端を出る",
+        "en": "Step forth from the cloud's edge"
+      },
+      {
+        "orig": "高枝未可攀",
+        "ja": "高い枝にはまだ登れず",
+        "en": "High branches are yet unscaled"
+      },
+      {
+        "orig": "昇頭看皎月",
+        "ja": "頭を上げて明月を見",
+        "en": "Lift head to gaze at bright moon"
+      },
+      {
+        "orig": "猶在黑雲間",
+        "ja": "なお黒雲の間にあり",
+        "en": "Still amidst the dark clouds"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 84,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十四　凶",
+    "header_en": "Eighty-Fourth: Bad Luck",
+    "lines": [
+      {
+        "orig": "否極方無泰",
+        "ja": "否が極まれば泰なし",
+        "en": "When denial peaks there is no peace"
+      },
+      {
+        "orig": "花開值晚秋",
+        "ja": "花が開くは晩秋に値し",
+        "en": "Flowers bloom in late autumn's time"
+      },
+      {
+        "orig": "人情不調備",
+        "ja": "人の情は調和せず",
+        "en": "Human feelings are out of tune"
+      },
+      {
+        "orig": "財寶鬼來偷",
+        "ja": "財宝は鬼が来て盗む",
+        "en": "Wealth is stolen by lurking ghosts"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 85,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十五　大吉",
+    "header_en": "Eighty-Fifth: Great Luck",
+    "lines": [
+      {
+        "orig": "望用何愁晚",
+        "ja": "望むに何の愁いか遅れ",
+        "en": "What worries await in the late"
+      },
+      {
+        "orig": "求名漸得寧",
+        "ja": "名を求め徐々に得る安らぎ",
+        "en": "Seeking fame gradually brings peace"
+      },
+      {
+        "orig": "雲梯終有望",
+        "ja": "雲の梯子にはついに望み",
+        "en": "The cloud ladder holds hope at last"
+      },
+      {
+        "orig": "歸路入蓬瀛",
+        "ja": "帰路は蓬瀛に入る",
+        "en": "The return path leads to paradise"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 86,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十六　大吉",
+    "header_en": "Eighty-Sixth: Great Luck",
+    "lines": [
+      {
+        "orig": "花發應陽臺",
+        "ja": "花が発すれば陽台に応じ",
+        "en": "When flowers bloom they greet the terrace"
+      },
+      {
+        "orig": "車行進寶財",
+        "ja": "車が行けば宝財を進め",
+        "en": "As carts move wealth advances"
+      },
+      {
+        "orig": "執文朝帝殿",
+        "ja": "文を執り朝帝の殿へ",
+        "en": "Holding texts to the morning court"
+      },
+      {
+        "orig": "走馬聽聲雷",
+        "ja": "馬を走らせて雷の声を聞く",
+        "en": "Riding fast to hear the thunder"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 87,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十七　大吉",
+    "header_en": "Eighty-Seventh: Great Luck",
+    "lines": [
+      {
+        "orig": "鑿石方逢玉",
+        "ja": "石を鑿けば玉に逢う",
+        "en": "Chiseling stone reveals the jade"
+      },
+      {
+        "orig": "淘沙始見金",
+        "ja": "砂を淘ぐと金が見え始め",
+        "en": "Washing sand reveals gold at last"
+      },
+      {
+        "orig": "青霄終有路",
+        "ja": "青空にはついに道がある",
+        "en": "In the blue sky there is a way"
+      },
+      {
+        "orig": "只恐不堅心",
+        "ja": "ただ心が堅くないことを恐れ",
+        "en": "Only fear is a wavering heart"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 88,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第八十八　凶",
+    "header_en": "Eighty-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "作事不和同",
+        "ja": "事を作るに和同せず",
+        "en": "In actions there is no harmony"
+      },
+      {
+        "orig": "臨危更主凶",
+        "ja": "危機に臨んで更に凶を主る",
+        "en": "In danger misfortune takes charge"
+      },
+      {
+        "orig": "佳人生苦根",
+        "ja": "佳人は苦しみの根を生む",
+        "en": "The fair one bears roots of sorrow"
+      },
+      {
+        "orig": "閑慮兩三重",
+        "ja": "閑な思いは二三重に",
+        "en": "Leisurely thoughts are layered thick"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 89,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第八十九　大吉",
+    "header_en": "Eighty-Ninth: Great Luck",
+    "lines": [
+      {
+        "orig": "一片無瑕玉",
+        "ja": "一片の瑕のない玉",
+        "en": "a piece of flawless jade"
+      },
+      {
+        "orig": "從今好琢磨",
+        "ja": "今から良く磨かれ",
+        "en": "from now well carved"
+      },
+      {
+        "orig": "得遇高人識",
+        "ja": "高人に出会い識る",
+        "en": "encounter wise ones"
+      },
+      {
+        "orig": "方逢喜氣多",
+        "ja": "喜び多き時に出会う",
+        "en": "then meet much joy"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 90,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九十　大吉",
+    "header_en": "Ninety: Great Luck",
+    "lines": [
+      {
+        "orig": "一信向天飛",
+        "ja": "一信天に向かって飛ぶ",
+        "en": "a letter flies to the sky"
+      },
+      {
+        "orig": "秦川舟自歸",
+        "ja": "秦川の舟自ら帰る",
+        "en": "the boat returns to Qin River"
+      },
+      {
+        "orig": "前途成好事",
+        "ja": "前途は良い事となる",
+        "en": "the future becomes good things"
+      },
+      {
+        "orig": "應得貴人推",
+        "ja": "貴人に推されるべき",
+        "en": "should receive noble support"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 91,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十一　吉",
+    "header_en": "Ninety-First: Good Luck",
+    "lines": [
+      {
+        "orig": "改變前途去",
+        "ja": "前途を変えて行く",
+        "en": "change the path ahead"
+      },
+      {
+        "orig": "月桂又逢圓",
+        "ja": "月桂また円に出会う",
+        "en": "laurel meets full again"
+      },
+      {
+        "orig": "雲中乘祿至",
+        "ja": "雲中に乗り栄達する",
+        "en": "ride the clouds to success"
+      },
+      {
+        "orig": "凡事可宜先",
+        "ja": "すべての事は先に宜しい",
+        "en": "all matters should be prioritized"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 92,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十二　吉",
+    "header_en": "Ninety-Second: Good Luck",
+    "lines": [
+      {
+        "orig": "自幼常為旅",
+        "ja": "幼い頃から常に旅人",
+        "en": "since youth always a traveler"
+      },
+      {
+        "orig": "逢春駿馬驕",
+        "ja": "春に出会い駿馬驕る",
+        "en": "meet spring proud steeds"
+      },
+      {
+        "orig": "前程宜進步",
+        "ja": "前途は進歩すべき",
+        "en": "the future should advance"
+      },
+      {
+        "orig": "得箭降青霄",
+        "ja": "矢を得て青空に降る",
+        "en": "gain arrows descend to blue sky"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 93,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十三　吉",
+    "header_en": "Ninety-Third: Good Luck",
+    "lines": [
+      {
+        "orig": "有魚臨旱池",
+        "ja": "魚が干上がった池に来る",
+        "en": "fish approach the dry pond"
+      },
+      {
+        "orig": "跳躍入波濤",
+        "ja": "跳ねて波涛に入る",
+        "en": "leap into the waves"
+      },
+      {
+        "orig": "隔中須有望",
+        "ja": "隔てた中に望みがある",
+        "en": "there must be hope in between"
+      },
+      {
+        "orig": "先且慮塵勞",
+        "ja": "まずは塵の労を考える",
+        "en": "first consider the toil of dust"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 94,
+    "rank_ja": "半吉",
+    "rank_en": "Mixed Luck",
+    "header_ja": "第九十四　半吉",
+    "header_en": "Ninety-Fourth: Mixed Luck",
+    "lines": [
+      {
+        "orig": "事忌樽前語",
+        "ja": "事は樽の前の言を忌む",
+        "en": "matters avoid words before the cup"
+      },
+      {
+        "orig": "人防小輩交",
+        "ja": "人は小輩の交わりを防ぐ",
+        "en": "people guard against petty exchanges"
+      },
+      {
+        "orig": "幸乞陰公祐",
+        "ja": "幸いに陰公の助けを乞う",
+        "en": "humbly seek the aid of the noble"
+      },
+      {
+        "orig": "方免事敵爻",
+        "ja": "事を敵の爻から免れる",
+        "en": "thus avoid the enemy's schemes"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 95,
+    "rank_ja": "吉",
+    "rank_en": "Good Luck",
+    "header_ja": "第九十五　吉",
+    "header_en": "Ninety-Fifth: Good Luck",
+    "lines": [
+      {
+        "orig": "志氣勤修業",
+        "ja": "志と気を勤めて修業する",
+        "en": "ambition and diligence in study"
+      },
+      {
+        "orig": "祿位未造逢",
+        "ja": "禄位まだ造られず出会う",
+        "en": "position not yet attained"
+      },
+      {
+        "orig": "若聞金雞語",
+        "ja": "もし金の鶏の声を聞けば",
+        "en": "if hear the golden rooster's call"
+      },
+      {
+        "orig": "乘船得便風",
+        "ja": "船に乗り便風を得る",
+        "en": "board the boat catch favorable winds"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 96,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九十六　大吉",
+    "header_en": "Ninety-Sixth: Great Luck",
+    "lines": [
+      {
+        "orig": "雞逐鳳同飛",
+        "ja": "鶏が鳳凰と共に飛ぶ",
+        "en": "chickens fly with phoenix"
+      },
+      {
+        "orig": "高林整羽儀",
+        "ja": "高い林で羽を整える",
+        "en": "in high woods preen their feathers"
+      },
+      {
+        "orig": "棹舟須濟岸",
+        "ja": "舟を漕ぐには岸を渡る",
+        "en": "to row the boat must reach shore"
+      },
+      {
+        "orig": "寶貨滿船歸",
+        "ja": "宝物が満ちた船が帰る",
+        "en": "the ship returns full of treasures"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 97,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第九十七　凶",
+    "header_en": "Ninety-Seventh: Bad Luck",
+    "lines": [
+      {
+        "orig": "霧罩重樓屋",
+        "ja": "霧が重楼を覆う",
+        "en": "fog covers the tall building"
+      },
+      {
+        "orig": "佳人水上行",
+        "ja": "佳人が水上を行く",
+        "en": "beauty walks upon the water"
+      },
+      {
+        "orig": "白雲歸去路",
+        "ja": "白雲は帰る道",
+        "en": "white clouds return on the path"
+      },
+      {
+        "orig": "不見月波澄",
+        "ja": "月の波は澄まず",
+        "en": "the moon's waves are not clear"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 98,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第九十八　凶",
+    "header_en": "Ninety-Eighth: Bad Luck",
+    "lines": [
+      {
+        "orig": "欲理新絲亂",
+        "ja": "新しい糸を整えたい",
+        "en": "want to arrange the new threads"
+      },
+      {
+        "orig": "閑愁足是非",
+        "ja": "静かな愁いは是非",
+        "en": "quiet sorrow is right or wrong"
+      },
+      {
+        "orig": "只困羅網裡",
+        "ja": "ただ網の中に困る",
+        "en": "only trapped within the net"
+      },
+      {
+        "orig": "相見幾人悲",
+        "ja": "会う人は何人も悲しむ",
+        "en": "how many meet in sorrow"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 99,
+    "rank_ja": "大吉",
+    "rank_en": "Great Luck",
+    "header_ja": "第九十九　大吉",
+    "header_en": "Ninety-Ninth: Great Luck",
+    "lines": [
+      {
+        "orig": "紅日當門照",
+        "ja": "紅い日が門を照らす",
+        "en": "red sun shines at the gate"
+      },
+      {
+        "orig": "暗月再重圓",
+        "ja": "暗い月が再び円になる",
+        "en": "dark moon becomes round again"
+      },
+      {
+        "orig": "遇珍須得寶",
+        "ja": "珍しいものに出会うべし",
+        "en": "must obtain the rare treasure"
+      },
+      {
+        "orig": "頗有稱心田",
+        "ja": "心に満足がある",
+        "en": "there is much satisfaction in heart"
+      }
+    ],
+    "tail": []
+  },
+  {
+    "id": 100,
+    "rank_ja": "凶",
+    "rank_en": "Bad Luck",
+    "header_ja": "第百　凶",
+    "header_en": "One Hundredth: Bad Luck",
+    "lines": [
+      {
+        "orig": "祿走白雲間",
+        "ja": "禄は白雲の間を走る",
+        "en": "wealth runs between the white clouds"
+      },
+      {
+        "orig": "攜琴走遠山",
+        "ja": "琴を携えて遠山へ",
+        "en": "carry the zither to distant mountains"
+      },
+      {
+        "orig": "不遇神仙面",
+        "ja": "神仙の面に出会わず",
+        "en": "do not meet the immortal's face"
+      },
+      {
+        "orig": "空惹意闌珊",
+        "ja": "空しく意は寂しい",
+        "en": "emptily the thoughts are desolate"
+      }
+    ],
+    "tail": []
+  }
+]

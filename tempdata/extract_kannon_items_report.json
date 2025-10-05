@@ -1,0 +1,1309 @@
+{
+  "updatedAt": "2025-09-28T13:14:43.811Z",
+  "srcDir": "src/data/kannon100",
+  "target": "src/data/omikuji/locale/ja.json",
+  "total": 100,
+  "withAnyField": 13,
+  "details": [
+    {
+      "id": 1,
+      "file": "src\\data\\kannon100\\001\\原文001.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 2,
+      "file": "src\\data\\kannon100\\002\\原文002.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 3,
+      "file": "src\\data\\kannon100\\003\\原文003.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "雖然拖長，但是會治好吧。",
+        "lost": "難以找到吧。",
+        "person": "要花很久的時間吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 4,
+      "file": "src\\data\\kannon100\\004\\原文004.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 5,
+      "file": "src\\data\\kannon100\\005\\原文005.txt",
+      "extracted": {
+        "wish": "難以實現吧。",
+        "health": "難治好吧。",
+        "lost": "難找到吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 6,
+      "file": "src\\data\\kannon100\\006\\原文006.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 7,
+      "file": "src\\data\\kannon100\\007\\原文007.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 8,
+      "file": "src\\data\\kannon100\\008\\原文008.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 9,
+      "file": "src\\data\\kannon100\\009\\原文009.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 10,
+      "file": "src\\data\\kannon100\\010\\原文010.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 11,
+      "file": "src\\data\\kannon100\\011\\原文011.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 12,
+      "file": "src\\data\\kannon100\\012\\原文012.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 13,
+      "file": "src\\data\\kannon100\\013\\原文013.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 14,
+      "file": "src\\data\\kannon100\\014\\原文014.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 15,
+      "file": "src\\data\\kannon100\\015\\原文015.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 16,
+      "file": "src\\data\\kannon100\\016\\原文016.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 17,
+      "file": "src\\data\\kannon100\\017\\原文017.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "康復需要長時間吧。",
+        "lost": "不會出現吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 18,
+      "file": "src\\data\\kannon100\\018\\原文018.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 19,
+      "file": "src\\data\\kannon100\\019\\原文019.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 20,
+      "file": "src\\data\\kannon100\\020\\原文020.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 21,
+      "file": "src\\data\\kannon100\\021\\原文021.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 22,
+      "file": "src\\data\\kannon100\\022\\原文022.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 23,
+      "file": "src\\data\\kannon100\\023\\原文023.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 24,
+      "file": "src\\data\\kannon100\\024\\原文024.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 25,
+      "file": "src\\data\\kannon100\\025\\原文025.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 26,
+      "file": "src\\data\\kannon100\\026\\原文026.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 27,
+      "file": "src\\data\\kannon100\\027\\原文027.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 28,
+      "file": "src\\data\\kannon100\\028\\原文028.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 29,
+      "file": "src\\data\\kannon100\\029\\原文029.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 30,
+      "file": "src\\data\\kannon100\\030\\原文030.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 31,
+      "file": "src\\data\\kannon100\\031\\原文031.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 32,
+      "file": "src\\data\\kannon100\\032\\原文032.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 33,
+      "file": "src\\data\\kannon100\\033\\原文033.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 34,
+      "file": "src\\data\\kannon100\\034\\原文034.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 35,
+      "file": "src\\data\\kannon100\\035\\原文035.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 36,
+      "file": "src\\data\\kannon100\\036\\原文036.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 37,
+      "file": "src\\data\\kannon100\\037\\原文037.txt",
+      "extracted": {
+        "wish": "難以實現吧。",
+        "health": "變成遲遲地才好轉吧。",
+        "lost": "變成遲遲地才出現吧。",
+        "person": "變成遲遲地才出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 38,
+      "file": "src\\data\\kannon100\\038\\原文038.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 39,
+      "file": "src\\data\\kannon100\\039\\原文039.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 40,
+      "file": "src\\data\\kannon100\\040\\原文040.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 41,
+      "file": "src\\data\\kannon100\\041\\原文041.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 42,
+      "file": "src\\data\\kannon100\\042\\原文042.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 43,
+      "file": "src\\data\\kannon100\\043\\原文043.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 44,
+      "file": "src\\data\\kannon100\\044\\原文044.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 45,
+      "file": "src\\data\\kannon100\\045\\原文045.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 46,
+      "file": "src\\data\\kannon100\\046\\原文046.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 47,
+      "file": "src\\data\\kannon100\\047\\原文047.txt",
+      "extracted": {
+        "wish": "會實現吧。",
+        "health": "變成往後才會治好吧。",
+        "lost": "會出現吧。",
+        "person": "變得遲遲才出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 48,
+      "file": "src\\data\\kannon100\\048\\原文048.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 49,
+      "file": "src\\data\\kannon100\\049\\原文049.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 50,
+      "file": "src\\data\\kannon100\\050\\原文050.txt",
+      "extracted": {
+        "wish": "會實現吧。",
+        "health": "會治好吧。",
+        "lost": "會出現吧。",
+        "person": "變遲吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 51,
+      "file": "src\\data\\kannon100\\051\\原文051.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 52,
+      "file": "src\\data\\kannon100\\052\\原文052.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "會拖長吧。",
+        "lost": "難出現吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 53,
+      "file": "src\\data\\kannon100\\053\\原文053.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 54,
+      "file": "src\\data\\kannon100\\054\\原文054.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 55,
+      "file": "src\\data\\kannon100\\055\\原文055.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 56,
+      "file": "src\\data\\kannon100\\056\\原文056.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 57,
+      "file": "src\\data\\kannon100\\057\\原文057.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 58,
+      "file": "src\\data\\kannon100\\058\\原文058.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 59,
+      "file": "src\\data\\kannon100\\059\\原文059.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 60,
+      "file": "src\\data\\kannon100\\060\\原文060.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 61,
+      "file": "src\\data\\kannon100\\061\\原文061.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "會拖長吧。",
+        "lost": "難找到吧。",
+        "person": "變遲吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 62,
+      "file": "src\\data\\kannon100\\062\\原文062.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 63,
+      "file": "src\\data\\kannon100\\063\\原文063.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "難治癒吧。",
+        "lost": "難找到吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 64,
+      "file": "src\\data\\kannon100\\064\\原文064.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 65,
+      "file": "src\\data\\kannon100\\065\\原文065.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 66,
+      "file": "src\\data\\kannon100\\066\\原文066.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 67,
+      "file": "src\\data\\kannon100\\067\\原文067.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 68,
+      "file": "src\\data\\kannon100\\068\\原文068.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 69,
+      "file": "src\\data\\kannon100\\069\\原文069.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 70,
+      "file": "src\\data\\kannon100\\070\\原文070.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 71,
+      "file": "src\\data\\kannon100\\071\\原文071.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 72,
+      "file": "src\\data\\kannon100\\072\\原文072.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 73,
+      "file": "src\\data\\kannon100\\073\\原文073.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 74,
+      "file": "src\\data\\kannon100\\074\\原文074.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 75,
+      "file": "src\\data\\kannon100\\075\\原文075.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 76,
+      "file": "src\\data\\kannon100\\076\\原文076.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 77,
+      "file": "src\\data\\kannon100\\077\\原文077.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 78,
+      "file": "src\\data\\kannon100\\078\\原文078.txt",
+      "extracted": {
+        "wish": "會實現吧。",
+        "health": "會治好吧。",
+        "lost": "會出來吧。",
+        "person": "會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 79,
+      "file": "src\\data\\kannon100\\079\\原文079.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 80,
+      "file": "src\\data\\kannon100\\080\\原文080.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 81,
+      "file": "src\\data\\kannon100\\081\\原文081.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 82,
+      "file": "src\\data\\kannon100\\082\\原文082.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "可疑，不明朗吧。",
+        "lost": "難出現吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 83,
+      "file": "src\\data\\kannon100\\083\\原文083.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "會拖長吧。",
+        "lost": "難出現吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 84,
+      "file": "src\\data\\kannon100\\084\\原文084.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 85,
+      "file": "src\\data\\kannon100\\085\\原文085.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 86,
+      "file": "src\\data\\kannon100\\086\\原文086.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 87,
+      "file": "src\\data\\kannon100\\087\\原文087.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 88,
+      "file": "src\\data\\kannon100\\088\\原文088.txt",
+      "extracted": {
+        "wish": "難實現吧。",
+        "health": "危險吧。",
+        "lost": "不會出現吧。",
+        "person": "不會出現吧。",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 4
+    },
+    {
+      "id": 89,
+      "file": "src\\data\\kannon100\\089\\原文089.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 90,
+      "file": "src\\data\\kannon100\\090\\原文090.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 91,
+      "file": "src\\data\\kannon100\\091\\原文091.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 92,
+      "file": "src\\data\\kannon100\\092\\原文092.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 93,
+      "file": "src\\data\\kannon100\\093\\原文093.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 94,
+      "file": "src\\data\\kannon100\\094\\原文094.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 95,
+      "file": "src\\data\\kannon100\\095\\原文095.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 96,
+      "file": "src\\data\\kannon100\\096\\原文096.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 97,
+      "file": "src\\data\\kannon100\\097\\原文097.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 98,
+      "file": "src\\data\\kannon100\\098\\原文098.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 99,
+      "file": "src\\data\\kannon100\\099\\原文099.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    },
+    {
+      "id": 100,
+      "file": "src\\data\\kannon100\\100\\原文100.txt",
+      "extracted": {
+        "wish": "",
+        "health": "",
+        "lost": "",
+        "person": "",
+        "houseMove": "",
+        "marriage": ""
+      },
+      "nonEmpty": 0
+    }
+  ]
+}

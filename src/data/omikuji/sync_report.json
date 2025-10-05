@@ -1,0 +1,71 @@
+{
+  "total": 100,
+  "rank_overrides": [
+    {
+      "id": 6,
+      "core_rank": "吉",
+      "final_rank": "末吉"
+    },
+    {
+      "id": 14,
+      "core_rank": "吉",
+      "final_rank": "末吉"
+    },
+    {
+      "id": 19,
+      "core_rank": "小吉",
+      "final_rank": "末小吉"
+    },
+    {
+      "id": 30,
+      "core_rank": "吉",
+      "final_rank": "半吉"
+    },
+    {
+      "id": 31,
+      "core_rank": "吉",
+      "final_rank": "末吉"
+    },
+    {
+      "id": 36,
+      "core_rank": "吉",
+      "final_rank": "末吉"
+    },
+    {
+      "id": 37,
+      "core_rank": "吉",
+      "final_rank": "半吉"
+    },
+    {
+      "id": 38,
+      "core_rank": "吉",
+      "final_rank": "半吉"
+    },
+    {
+      "id": 40,
+      "core_rank": "小吉",
+      "final_rank": "末小吉"
+    },
+    {
+      "id": 41,
+      "core_rank": "吉",
+      "final_rank": "末吉"
+    },
+    {
+      "id": 61,
+      "core_rank": "吉",
+      "final_rank": "半吉"
+    },
+    {
+      "id": 65,
+      "core_rank": "吉",
+      "final_rank": "末吉"
+    },
+    {
+      "id": 94,
+      "core_rank": "吉",
+      "final_rank": "半吉"
+    }
+  ],
+  "missing_in_bak": []
+}

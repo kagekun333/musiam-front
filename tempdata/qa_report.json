@@ -1,0 +1,1045 @@
+{
+  "file": "src/data/kannon_100_final.json",
+  "summary": {
+    "total": 100,
+    "incomplete": 18,
+    "mismatch": 90,
+    "both": 18
+  },
+  "lists": {
+    "incompleteIds": [
+      15,
+      16,
+      30,
+      34,
+      48,
+      49,
+      50,
+      54,
+      55,
+      59,
+      61,
+      66,
+      84,
+      88,
+      93,
+      97,
+      99,
+      100
+    ],
+    "mismatchIds": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      26,
+      27,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      48,
+      49,
+      50,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
+    ],
+    "bothIds": [
+      15,
+      16,
+      30,
+      34,
+      48,
+      49,
+      50,
+      54,
+      55,
+      59,
+      61,
+      66,
+      84,
+      88,
+      93,
+      97,
+      99,
+      100
+    ]
+  },
+  "details": [
+    {
+      "number": 1,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第001番"
+    },
+    {
+      "number": 2,
+      "score": -4,
+      "current_rank": "小吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第002番"
+    },
+    {
+      "number": 3,
+      "score": -2,
+      "current_rank": "凶",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第003番"
+    },
+    {
+      "number": 4,
+      "score": 2,
+      "current_rank": "吉",
+      "suggested_rank": "末吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第004番"
+    },
+    {
+      "number": 5,
+      "score": -4,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第005番"
+    },
+    {
+      "number": 6,
+      "score": -7,
+      "current_rank": "末吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第006番"
+    },
+    {
+      "number": 7,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第007番"
+    },
+    {
+      "number": 8,
+      "score": 6,
+      "current_rank": "大吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第008番"
+    },
+    {
+      "number": 9,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第009番"
+    },
+    {
+      "number": 10,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第010番"
+    },
+    {
+      "number": 11,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第011番"
+    },
+    {
+      "number": 12,
+      "score": 2,
+      "current_rank": "大吉",
+      "suggested_rank": "末吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第012番"
+    },
+    {
+      "number": 13,
+      "score": 2,
+      "current_rank": "大吉",
+      "suggested_rank": "末吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第013番"
+    },
+    {
+      "number": 14,
+      "score": -1,
+      "current_rank": "末吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第014番"
+    },
+    {
+      "number": 15,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第015番"
+    },
+    {
+      "number": 16,
+      "score": 0,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第016番"
+    },
+    {
+      "number": 17,
+      "score": 4,
+      "current_rank": "凶",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第017番"
+    },
+    {
+      "number": 18,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第018番"
+    },
+    {
+      "number": 19,
+      "score": -9,
+      "current_rank": "末小吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第019番"
+    },
+    {
+      "number": 20,
+      "score": 10,
+      "current_rank": "吉",
+      "suggested_rank": "大吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第020番"
+    },
+    {
+      "number": 21,
+      "score": 0,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第021番"
+    },
+    {
+      "number": 22,
+      "score": 5,
+      "current_rank": "吉",
+      "suggested_rank": "半吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第022番"
+    },
+    {
+      "number": 23,
+      "score": -6,
+      "current_rank": "吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第023番"
+    },
+    {
+      "number": 24,
+      "score": 1,
+      "current_rank": "凶",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第024番"
+    },
+    {
+      "number": 25,
+      "score": 6,
+      "current_rank": "吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第025番"
+    },
+    {
+      "number": 26,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第026番"
+    },
+    {
+      "number": 27,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第027番"
+    },
+    {
+      "number": 28,
+      "score": -1,
+      "current_rank": "凶",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第028番"
+    },
+    {
+      "number": 29,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第029番"
+    },
+    {
+      "number": 30,
+      "score": -6,
+      "current_rank": "半吉",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第030番"
+    },
+    {
+      "number": 31,
+      "score": -4,
+      "current_rank": "末吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第031番"
+    },
+    {
+      "number": 32,
+      "score": -6,
+      "current_rank": "吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第032番"
+    },
+    {
+      "number": 33,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第033番"
+    },
+    {
+      "number": 34,
+      "score": 1,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第034番"
+    },
+    {
+      "number": 35,
+      "score": 16,
+      "current_rank": "吉",
+      "suggested_rank": "大吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第035番"
+    },
+    {
+      "number": 36,
+      "score": -2,
+      "current_rank": "末吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第036番"
+    },
+    {
+      "number": 37,
+      "score": -3,
+      "current_rank": "半吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第037番"
+    },
+    {
+      "number": 38,
+      "score": 4,
+      "current_rank": "半吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第038番"
+    },
+    {
+      "number": 39,
+      "score": -10,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第039番"
+    },
+    {
+      "number": 40,
+      "score": -6,
+      "current_rank": "末小吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第040番"
+    },
+    {
+      "number": 41,
+      "score": -6,
+      "current_rank": "末吉",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第041番"
+    },
+    {
+      "number": 42,
+      "score": 6,
+      "current_rank": "吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第042番"
+    },
+    {
+      "number": 43,
+      "score": 0,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第043番"
+    },
+    {
+      "number": 44,
+      "score": 1,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第044番"
+    },
+    {
+      "number": 45,
+      "score": -2,
+      "current_rank": "吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第045番"
+    },
+    {
+      "number": 46,
+      "score": -2,
+      "current_rank": "凶",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第046番"
+    },
+    {
+      "number": 47,
+      "score": 6,
+      "current_rank": "吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第047番"
+    },
+    {
+      "number": 48,
+      "score": 2,
+      "current_rank": "小吉",
+      "suggested_rank": "末吉",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第048番"
+    },
+    {
+      "number": 49,
+      "score": -3,
+      "current_rank": "吉",
+      "suggested_rank": "凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第049番"
+    },
+    {
+      "number": 50,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第050番"
+    },
+    {
+      "number": 51,
+      "score": 6,
+      "current_rank": "吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第051番"
+    },
+    {
+      "number": 52,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第052番"
+    },
+    {
+      "number": 53,
+      "score": 14,
+      "current_rank": "吉",
+      "suggested_rank": "大吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第053番"
+    },
+    {
+      "number": 54,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第054番"
+    },
+    {
+      "number": 55,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第055番"
+    },
+    {
+      "number": 56,
+      "score": -2,
+      "current_rank": "末小吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第056番"
+    },
+    {
+      "number": 57,
+      "score": 0,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第057番"
+    },
+    {
+      "number": 58,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第058番"
+    },
+    {
+      "number": 59,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第059番"
+    },
+    {
+      "number": 60,
+      "score": 10,
+      "current_rank": "小吉",
+      "suggested_rank": "大吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第060番"
+    },
+    {
+      "number": 61,
+      "score": -5,
+      "current_rank": "半吉",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第061番"
+    },
+    {
+      "number": 62,
+      "score": 6,
+      "current_rank": "大吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第062番"
+    },
+    {
+      "number": 63,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第063番"
+    },
+    {
+      "number": 64,
+      "score": -12,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第064番"
+    },
+    {
+      "number": 65,
+      "score": 0,
+      "current_rank": "末吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第065番"
+    },
+    {
+      "number": 66,
+      "score": -4,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第066番"
+    },
+    {
+      "number": 67,
+      "score": -7,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第067番"
+    },
+    {
+      "number": 68,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第068番"
+    },
+    {
+      "number": 69,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第069番"
+    },
+    {
+      "number": 70,
+      "score": 0,
+      "current_rank": "凶",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第070番"
+    },
+    {
+      "number": 71,
+      "score": 12,
+      "current_rank": "凶",
+      "suggested_rank": "大吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第071番"
+    },
+    {
+      "number": 72,
+      "score": 0,
+      "current_rank": "吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第072番"
+    },
+    {
+      "number": 73,
+      "score": 7,
+      "current_rank": "吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第073番"
+    },
+    {
+      "number": 74,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第074番"
+    },
+    {
+      "number": 75,
+      "score": -8,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第075番"
+    },
+    {
+      "number": 76,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第076番"
+    },
+    {
+      "number": 77,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第077番"
+    },
+    {
+      "number": 78,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第078番"
+    },
+    {
+      "number": 79,
+      "score": -1,
+      "current_rank": "吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第079番"
+    },
+    {
+      "number": 80,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第080番"
+    },
+    {
+      "number": 81,
+      "score": 0,
+      "current_rank": "小吉",
+      "suggested_rank": "末小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第081番"
+    },
+    {
+      "number": 82,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第082番"
+    },
+    {
+      "number": 83,
+      "score": -7,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第083番"
+    },
+    {
+      "number": 84,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第084番"
+    },
+    {
+      "number": 85,
+      "score": 10,
+      "current_rank": "大吉",
+      "suggested_rank": "大吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第085番"
+    },
+    {
+      "number": 86,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第086番"
+    },
+    {
+      "number": 87,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第087番"
+    },
+    {
+      "number": 88,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第088番"
+    },
+    {
+      "number": 89,
+      "score": -2,
+      "current_rank": "大吉",
+      "suggested_rank": "凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第089番"
+    },
+    {
+      "number": 90,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第090番"
+    },
+    {
+      "number": 91,
+      "score": 4,
+      "current_rank": "吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第091番"
+    },
+    {
+      "number": 92,
+      "score": 6,
+      "current_rank": "吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": false,
+      "display_ja": "第092番"
+    },
+    {
+      "number": 93,
+      "score": -1,
+      "current_rank": "吉",
+      "suggested_rank": "凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第093番"
+    },
+    {
+      "number": 94,
+      "score": 6,
+      "current_rank": "半吉",
+      "suggested_rank": "吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第094番"
+    },
+    {
+      "number": 95,
+      "score": 2,
+      "current_rank": "吉",
+      "suggested_rank": "末吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第095番"
+    },
+    {
+      "number": 96,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第096番"
+    },
+    {
+      "number": 97,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第097番"
+    },
+    {
+      "number": 98,
+      "score": -6,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": false,
+      "mismatch": true,
+      "display_ja": "第098番"
+    },
+    {
+      "number": 99,
+      "score": 4,
+      "current_rank": "大吉",
+      "suggested_rank": "小吉",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第099番"
+    },
+    {
+      "number": 100,
+      "score": -4,
+      "current_rank": "凶",
+      "suggested_rank": "大凶",
+      "incomplete": true,
+      "mismatch": true,
+      "display_ja": "第100番"
+    }
+  ]
+}

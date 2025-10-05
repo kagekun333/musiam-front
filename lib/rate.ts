@@ -1,19 +1,24 @@
-// ✗ NG
-// import LRU from "lru-cache";
+// lib/rate.ts
+// 依存ゼロの固定ウィンドウ型レートリミッター（IPごと）
+type Bucket = { n: number; ts: number };
+const bucket = new Map<string, Bucket>();
 
-// ✓ OK
-import { LRUCache } from "lru-cache";
-
-const bucket = new LRUCache<string, { n: number; ts: number }>({ max: 10_000 });
-
+/**
+ * @param ip      クライアントIP
+ * @param limit   許可リクエスト数（デフォ30）
+ * @param windowMs 窓幅（デフォ60秒）
+ * @returns {ok:boolean, remaining:number, resetAt:number}
+ */
 export function rateLimit(ip: string, limit = 30, windowMs = 60_000) {
   const now = Date.now();
-  const e = bucket.get(ip);
-  if (!e || now - e.ts > windowMs) {
+  const b = bucket.get(ip);
+  if (!b || now - b.ts >= windowMs) {
     bucket.set(ip, { n: 1, ts: now });
-    return { ok: true };
+    return { ok: true, remaining: limit - 1, resetAt: now + windowMs };
   }
-  e.n++; e.ts = now; bucket.set(ip, e);
-  if (e.n > limit) return { ok: false };
-  return { ok: true };
+  if (b.n < limit) {
+    b.n++;
+    return { ok: true, remaining: limit - b.n, resetAt: b.ts + windowMs };
+  }
+  return { ok: false, remaining: 0, resetAt: b.ts + windowMs };
 }

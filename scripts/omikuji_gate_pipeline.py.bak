@@ -1,0 +1,393 @@
+# scripts/omikuji_gate_pipeline.py
+# 目的:
+# - プレースホルダ(ja=="（訳準備中）" / en=="TBD")だけ安全に埋める
+# - Gate(構造/禁則/用語/長さ/トーン)に落ちたIDはコミットせず、自動で詩単位(--force)に格上げして再生成
+# - .bak 退避 & 差分ログ & failed_ids.json で監査可能
+#
+# 使い方(例):
+#   python .\scripts\omikuji_gate_pipeline.py --input .\dist\omikuji.final.json --output .\dist\omikuji.final.updated.json
+#
+# 依存: pip install openai  (>=1.0)
+#       環境変数 OPENAI_API_KEY を設定
+#
+# モデル既定: gpt-4o-mini （コスパ最強 / JSONモード安定）
+#   難首は自動で再走(force)するので、まずは mini で十分。
+#   必要なら --hard-model gpt-4.1 などに切替可能。
+
+import argparse, json, os, re, sys, time
+from pathlib import Path
+from typing import List, Dict, Any, Tuple
+from copy import deepcopy
+from openai import OpenAI
+
+# ---------- CLI ----------
+ap = argparse.ArgumentParser()
+ap.add_argument("--input", required=True, help="path to omikuji.final.json")
+ap.add_argument("--output", required=True, help="path to write updated/staging json")
+ap.add_argument("--model", default="gpt-4o-mini", help="base model for safe fill (default: gpt-4o-mini)")
+ap.add_argument("--hard-model", default="gpt-4.1", help="model for forced refresh on hard IDs")
+ap.add_argument("--temperature", type=float, default=0.1)
+ap.add_argument("--batch", type=int, default=20, help="poems per batch")
+ap.add_argument("--max-retries", type=int, default=3, help="retries per ID before force")
+ap.add_argument("--dry-run", action="store_true", help="do not write output, just simulate")
+ap.add_argument("--ids", type=str, default="", help="comma-separated IDs to process (defaults to auto-detect placeholders)")
+ap.add_argument("--no-auto-force", action="store_true", help="disable auto force escalation")
+args = ap.parse_args()
+
+# ---------- Helpers ----------
+def is_placeholder_ja(s: str) -> bool:
+    s = (s or "").strip()
+    return s in ("訳準備中", "（訳準備中）")
+
+def is_placeholder_en(s: str) -> bool:
+    return (s or "").strip().upper() == "TBD"
+
+BANNED_WORDS_RE = re.compile(r"\b(I|me|my|mine|we|us|our|ours|you|your|yours)\b", re.IGNORECASE)
+BANNED_PROPER_RE = re.compile(r"\bLord\s+Yin\b", re.IGNORECASE)  # 「隂公」を固有名化する誤訳の禁止
+BANNED_PUNCT_RE = re.compile(r"[,\?!…—]")  # 英行で禁止（今回: 英行末は無句読点で統一）
+
+# 用語統一（英）
+GLOSSARY_EN = {
+    "浮圖": "pagoda",
+    "青霄": "azure sky",
+    "一炷香": "one stick of incense",
+    "祿": "emolument",
+    "貴人": "a patron",
+    "侯手印": "the marquis’s seal",
+    "東君": "the Lord of Spring",
+    "雲梯": "cloud-ladder",
+    "隂公": "hidden grace",
+}
+
+EN_MAX = 40  # 一行40文字目安
+JA_MAX = 25  # 一行25字目安
+
+def count_placeholders(item: Dict[str, Any]) -> int:
+    c = 0
+    for ln in item.get("lines", []):
+        if is_placeholder_ja(ln.get("ja", "")) or is_placeholder_en(ln.get("en", "")):
+            c += 1
+    return c
+
+def poem_has_placeholder(item: Dict[str, Any]) -> bool:
+    return count_placeholders(item) > 0
+
+def build_prompt(batch_items: List[Dict[str, Any]]) -> str:
+    tasks = []
+    for it in batch_items:
+        tasks.append({
+            "id": it["id"],
+            "lines": [ln["orig"] for ln in it["lines"]],
+        })
+    # *重要*: JSONのみ。主語/解説/固有名の追加禁止。詩全体→行の順。
+    return (
+        "Translate faithfully from Classical Chinese five-character quatrains into Japanese and English.\n"
+        "- Read each 4-line poem as a whole (sense of imagery and causality), then output per-line translations.\n"
+        "- DO NOT add subjects (I/you/we), invented proper nouns, or explanations.\n"
+        "- Keep classical imagery; be concise.\n"
+        "- Return ONLY JSON as specified below.\n\n"
+        "OUTPUT_SCHEMA_EXAMPLE:\n"
+        '{"results":[{"id":123,"lines":[\n'
+        '  {"orig":"AAAAA","ja":"…","en":"…"},\n'
+        '  {"orig":"BBBBB","ja":"…","en":"…"},\n'
+        '  {"orig":"CCCCC","ja":"…","en":"…"},\n'
+        '  {"orig":"DDDDD","ja":"…","en":"…"}\n'
+        ']}]}\n\n'
+        "INPUT_TASKS:\n" + json.dumps({"tasks": tasks}, ensure_ascii=False)
+    )
+
+def normalize_result(raw_obj: Dict[str, Any], input_origs_by_id: Dict[int, List[str]]) -> Dict[int, List[Dict[str, str]]]:
+    """
+    受信JSONの揺れを正規化:
+      - {"results":[{"id":..,"lines":[{orig,ja,en}×4]}]} を理想形とする
+      - "lines"が無く "ja":[..], "en":[..] の場合は orig を入力から補完
+    """
+    out: Dict[int, List[Dict[str, str]]] = {}
+    if "results" not in raw_obj or not isinstance(raw_obj["results"], list):
+        raise RuntimeError("missing 'results'")
+    for r in raw_obj["results"]:
+        rid = r.get("id")
+        if not isinstance(rid, int):
+            raise RuntimeError("invalid id in results")
+        # case A: lines exists
+        if isinstance(r.get("lines"), list) and len(r["lines"]) >= 4:
+            fixed = []
+            for i in range(4):
+                x = r["lines"][i]
+                if not isinstance(x, dict) or "ja" not in x or "en" not in x:
+                    raise RuntimeError(f"id={rid}: invalid line shape")
+                o = x.get("orig") or input_origs_by_id[rid][i]
+                fixed.append({"orig": o, "ja": x["ja"].strip(), "en": x["en"].strip()})
+            out[rid] = fixed
+            continue
+        # case B: ja/en arrays
+        if isinstance(r.get("ja"), list) and isinstance(r.get("en"), list) and len(r["ja"]) == 4 and len(r["en"]) == 4:
+            origs = input_origs_by_id[rid]
+            out[rid] = [{"orig": origs[i], "ja": r["ja"][i].strip(), "en": r["en"][i].strip()} for i in range(4)]
+            continue
+        raise RuntimeError(f"id={rid}: unsupported result shape")
+    return out
+
+def validate_poem(item_in: Dict[str, Any], lines_out: List[Dict[str, str]]) -> Tuple[bool, List[str]]:
+    """ Gate1: 構造/禁則/用語/長さ + orig一致 """
+    errs = []
+    # 1) 4行 & 非空
+    if not isinstance(lines_out, list) or len(lines_out) != 4:
+        errs.append("shape: lines != 4")
+        return False, errs
+    for i, x in enumerate(lines_out):
+        if not x.get("ja") or not x.get("en") or not x.get("orig"):
+            errs.append(f"line{i+1}: empty field")
+    # 2) orig 完全一致
+    for i, (ln_in, ln_out) in enumerate(zip(item_in["lines"], lines_out)):
+        if ln_in.get("orig") != ln_out.get("orig"):
+            errs.append(f"line{i+1}: orig mismatch")
+    # 3) 禁止語（英）
+    for i, x in enumerate(lines_out):
+        en = x["en"]
+        if BANNED_WORDS_RE.search(en):
+            errs.append(f"line{i+1}: banned pronoun in EN")
+        if BANNED_PROPER_RE.search(en):
+            errs.append(f"line{i+1}: banned proper name in EN")
+        if BANNED_PUNCT_RE.search(en):
+            errs.append(f"line{i+1}: banned punctuation in EN")
+        if len(en) > EN_MAX:
+            errs.append(f"line{i+1}: EN too long")
+        if len(x["ja"]) > JA_MAX:
+            errs.append(f"line{i+1}: JA too long")
+    # 4) 用語(推奨)の統一: 出力に語が現れたら、用語表通りか軽くチェック
+    #   ※超厳密にするなら post-fix 置換でもよい。ここでは検出のみ。
+    #   (例: "stupa" を使っていたら警告)
+    glossary_flags = 0
+    for i, x in enumerate(lines_out):
+        en = x["en"].lower()
+        if "stupa" in en:
+            errs.append(f"line{i+1}: use 'pagoda' instead of 'stupa' (glossary)")
+            glossary_flags += 1
+    ok = len(errs) == 0
+    return ok, errs
+
+def tone_breaks_with_existing(item_in: Dict[str, Any], lines_out: List[Dict[str, str]]) -> bool:
+    """
+    Gate2: 詩内のトーン崩れ（既存行と新規行の人称/句読点/文体差）
+    ここでは簡易チェック:
+      - 新規行の英語にピリオド以外の句読点が混じる & 既存行が無句読点の場合 → 崩れ
+      - 既存行に主語が無いのに、新規行に主語が出現 → 崩れ
+    """
+    # 既存行の傾向
+    existed = item_in["lines"]
+    existing_en = [ln["en"] for ln in existed if not is_placeholder_en(ln.get("en", ""))]
+    if not existing_en:
+        return False  # 既存が無いなら判定不能→OK扱い
+    existing_has_punct = any(BANNED_PUNCT_RE.search(e or "") for e in existing_en)
+    existing_has_pronoun = any(BANNED_WORDS_RE.search(e or "") for e in existing_en)
+
+    # 新規行の傾向（プレースホルダ箇所想定）
+    new_en = [x["en"] for x in lines_out]
+    new_has_punct = any(BANNED_PUNCT_RE.search(e or "") for e in new_en)
+    new_has_pronoun = any(BANNED_WORDS_RE.search(e or "") for e in new_en)
+
+    # 既存はクリーンなのに新規だけ汚れていたら崩れ
+    if (not existing_has_punct) and new_has_punct:
+        return True
+    if (not existing_has_pronoun) and new_has_pronoun:
+        return True
+    return False
+
+client = OpenAI()
+
+def call_api(batch_items: List[Dict[str, Any]], model: str, temperature: float) -> Dict[int, List[Dict[str, str]]]:
+    prompt = build_prompt(batch_items)
+    resp = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content":
+             "You translate Classical Chinese five-character quatrains faithfully."
+             " Read each poem as a whole, then output per-line JA/EN. "
+             "No added subjects, no invented proper nouns, no explanations. "
+             "Return ONLY JSON."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=temperature,
+        response_format={"type": "json_object"}
+    )
+    raw = resp.choices[0].message.content
+    try:
+        obj = json.loads(raw)
+    except Exception as e:
+        raise RuntimeError(f"JSON parse failed: {e}\n--- RAW ---\n{raw}")
+
+    input_origs_by_id = { it["id"]: [ln["orig"] for ln in it["lines"]] for it in batch_items }
+    return normalize_result(obj, input_origs_by_id)
+
+# ---------- Main ----------
+src_path = Path(args.input)
+out_path = Path(args.output)
+if not src_path.exists():
+    print(f"[ERR] input not found: {src_path}", file=sys.stderr); sys.exit(1)
+
+data = json.loads(src_path.read_text(encoding="utf-8"))
+
+# 対象IDの抽出
+ids_filter = set()
+if args.ids.strip():
+    ids_filter = set(int(x.strip()) for x in args.ids.split(",") if x.strip())
+
+targets: List[Dict[str, Any]] = []
+for it in data:
+    if ids_filter:
+        if it.get("id") in ids_filter:
+            targets.append(it)
+    else:
+        if poem_has_placeholder(it):
+            targets.append(it)
+
+print(f"[INFO] poems total={len(data)}, selected={len(targets)}, model={args.model}, hard={args.hard-model if hasattr(args,'hard-model') else args.hard_model}")
+
+if not targets:
+    print("[OK] nothing to do.")
+    sys.exit(0)
+
+# ステージング: メモリ上で更新してから、最後にコミット
+updated = deepcopy(data)
+failed_ids = []
+log_lines = []
+
+B = max(1, args.batch)
+
+def process_chunk(chunk: List[Dict[str, Any]], model: str, temperature: float) -> Dict[int, List[Dict[str, str]]]:
+    # API呼び出し＋簡易リトライ
+    for attempt in range(args.max_retries):
+        try:
+            return call_api(chunk, model=model, temperature=temperature if attempt == 0 else 0.0)
+        except Exception as e:
+            time.sleep(0.4 * (attempt + 1))
+            if attempt == args.max_retries - 1:
+                raise
+    return {}
+
+# Pass A: Safe Fill (詩単位で候補生成) ※まだ書き込まない
+result_map: Dict[int, List[Dict[str, str]]] = {}
+for i in range(0, len(targets), B):
+    chunk = targets[i:i+B]
+    try:
+        out = process_chunk(chunk, model=args.model, temperature=args.temperature)
+        result_map.update(out)
+    except Exception as e:
+        # チャンク全体失敗 → 個別に再取得
+        for it in chunk:
+            try:
+                single = process_chunk([it], model=args.model, temperature=0.0)
+                result_map.update(single)
+            except Exception as ee:
+                failed_ids.append(it["id"])
+                log_lines.append(f"[ERR] id={it['id']} API failed: {ee}")
+
+# Gate & 書き込み判定
+force_queue = []  # Gate2で崩れたIDを格上げ
+committed_ids = set()
+
+for it in targets:
+    rid = it["id"]
+    if rid in failed_ids or rid not in result_map:
+        continue
+    lines_out = result_map[rid]
+
+    ok1, errs = validate_poem(it, lines_out)
+    if not ok1:
+        # 同IDを最大リトライ
+        retried = False
+        for _ in range(args.max_retries):
+            try:
+                single = process_chunk([it], model=args.model, temperature=0.0)
+                lines_out = single[rid]
+                ok1, errs = validate_poem(it, lines_out)
+                if ok1: retried = True; break
+            except Exception as e:
+                pass
+        if not ok1:
+            # Force候補へ
+            if not args.no_auto_force:
+                force_queue.append(it)
+                log_lines.append(f"[GATE1->FORCE] id={rid} errs={errs}")
+                continue
+            else:
+                failed_ids.append(rid)
+                log_lines.append(f"[FAIL] id={rid} gate1 errs={errs}")
+                continue
+
+    # Gate2: 既存行と新規行の呼吸が崩れていないか（プレースホルダ置換の場合）
+    if tone_breaks_with_existing(it, lines_out):
+        if not args.no_auto_force:
+            force_queue.append(it)
+            log_lines.append(f"[GATE2->FORCE] id={rid} tone break")
+            continue
+        else:
+            failed_ids.append(rid)
+            log_lines.append(f"[FAIL] id={rid} tone break (no_auto_force) ")
+            continue
+
+    # ここまで来たら、プレースホルダのみ上書き
+    for idx, ln in enumerate(updated[updated.index(it)]["lines"]):
+        if is_placeholder_ja(ln.get("ja", "")):
+            ln["ja"] = lines_out[idx]["ja"]
+        if is_placeholder_en(ln.get("en", "")):
+            ln["en"] = lines_out[idx]["en"]
+    committed_ids.add(rid)
+    log_lines.append(f"[OK] id={rid} placeholders filled")
+
+# Pass B: Force (詩単位で四行まとめて刷新) for queued IDs
+if force_queue:
+    # まず mini で再走、落ちたら hard-model
+    for it in force_queue:
+        rid = it["id"]
+        # mini→hard の順で試す
+        success = False
+        for mdl in (args.model, args.hard_model):
+            try:
+                single = process_chunk([it], model=mdl, temperature=0.0)
+                lines_out = single[rid]
+                ok1, errs = validate_poem(it, lines_out)
+                if not ok1:
+                    continue
+                # 強制上書き
+                for idx, ln in enumerate(updated[updated.index(it)]["lines"]):
+                    ln["ja"] = lines_out[idx]["ja"]
+                    ln["en"] = lines_out[idx]["en"]
+                committed_ids.add(rid)
+                log_lines.append(f"[FORCE-OK] id={rid} model={mdl}")
+                success = True
+                break
+            except Exception as e:
+                continue
+        if not success:
+            failed_ids.append(rid)
+            log_lines.append(f"[FORCE-FAIL] id={rid}")
+
+# ---- Commit or Dry-run ----
+final_json = json.dumps(updated, ensure_ascii=False, indent=2)
+
+if args.dry_run:
+    print("[DRY-RUN] no write.")
+    print(f"[SUMMARY] ok={len(committed_ids)}, force_q={len(force_queue)}, failed={len(failed_ids)}")
+    print("\n".join(log_lines[:80]))
+    sys.exit(0)
+
+# .bak
+if out_path.exists():
+    bak = out_path.with_suffix(out_path.suffix + f".{int(time.time())}.bak")
+    bak.write_text(out_path.read_text(encoding="utf-8"), encoding="utf-8")
+    print(f"[BACKUP] -> {bak}")
+else:
+    # 元ファイルのバックアップも残したいときはここで src を退避してもよい
+    pass
+
+out_path.write_text(final_json, encoding="utf-8")
+print(f"[DONE] wrote -> {out_path}")
+print(f"[SUMMARY] ok={len(committed_ids)}, force_q={len(force_queue)}, failed={len(failed_ids)}")
+
+# 失敗IDがあれば補助ファイルに吐く
+if failed_ids:
+    failp = out_path.with_name(out_path.stem + ".failed_ids.json")
+    failp.write_text(json.dumps(sorted(list(set(failed_ids))), ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[FAIL-LIST] -> {failp}")
