@@ -1,11 +1,15 @@
+// src/pages/api/omikuji/_diag.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { OMIKUJI_COUNT, getById } from "../../../lib/omikuji";
-import { recommendWorks } from "../../../lib/reco";
+import { normalizeWorks, pickRecommendedWorks } from "@/lib/reco";
+// ⬇ パス注意: このリポジトリでは loadWorks は src/lib/loadWorks.ts にあります
+import { loadWorks } from "../../../lib/loadWorks";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const first = getById(1);
     const last = getById(100);
+
     const sample = first
       ? {
           id: first.id,
@@ -16,7 +20,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           line_count: first.lines?.length ?? 0,
         }
       : null;
-    const recoSample = first ? recommendWorks(first, 3, "diag") : [];
+
+    // works 全体を取得 → 正規化 → 「今日のランク」で 3 件ピック
+    const worksAll = await Promise.resolve(loadWorks()); // 同期/非同期どちらでも動くように
+    const catalog = normalizeWorks(worksAll);
+    const recoSample = first
+      ? pickRecommendedWorks({ rankEn: first.rank_en, works: catalog, n: 3 })
+      : [];
+
     res.status(200).json({
       ok: true,
       count: OMIKUJI_COUNT,
@@ -24,6 +35,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       hasLast: !!last,
       sample,
       recoSampleCount: recoSample.length,
+      // 参考: 確認用に中身も返したければ以下を一時的に出す
+      // recoSample,
     });
   } catch (e: any) {
     res.status(500).json({ ok: false, error: String(e?.message ?? e) });
