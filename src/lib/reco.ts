@@ -137,3 +137,94 @@ export function pickRecommendedWorks(args: {
   }
   return picked;
 }
+// ==== 追加: chat向けのムードベース推薦API ====
+
+// 作品→リンクURL（href / link.url などの揺れ吸収）
+function linkOf(w: WorkItem): string {
+  const raw =
+    (typeof (w as any).link === "string" ? (w as any).link : (w as any).link?.url) ??
+    (w as any).href ??
+    "";
+  return String(raw || "");
+}
+
+export type RecoWork = {
+  id: string;
+  title: string;
+  score: number;
+  type?: string;
+  cover?: string;
+  link?: string | { url: string };
+};
+
+// 安定乱数
+function mulberry32(seed: number) {
+  let t = seed >>> 0;
+  return function rand() {
+    t += 0x6D2B79F5;
+    let r = Math.imul(t ^ (t >>> 15), 1 | t);
+    r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/**
+ * ムードタグベースのスコアリング推薦（chat-reco 用）
+ * - catalog: normalizeWorks() 済の配列を推奨
+ * - moodTags: 小文字化・trim は内部で実施
+ * - n/seed: デフォルトあり（seed で安定）
+ */
+export function recommend(
+  catalog: WorkItem[],
+  moodTags: string[],
+  n = 12,
+  seed = Date.now()
+): RecoWork[] {
+  const tagSet = new Set((moodTags || []).map((s) => String(s).toLowerCase().trim()).filter(Boolean));
+  const rand = mulberry32(seed || 1);
+
+  const scored = (catalog || []).map((w) => {
+    // 作品側のタグ候補をゆるく結合（あなたの既存構造に寄せる）
+    const merged = [
+      ...(w.tags || []),
+      ...(w.mood || []),
+      ...(((w as any).moodTags as string[]) || []),
+    ]
+      .map((s) => String(s || "").toLowerCase().trim())
+      .filter(Boolean);
+
+    const wTags = new Set(merged);
+    let overlap = 0;
+    if (tagSet.size && wTags.size) {
+      for (const t of tagSet) if (wTags.has(t)) overlap++;
+    }
+
+    // 書籍/音楽に軽いバイアス
+    let typeBias = 0;
+    if (w.type === "book") typeBias = 0.3;
+    else if (w.type === "music") typeBias = 0.2;
+
+    const score = overlap * 10 + typeBias + rand() * 0.5;
+    return {
+      id: w.id,
+      title: w.title,
+      type: w.type,
+      cover: w.cover,
+      link: linkOf(w) || undefined,
+      score,
+    };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, Math.max(0, n));
+}
+
+/** 旧コード互換（recommendWorks を参照しているページ用の受け皿） */
+export function recommendWorks(
+  catalog: WorkItem[],
+  moodTags: string[],
+  n = 12,
+  seed = Date.now()
+): RecoWork[] {
+  return recommend(catalog, moodTags, n, seed);
+}

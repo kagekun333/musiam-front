@@ -1,40 +1,33 @@
 {
-  "$schema": "https://unpkg.com/knip@latest/schema.json",
-
-
+  "$schema": "https://unpkg.com/knip@5/schema.json",
   "entry": [
-    "src/pages/**/*.{ts,tsx,js,jsx}",
-    "src/pages/api/**/*.{ts,tsx,js,jsx}",
-    "src/app/**/page.{ts,tsx}",
-    "src/app/**/layout.{ts,tsx}",
-    "src/app/**/template.{ts,tsx}",
-    "src/app/**/loading.{ts,tsx}",
-    "src/app/**/not-found.{ts,tsx}",
-    "src/app/**/route.{ts,tsx}",
-    "src/middleware.{ts,js}",
-    "next.config.{js,ts}"
-  ],
-
-  "project": [
-    "src/**/*.{ts,tsx,js,jsx}",
-    "lib/**/*.{ts,tsx,js,jsx}",
     "next.config.{js,ts}",
-    "tailwind.config.{js,ts}"
-  ],
+    "tailwind.config.{js,ts}",
+    "postcss.config.{js,ts}",
 
+    "src/app/**/layout.{ts,tsx}",
+    "src/app/**/page.{ts,tsx}",
+    "src/app/**/route.{ts,tsx}",
+    "src/app/**/loading.{ts,tsx}",
+    "src/app/**/template.{ts,tsx}",
+    "src/app/**/not-found.{ts,tsx}",
+    "src/app/**/error.{ts,tsx}",
+
+    "src/pages/**/*.{ts,tsx}"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx,js}",
+    "lib/**/*.{ts,tsx,js}"
+  ],
   "ignore": [
     ".next/**",
+    "node_modules/**",
     ".vercel/**",
     ".musiam/**",
     "backup/**",
     "scripts/**",
-    "src/pages_legacy/**",
+    "public/**",
     "src/app/**/_bak/**",
-    "**/*.bak.*",
-    "**/*.backup.*"
-  ],
-
-  
-
-  "ignoreDependencies": []
+    "**/*.d.ts"
+  ]
 }
