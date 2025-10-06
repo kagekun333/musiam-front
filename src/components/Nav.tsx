@@ -1,13 +1,12 @@
+// src/components/Nav.tsx
+import Link from "next/link";
+
 export default function Nav() {
   return (
-    <header className="fixed top-0 left-0 z-50 p-4">
-      <a
-        href="/"
-        className="text-white/80 hover:text-white font-black tracking-widest"
-      >
-        MUSIAM
-      </a>
-    </header>
+    <nav className="p-4">
+      <Link href="/" className="font-semibold hover:underline">
+        musiam
+      </Link>
+    </nav>
   );
 }
-

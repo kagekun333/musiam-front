@@ -1,45 +1,139 @@
-import type { OmikujiItem, WorkItem } from "../types/omikuji";
-import { seededIndex } from "./hash";
+// src/lib/reco.ts
+/**
+ * 作品レコメンドの最小コア（依存ゼロ）
+ * - works.json など任意配列を normalize
+ * - ランク（英語表記）と日付で安定シード → ランダム抽出
+ */
 
-const RANK_TO_MOODS: Record<string, string[]> = {
-  "Great Luck": ["uplifting", "bright", "victory", "celebration"],
-  "Good Luck": ["hope", "optimistic", "warm"],
-  "Small Luck": ["calm", "focus", "everyday"],
-  "Mixed Luck": ["reflective", "growth", "turning-point"],
-  "Later Luck": ["patience", "journey", "becoming"],
-  "Slight Later Luck": ["seed", "gentle", "dawn"],
-  "Bad Luck": ["healing", "resilience", "light-in-dark"],
+export const RANK_ORDER = [
+  "Great Luck",
+  "Good Luck",
+  "Small Luck",
+  "Mixed Luck",
+  "Later Luck",
+  "Slight Later Luck",
+  "Bad Luck",
+] as const;
+export type RankEn = (typeof RANK_ORDER)[number];
+
+export type WorkItem = {
+  id: string;
+  title: string;
+  type?: string;
+  cover?: string;
+  href?: string;
+  previewUrl?: string;
+  tags?: string[];
+  mood?: string[];
 };
 
-// 作品データ（存在しない場合は空配列でも動く）
-// 相対 require で optional 読み込み
-let WORKS: WorkItem[] = [];
-try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  WORKS = require("../data/works.json") as WorkItem[];
-} catch {
-  WORKS = [];
-}
-
-function softIncludes(haystack: string[] | undefined, needles: string[]): boolean {
-  if (!haystack || haystack.length === 0) return false;
-  const lower = haystack.map((t) => t.toLowerCase());
-  return needles.some((n) => lower.some((t) => t.includes(n.toLowerCase())));
-}
-
-export function recommendWorks(item: OmikujiItem, take = 3, seed = "seed"): WorkItem[] {
-  const moods = RANK_TO_MOODS[item.rank_en] || ["calm"];
-  const filtered = WORKS.filter(
-    (w) => softIncludes(w.moodTags, moods) || softIncludes(w.tags, moods)
+export function rankIndex(rankEn: string): number {
+  const i = RANK_ORDER.findIndex(
+    (r) => r.toLowerCase() === String(rankEn).toLowerCase(),
   );
-  const pool = filtered.length > 0 ? filtered : WORKS; // 該当なしは全体から
-  if (pool.length === 0) return [];
+  return i >= 0 ? i : 1; // 未知 → "Good Luck" 付近にフォールバック
+}
 
-  const out: WorkItem[] = [];
-  for (let i = 0; i < Math.min(take, pool.length); i++) {
-    const idx = seededIndex(`${seed}-${i}`, pool.length);
-    out.push(pool[idx]);
+/** 作品配列のゆるい正規化（ページ実装と整合） */
+export function normalizeWorks(raw: any[]): WorkItem[] {
+  return (raw ?? []).map((w: any, i: number) => {
+    const id =
+      String(w?.id ?? w?.slug ?? w?.title ?? `w_${i}_${Math.random()}`);
+    const title = String(w?.title ?? w?.titleJa ?? w?.titleEn ?? "Untitled");
+    let cover: string | undefined;
+    if (w?.cover) {
+      const c = String(w.cover);
+      cover = c.startsWith("http") || c.startsWith("/") ? c : `/${c}`;
+    } else if (w?.slug) {
+      cover = `/works/covers/${w.slug}.webp`;
+    }
+    const href = w?.href ?? w?.url ?? w?.link ?? undefined;
+
+    return {
+      id,
+      title,
+      type: w?.type ?? w?.kind ?? "",
+      cover,
+      href,
+      previewUrl: w?.previewUrl,
+      tags: Array.isArray(w?.tags) ? w.tags : undefined,
+      mood: Array.isArray(w?.mood) ? w.mood : undefined,
+    } as WorkItem;
+  });
+}
+
+/** 文字列→32bit ハッシュ（簡易） */
+function hash32(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
   }
-  // 重複除去
-  return Array.from(new Map(out.map((x) => [x.id, x])).values()).slice(0, take);
+  return h >>> 0;
+}
+
+/** シード付きシャッフル（Fisher–Yates） */
+function shuffleSeeded<T>(arr: T[], seed: number): T[] {
+  const a = arr.slice();
+  let s = seed >>> 0;
+  const rnd = () => {
+    // xorshift32
+    s ^= s << 13;
+    s ^= s >>> 17;
+    s ^= s << 5;
+    return (s >>> 0) / 0xffffffff;
+  };
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rnd() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+export function pickRecommendedWorks(args: {
+  rankEn: string;
+  works: WorkItem[];
+  n?: number;
+  allowTypes?: string[]; // e.g. ["music","book"]
+}): WorkItem[] {
+  const { rankEn, works, n = 6, allowTypes } = args;
+  let pool = works.slice();
+
+  if (allowTypes && allowTypes.length > 0) {
+    const set = new Set(allowTypes.map((x) => String(x).toLowerCase()));
+    pool = pool.filter((w) => (w.type ? set.has(String(w.type).toLowerCase()) : true));
+  }
+
+  // 「凶」のときはここでは返さず、呼び出し側で固定推薦を出す前提
+  if (String(rankEn).toLowerCase() === "bad luck") return [];
+
+  const today = new Date();
+  const ymd = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(
+    2,
+    "0",
+  )}-${String(today.getDate()).padStart(2, "0")}`;
+  const seed = hash32(`${rankEn}|${ymd}`);
+
+  // ランクの重みをうっすら…
+  const idx = rankIndex(rankEn);
+  // 上位ほど先頭寄りが当たりやすいよう、軽くバイアス
+  const biased = pool
+    .map((w, i) => ({ w, score: i }))
+    .map((x) => ({ w: x.w, score: x.score + idx * 0.1 }));
+
+  const shuffled = shuffleSeeded(
+    biased.sort((a, b) => a.score - b.score).map((x) => x.w),
+    seed,
+  );
+
+  // 重複除去しつつ n 件
+  const seen = new Set<string>();
+  const picked: WorkItem[] = [];
+  for (const w of shuffled) {
+    if (seen.has(w.id)) continue;
+    seen.add(w.id);
+    picked.push(w);
+    if (picked.length >= n) break;
+  }
+  return picked;
 }

@@ -6,7 +6,7 @@ import { buildCountEarlSystemPrompt } from "../../lib/persona";
 import { groqChat } from "../../../lib/groq";
 import { safeJSON } from "../../../lib/json";
 import { loadAllWorksCached } from "../../../lib/works";
-import { rateLimit } from "../../../lib/rate";
+import { rateLimit } from "@/lib/rate";
 import { newTraceId } from "../../../lib/trace";
 import { loadAllWorks, recommend, type RecoWork } from "../../lib/recommender";
 
