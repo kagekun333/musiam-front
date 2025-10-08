@@ -1,55 +1,76 @@
 // src/app/page.tsx
 import Link from "next/link";
+import Image from "next/image";
+import Starfield from "@/components/Starfield";
 
-const GATES = [
-  { file: "torii.jpg",       href: "/oracle",     title: "占いの門（Oracle Gate）",    desc: "運命を読み、道をひらく。" },
-  { file: "galaxy.jpg",      href: "/exhibition", title: "展示の門（Exhibition Gate）", desc: "無限の展示が、あなたを待つ。" },
-  { file: "gothic-door.jpg", href: "/chat",       title: "伯爵の門（Count’s Gate）",   desc: "館の大扉、選ばれし者を迎える。" },
-] as const;
 
-export default function GatesPage() {
+type Gate = {
+  file: string;
+  href: string;
+  ja: string;
+  en: string;
+  desc: string;
+};
+
+const GATES: Gate[] = [
+  { file: "torii.jpg",       href: "/oracle",     ja: "占いの門", en: "Oracle Gate",     desc: "運命を読み、道をひらく。" },
+  { file: "galaxy.jpg",      href: "/exhibition", ja: "展示の門", en: "Exhibition Gate", desc: "無限の展示が、あなたを待つ。" },
+  { file: "gothic-door.jpg", href: "/chat",       ja: "伯爵の門", en: "Count’s Gate",    desc: "館の大扉、選ばれし者を迎える。" },
+];
+
+export default function Home() {
   return (
-    <main style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 24px" }}>
-      <h1 style={{ fontSize: 32, fontWeight: 800, marginBottom: 24 }}>3 GATES</h1>
+    <main className="page-home">
+      {/* 宇宙レイヤ */}
+       <Starfield />  
+      <div aria-hidden className="cosmic-orn1" />
+      <div aria-hidden className="cosmic-orn2" />
 
-      <ul
-        style={{
-          listStyle: "none",
-          padding: 0,
-          margin: 0,
-          display: "grid",
-          gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-          gap: 16,
-        }}
-      >
-        {GATES.map((g) => (
-          <li key={g.file}>
-            <Link
-              href={g.href}
-              style={{ textDecoration: "none", color: "inherit", display: "block" }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                  overflow: "hidden",
-                  borderRadius: 12,
-                  marginBottom: 12,
-                  boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
-                }}
-              >
-                <img
-                  src={`/gates/${g.file}`}
-                  alt={g.title}
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                />
-              </div>
-              <div style={{ fontWeight: 700 }}>{g.title}</div>
-              <div style={{ opacity: 0.75, fontSize: 14, marginTop: 4 }}>{g.desc}</div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {/* Wordmark */}
+      <section className="hero hero--tight">
+        <h1 className="wordmark" aria-label="伯爵 MUSIAM">
+          <span className="wordmark-jp">伯爵</span>
+          <span className="wordmark-en">MUSIAM</span>
+        </h1>
+      </section>
+
+      {/* 3 GATES */}
+      <section className="gates-wrap">
+        <h2 className="gates-title">3 GATES</h2>
+
+        <ul className="gates-grid">
+          {GATES.map((g) => (
+            <li key={g.file}>
+              <Link href={g.href} className="gate-link">
+                <div className="gate-card">
+                  <div className="media square">
+                    <Image
+                      src={`/gates/${g.file}`}
+                      alt={`${g.ja}（${g.en}）`}
+                      fill
+                      className="gate-img"
+                      sizes="(max-width:640px) 30vw, (max-width:1024px) 30vw, 360px"
+                      priority={g.file === "torii.jpg"}
+                    />
+                  </div>
+
+                  {/* 画像の外にキャプション（1行省略） */}
+                  <div className="gate-caption">
+                    <div className="gate-title">
+                      <span className="gate-title-ja">{g.ja}</span>
+                      <span className="gate-title-en" aria-hidden="true">{g.en}</span>
+                    </div>
+                    <div className="gate-desc">{g.desc}</div>
+                  </div>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 右下ウォーターマーク：/public/brand/abi-seal.png を配置 */}
+      <div aria-hidden className="corner-mark" />
     </main>
   );
 }

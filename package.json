@@ -5,9 +5,12 @@
     "start": "next start -p 3000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "export:png": "tsx scripts/export-png.ts"
+    "export:png": "tsx scripts/export-png.ts",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@eslint/js": "^9.37.0",
     "@next/eslint-plugin-next": "^15.5.4",
     "@resvg/resvg-js": "^2.6.2",
@@ -23,6 +26,7 @@
     "eslint-plugin-react-hooks": "^6.1.1",
     "fs-extra": "^11.3.2",
     "globals": "^16.4.0",
+    "husky": "^9.1.7",
     "knip": "^5.64.1",
     "postcss": "^8.5.6",
     "puppeteer": "^24.23.0",

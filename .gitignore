@@ -47,3 +47,7 @@ next-env.d.ts
 # track env examples
 !.env.example
 
+
+snapshot_*.zip
+import/
+
