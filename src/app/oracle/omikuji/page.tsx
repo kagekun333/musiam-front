@@ -1,8 +1,17 @@
 // src/app/oracle/omikuji/page.tsx
-export const runtime = "nodejs";
+import { Suspense } from "react";
+import Client from "./Client";
 
-import Client from "./Client"; // ← 直インポート
+export const revalidate = 0; // 常に最新（静的生成に依存しない）
 
 export default function Page() {
-  return <Client />;
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto max-w-6xl p-6 opacity-60">Loading…</main>
+      }
+    >
+      <Client />
+    </Suspense>
+  );
 }

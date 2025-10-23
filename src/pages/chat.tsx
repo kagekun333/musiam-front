@@ -186,6 +186,7 @@ export default function ChatPage() {
               >
                 {c.cover && (
                   <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 6, marginBottom: 8 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={c.cover}
                       alt={c.title}

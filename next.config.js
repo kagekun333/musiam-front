@@ -4,6 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'm.media-amazon.com' },
       { protocol: 'https', hostname: 'images-na.ssl-images-amazon.com' },
+      // 必要に応じて外部画像ドメインを追加
       { protocol: 'https', hostname: 'i.scdn.co' },
       { protocol: 'https', hostname: 'is1-ssl.mzstatic.com' },
       { protocol: 'https', hostname: 'is2-ssl.mzstatic.com' },
@@ -12,18 +13,10 @@ const nextConfig = {
       { protocol: 'https', hostname: 'is5-ssl.mzstatic.com' },
     ],
   },
+  // 本番ビルドを lint で止めない保険（すでに設定済みならそのまま）
   eslint: { ignoreDuringBuilds: true },
-
-  // ▼ 任意依存をビルドから切断（MetaMask SDK/WC が引っ張るやつ）
-  webpack: (config) => {
-    config.resolve = config.resolve || {};
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      '@react-native-async-storage/async-storage': false,
-      'pino-pretty': false,
-    };
-    return config;
-  },
+  // （任意）型エラーで止めたくない場合のみ
+  // typescript: { ignoreBuildErrors: true },
 };
 
 module.exports = nextConfig;
