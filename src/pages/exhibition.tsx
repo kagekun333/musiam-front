@@ -68,7 +68,7 @@ function parseTags(tags?: string[] | string) {
 }
 
 // （拡張用）0円の判定
-function isZeroPrice(v?: string) {
+function _isZeroPrice(v?: string) {
   if (!v) return false;
   const s = v.toLowerCase().replace(/\s/g, "");
   return /^¥?0(?:円)?$/.test(s) || s === "0" || s === "free" || s === "gratis";

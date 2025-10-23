@@ -23,7 +23,7 @@ function shippo(tile=48, stroke="#1F3A5F", sw=1){
 
 function seigaiha(tile=48, stroke="#1F3A5F", sw=1){
   const r = tile/2;
-  const arcs = [0, r/2, r].map((y,i)=>`<path d='M0 ${r+y} Q ${r} ${-r+y} ${tile} ${r+y}' fill='none' stroke='${stroke}' stroke-width='${sw}' />`).join("");
+  const arcs = [0, r/2, r].map((y,_i)=>`<path d='M0 ${r+y} Q ${r} ${-r+y} ${tile} ${r+y}' fill='none' stroke='${stroke}' stroke-width='${sw}' />`).join("");
   const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${tile}' height='${tile}' viewBox='0 0 ${tile} ${tile}'>${arcs}</svg>`;
   return `url("data:image/svg+xml;utf8,${enc(svg)}")`;
 }

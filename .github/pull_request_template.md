@@ -1,18 +1,21 @@
-## 目的
-- [ ] 既存体験を壊さず、機能を一歩前進
+## 📝 概要
+<!-- 変更内容を簡潔に記入 -->
 
-## スモーク（手元で実施）
-- [ ] /gates で **3カード**が出る
-- [ ] 伯爵の門 → /chat で1往復できる
-- [ ] /exhibition と /oracle は 404 にならない（準備中OK）
+## 🔗 関連ドキュメント
+参照: [docs/P0-exec-flow.md](../docs/P0-exec-flow.md)
 
-## 変更の種類
-- [ ] feat
-- [ ] fix
-- [ ] chore
-- [ ] refactor
-- [ ] docs/ci
+## ✅ DoD（完了の定義）
 
-## 注意
-- [ ] `npm run preflight` 済（LOCK/二重ルーターOK）
-- [ ] 触った機能を `.musiam/ops/feature-ledger.yaml` に反映
+### 共通チェック
+- [ ] Lint / TypeCheck / Build / E2E / Lighthouse 全緑
+- [ ] RateLimit 3/日 動作確認
+- [ ] ページ性能 LCP < 2.5s / CLS < 0.05
+
+### 対象STEP（該当部分にチェック）
+- [ ] STEP1: SEO/OGP（4頁登録済み）
+- [ ] STEP2: Oracle 永続URL＋共有UI＋日次制限
+- [ ] STEP3: NFT LP（Mint成功・計測）
+- [ ] STEP4: 計測・健全性・自動化
+
+## 💬 その他
+<!-- 懸念点・次の課題など -->

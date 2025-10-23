@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.vscode
+*.log
+.env*
+snapshot_*.zip
+*.zip
+import/
+*.psd
+*.ai
+*.mov
+*.mp4
+*.wav
+*.flac
