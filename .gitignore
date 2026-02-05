@@ -51,3 +51,19 @@ next-env.d.ts
 snapshot_*.zip
 import/
 
+.vercel
+
+# Build & Test artifacts
+build.log
+*.xlsx
+*.zip
+test-results/
+playwright-report/
+
+# Temporary files
+zzz.txt
+COMMIT_READY.txt
+MANUAL_STEPS.sh
+MUSIAM_監査レポート_*.xlsx
+musiam-front_snapshot.zip
+public/.backup-images-*/
