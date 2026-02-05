@@ -164,7 +164,7 @@ html:has(.page-home), body:has(.page-home){ background:#070e18; color:#e5e7eb; }
 .corner-mark{
   position:fixed; right:18px; bottom:18px; z-index:5; pointer-events:none;
   width:72px; height:72px; opacity:.60;
-  background-image:url("/brand/abi-seal.png"); /* 透明PNG推奨 */
+  background-image:url("/brand/abi-seal.webp"); /* WebP最適化済み */
   background-size:contain; background-repeat:no-repeat; background-position:center;
   filter: drop-shadow(0 2px 10px rgba(0,0,0,.35));
   /* 金色をもう少し映えさせたいなら↓
