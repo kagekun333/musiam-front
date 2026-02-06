@@ -68,3 +68,7 @@ MANUAL_STEPS.sh
 MUSIAM_監査レポート_*.xlsx
 musiam-front_snapshot.zip
 public/.backup-images-*/
+
+# Local-only scripts (do not commit)
+scripts/optimize-kannon100.py
+scripts/optimize-kannon100-v2.py
