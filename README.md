@@ -36,5 +36,78 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
+## Exhibition: Adding New Works
+
+This project includes an Exhibition page (`/exhibition`) that displays a gallery of creative works. Works can be added easily using the CLI or by editing Markdown files.
+
+### Method 1: Using the CLI (Recommended)
+
+Run the interactive CLI to add a new work:
+
+```bash
+pnpm run add:exhibit
+```
+
+The CLI will prompt you for:
+- Title
+- Type (music/video/art/book/article)
+- Cover image URL or path
+- Tags (comma-separated)
+- Release date
+- Links (Spotify, YouTube, etc.)
+- Preview video URL
+- Mood tags
+
+This will create a new Markdown file in `content/exhibits/`.
+
+### Method 2: Manual File Creation
+
+1. Create a new `.md` file in `content/exhibits/`
+2. Add frontmatter with the work metadata:
+
+```markdown
+---
+title: "Your Work Title"
+type: "music"
+cover: "/works/covers/your-image.jpg"
+tags:
+  - "tag1"
+  - "tag2"
+releasedAt: "2025-02-07"
+weight: 100
+links:
+  listen: "https://open.spotify.com/..."
+  watch: ""
+  read: ""
+  nft: ""
+previewUrl: ""
+moodTags:
+  - "静けさ"
+  - "希望"
+---
+
+# Your Work Title
+
+Optional description or metadata.
+```
+
+### Building and Deploying
+
+After adding works via either method:
+
+```bash
+# Build the exhibits (converts MD to JSON)
+pnpm run build:exhibits
+
+# Test locally
+pnpm dev
+
+# Commit and deploy
+git add .
+git commit -m "Add new exhibition work"
+git push
+```
+
+The build script (`scripts/build-exhibits.ts`) will automatically merge new works from `content/exhibits/*.md` into `public/works/works.json`.
 
 

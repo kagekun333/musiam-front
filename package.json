@@ -6,7 +6,9 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "export:png": "tsx scripts/export-png.ts",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "add:exhibit": "tsx scripts/add-exhibit.ts",
+    "build:exhibits": "tsx scripts/build-exhibits.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
