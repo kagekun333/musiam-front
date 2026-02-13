@@ -72,3 +72,7 @@ public/.backup-images-*/
 # Local-only scripts (do not commit)
 scripts/optimize-kannon100.py
 scripts/optimize-kannon100-v2.py
+
+# local junk
+.gitignore.bak
+content/
