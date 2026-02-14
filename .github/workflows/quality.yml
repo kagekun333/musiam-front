@@ -1,26 +1,51 @@
 name: quality
+
 on:
   push:
     branches: [main]
     paths-ignore:
-      - '.github/**'
       - 'README.md'
   pull_request:
     branches: [main]
 
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
           version: 9
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run lint --if-present
-      - run: pnpm run typecheck --if-present
-      - run: pnpm run build
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      # NOTE:
+      # pnpm run <script> --if-present は “その引数をスクリプトに渡す” ので地雷。
+      # スクリプトが無いならCIで落ちる設計の方が健全。
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build

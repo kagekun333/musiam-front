@@ -97,7 +97,7 @@ html:has(.page-home), body:has(.page-home){ background:#070e18; color:#e5e7eb; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.gate-link{ text-decoration:none; color:inherit; display:block; }
+.gate-link{ text-decoration:none; color:inherit; display:block; cursor:pointer; }
 .gate-card{
   border-radius:18px; overflow:hidden;
   border:1px solid rgba(255,255,255,.06);
@@ -151,6 +151,34 @@ html:has(.page-home), body:has(.page-home){ background:#070e18; color:#e5e7eb; }
 .gate-desc{
   margin-top:4px; color:#d7d9e1; font-size:.9rem;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* CTAボタン：上質で控えめ、3ボタンの縦位置揃え */
+.gate-cta{
+  display:inline-flex; align-items:center; justify-content:center;
+  margin-top:12px; padding:8px 18px; min-height:36px;
+  font-size:.88rem; font-weight:600; line-height:1.3;
+  text-decoration:none; color:#f9fafb;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:8px;
+  background:rgba(24,24,27,.60);
+  backdrop-filter:saturate(120%) blur(4px);
+  transition:all .2s ease;
+  cursor:pointer;
+}
+.gate-cta:hover{
+  border-color:rgba(255,255,255,.35);
+  background:rgba(30,30,34,.72);
+  color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.20);
+}
+.gate-cta:focus-visible{
+  outline:2px solid rgba(99,102,241,.70);
+  outline-offset:2px;
+}
+/* モバイル対応：少し大きめのタッチターゲット */
+@media (max-width: 640px){
+  .gate-cta{ padding:9px 20px; min-height:40px; font-size:.90rem; }
 }
 
 /* 旧オーバーレイ演出は封印（安全網） */
