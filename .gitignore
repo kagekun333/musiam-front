@@ -107,3 +107,5 @@ scripts/mood-fill-atugiri.mjs
 scripts/mood-infer-from-itunes.mjs
 scripts/normalize-atugiri.mjs
 tools/
+
+/*.md
