@@ -58,17 +58,24 @@ function readDayState(): DayState {
 function writeDayState(patch: Partial<DayState>) {
   const base = readDayState();
   const next = { ...base, ...patch };
-  try { localStorage.setItem(LS_KEY, JSON.stringify(next)); } catch {}
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(next));
+  } catch {
+    // Silently ignore localStorage errors
+  }
   return next;
 }
 
 /** 作品データ（public/works/works.json を読む） */
 type WorkItem = {
   id: string;
+  stableKey?: string;  // 🆕 安定キー（重複ID対策）
   title: string;
   type?: string;
   cover?: string;      // 例: /works/covers/xxx.webp
   href?: string;       // 外部/内部どちらでもOK
+  primaryHref?: string; // 🆕 優先リンク
+  salesHref?: string;  // 🆕 購入リンク
   previewUrl?: string; // 任意：別プレビュー
 };
 
@@ -76,6 +83,28 @@ type WorkItem = {
 type FixedReco = { kind: "fixed"; titleJa: string; titleEn: string; noteJa: string; noteEn: string; href?: string };
 type WorksReco = { kind: "works"; noteJa: string; noteEn: string; works: WorkItem[] };
 type Reco = FixedReco | WorksReco;
+
+/** URLからサービス名を含むリンクラベルを返す（防御的: href未設定でも動作） */
+function serviceLinkLabel(href: string, type: string | undefined, lang: "ja" | "en"): string {
+  const h = href ?? "";
+  if (/spotify\.com/i.test(h))        return lang === "ja" ? "Spotifyで聴く"       : "Listen on Spotify";
+  if (/music\.apple\.com/i.test(h))   return lang === "ja" ? "Apple Musicで聴く"   : "Listen on Apple Music";
+  if (/itunes\.apple\.com/i.test(h))  return lang === "ja" ? "iTunesで聴く"        : "Listen on iTunes";
+  if (/youtube\.com|youtu\.be/i.test(h)) return lang === "ja" ? "YouTubeで観る"    : "Watch on YouTube";
+  if (/amazon\.co\.jp|amazon\.com/i.test(h)) return lang === "ja" ? "Amazonで購入" : "Buy on Amazon";
+  // サービス不明時はコンテンツタイプで判定
+  if (type?.toLowerCase() === "music") return lang === "ja" ? "聴く"  : "Listen";
+  return lang === "ja" ? "見る" : "View";
+}
+
+/** 購入リンクのサービス名ラベル */
+function saleLinkLabel(href: string, lang: "ja" | "en"): string {
+  const h = href ?? "";
+  if (/amazon\.co\.jp|amazon\.com/i.test(h))  return lang === "ja" ? "Amazonで購入"  : "Buy on Amazon";
+  if (/itunes\.apple\.com/i.test(h))           return lang === "ja" ? "iTunesで購入"  : "Buy on iTunes";
+  if (/music\.apple\.com/i.test(h))            return lang === "ja" ? "Apple Musicで購入" : "Buy on Apple Music";
+  return lang === "ja" ? "購入" : "Buy";
+}
 
 /** 配列から重複なしランダム抽出 */
 function sampleArray<T>(arr: T[], n: number): T[] {
@@ -104,6 +133,9 @@ export default function Client() {
   const [drawn, setDrawn] = useState(false);
   const [animIn, setAnimIn] = useState(false);
   const [day, setDay] = useState<DayState | null>(null);
+
+  // フェーズ管理（準備 → 儀式 → 結果）
+  const [phase, setPhase] = useState<"prepare" | "ritual" | "result">("prepare");
 
   // 作品一覧（おすすめ用）
   const [works, setWorks] = useState<WorkItem[] | null>(null);
@@ -141,18 +173,46 @@ export default function Client() {
           if (!r.ok) continue;
           const d = await r.json();
           const raw: any[] = Array.isArray(d) ? d : Array.isArray(d?.items) ? d.items : [];
-          const list: WorkItem[] = raw
-            .map((w: any) => ([
-              String(w.title ?? w.titleJa ?? w.titleEn ?? "Untitled"),
-              String(w.id ?? w.slug ?? Math.random()),
-              w.type ?? w.kind ?? "",
-              w.href ?? w.url ?? w.link ?? undefined,
-              w.cover
-                ? (String(w.cover).startsWith("http") || String(w.cover).startsWith("/") ? String(w.cover) : "/" + String(w.cover))
-                : (w.slug ? `/works/covers/${w.slug}.webp` : undefined),
-              w.previewUrl ?? undefined
-            ]))
-            .map(([title, id, type, href, cover, previewUrl]) => ({ title, id, type, href, cover, previewUrl }));
+
+          // ID重複検出
+          const idCounts = new Map<string, number>();
+          raw.forEach((w: any) => {
+            const id = String(w?.id ?? "");
+            idCounts.set(id, (idCounts.get(id) || 0) + 1);
+          });
+
+          const list: WorkItem[] = raw.map((w: any, idx: number) => {
+            const id = String(w.id ?? w.slug ?? `work_${idx}`);
+            const isDuplicate = (idCounts.get(id) || 0) > 1;
+            const stableKey = isDuplicate ? `${id}__${idx}` : id;
+
+            const title = String(w.title ?? w.titleJa ?? w.titleEn ?? "Untitled");
+            const type = w.type ?? w.kind ?? "";
+            const cover = w.cover
+              ? (String(w.cover).startsWith("http") || String(w.cover).startsWith("/")
+                  ? String(w.cover)
+                  : "/" + String(w.cover))
+              : (w.slug ? `/works/covers/${w.slug}.webp` : undefined);
+
+            // リンク正規化
+            const links = w?.links ?? {};
+            const primaryHref = w?.primaryHref ?? links?.listen ?? w?.href ?? links?.spotify ?? undefined;
+            const salesHref = w?.salesHref ?? links?.itunesBuy ?? undefined;
+            const href = primaryHref || w?.href || w?.url || w?.link || undefined;
+
+            return {
+              id,
+              stableKey,
+              title,
+              type,
+              cover,
+              href,
+              primaryHref,
+              salesHref,
+              previewUrl: w?.previewUrl,
+            };
+          });
+
           if (alive) setWorks(list);
           return;
         } catch { /* 次へ */ }
@@ -167,18 +227,20 @@ export default function Client() {
     return () => { alive = false; };
   }, []);
 
-  // ?id= がある場合は即表示（シェア互換）
+  // ?id= がある場合は即表示（シェア互換）：儀式スキップして結果へ
   useEffect(() => {
     if (!all) return;
     if (idQuery) {
       const found = all.find((x) => String(x.id) === idQuery) ?? all[0];
       setEntry(found);
       setDrawn(true);
+      setPhase("result"); // 直接結果表示
       requestAnimationFrame(() => setAnimIn(true));
     } else {
       setEntry(null);
       setDrawn(false);
       setAnimIn(false);
+      setPhase("prepare");
     }
   }, [all, idQuery]);
 
@@ -209,25 +271,45 @@ export default function Client() {
     router.replace(`/oracle/omikuji?${search.toString()}`, { scroll: false });
   };
 
-  /** 「一枚引く」：初回はランダム、状態記録＋おすすめ確定 */
+  /** 「一枚引く」：準備 → 儀式 → 結果 の3フェーズ */
   const draw = () => {
     const pick = drawRandom();
     if (!pick) return;
+
+    // Phase 1: 準備完了 → 儀式へ
+    setPhase("ritual");
     setEntry(pick);
     setDrawn(true);
-    setAnimIn(false);
-    pushIdToUrl(pick.id);
-    requestAnimationFrame(() => setAnimIn(true));
 
-    const idx = rankIndex(pick.rank_en);
-    setDay(writeDayState({ draws: 1, lastRankIdx: idx }));
+    // prefers-reduced-motion 対応（短縮 or 無効化）
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ritualDuration = prefersReducedMotion ? 600 : 1800; // 0.6s or 1.8s
 
-    // 凶以外のみ、作品からランダム抽出を固定（初回表示用）
-    if (works && works.length > 0 && pick.rank_en.toLowerCase() !== "bad luck") {
-      setPickedWorks(sampleArray(works, 6)); // 6=3列×2段
-    } else {
-      setPickedWorks(null);
-    }
+    // Phase 2: 儀式演出（タイマー）
+    setTimeout(() => {
+      // Phase 3: 結果表示
+      setPhase("result");
+      setAnimIn(false);
+      pushIdToUrl(pick.id);
+      requestAnimationFrame(() => setAnimIn(true));
+
+      const idx = rankIndex(pick.rank_en);
+      setDay(writeDayState({ draws: 1, lastRankIdx: idx }));
+
+      // 凶以外のみ、作品からランダム抽出を固定（初回表示用）
+      // 音楽と本を分離して、それぞれ3つずつ抽出
+      if (works && works.length > 0 && pick.rank_en.toLowerCase() !== "bad luck") {
+        const musicList = works.filter((w) => w.type?.toLowerCase() === "music" || w.type?.toLowerCase() === "音楽");
+        const bookList = works.filter((w) => w.type?.toLowerCase() === "book" || w.type?.toLowerCase() === "本");
+        const picked = [
+          ...sampleArray(musicList, 3),
+          ...sampleArray(bookList, 3),
+        ];
+        setPickedWorks(picked);
+      } else {
+        setPickedWorks(null);
+      }
+    }, ritualDuration);
   };
 
   /** 「もう一度引く（おすすめしない）」：下げ抽選＋おすすめは消す */
@@ -236,16 +318,26 @@ export default function Client() {
     const lastIdx = base.lastRankIdx ?? (entry ? rankIndex(entry.rank_en) : 2);
     const pick = drawLower(lastIdx);
     if (!pick) return;
-    setEntry(pick);
-    setDrawn(true);
-    setAnimIn(false);
-    pushIdToUrl(pick.id);
-    requestAnimationFrame(() => setAnimIn(true));
-    const nextIdx = Math.max(lastIdx, rankIndex(pick.rank_en));
-    setDay(writeDayState({ draws: (base.draws ?? 0) + 1, lastRankIdx: nextIdx }));
 
-    // 2回目以降は“おすすめしない”のでクリア
-    setPickedWorks(null);
+    // 儀式フェーズへ
+    setPhase("ritual");
+    setEntry(pick);
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ritualDuration = prefersReducedMotion ? 600 : 1800;
+
+    setTimeout(() => {
+      setPhase("result");
+      setDrawn(true);
+      setAnimIn(false);
+      pushIdToUrl(pick.id);
+      requestAnimationFrame(() => setAnimIn(true));
+      const nextIdx = Math.max(lastIdx, rankIndex(pick.rank_en));
+      setDay(writeDayState({ draws: (base.draws ?? 0) + 1, lastRankIdx: nextIdx }));
+
+      // 2回目以降は"おすすめしない"のでクリア
+      setPickedWorks(null);
+    }, ritualDuration);
   };
 
   const handleCopyShare = () => {
@@ -272,6 +364,16 @@ export default function Client() {
     return lang === "ja" ? labelJa : RANK_ORDER[idx];
   }, [entry, lang]);
 
+  /** 音楽と本を分離 */
+  const { musicWorks, bookWorks } = useMemo(() => {
+    if (!pickedWorks || pickedWorks.length === 0) {
+      return { musicWorks: [], bookWorks: [] };
+    }
+    const music = pickedWorks.filter((w) => w.type?.toLowerCase() === "music" || w.type?.toLowerCase() === "音楽").slice(0, 3);
+    const books = pickedWorks.filter((w) => w.type?.toLowerCase() === "book" || w.type?.toLowerCase() === "本").slice(0, 3);
+    return { musicWorks: music, bookWorks: books };
+  }, [pickedWorks]);
+
   /** レコメンド構築（凶は固定、通常はpickedWorks。初回のみ表示） */
   const recommendation: Reco | null = useMemo(() => {
     if (!entry) return null;
@@ -292,7 +394,7 @@ export default function Client() {
       return {
         kind: "works",
         noteJa: "今日の御籤に寄り添う作品たち。気になったものからどうぞ。",
-        noteEn: "A few works that vibe with today’s draw. Pick what intrigues you.",
+        noteEn: "A few works that vibe with today's draw. Pick what intrigues you.",
         works: pickedWorks,
       };
     }
@@ -323,15 +425,15 @@ export default function Client() {
       {/* ローディング */}
       {!all && <div className="opacity-60">Loading…</div>}
 
-      {/* まだ引いてない時：CTA（1日1回の記載あり） */}
-      {all && !drawn && (
+      {/* Phase 1: 準備（まだ引いてない時） */}
+      {all && phase === "prepare" && !drawn && (
         <section className="grid place-items-center py-16">
           <div className="rounded-2xl border border-zinc-300 bg-white/70 p-10 text-center shadow-sm">
             <div className="mb-3 font-serif text-xl">
-              {lang === "ja" ? "本日の御籤を引く" : "Draw today’s Omikuji"}
+              {lang === "ja" ? "本日の御籤を引く" : "Draw today's Omikuji"}
             </div>
             <p className="mb-2 text-sm opacity-70">
-              {lang === "ja" ? "クリックすると一枚の御籤が現れます。" : "Click to reveal one card."}
+              {lang === "ja" ? "心を静めて、運命の扉を開きましょう。" : "Quiet your mind and open the door to destiny."}
             </p>
             <p className="text-xs opacity-60">
               {lang === "ja" ? "※ 本日は1回まで" : "※ One draw per day"}
@@ -346,9 +448,37 @@ export default function Client() {
         </section>
       )}
 
-      {/* 引いた後：カード & 戒め & レコメンド & 操作 */}
-      {entry && drawn && (
-        <>
+      {/* Phase 2: 儀式（演出中） */}
+      {phase === "ritual" && entry && (
+        <section className="grid place-items-center py-24">
+          <div className="text-center">
+            <div
+              className="mx-auto mb-6 h-16 w-16 rounded-full border-4 border-zinc-300 border-t-zinc-900 motion-reduce:border-t-zinc-600"
+              style={{
+                animation: "spin 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite",
+              }}
+            />
+            <div className="font-serif text-xl opacity-70">
+              {lang === "ja" ? "運命を読み解いています…" : "Reading your destiny…"}
+            </div>
+          </div>
+          <style jsx>{`
+            @keyframes spin {
+              to { transform: rotate(360deg); }
+            }
+            @media (prefers-reduced-motion: reduce) {
+              div[style*="animation"] {
+                animation-duration: 0.6s !important;
+                opacity: 0.5;
+              }
+            }
+          `}</style>
+        </section>
+      )}
+
+      {/* Phase 3: 結果（啓示） */}
+      {phase === "result" && entry && drawn && (
+        <div className={`transition-opacity duration-700 ease-out ${animIn ? "opacity-100" : "opacity-0"}`}>
           {/* ステータス */}
           <div className="mb-3 text-sm opacity-70">
             {lang === "ja"
@@ -356,8 +486,8 @@ export default function Client() {
               : `Today ${drawsToday} draw(s) / Current rank: ${lastRankText}`}
           </div>
 
-          {/* カード */}
-          <div className={`transition duration-400 ease-out will-change-transform ${animIn ? "opacity-100 translate-x-0" : "opacity-0 translate-x-3"}`}>
+          {/* おみくじカード（原文/訳文/解釈） */}
+          <div className="mb-6">
             <OmikujiCard entry={entry} lang={lang} />
           </div>
 
@@ -412,70 +542,157 @@ export default function Client() {
             </section>
           )}
 
-          {/* レコメンド（通常：作品グリッド） */}
-          {recommendation && recommendation.kind === "works" && (
-            <section className="mt-6 rounded-xl border bg-white/70 p-5" style={{ borderColor: `${accent}66` }}>
-              <div className="mb-2 flex items-center gap-2">
+          {/* レコメンド（通常：作品グリッド - 上段=音楽3、下段=本3） */}
+          {recommendation && recommendation.kind === "works" && (musicWorks.length > 0 || bookWorks.length > 0) && (
+            <section className="mt-6 rounded-xl border bg-white/92 p-5 shadow-sm backdrop-blur-sm" style={{ borderColor: `${accent}33` }}>
+              <div className="mb-3 flex items-center gap-2">
                 <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: accent }} />
-                <span className="font-serif text-[15px]">
+                <span className="font-serif text-base font-medium text-slate-900">
                   {lang === "ja" ? `${entry.rank_ja} を引いたあなたへのおすすめ` : `Recommended for your draw (${entry.rank_en})`}
                 </span>
               </div>
-              <div className="text-sm opacity-70 mb-3">
+              <div className="text-sm text-slate-600 mb-4">
                 {lang === "ja" ? recommendation.noteJa : recommendation.noteEn}
               </div>
 
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-                {recommendation.works.map((w) => (
-                  <div key={w.id} className="group rounded-lg border border-zinc-200 overflow-hidden bg-white/80 hover:shadow-sm transition">
-                    {w.cover ? (
-                      <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100">
-                        <Image
-                          src={w.cover}
-                          alt={w.title}
-                          fill
-                          sizes="(min-width: 1024px) 16vw, (min-width: 640px) 30vw, 45vw"
-                          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                        />
-                      </div>
-                    ) : (
-                      <div className="aspect-[3/4] grid place-items-center text-xs opacity-50">No Image</div>
-                    )}
-                    <div className="p-2">
-                      <div className="line-clamp-2 text-[13px] font-medium">{w.title}</div>
-                      {(w.href || w.previewUrl) && (
-                        <div className="mt-2">
-                          <Link
-  href={w.href || w.previewUrl!}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-1.5 rounded-md border border-zinc-300 px-2 py-1 text-xs hover:bg-zinc-50"
->
-
-                            {lang === "ja" ? "作品を見る" : "Open"}
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
-                              <path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                            </svg>
-                          </Link>
+              {/* 上段: 音楽 3枚 (正方形 1:1) */}
+              {musicWorks.length > 0 && (
+                <div className="mb-5">
+                  <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-slate-600">
+                    {lang === "ja" ? "音楽" : "Music"}
+                  </h3>
+                  <div className="grid grid-cols-1 min-[480px]:grid-cols-2 min-[720px]:grid-cols-3 gap-3">
+                    {musicWorks.map((w) => (
+                      <div key={w.id} className="group min-w-0 rounded-lg border border-zinc-200 overflow-hidden bg-white shadow-sm hover:shadow-md transition">
+                        {w.cover ? (
+                          <div className="relative aspect-square overflow-hidden bg-zinc-100">
+                            <Image
+                              src={w.cover}
+                              alt={w.title}
+                              fill
+                              sizes="(min-width: 800px) 33vw, (min-width: 500px) 50vw, 100vw"
+                              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-[1.05]"
+                            />
+                          </div>
+                        ) : (
+                          <div className="aspect-square grid place-items-center text-xs text-slate-400 bg-zinc-100">No Image</div>
+                        )}
+                        <div className="p-2.5 min-h-[72px] flex flex-col">
+                          <div className="flex-1 line-clamp-2 text-sm font-medium text-slate-900 mb-1.5">{w.title}</div>
+                          <div className="flex gap-2 items-center flex-wrap">
+                            {(w.primaryHref || w.href || w.previewUrl) && (
+                              <Link
+                                href={w.primaryHref || w.href || w.previewUrl!}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 rounded-md border border-zinc-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-zinc-50 transition w-fit"
+                              >
+                                {serviceLinkLabel(w.primaryHref || w.href || w.previewUrl || "", w.type, lang)}
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+                                  <path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                </svg>
+                              </Link>
+                            )}
+                            {w.salesHref && (
+                              <Link
+                                href={w.salesHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-2 transition"
+                              >
+                                {saleLinkLabel(w.salesHref || "", lang)}
+                              </Link>
+                            )}
+                          </div>
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
+
+              {/* 下段: 本 3枚 (縦長 aspect-[5/8]) */}
+              {bookWorks.length > 0 && (
+                <div>
+                  <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-slate-600">
+                    {lang === "ja" ? "本" : "Books"}
+                  </h3>
+                  <div className="grid grid-cols-1 min-[480px]:grid-cols-2 min-[720px]:grid-cols-3 gap-3">
+                    {bookWorks.map((w) => (
+                      <div key={w.id} className="group min-w-0 rounded-lg border border-zinc-200 overflow-hidden bg-white shadow-sm hover:shadow-md transition">
+                        {w.cover ? (
+                          <div className="relative aspect-[5/8] overflow-hidden bg-zinc-100">
+                            <Image
+                              src={w.cover}
+                              alt={w.title}
+                              fill
+                              sizes="(min-width: 800px) 33vw, (min-width: 500px) 50vw, 100vw"
+                              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-[1.05]"
+                            />
+                          </div>
+                        ) : (
+                          <div className="aspect-[5/8] grid place-items-center text-xs text-slate-400 bg-zinc-100">No Image</div>
+                        )}
+                        <div className="p-2.5 min-h-[72px] flex flex-col">
+                          <div className="flex-1 line-clamp-2 text-sm font-medium text-slate-900 mb-1.5">{w.title}</div>
+                          <div className="flex gap-2 items-center flex-wrap">
+                            {(w.primaryHref || w.href || w.previewUrl) && (
+                              <Link
+                                href={w.primaryHref || w.href || w.previewUrl!}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 rounded-md border border-zinc-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-zinc-50 transition w-fit"
+                              >
+                                {serviceLinkLabel(w.primaryHref || w.href || w.previewUrl || "", w.type, lang)}
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
+                                  <path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                </svg>
+                              </Link>
+                            )}
+                            {w.salesHref && (
+                              <Link
+                                href={w.salesHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-2 transition"
+                              >
+                                {saleLinkLabel(w.salesHref || "", lang)}
+                              </Link>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </section>
           )}
 
           {/* 操作列 */}
           <div className="mt-6 flex flex-wrap gap-3">
-            <button onClick={handleCopyShare} className="rounded-md ring-1 ring-zinc-300 px-4 py-2">
+            <button onClick={handleCopyShare} className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm">
               {lang === "ja" ? "シェア用URLコピー" : "Copy share URL"}
             </button>
-            <button onClick={drawAgain} className="rounded-md ring-1 ring-zinc-300 px-4 py-2">
+            <button onClick={drawAgain} className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm opacity-70">
               {lang === "ja" ? "もう一度引く（おすすめしない）" : "Draw again (not recommended)"}
             </button>
+
+            {/* クロスリンク：他ページへの自然な回遊 */}
+            <Link
+              href="/exhibition"
+              className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm"
+            >
+              {lang === "ja" ? "展示を見る" : "Browse Exhibition"}
+            </Link>
+            <Link
+              href="/chat"
+              className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm"
+            >
+              {lang === "ja" ? "伯爵に相談する" : "Ask the Count"}
+            </Link>
           </div>
-        </>
+        </div>
       )}
     </main>
   );

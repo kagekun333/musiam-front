@@ -76,3 +76,36 @@ scripts/optimize-kannon100-v2.py
 # local junk
 .gitignore.bak
 content/
+
+# Local analysis / enrichment artifacts (generated, not source)
+atugiri.*.json
+atugiri.*.md
+enrich_itunes.py
+public/works/works.enriched*.json
+public/works/worksold.json
+public/works/review_required.json
+
+# Local work notes
+CHAT_QUALITY_IMPROVEMENT*.md
+EXHIBITION_UI_CHANGES.md
+ITUNES_ENRICHMENT_README.md
+OPTIMIZATION_PLAN.md
+
+# Old project snapshot
+musiam-front-2025-09-26/
+
+# Generated card images
+public/omikuji-cards/
+
+# Backup files
+*.backup
+src/pages/api/chat-reco.ts.backup
+src/pages/chat.tsx.backup
+
+# Local one-off scripts
+scripts/mood-fill-atugiri.mjs
+scripts/mood-infer-from-itunes.mjs
+scripts/normalize-atugiri.mjs
+tools/
+
+/*.md

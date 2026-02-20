@@ -9,17 +9,22 @@ export default [
   {
     ignores: [
       ".next/**",
+      ".vercel/**",
       "node_modules/**",
       "public/**",
 
       // バックアップ・スナップショット・レガシー
       "backup/**",
       ".musiam/**",
+      "musiam-front-2025-09-26/**",
       "src/**/**.backup.*",
       "src/**/**.bak.*",
       "src/**/**.2025*/**",
       "src/app/oracle/omikuji._bak/**",
       "src/pages_legacy/**",
+
+      // ツール設定ファイル（Node CJS）
+      "commitlint.config.cjs",
 
       // 設定ファイルなど
       "postcss.config.js",

@@ -79,7 +79,7 @@ type Work = {
   type: "music" | "video" | "art" | "book" | "article";
   cover: string;
   tags?: string[];
-  links?: Partial<Record<"listen" | "watch" | "read" | "nft", string>>;
+  links?: Partial<Record<"listen" | "watch" | "read" | "nft" | "spotify" | "appleMusic" | "itunesBuy", string>>;
   releasedAt?: string;
   weight?: number;
   previewUrl?: string;
@@ -93,12 +93,16 @@ type WorksDoc = { items: Work[] };
 function sanitizeWork(w: Work): Work {
   const cover = sanitizeUrl(normalizeCover(w.cover)) || w.cover;
   const previewUrl = sanitizeUrl(w.previewUrl);
-  const linksIn = w.links || {};
+  const linksIn = (w.links || {}) as Record<string, string | undefined>;
   const links = {
     listen: sanitizeUrl(linksIn.listen),
     watch: sanitizeUrl(linksIn.watch),
     read: sanitizeUrl(linksIn.read),
     nft: sanitizeUrl(linksIn.nft),
+    // 音楽サービス個別リンクを保持
+    spotify: sanitizeUrl(linksIn.spotify),
+    appleMusic: sanitizeUrl(linksIn.appleMusic),
+    itunesBuy: sanitizeUrl(linksIn.itunesBuy),
   };
   const compactLinks = Object.fromEntries(Object.entries(links).filter(([, v]) => !!v));
   return {
@@ -166,35 +170,77 @@ type CTA = { label: string; url: string; icon: string };
 
 function getPrimaryCta(w: Work): CTA | null {
   if (w.type === "music") {
-    const spotify = inferSpotifyUrl(w) || w.links?.listen;
-    if (spotify) return { label: "Listen on Spotify", url: spotify, icon: "spotify" };
-    if (w.links?.listen) return { label: "Listen", url: w.links.listen, icon: "listen" };
+    // Spotify を最優先（listen キーまたは spotify キー）
+    const spotify = w.links?.spotify || inferSpotifyUrl(w) || (w.links?.listen && /spotify/i.test(w.links.listen) ? w.links.listen : undefined);
+    if (spotify) return { label: "Spotifyで聴く", url: spotify, icon: "spotify" };
+    // Apple Music
+    if (w.links?.appleMusic) return { label: "Apple Musicで聴く", url: w.links.appleMusic, icon: "appleMusic" };
+    // iTunes 購入
+    if (w.links?.itunesBuy) return { label: "iTunesで購入", url: w.links.itunesBuy, icon: "itunesBuy" };
+    if (w.links?.listen) {
+      if (/music\.apple\.com/i.test(w.links.listen))
+        return { label: "Apple Musicで聴く", url: w.links.listen, icon: "appleMusic" };
+      if (/itunes\.apple\.com/i.test(w.links.listen))
+        return { label: "iTunesで購入", url: w.links.listen, icon: "itunesBuy" };
+      return { label: "聴く", url: w.links.listen, icon: "listen" };
+    }
   }
   if (w.type === "book") {
     const amazon = buildAmazonUrl(w);
-    if (amazon) return { label: "Buy on Amazon", url: amazon, icon: "amazon" };
-    if (w.links?.read) return { label: "Read", url: w.links.read, icon: "read" };
+    if (amazon) return { label: "Amazonで読む", url: amazon, icon: "amazon" };
+    if (w.links?.read) return { label: "読む", url: w.links.read, icon: "read" };
   }
-  if (w.links?.nft) return { label: "View NFT", url: w.links.nft, icon: "nft" };
-  if (w.links?.watch) return { label: "Watch", url: w.links.watch, icon: "watch" };
-  if (w.links?.listen) return { label: "Listen", url: w.links.listen, icon: "listen" };
-  if (w.links?.read) return { label: "Read", url: w.links.read, icon: "read" };
-  if (w.href) return { label: "View", url: w.href, icon: "link" };
+  if (w.links?.nft) return { label: "NFTを見る", url: w.links.nft, icon: "nft" };
+  if (w.links?.watch) {
+    if (/youtube\.com|youtu\.be/i.test(w.links.watch))
+      return { label: "YouTubeで視聴", url: w.links.watch, icon: "youtube" };
+    return { label: "視聴する", url: w.links.watch, icon: "watch" };
+  }
+  if (w.links?.listen) return { label: "聴く", url: w.links.listen, icon: "listen" };
+  if (w.links?.read) return { label: "読む", url: w.links.read, icon: "read" };
+  if (w.href) return { label: "見る", url: w.href, icon: "link" };
   return null;
 }
 
 function getSecondaryLinks(w: Work): { label: string; url: string; icon: string }[] {
   const links: { label: string; url: string; icon: string }[] = [];
-  const spotify = inferSpotifyUrl(w) || w.links?.listen;
+  const seen = new Set<string>();
+  const addLink = (label: string, url: string, icon: string) => {
+    if (!url || seen.has(url)) return;
+    seen.add(url);
+    links.push({ label, url, icon });
+  };
+
+  const spotify = w.links?.spotify || inferSpotifyUrl(w) || (w.links?.listen && /spotify/i.test(w.links.listen || "") ? w.links.listen : undefined);
   const amazon = buildAmazonUrl(w);
-  if (spotify) links.push({ label: "Spotify", url: spotify, icon: "spotify" });
-  if (w.links?.watch) links.push({ label: "YouTube", url: w.links.watch, icon: "youtube" });
-  if (amazon) links.push({ label: "Amazon", url: amazon, icon: "amazon" });
-  if (w.links?.read && (!amazon || w.links.read !== amazon))
-    links.push({ label: "Read", url: w.links.read, icon: "read" });
-  if (w.links?.nft) links.push({ label: "NFT", url: w.links.nft, icon: "nft" });
-  if (w.href && !links.some((l) => l.url === w.href))
-    links.push({ label: "Website", url: w.href, icon: "link" });
+
+  // 音楽サービスリンク（spotify → appleMusic → itunesBuy の順）
+  if (spotify) addLink("Spotifyで聴く", spotify, "spotify");
+  if (w.links?.appleMusic) addLink("Apple Musicで聴く", w.links.appleMusic, "appleMusic");
+  if (w.links?.itunesBuy) addLink("iTunesで購入", w.links.itunesBuy, "itunesBuy");
+
+  // listen キーがあって上記と重複しない場合
+  if (w.links?.listen) {
+    if (/music\.apple\.com/i.test(w.links.listen)) addLink("Apple Musicで聴く", w.links.listen, "appleMusic");
+    else if (/itunes\.apple\.com/i.test(w.links.listen)) addLink("iTunesで購入", w.links.listen, "itunesBuy");
+    else if (!/spotify/i.test(w.links.listen)) addLink("聴く", w.links.listen, "listen");
+  }
+
+  // YouTube
+  if (w.links?.watch) {
+    const watchLabel = /youtube\.com|youtu\.be/i.test(w.links.watch) ? "YouTubeで観る" : "視聴する";
+    addLink(watchLabel, w.links.watch, "youtube");
+  }
+
+  // Amazon（本は「読む」、音楽は「購入」）
+  if (amazon) {
+    const amazonLabel = w.type === "book" ? "Amazonで読む" : "Amazonで購入";
+    addLink(amazonLabel, amazon, "amazon");
+  }
+  if (w.links?.read) addLink("Amazonで読む", w.links.read, "read");
+  if (w.links?.nft) addLink("NFTを見る", w.links.nft, "nft");
+  if (w.href) addLink("Webサイトで見る", w.href, "link");
+
   return links;
 }
 
@@ -221,6 +267,13 @@ function IconSvg({ icon, size = 18 }: { icon: string; size?: number }) {
       return (
         <svg viewBox="0 0 24 24" style={s}>
           <path d="M.045 18.02c.072-.116.187-.124.348-.064 3.09 1.637 6.429 2.457 10.017 2.457 2.395 0 4.897-.477 7.411-1.397.217-.08.406.019.5.154.094.134.07.313-.07.422-2.69 2.26-5.897 3.408-9.523 3.408C5.502 23 2.544 21.741.045 18.02zm19.17-2.368c-.247-.31-.96-.459-1.784-.382-.826.077-1.552.307-1.842.602-.107.11-.084.244.058.353.597.333 1.295.564 2.1.564.785 0 1.48-.213 1.693-.564.153-.252.106-.42-.225-.573zm-2.215 2.42c.45-.55.683-1.288.683-2.04 0-2.497-1.853-4.5-4.147-4.5-2.293 0-4.146 2.003-4.146 4.5s1.853 4.5 4.146 4.5c1.16 0 2.21-.487 2.96-1.268l.504 1.308z" />
+        </svg>
+      );
+    case "appleMusic":
+    case "itunesBuy":
+      return (
+        <svg viewBox="0 0 24 24" style={s}>
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
         </svg>
       );
     default:
@@ -680,9 +733,13 @@ function DetailModal({
                       ? "#ff9900"
                       : primary.icon === "youtube"
                         ? "#ff0000"
-                        : primary.icon === "nft"
-                          ? "#9333ea"
-                          : "#3b82f6",
+                        : primary.icon === "appleMusic"
+                          ? "#fc3c44"
+                          : primary.icon === "itunesBuy"
+                            ? "#a259ff"
+                            : primary.icon === "nft"
+                              ? "#9333ea"
+                              : "#3b82f6",
                 color: primary.icon === "spotify" || primary.icon === "amazon" ? "#000" : "#fff",
                 marginBottom: 16,
               }}
@@ -700,28 +757,28 @@ function DetailModal({
             </a>
           )}
 
-          {/* Secondary links – icon buttons */}
+          {/* Secondary links – service name labels */}
           {secondaries.length > 0 && (
-            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+            <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
               {secondaries.map((link, i) => (
                 <a
                   key={i}
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  title={link.label}
                   onClick={() => track("exhibit_link_click", { id: work.id, type: link.icon })}
                   style={{
-                    display: "flex",
+                    display: "inline-flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    width: 40,
-                    height: 40,
+                    gap: 6,
+                    padding: "8px 14px",
                     borderRadius: 8,
                     background: "rgba(255,255,255,0.06)",
                     border: "1px solid rgba(255,255,255,0.08)",
                     color: "#bbb",
                     textDecoration: "none",
+                    fontSize: 13,
+                    fontWeight: 500,
                     transition: "background 0.2s, color 0.2s",
                   }}
                   onMouseEnter={(e) => {
@@ -733,7 +790,8 @@ function DetailModal({
                     e.currentTarget.style.color = "#bbb";
                   }}
                 >
-                  <IconSvg icon={link.icon} size={18} />
+                  <IconSvg icon={link.icon} size={16} />
+                  {link.label}
                 </a>
               ))}
             </div>
@@ -749,16 +807,19 @@ function DetailModal({
    ================================================================ */
 
 const controlInputStyle: React.CSSProperties = {
-  padding: "9px 14px",
+  padding: "10px 16px",
   fontSize: 14,
-  border: "1px solid rgba(255,255,255,0.1)",
-  borderRadius: 8,
-  background: "rgba(255,255,255,0.04)",
+  fontWeight: 500,
+  border: "1px solid rgba(255,255,255,0.12)",
+  borderRadius: 10,
+  background: "rgba(255,255,255,0.05)",
   color: "#e5e7eb",
   outline: "none",
-  transition: "border-color 0.2s, background 0.2s",
+  transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
   appearance: "none" as const,
   WebkitAppearance: "none" as const,
+  minHeight: 44,
+  boxShadow: "0 1px 2px rgba(0,0,0,0.1)",
 };
 
 function ControlBar({
@@ -786,6 +847,10 @@ function ControlBar({
   tags: string[];
   resultCount: number;
 }) {
+  // Helper to determine if a filter is active (not "all")
+  const isTypeActive = typeF !== "all";
+  const isTagActive = tagF !== "all";
+
   return (
     <div
       style={{
@@ -794,10 +859,11 @@ function ControlBar({
         flexWrap: "wrap",
         alignItems: "center",
         marginBottom: 32,
-        padding: "14px 18px",
-        background: "rgba(255,255,255,0.02)",
-        border: "1px solid rgba(255,255,255,0.06)",
-        borderRadius: 12,
+        padding: "16px 20px",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: 14,
+        boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
       }}
     >
       {/* Search */}
@@ -805,15 +871,16 @@ function ControlBar({
         <span
           style={{
             position: "absolute",
-            left: 12,
+            left: 14,
             top: "50%",
             transform: "translateY(-50%)",
             fontSize: 14,
-            color: "#666",
+            color: searchQuery ? "#999" : "#666",
             pointerEvents: "none",
+            transition: "color 0.2s",
           }}
         >
-          <svg viewBox="0 0 24 24" style={{ width: 16, height: 16, fill: "#666" }}>
+          <svg viewBox="0 0 24 24" style={{ width: 18, height: 18, fill: "currentColor" }}>
             <path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
           </svg>
         </span>
@@ -825,15 +892,35 @@ function ControlBar({
           style={{
             ...controlInputStyle,
             width: "100%",
-            paddingLeft: 36,
+            paddingLeft: 42,
+            background: searchQuery ? "rgba(255,255,255,0.08)" : "rgba(255,255,255,0.05)",
+            borderColor: searchQuery ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.12)",
           }}
           onFocus={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
+            e.currentTarget.style.background = "rgba(255,255,255,0.09)";
+            e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,255,255,0.06)";
           }}
           onBlur={(e) => {
-            e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-            e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+            e.currentTarget.style.borderColor = searchQuery
+              ? "rgba(255,255,255,0.2)"
+              : "rgba(255,255,255,0.12)";
+            e.currentTarget.style.background = searchQuery
+              ? "rgba(255,255,255,0.08)"
+              : "rgba(255,255,255,0.05)";
+            e.currentTarget.style.boxShadow = "0 1px 2px rgba(0,0,0,0.1)";
+          }}
+          onMouseEnter={(e) => {
+            if (document.activeElement !== e.currentTarget) {
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.18)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (document.activeElement !== e.currentTarget) {
+              e.currentTarget.style.borderColor = searchQuery
+                ? "rgba(255,255,255,0.2)"
+                : "rgba(255,255,255,0.12)";
+            }
           }}
         />
       </div>
@@ -842,7 +929,31 @@ function ControlBar({
       <select
         value={typeF}
         onChange={(e) => setTypeF(e.target.value)}
-        style={{ ...controlInputStyle, cursor: "pointer", minWidth: 100 }}
+        style={{
+          ...controlInputStyle,
+          cursor: "pointer",
+          minWidth: 110,
+          background: isTypeActive ? "rgba(59,130,246,0.12)" : "rgba(255,255,255,0.05)",
+          borderColor: isTypeActive ? "rgba(59,130,246,0.3)" : "rgba(255,255,255,0.12)",
+          color: isTypeActive ? "#93c5fd" : "#e5e7eb",
+          fontWeight: isTypeActive ? 600 : 500,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = isTypeActive
+            ? "rgba(59,130,246,0.4)"
+            : "rgba(255,255,255,0.2)";
+          e.currentTarget.style.background = isTypeActive
+            ? "rgba(59,130,246,0.16)"
+            : "rgba(255,255,255,0.08)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = isTypeActive
+            ? "rgba(59,130,246,0.3)"
+            : "rgba(255,255,255,0.12)";
+          e.currentTarget.style.background = isTypeActive
+            ? "rgba(59,130,246,0.12)"
+            : "rgba(255,255,255,0.05)";
+        }}
       >
         {types.map((t) => (
           <option key={t} value={t} style={{ background: "#1a1a1a" }}>
@@ -855,7 +966,32 @@ function ControlBar({
       <select
         value={tagF}
         onChange={(e) => setTagF(e.target.value)}
-        style={{ ...controlInputStyle, cursor: "pointer", minWidth: 100, maxWidth: 180 }}
+        style={{
+          ...controlInputStyle,
+          cursor: "pointer",
+          minWidth: 110,
+          maxWidth: 180,
+          background: isTagActive ? "rgba(168,85,247,0.12)" : "rgba(255,255,255,0.05)",
+          borderColor: isTagActive ? "rgba(168,85,247,0.3)" : "rgba(255,255,255,0.12)",
+          color: isTagActive ? "#c4b5fd" : "#e5e7eb",
+          fontWeight: isTagActive ? 600 : 500,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = isTagActive
+            ? "rgba(168,85,247,0.4)"
+            : "rgba(255,255,255,0.2)";
+          e.currentTarget.style.background = isTagActive
+            ? "rgba(168,85,247,0.16)"
+            : "rgba(255,255,255,0.08)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = isTagActive
+            ? "rgba(168,85,247,0.3)"
+            : "rgba(255,255,255,0.12)";
+          e.currentTarget.style.background = isTagActive
+            ? "rgba(168,85,247,0.12)"
+            : "rgba(255,255,255,0.05)";
+        }}
       >
         {tags.map((t) => (
           <option key={t} value={t} style={{ background: "#1a1a1a" }}>
@@ -868,7 +1004,19 @@ function ControlBar({
       <select
         value={sortKey}
         onChange={(e) => setSortKey(e.target.value)}
-        style={{ ...controlInputStyle, cursor: "pointer", minWidth: 120 }}
+        style={{
+          ...controlInputStyle,
+          cursor: "pointer",
+          minWidth: 130,
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+          e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+          e.currentTarget.style.background = "rgba(255,255,255,0.05)";
+        }}
       >
         <option value="releasedAt-desc" style={{ background: "#1a1a1a" }}>
           Newest
@@ -882,7 +1030,16 @@ function ControlBar({
       </select>
 
       {/* Count */}
-      <span style={{ fontSize: 12, color: "#666", marginLeft: "auto", whiteSpace: "nowrap" }}>
+      <span
+        style={{
+          fontSize: 13,
+          fontWeight: 500,
+          color: "#888",
+          marginLeft: "auto",
+          whiteSpace: "nowrap",
+          padding: "0 4px",
+        }}
+      >
         {resultCount} {resultCount === 1 ? "work" : "works"}
       </span>
     </div>

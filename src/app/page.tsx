@@ -1,9 +1,6 @@
 // src/app/page.tsx
-"use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import Starfield from "@/components/Starfield";
 
 
 type Gate = {
@@ -22,14 +19,9 @@ const GATES: Gate[] = [
 ];
 
 export default function Home() {
-  const router = useRouter();
-
   return (
-    <main className="page-home">
-      {/* 宇宙レイヤ */}
-       <Starfield />
-      <div aria-hidden className="cosmic-orn1" />
-      <div aria-hidden className="cosmic-orn2" />
+    <main className="page-content">
+      {/* グローバル背景は layout.tsx で提供 */}
 
       {/* Wordmark */}
       <section className="hero hero--tight">
@@ -46,17 +38,11 @@ export default function Home() {
         <ul className="gates-grid">
           {GATES.map((g) => (
             <li key={g.file}>
-              <div
+              {/* div+onClick を <Link> に統一。ネスト anchor 回避のため内側CTAはspanに */}
+              <Link
+                href={g.href}
                 className="gate-link"
-                onClick={() => router.push(g.href)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    router.push(g.href);
-                  }
-                }}
+                style={{ display: "block" }}
                 aria-label={`${g.ja}へ移動`}
               >
                 <div className="gate-card">
@@ -71,7 +57,7 @@ export default function Home() {
                     />
                   </div>
 
-                  {/* 画像の外にキャプション（1行省略） */}
+                  {/* 画像の外にキャプション */}
                   <div className="gate-caption">
                     <div className="gate-title">
                       <span className="gate-title-ja">{g.ja}</span>
@@ -79,18 +65,13 @@ export default function Home() {
                     </div>
                     <div className="gate-desc">{g.desc}</div>
 
-                    {/* CTAボタン */}
-                    <Link
-                      href={g.href}
-                      className="gate-cta"
-                      onClick={(e) => e.stopPropagation()}
-                      aria-label={`${g.cta}（${g.ja}へ）`}
-                    >
+                    {/* CTAラベル（親Linkがナビ担当のためspanに変更） */}
+                    <span className="gate-cta" aria-hidden="true">
                       {g.cta}
-                    </Link>
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             </li>
           ))}
         </ul>

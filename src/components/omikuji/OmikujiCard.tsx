@@ -7,27 +7,114 @@ export type OmikujiLine = { orig: string; ja: string; en: string };
 export type OmikujiEntry = {
   id: number;
   rank_ja: string;
-  rank_en: string; // e.g., "Great Luck", "Good Luck"
+  rank_en: string;
   header_ja: string;
   header_en: string;
   lines: OmikujiLine[]; // 4 lines
 };
 
 /* ===========================
-   Rank theme (zinc系 / 和風トーン)
+   Rank themes（完全自己完結）
 =========================== */
-const RANK_THEME: Record<
-  string,
-  { accent: string; patternOpacity: number; baseBg: string; cardShadow: string; isDark?: boolean }
-> = {
-  "great luck":        { accent: "#D8B65C", patternOpacity: 0.16, baseBg: "bg-zinc-50", cardShadow: "shadow-[0_8px_24px_rgba(0,0,0,0.12)]" },
-  "good luck":         { accent: "#6FAF7A", patternOpacity: 0.14, baseBg: "bg-zinc-50", cardShadow: "shadow-[0_8px_24px_rgba(0,0,0,0.12)]" },
-  "small luck":        { accent: "#79A7D1", patternOpacity: 0.13, baseBg: "bg-zinc-50", cardShadow: "shadow-[0_8px_24px_rgba(0,0,0,0.12)]" },
-  "mixed luck":        { accent: "#9AA4B2", patternOpacity: 0.12, baseBg: "bg-zinc-50", cardShadow: "shadow-[0_8px_24px_rgba(0,0,0,0.12)]" },
-  "later luck":        { accent: "#B9A2C8", patternOpacity: 0.12, baseBg: "bg-zinc-50", cardShadow: "shadow-[0_8px_24px_rgba(0,0,0,0.12)]" },
-  "slight later luck": { accent: "#CABBA6", patternOpacity: 0.11, baseBg: "bg-zinc-50", cardShadow: "shadow-[0_8px_24px_rgba(0,0,0,0.12)]" },
-  "bad luck":          { accent: "#A7A7A7", patternOpacity: 0.10, baseBg: "bg-zinc-900", cardShadow: "shadow-[0_4px_16px_rgba(0,0,0,0.22)]", isDark: true },
+type RankTheme = {
+  accent: string;
+  paper: string;
+  patternColor: string;
+  patternOpacity: number;
+  patternSize: number;
+  glow?: string;
+  isDark: boolean;
 };
+
+const RANK_THEME: Record<string, RankTheme> = {
+  "great luck": {
+    accent: "#CFAF4A",
+    paper: "#FAF7EB",
+    patternColor: "#CFAF4A",
+    patternOpacity: 0.20,
+    patternSize: 140,
+    glow: "radial-gradient(60% 50% at 50% 8%, rgba(207,175,74,0.18), transparent 60%)",
+    isDark: false,
+  },
+  "good luck": {
+    accent: "#6FAF7A",
+    paper: "#FBFBF9",
+    patternColor: "#6FAF7A",
+    patternOpacity: 0.17,
+    patternSize: 120,
+    isDark: false,
+  },
+  "small luck": {
+    accent: "#79A7D1",
+    paper: "#FAFCFE",
+    patternColor: "#79A7D1",
+    patternOpacity: 0.16,
+    patternSize: 110,
+    isDark: false,
+  },
+  "mixed luck": {
+    accent: "#9AA4B2",
+    paper: "#F9F9F9",
+    patternColor: "#9AA4B2",
+    patternOpacity: 0.16,
+    patternSize: 115,
+    isDark: false,
+  },
+  "later luck": {
+    accent: "#B9A2C8",
+    paper: "#FBFAFD",
+    patternColor: "#B9A2C8",
+    patternOpacity: 0.16,
+    patternSize: 130,
+    isDark: false,
+  },
+  "slight later luck": {
+    accent: "#CABBA6",
+    paper: "#FCFBF7",
+    patternColor: "#CABBA6",
+    patternOpacity: 0.16,
+    patternSize: 125,
+    isDark: false,
+  },
+  "bad luck": {
+    accent: "#A7A7A7",
+    paper: "#111111",
+    patternColor: "#FFFFFF",
+    patternOpacity: 0.11,
+    patternSize: 120,
+    isDark: true,
+  },
+};
+
+/* ===========================
+   麻の葉SVG（色を直接埋め込む＝currentColor依存ゼロ）
+=========================== */
+function makeAsanohaUrl(color: string, size: number): string {
+  const encoded = encodeURIComponent(
+    `<svg xmlns='http://www.w3.org/2000/svg' width='${size}' height='${size}' viewBox='0 0 120 120'>
+      <defs>
+        <pattern id='p' x='0' y='0' width='120' height='120' patternUnits='userSpaceOnUse'>
+          <g fill='none' stroke='${color}' stroke-width='1'>
+            <path d='M60 5 85 50 60 95 35 50Z'/>
+            <path d='M60 5 98 25 98 70 60 95 22 70 22 25Z' opacity='0.5'/>
+            <path d='M60 20 80 50 60 80 40 50Z' opacity='0.7'/>
+          </g>
+        </pattern>
+      </defs>
+      <rect width='100%' height='100%' fill='url(%23p)'/>
+    </svg>`
+  );
+  return `url("data:image/svg+xml;utf8,${encoded}")`;
+}
+
+/* ===========================
+   和紙テクスチャ（inline gradient）
+=========================== */
+const PAPER_TEXTURE =
+  `radial-gradient(closest-side, rgba(0,0,0,0.05), rgba(0,0,0,0) 70%),` +
+  `radial-gradient(circle at 20% 10%, rgba(0,0,0,0.03), rgba(0,0,0,0) 60%),` +
+  `radial-gradient(circle at 80% 30%, rgba(0,0,0,0.025), rgba(0,0,0,0) 55%),` +
+  `repeating-linear-gradient(90deg, rgba(0,0,0,0.012), rgba(0,0,0,0.012) 1px, transparent 1px, transparent 3px)`;
 
 /* ===========================
    Card Component
@@ -35,90 +122,167 @@ const RANK_THEME: Record<
 export default function OmikujiCard({
   entry,
   lang = "ja",
-  className = "",
 }: {
   entry: OmikujiEntry;
   lang?: "ja" | "en";
-  className?: string; // PNG書き出し時の固定サイズ指定に使える
+  className?: string;
 }) {
   const norm = entry.rank_en.toLowerCase();
-  const theme = RANK_THEME[norm] ?? RANK_THEME["good luck"];
+  const t = RANK_THEME[norm] ?? RANK_THEME["good luck"];
 
-  // ヘッダー：ENは "No. {id} — {rank_en}"（サブタイトル無し）
-  const headerText = lang === "ja" ? entry.header_ja : `No. ${entry.id} — ${entry.rank_en}`;
+  const header = lang === "ja" ? entry.header_ja : `No. ${entry.id} — ${entry.rank_en}`;
+  const textColor = t.isDark ? "#f0f0f0" : "#1a1a1a";
+  const asanohaUrl = makeAsanohaUrl(t.patternColor, t.patternSize);
 
   return (
     <article
-      data-omikuji-card
-      className={[
-        "relative min-h-[420px] w-full overflow-hidden rounded-2xl",
-        theme.baseBg,
-        theme.cardShadow,
-        theme.isDark ? "text-zinc-100" : "text-zinc-900",
-        className,
-      ].join(" ")}
+      className="relative w-full max-w-[720px] mx-auto overflow-hidden rounded-2xl shadow-xl"
       style={{
-        // CSS variables for theming
-        // @ts-ignore
-        "--accent": theme.accent,
-        // @ts-ignore
-        "--pattern-color": theme.isDark ? "#ddd" : "#777",
-        // 麻の葉の濃さ（ライト 0.24 / ダーク 0.20）
-        // @ts-ignore
-        "--pattern-opacity": theme.isDark ? "0.20" : "0.24",
+        aspectRatio: "1200 / 630",
+        backgroundColor: t.paper,
+        border: `1.5px solid ${t.accent}`,
+        color: textColor,
       }}
     >
-      {/* 背景（和紙グラデ） */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(255,255,255,0.82),rgba(0,0,0,0)_58%),radial-gradient(ellipse_at_bottom_right,rgba(0,0,0,0.05),rgba(0,0,0,0)_60%)]" />
-
-      {/* 麻の葉（縁リングのみ表示：globals.css の .asanoha-edge がマスク処理） */}
-      <div className="asanoha-edge absolute inset-0" />
-
-      {/* 紙ノイズ（質感） */}
-      <div className="paper-noise absolute inset-0" />
-
-      {/* 外枠アクセント：ringではなくborderで確実に色を通す */}
+      {/* 麻の葉パターン（色直接埋め込み） */}
       <div
-        className="pointer-events-none absolute inset-0 rounded-2xl border-[1.5px]"
-        style={{ borderColor: "var(--accent)" as any }}
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: asanohaUrl,
+          backgroundSize: `${t.patternSize}px ${t.patternSize}px`,
+          opacity: t.patternOpacity,
+        }}
       />
 
-      {/* 内側の薄い白ライン＆ごく薄い内側シャドウ */}
-      <div className="pointer-events-none absolute inset-[4px] rounded-xl border border-white/60" />
-      <div className="pointer-events-none absolute inset-0 rounded-2xl shadow-[inset_0_1px_8px_rgba(0,0,0,0.05)]" />
+      {/* 和紙テクスチャ */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: PAPER_TEXTURE,
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex h-full w-[min(92%,880px)] flex-col p-8">
-        {/* Header */}
-        <header className="mb-4">
-          <h2 className="font-serif text-[clamp(22px,2.8vw,26px)] font-semibold tracking-[0.02em]">
-            {headerText}
-          </h2>
+      {/* ふちの陰影 */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            `radial-gradient(120% 90% at 0% 0%, transparent 60%, rgba(0,0,0,0.06) 100%),` +
+            `radial-gradient(120% 90% at 100% 100%, transparent 60%, rgba(0,0,0,0.06) 100%)`,
+        }}
+      />
 
-          {/* 見出し帯：ランク色の直指定（環境差を避ける） */}
-          <div
-            className="-mx-8 mt-3 h-[2px] w-[calc(100%+4rem)] rounded-[2px]"
+      {/* 大吉：金グロー */}
+      {t.glow && (
+        <div aria-hidden style={{ position: "absolute", inset: 0, background: t.glow }} />
+      )}
+
+      {/* 内側の薄い白ライン */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 4,
+          borderRadius: "0.7rem",
+          border: t.isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(255,255,255,0.60)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* === 本文 === */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 10,
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+          padding: "4.5% 5.5%",
+          boxSizing: "border-box",
+        }}
+      >
+        {/* ヘッダー */}
+        <div style={{ marginBottom: "3%" }}>
+          <h2
             style={{
-              background:
-                "linear-gradient(90deg, rgba(0,0,0,0) 0%, var(--accent) 10%, var(--accent) 90%, rgba(0,0,0,0) 100%)",
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontSize: "clamp(13px, 2.3vw, 20px)",
+              fontWeight: 600,
+              letterSpacing: "0.03em",
+              margin: 0,
+              lineHeight: 1.3,
+            }}
+          >
+            {header}
+          </h2>
+          {/* アクセント区切り線 */}
+          <div
+            style={{
+              marginTop: "2.5%",
+              height: 2,
+              borderRadius: 2,
+              background: `linear-gradient(90deg, transparent 0%, ${t.accent} 8%, ${t.accent} 92%, transparent 100%)`,
               opacity: 0.95,
             }}
           />
-        </header>
+        </div>
 
-        {/* Body: 4 pairs */}
-        <main className="grid flex-1 grid-rows-4 gap-y-6">
+        {/* 本文：2列×2行グリッド */}
+        <div
+          style={{
+            flex: 1,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gridTemplateRows: "1fr 1fr",
+            gap: "3% 6%",
+            minHeight: 0,
+          }}
+        >
           {entry.lines.slice(0, 4).map((ln, i) => (
-            <div key={i} className="[&_p]:leading-snug">
-              <p className="font-serif text-[clamp(18px,2.4vw,23px)] font-semibold tracking-[0.01em]">
+            <div
+              key={i}
+              style={{
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              {/* 原文 */}
+              <p
+                style={{
+                  fontFamily: "Georgia, 'Times New Roman', serif",
+                  fontSize: "clamp(11px, 1.85vw, 17px)",
+                  fontWeight: 600,
+                  lineHeight: 1.45,
+                  margin: 0,
+                  marginBottom: "6%",
+                  letterSpacing: "0.01em",
+                }}
+              >
                 {ln.orig}
               </p>
-              <p className="mt-1 font-sans text-[clamp(16px,2.05vw,20px)] leading-[1.7]">
+              {/* 訳文 */}
+              <p
+                style={{
+                  fontFamily: "system-ui, sans-serif",
+                  fontSize: "clamp(10px, 1.6vw, 15px)",
+                  lineHeight: 1.65,
+                  margin: 0,
+                  opacity: t.isDark ? 0.82 : 0.78,
+                }}
+              >
                 {lang === "ja" ? ln.ja : ln.en}
               </p>
             </div>
           ))}
-        </main>
+        </div>
       </div>
     </article>
   );
