@@ -87,10 +87,14 @@ function linkBg(kind: string, url?: string): { bg: string; fg: string } {
     return { bg: "#1ed760", fg: "#000" };
   if (kind === "amazon" || /amazon\.co\.jp|amazon\.com/i.test(u))
     return { bg: "#ff9900", fg: "#000" };
-  if (kind === "appleMusic" || /music\.apple\.com/i.test(u))
-    return { bg: "#fc3c44", fg: "#fff" };
+  // Apple系：kind が buy/itunesBuy なら購入（紫）、listen/appleMusic なら配信（赤）
+  // music.apple.com は kind で購入/ストリーミングを区別する
   if (kind === "itunesBuy" || /itunes\.apple\.com/i.test(u))
     return { bg: "#a259ff", fg: "#fff" };
+  if (kind === "buy" && /music\.apple\.com/i.test(u))
+    return { bg: "#a259ff", fg: "#fff" };
+  if (kind === "appleMusic" || /music\.apple\.com/i.test(u))
+    return { bg: "#fc3c44", fg: "#fff" };
   if (/youtube\.com|youtu\.be/i.test(u))
     return { bg: "#ff0000", fg: "#fff" };
   return { bg: "#2e7d32", fg: "#fff" };
