@@ -1,8 +1,9 @@
-// import posthog from "posthog-js";   ← ← これ消す
-
+import "@/app/globals.css";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import GlobalBackground from "@/components/GlobalBackground";
+import Nav from "@/components/Nav";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -25,5 +26,11 @@ export default function App({ Component, pageProps }: AppProps) {
     })();
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <GlobalBackground />
+      <Nav />
+      <Component {...pageProps} />
+    </>
+  );
 }

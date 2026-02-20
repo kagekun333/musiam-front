@@ -7,8 +7,8 @@ import { useEffect, useRef } from "react";
  * ・低負荷：デバイスピクセル比を2で上限
  * ・視差：層ごとにドリフト速度を微差
  * ・点滅：星ごとに周波数/位相/振幅をランダム
- * ・流れ星：8〜18秒に1回程度、角度・長さ・速度ランダム
- * ・低モーション対応：静的描画にフォールバック
+ * ・流れ星：20〜30秒に1回、同時1本まで、1秒以内のアニメ
+ * ・低モーション対応：静的描画にフォールバック（流れ星OFF）
  */
 export default function Starfield() {
   const ref = useRef<HTMLCanvasElement | null>(null);
@@ -19,7 +19,7 @@ export default function Starfield() {
     const DPR = Math.min(window.devicePixelRatio || 1, 2);
 
     let w = 0, h = 0, animId = 0;
-    let start = performance.now();
+    const start = performance.now();
     let running = true;
 
     type Star = {
@@ -29,13 +29,13 @@ export default function Starfield() {
     };
     const stars: Star[] = [];
 
-    // 流れ星
+    // 流れ星（20〜30秒に1回、同時1本まで）
     type Meteor = {
       x: number; y: number; vx: number; vy: number;
       life: number; ttl: number; width: number; hue: number;
     } | null;
     let meteor: Meteor = null;
-    let nextMeteorAt = performance.now() + rand(8000, 18000);
+    let nextMeteorAt = performance.now() + rand(20000, 30000);
 
     const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -75,7 +75,6 @@ export default function Starfield() {
       const fromTop = Math.random() < 0.5;
       const angle = (Math.random() * 18 - 9) * (Math.PI / 180); // -9°〜+9°
       const speed = rand(900, 1400) / 1000; // px/ms
-      const len = rand(180, 320);
       const width = rand(1.2, 2.0);
       const hue = rand(200, 220); // 青白〜薄金
       const y0 = fromTop ? rand(h * 0.05, h * 0.35) : rand(h * 0.15, h * 0.55);
@@ -84,10 +83,10 @@ export default function Starfield() {
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed * 0.4,
         life: 0,
-        ttl: rand(700, 1100),
+        ttl: rand(800, 1000), // 1秒以内
         width, hue
       };
-      nextMeteorAt = now + rand(9000, 18000);
+      nextMeteorAt = now + rand(20000, 30000); // 20〜30秒に1回
     }
 
     function drawBackgroundVignette() {

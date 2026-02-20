@@ -2,7 +2,31 @@
 
 /* ===== ベース ===== */
 html, body { height: 100%; overflow-x: hidden !important; }
-:root { color-scheme: dark; }
+:root {
+  color-scheme: dark;
+
+  /* ===== Design Tokens ===== */
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.20);
+  --shadow-lg: 0 6px 24px rgba(0, 0, 0, 0.28);
+
+  /* Colors */
+  --color-text-primary: #e5e7eb;
+  --color-text-secondary: #d7d9e1;
+  --color-text-muted: #a1a3a8;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-medium: rgba(255, 255, 255, 0.15);
+
+  /* Panel backgrounds */
+  --bg-panel-light: rgba(24, 24, 27, 0.45);
+  --bg-panel-strong: rgba(18, 18, 21, 0.75);
+}
 .prose-tight p { line-height: 1.7; }
 
 /* スクロールバーを非表示（スクロール自体は可能） */
@@ -15,18 +39,28 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   width: 0 !important; height: 0 !important; background: transparent;
 }
 
-/* ===== ページ背景（宇宙） ===== */
-html:has(.page-home), body:has(.page-home){ background:#070e18; color:#e5e7eb; }
-.page-home{
-  position:relative; min-height:100svh; isolation:isolate; color:#e5e7eb;
-  overflow: clip; /* はみ出しをスクロール領域にしない */
+/* ===== グローバル背景（宇宙） ===== */
+/* 全ページ共通の宇宙背景 - html/bodyに適用 */
+html, body {
+  background: #070e18;
+  color: var(--color-text-primary);
+}
+
+/* GlobalBackgroundコンポーネント用スタイル */
+.global-bg-layer {
+  /* position: fixed; inset: 0; はコンポーネント側でインラインスタイル指定 */
+}
+
+/* 宇宙背景グラデーション */
+.cosmic-gradient {
+  position: absolute;
+  inset: 0;
   background:
     radial-gradient(1100px 620px at 14% -10%, rgba(56,189,248,.14), transparent 60%),
     radial-gradient(900px 520px  at 88%  10%, rgba(99,102,241,.12), transparent 55%),
     linear-gradient(180deg, #07101a 0%, #0a1320 58%, #0a0f18 100%);
+  pointer-events: none;
 }
-/* 右の斜めは不要 */
-.page-home::before{ display:none !important; }
 
 /* 星粒（二層 + ヘッダーマスク） */
 /* Canvas星空の固定レイヤ */
@@ -40,18 +74,36 @@ html:has(.page-home), body:has(.page-home){ background:#070e18; color:#e5e7eb; }
 }
 
 
-/* 装飾ぼかし（レイアウト非干渉：fixed） */
-.page-home .cosmic-orn1,
-.page-home .cosmic-orn2{
-  position: fixed; pointer-events: none; filter: blur(40px); z-index: 0;
+/* 装飾ぼかし */
+.cosmic-orn {
+  position: absolute;
+  pointer-events: none;
+  filter: blur(40px);
 }
-.page-home .cosmic-orn1{
-  top:-200px; left:50%; width:900px; height:900px; transform:translateX(-50%);
-  background:radial-gradient(circle at 50% 50%, rgba(56,189,248,.18), rgba(99,102,241,.12) 45%, transparent 60%);
+.cosmic-orn--1 {
+  top: -200px;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 50%, rgba(56,189,248,.18), rgba(99,102,241,.12) 45%, transparent 60%);
 }
-.page-home .cosmic-orn2{
-  right:-120px; bottom:-10px; width:520px; height:520px; filter:blur(48px);
-  background:radial-gradient(circle at 30% 70%, rgba(59,130,246,.10), rgba(99,102,241,.08) 40%, transparent 65%);
+.cosmic-orn--2 {
+  right: -120px;
+  bottom: -10px;
+  width: 520px;
+  height: 520px;
+  filter: blur(48px);
+  background: radial-gradient(circle at 30% 70%, rgba(59,130,246,.10), rgba(99,102,241,.08) 40%, transparent 65%);
+}
+
+/* ===== ページコンテンツ領域 ===== */
+/* 全ページのメインコンテンツは z-index: 1 以上で背景より上に */
+main,
+.page-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
 }
 
 /* ===== Wordmark（伯爵 MUSIAM） ===== */
@@ -187,6 +239,35 @@ html:has(.page-home), body:has(.page-home){ background:#070e18; color:#e5e7eb; }
 /* A11y */
 .gate-link:focus-visible{ outline:none; }
 .gate-link:focus-visible .gate-card{ box-shadow:0 0 0 2px rgba(99,102,241,.7), 0 0 0 8px rgba(99,102,241,.25); }
+
+/* ===== Content Shell（可読性保護） ===== */
+/* 全ページで使用可能な共通シェル */
+.shell-light,
+.shell-strong {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-subtle);
+  backdrop-filter: saturate(110%) blur(8px);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.shell-light {
+  background: var(--bg-panel-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.shell-strong {
+  background: var(--bg-panel-strong);
+  border-color: var(--color-border-medium);
+  box-shadow: var(--shadow-md);
+}
+
+/* prefers-reduced-motion対応 */
+@media (prefers-reduced-motion: reduce) {
+  .shell-light,
+  .shell-strong {
+    transition: none;
+  }
+}
 
 /* ===== 右下ウォーターマーク ===== */
 .corner-mark{
