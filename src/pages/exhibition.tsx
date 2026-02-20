@@ -358,10 +358,12 @@ function MasonryCard({
       onMouseEnter={(e) => {
         e.currentTarget.style.transform = "translateY(-3px)";
         e.currentTarget.style.boxShadow = "0 8px 28px rgba(0,0,0,0.35)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.20)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "translateY(0)";
         e.currentTarget.style.boxShadow = "none";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
       }}
     >
       {/* Image container */}

@@ -29,6 +29,7 @@ export default function Home() {
           <span className="wordmark-jp">伯爵</span>
           <span className="wordmark-en">MUSIAM</span>
         </h1>
+        <p className="hero-sub">音楽と芸術の宮殿へ、ようこそ。</p>
       </section>
 
       {/* 3 GATES */}

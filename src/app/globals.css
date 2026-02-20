@@ -139,6 +139,15 @@ main,
   background:linear-gradient(90deg, rgba(229,231,235,.85), rgba(229,231,235,.35) 55%, transparent 100%);
   opacity:.36;
 }
+.hero-sub{
+  font-family: var(--font-serif), serif;
+  font-size: clamp(.78rem, 1.8cqi, .95rem);
+  font-weight: 300;
+  color: rgba(255,255,255,.62);
+  letter-spacing:.22em;
+  margin: 1.9rem 0 0;
+  text-shadow: 0 1px 18px rgba(110,140,255,.28), 0 2px 28px rgba(0,0,0,.65);
+}
 
 /* ===== Gates（常に3列） ===== */
 .gates-wrap{ position:relative; z-index:1; max-width:1200px; margin:0 auto; padding:0 24px 16px; }
