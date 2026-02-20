@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: 20
 
+          
+
       - name: Run sync
         env:
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
