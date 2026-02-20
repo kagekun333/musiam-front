@@ -1,5 +1,5 @@
 // NEW: src/features/oracle/omikuji-text.ts
-import type { FortuneRank, OmikujiItems, OmikujiTopic } from "./omikuji-engine";
+import type { FortuneRank, OmikujiItems } from "./omikuji-engine";
 
 const T: Record<FortuneRank, OmikujiItems> = {
   大吉: {

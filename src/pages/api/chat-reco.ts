@@ -28,7 +28,6 @@ const CHIP_TEXTS = new Set([
   "Let's chat",
 ]);
 
-type ApiMode = "recommend" | "chat" | "sales";
 type Lang = "ja" | "en";
 
 type RecoLinkKind = "open" | "listen" | "buy" | "read";
