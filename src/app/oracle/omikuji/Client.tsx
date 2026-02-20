@@ -426,7 +426,15 @@ export default function Client() {
       </div>
 
       {/* ローディング */}
-      {!all && <div className="opacity-60">Loading…</div>}
+      {!all && (
+        <div className="flex items-center gap-3 py-16 opacity-70">
+          <div
+            className="h-5 w-5 rounded-full border-2 border-white/20 border-t-white"
+            style={{ animation: "spin 1s linear infinite" }}
+          />
+          <span className="text-sm">{lang === "ja" ? "読み込み中…" : "Loading…"}</span>
+        </div>
+      )}
 
       {/* Phase 1: 準備（まだ引いてない時） */}
       {all && phase === "prepare" && !drawn && (
@@ -465,17 +473,6 @@ export default function Client() {
               {lang === "ja" ? "運命を読み解いています…" : "Reading your destiny…"}
             </div>
           </div>
-          <style jsx>{`
-            @keyframes spin {
-              to { transform: rotate(360deg); }
-            }
-            @media (prefers-reduced-motion: reduce) {
-              div[style*="animation"] {
-                animation-duration: 0.6s !important;
-                opacity: 0.5;
-              }
-            }
-          `}</style>
         </section>
       )}
 

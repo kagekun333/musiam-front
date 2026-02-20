@@ -9,7 +9,17 @@ const notoSerif = Noto_Serif_JP({ subsets: ["latin"], variable: "--font-serif", 
 
 export const metadata: Metadata = {
   title: "伯爵 MUSIAM",
-  description: "伯爵御籤 — 和紙×麻の葉×ランク色",
+  description: "伯爵MUSIAMは、占い・展示・対話の3つの門からなる神秘の館です。今日の運命を御籤で読み解き、音楽や物語の世界へ。",
+  openGraph: {
+    title: "伯爵 MUSIAM",
+    description: "占い・展示・対話の3つの門からなる神秘の館。今日の運命を御籤で読み解こう。",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "伯爵 MUSIAM",
+    description: "占い・展示・対話の3つの門からなる神秘の館。今日の運命を御籤で読み解こう。",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
