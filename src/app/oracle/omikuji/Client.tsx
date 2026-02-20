@@ -133,6 +133,7 @@ export default function Client() {
   const [drawn, setDrawn] = useState(false);
   const [animIn, setAnimIn] = useState(false);
   const [day, setDay] = useState<DayState | null>(null);
+  const [copied, setCopied] = useState(false);
 
   // フェーズ管理（準備 → 儀式 → 結果）
   const [phase, setPhase] = useState<"prepare" | "ritual" | "result">("prepare");
@@ -345,8 +346,10 @@ export default function Client() {
     const u = new URL(window.location.href);
     u.searchParams.set("lang", lang);
     u.searchParams.set("id", String(entry.id));
-    navigator.clipboard.writeText(u.toString());
-    alert(lang === "ja" ? "シェア用URLをコピーしました" : "Copied shareable URL");
+    navigator.clipboard.writeText(u.toString()).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
   };
 
   const switchLang = (to: "ja" | "en") => {
@@ -671,14 +674,25 @@ export default function Client() {
 
           {/* 操作列 */}
           <div className="mt-6 flex flex-wrap gap-3">
-            <button onClick={handleCopyShare} className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm">
-              {lang === "ja" ? "シェア用URLコピー" : "Copy share URL"}
+            <button
+              onClick={handleCopyShare}
+              className="relative rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm transition-colors"
+            >
+              {copied
+                ? (lang === "ja" ? "✓ コピーしました" : "✓ Copied!")
+                : (lang === "ja" ? "シェア用URLコピー" : "Copy share URL")}
             </button>
             <button onClick={drawAgain} className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm opacity-70">
               {lang === "ja" ? "もう一度引く（おすすめしない）" : "Draw again (not recommended)"}
             </button>
 
             {/* クロスリンク：他ページへの自然な回遊 */}
+            <Link
+              href="/"
+              className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm"
+            >
+              {lang === "ja" ? "ホームへ" : "Home"}
+            </Link>
             <Link
               href="/exhibition"
               className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm"
