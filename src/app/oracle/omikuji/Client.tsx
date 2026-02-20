@@ -74,9 +74,10 @@ type WorkItem = {
   type?: string;
   cover?: string;      // 例: /works/covers/xxx.webp
   href?: string;       // 外部/内部どちらでもOK
-  primaryHref?: string; // 🆕 優先リンク
-  salesHref?: string;  // 🆕 購入リンク
-  previewUrl?: string; // 任意：別プレビュー
+  primaryHref?: string;      // 🆕 優先リンク
+  salesHref?: string;        // 🆕 購入リンク
+  amazonMusicHref?: string;  // 🆕 Amazon Musicリンク
+  previewUrl?: string;       // 任意：別プレビュー
 };
 
 /** レコメンド型（凶は固定、通常は作品ベース） */
@@ -199,6 +200,7 @@ export default function Client() {
             const links = w?.links ?? {};
             const primaryHref = w?.primaryHref ?? links?.listen ?? w?.href ?? links?.spotify ?? undefined;
             const salesHref = w?.salesHref ?? links?.itunesBuy ?? undefined;
+            const amazonMusicHref = links?.amazonMusic ?? undefined;
             const href = primaryHref || w?.href || w?.url || w?.link || undefined;
 
             return {
@@ -210,6 +212,7 @@ export default function Client() {
               href,
               primaryHref,
               salesHref,
+              amazonMusicHref,
               previewUrl: w?.previewUrl,
             };
           });
@@ -591,6 +594,16 @@ export default function Client() {
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
                                   <path d="M7 17L17 7M17 7H9M17 7v8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 </svg>
+                              </Link>
+                            )}
+                            {w.amazonMusicHref && (
+                              <Link
+                                href={w.amazonMusicHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2 transition"
+                              >
+                                {lang === "ja" ? "Amazon Musicで聴く" : "Listen on Amazon Music"}
                               </Link>
                             )}
                             {w.salesHref && (

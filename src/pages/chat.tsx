@@ -47,6 +47,8 @@ function linkLabel(kind: string, url?: string) {
   if (kind === "buy") {
     if (/amazon\.co\.jp|amazon\.com/i.test(u)) return "Amazonで購入";
     if (/itunes\.apple\.com/i.test(u)) return "iTunesで購入";
+    // music.apple.com でも ?app=itunes パラメータがあれば iTunes 購入リンク
+    if (/music\.apple\.com/i.test(u) && /[?&]app=itunes/i.test(u)) return "iTunesで購入";
     if (/music\.apple\.com/i.test(u)) return "Apple Musicで購入";
     return "購入";
   }
@@ -54,6 +56,7 @@ function linkLabel(kind: string, url?: string) {
     if (/open\.spotify\.com|spotify:/i.test(u)) return "Spotifyで聴く";
     if (/music\.apple\.com/i.test(u)) return "Apple Musicで聴く";
     if (/itunes\.apple\.com/i.test(u)) return "iTunesで聴く";
+    if (/music\.amazon\.co\.jp|music\.amazon\.com/i.test(u)) return "Amazon Musicで聴く";
     if (/youtube\.com|youtu\.be/i.test(u)) return "YouTubeで観る";
     return "聴く";
   }
@@ -72,8 +75,11 @@ function linkLabel(kind: string, url?: string) {
 
   // フォールバック：URLだけでも推定を試みる
   if (/open\.spotify\.com|spotify:/i.test(u)) return "Spotifyで聴く";
+  // music.apple.com でも ?app=itunes があれば iTunes 購入として扱う
+  if (/music\.apple\.com/i.test(u) && /[?&]app=itunes/i.test(u)) return "iTunesで購入";
   if (/music\.apple\.com/i.test(u)) return "Apple Musicで聴く";
   if (/itunes\.apple\.com/i.test(u)) return "iTunesで購入";
+  if (/music\.amazon\.co\.jp|music\.amazon\.com/i.test(u)) return "Amazon Musicで聴く";
   if (/youtube\.com|youtu\.be/i.test(u)) return "YouTubeで観る";
   if (/amazon\.co\.jp|amazon\.com/i.test(u)) return "Amazonで見る";
 
@@ -85,13 +91,15 @@ function linkBg(kind: string, url?: string): { bg: string; fg: string } {
   const u = url ?? "";
   if (kind === "spotify" || /open\.spotify\.com|spotify:/i.test(u))
     return { bg: "#1ed760", fg: "#000" };
+  if (kind === "amazonMusic" || /music\.amazon\.co\.jp|music\.amazon\.com/i.test(u))
+    return { bg: "#29a8e0", fg: "#fff" };
   if (kind === "amazon" || /amazon\.co\.jp|amazon\.com/i.test(u))
     return { bg: "#ff9900", fg: "#000" };
   // Apple系：kind が buy/itunesBuy なら購入（紫）、listen/appleMusic なら配信（赤）
-  // music.apple.com は kind で購入/ストリーミングを区別する
+  // music.apple.com は kind または ?app=itunes パラメータで購入/ストリーミングを区別する
   if (kind === "itunesBuy" || /itunes\.apple\.com/i.test(u))
     return { bg: "#a259ff", fg: "#fff" };
-  if (kind === "buy" && /music\.apple\.com/i.test(u))
+  if ((kind === "buy" && /music\.apple\.com/i.test(u)) || (/music\.apple\.com/i.test(u) && /[?&]app=itunes/i.test(u)))
     return { bg: "#a259ff", fg: "#fff" };
   if (kind === "appleMusic" || /music\.apple\.com/i.test(u))
     return { bg: "#fc3c44", fg: "#fff" };

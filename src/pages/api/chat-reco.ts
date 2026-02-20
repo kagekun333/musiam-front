@@ -166,7 +166,7 @@ function buildLinks(w: Work): { kind: RecoLinkKind; url: string }[] {
   if (dict) {
     // 「buy」系を最優先で出したい
     const buyKeys = ["itunesbuy", "itunes", "buy", "applemusicbuy", "bandcamp", "amazon"];
-    const listenKeys = ["applemusic", "spotify", "listen", "soundcloud", "youtube"];
+    const listenKeys = ["applemusic", "amazonmusic", "spotify", "listen", "soundcloud", "youtube"];
     const readKeys = ["read", "pdf", "kindle", "amazonkindle"];
 
     // buy

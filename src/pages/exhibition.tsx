@@ -79,7 +79,7 @@ type Work = {
   type: "music" | "video" | "art" | "book" | "article";
   cover: string;
   tags?: string[];
-  links?: Partial<Record<"listen" | "watch" | "read" | "nft" | "spotify" | "appleMusic" | "itunesBuy", string>>;
+  links?: Partial<Record<"listen" | "watch" | "read" | "nft" | "spotify" | "appleMusic" | "itunesBuy" | "amazonMusic", string>>;
   releasedAt?: string;
   weight?: number;
   previewUrl?: string;
@@ -103,6 +103,7 @@ function sanitizeWork(w: Work): Work {
     spotify: sanitizeUrl(linksIn.spotify),
     appleMusic: sanitizeUrl(linksIn.appleMusic),
     itunesBuy: sanitizeUrl(linksIn.itunesBuy),
+    amazonMusic: sanitizeUrl(linksIn.amazonMusic),
   };
   const compactLinks = Object.fromEntries(Object.entries(links).filter(([, v]) => !!v));
   return {
@@ -214,9 +215,10 @@ function getSecondaryLinks(w: Work): { label: string; url: string; icon: string 
   const spotify = w.links?.spotify || inferSpotifyUrl(w) || (w.links?.listen && /spotify/i.test(w.links.listen || "") ? w.links.listen : undefined);
   const amazon = buildAmazonUrl(w);
 
-  // 音楽サービスリンク（spotify → appleMusic → itunesBuy の順）
+  // 音楽サービスリンク（spotify → appleMusic → amazonMusic → itunesBuy の順）
   if (spotify) addLink("Spotifyで聴く", spotify, "spotify");
   if (w.links?.appleMusic) addLink("Apple Musicで聴く", w.links.appleMusic, "appleMusic");
+  if (w.links?.amazonMusic) addLink("Amazon Musicで聴く", w.links.amazonMusic, "amazonMusic");
   if (w.links?.itunesBuy) addLink("iTunesで購入", w.links.itunesBuy, "itunesBuy");
 
   // listen キーがあって上記と重複しない場合
@@ -267,6 +269,12 @@ function IconSvg({ icon, size = 18 }: { icon: string; size?: number }) {
       return (
         <svg viewBox="0 0 24 24" style={s}>
           <path d="M.045 18.02c.072-.116.187-.124.348-.064 3.09 1.637 6.429 2.457 10.017 2.457 2.395 0 4.897-.477 7.411-1.397.217-.08.406.019.5.154.094.134.07.313-.07.422-2.69 2.26-5.897 3.408-9.523 3.408C5.502 23 2.544 21.741.045 18.02zm19.17-2.368c-.247-.31-.96-.459-1.784-.382-.826.077-1.552.307-1.842.602-.107.11-.084.244.058.353.597.333 1.295.564 2.1.564.785 0 1.48-.213 1.693-.564.153-.252.106-.42-.225-.573zm-2.215 2.42c.45-.55.683-1.288.683-2.04 0-2.497-1.853-4.5-4.147-4.5-2.293 0-4.146 2.003-4.146 4.5s1.853 4.5 4.146 4.5c1.16 0 2.21-.487 2.96-1.268l.504 1.308z" />
+        </svg>
+      );
+    case "amazonMusic":
+      return (
+        <svg viewBox="0 0 24 24" style={s}>
+          <path d="M12 3C6.48 3 2 7.48 2 13c0 3.18 1.49 6.01 3.82 7.85.15.12.35.08.46-.07l.79-1.13c.11-.16.07-.38-.09-.49C5.01 17.7 4 15.46 4 13c0-4.41 3.59-8 8-8s8 3.59 8 8c0 2.46-1.01 4.7-2.98 6.16-.16.11-.2.33-.09.49l.79 1.13c.11.15.31.19.46.07C20.51 19.01 22 16.18 22 13c0-5.52-4.48-10-10-10zm0 5c-1.1 0-2 .9-2 2v5l3.5 2 .75-1.23-2.25-1.27V10c0-.55-.45-1-1-1z"/>
         </svg>
       );
     case "appleMusic":
@@ -450,7 +458,10 @@ function DetailModal({
   const isBook = work.type === "book";
   const coverUrl = hiResIfAmazon(work.cover) ?? "";
   const primary = getPrimaryCta(work);
-  const secondaries = getSecondaryLinks(work);
+  // primaryと同じURLはsecondaryから除外（重複表示を防ぐ）
+  const secondaries = getSecondaryLinks(work).filter(
+    (s) => !primary || s.url !== primary.url
+  );
   const displayTags = (work.tags || []).filter(
     (t) => !/^(ASIN|asin|price|aspect):/i.test(t) && !/^(square|portrait|landscape)$/i.test(t)
   );
@@ -733,15 +744,17 @@ function DetailModal({
                     ? "#1ed760"
                     : primary.icon === "amazon"
                       ? "#ff9900"
-                      : primary.icon === "youtube"
-                        ? "#ff0000"
-                        : primary.icon === "appleMusic"
-                          ? "#fc3c44"
-                          : primary.icon === "itunesBuy"
-                            ? "#a259ff"
-                            : primary.icon === "nft"
-                              ? "#9333ea"
-                              : "#3b82f6",
+                      : primary.icon === "amazonMusic"
+                        ? "#29a8e0"
+                        : primary.icon === "youtube"
+                          ? "#ff0000"
+                          : primary.icon === "appleMusic"
+                            ? "#fc3c44"
+                            : primary.icon === "itunesBuy"
+                              ? "#a259ff"
+                              : primary.icon === "nft"
+                                ? "#9333ea"
+                                : "#3b82f6",
                 color: primary.icon === "spotify" || primary.icon === "amazon" ? "#000" : "#fff",
                 marginBottom: 16,
               }}
