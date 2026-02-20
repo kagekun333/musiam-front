@@ -6,7 +6,6 @@ import type { PushSubscription } from "web-push";
 
 declare global {
   // グローバル変数として保持することで HMR でもリセットされない
-  // eslint-disable-next-line no-var
   var __pushSubscriptions: Map<string, PushSubscription> | undefined;
 }
 
