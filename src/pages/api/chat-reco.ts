@@ -1,504 +1,552 @@
 // src/pages/api/chat-reco.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
-import { buildCountEarlSystemPrompt } from "../../lib/persona";
 
-import { groqChat } from "../../../lib/groq";
-import { safeJSON } from "../../../lib/json";
-import { loadAllWorksCached } from "../../../lib/works";
-import { rateLimit } from "@/lib/rate";
-import { newTraceId } from "../../../lib/trace";
-import { loadAllWorks, recommend, type RecoWork } from "../../lib/recommender";
+/**
+ * chat.tsx expects:
+ *  - assistantText: string
+ *  - cards: {id,title,type?,cover,links:[{kind,url}],moodTags?}[]
+ *  - moodTags: string[]
+ *  - mode: "recommend" | "chat" | "sales"
+ */
 
-export const config = { runtime: "nodejs" };
+const MAX_USER_TURNS = 5;
 
-/* ===================== 入力バリデーション ===================== */
-const Msg = z.object({
-  role: z.enum(["user", "assistant", "system"]),
-  content: z.string().max(4000),
-});
-const Body = z.object({
-  mode: z.enum(["chat", "cards", "both"]).default("chat"),
-  messages: z.array(Msg).max(30),
-});
+// 「チップ/ボタン文言」を userTurns から除外（※UIに合わせて必要なら追加）
+const CHIP_TEXTS = new Set([
+  // ja
+  "おすすめして",
+  "雑談しよう",
+  "営業して",
+  // en（UIの実文言に合わせて）
+  "Recommend works",
+  "Just chat",
+  "Call sales",
+  "Recommend now",
+  "Chat now",
+  "Sell to me",
+  "Let's chat",
+]);
 
-/* ===================== 型 ===================== */
-type Link = { kind: string; url: string };
+type ApiMode = "recommend" | "chat" | "sales";
+type Lang = "ja" | "en";
+
+type RecoLinkKind = "open" | "listen" | "buy" | "read";
 type RecoCard = {
   id: string;
   title: string;
-  cover?: string;
-  links: Link[];
-  moodTags: string[];
-  type?: "book" | "music" | string;
+  cover: string;
+  links: { kind: RecoLinkKind; url: string }[];
+  moodTags?: string[];
+  type?: string;
 };
 
-/* ===================== ユーティリティ ===================== */
+type Work = {
+  id?: string | number;
+  title?: string;
+  type?: string;
+  cover?: string;
+  tags?: string[];
+  releasedAt?: string;
+  href?: string;
+  primaryHref?: string;
+  salesHref?: string;
+  moodTags?: string[];
+  moodSeeds?: string[];
+  matchInfo?: { summary?: string; reason?: string } | string;
+  links?: Record<string, string> | { url?: string; label?: string }[] | null;
+};
 
-// 直近の user メッセージから言語を推定（英/日）
-function inferLang(messages: { role: string; content: string }[]): "en" | "ja" {
-  const lastUser = [...messages].reverse().find((m) => m.role === "user")?.content?.trim() ?? "";
-  const hasJa = /[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u.test(lastUser);
-  if (hasJa) return "ja";
-  if (/[A-Za-z]/.test(lastUser)) return "en";
-  return "en";
-}
-const lastUserText = (messages: { role: string; content: string }[]) =>
-  [...messages].reverse().find((m) => m.role === "user")?.content?.trim() ?? "";
+const BodySchema = z.object({
+  mode: z.enum(["recommend", "chat", "sales"]).default("chat"),
+  lang: z.enum(["ja", "en"]).default("ja"),
+  messages: z
+    .array(
+      z.object({
+        role: z.enum(["system", "user", "assistant"]),
+        content: z.string(),
+      })
+    )
+    .default([]),
+});
 
-// RecoWork → RecoCard
-function toCards(reco: RecoWork[], worksAll: any[]): RecoCard[] {
-  return reco.map((r) => {
-    const match = worksAll.find((w: any) => w.title === r.title);
-    const url =
-      (typeof match?.link === "string" ? match.link : match?.link?.url) ||
-      (typeof (r as any)?.link === "string" ? (r as any).link : (r as any)?.link?.url) ||
-      match?.href ||
-      "";
-    return {
-      id: match ? String(match.id) : r.title,
-      title: r.title,
-      cover: (r as any).cover ?? match?.cover ?? "",
-      links: url ? [{ kind: "url", url }] : Array.isArray(match?.links) ? match.links : [],
-      moodTags: Array.isArray(match?.moodTags) ? match.moodTags : [],
-      type: (r as any).type ?? match?.type,
-    };
-  });
-}
-
-/* ===== 言語判定（カード/ワーク単位）— Edition/文字種優先、ドメインは補助 ===== */
-function titleLooksEnglish(t: string): boolean {
-  const ascii = (t.match(/\p{ASCII}/gu) || []).length;
-  const non = Math.max(1, t.length - ascii);
-  return ascii / (ascii + non) > 0.85;
-}
-function hasEnglishEditionMark(t: string): boolean {
-  // 追加: "eng. edition" 的な省略表記も拾う
-  return /english\s*edition|\beng\.?\s*edition|\(english\)|（英語版）/i.test(t);
+function countUserTurnsExcludingChips(messages: { role: string; content: string }[]) {
+  let n = 0;
+  for (const m of messages) {
+    if (m.role !== "user") continue;
+    const t = (m.content ?? "").trim();
+    if (!t) continue;
+    if (CHIP_TEXTS.has(t)) continue;
+    n++;
+  }
+  return n;
 }
 
-function detectItemLang(card: RecoCard): "ja" | "en" | "und" {
-  const title = String(card?.title ?? "");
-  if (/[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u.test(title)) return "ja";
-  if (hasEnglishEditionMark(title) || titleLooksEnglish(title)) return "en";
-
-  const url = card?.links?.[0]?.url ?? card?.cover ?? "";
-  if (/amazon\.co\.jp|bookwalker\.jp|honto\.jp|kadokawa\.co\.jp/.test(url)) return "ja";
-  if (/amazon\.com|goodreads\.com|penguinrandomhouse\.com|harpercollins\.com|macmillan\.com|bloomsbury\.com/i.test(url))
-    return "en";
-
-  return "und";
-}
-function detectWorkLang(w: any): "ja" | "en" | "und" {
-  const t = String(w?.title ?? "");
-  if (/[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]/u.test(t)) return "ja";
-  if (hasEnglishEditionMark(t) || titleLooksEnglish(t)) return "en";
-  const url = (typeof w?.link === "string" ? w?.link : w?.link?.url) ?? w?.href ?? "";
-  if (/amazon\.co\.jp|bookwalker\.jp|honto\.jp|kadokawa\.co\.jp/.test(url)) return "ja";
-  if (/amazon\.com|goodreads\.com|penguinrandomhouse\.com|harpercollins\.com|macmillan\.com|bloomsbury\.com/i.test(url))
-    return "en";
-  return "und";
+function lastUserText(messages: { role: string; content: string }[]) {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    if (messages[i].role === "user") return (messages[i].content ?? "").trim();
+  }
+  return "";
 }
 
-// ユーザー言語優先にカードを粗ソート（ブックに重み）
-function prioritizeByAudienceLanguage(cards: RecoCard[], userLang: "en" | "ja"): RecoCard[] {
-  const rank = (c: RecoCard): number => {
-    if (c.type !== "book") return 10;
-    const l = detectItemLang(c);
-    if (l === userLang) return 0;
-    if (l === "und") return 1;
-    return 2;
+function normalizeWorkType(t: string | undefined): "book" | "music" | "other" {
+  const x = (t ?? "").toLowerCase();
+  if (x === "book") return "book";
+  if (x === "music") return "music";
+  if (x.includes("book") || x.includes("novel") || x.includes("read") || x.includes("pdf")) return "book";
+  if (x.includes("music") || x.includes("album") || x.includes("track") || x.includes("song") || x.includes("audio"))
+    return "music";
+  return "other";
+}
+
+function extractDesiredType(messages: { role: string; content: string }[]): "book" | "music" | undefined {
+  // 直近の user から優先（recommendで使う）
+  for (let i = messages.length - 1; i >= 0; i--) {
+    const m = messages[i];
+    if (m.role !== "user") continue;
+    const t = (m.content ?? "").toLowerCase();
+    if (!t) continue;
+
+    // 日本語
+    if (t.includes("本")) return "book";
+    if (t.includes("音楽")) return "music";
+
+    // 英語
+    if (t.includes("book")) return "book";
+    if (t.includes("music")) return "music";
+  }
+  return undefined;
+}
+
+async function loadWorks(): Promise<Work[]> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const p = path.join(process.cwd(), "public/works/works.json");
+    const raw = await fs.readFile(p, "utf-8");
+    const json = JSON.parse(raw);
+    const items: Work[] = Array.isArray(json?.items) ? json.items : Array.isArray(json) ? json : [];
+    return items;
+  } catch {
+    return [];
+  }
+}
+
+function pickCover(w: Work): string {
+  const c = (w.cover ?? "") as string;
+  if (c) return c;
+  return "";
+}
+
+function coalesceHref(w: Work): string {
+  // 1) 作品ごとに「買わせたい/見せたい」優先リンクがあるなら優先
+  // salesHref / primaryHref があれば、それを先頭に使える
+  return (
+    (w.salesHref as string) ||
+    (w.primaryHref as string) ||
+    (w.href as string) ||
+    (typeof (w.links as any)?.url === "string" ? (w.links as any).url : "")
+  );
+}
+
+function buildLinks(w: Work): { kind: RecoLinkKind; url: string }[] {
+  const out: { kind: RecoLinkKind; url: string }[] = [];
+
+  const t = normalizeWorkType(w.type);
+
+  // links が dict の場合：キーから kind を推定して優先順に並べる
+  const dict = w.links && !Array.isArray(w.links) && typeof w.links === "object" ? (w.links as Record<string, string>) : null;
+
+  const pushIf = (kind: RecoLinkKind, url?: string) => {
+    const u = (url ?? "").trim();
+    if (!u) return;
+    if (out.some((x) => x.url === u)) return;
+    out.push({ kind, url: u });
   };
-  return [...cards].sort((a, b) => {
-    const ra = rank(a),
-      rb = rank(b);
-    if (ra !== rb) return ra - rb;
-    return 0;
-  });
+
+  if (dict) {
+    // 「buy」系を最優先で出したい
+    const buyKeys = ["itunesbuy", "itunes", "buy", "applemusicbuy", "bandcamp", "amazon"];
+    const listenKeys = ["applemusic", "spotify", "listen", "soundcloud", "youtube"];
+    const readKeys = ["read", "pdf", "kindle", "amazonkindle"];
+
+    // buy
+    for (const k of Object.keys(dict)) {
+      const lk = k.toLowerCase();
+      if (buyKeys.some((x) => lk.includes(x))) pushIf("buy", dict[k]);
+    }
+    // listen
+    for (const k of Object.keys(dict)) {
+      const lk = k.toLowerCase();
+      if (listenKeys.some((x) => lk.includes(x))) pushIf("listen", dict[k]);
+    }
+    // read
+    for (const k of Object.keys(dict)) {
+      const lk = k.toLowerCase();
+      if (readKeys.some((x) => lk.includes(x))) pushIf("read", dict[k]);
+    }
+  } else if (Array.isArray(w.links)) {
+    // 配列なら url を拾って open 扱い
+    for (const l of w.links) {
+      if (l && typeof (l as any).url === "string") pushIf("open", (l as any).url);
+    }
+  }
+
+  // 最後の保険：href/primary/sales を open or read/listen に入れる
+  const href = coalesceHref(w);
+  if (t === "book") pushIf("read", href);
+  else if (t === "music") pushIf("listen", href);
+  else pushIf("open", href);
+
+  // 何も無ければ out は空（UI側はリンク無しカードとして出る）
+  return out;
 }
 
-/* ===== “本1＋音楽2” の構成（言語優先）。本が無い場合は強制的に取りに行く ===== */
-function composeOneBookTwoMusic(cards: RecoCard[], userLang: "en" | "ja"): RecoCard[] {
-  const books = cards.filter((c) => c.type === "book");
-  const musics = cards.filter((c) => c.type === "music");
-  if (books.length === 0 || musics.length < 2) return cards;
+function workToCard(w: Work): RecoCard | null {
+  const id = String(w.id ?? w.title ?? "");
+  const title = String(w.title ?? "").trim();
+  const cover = pickCover(w);
+  if (!id || !title || !cover) return null;
 
-  const book: RecoCard | undefined =
-    books.find((b) => detectItemLang(b) === userLang) ||
-    books.find((b) => detectItemLang(b) === "und") ||
-    books[0];
-
-  const chosenIds = new Set<string>(book ? [book.id] : []);
-  const pickMusic = (arr: RecoCard[], n: number) => {
-    const out: RecoCard[] = [];
-    for (const c of arr) {
-      if (!chosenIds.has(c.id)) {
-        out.push(c);
-        chosenIds.add(c.id);
-      }
-      if (out.length >= n) break;
-    }
-    return out;
+  const links = buildLinks(w);
+  return {
+    id,
+    title,
+    cover,
+    links,
+    moodTags: Array.isArray(w.moodTags) ? w.moodTags.slice(0, 5) : Array.isArray(w.tags) ? w.tags.slice(0, 5) : [],
+    type: w.type,
   };
-
-  const pickedMusics = pickMusic(musics, 2);
-  if (!book || pickedMusics.length < 2) return cards;
-  return [book, ...pickedMusics];
 }
 
-// 本を必ず1冊入れて最終3枚に整える（不足時は再レコメンドで補填）
-async function ensureBookFirstThenTwoMusic(
-  initial: RecoCard[],
-  catalog: any[],
-  worksAll: any[],
-  moodTags: string[],
-  seed: number,
-  userLang: "en" | "ja"
-): Promise<RecoCard[]> {
-  let cards = [...initial];
-  const hasBook = cards.some((c) => c.type === "book");
-  const musics = cards.filter((c) => c.type === "music");
+function tokenizeLoose(text: string): string[] {
+  const t = (text ?? "").trim().toLowerCase();
+  if (!t) return [];
+  // 日本語は分かち書きが難しいので「そのまま」も混ぜる＋英数字は分割
+  const ascii = t
+    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 12);
+  const jpChunks = t.match(/[\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]{2,}/gu) ?? [];
+  return Array.from(new Set([...ascii, ...jpChunks])).slice(0, 18);
+}
 
-  if (!hasBook) {
-    // 1) 本だけで再レコメンド（言語優先）
-    const booksOnly = catalog.filter(
-      (w) => w.type === "book" && (detectWorkLang(w) === userLang || detectWorkLang(w) === "und")
-    );
-    const recBooks = recommend(booksOnly.length ? booksOnly : catalog.filter((w) => w.type === "book"), moodTags, 8, seed + 1);
-    const bookCards = toCards(recBooks, worksAll);
-    const pick =
-      bookCards.find((b) => detectItemLang(b) === userLang) ||
-      bookCards.find((b) => detectItemLang(b) === "und") ||
-      bookCards[0];
-    if (pick) cards = [pick, ...musics];
+function hash32(s: string): number {
+  // 軽量な安定ハッシュ
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+function scoreWork(w: Work, tokens: string[]): number {
+  if (!tokens.length) return 0;
+  const hay = [
+    w.title ?? "",
+    ...(Array.isArray(w.tags) ? w.tags : []),
+    ...(Array.isArray(w.moodTags) ? w.moodTags : []),
+    ...(Array.isArray(w.moodSeeds) ? w.moodSeeds : []),
+    typeof w.matchInfo === "string" ? w.matchInfo : w.matchInfo?.summary ?? "",
+    w.matchInfo && typeof w.matchInfo === "object" ? w.matchInfo.reason ?? "" : "",
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  let s = 0;
+  for (const tok of tokens) {
+    if (!tok) continue;
+    if (hay.includes(tok)) s += tok.length >= 4 ? 3 : 2;
+  }
+  // タイトル一致を強めに
+  const title = (w.title ?? "").toLowerCase();
+  for (const tok of tokens) {
+    if (tok && title.includes(tok)) s += 4;
+  }
+  return s;
+}
+
+function pickTopCards(params: {
+  works: Work[];
+  desiredType?: "book" | "music";
+  queryText: string;
+  count: number;
+  seed: string;
+}): RecoCard[] {
+  const { works, desiredType, queryText, count, seed } = params;
+
+  let pool = works;
+
+  if (desiredType) {
+    pool = pool.filter((w) => normalizeWorkType(w.type) === desiredType);
   }
 
-  // 音楽が足りなければ補充
-  if (cards.filter((c) => c.type === "music").length < 2) {
-    const chosenIds = new Set(cards.map((c) => c.id));
-    const musicOnly = catalog.filter((w) => w.type === "music");
-    const recMusic = recommend(musicOnly, moodTags, 12, seed + 2);
-    const add = toCards(recMusic, worksAll)
-      .filter((c) => c.type === "music" && !chosenIds.has(c.id))
-      .slice(0, 2);
-    cards = [...cards.filter((c) => c.type !== "music"), ...cards.filter((c) => c.type === "music"), ...add];
+  // cover必須（カードUIの核）
+  pool = pool.filter((w) => !!pickCover(w));
+
+  const tokens = tokenizeLoose(queryText);
+
+  const scored = pool.map((w) => {
+    const base = scoreWork(w, tokens);
+    // 同点の並びを固定しつつ「毎回同じ」から脱出するための擬似乱数
+    const jitter = (hash32(seed + "|" + String(w.id ?? w.title ?? "")) % 1000) / 1000;
+    return { w, score: base, jitter };
+  });
+
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return b.jitter - a.jitter;
+  });
+
+  const cards: RecoCard[] = [];
+  for (const x of scored) {
+    const c = workToCard(x.w);
+    if (!c) continue;
+    // リンクが完全に空のカードは避ける（最低1つは欲しい）
+    if (!c.links?.length) continue;
+    cards.push(c);
+    if (cards.length >= count) break;
   }
 
-  // 最終整形：book -> music -> music の順に3枚
-  const book = cards.find((c) => c.type === "book");
-  const music2 = cards.filter((c) => c.type === "music").slice(0, 2);
-  if (book && music2.length >= 2) return [book, ...music2].slice(0, 3);
-
-  // それでも不成立なら、元のカードを返す（保険）
-  return cards.slice(0, 3);
-}
-
-/* ===== small talk safety gate（初期2Tでの創作・推薦を抑止） ===== */
-function needsSmallTalkFallback(text: string): boolean {
-  if (!text) return true;
-  const t = text.trim();
-  const hasQuotedTitle = /[『「][^』」]{2,}[』」]/.test(t) || /[“"][^”"]{2,}[”"]/.test(t);
-  const hasUrl = /https?:\/\//i.test(t);
-  const hasBullets = /(^|\n)\s*(?:\d+\.|[-・•])\s+/m.test(t);
-  const hasManyTitles = /(『[^』]+』.*?){2,}/.test(t) || /(["“][^"”]+["”].*?){2,}/.test(t);
-  const tooLong = t.length > 240;
-  return hasQuotedTitle || hasUrl || hasBullets || hasManyTitles || tooLong;
-}
-function normalizeOrthography(text: string, lang: "en" | "ja"): string {
-  if (lang === "ja") return String(text || "").replace(/こんばんわ/g, "こんばんは").trim();
-  return String(text || "").trim();
-}
-function smallTalkFallback(userTurns: number, lang: "en" | "ja"): string {
-  const ja = [
-    "ようこそ。今はテンポは速めと緩やか、どちらがしっくり来ますかな？",
-    "ご来館ありがとうございます。静けさと高揚感、今はどちらをお求めです？",
-    "お疲れさまです。集中したい感じと、気分転換したい感じ、どちらが近いでしょう？",
-  ];
-  const en = [
-    "Welcome. Are you in the mood for a faster or gentler tempo?",
-    "Thanks for visiting. Are you leaning toward calmness or uplift right now?",
-    "Glad you’re here. Would you like something for focus, or a refreshing change?",
-  ];
-  const arr = lang === "en" ? en : ja;
-  return arr[userTurns % arr.length];
-}
-function ensureSmallTalkSafe(raw: string, userTurns: number, lang: "en" | "ja"): string {
-  let out = normalizeOrthography(raw, lang);
-  if (needsSmallTalkFallback(out)) out = smallTalkFallback(userTurns, lang);
-  return out.replace(/\n{2,}/g, "\n").trim();
-}
-
-/* ===== ユーザー文からジャンル/ムード語を補完して moodTags を強化 ===== */
-function enrichMoodTags(base: string[], userText: string, lang: "en" | "ja"): string[] {
-  // 1) ベース正規化（lowercase＋トリム）＆不要タグ除去
-  const block = new Set(["neutral", "genre", "", "unknown", "n/a"]);
-  const norm = (s: string) => String(s || "").toLowerCase().trim();
-
-  const set = new Set<string>();
-  for (const s of (base || [])) {
-    const v = norm(s);
-    if (!block.has(v)) set.add(v);
-  }
-
-  // 2) テキスト抽出
-  const raw = String(userText || "");
-  const t = raw.toLowerCase();
-
-  if (lang === "en") {
-    if (/sci[-\s]?fi|science\s*fiction/.test(t)) set.add("sf");
-    if (/mystery|detective|whodunnit/.test(t)) set.add("mystery");
-    if (/fantasy/.test(t)) set.add("fantasy");
-    if (/thriller|suspense/.test(t)) set.add("thriller");
-    if (/romance|love\s*story/.test(t)) set.add("romance");
-    if (/historical/.test(t)) set.add("historical");
-    if (/jazz/.test(t)) set.add("jazz");
-    if (/ambient|chill|serene|soothing|calm/.test(t)) set.add("calm");
-    if (/uplift|upbeat|energetic|bright|high\s*energy/.test(t)) set.add("uplifting");
-    if (/focus|study|work/.test(t)) set.add("focus");
-    if (/night|midnight|late/.test(t)) set.add("night");
-  } else {
-    if (/ＳＦ|sf|エスエフ|サイエンスフィクション/i.test(raw)) set.add("sf");
-    if (/ミステリ|推理/.test(raw)) set.add("mystery");
-    if (/ファンタジ/.test(raw)) set.add("fantasy");
-    if (/スリラー|サスペンス/.test(raw)) set.add("thriller");
-    if (/恋愛|ラブ/.test(raw)) set.add("romance");
-    if (/歴史|時代/.test(raw)) set.add("historical");
-    if (/ジャズ/.test(raw)) set.add("jazz");
-    if (/静|穏|落ち着/.test(raw)) set.add("calm");
-    if (/高揚|前向き|明る|ハイエナジ/.test(raw)) set.add("uplifting");
-    if (/読書|夜/.test(raw)) set.add("night");
-  }
-
-  // 3) 念のための不要タグ掃除（保険）
-  for (const v of Array.from(set)) {
-    if (block.has(v)) set.delete(v);
-  }
-
-  // 4) 空なら calm を最低付与
-  if (set.size === 0) set.add("calm");
-
-  // 5) 最大5件に制限
-  return Array.from(set).slice(0, 5);
-}
-
-/* ===== chat用ガイダンス（世界観＋ジャンル/ムードの一問） ===== */
-function buildChatGuidance(lang: "en" | "ja", userTurns: number): string {
-  if (userTurns < 3) {
-    if (lang === "en") {
-      return [
-        "You are the Count, MUSIAM’s courteous guide. Elegant yet modern.",
-        "First two user turns:",
-        "- Keep replies to 1–2 short sentences in English.",
-        "- No titles, links, lists, or recommendations yet.",
-        "- Brief empathy, then exactly ONE concrete question.",
-        "- Prefer this angle for the question: “Would you like to start with a genre (e.g., SF/mystery) or a mood (calm/uplifting)?”",
-        "- Avoid archaic address terms.",
-      ].join("\n");
+  // それでも不足したら、スコア無視で埋める
+  if (cards.length < count) {
+    for (const w of pool) {
+      const c = workToCard(w);
+      if (!c) continue;
+      if (!c.links?.length) continue;
+      if (cards.some((x) => x.id === c.id)) continue;
+      cards.push(c);
+      if (cards.length >= count) break;
     }
-    return [
-      "あなたは伯爵MUSIAMの案内役「伯爵」。品よく現代的に。",
-      "最初の2ターン：",
-      "・1〜2文だけ。作品名・URL・箇条書き・推薦は出さない。",
-      "・一言で共感 → “具体的一問”を1つだけ。",
-      "・質問は「ジャンル（例：SF/ミステリ）と気分（静けさ/高揚感）、どちらを優先しますか？」を優先。",
-      "・古風な呼称は避ける。",
-    ].join("\n");
-  }
-  return lang === "en"
-    ? "Stay concise and warm. Name works only when appropriate."
-    : "簡潔で温かく。必要なときだけ作品名に触れる。";
-}
-
-/* ===== both 用の人格プロンプト（世界観・ミラーリング・ジャンルの軽い言及） ===== */
-function buildRecoPersonaPrompt(
-  recMeta: { moodTags: string[]; cards: RecoCard[] },
-  lang: "en" | "ja"
-): string {
-  const titlesInOrder = recMeta.cards.map((c) => c.title);
-  const typeLabels = recMeta.cards.map((c) => c.type ?? "work");
-
-  if (lang === "ja") {
-    return [
-      "あなたは伯爵MUSIAMの案内役「伯爵」です。上品で知的、しかし現代的で押しつけがましくない文体で。",
-      "必ず次の3作品【のみ】に言及し、順序（本→音楽→音楽）を厳守。捏造・言い換え・URL・箇条書きは禁止。",
-      `順序: ${titlesInOrder.map((t, i) => `【${i + 1}=${t}（${typeLabels[i]}）】`).join(" ")}`,
-      "3〜5文で：①短い導入（ユーザーのキーワードを一度だけ“引用”して鏡映）、②〜④で各作品を順に1文ずつ上品に紹介。",
-      "比喩（部屋/扉/回廊など）は1文に1つまで。本については可能ならジャンルを一語だけ触れてよい（例：SF/ミステリなど）。",
-      "最後は10語以内の短い誘い（例：どの扉から参りましょう？）。",
-      "出力は日本語のみ。",
-    ].join("\n");
   }
 
-  return [
-    "You are the Count, MUSIAM’s courteous guide—polished and modern.",
-    "Refer ONLY to the three works below, in this exact order (book → music → music). No invention, no renaming, no URLs or bullet points.",
-    `Order: ${titlesInOrder.map((t, i) => `[${i + 1}=${t} (${typeLabels[i]})]`).join(" ")}`,
-    "Write 3–5 natural sentences: (1) compact opener that mirrors the user’s key phrase once; (2–4) one elegant sentence for each work in order.",
-    "Use room/door/hall imagery sparingly (≤1 per sentence). For the book, you may mention a single genre word if it’s clearly implied (e.g., SF, mystery).",
-    "End with one short invitation (≤10 words), e.g., “Which door shall we open?”. Output language: English only.",
-  ].join("\n");
+  return cards.slice(0, count);
 }
 
-/* ===================== APIエントリ ===================== */
+function descForCard(w: Work, lang: Lang): string {
+  const mi = w.matchInfo;
+  const s =
+    typeof mi === "string"
+      ? mi
+      : mi && typeof mi === "object"
+      ? mi.summary || mi.reason || ""
+      : "";
+  if (s) return s.length > 80 ? s.slice(0, 80) + "…" : s;
+
+  // fallback：tags/moodTags
+  const tags = (Array.isArray(w.moodTags) ? w.moodTags : Array.isArray(w.tags) ? w.tags : []).slice(0, 3);
+  if (tags.length) return lang === "ja" ? `雰囲気: ${tags.join(" / ")}` : `Vibe: ${tags.join(" / ")}`;
+
+  return lang === "ja" ? "短く、芯に届く一作です。" : "A concise piece that lands cleanly.";
+}
+
+/** ===== Groq (LLM) optional: chatモードだけで使用 =====
+ * sales / recommend は安定のため基本テンプレ運用
+ */
+async function groqChat(messages: { role: "system" | "user" | "assistant"; content: string }[]) {
+  const apiKey = process.env.GROQ_API_KEY;
+  if (!apiKey) return "";
+
+  const model = process.env.GROQ_MODEL || "llama-3.1-70b-versatile";
+  const resp = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      temperature: 0.7,
+      max_tokens: 450,
+    }),
+  });
+
+  if (!resp.ok) return "";
+  const data = await resp.json();
+  return String(data?.choices?.[0]?.message?.content ?? "");
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const started = Date.now();
-  const trace = newTraceId();
+  const trace = Math.random().toString(36).slice(2);
 
   try {
-    /* --- レート制限 --- */
-    const ip =
-      (req.headers["x-forwarded-for"] as string)?.split(",")[0]?.trim() ||
-      req.socket.remoteAddress ||
-      "unknown";
-    if (!rateLimit(ip).ok) {
-      return res.status(429).json({ ok: false, v: 1, error: "rate_limited", trace });
-    }
-
-    /* --- 入力バリデーション --- */
-    const parsed = Body.safeParse(req.body ?? {});
+    const parsed = BodySchema.safeParse(req.body ?? {});
     if (!parsed.success) {
-      return res.status(400).json({
-        ok: false,
-        v: 1,
-        error: "bad_request",
-        issues: parsed.error.issues,
-        trace,
-      });
-    }
-    const { mode: modeFromClient, messages } = parsed.data;
-
-    /* --- 言語判定 --- */
-    const lang: "en" | "ja" = inferLang(messages);
-    const langDirective =
-      lang === "en" ? "Respond strictly in English. Keep it concise and polite." : "出力言語は日本語（丁寧語）。";
-
-    /* --- 実効モード（初期2Tは強制 chat） --- */
-    const userTurns = messages.filter((m) => m.role === "user").length;
-    const mode: "chat" | "cards" | "both" = userTurns < 3 ? "chat" : modeFromClient;
-
-    /* --- 推薦シード（trace 由来で安定） --- */
-    const seed = parseInt((trace || "0").slice(-6), 36) % 100000;
-
-    /* ========== BOTH（本文＋カード） ========== */
-    if (mode === "both") {
-      // 1) moodTags（JSON限定）→ 直近ユーザー文で補完
-      const langHeaderForJSON =
-        lang === "ja"
-          ? "【重要】次の応答はJSONのみ（日本語禁止）。JSON以外の文字列は出力しない。"
-          : "IMPORTANT: Return ONLY JSON. No prose. English-only keys/values.";
-      const sysTags = {
-        role: "system" as const,
-        content: [langHeaderForJSON, `Return ONLY valid JSON: {"moodTags": string[] (max 5, lowercase, no emojis)}`].join(
-          "\n"
-        ),
-      };
-      const jsonText = await groqChat([sysTags, ...messages]);
-      let { moodTags = [] } = safeJSON<{ moodTags?: string[] }>(jsonText, { moodTags: [] });
-      moodTags = enrichMoodTags(moodTags, lastUserText(messages), lang);
-
-      // 2) カード計算（まず多めに拾ってから本1＋音楽2を保証）
-      const catalog = loadAllWorks();
-      const worksAll = await loadAllWorksCached();
-
-      const recos = recommend(catalog, moodTags, 36, seed);
-      let cards = toCards(recos, worksAll);
-      cards = prioritizeByAudienceLanguage(cards, lang);
-
-      // 救済発動の観測は compose 前の cards で判定
-      const hasBookInitially = cards.some((c) => c.type === "book");
-
-      // compose → ensureBookFirstThenTwoMusic（再宣言しない）
-      let composed = composeOneBookTwoMusic(cards, lang);
-      composed = await ensureBookFirstThenTwoMusic(composed, catalog, worksAll, moodTags, seed, lang);
-
-      // 3) 本文生成（世界観＋ミラーリング）
-      const personaPrompt = buildRecoPersonaPrompt({ moodTags, cards: composed }, lang);
-      const langHeader =
-        lang === "ja"
-          ? "【厳守】以後の出力は必ず日本語。英語は用いない。"
-          : "【STRICT】From now on, respond ONLY in English. Do not use Japanese.";
-      const sysPersonaReco = {
-        role: "system" as const,
-        content: [langDirective, langHeader, personaPrompt].join("\n"),
-      };
-      const text = await groqChat([sysPersonaReco, ...messages]);
-
-      // 観測ヘッダ
-      const first = composed[0];
-      const bookLang = first?.type === "book" ? detectItemLang(first) : "und";
-      res.setHeader("X-Book-Lang", String(bookLang));
-      res.setHeader("X-Fallback-Book", hasBookInitially ? "0" : "1");
-
-      res.setHeader("X-Trace-Id", trace);
-      res.setHeader("X-Latency", String(Date.now() - started));
-      res.setHeader("X-Seed", String(seed));
-      return res.status(200).json({ ok: true, v: 1, mode: "both", text, moodTags, cards: composed, trace });
+      return res.status(400).json({ ok: false, v: 1, error: "invalid_body", trace });
     }
 
-    /* ========== CARDS のみ ========== */
-    if (mode === "cards") {
-      const langHeaderForJSON =
-        lang === "ja"
-          ? "【重要】次の応答はJSONのみ（日本語禁止）。JSON以外の文字列は出力しない。"
-          : "IMPORTANT: Return ONLY JSON. No prose. English-only keys/values.";
-      const sys = {
-        role: "system" as const,
-        content: [langHeaderForJSON, `Return ONLY valid JSON: {"moodTags": string[] (max 5, lowercase, no emojis)}`].join(
-          "\n"
-        ),
-      };
-      const jsonText = await groqChat([sys, ...messages]);
-      let { moodTags = [] } = safeJSON<{ moodTags?: string[] }>(jsonText, { moodTags: [] });
-      moodTags = enrichMoodTags(moodTags, lastUserText(messages), lang);
+    const { mode, lang, messages } = parsed.data;
+    const userTurns = countUserTurnsExcludingChips(messages);
 
-      const catalog = loadAllWorks();
-      const worksAll = await loadAllWorksCached();
+    const works = await loadWorks();
 
-      const recos = recommend(catalog, moodTags, 36, seed);
-      let cards = toCards(recos, worksAll);
-      cards = prioritizeByAudienceLanguage(cards, lang);
-      let composed = composeOneBookTwoMusic(cards, lang);
-      composed = await ensureBookFirstThenTwoMusic(composed, catalog, worksAll, moodTags, seed, lang);
+    res.setHeader("X-Trace-Id", trace);
 
-      res.setHeader("X-Trace-Id", trace);
-      res.setHeader("X-Latency", String(Date.now() - started));
-      res.setHeader("X-Seed", String(seed));
-      return res.status(200).json({ ok: true, v: 1, mode: "cards", moodTags, cards: composed, trace });
-    }
-
-    /* ========== CHAT のみ ========== */
-    {
-      let snapshot: Array<{ title: string; type?: string; href?: string }> = [];
-      try {
-        const worksAll = await loadAllWorksCached();
-        snapshot = worksAll.slice(0, 10).map((w: any) => ({
-          title: w.title,
-          type: w.type,
-          href: (typeof w.link === "string" ? w.link : w.link?.url) ?? w.href ?? "",
-        }));
-      } catch {
-        snapshot = [];
+    // ===== recommend：質問・流れを固定 =====
+    if (mode === "recommend") {
+      // チップ直後（userTurns=0）：ファーストクエスチョン固定（現状のままOK）
+      if (userTurns === 0) {
+        const assistantText =
+          lang === "ja"
+            ? "伯爵の部屋へようこそ。本と音楽、どちらで満たしたい気分かな？"
+            : "Welcome. Book or music — which one do you want right now?";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards: [], moodTags: [], trace });
       }
 
-      const guidance = buildChatGuidance(lang, userTurns);
-      const langHeader =
-        lang === "ja" ? "【厳守】以後の出力は必ず日本語。英語は用いない。" : "【STRICT】From now on, respond ONLY in English. Do not use Japanese.";
+      const desiredType = extractDesiredType(messages);
 
-      const sys = {
-        role: "system" as const,
-        content: [buildCountEarlSystemPrompt({ worksSnapshot: snapshot }), langHeader, guidance].join("\n"),
-      };
+      // 2問目固定：本/音楽の返答を受けて、次の質問も固定
+      if (userTurns === 1) {
+        const assistantText =
+          lang === "ja"
+            ? desiredType === "music"
+              ? "音楽を聴きたい気分なんですね。どんな作品を聴きたい気分かな？（例：ジャンル / 雰囲気 / テンポ）"
+              : "本を読みたい気分なんですね。どんな作品を読みたい気分かな？（例：ジャンル / 雰囲気 / テーマ）"
+            : desiredType === "music"
+            ? "Got it — you want music. What kind (genre / vibe / tempo) are you in the mood for?"
+            : "Got it — you want a book. What kind (genre / vibe / theme) are you in the mood for?";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards: [], moodTags: [], trace });
+      }
 
-      const raw = await groqChat([sys, ...messages]);
-      const text = ensureSmallTalkSafe(raw, userTurns, lang);
+      // 3手目以降：前置き固定→作品タイトルを正確に→軽い説明→締め
+      const q = lastUserText(messages);
+      const seed = `${trace}|${userTurns}|${q}`;
+      const cards = pickTopCards({
+        works,
+        desiredType,
+        queryText: q,
+        count: 2,
+        seed,
+      });
 
-      res.setHeader("X-Trace-Id", trace);
+      // 作品説明は works から生成（存在すれば matchInfo / tags ）
+      const pickedWorksById = new Map<string, Work>();
+      for (const w of works) {
+        const id = String(w.id ?? w.title ?? "");
+        if (id) pickedWorksById.set(id, w);
+      }
+
+      const lines: string[] = [];
+      for (const c of cards) {
+        const w = pickedWorksById.get(c.id);
+        const d = w ? descForCard(w, lang) : lang === "ja" ? "ぜひお楽しみください。" : "Enjoy it.";
+        lines.push(`・「${c.title}」— ${d}`);
+      }
+
+      const assistantText =
+        lang === "ja"
+          ? `なるほど、それならちょうどいいのがありますよ。\n\n${lines.join("\n")}\n\nぜひお楽しみ下さい。`
+          : `Perfect — I’ve got just the thing.\n\n${lines.join("\n")}\n\nHope you enjoy.`;
+
+      // 締め（5ターン到達）は静かに1枚だけ置く
+      if (userTurns >= MAX_USER_TURNS) {
+        const closingCard = cards.slice(0, 1);
+        const closingText =
+          lang === "ja" ? "今日はありがとう。余韻のまま、ひとつだけ置いていくね。" : "Thanks for today. I’ll leave you one last pick.";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText: closingText, text: closingText, cards: closingCard, moodTags: [], trace });
+      }
+
+      return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards, moodTags: [], trace });
+    }
+
+    // ===== sales：安定化のため基本テンプレ（Abby固定） =====
+    if (mode === "sales") {
+      const q = lastUserText(messages);
+      const desiredType = extractDesiredType(messages);
+      const seed = `${trace}|sales|${userTurns}|${q}`;
+
+      // sales は「売る」ので、リンク優先は buy > listen/read > open を buildLinks が担保
+      const cards = pickTopCards({
+        works,
+        desiredType,
+        queryText: q,
+        count: 2,
+        seed,
+      });
+
+      // 会話テンプレ（性別/口調ブレ排除）
+      let assistantText = "";
+      if (userTurns === 0) {
+        assistantText =
+          lang === "ja"
+            ? "いらっしゃいませ〜ご指名ありがとう。No.1営業のAbbyよ。今日は何を手に入れたい？（本 / 音楽 / そのほか）"
+            : "Hey~ I’m Abby, your #1 sales rep. What do you want today? (book / music / other)";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards, moodTags: [], trace });
+      }
+
+      if (userTurns === 1) {
+        assistantText =
+          lang === "ja"
+            ? (desiredType === "music"
+                ? "音楽ね。気分はどっち？（アゲたい / 落ち着きたい / ぶっ壊したい）"
+                : desiredType === "book"
+                ? "本ね。気分はどっち？（癒されたい / 刺激がほしい / 深く沈みたい）"
+                : "了解。気分はどっち？（アゲたい / 落ち着きたい / 刺激がほしい）")
+            : "Got it. What’s the vibe? (hype / calm / intense)";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards, moodTags: [], trace });
+      }
+
+      // 作品提示（タイトルを正確に言う）
+      if (cards.length) {
+        const list = cards.map((c) => `・「${c.title}」`).join("\n");
+        assistantText =
+          lang === "ja"
+            ? `なるほど。じゃあ今日はこれ。\n\n${list}\n\nリンクは下のカードから開けるよ。`
+            : `Perfect. Here are my picks:\n\n${list}\n\nOpen them via the cards below.`;
+      } else {
+        assistantText =
+          lang === "ja"
+            ? "ごめん、今のデータだと候補が取れなかった。別の気分ワードを一つだけ言って？"
+            : "I couldn’t pull candidates from the current data. Give me one more vibe keyword.";
+      }
+
+      // 締め
+      if (userTurns >= MAX_USER_TURNS) {
+        const closingText =
+          lang === "ja" ? "今日はここまで。最後にひとつだけ置いていくね。" : "That’s it for today — I’ll leave you one last pick.";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText: closingText, text: closingText, cards: cards.slice(0, 1), moodTags: [], trace });
+      }
+
+      return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards, moodTags: [], trace });
+    }
+
+    // ===== chat：雑談はLLM（必要最低限）＋カードは控えめに1枚だけ =====
+    {
+      const q = lastUserText(messages);
+      const seed = `${trace}|chat|${userTurns}|${q}`;
+      const cards = pickTopCards({ works, queryText: q, count: 1, seed });
+
+      // 1ターン目は固定（現状維持）
+      if (userTurns === 0) {
+        const assistantText =
+          lang === "ja"
+            ? "よくぞ来てくれましたな。ぜひ雑談しましょう。何か最近気になってることはあるかい？"
+            : "Well met. Let’s chat — what’s on your mind lately?";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards: [], moodTags: [], trace });
+      }
+
+      const sys =
+        lang === "ja"
+          ? "あなたは伯爵MUSIAMの案内役。丁寧で落ち着いた口調。短く、問い返しは1つだけ。"
+          : "You are a calm guide. Keep it concise. Ask at most one follow-up question.";
+
+      const raw = await groqChat([{ role: "system", content: sys }, ...messages]);
+      const assistantText = (raw || (lang === "ja" ? "なるほど。もう少しだけ詳しく聞かせて？" : "Got it. Tell me a bit more?")).trim();
+
+      if (userTurns >= MAX_USER_TURNS) {
+        const closingText =
+          lang === "ja" ? "今日はありがとう。余韻のまま、ひとつだけ置いていくね。" : "Thanks for today. I’ll leave you one last pick.";
+        return res.status(200).json({ ok: true, v: 1, mode, assistantText: closingText, text: closingText, cards: cards.slice(0, 1), moodTags: [], trace });
+      }
+
       res.setHeader("X-Latency", String(Date.now() - started));
-      return res.status(200).json({ ok: true, v: 1, mode: "chat", text, trace });
+      return res.status(200).json({ ok: true, v: 1, mode, assistantText, text: assistantText, cards, moodTags: [], trace });
     }
   } catch (e: any) {
-    res.setHeader("X-Trace-Id", trace);
-    res.setHeader("X-Latency", String(Date.now() - started));
-    return res.status(500).json({ ok: false, v: 1, error: e?.message ?? "failed", trace });
+    return res.status(500).json({ ok: false, v: 1, error: e?.message ?? "failed", trace: "err" });
   }
 }
