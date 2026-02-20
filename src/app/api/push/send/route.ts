@@ -2,13 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import webpush from "web-push";
 import { pushStore } from "@/lib/push-store";
 
-// VAPID設定（.env.local に記載するだけでOK）
-webpush.setVapidDetails(
-  process.env.VAPID_SUBJECT!,
-  process.env.VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-);
-
 interface PushPayload {
   title?: string;
   body: string;
@@ -22,6 +15,13 @@ interface PushPayload {
 // Body: { title?: string, body: string, data?: { url?: string } }
 export async function POST(request: NextRequest) {
   try {
+    // VAPID設定はリクエスト時に行う（ビルド時の環境変数未設定エラーを回避）
+    webpush.setVapidDetails(
+      process.env.VAPID_SUBJECT!,
+      process.env.VAPID_PUBLIC_KEY!,
+      process.env.VAPID_PRIVATE_KEY!
+    );
+
     const payload: PushPayload = await request.json();
 
     if (!payload?.body) {
