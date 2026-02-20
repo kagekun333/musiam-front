@@ -133,6 +133,7 @@ export default function Client() {
   const [drawn, setDrawn] = useState(false);
   const [animIn, setAnimIn] = useState(false);
   const [day, setDay] = useState<DayState | null>(null);
+  const [copied, setCopied] = useState(false);
 
   // フェーズ管理（準備 → 儀式 → 結果）
   const [phase, setPhase] = useState<"prepare" | "ritual" | "result">("prepare");
@@ -345,8 +346,10 @@ export default function Client() {
     const u = new URL(window.location.href);
     u.searchParams.set("lang", lang);
     u.searchParams.set("id", String(entry.id));
-    navigator.clipboard.writeText(u.toString());
-    alert(lang === "ja" ? "シェア用URLをコピーしました" : "Copied shareable URL");
+    navigator.clipboard.writeText(u.toString()).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    });
   };
 
   const switchLang = (to: "ja" | "en") => {
@@ -413,22 +416,30 @@ export default function Client() {
         <div className="flex gap-2">
           <button
             onClick={() => switchLang("ja")}
-            className={`rounded-md px-3 py-1 text-sm ring-1 ${lang==="ja"?"bg-zinc-900 text-white ring-zinc-900":"ring-zinc-300"}`}
+            className={`rounded-md px-3 py-1 text-sm ring-1 ${lang==="ja"?"bg-white/10 text-white ring-white/30":"ring-white/20 text-gray-300"}`}
           >日本語</button>
           <button
             onClick={() => switchLang("en")}
-            className={`rounded-md px-3 py-1 text-sm ring-1 ${lang==="en"?"bg-zinc-900 text-white ring-zinc-900":"ring-zinc-300"}`}
+            className={`rounded-md px-3 py-1 text-sm ring-1 ${lang==="en"?"bg-white/10 text-white ring-white/30":"ring-white/20 text-gray-300"}`}
           >English</button>
         </div>
       </div>
 
       {/* ローディング */}
-      {!all && <div className="opacity-60">Loading…</div>}
+      {!all && (
+        <div className="flex items-center gap-3 py-16 opacity-70">
+          <div
+            className="h-5 w-5 rounded-full border-2 border-white/20 border-t-white"
+            style={{ animation: "spin 1s linear infinite" }}
+          />
+          <span className="text-sm">{lang === "ja" ? "読み込み中…" : "Loading…"}</span>
+        </div>
+      )}
 
       {/* Phase 1: 準備（まだ引いてない時） */}
       {all && phase === "prepare" && !drawn && (
         <section className="grid place-items-center py-16">
-          <div className="rounded-2xl border border-zinc-300 bg-white/70 p-10 text-center shadow-sm">
+          <div className="rounded-2xl border border-white/10 bg-zinc-900/60 backdrop-blur-sm p-10 text-center shadow-sm">
             <div className="mb-3 font-serif text-xl">
               {lang === "ja" ? "本日の御籤を引く" : "Draw today's Omikuji"}
             </div>
@@ -453,7 +464,7 @@ export default function Client() {
         <section className="grid place-items-center py-24">
           <div className="text-center">
             <div
-              className="mx-auto mb-6 h-16 w-16 rounded-full border-4 border-zinc-300 border-t-zinc-900 motion-reduce:border-t-zinc-600"
+              className="mx-auto mb-6 h-16 w-16 rounded-full border-4 border-white/20 border-t-white motion-reduce:border-t-white/50"
               style={{
                 animation: "spin 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite",
               }}
@@ -462,17 +473,6 @@ export default function Client() {
               {lang === "ja" ? "運命を読み解いています…" : "Reading your destiny…"}
             </div>
           </div>
-          <style jsx>{`
-            @keyframes spin {
-              to { transform: rotate(360deg); }
-            }
-            @media (prefers-reduced-motion: reduce) {
-              div[style*="animation"] {
-                animation-duration: 0.6s !important;
-                opacity: 0.5;
-              }
-            }
-          `}</style>
         </section>
       )}
 
@@ -493,7 +493,7 @@ export default function Client() {
 
           {/* 何度も引いた人へのメッセージ（2回目以降で表示） */}
           {drawsToday >= 2 && (
-            <div className="mt-5 rounded-lg border border-zinc-300 bg-white/70 p-4 text-sm">
+            <div className="mt-5 rounded-lg border border-white/10 bg-zinc-900/60 backdrop-blur-sm p-4 text-sm">
               {lang === "ja" ? (
                 <>
                   おみくじは最初の一枚こそが神の導きであり、何度も引くものではありません。<br />
@@ -510,7 +510,7 @@ export default function Client() {
 
           {/* レコメンド（凶：固定） */}
           {recommendation && recommendation.kind === "fixed" && (
-            <section className="mt-6 rounded-xl border bg-white/70 p-5" style={{ borderColor: `${accent}66` }}>
+            <section className="mt-6 rounded-xl border bg-zinc-900/60 backdrop-blur-sm p-5" style={{ borderColor: `${accent}66` }}>
               <div className="mb-2 flex items-center gap-2">
                 <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: accent }} />
                 <span className="font-serif text-[15px]">
@@ -529,7 +529,7 @@ export default function Client() {
   href={recommendation.href}
   target="_blank"
   rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 rounded-md border border-zinc-300 px-3 py-1.5 text-sm hover:bg-zinc-50"
+  className="inline-flex items-center gap-2 rounded-md border border-white/20 px-3 py-1.5 text-sm hover:bg-white/5"
 >
 
                     {lang === "ja" ? "作品を見る" : "View the work"}
@@ -544,28 +544,28 @@ export default function Client() {
 
           {/* レコメンド（通常：作品グリッド - 上段=音楽3、下段=本3） */}
           {recommendation && recommendation.kind === "works" && (musicWorks.length > 0 || bookWorks.length > 0) && (
-            <section className="mt-6 rounded-xl border bg-white/92 p-5 shadow-sm backdrop-blur-sm" style={{ borderColor: `${accent}33` }}>
+            <section className="mt-6 rounded-xl border bg-zinc-900/60 p-5 shadow-sm backdrop-blur-sm" style={{ borderColor: `${accent}33` }}>
               <div className="mb-3 flex items-center gap-2">
                 <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: accent }} />
-                <span className="font-serif text-base font-medium text-slate-900">
+                <span className="font-serif text-base font-medium text-gray-100">
                   {lang === "ja" ? `${entry.rank_ja} を引いたあなたへのおすすめ` : `Recommended for your draw (${entry.rank_en})`}
                 </span>
               </div>
-              <div className="text-sm text-slate-600 mb-4">
+              <div className="text-sm text-gray-400 mb-4">
                 {lang === "ja" ? recommendation.noteJa : recommendation.noteEn}
               </div>
 
               {/* 上段: 音楽 3枚 (正方形 1:1) */}
               {musicWorks.length > 0 && (
                 <div className="mb-5">
-                  <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-slate-600">
+                  <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-gray-400">
                     {lang === "ja" ? "音楽" : "Music"}
                   </h3>
                   <div className="grid grid-cols-1 min-[480px]:grid-cols-2 min-[720px]:grid-cols-3 gap-3">
                     {musicWorks.map((w) => (
-                      <div key={w.id} className="group min-w-0 rounded-lg border border-zinc-200 overflow-hidden bg-white shadow-sm hover:shadow-md transition">
+                      <div key={w.id} className="group min-w-0 rounded-lg border border-white/10 overflow-hidden bg-zinc-800/60 hover:bg-zinc-800/80 transition">
                         {w.cover ? (
-                          <div className="relative aspect-square overflow-hidden bg-zinc-100">
+                          <div className="relative aspect-square overflow-hidden bg-zinc-800/80">
                             <Image
                               src={w.cover}
                               alt={w.title}
@@ -575,17 +575,17 @@ export default function Client() {
                             />
                           </div>
                         ) : (
-                          <div className="aspect-square grid place-items-center text-xs text-slate-400 bg-zinc-100">No Image</div>
+                          <div className="aspect-square grid place-items-center text-xs text-gray-500 bg-zinc-800/80">No Image</div>
                         )}
                         <div className="p-2.5 min-h-[72px] flex flex-col">
-                          <div className="flex-1 line-clamp-2 text-sm font-medium text-slate-900 mb-1.5">{w.title}</div>
+                          <div className="flex-1 line-clamp-2 text-sm font-medium text-gray-100 mb-1.5">{w.title}</div>
                           <div className="flex gap-2 items-center flex-wrap">
                             {(w.primaryHref || w.href || w.previewUrl) && (
                               <Link
                                 href={w.primaryHref || w.href || w.previewUrl!}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 rounded-md border border-zinc-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-zinc-50 transition w-fit"
+                                className="inline-flex items-center gap-1 rounded-md border border-white/20 px-2.5 py-1 text-xs font-medium text-gray-300 hover:bg-white/5 transition w-fit"
                               >
                                 {serviceLinkLabel(w.primaryHref || w.href || w.previewUrl || "", w.type, lang)}
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -598,7 +598,7 @@ export default function Client() {
                                 href={w.salesHref}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-2 transition"
+                                className="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2 transition"
                               >
                                 {saleLinkLabel(w.salesHref || "", lang)}
                               </Link>
@@ -614,14 +614,14 @@ export default function Client() {
               {/* 下段: 本 3枚 (縦長 aspect-[5/8]) */}
               {bookWorks.length > 0 && (
                 <div>
-                  <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-slate-600">
+                  <h3 className="mb-2.5 text-xs font-medium uppercase tracking-wider text-gray-400">
                     {lang === "ja" ? "本" : "Books"}
                   </h3>
                   <div className="grid grid-cols-1 min-[480px]:grid-cols-2 min-[720px]:grid-cols-3 gap-3">
                     {bookWorks.map((w) => (
-                      <div key={w.id} className="group min-w-0 rounded-lg border border-zinc-200 overflow-hidden bg-white shadow-sm hover:shadow-md transition">
+                      <div key={w.id} className="group min-w-0 rounded-lg border border-white/10 overflow-hidden bg-zinc-800/60 hover:bg-zinc-800/80 transition">
                         {w.cover ? (
-                          <div className="relative aspect-[5/8] overflow-hidden bg-zinc-100">
+                          <div className="relative aspect-[5/8] overflow-hidden bg-zinc-800/80">
                             <Image
                               src={w.cover}
                               alt={w.title}
@@ -631,17 +631,17 @@ export default function Client() {
                             />
                           </div>
                         ) : (
-                          <div className="aspect-[5/8] grid place-items-center text-xs text-slate-400 bg-zinc-100">No Image</div>
+                          <div className="aspect-[5/8] grid place-items-center text-xs text-gray-500 bg-zinc-800/80">No Image</div>
                         )}
                         <div className="p-2.5 min-h-[72px] flex flex-col">
-                          <div className="flex-1 line-clamp-2 text-sm font-medium text-slate-900 mb-1.5">{w.title}</div>
+                          <div className="flex-1 line-clamp-2 text-sm font-medium text-gray-100 mb-1.5">{w.title}</div>
                           <div className="flex gap-2 items-center flex-wrap">
                             {(w.primaryHref || w.href || w.previewUrl) && (
                               <Link
                                 href={w.primaryHref || w.href || w.previewUrl!}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 rounded-md border border-zinc-300 px-2.5 py-1 text-xs font-medium text-slate-700 hover:bg-zinc-50 transition w-fit"
+                                className="inline-flex items-center gap-1 rounded-md border border-white/20 px-2.5 py-1 text-xs font-medium text-gray-300 hover:bg-white/5 transition w-fit"
                               >
                                 {serviceLinkLabel(w.primaryHref || w.href || w.previewUrl || "", w.type, lang)}
                                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -654,7 +654,7 @@ export default function Client() {
                                 href={w.salesHref}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-2 transition"
+                                className="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2 transition"
                               >
                                 {saleLinkLabel(w.salesHref || "", lang)}
                               </Link>
@@ -671,23 +671,34 @@ export default function Client() {
 
           {/* 操作列 */}
           <div className="mt-6 flex flex-wrap gap-3">
-            <button onClick={handleCopyShare} className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm">
-              {lang === "ja" ? "シェア用URLコピー" : "Copy share URL"}
+            <button
+              onClick={handleCopyShare}
+              className="relative rounded-md ring-1 ring-white/20 px-4 py-2 text-sm transition-colors"
+            >
+              {copied
+                ? (lang === "ja" ? "✓ コピーしました" : "✓ Copied!")
+                : (lang === "ja" ? "シェア用URLコピー" : "Copy share URL")}
             </button>
-            <button onClick={drawAgain} className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm opacity-70">
+            <button onClick={drawAgain} className="rounded-md ring-1 ring-white/20 px-4 py-2 text-sm opacity-70">
               {lang === "ja" ? "もう一度引く（おすすめしない）" : "Draw again (not recommended)"}
             </button>
 
             {/* クロスリンク：他ページへの自然な回遊 */}
             <Link
+              href="/"
+              className="rounded-md ring-1 ring-white/20 px-4 py-2 text-sm"
+            >
+              {lang === "ja" ? "ホームへ" : "Home"}
+            </Link>
+            <Link
               href="/exhibition"
-              className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm"
+              className="rounded-md ring-1 ring-white/20 px-4 py-2 text-sm"
             >
               {lang === "ja" ? "展示を見る" : "Browse Exhibition"}
             </Link>
             <Link
               href="/chat"
-              className="rounded-md ring-1 ring-zinc-300 px-4 py-2 text-sm"
+              className="rounded-md ring-1 ring-white/20 px-4 py-2 text-sm"
             >
               {lang === "ja" ? "伯爵に相談する" : "Ask the Count"}
             </Link>
