@@ -12,11 +12,7 @@
       "releasedAt": "2026-01-29",
       "href": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
       "links": {
-        "spotify": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
-        "appleMusic": "https://music.apple.com/jp/album/ena/1873276063?i=1873276396&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1873276063?app=itunes&i=1873276396&mt=1",
-        "listen": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=ENA"
+        "listen": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -64,7 +60,8 @@
       "primaryHref": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-60QCBTuEwNc380r2YtUO0f",
@@ -78,11 +75,7 @@
       "releasedAt": "2026-01-29",
       "href": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
       "links": {
-        "spotify": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
-        "appleMusic": "https://music.apple.com/jp/album/mama-afrika/1873336017?i=1873336018&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1873336017?app=itunes&i=1873336018&mt=1",
-        "listen": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Mama%20Afrika"
+        "listen": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -130,7 +123,8 @@
       "primaryHref": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
       "moodTagsInferred": [
         "genre:Afro-Beat"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
@@ -144,11 +138,7 @@
       "releasedAt": "2026-01-28",
       "href": "https://open.spotify.com/album/7s0xajVHIGgMYdwUuj48Cb",
       "links": {
-        "spotify": "https://open.spotify.com/album/7s0xajVHIGgMYdwUuj48Cb",
-        "appleMusic": "https://music.apple.com/jp/album/forced-update/1872876914?i=1872876915&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872876914?app=itunes&i=1872876915&mt=1",
-        "listen": "https://open.spotify.com/album/7s0xajVHIGgMYdwUuj48Cb",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=FORCED%20UPDATE%21"
+        "listen": "https://open.spotify.com/album/7s0xajVHIGgMYdwUuj48Cb"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -210,11 +200,12 @@
       "primaryHref": "https://open.spotify.com/album/7s0xajVHIGgMYdwUuj48Cb",
       "moodTagsInferred": [
         "genre:Rock"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
-      "title": "We are the Earth",
+      "title": "ウィーアーザアース",
       "type": "music",
       "cover": "/works/covers/spotify_0o5od07Lyxu9w9obQuvgm9.jpg",
       "tags": [
@@ -224,11 +215,7 @@
       "releasedAt": "2026-01-28",
       "href": "https://open.spotify.com/album/0o5od07Lyxu9w9obQuvgm9",
       "links": {
-        "spotify": "https://open.spotify.com/album/0o5od07Lyxu9w9obQuvgm9",
-        "appleMusic": "https://music.apple.com/jp/album/we-are-the-earth/1872963248?i=1872963254&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872963248?app=itunes&i=1872963254&mt=1",
-        "listen": "https://open.spotify.com/album/0o5od07Lyxu9w9obQuvgm9",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=We%20are%20the%20Earth"
+        "listen": "https://open.spotify.com/album/0o5od07Lyxu9w9obQuvgm9"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -290,7 +277,8 @@
       "primaryHref": "https://open.spotify.com/album/0o5od07Lyxu9w9obQuvgm9",
       "moodTagsInferred": [
         "genre:J-Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
@@ -304,11 +292,7 @@
       "releasedAt": "2026-01-28",
       "href": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
       "links": {
-        "spotify": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
-        "appleMusic": "https://music.apple.com/jp/album/%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85/1872848008?i=1872848009&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872848008?app=itunes&i=1872848009&mt=1",
-        "listen": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85"
+        "listen": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -356,7 +340,8 @@
       "primaryHref": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
       "moodTagsInferred": [
         "genre:Hip-Hop/Rap"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
@@ -370,11 +355,7 @@
       "releasedAt": "2026-01-28",
       "href": "https://open.spotify.com/album/2ti9uIOu2JPOMMzUf41Snl",
       "links": {
-        "spotify": "https://open.spotify.com/album/2ti9uIOu2JPOMMzUf41Snl",
-        "appleMusic": "https://music.apple.com/jp/album/%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88/1872847571?i=1872847572&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872847571?app=itunes&i=1872847572&mt=1",
-        "listen": "https://open.spotify.com/album/2ti9uIOu2JPOMMzUf41Snl",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88"
+        "listen": "https://open.spotify.com/album/2ti9uIOu2JPOMMzUf41Snl"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -422,7 +403,8 @@
       "primaryHref": "https://open.spotify.com/album/2ti9uIOu2JPOMMzUf41Snl",
       "moodTagsInferred": [
         "genre:Rock"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-6lrMaMnBBxnFV0PKTdd7sE",
@@ -436,11 +418,7 @@
       "releasedAt": "2026-01-26",
       "href": "https://open.spotify.com/album/6lrMaMnBBxnFV0PKTdd7sE",
       "links": {
-        "spotify": "https://open.spotify.com/album/6lrMaMnBBxnFV0PKTdd7sE",
-        "appleMusic": "https://music.apple.com/jp/album/%E4%BB%A3%E5%AE%98%E5%B1%B1%E3%82%AA%E3%82%B7%E3%83%A3%E3%83%AC%E3%83%95%E3%82%A1%E3%83%B3%E3%82%AF/1872627323?i=1872627324&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872627323?app=itunes&i=1872627324&mt=1",
-        "listen": "https://open.spotify.com/album/6lrMaMnBBxnFV0PKTdd7sE",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E4%BB%A3%E5%AE%98%E5%B1%B1%E3%82%AA%E3%82%B7%E3%83%A3%E3%83%AC%E3%83%95%E3%82%A1%E3%83%B3%E3%82%AF"
+        "listen": "https://open.spotify.com/album/6lrMaMnBBxnFV0PKTdd7sE"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -488,11 +466,12 @@
       "primaryHref": "https://open.spotify.com/album/6lrMaMnBBxnFV0PKTdd7sE",
       "moodTagsInferred": [
         "genre:Funk"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
-      "title": "사인 주세요 Sign Juseyo",
+      "title": "사인 주세요",
       "type": "music",
       "cover": "/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
       "tags": [
@@ -502,11 +481,7 @@
       "releasedAt": "2026-01-26",
       "href": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
       "links": {
-        "spotify": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
-        "appleMusic": "https://music.apple.com/jp/album/%EC%82%AC%EC%9D%B8-%EC%A3%BC%EC%84%B8%EC%9A%94-sign-juseyo/1872551024?i=1872551025&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872551024?app=itunes&i=1872551025&mt=1",
-        "listen": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%EC%82%AC%EC%9D%B8%20%EC%A3%BC%EC%84%B8%EC%9A%94%20Sign%20Juseyo"
+        "listen": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -554,7 +529,8 @@
       "primaryHref": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
       "moodTagsInferred": [
         "genre:K-Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1xHCXzgoJ7SLYL78n3IDrZ",
@@ -568,11 +544,7 @@
       "releasedAt": "2026-01-24",
       "href": "https://open.spotify.com/album/1xHCXzgoJ7SLYL78n3IDrZ",
       "links": {
-        "spotify": "https://open.spotify.com/album/1xHCXzgoJ7SLYL78n3IDrZ",
-        "appleMusic": "https://music.apple.com/jp/album/me/1871905772?i=1871905773&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1871905772?app=itunes&i=1871905773&mt=1",
-        "listen": "https://open.spotify.com/album/1xHCXzgoJ7SLYL78n3IDrZ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=ME"
+        "listen": "https://open.spotify.com/album/1xHCXzgoJ7SLYL78n3IDrZ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -648,7 +620,8 @@
       "primaryHref": "https://open.spotify.com/album/1xHCXzgoJ7SLYL78n3IDrZ",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5Upi5xvmOJeJy5Asmdvimp",
@@ -662,11 +635,7 @@
       "releasedAt": "2026-01-23",
       "href": "https://open.spotify.com/album/5Upi5xvmOJeJy5Asmdvimp",
       "links": {
-        "spotify": "https://open.spotify.com/album/5Upi5xvmOJeJy5Asmdvimp",
-        "appleMusic": "https://music.apple.com/jp/album/abzu/1871655176?i=1871655177&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1871655176?app=itunes&i=1871655177&mt=1",
-        "listen": "https://open.spotify.com/album/5Upi5xvmOJeJy5Asmdvimp",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=ABZU"
+        "listen": "https://open.spotify.com/album/5Upi5xvmOJeJy5Asmdvimp"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -714,7 +683,8 @@
       "primaryHref": "https://open.spotify.com/album/5Upi5xvmOJeJy5Asmdvimp",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-album-1NKoPWYQcHc64FtHt23vm8",
@@ -728,11 +698,7 @@
       "releasedAt": "2026-01-23",
       "href": "https://open.spotify.com/album/1NKoPWYQcHc64FtHt23vm8",
       "links": {
-        "spotify": "https://open.spotify.com/album/1NKoPWYQcHc64FtHt23vm8",
-        "appleMusic": "https://music.apple.com/jp/album/earth-os/1872076839?i=1872076937&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1872076839?app=itunes&i=1872076937&mt=1",
-        "listen": "https://open.spotify.com/album/1NKoPWYQcHc64FtHt23vm8",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=EARTH%20OS"
+        "listen": "https://open.spotify.com/album/1NKoPWYQcHc64FtHt23vm8"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -780,7 +746,8 @@
       "primaryHref": "https://open.spotify.com/album/1NKoPWYQcHc64FtHt23vm8",
       "moodTagsInferred": [
         "物語性"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7dMW2H0ZVHRs55WLPxsK0y",
@@ -794,11 +761,7 @@
       "releasedAt": "2026-01-13",
       "href": "https://open.spotify.com/album/7dMW2H0ZVHRs55WLPxsK0y",
       "links": {
-        "spotify": "https://open.spotify.com/album/7dMW2H0ZVHRs55WLPxsK0y",
-        "appleMusic": "https://music.apple.com/jp/album/silim/1868730433?i=1868730434&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1868730433?app=itunes&i=1868730434&mt=1",
-        "listen": "https://open.spotify.com/album/7dMW2H0ZVHRs55WLPxsK0y",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=SILIM"
+        "listen": "https://open.spotify.com/album/7dMW2H0ZVHRs55WLPxsK0y"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -846,7 +809,8 @@
       "primaryHref": "https://open.spotify.com/album/7dMW2H0ZVHRs55WLPxsK0y",
       "moodTagsInferred": [
         "genre:Hardcore"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-0ol0erPK3VG7zT3lgjxU06",
@@ -860,11 +824,7 @@
       "releasedAt": "2026-01-11",
       "href": "https://open.spotify.com/album/0ol0erPK3VG7zT3lgjxU06",
       "links": {
-        "spotify": "https://open.spotify.com/album/0ol0erPK3VG7zT3lgjxU06",
-        "appleMusic": "https://music.apple.com/jp/album/demiurgos/1868177506?i=1868177507&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1868177506?app=itunes&i=1868177507&mt=1",
-        "listen": "https://open.spotify.com/album/0ol0erPK3VG7zT3lgjxU06",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=DEMIURGOS"
+        "listen": "https://open.spotify.com/album/0ol0erPK3VG7zT3lgjxU06"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -912,7 +872,8 @@
       "primaryHref": "https://open.spotify.com/album/0ol0erPK3VG7zT3lgjxU06",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7pL3uJQ3s6iNS6dK8JTjtW",
@@ -926,11 +887,7 @@
       "releasedAt": "2026-01-11",
       "href": "https://open.spotify.com/album/7pL3uJQ3s6iNS6dK8JTjtW",
       "links": {
-        "spotify": "https://open.spotify.com/album/7pL3uJQ3s6iNS6dK8JTjtW",
-        "appleMusic": "https://music.apple.com/jp/album/hd-10700/1868172187?i=1868172188&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1868172187?app=itunes&i=1868172188&mt=1",
-        "listen": "https://open.spotify.com/album/7pL3uJQ3s6iNS6dK8JTjtW",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=HD%2010700"
+        "listen": "https://open.spotify.com/album/7pL3uJQ3s6iNS6dK8JTjtW"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -978,7 +935,8 @@
       "primaryHref": "https://open.spotify.com/album/7pL3uJQ3s6iNS6dK8JTjtW",
       "moodTagsInferred": [
         "genre:Electronica"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-76dP6vCO6ZcRdITKr34znQ",
@@ -992,11 +950,7 @@
       "releasedAt": "2026-01-10",
       "href": "https://open.spotify.com/album/76dP6vCO6ZcRdITKr34znQ",
       "links": {
-        "spotify": "https://open.spotify.com/album/76dP6vCO6ZcRdITKr34znQ",
-        "appleMusic": "https://music.apple.com/jp/album/hibiya-brass-walk/1867954627?i=1867954628&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867954627?app=itunes&i=1867954628&mt=1",
-        "listen": "https://open.spotify.com/album/76dP6vCO6ZcRdITKr34znQ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=HIBIYA%20BRASS%20WALK"
+        "listen": "https://open.spotify.com/album/76dP6vCO6ZcRdITKr34znQ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1044,7 +998,8 @@
       "primaryHref": "https://open.spotify.com/album/76dP6vCO6ZcRdITKr34znQ",
       "moodTagsInferred": [
         "genre:Big Band"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-3BIOa6bVUntKFbZVC8n4Rs",
@@ -1058,11 +1013,7 @@
       "releasedAt": "2026-01-10",
       "href": "https://open.spotify.com/album/3BIOa6bVUntKFbZVC8n4Rs",
       "links": {
-        "spotify": "https://open.spotify.com/album/3BIOa6bVUntKFbZVC8n4Rs",
-        "appleMusic": "https://music.apple.com/jp/album/%E8%A6%AA%E6%84%9B%E3%81%AA%E3%82%8B%E6%97%A5%E6%9C%AC%E3%81%AE%E7%9A%86%E6%A7%98/1868093052?i=1868093053&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1868093052?app=itunes&i=1868093053&mt=1",
-        "listen": "https://open.spotify.com/album/3BIOa6bVUntKFbZVC8n4Rs",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E8%A6%AA%E6%84%9B%E3%81%AA%E3%82%8B%E6%97%A5%E6%9C%AC%E3%81%AE%E7%9A%86%E6%A7%98"
+        "listen": "https://open.spotify.com/album/3BIOa6bVUntKFbZVC8n4Rs"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1110,7 +1061,8 @@
       "primaryHref": "https://open.spotify.com/album/3BIOa6bVUntKFbZVC8n4Rs",
       "moodTagsInferred": [
         "甘美"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-0fLDjvSsCiMvK7l0Yqb7Pa",
@@ -1124,11 +1076,7 @@
       "releasedAt": "2026-01-09",
       "href": "https://open.spotify.com/album/0fLDjvSsCiMvK7l0Yqb7Pa",
       "links": {
-        "spotify": "https://open.spotify.com/album/0fLDjvSsCiMvK7l0Yqb7Pa",
-        "appleMusic": "https://music.apple.com/jp/album/spirit-river-rising/1867684364?i=1867684365&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867684364?app=itunes&i=1867684365&mt=1",
-        "listen": "https://open.spotify.com/album/0fLDjvSsCiMvK7l0Yqb7Pa",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Spirit%20River%20Rising"
+        "listen": "https://open.spotify.com/album/0fLDjvSsCiMvK7l0Yqb7Pa"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1176,11 +1124,12 @@
       "primaryHref": "https://open.spotify.com/album/0fLDjvSsCiMvK7l0Yqb7Pa",
       "moodTagsInferred": [
         "genre:Reggae"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-18L8cZMCoYylC09TiZAi0z",
-      "title": "WORLD STRIKE — Thirteen Tongues",
+      "title": "WORLD STRIKE Thirteen Tongues",
       "type": "music",
       "cover": "/works/covers/spotify_18L8cZMCoYylC09TiZAi0z.jpg",
       "tags": [
@@ -1190,11 +1139,7 @@
       "releasedAt": "2026-01-09",
       "href": "https://open.spotify.com/album/18L8cZMCoYylC09TiZAi0z",
       "links": {
-        "spotify": "https://open.spotify.com/album/18L8cZMCoYylC09TiZAi0z",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/18L8cZMCoYylC09TiZAi0z",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=WORLD%20STRIKE%20%E2%80%94%20Thirteen%20Tongues"
+        "listen": "https://open.spotify.com/album/18L8cZMCoYylC09TiZAi0z"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -1215,7 +1160,8 @@
       },
       "salesHref": "https://open.spotify.com/album/18L8cZMCoYylC09TiZAi0z",
       "primaryHref": "https://open.spotify.com/album/18L8cZMCoYylC09TiZAi0z",
-      "moodTagsInferred": []
+      "moodTagsInferred": [],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5esj0yCWW7PnK3YJRpGR4s",
@@ -1229,11 +1175,7 @@
       "releasedAt": "2026-01-09",
       "href": "https://open.spotify.com/album/5esj0yCWW7PnK3YJRpGR4s",
       "links": {
-        "spotify": "https://open.spotify.com/album/5esj0yCWW7PnK3YJRpGR4s",
-        "appleMusic": "https://music.apple.com/jp/album/%E7%A5%9E%E5%A5%88%E5%82%99/1867710986?i=1867710987&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867710986?app=itunes&i=1867710987&mt=1",
-        "listen": "https://open.spotify.com/album/5esj0yCWW7PnK3YJRpGR4s",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E7%A5%9E%E5%A5%88%E5%82%99"
+        "listen": "https://open.spotify.com/album/5esj0yCWW7PnK3YJRpGR4s"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1281,11 +1223,12 @@
       "primaryHref": "https://open.spotify.com/album/5esj0yCWW7PnK3YJRpGR4s",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2Xb6klIRauA4zxhrddldUn",
-      "title": "IMAGINE：NO BUTTON",
+      "title": "IMAGINE NO BUTTON",
       "type": "music",
       "cover": "/works/covers/spotify_2Xb6klIRauA4zxhrddldUn.jpg",
       "tags": [
@@ -1295,11 +1238,7 @@
       "releasedAt": "2026-01-08",
       "href": "https://open.spotify.com/album/2Xb6klIRauA4zxhrddldUn",
       "links": {
-        "spotify": "https://open.spotify.com/album/2Xb6klIRauA4zxhrddldUn",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/2Xb6klIRauA4zxhrddldUn",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=IMAGINE%EF%BC%9ANO%20BUTTON"
+        "listen": "https://open.spotify.com/album/2Xb6klIRauA4zxhrddldUn"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -1317,7 +1256,8 @@
       "primaryHref": "https://open.spotify.com/album/2Xb6klIRauA4zxhrddldUn",
       "moodTagsInferred": [
         "genre:Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-27JuakRfJM23eGSI8ELaHv",
@@ -1331,11 +1271,7 @@
       "releasedAt": "2026-01-08",
       "href": "https://open.spotify.com/album/27JuakRfJM23eGSI8ELaHv",
       "links": {
-        "spotify": "https://open.spotify.com/album/27JuakRfJM23eGSI8ELaHv",
-        "appleMusic": "https://music.apple.com/jp/album/love-machine/1867668252?i=1867668253&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867668252?app=itunes&i=1867668253&mt=1",
-        "listen": "https://open.spotify.com/album/27JuakRfJM23eGSI8ELaHv",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Love%20Machine"
+        "listen": "https://open.spotify.com/album/27JuakRfJM23eGSI8ELaHv"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1397,11 +1333,12 @@
       "primaryHref": "https://open.spotify.com/album/27JuakRfJM23eGSI8ELaHv",
       "moodTagsInferred": [
         "甘美"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2PB3rZMx4luyCZUAaRtLMq",
-      "title": "Peace Is Engineered",
+      "title": "ピース・イズ・エンジニアード",
       "type": "music",
       "cover": "/works/covers/spotify_2PB3rZMx4luyCZUAaRtLMq.jpg",
       "tags": [
@@ -1411,11 +1348,7 @@
       "releasedAt": "2026-01-08",
       "href": "https://open.spotify.com/album/2PB3rZMx4luyCZUAaRtLMq",
       "links": {
-        "spotify": "https://open.spotify.com/album/2PB3rZMx4luyCZUAaRtLMq",
-        "appleMusic": "https://music.apple.com/jp/album/peace-is-engineered/1867659907?i=1867659910&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867659907?app=itunes&i=1867659910&mt=1",
-        "listen": "https://open.spotify.com/album/2PB3rZMx4luyCZUAaRtLMq",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Peace%20Is%20Engineered"
+        "listen": "https://open.spotify.com/album/2PB3rZMx4luyCZUAaRtLMq"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1463,11 +1396,12 @@
       "primaryHref": "https://open.spotify.com/album/2PB3rZMx4luyCZUAaRtLMq",
       "moodTagsInferred": [
         "genre:J-Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5JYgZgm324NPTCkiAyFjbb",
-      "title": "SAUNA TRANCE：TOTONOI",
+      "title": "サウナトランス ととのい",
       "type": "music",
       "cover": "/works/covers/spotify_5JYgZgm324NPTCkiAyFjbb.jpg",
       "tags": [
@@ -1477,11 +1411,7 @@
       "releasedAt": "2026-01-08",
       "href": "https://open.spotify.com/album/5JYgZgm324NPTCkiAyFjbb",
       "links": {
-        "spotify": "https://open.spotify.com/album/5JYgZgm324NPTCkiAyFjbb",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/5JYgZgm324NPTCkiAyFjbb",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=SAUNA%20TRANCE%EF%BC%9ATOTONOI"
+        "listen": "https://open.spotify.com/album/5JYgZgm324NPTCkiAyFjbb"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -1499,7 +1429,8 @@
       "primaryHref": "https://open.spotify.com/album/5JYgZgm324NPTCkiAyFjbb",
       "moodTagsInferred": [
         "genre:Electronica"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2ZK0Qhc4mokHy2Kf24buEV",
@@ -1513,11 +1444,7 @@
       "releasedAt": "2026-01-07",
       "href": "https://open.spotify.com/album/2ZK0Qhc4mokHy2Kf24buEV",
       "links": {
-        "spotify": "https://open.spotify.com/album/2ZK0Qhc4mokHy2Kf24buEV",
-        "appleMusic": "https://music.apple.com/jp/album/ashes-of-your-hand/1867195995?i=1867195997&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867195995?app=itunes&i=1867195997&mt=1",
-        "listen": "https://open.spotify.com/album/2ZK0Qhc4mokHy2Kf24buEV",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=ASHES%20OF%20YOUR%20HAND"
+        "listen": "https://open.spotify.com/album/2ZK0Qhc4mokHy2Kf24buEV"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1579,7 +1506,8 @@
       "primaryHref": "https://open.spotify.com/album/2ZK0Qhc4mokHy2Kf24buEV",
       "moodTagsInferred": [
         "genre:Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-07p7HMBQItfWmlENr1nzUd",
@@ -1593,11 +1521,7 @@
       "releasedAt": "2026-01-07",
       "href": "https://open.spotify.com/album/07p7HMBQItfWmlENr1nzUd",
       "links": {
-        "spotify": "https://open.spotify.com/album/07p7HMBQItfWmlENr1nzUd",
-        "appleMusic": "https://music.apple.com/jp/album/denpasar/1867139597?i=1867139599&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867139597?app=itunes&i=1867139599&mt=1",
-        "listen": "https://open.spotify.com/album/07p7HMBQItfWmlENr1nzUd",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=DENPASAR"
+        "listen": "https://open.spotify.com/album/07p7HMBQItfWmlENr1nzUd"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1645,7 +1569,8 @@
       "primaryHref": "https://open.spotify.com/album/07p7HMBQItfWmlENr1nzUd",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-12kmu8Ae9q5hrw5GgyqM0x",
@@ -1659,11 +1584,7 @@
       "releasedAt": "2026-01-07",
       "href": "https://open.spotify.com/album/12kmu8Ae9q5hrw5GgyqM0x",
       "links": {
-        "spotify": "https://open.spotify.com/album/12kmu8Ae9q5hrw5GgyqM0x",
-        "appleMusic": "https://music.apple.com/jp/album/voodoo-death/1867151462?i=1867151463&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867151462?app=itunes&i=1867151463&mt=1",
-        "listen": "https://open.spotify.com/album/12kmu8Ae9q5hrw5GgyqM0x",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=VOODOO%20DEATH"
+        "listen": "https://open.spotify.com/album/12kmu8Ae9q5hrw5GgyqM0x"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1711,7 +1632,8 @@
       "primaryHref": "https://open.spotify.com/album/12kmu8Ae9q5hrw5GgyqM0x",
       "moodTagsInferred": [
         "genre:Trance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-6njSivM1klHpaXooqKNwvS",
@@ -1725,11 +1647,7 @@
       "releasedAt": "2026-01-07",
       "href": "https://open.spotify.com/album/6njSivM1klHpaXooqKNwvS",
       "links": {
-        "spotify": "https://open.spotify.com/album/6njSivM1klHpaXooqKNwvS",
-        "appleMusic": "https://music.apple.com/jp/album/%E9%80%9F%E5%BA%A6%E3%81%8C%E5%BD%A2%E3%82%92%E6%B6%88%E3%81%99%E3%81%A8%E3%81%8D/1867212905?i=1867212906&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867212905?app=itunes&i=1867212906&mt=1",
-        "listen": "https://open.spotify.com/album/6njSivM1klHpaXooqKNwvS",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E9%80%9F%E5%BA%A6%E3%81%8C%E5%BD%A2%E3%82%92%E6%B6%88%E3%81%99%E3%81%A8%E3%81%8D"
+        "listen": "https://open.spotify.com/album/6njSivM1klHpaXooqKNwvS"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1777,7 +1695,8 @@
       "primaryHref": "https://open.spotify.com/album/6njSivM1klHpaXooqKNwvS",
       "moodTagsInferred": [
         "genre:Electronica"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4tJO09k9mjc8y7I7gphaH1",
@@ -1791,11 +1710,7 @@
       "releasedAt": "2026-01-07",
       "href": "https://open.spotify.com/album/4tJO09k9mjc8y7I7gphaH1",
       "links": {
-        "spotify": "https://open.spotify.com/album/4tJO09k9mjc8y7I7gphaH1",
-        "appleMusic": "https://music.apple.com/jp/album/%E9%87%8F%E5%AD%90%E6%81%8B%E6%84%9B%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/1867447476?i=1867447479&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1867447476?app=itunes&i=1867447479&mt=1",
-        "listen": "https://open.spotify.com/album/4tJO09k9mjc8y7I7gphaH1",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E9%87%8F%E5%AD%90%E6%81%8B%E6%84%9B%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0"
+        "listen": "https://open.spotify.com/album/4tJO09k9mjc8y7I7gphaH1"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1843,7 +1758,8 @@
       "primaryHref": "https://open.spotify.com/album/4tJO09k9mjc8y7I7gphaH1",
       "moodTagsInferred": [
         "甘美"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-album-1vLThFMjRi4noudDkGwf5f",
@@ -1857,11 +1773,7 @@
       "releasedAt": "2026-01-07",
       "href": "https://open.spotify.com/album/1vLThFMjRi4noudDkGwf5f",
       "links": {
-        "spotify": "https://open.spotify.com/album/1vLThFMjRi4noudDkGwf5f",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/1vLThFMjRi4noudDkGwf5f",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=BALIAN"
+        "listen": "https://open.spotify.com/album/1vLThFMjRi4noudDkGwf5f"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -1879,7 +1791,8 @@
       "primaryHref": "https://open.spotify.com/album/1vLThFMjRi4noudDkGwf5f",
       "moodTagsInferred": [
         "物語性"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-6Hn0j6sf1GdH6vSnoQBEW0",
@@ -1893,11 +1806,7 @@
       "releasedAt": "2026-01-06",
       "href": "https://open.spotify.com/album/6Hn0j6sf1GdH6vSnoQBEW0",
       "links": {
-        "spotify": "https://open.spotify.com/album/6Hn0j6sf1GdH6vSnoQBEW0",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/6Hn0j6sf1GdH6vSnoQBEW0",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Truth%20Unbound"
+        "listen": "https://open.spotify.com/album/6Hn0j6sf1GdH6vSnoQBEW0"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -1915,7 +1824,8 @@
       "primaryHref": "https://open.spotify.com/album/6Hn0j6sf1GdH6vSnoQBEW0",
       "moodTagsInferred": [
         "genre:Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4akPulmmHphQJBEgk96Cx8",
@@ -1929,11 +1839,7 @@
       "releasedAt": "2026-01-06",
       "href": "https://open.spotify.com/album/4akPulmmHphQJBEgk96Cx8",
       "links": {
-        "spotify": "https://open.spotify.com/album/4akPulmmHphQJBEgk96Cx8",
-        "appleMusic": "https://music.apple.com/jp/album/%E5%BF%83%E4%B8%8A%E4%BA%BA/1866880884?i=1866880885&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1866880884?app=itunes&i=1866880885&mt=1",
-        "listen": "https://open.spotify.com/album/4akPulmmHphQJBEgk96Cx8",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E5%BF%83%E4%B8%8A%E4%BA%BA"
+        "listen": "https://open.spotify.com/album/4akPulmmHphQJBEgk96Cx8"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -1981,7 +1887,8 @@
       "primaryHref": "https://open.spotify.com/album/4akPulmmHphQJBEgk96Cx8",
       "moodTagsInferred": [
         "genre:Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1ImMLhmJQ9u7A40mzDkhlJ",
@@ -1995,11 +1902,7 @@
       "releasedAt": "2026-01-05",
       "href": "https://open.spotify.com/album/1ImMLhmJQ9u7A40mzDkhlJ",
       "links": {
-        "spotify": "https://open.spotify.com/album/1ImMLhmJQ9u7A40mzDkhlJ",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/1ImMLhmJQ9u7A40mzDkhlJ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=DO%20NOT%20SPEAK%20ABOUT%20OIL"
+        "listen": "https://open.spotify.com/album/1ImMLhmJQ9u7A40mzDkhlJ"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -2017,7 +1920,8 @@
       "primaryHref": "https://open.spotify.com/album/1ImMLhmJQ9u7A40mzDkhlJ",
       "moodTagsInferred": [
         "genre:R&B/Soul"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4f9eMG9fbEau63cMgtFs11",
@@ -2031,11 +1935,7 @@
       "releasedAt": "2026-01-05",
       "href": "https://open.spotify.com/album/4f9eMG9fbEau63cMgtFs11",
       "links": {
-        "spotify": "https://open.spotify.com/album/4f9eMG9fbEau63cMgtFs11",
-        "appleMusic": "https://music.apple.com/jp/album/%E9%BE%99%E4%B9%8B%E8%A7%89%E9%86%92/1866623623?i=1866623624&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1866623623?app=itunes&i=1866623624&mt=1",
-        "listen": "https://open.spotify.com/album/4f9eMG9fbEau63cMgtFs11",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E9%BE%99%E4%B9%8B%E8%A7%89%E9%86%92"
+        "listen": "https://open.spotify.com/album/4f9eMG9fbEau63cMgtFs11"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2083,11 +1983,12 @@
       "primaryHref": "https://open.spotify.com/album/4f9eMG9fbEau63cMgtFs11",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-album-6acsBbFbxxCTKQpSdlkxpx",
-      "title": "ROOTS OF TRUTH",
+      "title": "ルーツ・オブ・トゥルース",
       "type": "music",
       "cover": "/works/covers/spotify_6acsBbFbxxCTKQpSdlkxpx.jpg",
       "tags": [
@@ -2097,11 +1998,7 @@
       "releasedAt": "2026-01-03",
       "href": "https://open.spotify.com/album/6acsBbFbxxCTKQpSdlkxpx",
       "links": {
-        "spotify": "https://open.spotify.com/album/6acsBbFbxxCTKQpSdlkxpx",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/6acsBbFbxxCTKQpSdlkxpx",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=ROOTS%20OF%20TRUTH"
+        "listen": "https://open.spotify.com/album/6acsBbFbxxCTKQpSdlkxpx"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -2119,7 +2016,8 @@
       "primaryHref": "https://open.spotify.com/album/6acsBbFbxxCTKQpSdlkxpx",
       "moodTagsInferred": [
         "物語性"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7eOyVPqCMH9wxwdABrbS4F",
@@ -2133,11 +2031,7 @@
       "releasedAt": "2025-12-29",
       "href": "https://open.spotify.com/album/7eOyVPqCMH9wxwdABrbS4F",
       "links": {
-        "spotify": "https://open.spotify.com/album/7eOyVPqCMH9wxwdABrbS4F",
-        "appleMusic": "https://music.apple.com/jp/album/happy-new-year-2026/1865293669?i=1865293670&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1865293669?app=itunes&i=1865293670&mt=1",
-        "listen": "https://open.spotify.com/album/7eOyVPqCMH9wxwdABrbS4F",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Happy%20New%20Year%202026"
+        "listen": "https://open.spotify.com/album/7eOyVPqCMH9wxwdABrbS4F"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2185,7 +2079,8 @@
       "primaryHref": "https://open.spotify.com/album/7eOyVPqCMH9wxwdABrbS4F",
       "moodTagsInferred": [
         "高揚"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-74ROBbSgf4f8NgFGVqGAYu",
@@ -2199,11 +2094,7 @@
       "releasedAt": "2025-12-22",
       "href": "https://open.spotify.com/album/74ROBbSgf4f8NgFGVqGAYu",
       "links": {
-        "spotify": "https://open.spotify.com/album/74ROBbSgf4f8NgFGVqGAYu",
-        "appleMusic": "https://music.apple.com/jp/album/surfing-santa/1863491181?i=1863491182&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1863491181?app=itunes&i=1863491182&mt=1",
-        "listen": "https://open.spotify.com/album/74ROBbSgf4f8NgFGVqGAYu",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Surfing%20Santa"
+        "listen": "https://open.spotify.com/album/74ROBbSgf4f8NgFGVqGAYu"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2251,7 +2142,8 @@
       "primaryHref": "https://open.spotify.com/album/74ROBbSgf4f8NgFGVqGAYu",
       "moodTagsInferred": [
         "genre:Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-09T29hz72mU3BDXlziKBmZ",
@@ -2265,11 +2157,7 @@
       "releasedAt": "2025-11-18",
       "href": "https://open.spotify.com/album/09T29hz72mU3BDXlziKBmZ",
       "links": {
-        "spotify": "https://open.spotify.com/album/09T29hz72mU3BDXlziKBmZ",
-        "appleMusic": "https://music.apple.com/jp/album/aurora-launge/1855136388?i=1855136389&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855136388?app=itunes&i=1855136389&mt=1",
-        "listen": "https://open.spotify.com/album/09T29hz72mU3BDXlziKBmZ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Aurora%20Launge"
+        "listen": "https://open.spotify.com/album/09T29hz72mU3BDXlziKBmZ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2317,7 +2205,8 @@
       "primaryHref": "https://open.spotify.com/album/09T29hz72mU3BDXlziKBmZ",
       "moodTagsInferred": [
         "genre:Downtempo"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-38ooZtRaBt2H0wZXUt8NYx",
@@ -2331,11 +2220,7 @@
       "releasedAt": "2025-11-18",
       "href": "https://open.spotify.com/album/38ooZtRaBt2H0wZXUt8NYx",
       "links": {
-        "spotify": "https://open.spotify.com/album/38ooZtRaBt2H0wZXUt8NYx",
-        "appleMusic": "https://music.apple.com/jp/album/event-horizon/1855109197?i=1855109198&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855109197?app=itunes&i=1855109198&mt=1",
-        "listen": "https://open.spotify.com/album/38ooZtRaBt2H0wZXUt8NYx",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Event%20Horizon"
+        "listen": "https://open.spotify.com/album/38ooZtRaBt2H0wZXUt8NYx"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2383,7 +2268,8 @@
       "primaryHref": "https://open.spotify.com/album/38ooZtRaBt2H0wZXUt8NYx",
       "moodTagsInferred": [
         "genre:House"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-6PiQ3GCYphnrmNr3kytmJr",
@@ -2397,11 +2283,7 @@
       "releasedAt": "2025-11-18",
       "href": "https://open.spotify.com/album/6PiQ3GCYphnrmNr3kytmJr",
       "links": {
-        "spotify": "https://open.spotify.com/album/6PiQ3GCYphnrmNr3kytmJr",
-        "appleMusic": "https://music.apple.com/jp/album/floating-sundays/1854943881?i=1854943882&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854943881?app=itunes&i=1854943882&mt=1",
-        "listen": "https://open.spotify.com/album/6PiQ3GCYphnrmNr3kytmJr",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Floating%20Sundays"
+        "listen": "https://open.spotify.com/album/6PiQ3GCYphnrmNr3kytmJr"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2449,7 +2331,8 @@
       "primaryHref": "https://open.spotify.com/album/6PiQ3GCYphnrmNr3kytmJr",
       "moodTagsInferred": [
         "genre:Downtempo"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7zjhtmSAryh3RrYFUAdJ5r",
@@ -2463,11 +2346,7 @@
       "releasedAt": "2025-11-18",
       "href": "https://open.spotify.com/album/7zjhtmSAryh3RrYFUAdJ5r",
       "links": {
-        "spotify": "https://open.spotify.com/album/7zjhtmSAryh3RrYFUAdJ5r",
-        "appleMusic": "https://music.apple.com/jp/album/nuy/1854953355?i=1854953357&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854953355?app=itunes&i=1854953357&mt=1",
-        "listen": "https://open.spotify.com/album/7zjhtmSAryh3RrYFUAdJ5r",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=NUY"
+        "listen": "https://open.spotify.com/album/7zjhtmSAryh3RrYFUAdJ5r"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2515,7 +2394,8 @@
       "primaryHref": "https://open.spotify.com/album/7zjhtmSAryh3RrYFUAdJ5r",
       "moodTagsInferred": [
         "genre:Trance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1RT6dHg4oqpG9orMYwrAOZ",
@@ -2529,11 +2409,7 @@
       "releasedAt": "2025-11-18",
       "href": "https://open.spotify.com/album/1RT6dHg4oqpG9orMYwrAOZ",
       "links": {
-        "spotify": "https://open.spotify.com/album/1RT6dHg4oqpG9orMYwrAOZ",
-        "appleMusic": "https://music.apple.com/jp/album/the-fifth-world/1855109250?i=1855109251&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855109250?app=itunes&i=1855109251&mt=1",
-        "listen": "https://open.spotify.com/album/1RT6dHg4oqpG9orMYwrAOZ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=The%20Fifth%20World"
+        "listen": "https://open.spotify.com/album/1RT6dHg4oqpG9orMYwrAOZ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2595,7 +2471,8 @@
       "primaryHref": "https://open.spotify.com/album/1RT6dHg4oqpG9orMYwrAOZ",
       "moodTagsInferred": [
         "genre:Trance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-album-6PgNVsIazui2EKAwIIH5Pp",
@@ -2609,11 +2486,7 @@
       "releasedAt": "2025-11-18",
       "href": "https://open.spotify.com/album/6PgNVsIazui2EKAwIIH5Pp",
       "links": {
-        "spotify": "https://open.spotify.com/album/6PgNVsIazui2EKAwIIH5Pp",
-        "appleMusic": "https://music.apple.com/jp/album/deep-balkan-trip/1855113604?uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855113604?app=itunes&mt=1",
-        "listen": "https://open.spotify.com/album/6PgNVsIazui2EKAwIIH5Pp",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=DEEP%20BALKAN%20TRIP"
+        "listen": "https://open.spotify.com/album/6PgNVsIazui2EKAwIIH5Pp"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2661,11 +2534,12 @@
       "primaryHref": "https://open.spotify.com/album/6PgNVsIazui2EKAwIIH5Pp",
       "moodTagsInferred": [
         "物語性"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-67DToKxvWonpGDlwwtVhyJ",
-      "title": "Carbon Negative Project",
+      "title": "カーボンネガティブプロジェクト",
       "type": "music",
       "cover": "/works/covers/spotify_67DToKxvWonpGDlwwtVhyJ.jpg",
       "tags": [
@@ -2675,11 +2549,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/67DToKxvWonpGDlwwtVhyJ",
       "links": {
-        "spotify": "https://open.spotify.com/album/67DToKxvWonpGDlwwtVhyJ",
-        "appleMusic": "https://music.apple.com/jp/album/carbon-negative-project/1854962490?i=1854962491&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854962490?app=itunes&i=1854962491&mt=1",
-        "listen": "https://open.spotify.com/album/67DToKxvWonpGDlwwtVhyJ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Carbon%20Negative%20Project"
+        "listen": "https://open.spotify.com/album/67DToKxvWonpGDlwwtVhyJ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2727,7 +2597,8 @@
       "primaryHref": "https://open.spotify.com/album/67DToKxvWonpGDlwwtVhyJ",
       "moodTagsInferred": [
         "genre:New Age"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1fMyrxxtfUI8eIIUgDQ5Yc",
@@ -2741,11 +2612,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/1fMyrxxtfUI8eIIUgDQ5Yc",
       "links": {
-        "spotify": "https://open.spotify.com/album/1fMyrxxtfUI8eIIUgDQ5Yc",
-        "appleMusic": "https://music.apple.com/jp/album/holy-god/1855010383?i=1855010384&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855010383?app=itunes&i=1855010384&mt=1",
-        "listen": "https://open.spotify.com/album/1fMyrxxtfUI8eIIUgDQ5Yc",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Holy%20God"
+        "listen": "https://open.spotify.com/album/1fMyrxxtfUI8eIIUgDQ5Yc"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2793,7 +2660,8 @@
       "primaryHref": "https://open.spotify.com/album/1fMyrxxtfUI8eIIUgDQ5Yc",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1hobPm6mfYk4lpNIPQenqi",
@@ -2807,11 +2675,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/1hobPm6mfYk4lpNIPQenqi",
       "links": {
-        "spotify": "https://open.spotify.com/album/1hobPm6mfYk4lpNIPQenqi",
-        "appleMusic": null,
-        "itunesBuy": null,
-        "listen": "https://open.spotify.com/album/1hobPm6mfYk4lpNIPQenqi",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Licence%20to%20Fly"
+        "listen": "https://open.spotify.com/album/1hobPm6mfYk4lpNIPQenqi"
       },
       "matchInfo": {
         "status": "no_hit",
@@ -2829,7 +2693,8 @@
       "primaryHref": "https://open.spotify.com/album/1hobPm6mfYk4lpNIPQenqi",
       "moodTagsInferred": [
         "genre:Electronic"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2q4ELydx4fxxDRe2rmaCbt",
@@ -2843,11 +2708,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/2q4ELydx4fxxDRe2rmaCbt",
       "links": {
-        "spotify": "https://open.spotify.com/album/2q4ELydx4fxxDRe2rmaCbt",
-        "appleMusic": "https://music.apple.com/jp/album/pantiest/1855010755?i=1855010756&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855010755?app=itunes&i=1855010756&mt=1",
-        "listen": "https://open.spotify.com/album/2q4ELydx4fxxDRe2rmaCbt",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Pantiest"
+        "listen": "https://open.spotify.com/album/2q4ELydx4fxxDRe2rmaCbt"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2909,7 +2770,8 @@
       "primaryHref": "https://open.spotify.com/album/2q4ELydx4fxxDRe2rmaCbt",
       "moodTagsInferred": [
         "genre:Rock"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7FdQBEA43fjNPxG4uBCy9i",
@@ -2923,11 +2785,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/7FdQBEA43fjNPxG4uBCy9i",
       "links": {
-        "spotify": "https://open.spotify.com/album/7FdQBEA43fjNPxG4uBCy9i",
-        "appleMusic": "https://music.apple.com/jp/album/storm-at-the-keep/1854780155?i=1854780156&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854780155?app=itunes&i=1854780156&mt=1",
-        "listen": "https://open.spotify.com/album/7FdQBEA43fjNPxG4uBCy9i",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Storm%20at%20the%20Keep"
+        "listen": "https://open.spotify.com/album/7FdQBEA43fjNPxG4uBCy9i"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -2975,7 +2833,8 @@
       "primaryHref": "https://open.spotify.com/album/7FdQBEA43fjNPxG4uBCy9i",
       "moodTagsInferred": [
         "genre:Alternative"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4E7506a6RunHbDOB11X7Aj",
@@ -2989,11 +2848,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/4E7506a6RunHbDOB11X7Aj",
       "links": {
-        "spotify": "https://open.spotify.com/album/4E7506a6RunHbDOB11X7Aj",
-        "appleMusic": "https://music.apple.com/jp/album/totem-pole/1854943681?i=1854943682&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854943681?app=itunes&i=1854943682&mt=1",
-        "listen": "https://open.spotify.com/album/4E7506a6RunHbDOB11X7Aj",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=TOTEM%20POLE"
+        "listen": "https://open.spotify.com/album/4E7506a6RunHbDOB11X7Aj"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3041,7 +2896,8 @@
       "primaryHref": "https://open.spotify.com/album/4E7506a6RunHbDOB11X7Aj",
       "moodTagsInferred": [
         "genre:Trance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-7G47jyAns4iHZNWSvhymXS",
@@ -3055,11 +2911,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/7G47jyAns4iHZNWSvhymXS",
       "links": {
-        "spotify": "https://open.spotify.com/album/7G47jyAns4iHZNWSvhymXS",
-        "appleMusic": "https://music.apple.com/jp/album/tears-of-the-blue-planet/1854779704?i=1854779705&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854779704?app=itunes&i=1854779705&mt=1",
-        "listen": "https://open.spotify.com/album/7G47jyAns4iHZNWSvhymXS",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Tears%20of%20the%20Blue%20Planet"
+        "listen": "https://open.spotify.com/album/7G47jyAns4iHZNWSvhymXS"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3107,7 +2959,8 @@
       "primaryHref": "https://open.spotify.com/album/7G47jyAns4iHZNWSvhymXS",
       "moodTagsInferred": [
         "genre:New Age"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4pjmbqyALItENDbHn10WvZ",
@@ -3121,11 +2974,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/4pjmbqyALItENDbHn10WvZ",
       "links": {
-        "spotify": "https://open.spotify.com/album/4pjmbqyALItENDbHn10WvZ",
-        "appleMusic": "https://music.apple.com/jp/album/the-breath-of-all-things/1855010937?i=1855010938&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855010937?app=itunes&i=1855010938&mt=1",
-        "listen": "https://open.spotify.com/album/4pjmbqyALItENDbHn10WvZ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=The%20Breath%20of%20All%20Things"
+        "listen": "https://open.spotify.com/album/4pjmbqyALItENDbHn10WvZ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3173,7 +3022,8 @@
       "primaryHref": "https://open.spotify.com/album/4pjmbqyALItENDbHn10WvZ",
       "moodTagsInferred": [
         "genre:New Age"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5rLccVbd7tgMYE6aMZE11H",
@@ -3187,11 +3037,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/5rLccVbd7tgMYE6aMZE11H",
       "links": {
-        "spotify": "https://open.spotify.com/album/5rLccVbd7tgMYE6aMZE11H",
-        "appleMusic": "https://music.apple.com/jp/album/the-naked-forest/1855011514?i=1855011515&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855011514?app=itunes&i=1855011515&mt=1",
-        "listen": "https://open.spotify.com/album/5rLccVbd7tgMYE6aMZE11H",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=The%20Naked%20Forest"
+        "listen": "https://open.spotify.com/album/5rLccVbd7tgMYE6aMZE11H"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3239,7 +3085,8 @@
       "primaryHref": "https://open.spotify.com/album/5rLccVbd7tgMYE6aMZE11H",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-0iJWv54eyhcnYkCGoyMT19",
@@ -3253,11 +3100,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/0iJWv54eyhcnYkCGoyMT19",
       "links": {
-        "spotify": "https://open.spotify.com/album/0iJWv54eyhcnYkCGoyMT19",
-        "appleMusic": "https://music.apple.com/jp/album/%E3%82%A4%E3%83%BC%E3%82%B9%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%82%AE%E3%83%A3%E3%83%A9%E3%83%AA%E3%83%BC/1855011306?i=1855011307&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855011306?app=itunes&i=1855011307&mt=1",
-        "listen": "https://open.spotify.com/album/0iJWv54eyhcnYkCGoyMT19",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E3%82%A4%E3%83%BC%E3%82%B9%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%82%AE%E3%83%A3%E3%83%A9%E3%83%AA%E3%83%BC"
+        "listen": "https://open.spotify.com/album/0iJWv54eyhcnYkCGoyMT19"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3305,7 +3148,8 @@
       "primaryHref": "https://open.spotify.com/album/0iJWv54eyhcnYkCGoyMT19",
       "moodTagsInferred": [
         "genre:Electronica"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-0XRRQgeFdXv0IyuiJ9qCWE",
@@ -3319,11 +3163,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/0XRRQgeFdXv0IyuiJ9qCWE",
       "links": {
-        "spotify": "https://open.spotify.com/album/0XRRQgeFdXv0IyuiJ9qCWE",
-        "appleMusic": "https://music.apple.com/jp/album/%E3%83%81%E3%83%AB%E3%81%97%E3%82%88/1854780283?i=1854780285&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854780283?app=itunes&i=1854780285&mt=1",
-        "listen": "https://open.spotify.com/album/0XRRQgeFdXv0IyuiJ9qCWE",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E3%83%81%E3%83%AB%E3%81%97%E3%82%88"
+        "listen": "https://open.spotify.com/album/0XRRQgeFdXv0IyuiJ9qCWE"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3371,7 +3211,8 @@
       "primaryHref": "https://open.spotify.com/album/0XRRQgeFdXv0IyuiJ9qCWE",
       "moodTagsInferred": [
         "genre:Downtempo"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2vZaUnTzyuEmUU9fDPqun7",
@@ -3385,11 +3226,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/2vZaUnTzyuEmUU9fDPqun7",
       "links": {
-        "spotify": "https://open.spotify.com/album/2vZaUnTzyuEmUU9fDPqun7",
-        "appleMusic": "https://music.apple.com/jp/album/%E5%90%9B%E3%81%AE%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%A7/1855012535?i=1855012536&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855012535?app=itunes&i=1855012536&mt=1",
-        "listen": "https://open.spotify.com/album/2vZaUnTzyuEmUU9fDPqun7",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E5%90%9B%E3%81%AE%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%A7"
+        "listen": "https://open.spotify.com/album/2vZaUnTzyuEmUU9fDPqun7"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3437,7 +3274,8 @@
       "primaryHref": "https://open.spotify.com/album/2vZaUnTzyuEmUU9fDPqun7",
       "moodTagsInferred": [
         "genre:R&B/Soul"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2KmDmGQXJxnYtCsdvceCOm",
@@ -3451,11 +3289,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/2KmDmGQXJxnYtCsdvceCOm",
       "links": {
-        "spotify": "https://open.spotify.com/album/2KmDmGQXJxnYtCsdvceCOm",
-        "appleMusic": "https://music.apple.com/jp/album/%E7%8F%BE%E8%B1%A1%E8%AB%96%E7%9A%84%E5%AE%9F%E5%9C%A8%E8%AB%96/1855010928?i=1855010929&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1855010928?app=itunes&i=1855010929&mt=1",
-        "listen": "https://open.spotify.com/album/2KmDmGQXJxnYtCsdvceCOm",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E7%8F%BE%E8%B1%A1%E8%AB%96%E7%9A%84%E5%AE%9F%E5%9C%A8%E8%AB%96"
+        "listen": "https://open.spotify.com/album/2KmDmGQXJxnYtCsdvceCOm"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3503,7 +3337,8 @@
       "primaryHref": "https://open.spotify.com/album/2KmDmGQXJxnYtCsdvceCOm",
       "moodTagsInferred": [
         "genre:Alternative"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-01SX5jNiRBCTY02dtGz3iM",
@@ -3517,11 +3352,7 @@
       "releasedAt": "2025-11-17",
       "href": "https://open.spotify.com/album/01SX5jNiRBCTY02dtGz3iM",
       "links": {
-        "spotify": "https://open.spotify.com/album/01SX5jNiRBCTY02dtGz3iM",
-        "appleMusic": "https://music.apple.com/jp/album/%E9%9B%A8%E4%B8%8A%E3%81%8C%E3%82%8A%E3%81%AE%E5%9B%BD%E3%81%A7%E3%82%AB%E3%83%8A%E3%83%AA%E3%82%A2%E3%81%AF%E6%AD%8C%E3%81%86/1854962457?i=1854962459&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854962457?app=itunes&i=1854962459&mt=1",
-        "listen": "https://open.spotify.com/album/01SX5jNiRBCTY02dtGz3iM",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E9%9B%A8%E4%B8%8A%E3%81%8C%E3%82%8A%E3%81%AE%E5%9B%BD%E3%81%A7%E3%82%AB%E3%83%8A%E3%83%AA%E3%82%A2%E3%81%AF%E6%AD%8C%E3%81%86"
+        "listen": "https://open.spotify.com/album/01SX5jNiRBCTY02dtGz3iM"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3569,7 +3400,8 @@
       "primaryHref": "https://open.spotify.com/album/01SX5jNiRBCTY02dtGz3iM",
       "moodTagsInferred": [
         "genre:J-Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5J296uDyfSPHU5v3TvlTqh",
@@ -3583,11 +3415,7 @@
       "releasedAt": "2025-11-16",
       "href": "https://open.spotify.com/album/5J296uDyfSPHU5v3TvlTqh",
       "links": {
-        "spotify": "https://open.spotify.com/album/5J296uDyfSPHU5v3TvlTqh",
-        "appleMusic": "https://music.apple.com/jp/album/marble-trilogy-single/1854620955?uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1854620955?app=itunes&mt=1",
-        "listen": "https://open.spotify.com/album/5J296uDyfSPHU5v3TvlTqh",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Marble%20Trilogy"
+        "listen": "https://open.spotify.com/album/5J296uDyfSPHU5v3TvlTqh"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3635,7 +3463,8 @@
       "primaryHref": "https://open.spotify.com/album/5J296uDyfSPHU5v3TvlTqh",
       "moodTagsInferred": [
         "genre:Jazz"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1H7vOu12sL56MOxo5UovAu",
@@ -3649,11 +3478,7 @@
       "releasedAt": "2025-11-13",
       "href": "https://open.spotify.com/album/1H7vOu12sL56MOxo5UovAu",
       "links": {
-        "spotify": "https://open.spotify.com/album/1H7vOu12sL56MOxo5UovAu",
-        "appleMusic": "https://music.apple.com/jp/album/tanic/1853861348?i=1853861349&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1853861348?app=itunes&i=1853861349&mt=1",
-        "listen": "https://open.spotify.com/album/1H7vOu12sL56MOxo5UovAu",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=TANIC"
+        "listen": "https://open.spotify.com/album/1H7vOu12sL56MOxo5UovAu"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3701,7 +3526,8 @@
       "primaryHref": "https://open.spotify.com/album/1H7vOu12sL56MOxo5UovAu",
       "moodTagsInferred": [
         "genre:Trance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-6jePCi9s0ZOrU2A3xHVpJE",
@@ -3715,11 +3541,7 @@
       "releasedAt": "2025-11-09",
       "href": "https://open.spotify.com/album/6jePCi9s0ZOrU2A3xHVpJE",
       "links": {
-        "spotify": "https://open.spotify.com/album/6jePCi9s0ZOrU2A3xHVpJE",
-        "appleMusic": "https://music.apple.com/jp/album/%E5%B5%90%E5%B1%B1%E7%AB%B9%E6%9E%97%E3%81%AE%E5%B0%8F%E5%BE%84/1852876920?i=1852876921&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1852876920?app=itunes&i=1852876921&mt=1",
-        "listen": "https://open.spotify.com/album/6jePCi9s0ZOrU2A3xHVpJE",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E5%B5%90%E5%B1%B1%E7%AB%B9%E6%9E%97%E3%81%AE%E5%B0%8F%E5%BE%84"
+        "listen": "https://open.spotify.com/album/6jePCi9s0ZOrU2A3xHVpJE"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3767,7 +3589,8 @@
       "primaryHref": "https://open.spotify.com/album/6jePCi9s0ZOrU2A3xHVpJE",
       "moodTagsInferred": [
         "genre:New Age"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-0Dme3WC6peoGo7VwfynAUa",
@@ -3781,11 +3604,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/0Dme3WC6peoGo7VwfynAUa",
       "links": {
-        "spotify": "https://open.spotify.com/album/0Dme3WC6peoGo7VwfynAUa",
-        "appleMusic": "https://music.apple.com/jp/album/black-halo/1850441408?i=1850441409&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850441408?app=itunes&i=1850441409&mt=1",
-        "listen": "https://open.spotify.com/album/0Dme3WC6peoGo7VwfynAUa",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=BLACK%20HALO"
+        "listen": "https://open.spotify.com/album/0Dme3WC6peoGo7VwfynAUa"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3833,7 +3652,8 @@
       "primaryHref": "https://open.spotify.com/album/0Dme3WC6peoGo7VwfynAUa",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4Te6D8tcNCF9C4gACYX4TF",
@@ -3847,11 +3667,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/4Te6D8tcNCF9C4gACYX4TF",
       "links": {
-        "spotify": "https://open.spotify.com/album/4Te6D8tcNCF9C4gACYX4TF",
-        "appleMusic": "https://music.apple.com/jp/album/basic-income/1850441499?i=1850441500&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850441499?app=itunes&i=1850441500&mt=1",
-        "listen": "https://open.spotify.com/album/4Te6D8tcNCF9C4gACYX4TF",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Basic%20Income"
+        "listen": "https://open.spotify.com/album/4Te6D8tcNCF9C4gACYX4TF"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3913,7 +3729,8 @@
       "primaryHref": "https://open.spotify.com/album/4Te6D8tcNCF9C4gACYX4TF",
       "moodTagsInferred": [
         "genre:House"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5eGvd3qOkgnbk32EhF53dx",
@@ -3927,11 +3744,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/5eGvd3qOkgnbk32EhF53dx",
       "links": {
-        "spotify": "https://open.spotify.com/album/5eGvd3qOkgnbk32EhF53dx",
-        "appleMusic": "https://music.apple.com/jp/album/hanano-iwaya/1850286826?i=1850286827&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850286826?app=itunes&i=1850286827&mt=1",
-        "listen": "https://open.spotify.com/album/5eGvd3qOkgnbk32EhF53dx",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=HANANO%20IWAYA"
+        "listen": "https://open.spotify.com/album/5eGvd3qOkgnbk32EhF53dx"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -3979,7 +3792,8 @@
       "primaryHref": "https://open.spotify.com/album/5eGvd3qOkgnbk32EhF53dx",
       "moodTagsInferred": [
         "genre:Alternative"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-3HWVfoU9NmtaGVuDf8XrLQ",
@@ -3993,11 +3807,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/3HWVfoU9NmtaGVuDf8XrLQ",
       "links": {
-        "spotify": "https://open.spotify.com/album/3HWVfoU9NmtaGVuDf8XrLQ",
-        "appleMusic": "https://music.apple.com/jp/album/kabuland/1850459758?i=1850459759&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850459758?app=itunes&i=1850459759&mt=1",
-        "listen": "https://open.spotify.com/album/3HWVfoU9NmtaGVuDf8XrLQ",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=KABULAND"
+        "listen": "https://open.spotify.com/album/3HWVfoU9NmtaGVuDf8XrLQ"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4045,7 +3855,8 @@
       "primaryHref": "https://open.spotify.com/album/3HWVfoU9NmtaGVuDf8XrLQ",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-32bu98hDB2oz5soMucI14e",
@@ -4059,11 +3870,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/32bu98hDB2oz5soMucI14e",
       "links": {
-        "spotify": "https://open.spotify.com/album/32bu98hDB2oz5soMucI14e",
-        "appleMusic": "https://music.apple.com/jp/album/ocean-time/1850408979?i=1850409041&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850408979?app=itunes&i=1850409041&mt=1",
-        "listen": "https://open.spotify.com/album/32bu98hDB2oz5soMucI14e",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=OCEAN%20TIME"
+        "listen": "https://open.spotify.com/album/32bu98hDB2oz5soMucI14e"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4125,7 +3932,8 @@
       "primaryHref": "https://open.spotify.com/album/32bu98hDB2oz5soMucI14e",
       "moodTagsInferred": [
         "genre:Reggae"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-74sEyEjixKrMy406sbLKeS",
@@ -4139,11 +3947,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/74sEyEjixKrMy406sbLKeS",
       "links": {
-        "spotify": "https://open.spotify.com/album/74sEyEjixKrMy406sbLKeS",
-        "appleMusic": "https://music.apple.com/jp/album/prix-de-larc-de-triomphe-%CE%B1/1850398269?i=1850398270&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850398269?app=itunes&i=1850398270&mt=1",
-        "listen": "https://open.spotify.com/album/74sEyEjixKrMy406sbLKeS",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Prix%20de%20l%E2%80%99Arc%20de%20Triomphe.%20%CE%B1%EF%BC%86%CE%BC"
+        "listen": "https://open.spotify.com/album/74sEyEjixKrMy406sbLKeS"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4191,7 +3995,8 @@
       "primaryHref": "https://open.spotify.com/album/74sEyEjixKrMy406sbLKeS",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4C4TRrUvNNApe1pcRDzJ2h",
@@ -4205,11 +4010,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/4C4TRrUvNNApe1pcRDzJ2h",
       "links": {
-        "spotify": "https://open.spotify.com/album/4C4TRrUvNNApe1pcRDzJ2h",
-        "appleMusic": "https://music.apple.com/jp/album/shinobi/1850286604?i=1850286605&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850286604?app=itunes&i=1850286605&mt=1",
-        "listen": "https://open.spotify.com/album/4C4TRrUvNNApe1pcRDzJ2h",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=SHINOBI"
+        "listen": "https://open.spotify.com/album/4C4TRrUvNNApe1pcRDzJ2h"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4257,7 +4058,8 @@
       "primaryHref": "https://open.spotify.com/album/4C4TRrUvNNApe1pcRDzJ2h",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-3V9k59ROrDqtNXvc5lw4R2",
@@ -4271,11 +4073,7 @@
       "releasedAt": "2025-10-30",
       "href": "https://open.spotify.com/album/3V9k59ROrDqtNXvc5lw4R2",
       "links": {
-        "spotify": "https://open.spotify.com/album/3V9k59ROrDqtNXvc5lw4R2",
-        "appleMusic": "https://music.apple.com/jp/album/voltage/1850286860?i=1850286861&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850286860?app=itunes&i=1850286861&mt=1",
-        "listen": "https://open.spotify.com/album/3V9k59ROrDqtNXvc5lw4R2",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=VOLTAGE"
+        "listen": "https://open.spotify.com/album/3V9k59ROrDqtNXvc5lw4R2"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4323,7 +4121,8 @@
       "primaryHref": "https://open.spotify.com/album/3V9k59ROrDqtNXvc5lw4R2",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-6AianOFBEgRsv8vDpNgfrD",
@@ -4337,11 +4136,7 @@
       "releasedAt": "2025-10-29",
       "href": "https://open.spotify.com/album/6AianOFBEgRsv8vDpNgfrD",
       "links": {
-        "spotify": "https://open.spotify.com/album/6AianOFBEgRsv8vDpNgfrD",
-        "appleMusic": "https://music.apple.com/jp/album/beast-mode/1850367657?i=1850367658&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850367657?app=itunes&i=1850367658&mt=1",
-        "listen": "https://open.spotify.com/album/6AianOFBEgRsv8vDpNgfrD",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=BEAST%20MODE"
+        "listen": "https://open.spotify.com/album/6AianOFBEgRsv8vDpNgfrD"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4389,7 +4184,8 @@
       "primaryHref": "https://open.spotify.com/album/6AianOFBEgRsv8vDpNgfrD",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-78rIgnW0a50cAFgGZrAbOh",
@@ -4403,11 +4199,7 @@
       "releasedAt": "2025-10-29",
       "href": "https://open.spotify.com/album/78rIgnW0a50cAFgGZrAbOh",
       "links": {
-        "spotify": "https://open.spotify.com/album/78rIgnW0a50cAFgGZrAbOh",
-        "appleMusic": "https://music.apple.com/jp/album/diamond-heart/1850146948?i=1850146949&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850146948?app=itunes&i=1850146949&mt=1",
-        "listen": "https://open.spotify.com/album/78rIgnW0a50cAFgGZrAbOh",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=DIAMOND%20HEART"
+        "listen": "https://open.spotify.com/album/78rIgnW0a50cAFgGZrAbOh"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4455,7 +4247,8 @@
       "primaryHref": "https://open.spotify.com/album/78rIgnW0a50cAFgGZrAbOh",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2AuzXXeU96cWD7OVkqzFGD",
@@ -4469,11 +4262,7 @@
       "releasedAt": "2025-10-29",
       "href": "https://open.spotify.com/album/2AuzXXeU96cWD7OVkqzFGD",
       "links": {
-        "spotify": "https://open.spotify.com/album/2AuzXXeU96cWD7OVkqzFGD",
-        "appleMusic": "https://music.apple.com/jp/album/domine-vivo/1850134496?i=1850134498&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850134496?app=itunes&i=1850134498&mt=1",
-        "listen": "https://open.spotify.com/album/2AuzXXeU96cWD7OVkqzFGD",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=DOMINE%20VIVO"
+        "listen": "https://open.spotify.com/album/2AuzXXeU96cWD7OVkqzFGD"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4521,7 +4310,8 @@
       "primaryHref": "https://open.spotify.com/album/2AuzXXeU96cWD7OVkqzFGD",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1MqDTsreuS0aYMcDrzfmKD",
@@ -4535,11 +4325,7 @@
       "releasedAt": "2025-10-29",
       "href": "https://open.spotify.com/album/1MqDTsreuS0aYMcDrzfmKD",
       "links": {
-        "spotify": "https://open.spotify.com/album/1MqDTsreuS0aYMcDrzfmKD",
-        "appleMusic": "https://music.apple.com/jp/album/neon-secrets/1850299400?i=1850299401&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850299400?app=itunes&i=1850299401&mt=1",
-        "listen": "https://open.spotify.com/album/1MqDTsreuS0aYMcDrzfmKD",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=Neon%20Secrets"
+        "listen": "https://open.spotify.com/album/1MqDTsreuS0aYMcDrzfmKD"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4587,7 +4373,8 @@
       "primaryHref": "https://open.spotify.com/album/1MqDTsreuS0aYMcDrzfmKD",
       "moodTagsInferred": [
         "genre:House"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-18n32KwqQyCwhRXcLr2ynm",
@@ -4601,11 +4388,7 @@
       "releasedAt": "2025-10-29",
       "href": "https://open.spotify.com/album/18n32KwqQyCwhRXcLr2ynm",
       "links": {
-        "spotify": "https://open.spotify.com/album/18n32KwqQyCwhRXcLr2ynm",
-        "appleMusic": "https://music.apple.com/jp/album/venom-sun/1850287273?i=1850287274&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850287273?app=itunes&i=1850287274&mt=1",
-        "listen": "https://open.spotify.com/album/18n32KwqQyCwhRXcLr2ynm",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=VENOM%20SUN"
+        "listen": "https://open.spotify.com/album/18n32KwqQyCwhRXcLr2ynm"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4653,7 +4436,8 @@
       "primaryHref": "https://open.spotify.com/album/18n32KwqQyCwhRXcLr2ynm",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-1xY44AiHU8vaVPB7UWhBji",
@@ -4667,11 +4451,7 @@
       "releasedAt": "2025-10-29",
       "href": "https://open.spotify.com/album/1xY44AiHU8vaVPB7UWhBji",
       "links": {
-        "spotify": "https://open.spotify.com/album/1xY44AiHU8vaVPB7UWhBji",
-        "appleMusic": "https://music.apple.com/jp/album/%E3%81%A1%E3%82%83%E3%83%BC%E3%82%8B%E3%81%9A%E3%81%BD%E3%82%93%E3%81%98/1850266118?i=1850266119&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1850266118?app=itunes&i=1850266119&mt=1",
-        "listen": "https://open.spotify.com/album/1xY44AiHU8vaVPB7UWhBji",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E3%81%A1%E3%82%83%E3%83%BC%E3%82%8B%E3%81%9A%E3%81%BD%E3%82%93%E3%81%98"
+        "listen": "https://open.spotify.com/album/1xY44AiHU8vaVPB7UWhBji"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4719,7 +4499,8 @@
       "primaryHref": "https://open.spotify.com/album/1xY44AiHU8vaVPB7UWhBji",
       "moodTagsInferred": [
         "genre:Funk"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2kirIJ0L1WlgdEAlgrhw21",
@@ -4733,11 +4514,7 @@
       "releasedAt": "2025-10-23",
       "href": "https://open.spotify.com/album/2kirIJ0L1WlgdEAlgrhw21",
       "links": {
-        "spotify": "https://open.spotify.com/album/2kirIJ0L1WlgdEAlgrhw21",
-        "appleMusic": "https://music.apple.com/jp/album/omni/1848850357?i=1848850358&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1848850357?app=itunes&i=1848850358&mt=1",
-        "listen": "https://open.spotify.com/album/2kirIJ0L1WlgdEAlgrhw21",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=OMNI"
+        "listen": "https://open.spotify.com/album/2kirIJ0L1WlgdEAlgrhw21"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4785,7 +4562,8 @@
       "primaryHref": "https://open.spotify.com/album/2kirIJ0L1WlgdEAlgrhw21",
       "moodTagsInferred": [
         "genre:Trance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-5FE7EY0JdUarPap7I0VpK9",
@@ -4799,11 +4577,7 @@
       "releasedAt": "2025-10-22",
       "href": "https://open.spotify.com/album/5FE7EY0JdUarPap7I0VpK9",
       "links": {
-        "spotify": "https://open.spotify.com/album/5FE7EY0JdUarPap7I0VpK9",
-        "appleMusic": "https://music.apple.com/jp/album/horn-xyz-single/1848502686?uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1848502686?app=itunes&mt=1",
-        "listen": "https://open.spotify.com/album/5FE7EY0JdUarPap7I0VpK9",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=HORN.xyz"
+        "listen": "https://open.spotify.com/album/5FE7EY0JdUarPap7I0VpK9"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4851,7 +4625,8 @@
       "primaryHref": "https://open.spotify.com/album/5FE7EY0JdUarPap7I0VpK9",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-40Dr236xysXtCN62Qo4oQF",
@@ -4865,11 +4640,7 @@
       "releasedAt": "2025-10-19",
       "href": "https://open.spotify.com/album/40Dr236xysXtCN62Qo4oQF",
       "links": {
-        "spotify": "https://open.spotify.com/album/40Dr236xysXtCN62Qo4oQF",
-        "appleMusic": "https://music.apple.com/jp/album/thunder-shock/1847884551?i=1847884552&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1847884551?app=itunes&i=1847884552&mt=1",
-        "listen": "https://open.spotify.com/album/40Dr236xysXtCN62Qo4oQF",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=THUNDER%20SHOCK"
+        "listen": "https://open.spotify.com/album/40Dr236xysXtCN62Qo4oQF"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4917,7 +4688,8 @@
       "primaryHref": "https://open.spotify.com/album/40Dr236xysXtCN62Qo4oQF",
       "moodTagsInferred": [
         "genre:Dance"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-4VZOq9Zq0WBu5QDxUzUPX0",
@@ -4931,11 +4703,7 @@
       "releasedAt": "2025-10-19",
       "href": "https://open.spotify.com/album/4VZOq9Zq0WBu5QDxUzUPX0",
       "links": {
-        "spotify": "https://open.spotify.com/album/4VZOq9Zq0WBu5QDxUzUPX0",
-        "appleMusic": "https://music.apple.com/jp/album/%E7%81%AB%E3%81%AE%E6%84%8F%E5%BF%97/1847754511?i=1847754512&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1847754511?app=itunes&i=1847754512&mt=1",
-        "listen": "https://open.spotify.com/album/4VZOq9Zq0WBu5QDxUzUPX0",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E7%81%AB%E3%81%AE%E6%84%8F%E5%BF%97"
+        "listen": "https://open.spotify.com/album/4VZOq9Zq0WBu5QDxUzUPX0"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -4983,7 +4751,8 @@
       "primaryHref": "https://open.spotify.com/album/4VZOq9Zq0WBu5QDxUzUPX0",
       "moodTagsInferred": [
         "genre:J-Pop"
-      ]
+      ],
+      "previewUrl": ""
     },
     {
       "id": "spotify-single-2yp3h3x87iHpMLLCETSodM",
@@ -4997,11 +4766,7 @@
       "releasedAt": "2025-10-10",
       "href": "https://open.spotify.com/album/2yp3h3x87iHpMLLCETSodM",
       "links": {
-        "spotify": "https://open.spotify.com/album/2yp3h3x87iHpMLLCETSodM",
-        "appleMusic": "https://music.apple.com/jp/album/%E4%BC%AF%E7%88%B5%E4%BA%A4%E9%9F%BF%E6%9B%B2-i-v-%E6%84%8F%E8%AD%98%E5%89%B5%E4%B8%96%E8%AD%9A-ep/1845708525?uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1845708525?app=itunes&mt=1",
-        "listen": "https://open.spotify.com/album/2yp3h3x87iHpMLLCETSodM",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E4%BC%AF%E7%88%B5%E4%BA%A4%E9%9F%BF%E6%9B%B2%20I%E2%80%93V%20%E6%84%8F%E8%AD%98%E5%89%B5%E4%B8%96%E8%AD%9A"
+        "listen": "https://open.spotify.com/album/2yp3h3x87iHpMLLCETSodM"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -5049,7 +4814,24 @@
       "primaryHref": "https://open.spotify.com/album/2yp3h3x87iHpMLLCETSodM",
       "moodTagsInferred": [
         "genre:Worldwide"
-      ]
+      ],
+      "previewUrl": ""
+    },
+    {
+      "id": "spotify-single-0isH27stV7eiEpIbqfhood",
+      "title": "Fuego en la Noche",
+      "type": "music",
+      "cover": "/works/covers/spotify_0isH27stV7eiEpIbqfhood.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-04",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0isH27stV7eiEpIbqfhood",
+      "links": {
+        "listen": "https://open.spotify.com/album/0isH27stV7eiEpIbqfhood"
+      }
     },
     {
       "id": "fuego-en-la-noche-228",
@@ -5125,6 +4907,86 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1838078410?app=itunes&i=1838078411&mt=1",
       "primaryHref": "https://open.spotify.com/album/0isH27stV7eiEpIbqfhood"
+    },
+    {
+      "id": "spotify-single-77ncToDQp6awSbPW5eHFYh",
+      "title": "BOOM BOOM GOSPEL",
+      "type": "music",
+      "cover": "/works/covers/spotify_77ncToDQp6awSbPW5eHFYh.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/77ncToDQp6awSbPW5eHFYh",
+      "links": {
+        "listen": "https://open.spotify.com/album/77ncToDQp6awSbPW5eHFYh"
+      }
+    },
+    {
+      "id": "spotify-single-5ZtHYQh1WpcjEAu0019LVV",
+      "title": "KAMUNABI",
+      "type": "music",
+      "cover": "/works/covers/spotify_5ZtHYQh1WpcjEAu0019LVV.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5ZtHYQh1WpcjEAu0019LVV",
+      "links": {
+        "listen": "https://open.spotify.com/album/5ZtHYQh1WpcjEAu0019LVV"
+      }
+    },
+    {
+      "id": "spotify-single-1XwKmXUOJvKlMZsHYivNMa",
+      "title": "STILL DIVINE",
+      "type": "music",
+      "cover": "/works/covers/spotify_1XwKmXUOJvKlMZsHYivNMa.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1XwKmXUOJvKlMZsHYivNMa",
+      "links": {
+        "listen": "https://open.spotify.com/album/1XwKmXUOJvKlMZsHYivNMa"
+      }
+    },
+    {
+      "id": "spotify-single-3v4kqJ3xISv20Pz9LkgJ0A",
+      "title": "TREE",
+      "type": "music",
+      "cover": "/works/covers/spotify_3v4kqJ3xISv20Pz9LkgJ0A.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3v4kqJ3xISv20Pz9LkgJ0A",
+      "links": {
+        "listen": "https://open.spotify.com/album/3v4kqJ3xISv20Pz9LkgJ0A"
+      }
+    },
+    {
+      "id": "spotify-single-6kRbVwarAYUh70ME0HD9Fu",
+      "title": "アメノミナカヌシ",
+      "type": "music",
+      "cover": "/works/covers/spotify_6kRbVwarAYUh70ME0HD9Fu.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6kRbVwarAYUh70ME0HD9Fu",
+      "links": {
+        "listen": "https://open.spotify.com/album/6kRbVwarAYUh70ME0HD9Fu"
+      }
     },
     {
       "id": "ameno-minakanushi-223",
@@ -5552,6 +5414,54 @@
       "primaryHref": "https://open.spotify.com/album/3v4kqJ3xISv20Pz9LkgJ0A"
     },
     {
+      "id": "spotify-single-1ZK0R1AvFQRxv8gaf8jELE",
+      "title": "CONSENT OF SHADOWS",
+      "type": "music",
+      "cover": "/works/covers/spotify_1ZK0R1AvFQRxv8gaf8jELE.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1ZK0R1AvFQRxv8gaf8jELE",
+      "links": {
+        "listen": "https://open.spotify.com/album/1ZK0R1AvFQRxv8gaf8jELE"
+      }
+    },
+    {
+      "id": "spotify-single-56JcESzEx4fyEaD6Q2R9FD",
+      "title": "FORCED ENLIGHTENMENT",
+      "type": "music",
+      "cover": "/works/covers/spotify_56JcESzEx4fyEaD6Q2R9FD.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/56JcESzEx4fyEaD6Q2R9FD",
+      "links": {
+        "listen": "https://open.spotify.com/album/56JcESzEx4fyEaD6Q2R9FD"
+      }
+    },
+    {
+      "id": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ",
+      "title": "PRIMAL SURGE",
+      "type": "music",
+      "cover": "/works/covers/spotify_7LIlsNpzXZBZH2edcK4RQQ.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/7LIlsNpzXZBZH2edcK4RQQ",
+      "links": {
+        "listen": "https://open.spotify.com/album/7LIlsNpzXZBZH2edcK4RQQ"
+      }
+    },
+    {
       "id": "consent-of-shadows-220",
       "title": "CONSENT OF SHADOWS",
       "type": "music",
@@ -5807,6 +5717,70 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1837535907?app=itunes&i=1837535908&mt=1",
       "primaryHref": "https://open.spotify.com/album/7LIlsNpzXZBZH2edcK4RQQ"
+    },
+    {
+      "id": "spotify-single-6Xf0QNYo1QDMSXb9zKmPxU",
+      "title": "ABI9PRO",
+      "type": "music",
+      "cover": "/works/covers/spotify_6Xf0QNYo1QDMSXb9zKmPxU.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-01",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6Xf0QNYo1QDMSXb9zKmPxU",
+      "links": {
+        "listen": "https://open.spotify.com/album/6Xf0QNYo1QDMSXb9zKmPxU"
+      }
+    },
+    {
+      "id": "spotify-single-0bKqzi1CGYLZLtvuBNe9JJ",
+      "title": "Connect the Dots",
+      "type": "music",
+      "cover": "/works/covers/spotify_0bKqzi1CGYLZLtvuBNe9JJ.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-01",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0bKqzi1CGYLZLtvuBNe9JJ",
+      "links": {
+        "listen": "https://open.spotify.com/album/0bKqzi1CGYLZLtvuBNe9JJ"
+      }
+    },
+    {
+      "id": "spotify-single-4UmMbxajVR7P6Y2PkUlWcz",
+      "title": "Main Character Energy",
+      "type": "music",
+      "cover": "/works/covers/spotify_4UmMbxajVR7P6Y2PkUlWcz.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-01",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4UmMbxajVR7P6Y2PkUlWcz",
+      "links": {
+        "listen": "https://open.spotify.com/album/4UmMbxajVR7P6Y2PkUlWcz"
+      }
+    },
+    {
+      "id": "spotify-single-4ufCM11iUrig4C80QTuBos",
+      "title": "Tele-Existance Star Parade",
+      "type": "music",
+      "cover": "/works/covers/spotify_4ufCM11iUrig4C80QTuBos.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-09-01",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4ufCM11iUrig4C80QTuBos",
+      "links": {
+        "listen": "https://open.spotify.com/album/4ufCM11iUrig4C80QTuBos"
+      }
     },
     {
       "id": "abi9pro-216",
@@ -6129,6 +6103,38 @@
       "primaryHref": "https://open.spotify.com/album/4ufCM11iUrig4C80QTuBos"
     },
     {
+      "id": "spotify-single-6ukIB4oJJZdhUwKr9OOqzF",
+      "title": "Danke&Bitte",
+      "type": "music",
+      "cover": "/works/covers/spotify_6ukIB4oJJZdhUwKr9OOqzF.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-26",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6ukIB4oJJZdhUwKr9OOqzF",
+      "links": {
+        "listen": "https://open.spotify.com/album/6ukIB4oJJZdhUwKr9OOqzF"
+      }
+    },
+    {
+      "id": "spotify-single-1OZ2YPhTCoARTJhDvNMGFR",
+      "title": "流れ往くままに！",
+      "type": "music",
+      "cover": "/works/covers/spotify_1OZ2YPhTCoARTJhDvNMGFR.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-26",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1OZ2YPhTCoARTJhDvNMGFR",
+      "links": {
+        "listen": "https://open.spotify.com/album/1OZ2YPhTCoARTJhDvNMGFR"
+      }
+    },
+    {
       "id": "danke-bitte-214",
       "title": "Danke&Bitte",
       "type": "music",
@@ -6295,6 +6301,22 @@
       "primaryHref": "https://open.spotify.com/album/1OZ2YPhTCoARTJhDvNMGFR"
     },
     {
+      "id": "spotify-single-0eQBKgO27jTHhNVIXa5X9w",
+      "title": "PLAYTHING",
+      "type": "music",
+      "cover": "/works/covers/spotify_0eQBKgO27jTHhNVIXa5X9w.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-18",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0eQBKgO27jTHhNVIXa5X9w",
+      "links": {
+        "listen": "https://open.spotify.com/album/0eQBKgO27jTHhNVIXa5X9w"
+      }
+    },
+    {
       "id": "plaything-213",
       "title": "PLAYTHING",
       "type": "music",
@@ -6370,6 +6392,38 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1834048103?app=itunes&i=1834048104&mt=1",
       "primaryHref": "https://open.spotify.com/album/0eQBKgO27jTHhNVIXa5X9w"
+    },
+    {
+      "id": "spotify-single-4GtdD71vSh1NCycz68o3Qq",
+      "title": "Drey Fugen: Harmonia Mundi",
+      "type": "music",
+      "cover": "/works/covers/spotify_4GtdD71vSh1NCycz68o3Qq.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-12",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4GtdD71vSh1NCycz68o3Qq",
+      "links": {
+        "listen": "https://open.spotify.com/album/4GtdD71vSh1NCycz68o3Qq"
+      }
+    },
+    {
+      "id": "spotify-single-620pEoFScFihktgQKNpFns",
+      "title": "WE ARE THE TRIBE",
+      "type": "music",
+      "cover": "/works/covers/spotify_620pEoFScFihktgQKNpFns.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-12",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/620pEoFScFihktgQKNpFns",
+      "links": {
+        "listen": "https://open.spotify.com/album/620pEoFScFihktgQKNpFns"
+      }
     },
     {
       "id": "drey-fugen-harmonia-mundi-211",
@@ -6535,6 +6589,134 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1833106557?app=itunes&i=1833106559&mt=1",
       "primaryHref": "https://open.spotify.com/album/620pEoFScFihktgQKNpFns"
+    },
+    {
+      "id": "spotify-single-22EAvJjUOsVARGBiVYM7Rp",
+      "title": "DOWNBLAST",
+      "type": "music",
+      "cover": "/works/covers/spotify_22EAvJjUOsVARGBiVYM7Rp.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/22EAvJjUOsVARGBiVYM7Rp",
+      "links": {
+        "listen": "https://open.spotify.com/album/22EAvJjUOsVARGBiVYM7Rp"
+      }
+    },
+    {
+      "id": "spotify-single-6YXPuf1wRqLig9Vj2Mlly5",
+      "title": "Healing Island",
+      "type": "music",
+      "cover": "/works/covers/spotify_6YXPuf1wRqLig9Vj2Mlly5.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6YXPuf1wRqLig9Vj2Mlly5",
+      "links": {
+        "listen": "https://open.spotify.com/album/6YXPuf1wRqLig9Vj2Mlly5"
+      }
+    },
+    {
+      "id": "spotify-single-2ZsdWdyaB93gtJNli70SwF",
+      "title": "Tropical Reverie",
+      "type": "music",
+      "cover": "/works/covers/spotify_2ZsdWdyaB93gtJNli70SwF.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2ZsdWdyaB93gtJNli70SwF",
+      "links": {
+        "listen": "https://open.spotify.com/album/2ZsdWdyaB93gtJNli70SwF"
+      }
+    },
+    {
+      "id": "spotify-single-5d13PBfivFkvV5R5XHby33",
+      "title": "WIRED FANFARE",
+      "type": "music",
+      "cover": "/works/covers/spotify_5d13PBfivFkvV5R5XHby33.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5d13PBfivFkvV5R5XHby33",
+      "links": {
+        "listen": "https://open.spotify.com/album/5d13PBfivFkvV5R5XHby33"
+      }
+    },
+    {
+      "id": "spotify-single-6Xe09PFCcEOUrA88HJFas1",
+      "title": "不死鳥のトレード",
+      "type": "music",
+      "cover": "/works/covers/spotify_6Xe09PFCcEOUrA88HJFas1.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6Xe09PFCcEOUrA88HJFas1",
+      "links": {
+        "listen": "https://open.spotify.com/album/6Xe09PFCcEOUrA88HJFas1"
+      }
+    },
+    {
+      "id": "spotify-album-2S2gCXmyK3bNE5kvUJx2ZS",
+      "title": "Symphony of the Infinite",
+      "type": "music",
+      "cover": "/works/covers/spotify_2S2gCXmyK3bNE5kvUJx2ZS.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2S2gCXmyK3bNE5kvUJx2ZS",
+      "links": {
+        "listen": "https://open.spotify.com/album/2S2gCXmyK3bNE5kvUJx2ZS"
+      }
+    },
+    {
+      "id": "spotify-album-1uL8jJpLyWksK5fmbo4h7M",
+      "title": "全人類既読スルー",
+      "type": "music",
+      "cover": "/works/covers/spotify_1uL8jJpLyWksK5fmbo4h7M.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1uL8jJpLyWksK5fmbo4h7M",
+      "links": {
+        "listen": "https://open.spotify.com/album/1uL8jJpLyWksK5fmbo4h7M"
+      }
+    },
+    {
+      "id": "spotify-album-79CuhhEhb0GtBzgkk7fwsY",
+      "title": "星海の眠り　〜Slumber in the Star Sea〜",
+      "type": "music",
+      "cover": "/works/covers/spotify_79CuhhEhb0GtBzgkk7fwsY.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-08-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/79CuhhEhb0GtBzgkk7fwsY",
+      "links": {
+        "listen": "https://open.spotify.com/album/79CuhhEhb0GtBzgkk7fwsY"
+      }
     },
     {
       "id": "downblast-203",
@@ -7080,6 +7262,118 @@
       "primaryHref": "https://open.spotify.com/album/79CuhhEhb0GtBzgkk7fwsY"
     },
     {
+      "id": "spotify-single-5AvhDOUFsIR2S8CBTPpcbh",
+      "title": "Astroscale",
+      "type": "music",
+      "cover": "/works/covers/spotify_5AvhDOUFsIR2S8CBTPpcbh.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5AvhDOUFsIR2S8CBTPpcbh",
+      "links": {
+        "listen": "https://open.spotify.com/album/5AvhDOUFsIR2S8CBTPpcbh"
+      }
+    },
+    {
+      "id": "spotify-single-0xFg8ajuaOzEBQo0liMlmm",
+      "title": "JaiJaiBOOM",
+      "type": "music",
+      "cover": "/works/covers/spotify_0xFg8ajuaOzEBQo0liMlmm.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0xFg8ajuaOzEBQo0liMlmm",
+      "links": {
+        "listen": "https://open.spotify.com/album/0xFg8ajuaOzEBQo0liMlmm"
+      }
+    },
+    {
+      "id": "spotify-single-5aGGBhJUTQB3Od42b2mF4J",
+      "title": "Stardust Brothers",
+      "type": "music",
+      "cover": "/works/covers/spotify_5aGGBhJUTQB3Od42b2mF4J.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5aGGBhJUTQB3Od42b2mF4J",
+      "links": {
+        "listen": "https://open.spotify.com/album/5aGGBhJUTQB3Od42b2mF4J"
+      }
+    },
+    {
+      "id": "spotify-single-48CpewBB34PqCXNkKpwyGS",
+      "title": "f(you)=",
+      "type": "music",
+      "cover": "/works/covers/spotify_48CpewBB34PqCXNkKpwyGS.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/48CpewBB34PqCXNkKpwyGS",
+      "links": {
+        "listen": "https://open.spotify.com/album/48CpewBB34PqCXNkKpwyGS"
+      }
+    },
+    {
+      "id": "spotify-single-5w2TCL7kNlJhORBRg2MzNS",
+      "title": "ispace",
+      "type": "music",
+      "cover": "/works/covers/spotify_5w2TCL7kNlJhORBRg2MzNS.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5w2TCL7kNlJhORBRg2MzNS",
+      "links": {
+        "listen": "https://open.spotify.com/album/5w2TCL7kNlJhORBRg2MzNS"
+      }
+    },
+    {
+      "id": "spotify-single-7dfWSCmfYjzF18crQhgWe7",
+      "title": "核融合",
+      "type": "music",
+      "cover": "/works/covers/spotify_7dfWSCmfYjzF18crQhgWe7.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/7dfWSCmfYjzF18crQhgWe7",
+      "links": {
+        "listen": "https://open.spotify.com/album/7dfWSCmfYjzF18crQhgWe7"
+      }
+    },
+    {
+      "id": "spotify-single-0LTdEUBDXKp0ukdBwu920m",
+      "title": "諸葛孔明",
+      "type": "music",
+      "cover": "/works/covers/spotify_0LTdEUBDXKp0ukdBwu920m.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-08-09",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0LTdEUBDXKp0ukdBwu920m",
+      "links": {
+        "listen": "https://open.spotify.com/album/0LTdEUBDXKp0ukdBwu920m"
+      }
+    },
+    {
       "id": "astroscale-195",
       "title": "Astroscale",
       "type": "music",
@@ -7499,11 +7793,7 @@
       "releasedAt": "2025-08-09",
       "href": "https://open.spotify.com/album/3Y8rn06dnemCwYImVJ8bOw",
       "links": {
-        "spotify": "https://open.spotify.com/album/3Y8rn06dnemCwYImVJ8bOw",
-        "appleMusic": "https://music.apple.com/jp/album/%E3%83%9B%E3%83%83%E3%83%88%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88/1832373363?i=1832373364&uo=4",
-        "itunesBuy": "https://music.apple.com/jp/album/_/1832373363?app=itunes&i=1832373364&mt=1",
-        "listen": "https://open.spotify.com/album/3Y8rn06dnemCwYImVJ8bOw",
-        "amazonMusic": "https://music.amazon.co.jp/search?q=%E3%83%9B%E3%83%83%E3%83%88%E3%82%B9%E3%83%9D%E3%83%83%E3%83%88"
+        "listen": "https://open.spotify.com/album/3Y8rn06dnemCwYImVJ8bOw"
       },
       "matchInfo": {
         "status": "auto_matched",
@@ -7565,7 +7855,8 @@
         "needsReview": false
       },
       "salesHref": "https://music.apple.com/jp/album/_/1832373363?app=itunes&i=1832373364&mt=1",
-      "primaryHref": "https://open.spotify.com/album/3Y8rn06dnemCwYImVJ8bOw"
+      "primaryHref": "https://open.spotify.com/album/3Y8rn06dnemCwYImVJ8bOw",
+      "previewUrl": ""
     },
     {
       "id": "item-201",
@@ -7689,6 +7980,22 @@
       "primaryHref": "https://open.spotify.com/album/0LTdEUBDXKp0ukdBwu920m"
     },
     {
+      "id": "spotify-single-2RnupJhMbIIWbDlVI7sztU",
+      "title": "Velvet Vice",
+      "type": "music",
+      "cover": "/works/covers/spotify_2RnupJhMbIIWbDlVI7sztU.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-05",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2RnupJhMbIIWbDlVI7sztU",
+      "links": {
+        "listen": "https://open.spotify.com/album/2RnupJhMbIIWbDlVI7sztU"
+      }
+    },
+    {
       "id": "velvet-vice-194",
       "title": "Velvet Vice",
       "type": "music",
@@ -7762,6 +8069,54 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1824966222?app=itunes&i=1824966223&mt=1",
       "primaryHref": "https://open.spotify.com/album/2RnupJhMbIIWbDlVI7sztU"
+    },
+    {
+      "id": "spotify-single-0Ez1XIOAg9PtFPPsVHq6LE",
+      "title": "Cannabis Flow Combat",
+      "type": "music",
+      "cover": "/works/covers/spotify_0Ez1XIOAg9PtFPPsVHq6LE.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-04",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0Ez1XIOAg9PtFPPsVHq6LE",
+      "links": {
+        "listen": "https://open.spotify.com/album/0Ez1XIOAg9PtFPPsVHq6LE"
+      }
+    },
+    {
+      "id": "spotify-single-3ilFortklmnZtMVdGlDEIJ",
+      "title": "Where We Come Alive",
+      "type": "music",
+      "cover": "/works/covers/spotify_3ilFortklmnZtMVdGlDEIJ.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-04",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3ilFortklmnZtMVdGlDEIJ",
+      "links": {
+        "listen": "https://open.spotify.com/album/3ilFortklmnZtMVdGlDEIJ"
+      }
+    },
+    {
+      "id": "spotify-album-5OX6j3Bj6uyg4FfTev1unJ",
+      "title": "Are You Pirates？",
+      "type": "music",
+      "cover": "/works/covers/spotify_5OX6j3Bj6uyg4FfTev1unJ.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-07-04",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5OX6j3Bj6uyg4FfTev1unJ",
+      "links": {
+        "listen": "https://open.spotify.com/album/5OX6j3Bj6uyg4FfTev1unJ"
+      }
     },
     {
       "id": "cannabis-flow-combat-192",
@@ -7980,6 +8335,70 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1824897392?app=itunes&mt=1",
       "primaryHref": "https://open.spotify.com/album/5OX6j3Bj6uyg4FfTev1unJ"
+    },
+    {
+      "id": "spotify-single-0iEnJ5xSU4Vw3nlPsTm65C",
+      "title": "Sacred Earth Shake",
+      "type": "music",
+      "cover": "/works/covers/spotify_0iEnJ5xSU4Vw3nlPsTm65C.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0iEnJ5xSU4Vw3nlPsTm65C",
+      "links": {
+        "listen": "https://open.spotify.com/album/0iEnJ5xSU4Vw3nlPsTm65C"
+      }
+    },
+    {
+      "id": "spotify-single-3S408IfZTBxwVgeEbsbgA1",
+      "title": "ひとりじゃない夜",
+      "type": "music",
+      "cover": "/works/covers/spotify_3S408IfZTBxwVgeEbsbgA1.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3S408IfZTBxwVgeEbsbgA1",
+      "links": {
+        "listen": "https://open.spotify.com/album/3S408IfZTBxwVgeEbsbgA1"
+      }
+    },
+    {
+      "id": "spotify-single-2yQqQMLKiK4LRcY1WgS0K9",
+      "title": "アゲアゲボンバー",
+      "type": "music",
+      "cover": "/works/covers/spotify_2yQqQMLKiK4LRcY1WgS0K9.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2yQqQMLKiK4LRcY1WgS0K9",
+      "links": {
+        "listen": "https://open.spotify.com/album/2yQqQMLKiK4LRcY1WgS0K9"
+      }
+    },
+    {
+      "id": "spotify-single-2ZVWt7YAF5mZzbZvMJ1Ltw",
+      "title": "返歌",
+      "type": "music",
+      "cover": "/works/covers/spotify_2ZVWt7YAF5mZzbZvMJ1Ltw.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-07-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2ZVWt7YAF5mZzbZvMJ1Ltw",
+      "links": {
+        "listen": "https://open.spotify.com/album/2ZVWt7YAF5mZzbZvMJ1Ltw"
+      }
     },
     {
       "id": "sacred-earth-shake-187",
@@ -8295,6 +8714,22 @@
       "primaryHref": "https://open.spotify.com/album/2ZVWt7YAF5mZzbZvMJ1Ltw"
     },
     {
+      "id": "spotify-single-0SH6Zmt7Av8PPtuqkLg4TQ",
+      "title": "KONNICHIWA",
+      "type": "music",
+      "cover": "/works/covers/spotify_0SH6Zmt7Av8PPtuqkLg4TQ.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-24",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0SH6Zmt7Av8PPtuqkLg4TQ",
+      "links": {
+        "listen": "https://open.spotify.com/album/0SH6Zmt7Av8PPtuqkLg4TQ"
+      }
+    },
+    {
       "id": "konnichiwa-186",
       "title": "KONNICHIWA",
       "type": "music",
@@ -8373,6 +8808,86 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1822680666?app=itunes&i=1822680667&mt=1",
       "primaryHref": "https://open.spotify.com/album/0SH6Zmt7Av8PPtuqkLg4TQ"
+    },
+    {
+      "id": "spotify-single-4OHP2J2VEHK857gxTWldyY",
+      "title": "Digital Exorcism",
+      "type": "music",
+      "cover": "/works/covers/spotify_4OHP2J2VEHK857gxTWldyY.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4OHP2J2VEHK857gxTWldyY",
+      "links": {
+        "listen": "https://open.spotify.com/album/4OHP2J2VEHK857gxTWldyY"
+      }
+    },
+    {
+      "id": "spotify-single-7FaerJfPBZWkMywv7pfF1H",
+      "title": "Disco G Ma",
+      "type": "music",
+      "cover": "/works/covers/spotify_7FaerJfPBZWkMywv7pfF1H.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/7FaerJfPBZWkMywv7pfF1H",
+      "links": {
+        "listen": "https://open.spotify.com/album/7FaerJfPBZWkMywv7pfF1H"
+      }
+    },
+    {
+      "id": "spotify-single-75DrnUJQGstoPG5xEWXEbW",
+      "title": "Eagle Eye",
+      "type": "music",
+      "cover": "/works/covers/spotify_75DrnUJQGstoPG5xEWXEbW.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/75DrnUJQGstoPG5xEWXEbW",
+      "links": {
+        "listen": "https://open.spotify.com/album/75DrnUJQGstoPG5xEWXEbW"
+      }
+    },
+    {
+      "id": "spotify-single-5OC1hfTuAHt1wg93tODS1A",
+      "title": "Tivoli Park",
+      "type": "music",
+      "cover": "/works/covers/spotify_5OC1hfTuAHt1wg93tODS1A.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5OC1hfTuAHt1wg93tODS1A",
+      "links": {
+        "listen": "https://open.spotify.com/album/5OC1hfTuAHt1wg93tODS1A"
+      }
+    },
+    {
+      "id": "spotify-single-1x9fzVC6hKn7wqC4g8P10d",
+      "title": "Trip Christiania",
+      "type": "music",
+      "cover": "/works/covers/spotify_1x9fzVC6hKn7wqC4g8P10d.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1x9fzVC6hKn7wqC4g8P10d",
+      "links": {
+        "listen": "https://open.spotify.com/album/1x9fzVC6hKn7wqC4g8P10d"
+      }
     },
     {
       "id": "digital-exorcism-181",
@@ -8781,6 +9296,38 @@
       "primaryHref": "https://open.spotify.com/album/1x9fzVC6hKn7wqC4g8P10d"
     },
     {
+      "id": "spotify-single-5rqG5d38FNepLbHA7XKBco",
+      "title": "DIVINE MALFUNCTION",
+      "type": "music",
+      "cover": "/works/covers/spotify_5rqG5d38FNepLbHA7XKBco.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5rqG5d38FNepLbHA7XKBco",
+      "links": {
+        "listen": "https://open.spotify.com/album/5rqG5d38FNepLbHA7XKBco"
+      }
+    },
+    {
+      "id": "spotify-album-5byNE6fjzp5vXg6oehTo4J",
+      "title": "Silent Minaret",
+      "type": "music",
+      "cover": "/works/covers/spotify_5byNE6fjzp5vXg6oehTo4J.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-06-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5byNE6fjzp5vXg6oehTo4J",
+      "links": {
+        "listen": "https://open.spotify.com/album/5byNE6fjzp5vXg6oehTo4J"
+      }
+    },
+    {
       "id": "divine-malfunction-179",
       "title": "DIVINE MALFUNCTION",
       "type": "music",
@@ -8936,6 +9483,38 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1822356314?app=itunes&i=1822356323&mt=1",
       "primaryHref": "https://open.spotify.com/album/5byNE6fjzp5vXg6oehTo4J"
+    },
+    {
+      "id": "spotify-single-4mwchyGU34nRMbRfXQPOXS",
+      "title": "MELTDOWN TOKYO BAY",
+      "type": "music",
+      "cover": "/works/covers/spotify_4mwchyGU34nRMbRfXQPOXS.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-15",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4mwchyGU34nRMbRfXQPOXS",
+      "links": {
+        "listen": "https://open.spotify.com/album/4mwchyGU34nRMbRfXQPOXS"
+      }
+    },
+    {
+      "id": "spotify-single-6ieblSpD1w7XZtz0jwj1dH",
+      "title": "ネコ",
+      "type": "music",
+      "cover": "/works/covers/spotify_6ieblSpD1w7XZtz0jwj1dH.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-15",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6ieblSpD1w7XZtz0jwj1dH",
+      "links": {
+        "listen": "https://open.spotify.com/album/6ieblSpD1w7XZtz0jwj1dH"
+      }
     },
     {
       "id": "meltdown-tokyo-bay-177",
@@ -9125,6 +9704,38 @@
       "primaryHref": "https://open.spotify.com/album/6ieblSpD1w7XZtz0jwj1dH"
     },
     {
+      "id": "spotify-single-141vJmYqWFv1HumS7qAfJP",
+      "title": "Funkmindfulness",
+      "type": "music",
+      "cover": "/works/covers/spotify_141vJmYqWFv1HumS7qAfJP.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-12",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/141vJmYqWFv1HumS7qAfJP",
+      "links": {
+        "listen": "https://open.spotify.com/album/141vJmYqWFv1HumS7qAfJP"
+      }
+    },
+    {
+      "id": "spotify-single-4UUixz3ZGUGGsfsibiC28O",
+      "title": "PIKASSOISM",
+      "type": "music",
+      "cover": "/works/covers/spotify_4UUixz3ZGUGGsfsibiC28O.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-06-12",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4UUixz3ZGUGGsfsibiC28O",
+      "links": {
+        "listen": "https://open.spotify.com/album/4UUixz3ZGUGGsfsibiC28O"
+      }
+    },
+    {
       "id": "funkmindfulness-175",
       "title": "Funkmindfulness",
       "type": "music",
@@ -9267,6 +9878,22 @@
       "primaryHref": "https://open.spotify.com/album/4UUixz3ZGUGGsfsibiC28O"
     },
     {
+      "id": "spotify-album-7kGQPjFEt6GhnIGwKR4t2U",
+      "title": "Zenimal Planet",
+      "type": "music",
+      "cover": "/works/covers/spotify_7kGQPjFEt6GhnIGwKR4t2U.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-06-11",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/7kGQPjFEt6GhnIGwKR4t2U",
+      "links": {
+        "listen": "https://open.spotify.com/album/7kGQPjFEt6GhnIGwKR4t2U"
+      }
+    },
+    {
       "id": "zenimal-planet-174",
       "title": "Zenimal Planet",
       "type": "music",
@@ -9404,6 +10031,22 @@
       }
     },
     {
+      "id": "spotify-single-4tXKe7OhReAZ816mh77kMQ",
+      "title": "Super String Theory",
+      "type": "music",
+      "cover": "/works/covers/spotify_4tXKe7OhReAZ816mh77kMQ.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-29",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4tXKe7OhReAZ816mh77kMQ",
+      "links": {
+        "listen": "https://open.spotify.com/album/4tXKe7OhReAZ816mh77kMQ"
+      }
+    },
+    {
       "id": "super-string-theory-170",
       "title": "Super String Theory",
       "type": "music",
@@ -9477,6 +10120,38 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1817543667?app=itunes&i=1817543668&mt=1",
       "primaryHref": "https://open.spotify.com/album/4tXKe7OhReAZ816mh77kMQ"
+    },
+    {
+      "id": "spotify-single-022wqGt3TzfjInPuDgHGXf",
+      "title": "Infinite Graves",
+      "type": "music",
+      "cover": "/works/covers/spotify_022wqGt3TzfjInPuDgHGXf.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-28",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/022wqGt3TzfjInPuDgHGXf",
+      "links": {
+        "listen": "https://open.spotify.com/album/022wqGt3TzfjInPuDgHGXf"
+      }
+    },
+    {
+      "id": "spotify-single-68cAykNTHHbqKsRln1G9Yx",
+      "title": "Let’s Shine Together",
+      "type": "music",
+      "cover": "/works/covers/spotify_68cAykNTHHbqKsRln1G9Yx.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-28",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/68cAykNTHHbqKsRln1G9Yx",
+      "links": {
+        "listen": "https://open.spotify.com/album/68cAykNTHHbqKsRln1G9Yx"
+      }
     },
     {
       "id": "infinite-graves-168",
@@ -9624,6 +10299,38 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1817290020?app=itunes&i=1817290021&mt=1",
       "primaryHref": "https://open.spotify.com/album/68cAykNTHHbqKsRln1G9Yx"
+    },
+    {
+      "id": "spotify-single-1U9IhtMiNRzQYWRljq7bCv",
+      "title": "Ginger Mint Tea",
+      "type": "music",
+      "cover": "/works/covers/spotify_1U9IhtMiNRzQYWRljq7bCv.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-26",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1U9IhtMiNRzQYWRljq7bCv",
+      "links": {
+        "listen": "https://open.spotify.com/album/1U9IhtMiNRzQYWRljq7bCv"
+      }
+    },
+    {
+      "id": "spotify-single-1SuBNsNDFxrVIqx1w6QPCp",
+      "title": "PUSH",
+      "type": "music",
+      "cover": "/works/covers/spotify_1SuBNsNDFxrVIqx1w6QPCp.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-26",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1SuBNsNDFxrVIqx1w6QPCp",
+      "links": {
+        "listen": "https://open.spotify.com/album/1SuBNsNDFxrVIqx1w6QPCp"
+      }
     },
     {
       "id": "ginger-mint-tea-166",
@@ -9782,6 +10489,54 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1816822582?app=itunes&i=1816822587&mt=1",
       "primaryHref": "https://open.spotify.com/album/1SuBNsNDFxrVIqx1w6QPCp"
+    },
+    {
+      "id": "spotify-album-3f4tKu7hRTK4QvMglr0Vp6",
+      "title": "ENGINE",
+      "type": "music",
+      "cover": "/works/covers/spotify_3f4tKu7hRTK4QvMglr0Vp6.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-24",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3f4tKu7hRTK4QvMglr0Vp6",
+      "links": {
+        "listen": "https://open.spotify.com/album/3f4tKu7hRTK4QvMglr0Vp6"
+      }
+    },
+    {
+      "id": "spotify-album-3M8bvY8mc3vvOlidjMEzeY",
+      "title": "WEEK♾️FREAK",
+      "type": "music",
+      "cover": "/works/covers/spotify_3M8bvY8mc3vvOlidjMEzeY.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-24",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3M8bvY8mc3vvOlidjMEzeY",
+      "links": {
+        "listen": "https://open.spotify.com/album/3M8bvY8mc3vvOlidjMEzeY"
+      }
+    },
+    {
+      "id": "spotify-album-59YJm0mIOlLABiERkXuuOv",
+      "title": "それでもポテチは湿気る",
+      "type": "music",
+      "cover": "/works/covers/spotify_59YJm0mIOlLABiERkXuuOv.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-24",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/59YJm0mIOlLABiERkXuuOv",
+      "links": {
+        "listen": "https://open.spotify.com/album/59YJm0mIOlLABiERkXuuOv"
+      }
     },
     {
       "id": "engine-163",
@@ -10030,6 +10785,38 @@
       "primaryHref": "https://open.spotify.com/album/59YJm0mIOlLABiERkXuuOv"
     },
     {
+      "id": "spotify-single-1prDtJ6sGIsTnWf7WNz01k",
+      "title": "Coffee Love",
+      "type": "music",
+      "cover": "/works/covers/spotify_1prDtJ6sGIsTnWf7WNz01k.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1prDtJ6sGIsTnWf7WNz01k",
+      "links": {
+        "listen": "https://open.spotify.com/album/1prDtJ6sGIsTnWf7WNz01k"
+      }
+    },
+    {
+      "id": "spotify-album-0DY8PdgvrCOpmwiAS29BOC",
+      "title": "REFLECTIONS / 鏡界",
+      "type": "music",
+      "cover": "/works/covers/spotify_0DY8PdgvrCOpmwiAS29BOC.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-23",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0DY8PdgvrCOpmwiAS29BOC",
+      "links": {
+        "listen": "https://open.spotify.com/album/0DY8PdgvrCOpmwiAS29BOC"
+      }
+    },
+    {
       "id": "coffee-love-161",
       "title": "Coffee Love",
       "type": "music",
@@ -10210,6 +10997,150 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1816383846?app=itunes&mt=1",
       "primaryHref": "https://open.spotify.com/album/0DY8PdgvrCOpmwiAS29BOC"
+    },
+    {
+      "id": "spotify-single-2gfjQQo1O4SwvImWKdms6v",
+      "title": "ALL MY LIFE",
+      "type": "music",
+      "cover": "/works/covers/spotify_2gfjQQo1O4SwvImWKdms6v.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2gfjQQo1O4SwvImWKdms6v",
+      "links": {
+        "listen": "https://open.spotify.com/album/2gfjQQo1O4SwvImWKdms6v"
+      }
+    },
+    {
+      "id": "spotify-single-7JMygveKz6BrrDaioF1zxl",
+      "title": "Foreign Girl",
+      "type": "music",
+      "cover": "/works/covers/spotify_7JMygveKz6BrrDaioF1zxl.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/7JMygveKz6BrrDaioF1zxl",
+      "links": {
+        "listen": "https://open.spotify.com/album/7JMygveKz6BrrDaioF1zxl"
+      }
+    },
+    {
+      "id": "spotify-single-32VcCw9LpFPGkCE3huxm57",
+      "title": "Jazzy House",
+      "type": "music",
+      "cover": "/works/covers/spotify_32VcCw9LpFPGkCE3huxm57.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/32VcCw9LpFPGkCE3huxm57",
+      "links": {
+        "listen": "https://open.spotify.com/album/32VcCw9LpFPGkCE3huxm57"
+      }
+    },
+    {
+      "id": "spotify-single-46hXpfgSX1mNAsEpLDzBKT",
+      "title": "Let's Go to the Beach",
+      "type": "music",
+      "cover": "/works/covers/spotify_46hXpfgSX1mNAsEpLDzBKT.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/46hXpfgSX1mNAsEpLDzBKT",
+      "links": {
+        "listen": "https://open.spotify.com/album/46hXpfgSX1mNAsEpLDzBKT"
+      }
+    },
+    {
+      "id": "spotify-single-5PfhjEQKqoRbjcg21IUSu1",
+      "title": "Oh! Baby",
+      "type": "music",
+      "cover": "/works/covers/spotify_5PfhjEQKqoRbjcg21IUSu1.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5PfhjEQKqoRbjcg21IUSu1",
+      "links": {
+        "listen": "https://open.spotify.com/album/5PfhjEQKqoRbjcg21IUSu1"
+      }
+    },
+    {
+      "id": "spotify-single-3hO4nw0OeayRLngGgRTxp5",
+      "title": "Paradise Found",
+      "type": "music",
+      "cover": "/works/covers/spotify_3hO4nw0OeayRLngGgRTxp5.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3hO4nw0OeayRLngGgRTxp5",
+      "links": {
+        "listen": "https://open.spotify.com/album/3hO4nw0OeayRLngGgRTxp5"
+      }
+    },
+    {
+      "id": "spotify-single-1tYT2nC7NEuDsIZpOcYe6V",
+      "title": "Space Trip",
+      "type": "music",
+      "cover": "/works/covers/spotify_1tYT2nC7NEuDsIZpOcYe6V.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1tYT2nC7NEuDsIZpOcYe6V",
+      "links": {
+        "listen": "https://open.spotify.com/album/1tYT2nC7NEuDsIZpOcYe6V"
+      }
+    },
+    {
+      "id": "spotify-single-2NzVd7OCP9ebxkno1JRHz1",
+      "title": "Zero Gravity Love",
+      "type": "music",
+      "cover": "/works/covers/spotify_2NzVd7OCP9ebxkno1JRHz1.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2NzVd7OCP9ebxkno1JRHz1",
+      "links": {
+        "listen": "https://open.spotify.com/album/2NzVd7OCP9ebxkno1JRHz1"
+      }
+    },
+    {
+      "id": "spotify-single-347sXoECXdT0u83hs6pS4c",
+      "title": "赔偿节奏",
+      "type": "music",
+      "cover": "/works/covers/spotify_347sXoECXdT0u83hs6pS4c.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-22",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/347sXoECXdT0u83hs6pS4c",
+      "links": {
+        "listen": "https://open.spotify.com/album/347sXoECXdT0u83hs6pS4c"
+      }
     },
     {
       "id": "all-my-life-152",
@@ -10913,6 +11844,86 @@
       "primaryHref": "https://open.spotify.com/album/347sXoECXdT0u83hs6pS4c"
     },
     {
+      "id": "spotify-single-6EwYY1zSl5Yg4YkZ5xTj0P",
+      "title": "BRANDENBURGER TOR",
+      "type": "music",
+      "cover": "/works/covers/spotify_6EwYY1zSl5Yg4YkZ5xTj0P.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-21",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6EwYY1zSl5Yg4YkZ5xTj0P",
+      "links": {
+        "listen": "https://open.spotify.com/album/6EwYY1zSl5Yg4YkZ5xTj0P"
+      }
+    },
+    {
+      "id": "spotify-single-3DJ3uOxQn83hehvMo3evJ0",
+      "title": "Calm Down",
+      "type": "music",
+      "cover": "/works/covers/spotify_3DJ3uOxQn83hehvMo3evJ0.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-21",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3DJ3uOxQn83hehvMo3evJ0",
+      "links": {
+        "listen": "https://open.spotify.com/album/3DJ3uOxQn83hehvMo3evJ0"
+      }
+    },
+    {
+      "id": "spotify-single-0n4YxepwuViPkKvIuLXtwR",
+      "title": "Görli Garden",
+      "type": "music",
+      "cover": "/works/covers/spotify_0n4YxepwuViPkKvIuLXtwR.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-21",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0n4YxepwuViPkKvIuLXtwR",
+      "links": {
+        "listen": "https://open.spotify.com/album/0n4YxepwuViPkKvIuLXtwR"
+      }
+    },
+    {
+      "id": "spotify-single-21OfYlH3ruYEy3nhjLIzLe",
+      "title": "接吻の正体",
+      "type": "music",
+      "cover": "/works/covers/spotify_21OfYlH3ruYEy3nhjLIzLe.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-21",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/21OfYlH3ruYEy3nhjLIzLe",
+      "links": {
+        "listen": "https://open.spotify.com/album/21OfYlH3ruYEy3nhjLIzLe"
+      }
+    },
+    {
+      "id": "spotify-album-3A5yTh8N4Tq3Rv5nuzIA0o",
+      "title": "KAIKI",
+      "type": "music",
+      "cover": "/works/covers/spotify_3A5yTh8N4Tq3Rv5nuzIA0o.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-21",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/3A5yTh8N4Tq3Rv5nuzIA0o",
+      "links": {
+        "listen": "https://open.spotify.com/album/3A5yTh8N4Tq3Rv5nuzIA0o"
+      }
+    },
+    {
       "id": "brandenburger-tor-147",
       "title": "BRANDENBURGER TOR",
       "type": "music",
@@ -11281,6 +12292,54 @@
       "primaryHref": "https://open.spotify.com/album/3A5yTh8N4Tq3Rv5nuzIA0o"
     },
     {
+      "id": "spotify-single-5CEkAU5wV7bVBZnhH3TPK5",
+      "title": "하늘 위로",
+      "type": "music",
+      "cover": "/works/covers/spotify_5CEkAU5wV7bVBZnhH3TPK5.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-17",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5CEkAU5wV7bVBZnhH3TPK5",
+      "links": {
+        "listen": "https://open.spotify.com/album/5CEkAU5wV7bVBZnhH3TPK5"
+      }
+    },
+    {
+      "id": "spotify-album-5A3JeouJdYUvPDX9XJ8B2D",
+      "title": "Future Flow$",
+      "type": "music",
+      "cover": "/works/covers/spotify_5A3JeouJdYUvPDX9XJ8B2D.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-17",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5A3JeouJdYUvPDX9XJ8B2D",
+      "links": {
+        "listen": "https://open.spotify.com/album/5A3JeouJdYUvPDX9XJ8B2D"
+      }
+    },
+    {
+      "id": "spotify-album-4p4mU4kRIiz4Fx9t1UDQZj",
+      "title": "Golden Hour Brew",
+      "type": "music",
+      "cover": "/works/covers/spotify_4p4mU4kRIiz4Fx9t1UDQZj.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-17",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/4p4mU4kRIiz4Fx9t1UDQZj",
+      "links": {
+        "listen": "https://open.spotify.com/album/4p4mU4kRIiz4Fx9t1UDQZj"
+      }
+    },
+    {
       "id": "item-146",
       "title": "하늘 위로",
       "type": "music",
@@ -11460,6 +12519,22 @@
       "primaryHref": "https://open.spotify.com/album/4p4mU4kRIiz4Fx9t1UDQZj"
     },
     {
+      "id": "spotify-single-749Tw6EZCBlZM52tE2JVYt",
+      "title": "Pan",
+      "type": "music",
+      "cover": "/works/covers/spotify_749Tw6EZCBlZM52tE2JVYt.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-16",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/749Tw6EZCBlZM52tE2JVYt",
+      "links": {
+        "listen": "https://open.spotify.com/album/749Tw6EZCBlZM52tE2JVYt"
+      }
+    },
+    {
       "id": "pan-143",
       "title": "Pan",
       "type": "music",
@@ -11589,6 +12664,38 @@
       "moodSeeds": [],
       "moodMeta": {
         "source": "merged"
+      }
+    },
+    {
+      "id": "spotify-single-1RzEY0tHXb4UBoDCSalS82",
+      "title": "GLOBAL MATSURI ANTHEM",
+      "type": "music",
+      "cover": "/works/covers/spotify_1RzEY0tHXb4UBoDCSalS82.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-05",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/1RzEY0tHXb4UBoDCSalS82",
+      "links": {
+        "listen": "https://open.spotify.com/album/1RzEY0tHXb4UBoDCSalS82"
+      }
+    },
+    {
+      "id": "spotify-single-6pGMCq1e5LVlnghDXBWSRc",
+      "title": "Nebuta Nova",
+      "type": "music",
+      "cover": "/works/covers/spotify_6pGMCq1e5LVlnghDXBWSRc.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-05",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/6pGMCq1e5LVlnghDXBWSRc",
+      "links": {
+        "listen": "https://open.spotify.com/album/6pGMCq1e5LVlnghDXBWSRc"
       }
     },
     {
@@ -11761,6 +12868,22 @@
       "primaryHref": "https://open.spotify.com/album/6pGMCq1e5LVlnghDXBWSRc"
     },
     {
+      "id": "spotify-single-5A9cUb39IyoauCwzw1Cxzj",
+      "title": "WASSHOI",
+      "type": "music",
+      "cover": "/works/covers/spotify_5A9cUb39IyoauCwzw1Cxzj.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-04",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5A9cUb39IyoauCwzw1Cxzj",
+      "links": {
+        "listen": "https://open.spotify.com/album/5A9cUb39IyoauCwzw1Cxzj"
+      }
+    },
+    {
       "id": "wasshoi-139",
       "title": "WASSHOI",
       "type": "music",
@@ -11845,6 +12968,54 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1812408771?app=itunes&i=1812408774&mt=1",
       "primaryHref": "https://open.spotify.com/album/5A9cUb39IyoauCwzw1Cxzj"
+    },
+    {
+      "id": "spotify-single-73zctCCiKO1QQA5xiKnu5p",
+      "title": "DRAGON RISE",
+      "type": "music",
+      "cover": "/works/covers/spotify_73zctCCiKO1QQA5xiKnu5p.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/73zctCCiKO1QQA5xiKnu5p",
+      "links": {
+        "listen": "https://open.spotify.com/album/73zctCCiKO1QQA5xiKnu5p"
+      }
+    },
+    {
+      "id": "spotify-single-21lzJnsQNFFHr8VnO2LDlP",
+      "title": "演歌JAPAN",
+      "type": "music",
+      "cover": "/works/covers/spotify_21lzJnsQNFFHr8VnO2LDlP.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/21lzJnsQNFFHr8VnO2LDlP",
+      "links": {
+        "listen": "https://open.spotify.com/album/21lzJnsQNFFHr8VnO2LDlP"
+      }
+    },
+    {
+      "id": "spotify-album-0wjFGEluVKlMBDXIJCqfxx",
+      "title": "Matsuri‑Transcension",
+      "type": "music",
+      "cover": "/works/covers/spotify_0wjFGEluVKlMBDXIJCqfxx.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-03",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/0wjFGEluVKlMBDXIJCqfxx",
+      "links": {
+        "listen": "https://open.spotify.com/album/0wjFGEluVKlMBDXIJCqfxx"
+      }
     },
     {
       "id": "dragon-rise-136",
@@ -12097,6 +13268,70 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1812319341?app=itunes&mt=1",
       "primaryHref": "https://open.spotify.com/album/0wjFGEluVKlMBDXIJCqfxx"
+    },
+    {
+      "id": "spotify-single-2i6R2POXI6klc2uPO7lcNU",
+      "title": "Beijo A Beijo",
+      "type": "music",
+      "cover": "/works/covers/spotify_2i6R2POXI6klc2uPO7lcNU.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2i6R2POXI6klc2uPO7lcNU",
+      "links": {
+        "listen": "https://open.spotify.com/album/2i6R2POXI6klc2uPO7lcNU"
+      }
+    },
+    {
+      "id": "spotify-single-2l9dDxNYzAYLBuz4Ba3PsZ",
+      "title": "WAKAZE",
+      "type": "music",
+      "cover": "/works/covers/spotify_2l9dDxNYzAYLBuz4Ba3PsZ.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-05-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2l9dDxNYzAYLBuz4Ba3PsZ",
+      "links": {
+        "listen": "https://open.spotify.com/album/2l9dDxNYzAYLBuz4Ba3PsZ"
+      }
+    },
+    {
+      "id": "spotify-album-7mKszvDbJnjM0AMkwLOyHe",
+      "title": "INFINITY LAGOON",
+      "type": "music",
+      "cover": "/works/covers/spotify_7mKszvDbJnjM0AMkwLOyHe.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/7mKszvDbJnjM0AMkwLOyHe",
+      "links": {
+        "listen": "https://open.spotify.com/album/7mKszvDbJnjM0AMkwLOyHe"
+      }
+    },
+    {
+      "id": "spotify-album-52JId6qH24iKvc80SEhvOs",
+      "title": "INFINITY LAGOON TIDE LOOP",
+      "type": "music",
+      "cover": "/works/covers/spotify_52JId6qH24iKvc80SEhvOs.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-05-02",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/52JId6qH24iKvc80SEhvOs",
+      "links": {
+        "listen": "https://open.spotify.com/album/52JId6qH24iKvc80SEhvOs"
+      }
     },
     {
       "id": "beijo-a-beijo-132",
@@ -12461,6 +13696,38 @@
       },
       "salesHref": "https://music.apple.com/jp/album/_/1812175007?app=itunes&mt=1",
       "primaryHref": "https://open.spotify.com/album/52JId6qH24iKvc80SEhvOs"
+    },
+    {
+      "id": "spotify-single-5e8xTCcPJWfd2SUHsjd1BW",
+      "title": "Back Me",
+      "type": "music",
+      "cover": "/works/covers/spotify_5e8xTCcPJWfd2SUHsjd1BW.jpg",
+      "tags": [
+        "spotify",
+        "single"
+      ],
+      "releasedAt": "2025-04-30",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/5e8xTCcPJWfd2SUHsjd1BW",
+      "links": {
+        "listen": "https://open.spotify.com/album/5e8xTCcPJWfd2SUHsjd1BW"
+      }
+    },
+    {
+      "id": "spotify-album-2DMwcXtZzZaeazATCTW5Xx",
+      "title": "House in the World",
+      "type": "music",
+      "cover": "/works/covers/spotify_2DMwcXtZzZaeazATCTW5Xx.jpg",
+      "tags": [
+        "spotify",
+        "album"
+      ],
+      "releasedAt": "2025-04-30",
+      "previewUrl": "",
+      "href": "https://open.spotify.com/album/2DMwcXtZzZaeazATCTW5Xx",
+      "links": {
+        "listen": "https://open.spotify.com/album/2DMwcXtZzZaeazATCTW5Xx"
+      }
     },
     {
       "id": "back-me-130",
