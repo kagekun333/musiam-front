@@ -1,6 +1,7 @@
 // src/app/page.tsx
 import Link from "next/link";
 import Image from "next/image";
+import TodaysPick from "@/components/TodaysPick";
 
 
 type Gate = {
@@ -31,6 +32,9 @@ export default function Home() {
         </h1>
         <p className="hero-sub">音楽と芸術の宮殿へ、ようこそ。</p>
       </section>
+
+      {/* 今日の一筆（毎日更新・静的キャッシュ） */}
+      <TodaysPick />
 
       {/* 3 GATES */}
       <section className="gates-wrap">

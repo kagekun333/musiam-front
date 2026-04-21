@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import OmikujiCard, { OmikujiEntry } from "@/components/omikuji/OmikujiCard";
+import { loadMergedWorksClient } from "@/lib/loadMergedWorksClient";
 
 /** ランク序列（上→下） */
 const RANK_ORDER = [
@@ -168,60 +169,52 @@ export default function Client() {
 
     // 作品データ：本命 /works/works.json → 予備 /works.json
     async function loadWorks() {
-      const candidates = ["/works/works.json", "/works.json"];
-      for (const p of candidates) {
-        try {
-          const r = await fetch(p, { cache: "no-store" });
-          if (!r.ok) continue;
-          const d = await r.json();
-          const raw: any[] = Array.isArray(d) ? d : Array.isArray(d?.items) ? d.items : [];
+      try {
+        const raw = await loadMergedWorksClient();
 
-          // ID重複検出
-          const idCounts = new Map<string, number>();
-          raw.forEach((w: any) => {
-            const id = String(w?.id ?? "");
-            idCounts.set(id, (idCounts.get(id) || 0) + 1);
-          });
+        const idCounts = new Map<string, number>();
+        raw.forEach((w: any) => {
+          const id = String(w?.id ?? "");
+          idCounts.set(id, (idCounts.get(id) || 0) + 1);
+        });
 
-          const list: WorkItem[] = raw.map((w: any, idx: number) => {
-            const id = String(w.id ?? w.slug ?? `work_${idx}`);
-            const isDuplicate = (idCounts.get(id) || 0) > 1;
-            const stableKey = isDuplicate ? `${id}__${idx}` : id;
+        const list: WorkItem[] = raw.map((w: any, idx: number) => {
+          const id = String(w.id ?? w.slug ?? `work_${idx}`);
+          const isDuplicate = (idCounts.get(id) || 0) > 1;
+          const stableKey = isDuplicate ? `${id}__${idx}` : id;
 
-            const title = String(w.title ?? w.titleJa ?? w.titleEn ?? "Untitled");
-            const type = w.type ?? w.kind ?? "";
-            const cover = w.cover
-              ? (String(w.cover).startsWith("http") || String(w.cover).startsWith("/")
-                  ? String(w.cover)
-                  : "/" + String(w.cover))
-              : (w.slug ? `/works/covers/${w.slug}.webp` : undefined);
+          const title = String(w.title ?? w.titleJa ?? w.titleEn ?? "Untitled");
+          const type = w.type ?? w.kind ?? "";
+          const cover = w.cover
+            ? (String(w.cover).startsWith("http") || String(w.cover).startsWith("/")
+                ? String(w.cover)
+                : "/" + String(w.cover))
+            : (w.slug ? `/works/covers/${w.slug}.webp` : undefined);
 
-            // リンク正規化
-            const links = w?.links ?? {};
-            const primaryHref = w?.primaryHref ?? links?.listen ?? w?.href ?? links?.spotify ?? undefined;
-            const salesHref = w?.salesHref ?? links?.itunesBuy ?? undefined;
-            const amazonMusicHref = links?.amazonMusic ?? undefined;
-            const href = primaryHref || w?.href || w?.url || w?.link || undefined;
+          const links = w?.links ?? {};
+          const primaryHref = w?.primaryHref ?? links?.listen ?? w?.href ?? links?.spotify ?? undefined;
+          const salesHref = w?.salesHref ?? links?.itunesBuy ?? undefined;
+          const amazonMusicHref = links?.amazonMusic ?? undefined;
+          const href = primaryHref || w?.href || w?.url || w?.link || undefined;
 
-            return {
-              id,
-              stableKey,
-              title,
-              type,
-              cover,
-              href,
-              primaryHref,
-              salesHref,
-              amazonMusicHref,
-              previewUrl: w?.previewUrl,
-            };
-          });
+          return {
+            id,
+            stableKey,
+            title,
+            type,
+            cover,
+            href,
+            primaryHref,
+            salesHref,
+            amazonMusicHref,
+            previewUrl: w?.previewUrl,
+          };
+        });
 
-          if (alive) setWorks(list);
-          return;
-        } catch { /* 次へ */ }
+        if (alive) setWorks(list);
+      } catch {
+        if (alive) setWorks([]);
       }
-      if (alive) setWorks([]); // 失敗でもUIは壊さない
     }
 
     loadOmikuji();

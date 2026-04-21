@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { track } from "@/lib/metrics";
+import { loadExhibitionWorks } from "@/lib/loadExhibitionWorks";
 
 /* ================================================================
    0. ユーティリティ（既存ロジック維持）
@@ -87,8 +88,6 @@ type Work = {
   description?: string;
   aspect?: string;
 };
-
-type WorksDoc = { items: Work[] };
 
 function sanitizeWork(w: Work): Work {
   const cover = sanitizeUrl(normalizeCover(w.cover)) || w.cover;
@@ -354,8 +353,7 @@ function MasonryCard({
         }
       }}
       style={{
-        breakInside: "avoid",
-        marginBottom: 16,
+        marginBottom: 0,
         borderRadius: 12,
         overflow: "hidden",
         background: "#111",
@@ -1081,10 +1079,8 @@ export default function ExhibitionPage() {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch("/works/works.json", { cache: "no-store" });
-        const json: WorksDoc = await res.json();
         if (!cancelled) {
-          const raw = Array.isArray(json?.items) ? json.items : [];
+          const raw = await loadExhibitionWorks();
           setAll(raw.map(sanitizeWork));
         }
       } catch {
@@ -1273,30 +1269,19 @@ export default function ExhibitionPage() {
         resultCount={filtered.length}
       />
 
-      {/* ===== Masonry Grid (CSS columns) ===== */}
+      {/* ===== Ordered Grid ===== */}
       {visible.length > 0 ? (
         <section
           style={{
-            columnCount: 1,
-            columnGap: 16,
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 16,
+            alignItems: "start",
           }}
         >
-          <style>{`
-            @media (min-width: 520px) {
-              .masonry-grid { column-count: 2 !important; }
-            }
-            @media (min-width: 820px) {
-              .masonry-grid { column-count: 3 !important; }
-            }
-            @media (min-width: 1120px) {
-              .masonry-grid { column-count: 4 !important; }
-            }
-          `}</style>
-          <div className="masonry-grid" style={{ columnCount: 1, columnGap: 16 }}>
-            {visible.map((w) => (
-              <MasonryCard key={w.id} work={w} onClick={() => openModal(w)} />
-            ))}
-          </div>
+          {visible.map((w) => (
+            <MasonryCard key={w.id} work={w} onClick={() => openModal(w)} />
+          ))}
         </section>
       ) : (
         <div

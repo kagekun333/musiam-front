@@ -180,7 +180,7 @@ export default function ChatPage() {
     const effectiveLang = selectedLang ?? "ja";
 
     try {
-      const resp = await fetch("/api/chat-reco", {
+      const resp = await fetch("/api/chat-reco-v2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
