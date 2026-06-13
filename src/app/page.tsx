@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import TodaysPick from "@/components/TodaysPick";
 import HomeShowcase from "@/components/HomeShowcase";
+import CoverMarquee from "@/components/CoverMarquee";
 
 
 type Gate = {
@@ -82,6 +83,9 @@ export default function Home() {
           ))}
         </ul>
       </section>
+
+      {/* 作品カバーの流れるコラージュ (307作品の物量訴求) */}
+      <CoverMarquee />
 
       {/* 工房セクション: 実績数字 + 法人/展示導線 */}
       <HomeShowcase />

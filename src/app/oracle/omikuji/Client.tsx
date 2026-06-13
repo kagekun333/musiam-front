@@ -670,6 +670,14 @@ export default function Client() {
                                 </svg>
                               </Link>
                             )}
+                            {w.id != null && (
+                              <Link
+                                href={`/works/${encodeURIComponent(String(w.id))}`}
+                                className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-amber-200/90 hover:bg-white/5 transition w-fit"
+                              >
+                                {lang === "ja" ? "作品の頁へ" : "View work"}
+                              </Link>
+                            )}
                           </div>
                         </div>
                       </div>

@@ -46,6 +46,13 @@ const PLANS = [
     featured: false,
   },
   {
+    title: "月額リテイナー",
+    price: "¥150,000",
+    unit: "/月",
+    desc: "毎月2曲の新規制作+既存曲の修正無制限+優先納期。番組・チャンネル・店舗など、継続的に音楽が必要な方に。",
+    featured: false,
+  },
+  {
     title: "AIコンテンツ工場 構築支援",
     price: "¥800,000〜",
     unit: "/式",
@@ -90,6 +97,30 @@ export default function BusinessPage() {
             <div className="biz-stat-label">{s.label}</div>
           </div>
         ))}
+      </section>
+
+      <section className="biz-section">
+        <h2 className="biz-section-title">まず、聴いてください</h2>
+        <p className="biz-section-lead">論より証拠。当工房の制作品質をその場でご確認いただけます。</p>
+        <div className="biz-embeds">
+          {[
+            "5bIfjfVK9QwHfu1NzNc94M",
+            "60QCBTuEwNc380r2YtUO0f",
+            "0o5od07Lyxu9w9obQuvgm9",
+          ].map((id) => (
+            <iframe
+              key={id}
+              src={`https://open.spotify.com/embed/album/${id}?utm_source=generator&theme=0`}
+              width="100%"
+              height="152"
+              frameBorder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="Spotify試聴プレイヤー"
+              style={{ borderRadius: 12 }}
+            />
+          ))}
+        </div>
       </section>
 
       <section className="biz-section">

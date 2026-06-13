@@ -871,6 +871,22 @@ function DetailModal({
               ))}
             </div>
           )}
+
+          {/* 内部リンク: 作品個別ページ (SEO回遊 + シェア用URL) */}
+          <a
+            href={`/works/${encodeURIComponent(String(work.id))}`}
+            onClick={() => track("exhibit_detail_click", { id: work.id })}
+            style={{
+              display: "inline-block",
+              marginTop: 12,
+              fontSize: 12.5,
+              color: "#d8b65c",
+              textDecoration: "none",
+              opacity: 0.85,
+            }}
+          >
+            この作品の頁を開く →
+          </a>
         </div>
       </div>
     </div>

@@ -190,6 +190,13 @@ export default function ChatPage() {
     if (inputRef.current) inputRef.current.value = "";
   }
 
+  // 法人ニーズ検知: 制作依頼らしき言葉が出たら控えめに法人の門を案内する
+  // (ペルソナのプロンプトは汚さず、UI側で確実に拾う)
+  const showBizHint = useMemo(() => {
+    const bizWords = /制作依頼|依頼したい|作ってほしい|作って欲しい|BGM.*(欲し|ほし|依頼|作)|楽曲提供|商用利用|仕事をお願い|見積|法人|会社で使|店舗.*(曲|音楽|BGM)|テーマ曲|主題歌.*依頼|commission|hire|quote/i;
+    return messages.some((m) => m.role === "user" && bizWords.test(m.content));
+  }, [messages]);
+
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && !e.nativeEvent.isComposing) {
       e.preventDefault();
@@ -321,6 +328,29 @@ export default function ChatPage() {
           ))}
         </div>
 
+        {showBizHint && (
+          <a
+            href="/business"
+            onClick={() => capture("chat_biz_lead_click", { entryId: selectedEntryId })}
+            style={{
+              display: "block",
+              margin: "10px 0",
+              padding: "10px 14px",
+              borderRadius: 10,
+              border: "1px solid rgba(216,182,92,0.4)",
+              background: "rgba(216,182,92,0.08)",
+              color: "#d8b65c",
+              fontSize: 13,
+              textDecoration: "none",
+              textAlign: "center",
+            }}
+          >
+            {selectedLang === "en"
+              ? "Looking to commission music? The Business Gate is open →"
+              : "楽曲のご依頼でしたら、法人の門が開いております →"}
+          </a>
+        )}
+
         <div className={styles.inputRow}>
           <input
             ref={inputRef}
@@ -375,6 +405,15 @@ export default function ChatPage() {
                     {linkLabel(link.kind, link.url)}
                   </a>
                 ))}
+                {/* 内部リンク: 作品個別ページ (回遊+SEO) */}
+                <a
+                  href={`/works/${encodeURIComponent(String(cards[0].id))}`}
+                  onClick={() => capture("chat_work_detail_click", { id: cards[0].id, title: cards[0].title })}
+                  className={styles.linkButton}
+                  style={{ background: "rgba(216,182,92,0.15)", color: "#d8b65c" }}
+                >
+                  作品の頁へ
+                </a>
               </div>
             </div>
           </div>
