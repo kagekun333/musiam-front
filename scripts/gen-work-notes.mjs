@@ -23,11 +23,24 @@ const WORKS_JSON = path.join(WORKSPACE, "public/works/works.json");
 const WORKS_SSD = path.join(WORKSPACE, "public/works/works-ssd.json");
 const OUT_PATH = path.join(WORKSPACE, "public/works/works-notes.json");
 
+// .env.local を自動読み込み (環境変数が未設定の場合のみ補完)
+try {
+  const envRaw = await fs.readFile(path.join(WORKSPACE, ".env.local"), "utf-8");
+  for (const line of envRaw.split(/\r?\n/)) {
+    const m = line.match(/^([A-Z0-9_]+)=(.*)$/);
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim();
+  }
+} catch { /* .env.local 無しでも可 */ }
+
 const DRY_RUN = !!process.env.DRY_RUN;
 const FORCE = !!process.env.FORCE;
 const LIMIT = Number(process.env.LIMIT ?? "0");
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001";
+const GROQ_KEY = process.env.GROQ_API_KEY || "";
+const GROQ_MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
+// PROVIDER=groq で強制Groq。既定: anthropic優先、失敗時groqフォールバック
+const PROVIDER = (process.env.PROVIDER || "auto").toLowerCase();
 
 async function readJson(p, fallback) {
   try {
@@ -80,6 +93,42 @@ async function callHaiku(userText) {
   return (json.content?.[0]?.text || "").trim();
 }
 
+async function callGroq(userText) {
+  const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${GROQ_KEY}`,
+    },
+    body: JSON.stringify({
+      model: GROQ_MODEL,
+      max_tokens: 300,
+      messages: [
+        { role: "system", content: SYSTEM },
+        { role: "user", content: userText },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`Groq ${res.status}: ${await res.text()}`);
+  const json = await res.json();
+  return (json.choices?.[0]?.message?.content || "").trim();
+}
+
+async function generate(userText) {
+  if (PROVIDER === "groq") return callGroq(userText);
+  if (PROVIDER === "anthropic") return callHaiku(userText);
+  // auto: Anthropic優先 → 失敗したらGroq
+  if (ANTHROPIC_KEY) {
+    try {
+      return await callHaiku(userText);
+    } catch (e) {
+      if (!GROQ_KEY) throw e;
+    }
+  }
+  if (GROQ_KEY) return callGroq(userText);
+  throw new Error("APIキーがありません (ANTHROPIC_API_KEY / GROQ_API_KEY)");
+}
+
 async function main() {
   const master = await readJson(WORKS_JSON, { items: [] });
   const ssd = await readJson(WORKS_SSD, { items: [] });
@@ -95,19 +144,23 @@ async function main() {
   if (LIMIT > 0) targets = targets.slice(0, LIMIT);
   console.log(`対象 ${targets.length} 件 (既存 ${Object.keys(notes).length} 件)`);
 
-  if (!ANTHROPIC_KEY && !DRY_RUN) {
-    console.warn("ANTHROPIC_API_KEY 未設定。DRY_RUN として実行します。");
+  const hasKey = ANTHROPIC_KEY || GROQ_KEY;
+  if (!hasKey && !DRY_RUN) {
+    console.warn("APIキー未設定。DRY_RUN として実行します。");
   }
+  console.log(`provider=${PROVIDER} (anthropic key: ${ANTHROPIC_KEY ? "あり" : "なし"} / groq key: ${GROQ_KEY ? "あり" : "なし"})`);
 
   let done = 0;
   for (const w of targets) {
     const id = String(w.id);
     try {
-      if (DRY_RUN || !ANTHROPIC_KEY) {
+      if (DRY_RUN || !hasKey) {
         notes[id] = `（仮）${w.title} — 館の収蔵品。静かな夜に、ひとつどうぞ。`;
       } else {
-        notes[id] = await callHaiku(buildPrompt(w));
-        await new Promise((r) => setTimeout(r, 250)); // rate-limit配慮
+        notes[id] = await generate(buildPrompt(w));
+        // rate-limit配慮: Groq無料枠は約30req/分なので2.2秒間隔
+        const wait = PROVIDER === "groq" || (!ANTHROPIC_KEY && GROQ_KEY) ? 2200 : 250;
+        await new Promise((r) => setTimeout(r, wait));
       }
       done++;
       if (done % 20 === 0) {
