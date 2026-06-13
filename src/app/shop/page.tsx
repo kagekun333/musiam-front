@@ -2,7 +2,7 @@
 // 商品の追加・販売開始は src/lib/shop-config.ts のみ編集すればよい。
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SHOP_PRODUCTS } from "@/lib/shop-config";
+import { SHOP_PRODUCTS, SHOP_CATEGORY_ORDER } from "@/lib/shop-config";
 import BuyButton from "./BuyButton";
 import "./shop.css";
 
@@ -22,19 +22,29 @@ export default function ShopPage() {
         売上はすべて新作の制作に充てられます。
       </p>
 
-      <div className="shop-grid">
-        {SHOP_PRODUCTS.map((p) => (
-          <div key={p.id} className="shop-card">
-            <div className="shop-card-title">{p.title}</div>
-            <div className="shop-card-price">
-              ¥{p.price.toLocaleString()}
-              <small>税込</small>
+      {SHOP_CATEGORY_ORDER.map((cat) => {
+        const items = SHOP_PRODUCTS.filter((p) => p.category === cat);
+        if (items.length === 0) return null;
+        return (
+          <section key={cat} className="shop-category">
+            <h2 className="shop-category-title">{cat}</h2>
+            <div className="shop-grid">
+              {items.map((p) => (
+                <div key={p.id} className="shop-card">
+                  <div className="shop-card-title">{p.title}</div>
+                  <div className="shop-card-price">
+                    ¥{p.price.toLocaleString()}
+                    {p.priceSuffix ? <em className="shop-card-suffix">{p.priceSuffix}</em> : null}
+                    <small>税込</small>
+                  </div>
+                  <p className="shop-card-desc">{p.desc}</p>
+                  <BuyButton product={p} />
+                </div>
+              ))}
             </div>
-            <p className="shop-card-desc">{p.desc}</p>
-            <BuyButton product={p} />
-          </div>
-        ))}
-      </div>
+          </section>
+        );
+      })}
 
       <p className="shop-note">
         決済はStripeの安全な決済ページで行われます。
