@@ -6,7 +6,9 @@
     "matched_to_works_json": 164,
     "ssd_only": 52,
     "skipped_no_meta": 0,
-    "total_items": 216
+    "total_items": 216,
+    "streamingLinksFilled": 21,
+    "streamingLinksFillFailures": 14
   },
   "items": [
     {
@@ -27,7 +29,9 @@
       "releasedAt": "2026-04-01",
       "href": "https://distrokid.com/hyperfollow/abi35/33-ignition",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/33-ignition"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/33-ignition",
+        "spotify": "https://open.spotify.com/album/4lHicArRYBC1ywkhwL67sU",
+        "appleMusic": "https://music.apple.com/us/album/33-ignition-single/1889226207?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/33-ignition",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/33-ignition",
@@ -67,7 +71,9 @@
       "releasedAt": "2026-04-07",
       "href": "https://distrokid.com/hyperfollow/abi35/a-town-called-almost-home",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/a-town-called-almost-home"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/a-town-called-almost-home",
+        "spotify": "https://open.spotify.com/album/2gZGVnK5z4D5OMnVKJWl3c",
+        "appleMusic": "https://music.apple.com/us/album/a-town-called-almost-home-single/1889296597?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/a-town-called-almost-home",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/a-town-called-almost-home",
@@ -342,7 +348,9 @@
       "releasedAt": "2026-04-04",
       "href": "https://distrokid.com/hyperfollow/abi35/agni-festivala",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/agni-festivala"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/agni-festivala",
+        "spotify": "https://open.spotify.com/album/0tD8EeeXVn3yxugVxLdHqU",
+        "appleMusic": "https://music.apple.com/us/album/agni-festivala-single/1889305331?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/agni-festivala",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/agni-festivala",
@@ -1113,7 +1121,9 @@
       "releasedAt": "2026-04-09",
       "href": "https://distrokid.com/hyperfollow/abi35/clean-signal",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/clean-signal"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/clean-signal",
+        "spotify": "https://open.spotify.com/album/31H0msOwYSUiZEfZHfoNxo",
+        "appleMusic": "https://music.apple.com/us/album/clean-signal-single/1889489753?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/clean-signal",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/clean-signal",
@@ -1786,7 +1796,9 @@
       "releasedAt": "2026-04-10",
       "href": "https://distrokid.com/hyperfollow/abi35/deus-sive-natura",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/deus-sive-natura"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/deus-sive-natura",
+        "spotify": "https://open.spotify.com/album/5L92xdBpCQI5N3XHCdagXU",
+        "appleMusic": "https://music.apple.com/us/album/deus-sive-natura-single/1889783981?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/deus-sive-natura",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/deus-sive-natura",
@@ -1975,7 +1987,9 @@
       "releasedAt": "2026-04-21",
       "href": "https://distrokid.com/hyperfollow/abi35/earth-day",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/earth-day"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/earth-day",
+        "spotify": "https://open.spotify.com/album/0HdhYWigPYLjJloZLVwEKi",
+        "appleMusic": "https://music.apple.com/us/album/earth-day-single/1894765152?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/earth-day",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/earth-day",
@@ -3868,7 +3882,9 @@
       "releasedAt": "2026-04-06",
       "href": "https://distrokid.com/hyperfollow/abi35/infinite-swipe-hell",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/infinite-swipe-hell"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/infinite-swipe-hell",
+        "spotify": "https://open.spotify.com/album/2HRc2lqAdVzp5jYNA3IuYP",
+        "appleMusic": "https://music.apple.com/us/album/infinite-swipe-hell-single/1889631702?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/infinite-swipe-hell",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/infinite-swipe-hell",
@@ -4237,7 +4253,9 @@
       "releasedAt": "2026-04-11",
       "href": "https://distrokid.com/hyperfollow/abi35/kawaii",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/kawaii"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/kawaii",
+        "spotify": "https://open.spotify.com/album/1z6qecz4tsBxSqpPaE65oP",
+        "appleMusic": "https://music.apple.com/us/album/kawaii-single/1889408386?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/kawaii",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/kawaii",
@@ -4317,7 +4335,9 @@
       "releasedAt": "2026-03-28",
       "href": "https://distrokid.com/hyperfollow/abi35/lone-ranger",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/lone-ranger"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/lone-ranger",
+        "spotify": "https://open.spotify.com/album/01MYBg6EBEYAfIxirDJ0eQ",
+        "appleMusic": "https://music.apple.com/us/album/lone-ranger-single/1889012601?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/lone-ranger",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/lone-ranger",
@@ -4403,7 +4423,9 @@
       "releasedAt": "2026-04-07",
       "href": "https://distrokid.com/hyperfollow/abi35/letter-from-the-small-room",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/letter-from-the-small-room"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/letter-from-the-small-room",
+        "spotify": "https://open.spotify.com/album/3CDY1DG8uKzGDkaaEIKsQu",
+        "appleMusic": "https://music.apple.com/us/album/letter-from-the-small-room-single/1889314863?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/letter-from-the-small-room",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/letter-from-the-small-room",
@@ -4713,7 +4735,9 @@
       "releasedAt": "2026-03-30",
       "href": "https://distrokid.com/hyperfollow/abi35/mf-claw",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/mf-claw"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/mf-claw",
+        "spotify": "https://open.spotify.com/album/2jpNKTSyYaz8kbCVQWR3CP",
+        "appleMusic": "https://music.apple.com/us/album/mf-claw-single/1889177203?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/mf-claw",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/mf-claw",
@@ -4753,7 +4777,9 @@
       "releasedAt": "2026-04-02",
       "href": "https://distrokid.com/hyperfollow/abi35/madre-del-silenzio",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/madre-del-silenzio"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/madre-del-silenzio",
+        "spotify": "https://open.spotify.com/album/6T7ppxHmJmwoP4kAeYpO9N",
+        "appleMusic": "https://music.apple.com/us/album/madre-del-silenzio-single/1889664506?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/madre-del-silenzio",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/madre-del-silenzio",
@@ -4942,7 +4968,9 @@
       "releasedAt": "2026-04-04",
       "href": "https://distrokid.com/hyperfollow/abi35/mariposa",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/mariposa"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/mariposa",
+        "spotify": "https://open.spotify.com/album/5j9fBQuoJsf9odsjMjnYvz",
+        "appleMusic": "https://music.apple.com/us/album/mariposa-single/1888966530?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/mariposa",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/mariposa",
@@ -5724,7 +5752,9 @@
       "releasedAt": "2026-04-19",
       "href": "https://distrokid.com/hyperfollow/abi35/policy-vs-plant",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/policy-vs-plant"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/policy-vs-plant",
+        "spotify": "https://open.spotify.com/album/0NP3mX5KPPqPft2XkOmgNy",
+        "appleMusic": "https://music.apple.com/us/album/policy-vs-plant-single/1894841637?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/policy-vs-plant",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/policy-vs-plant",
@@ -6134,7 +6164,9 @@
       "releasedAt": "2026-03-29",
       "href": "https://distrokid.com/hyperfollow/abi35/spinoza",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/spinoza"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/spinoza",
+        "spotify": "https://open.spotify.com/album/6pPbHNHEvghwfmznsudatw",
+        "appleMusic": "https://music.apple.com/us/album/spinoza-single/1889004187?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/spinoza",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/spinoza",
@@ -6935,7 +6967,9 @@
       "releasedAt": "2026-04-07",
       "href": "https://distrokid.com/hyperfollow/abi35/tenpenchii",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/tenpenchii"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/tenpenchii",
+        "spotify": "https://open.spotify.com/album/78xzfuQ2RY0x0hr4yJBgt9",
+        "appleMusic": "https://music.apple.com/us/album/tenpenchii-single/1889603299?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/tenpenchii",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/tenpenchii",
@@ -7073,7 +7107,9 @@
       "releasedAt": "2026-04-05",
       "href": "https://distrokid.com/hyperfollow/abi35/trapped-ion",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/trapped-ion"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/trapped-ion",
+        "spotify": "https://open.spotify.com/album/5iGUz4V5oBrH9JKG0CA3oL",
+        "appleMusic": "https://music.apple.com/us/album/trapped-ion-single/1889176963?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/trapped-ion",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/trapped-ion",
@@ -7489,7 +7525,9 @@
       "releasedAt": "2026-03-28",
       "href": "https://distrokid.com/hyperfollow/abi35/2045",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/2045"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/2045",
+        "spotify": "https://open.spotify.com/album/3IvecJy9KIY8g0wsZQbOLv",
+        "appleMusic": "https://music.apple.com/us/album/2045-single/1889175082?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/2045",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/2045",
@@ -7575,7 +7613,9 @@
       "releasedAt": "2026-03-29",
       "href": "https://distrokid.com/hyperfollow/abi35/tribal-planet",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/tribal-planet"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/tribal-planet",
+        "spotify": "https://open.spotify.com/album/4tU4tZJlD0rkQFT8RVCpPK",
+        "appleMusic": "https://music.apple.com/us/album/tribal-planet-single/1889349933?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/tribal-planet",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/tribal-planet",
@@ -9241,7 +9281,9 @@
       "releasedAt": "2026-04-19",
       "href": "https://distrokid.com/hyperfollow/abi35/zRJybSqyK6F",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/zRJybSqyK6F"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/zRJybSqyK6F",
+        "spotify": "https://open.spotify.com/album/6xSnkMzC0gelSCD8GY9L8D",
+        "appleMusic": "https://music.apple.com/us/album/キャンペーン-single/1894584534?uo=4"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/zRJybSqyK6F",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/zRJybSqyK6F",
@@ -10024,7 +10066,8 @@
       "releasedAt": "2026-04-19",
       "href": "https://distrokid.com/hyperfollow/abi35/RorRdUb8iId",
       "links": {
-        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/RorRdUb8iId"
+        "hyperfollow": "https://distrokid.com/hyperfollow/abi35/RorRdUb8iId",
+        "spotify": "https://open.spotify.com/album/7MTWS6JX6pe24FFAdcVSrv"
       },
       "salesHref": "https://distrokid.com/hyperfollow/abi35/RorRdUb8iId",
       "primaryHref": "https://distrokid.com/hyperfollow/abi35/RorRdUb8iId",
@@ -11112,5 +11155,6 @@
     }
   ],
   "refinedAt": "2026-04-20T11:50:24.324Z",
-  "coversGeneratedAt": "2026-04-20T12:19:45.271Z"
+  "coversGeneratedAt": "2026-04-20T12:19:45.271Z",
+  "streamingLinksFilledAt": "2026-04-23T09:10:46.873Z"
 }

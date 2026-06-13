@@ -1,13 +1,14 @@
 // Service Worker for 伯爵 MUSIAM PWA
 // キャッシュ戦略: Network First + Offline Fallback
 
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME = `musiam-${CACHE_VERSION}`;
 const OFFLINE_URL = '/offline';
 
 // 事前キャッシュするアセット
 const PRECACHE_ASSETS = [
   '/',
+  '/offline',
   '/manifest.json',
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
