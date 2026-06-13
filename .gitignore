@@ -109,3 +109,6 @@ scripts/normalize-atugiri.mjs
 tools/
 
 /*.md
+
+# 隔離アーカイブ (2026-06 精査で退避した非参照ファイル群)
+/_archive/

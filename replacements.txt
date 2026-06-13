@@ -1,1 +1,0 @@
-regex:%GROQ_API_KEY\s*=\s*[A-Za-z0-9_\-]+%==>GROQ_API_KEY=YOUR_GROQ_API_KEY_HERE
