@@ -34,4 +34,11 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     desc: "占いの門の美麗カードアート全種をスマホ/PC壁紙サイズで。",
     paymentUrl: null,
   },
+  {
+    id: "special-omikuji",
+    title: "特別な御籤 — 伯爵の親筆",
+    price: 500,
+    desc: "通常の御籤とは別誂えの一枚。あなたのためだけの限定アートと、伯爵の言葉をお届けします。",
+    paymentUrl: null,
+  },
 ];

@@ -1,0 +1,36 @@
+# Lighthouse CI — プレビュー/本番品質の自動計測
+# main と feat/* への push でビルド→主要ページを計測し、スコアをActionsログに出す。
+name: lighthouse
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["src/**", "public/**", "package.json", "next.config.js"]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm start -p 3000 &
+      - run: npx wait-on http://localhost:3000 --timeout 60000
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:3000/
+            http://localhost:3000/business
+            http://localhost:3000/shop
+          uploadArtifacts: true
+          temporaryPublicStorage: true

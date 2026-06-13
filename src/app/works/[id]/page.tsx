@@ -8,6 +8,7 @@ import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { siteUrl } from "@/lib/site-url";
 import WorkLinks, { type WorkLinkItem } from "./WorkLinks";
+import DonationCTA from "@/components/cta/DonationCTA";
 import "./work-page.css";
 
 export const dynamicParams = false;
@@ -19,6 +20,19 @@ async function getWork(id: string): Promise<{ work: CatalogWork | null; all: Cat
   const decoded = decodeURIComponent(id);
   const work = all.find((w) => String(w.id) === decoded) ?? null;
   return { work, all };
+}
+
+/** 伯爵の解説文 (scripts/gen-work-notes.mjs で生成。無ければ null) */
+async function getCountNote(id: string): Promise<string | null> {
+  try {
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    const raw = await fs.readFile(path.join(process.cwd(), "public/works/works-notes.json"), "utf-8");
+    const json = JSON.parse(raw) as { notes?: Record<string, string> };
+    return json.notes?.[decodeURIComponent(id)] ?? null;
+  } catch {
+    return null;
+  }
 }
 
 export async function generateStaticParams(): Promise<Params[]> {
@@ -128,6 +142,7 @@ export default async function WorkPage(
   const { id } = await params;
   const { work, all } = await getWork(id);
   if (!work) notFound();
+  const countNote = await getCountNote(id);
 
   const t = typeLabel(work.type);
   const links = buildLinks(work);
@@ -178,6 +193,13 @@ export default async function WorkPage(
         <div>
           <span className="work-type-badge">{t}</span>
           <h1 className="work-title">{work.title}</h1>
+          {t === "Music" && (
+            <div className="work-eq" aria-hidden>
+              {Array.from({ length: 7 }).map((_, i) => (
+                <span key={i} />
+              ))}
+            </div>
+          )}
           {work.releasedAt && <p className="work-meta">リリース: {work.releasedAt}</p>}
           {(work.moodTags?.length || work.tags?.length) ? (
             <div className="work-tags">
@@ -187,8 +209,18 @@ export default async function WorkPage(
             </div>
           ) : null}
           <WorkLinks workId={String(work.id)} items={links} />
+          <div style={{ marginTop: "0.8rem" }}>
+            <DonationCTA location="work_page" />
+          </div>
         </div>
       </section>
+
+      {countNote && (
+        <section className="work-section">
+          <h2 className="work-section-title">伯爵の言葉</h2>
+          <p className="work-notes">{countNote}</p>
+        </section>
+      )}
 
       {notes && (
         <section className="work-section">

@@ -11,6 +11,8 @@ export const SITE_CONFIG = {
   xUrl: null as string | null,
   /** シェア時のハッシュタグ */
   shareHashtags: ["伯爵MUSIAM"],
+  /** 寄進(投げ銭) Stripe Payment Link (null = ボタン非表示) */
+  donationUrl: null as string | null,
 } as const;
 
 /** 問い合わせリンク (LINE優先、なければmailto) */

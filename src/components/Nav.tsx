@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/chat", label: "伯爵" },
   { href: "/business", label: "法人" },
   { href: "/shop", label: "売店" },
+  { href: "/letters", label: "手紙" },
 ] as const;
 
 function isActivePath(pathname: string, href: string, exact?: boolean) {

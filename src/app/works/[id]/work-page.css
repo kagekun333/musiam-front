@@ -36,6 +36,35 @@
   background: var(--bg-panel-strong);
   box-shadow: var(--shadow-lg);
 }
+/* 音楽作品: イコライザー演出 (CSSのみ・装飾) */
+.work-eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 26px;
+  margin: 0.4rem 0 1rem;
+}
+.work-eq span {
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #d8b65c, rgba(216, 182, 92, 0.25));
+  animation: eq-bounce 1.1s ease-in-out infinite;
+}
+.work-eq span:nth-child(1) { height: 40%; animation-delay: 0s; }
+.work-eq span:nth-child(2) { height: 80%; animation-delay: 0.15s; }
+.work-eq span:nth-child(3) { height: 55%; animation-delay: 0.3s; }
+.work-eq span:nth-child(4) { height: 95%; animation-delay: 0.45s; }
+.work-eq span:nth-child(5) { height: 65%; animation-delay: 0.6s; }
+.work-eq span:nth-child(6) { height: 85%; animation-delay: 0.2s; }
+.work-eq span:nth-child(7) { height: 45%; animation-delay: 0.5s; }
+@keyframes eq-bounce {
+  0%, 100% { transform: scaleY(0.55); }
+  50% { transform: scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-eq span { animation: none; }
+}
+
 .work-cover-fallback {
   display: flex;
   align-items: center;
