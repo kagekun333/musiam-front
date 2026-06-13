@@ -44,6 +44,48 @@ const DRY_RUN = !!process.env.DRY_RUN;
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001";
 
+const JA_OPENERS = [
+  "星明かりの下では、",
+  "今夜の空気には、",
+  "宇宙の静けさの奥で、",
+  "ひそやかな光のように、",
+  "まだ名のない余韻が、",
+  "今日の心の軌道には、",
+];
+const JA_SUBJECTS = [
+  "やわらかな答え",
+  "小さな入口",
+  "澄んだ余白",
+  "静かな熱",
+  "見落としていた輝き",
+  "いま似合う温度",
+];
+const JA_ENDINGS = [
+  "きっと、次の一作へ導いてくれます。",
+  "今日はそれを拾う日です。",
+  "無理に急がず、ひとつだけ手に取ってください。",
+  "耳を澄ませば、ちょうどいい出会いがあります。",
+  "その余韻に、今日は素直でいてください。",
+];
+const EN_OPENERS = [
+  "Tonight,",
+  "Under a quiet sky,",
+  "In the hush between stars,",
+  "Along today's orbit,",
+];
+const EN_SUBJECTS = [
+  "a softer answer",
+  "a small doorway",
+  "a clear pocket of air",
+  "a gentler heat",
+];
+const EN_ENDINGS = [
+  "is already moving toward you.",
+  "will meet you if you do not rush.",
+  "is enough for tonight.",
+  "is waiting in the next work you open.",
+];
+
 // ---------- helpers ----------
 
 function hash32(s) {
@@ -113,6 +155,21 @@ function extractMoods(items) {
   return Array.from(moodSet).slice(0, 6).join(" / ");
 }
 
+function pick(arr, seed, salt) {
+  return arr[hash32(`${seed}|${salt}`) % arr.length];
+}
+
+function buildLocalLine(lang, ymd, moodLine) {
+  const seed = `${ymd}|${lang}`;
+  const mood = moodLine ? (lang === "ja" ? `「${moodLine.split(" / ")[0]}」みたいな気分を、` : `that ${moodLine.split(" / ")[0]} feeling `) : "";
+  if (lang === "ja") {
+    return `${pick(JA_OPENERS, seed, "o")}${mood}${pick(JA_SUBJECTS, seed, "s")}が、${pick(JA_ENDINGS, seed, "e")}`;
+  }
+  return `${pick(EN_OPENERS, seed, "o")} ${mood}${pick(EN_SUBJECTS, seed, "s")} ${pick(EN_ENDINGS, seed, "e")}`
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 // ---------- Anthropic call ----------
 
 async function callHaiku({ system, user }) {
@@ -175,6 +232,12 @@ function fallbackLine(lang) {
     : "A quiet page today. Listen closely — something here matches you.";
 }
 
+function isReusableLine(text, lang) {
+  const value = String(text || "").trim();
+  if (!value) return false;
+  return value !== fallbackLine(lang);
+}
+
 // ---------- main ----------
 
 async function main() {
@@ -201,12 +264,12 @@ async function main() {
     const moodLine = extractMoods([music, book].filter(Boolean));
 
     for (const lang of LANGS) {
-      if (existing.days[ymd][lang] && existing.days[ymd][lang].length > 0) {
+      if (isReusableLine(existing.days[ymd][lang], lang)) {
         report.cached++;
         continue;
       }
       if (DRY_RUN || !ANTHROPIC_KEY) {
-        existing.days[ymd][lang] = fallbackLine(lang);
+        existing.days[ymd][lang] = buildLocalLine(lang, ymd, moodLine) || fallbackLine(lang);
         report.fallback++;
         continue;
       }

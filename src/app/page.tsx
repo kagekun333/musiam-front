@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import TodaysPick from "@/components/TodaysPick";
+import HomeShowcase from "@/components/HomeShowcase";
 
 
 type Gate = {
@@ -81,6 +82,9 @@ export default function Home() {
           ))}
         </ul>
       </section>
+
+      {/* 工房セクション: 実績数字 + 法人/展示導線 */}
+      <HomeShowcase />
 
       {/* 右下ウォーターマーク：/public/brand/abi-seal.png を配置 */}
       <div aria-hidden className="corner-mark" />

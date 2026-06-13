@@ -20,7 +20,7 @@ export default function TodaysPick() {
     let alive = true;
     (async () => {
       try {
-        const r = await fetch("/api/todays-pick?lang=ja", { cache: "force-cache" });
+        const r = await fetch("/api/todays-pick?lang=ja", { cache: "no-store" });
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const j = (await r.json()) as PickResult;
         if (alive) setData(j);

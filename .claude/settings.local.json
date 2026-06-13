@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(git switch:*)",
+      "Bash(npm run lint:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm typecheck:*)",
+      "Bash(pnpm build:*)",
+      "Bash(# .gitignore に追加されているか確認、なければ追加 grep \"\"musiam-front-2025-09-26.zip\\\\|\\\\.zip\"\" .gitignore)",
+      "Bash(git rm:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(head:*)",
+      "Bash(docker compose:*)",
+      "Bash(open:*)"
+    ]
+  }
+}

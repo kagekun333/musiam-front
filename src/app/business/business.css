@@ -1,0 +1,225 @@
+/* /business co-located styles (globals.css のトークンを参照、上書きしない) */
+
+.biz-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero */
+.biz-hero {
+  text-align: center;
+  padding: 3rem 0 2.5rem;
+}
+.biz-hero-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.35em;
+  color: #d8b65c;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.biz-hero-title {
+  font-family: var(--font-serif), serif;
+  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  margin-bottom: 1.1rem;
+}
+.biz-hero-sub {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+}
+.biz-hero-ctas {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 実績数字 */
+.biz-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0 3.5rem;
+}
+.biz-stat {
+  background: var(--bg-panel-light);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+.biz-stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #d8b65c;
+  font-variant-numeric: tabular-nums;
+}
+.biz-stat-label {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 0.3rem;
+}
+
+/* セクション共通 */
+.biz-section { margin-bottom: 4rem; }
+.biz-section-title {
+  font-family: var(--font-serif), serif;
+  font-size: 1.45rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+.biz-section-lead {
+  color: var(--color-text-muted);
+  text-align: center;
+  font-size: 0.92rem;
+  margin-bottom: 2rem;
+}
+
+/* サービス/料金カード */
+.biz-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+.biz-card {
+  background: var(--bg-panel-strong);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.7rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.biz-card:hover {
+  border-color: rgba(216, 182, 92, 0.45);
+  transform: translateY(-3px);
+}
+.biz-card--featured {
+  border-color: rgba(216, 182, 92, 0.5);
+  box-shadow: 0 0 32px rgba(216, 182, 92, 0.08);
+}
+.biz-card-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #0a0a0f;
+  background: #d8b65c;
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-weight: 700;
+}
+.biz-card-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.biz-card-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #d8b65c;
+}
+.biz-card-price small {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+.biz-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  flex-grow: 1;
+}
+.biz-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.biz-card-list li {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  padding-left: 1.2em;
+  position: relative;
+}
+.biz-card-list li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  font-size: 0.6em;
+  top: 0.5em;
+  color: #d8b65c;
+}
+
+/* 制作フロー */
+.biz-flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  counter-reset: flow;
+}
+.biz-flow-step {
+  background: var(--bg-panel-light);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2rem 1rem;
+  counter-increment: flow;
+}
+.biz-flow-step::before {
+  content: "0" counter(flow);
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #d8b65c;
+  margin-bottom: 0.5rem;
+}
+.biz-flow-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.35rem;
+}
+.biz-flow-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+/* 最終CTA */
+.biz-final {
+  text-align: center;
+  background: var(--bg-panel-strong);
+  border: 1px solid rgba(216, 182, 92, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 3rem 1.5rem;
+}
+.biz-final-title {
+  font-family: var(--font-serif), serif;
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.8rem;
+}
+.biz-final-sub {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.8rem;
+  line-height: 1.8;
+}
+.biz-note {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-top: 1.2rem;
+}

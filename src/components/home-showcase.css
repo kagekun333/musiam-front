@@ -1,0 +1,84 @@
+/* HomeShowcase co-located styles */
+.showcase {
+  margin: 4rem auto 2rem;
+  max-width: 860px;
+  padding: 0 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.showcase-inner {
+  background: var(--bg-panel-light, rgba(24, 24, 27, 0.45));
+  border: 1px solid var(--color-border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 18px);
+  padding: 2.6rem 1.5rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+.showcase-title {
+  font-family: var(--font-serif), serif;
+  font-size: 1.35rem;
+  color: var(--color-text-primary, #e5e7eb);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.8rem;
+}
+.showcase-lead {
+  color: var(--color-text-muted, #a1a3a8);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  margin-bottom: 1.8rem;
+}
+.showcase-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.showcase-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.showcase-stat-num {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #d8b65c;
+  font-variant-numeric: tabular-nums;
+}
+.showcase-stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #a1a3a8);
+  letter-spacing: 0.1em;
+}
+.showcase-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+.showcase-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.8rem;
+  border-radius: var(--radius-md, 12px);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.showcase-btn--gold {
+  background: linear-gradient(135deg, #d8b65c 0%, #b8923a 100%);
+  color: #0a0a0f;
+  box-shadow: 0 4px 18px rgba(216, 182, 92, 0.22);
+}
+.showcase-btn--gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(216, 182, 92, 0.38);
+}
+.showcase-btn--ghost {
+  color: var(--color-text-primary, #e5e7eb);
+  border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.15));
+}
+.showcase-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+}

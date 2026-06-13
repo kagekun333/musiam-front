@@ -14,22 +14,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 import { chat as llmChat } from "@/lib/llm-router";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { getPublicLinksForCard } from "@/lib/work-links";
 
 const MAX_USER_TURNS = 5;
-
-const CHIP_TEXTS = new Set([
-  "おすすめして",
-  "雑談しよう",
-  "営業して",
-  "Recommend works",
-  "Just chat",
-  "Call sales",
-  "Recommend now",
-  "Chat now",
-  "Sell to me",
-  "Let's chat",
-  "Sell me",
-]);
 
 type Lang = "ja" | "en";
 
@@ -79,13 +66,12 @@ const BodySchema = z.object({
     .default([]),
 });
 
-function countUserTurnsExcludingChips(messages: { role: string; content: string }[]) {
+function countUserTurns(messages: { role: string; content: string }[]) {
   let n = 0;
   for (const m of messages) {
     if (m.role !== "user") continue;
     const t = (m.content ?? "").trim();
     if (!t) continue;
-    if (CHIP_TEXTS.has(t)) continue;
     n++;
   }
   return n;
@@ -96,6 +82,19 @@ function lastUserText(messages: { role: string; content: string }[]) {
     if (messages[i].role === "user") return (messages[i].content ?? "").trim();
   }
   return "";
+}
+
+function lastAssistantText(messages: { role: string; content: string }[]) {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    if (messages[i].role === "assistant") return (messages[i].content ?? "").trim();
+  }
+  return "";
+}
+
+function isDistressText(text: string) {
+  return /(しんどい|つらい|辛い|苦しい|疲れた|消えたい|死にたい|生きるのが辛い|限界|もう無理|depressed|hopeless|want to die|can't go on)/i.test(
+    text
+  );
 }
 
 function normalizeWorkType(t: string | undefined): "book" | "music" | "other" {
@@ -137,62 +136,11 @@ function pickCover(w: Work): string {
   return "";
 }
 
-function coalesceHref(w: Work): string {
-  return (
-    (w.salesHref as string) ||
-    (w.primaryHref as string) ||
-    (w.href as string) ||
-    (typeof (w.links as { url?: string } | undefined)?.url === "string"
-      ? (w.links as { url: string }).url
-      : "")
-  );
-}
-
 function buildLinks(w: Work): { kind: RecoLinkKind; url: string }[] {
-  const out: { kind: RecoLinkKind; url: string }[] = [];
-  const t = normalizeWorkType(w.type);
-  const dict =
-    w.links && !Array.isArray(w.links) && typeof w.links === "object"
-      ? (w.links as Record<string, string>)
-      : null;
-
-  const pushIf = (kind: RecoLinkKind, url?: string) => {
-    const u = (url ?? "").trim();
-    if (!u) return;
-    if (out.some((x) => x.url === u)) return;
-    out.push({ kind, url: u });
-  };
-
-  if (dict) {
-    const buyKeys = ["itunesbuy", "itunes", "buy", "applemusicbuy", "bandcamp", "amazon"];
-    const listenKeys = ["applemusic", "amazonmusic", "spotify", "listen", "soundcloud", "youtube"];
-    const readKeys = ["read", "pdf", "kindle", "amazonkindle"];
-
-    for (const k of Object.keys(dict)) {
-      const lk = k.toLowerCase();
-      if (buyKeys.some((x) => lk.includes(x))) pushIf("buy", dict[k]);
-    }
-    for (const k of Object.keys(dict)) {
-      const lk = k.toLowerCase();
-      if (listenKeys.some((x) => lk.includes(x))) pushIf("listen", dict[k]);
-    }
-    for (const k of Object.keys(dict)) {
-      const lk = k.toLowerCase();
-      if (readKeys.some((x) => lk.includes(x))) pushIf("read", dict[k]);
-    }
-  } else if (Array.isArray(w.links)) {
-    for (const l of w.links) {
-      if (l && typeof (l as { url?: string }).url === "string")
-        pushIf("open", (l as { url: string }).url);
-    }
-  }
-
-  const href = coalesceHref(w);
-  if (t === "book") pushIf("read", href);
-  else if (t === "music") pushIf("listen", href);
-  else pushIf("open", href);
-
-  return out;
+  return getPublicLinksForCard(w).map((item) => ({
+    kind: item.kind === "spotify" || item.kind === "appleMusic" || item.kind === "amazonMusic" ? "listen" : item.kind,
+    url: item.url,
+  }));
 }
 
 function workToCard(w: Work): RecoCard | null {
@@ -497,12 +445,12 @@ function systemPromptForRecommend(lang: Lang, picked: Work[], userTurns: number)
 function firstTurnGreeting(mode: "sales" | "recommend", lang: Lang): string {
   if (mode === "sales") {
     return lang === "ja"
-      ? "いらっしゃい〜、No.1営業のAbbyよ。本と音楽、今日はどっちの気分？"
-      : "Hey, I'm Abby, #1 sales. What's your vibe today — book or music?";
+      ? "いらっしゃい。Abbyが今夜の一作を短く決めるよ。本と音楽、どっち寄りでいく？"
+      : "Hey — Abby here. I'll narrow tonight down fast. Leaning book or music?";
   }
   return lang === "ja"
-    ? "伯爵の部屋へようこそ。本と音楽、どちらで満たしたい気分かな？"
-    : "Welcome. Book or music — which one do you want right now?";
+    ? "伯爵の部屋へようこそ。今の気分をひとことで置いてください。そこから今夜に合う一作まで絞ります。"
+    : "Welcome. Leave me the mood of tonight in a few words, and I will narrow it to one fitting work.";
 }
 
 async function callLlm(params: {
@@ -550,6 +498,17 @@ function fallbackRecommendText(lang: Lang, cards: RecoCard[]): string {
     : `I have something fitting.\n\n${lines.join("\n")}\n\nHope you enjoy.`;
 }
 
+function fallbackChatText(lang: Lang, userText: string): string {
+  if (isDistressText(userText)) {
+    return lang === "ja"
+      ? "それはかなりしんどいね。今は大きな答えを出さなくていい。まず、身体のしんどさと心のしんどさ、どちらが強い？"
+      : "That sounds really heavy. You do not need a big answer right now. Is it your body or your mind that feels worse?";
+  }
+  return lang === "ja"
+    ? "なるほど。その感じをもう少しだけ具体的にすると、今夜に合う一作まで寄せやすい。どんな場面でいちばん強くなる？"
+    : "I see. One more concrete detail would help me narrow it to the right work. When does it feel strongest?";
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const started = Date.now();
   const trace = Math.random().toString(36).slice(2);
@@ -561,7 +520,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const { mode, lang, messages } = parsed.data;
-    const userTurns = countUserTurnsExcludingChips(messages);
+    const userTurns = countUserTurns(messages);
     const works = await loadWorks();
 
     res.setHeader("X-Trace-Id", trace);
@@ -574,17 +533,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         return res.status(200).json({ ok: true, v: 2, mode, assistantText, text: assistantText, cards: [], moodTags: [], trace });
       }
 
-      const desiredType = extractDesiredType(messages);
-
-      if (userTurns === 1 && !desiredType) {
-        const assistantText =
-          lang === "ja"
-            ? "本と音楽、どちらにしましょう？ 片方だけでも。"
-            : "Book or music — which one shall we go with?";
-        return res.status(200).json({ ok: true, v: 2, mode, assistantText, text: assistantText, cards: [], moodTags: [], trace });
-      }
-
       const q = lastUserText(messages);
+      const desiredType = extractDesiredType(messages);
       const seed = `${trace}|${userTurns}|${q}`;
       const { cards, picked } = pickTopCards({ works, desiredType, queryText: q, count: 2, seed });
 
@@ -634,28 +584,47 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     /* ============ chat (雑談) ============ */
     {
-      const q = lastUserText(messages);
-      const seed = `${trace}|chat|${userTurns}|${q}`;
-      const { cards } = pickTopCards({ works, queryText: q, count: 1, seed });
+      const query = lastUserText(messages);
+      const seed = `${trace}|chat|${userTurns}|${query}`;
+      const { cards } = pickTopCards({ works, queryText: query, count: 1, seed });
 
       if (userTurns === 0) {
         const assistantText =
           lang === "ja"
-            ? "よくぞ来てくれましたな。ぜひ雑談しましょう。何か最近気になってることはあるかい？"
-            : "Well met. Let's chat — what's on your mind lately?";
+            ? "ようこそ。今夜の気分や最近引っかかっていることを、ひとつだけ置いていってください。そこから作品へ橋を架けます。"
+            : "Welcome. Leave me one thought or mood from tonight, and I'll build a bridge from there.";
         return res.status(200).json({ ok: true, v: 2, mode, assistantText, text: assistantText, cards: [], moodTags: [], trace });
       }
 
+      const prevAssistant = lastAssistantText(messages);
       const sys =
         lang === "ja"
-          ? "あなたは伯爵MUSIAMの案内役。丁寧で落ち着いた口調。短く、問い返しは1つだけ。作品名を出す時は鉤括弧「 」で引用する。URLや値段は書かない。"
-          : "You are a calm guide of Count MUSIAM. Keep it concise. Ask at most one follow-up. Quote work titles in 「 」. No URLs or prices.";
+          ? [
+              "あなたは伯爵MUSIAMの案内役であり、対話する伯爵本人。",
+              "相手の直前の言葉に具体的に返す。抽象的な相づちだけで済ませない。",
+              "同じ質問や同じ言い回しを繰り返さない。前のassistant文と重複しない。",
+              "つらさ・疲れ・孤独が出てきた時は、まず負荷を下げる言葉を置き、次に地に足のついた一問だけ返す。",
+              "短くても中身は濃く。1メッセージにつき質問は最大1つ。",
+              "必要になるまでは作品を無理に出さない。出す時は自然に1作だけ。",
+              "URLや値段は書かない。",
+            ].join("\n")
+          : [
+              "You are the Count of Count MUSIAM, speaking directly.",
+              "Reply specifically to the user's latest words. Do not hide behind generic acknowledgements.",
+              "Never repeat the same question or phrasing as the previous assistant turn.",
+              "If the user sounds distressed, lower the pressure first and then ask one grounded question.",
+              "Keep it concise but substantive. At most one question per reply.",
+              "Do not force a work recommendation too early. If you offer one, offer only one.",
+              "No URLs or prices.",
+            ].join("\n");
 
-      const raw = await callLlm({ purpose: "fast", system: sys, messages, trace });
-      const assistantText =
-        (raw ||
-          (lang === "ja" ? "なるほど。もう少しだけ詳しく聞かせて？" : "Got it. Tell me a bit more?")
-        ).trim();
+      const raw = await callLlm({ purpose: "quality", system: sys, messages, trace });
+      const assistantText = (() => {
+        const text = (raw || "").trim();
+        if (!text) return fallbackChatText(lang, query);
+        if (prevAssistant && text === prevAssistant) return fallbackChatText(lang, query);
+        return text;
+      })();
 
       if (userTurns >= MAX_USER_TURNS) {
         const closingText =

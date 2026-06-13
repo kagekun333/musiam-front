@@ -12,6 +12,8 @@ import { chat as llmChat } from "@/lib/llm-router";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { getPrimaryPublicHref } from "@/lib/work-links";
+import { buildDailyCountWord, fallbackCountWord } from "@/lib/countword";
 
 type RawWork = {
   id?: string | number;
@@ -70,17 +72,13 @@ function normalizeType(t: string | undefined): "music" | "book" | "other" {
 }
 
 function preferredHref(w: RawWork): string {
-  if (w.salesHref && typeof w.salesHref === "string") return w.salesHref;
-  if (w.primaryHref && typeof w.primaryHref === "string") return w.primaryHref;
-  if (w.href && typeof w.href === "string") return w.href;
-  if (w.links && typeof w.links === "object" && !Array.isArray(w.links)) {
-    const dict = w.links as Record<string, string>;
-    for (const k of Object.keys(dict)) {
-      const v = dict[k];
-      if (typeof v === "string" && v.trim()) return v;
-    }
-  }
-  return "";
+  return getPrimaryPublicHref({
+    ...w,
+    links:
+      w.links && typeof w.links === "object" && !Array.isArray(w.links)
+        ? (w.links as Record<string, string | null | undefined>)
+        : undefined,
+  }) || "";
 }
 
 function toPickItem(w: RawWork): PickItem | null {
@@ -125,6 +123,12 @@ async function readCountWordCache(ymd: string, lang: "ja" | "en"): Promise<strin
   return null;
 }
 
+function isUsableCachedCountWord(text: string, lang: "ja" | "en") {
+  const trimmed = String(text || "").trim();
+  if (!trimmed) return false;
+  return trimmed !== fallbackCountWord(lang);
+}
+
 async function composeCountWord(
   lang: "ja" | "en",
   ymd: string,
@@ -133,9 +137,13 @@ async function composeCountWord(
 ): Promise<string> {
   // 1) 事前生成キャッシュを最優先（コスト0、レイテンシ~1ms）
   const cached = await readCountWordCache(ymd, lang);
-  if (cached) return cached;
+  if (cached && isUsableCachedCountWord(cached, lang)) return cached;
 
-  // 2) キャッシュ無ければ Haiku を当日分だけ叩く（保険）
+  // 2) キャッシュが固定文なら、ローカルの組み合わせで日替わりを生成
+  const local = buildDailyCountWord(lang, ymd, [music, book]);
+  if (local) return local;
+
+  // 3) それでも駄目なら Haiku を当日分だけ叩く（保険）
   const mood =
     [music, book]
       .filter((x): x is PickItem => !!x)
@@ -172,10 +180,8 @@ async function composeCountWord(
   });
   if (r.ok && r.text) return r.text.trim();
 
-  // 3) 最終フォールバック（テンプレ）
-  return lang === "ja"
-    ? "今日は、静かな一頁を。耳を澄ませば、あなたに合う一作がある。"
-    : "A quiet page today. Listen closely — something here matches you.";
+  // 4) 最終フォールバック（テンプレ）
+  return fallbackCountWord(lang);
 }
 
 export async function GET(req: NextRequest) {

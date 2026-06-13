@@ -1,3 +1,5 @@
+import { getPrimaryPublicHref } from "@/lib/work-links";
+
 type RawLinks = Record<string, string | null | undefined>;
 
 export type ExhibitionWork = {
@@ -55,16 +57,61 @@ function mergeLinks(master?: RawLinks, ssd?: RawLinks): RawLinks | undefined {
   return Object.keys(out).length ? out : undefined;
 }
 
+const INTERNAL_TAG_RE = /^(ssd-|canonical:|internal:|system:|source:|ops:)/i;
+const STRATEGY_PHRASE_RE =
+  /(ショート(?:動画)?特化|バイラル設計|最初の\d+秒でフックを切る|フックを切る|MV向け|ショート向け|広告向け|プロモ向け|サムネ向け|導線設計|Commercial Music Library)/i;
+
+function isPublicTag(tag?: string) {
+  const value = String(tag || "").trim();
+  if (!value) return false;
+  if (INTERNAL_TAG_RE.test(value)) return false;
+  return true;
+}
+
+function buildFallbackDescription(work: ExhibitionWork): string | undefined {
+  const genre = (work.tags || [])
+    .map((tag) => String(tag))
+    .find((tag) => /^genre:/i.test(tag))
+    ?.replace(/^genre:/i, "")
+    .trim();
+  const moods = (work.moodTags || []).filter((tag) => isPublicTag(tag) && !/^genre:/i.test(tag)).slice(0, 2);
+
+  if (work.type === "music") {
+    if (genre && moods.length) {
+      return `${genre}を基調に、${moods.join("と")}の気配を重ねた一作。`;
+    }
+    if (genre) {
+      return `${genre}を基調にした一作。`;
+    }
+    if (moods.length) {
+      return `${moods.join("と")}の気配をまとった一作。`;
+    }
+    return "静かに余韻を残す一作。";
+  }
+
+  if (work.type === "book") {
+    return "言葉の余韻をゆっくり辿れる一冊。";
+  }
+
+  return undefined;
+}
+
 function stripExhibitionMeta(text?: string): string | undefined {
   if (!text) return undefined;
 
-  const cleaned = String(text)
+  const withoutTail = String(text)
     .replace(
       /\s*(?:MV(?:映像)?イメージ|MV映像イメージ|映像イメージ|映像案|動画案|動画戦略|ショート動画戦略|ショート動画案|ショート戦略|プロモ戦略|プロモ案|Visual concept|MV image|Short-form strategy)\s*[:：][\s\S]*$/i,
       ""
-    )
-    .replace(/\s+/g, " ")
-    .trim();
+    );
+
+  const sentences = withoutTail
+    .split(/(?<=[。！？!?])\s*/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .filter((part) => !STRATEGY_PHRASE_RE.test(part));
+
+  const cleaned = sentences.join(" ").replace(/\s+/g, " ").trim();
 
   return cleaned || undefined;
 }
@@ -84,14 +131,14 @@ function toDescription(work: ExhibitionWork): string | undefined {
   if (summary) return summary;
 
   const note = work?.ssd?.tracks?.[0]?.notes;
-  return stripExhibitionMeta(typeof note === "string" ? note : "");
+  const cleaned = stripExhibitionMeta(typeof note === "string" ? note : "");
+  return cleaned || buildFallbackDescription(work);
 }
 
 function mergeMasterAndSsd(master: ExhibitionWork, ssd: ExhibitionWork): ExhibitionWork {
   const mergedLinks = mergeLinks(master.links, ssd.links);
-  const hyperfollow = ssd.href || ssd.links?.hyperfollow || ssd.links?.listen;
 
-  return {
+  const merged: ExhibitionWork = {
     ...master,
     ...ssd,
     id: master.id,
@@ -101,29 +148,36 @@ function mergeMasterAndSsd(master: ExhibitionWork, ssd: ExhibitionWork): Exhibit
     cover: ssd.cover || master.cover,
     tags: uniq([...(master.tags || []), ...(ssd.tags || [])]),
     moodTags: (ssd.moodTags && ssd.moodTags.length ? ssd.moodTags : master.moodTags) || [],
-    links:
-      mergedLinks && !mergedLinks.listen && hyperfollow
-        ? { ...mergedLinks, listen: hyperfollow }
-        : mergedLinks,
+    links: mergedLinks,
     href: master.href || ssd.href,
     primaryHref: master.primaryHref || master.href || ssd.primaryHref || ssd.href,
-    salesHref: master.salesHref || ssd.salesHref || ssd.href,
+    salesHref: master.salesHref || ssd.salesHref,
     matchInfo: ssd.matchInfo || master.matchInfo,
     canonicalMasterId: ssd.canonicalMasterId,
     canonicalMasterTitle: ssd.canonicalMasterTitle,
     ssd: ssd.ssd || master.ssd,
     description: toDescription(ssd) || toDescription(master),
   };
+
+  return {
+    ...merged,
+    primaryHref: getPrimaryPublicHref(merged),
+  };
 }
 
 function prepareStandaloneSsd(ssd: ExhibitionWork): ExhibitionWork {
-  const links = mergeLinks(ssd.links, !ssd.links?.listen && ssd.href ? { listen: ssd.href } : undefined);
-  return {
+  const links = mergeLinks(ssd.links, undefined);
+  const prepared: ExhibitionWork = {
     ...ssd,
     type: "music",
     tags: uniq(ssd.tags || []),
     links,
     description: toDescription(ssd),
+  };
+
+  return {
+    ...prepared,
+    primaryHref: getPrimaryPublicHref(prepared),
   };
 }
 
@@ -145,6 +199,7 @@ export async function loadExhibitionWorks(): Promise<ExhibitionWork[]> {
 
   const merged: ExhibitionWork[] = masterItems.map((item) => ({
     ...item,
+    tags: (item.tags || []).filter(isPublicTag),
     description: item.description || toDescription(item),
   }));
 

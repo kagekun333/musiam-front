@@ -1,3 +1,5 @@
+import { getPrimaryPublicHref } from "@/lib/work-links";
+
 type RawLinks = Record<string, string | null | undefined>;
 
 export type CatalogWork = {
@@ -56,12 +58,8 @@ function mergeLinks(
 
 function mergeMasterAndSsd(master: CatalogWork, ssd: CatalogWork): CatalogWork {
   const mergedLinks = mergeLinks(master.links, ssd.links);
-  const hyperfollow =
-    ssd.href ||
-    (ssd.links && !Array.isArray(ssd.links) ? ssd.links.hyperfollow || ssd.links.listen : "") ||
-    ssd.ssd?.hyperfollow_url;
 
-  return {
+  const merged: CatalogWork = {
     ...master,
     ...ssd,
     id: master.id,
@@ -71,38 +69,36 @@ function mergeMasterAndSsd(master: CatalogWork, ssd: CatalogWork): CatalogWork {
     cover: ssd.cover || master.cover,
     tags: uniq([...(master.tags || []), ...(ssd.tags || [])]),
     moodTags: (ssd.moodTags && ssd.moodTags.length ? ssd.moodTags : master.moodTags) || [],
-    links:
-      mergedLinks && !Array.isArray(mergedLinks) && !mergedLinks.listen && hyperfollow
-        ? { ...mergedLinks, listen: hyperfollow }
-        : mergedLinks,
+    links: mergedLinks,
     href: master.href || ssd.href,
-    primaryHref: master.primaryHref || master.href || ssd.primaryHref || ssd.href || hyperfollow,
-    salesHref: master.salesHref || ssd.salesHref || ssd.href,
+    primaryHref: master.primaryHref || master.href || ssd.primaryHref || ssd.href,
+    salesHref: master.salesHref || ssd.salesHref,
     matchInfo: ssd.matchInfo || master.matchInfo,
     canonicalMasterId: ssd.canonicalMasterId,
     canonicalMasterTitle: ssd.canonicalMasterTitle,
     ssd: ssd.ssd || master.ssd,
   };
+
+  return {
+    ...merged,
+    primaryHref: getPrimaryPublicHref(merged),
+  };
 }
 
 function prepareStandaloneSsd(ssd: CatalogWork): CatalogWork {
-  const links =
-    ssd.links && !Array.isArray(ssd.links) && !ssd.links.listen && ssd.href
-      ? { ...ssd.links, listen: ssd.href }
-      : ssd.links;
+  const links = ssd.links;
 
-  return {
+  const prepared: CatalogWork = {
     ...ssd,
     type: ssd.type || "music",
     tags: uniq(ssd.tags || []),
     links,
-    primaryHref:
-      String(
-        ssd.primaryHref ||
-          ssd.href ||
-          (links && !Array.isArray(links) ? links.listen : "") ||
-          ""
-      ) || undefined,
+    primaryHref: ssd.primaryHref,
+  };
+
+  return {
+    ...prepared,
+    primaryHref: getPrimaryPublicHref(prepared),
   };
 }
 

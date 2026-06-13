@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/oracle", label: "占い" },
   { href: "/exhibition", label: "展示" },
   { href: "/chat", label: "伯爵" },
+  { href: "/business", label: "法人" },
 ] as const;
 
 function isActivePath(pathname: string, href: string, exact?: boolean) {

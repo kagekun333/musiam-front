@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { track } from "@/lib/metrics";
 import { loadExhibitionWorks } from "@/lib/loadExhibitionWorks";
+import { getMusicStreamingLinks, getPrimaryPublicHref } from "@/lib/work-links";
+import { formatReleaseText, isFutureRelease } from "@/lib/release-status";
 
 /* ================================================================
    0. ユーティリティ（既存ロジック維持）
@@ -38,6 +40,15 @@ function parseTags(tags?: string[] | string) {
     if (m) out[m[1].trim()] = m[2].trim();
   }
   return out;
+}
+
+function isVisibleTag(tag?: string) {
+  const value = String(tag || "").trim();
+  if (!value) return false;
+  if (/^(ASIN|asin|price|aspect):/i.test(value)) return false;
+  if (/^(square|portrait|landscape)$/i.test(value)) return false;
+  if (/^(ssd-|canonical:|internal:|system:|source:|ops:)/i.test(value)) return false;
+  return true;
 }
 
 function hiResIfAmazon(url?: string) {
@@ -85,6 +96,8 @@ type Work = {
   weight?: number;
   previewUrl?: string;
   href?: string;
+  primaryHref?: string;
+  salesHref?: string;
   description?: string;
   aspect?: string;
 };
@@ -162,6 +175,19 @@ function getAspectForWork(w: Work): string {
   }
 }
 
+function getSortLabel(sortKey: string) {
+  switch (sortKey) {
+    case "releasedAt-desc":
+      return "新しい順";
+    case "releasedAt-asc":
+      return "古い順";
+    case "random":
+      return "ランダム";
+    default:
+      return "並び替え";
+  }
+}
+
 /* ================================================================
    3. CTA推論（type別にPrimary CTAを決定）
    ================================================================ */
@@ -170,19 +196,27 @@ type CTA = { label: string; url: string; icon: string };
 
 function getPrimaryCta(w: Work): CTA | null {
   if (w.type === "music") {
-    // Spotify を最優先（listen キーまたは spotify キー）
-    const spotify = w.links?.spotify || inferSpotifyUrl(w) || (w.links?.listen && /spotify/i.test(w.links.listen) ? w.links.listen : undefined);
-    if (spotify) return { label: "Spotifyで聴く", url: spotify, icon: "spotify" };
-    // Apple Music
-    if (w.links?.appleMusic) return { label: "Apple Musicで聴く", url: w.links.appleMusic, icon: "appleMusic" };
-    // iTunes 購入
-    if (w.links?.itunesBuy) return { label: "iTunesで購入", url: w.links.itunesBuy, icon: "itunesBuy" };
-    if (w.links?.listen) {
-      if (/music\.apple\.com/i.test(w.links.listen))
-        return { label: "Apple Musicで聴く", url: w.links.listen, icon: "appleMusic" };
-      if (/itunes\.apple\.com/i.test(w.links.listen))
-        return { label: "iTunesで購入", url: w.links.listen, icon: "itunesBuy" };
-      return { label: "聴く", url: w.links.listen, icon: "listen" };
+    if (w.releasedAt && isFutureRelease(w.releasedAt)) return null;
+    const musicLinks = getMusicStreamingLinks({
+      type: w.type,
+      href: w.href,
+      primaryHref: w.primaryHref,
+      links: {
+        ...w.links,
+        spotify: w.links?.spotify || inferSpotifyUrl(w),
+      },
+    });
+    const primary = musicLinks[0];
+    if (primary) {
+      const label =
+        primary.kind === "spotify"
+          ? "Spotifyで聴く"
+          : primary.kind === "appleMusic"
+          ? "Apple Musicで聴く"
+          : primary.kind === "amazonMusic"
+          ? "Amazon Musicで聴く"
+          : "聴く";
+      return { label, url: primary.url, icon: primary.kind };
     }
   }
   if (w.type === "book") {
@@ -196,9 +230,9 @@ function getPrimaryCta(w: Work): CTA | null {
       return { label: "YouTubeで視聴", url: w.links.watch, icon: "youtube" };
     return { label: "視聴する", url: w.links.watch, icon: "watch" };
   }
-  if (w.links?.listen) return { label: "聴く", url: w.links.listen, icon: "listen" };
   if (w.links?.read) return { label: "読む", url: w.links.read, icon: "read" };
-  if (w.href) return { label: "見る", url: w.href, icon: "link" };
+  const primaryHref = getPrimaryPublicHref(w);
+  if (primaryHref) return { label: w.type === "book" ? "読む" : "見る", url: primaryHref, icon: "link" };
   return null;
 }
 
@@ -214,17 +248,26 @@ function getSecondaryLinks(w: Work): { label: string; url: string; icon: string 
   const spotify = w.links?.spotify || inferSpotifyUrl(w) || (w.links?.listen && /spotify/i.test(w.links.listen || "") ? w.links.listen : undefined);
   const amazon = buildAmazonUrl(w);
 
-  // 音楽サービスリンク（spotify → appleMusic → amazonMusic → itunesBuy の順）
-  if (spotify) addLink("Spotifyで聴く", spotify, "spotify");
-  if (w.links?.appleMusic) addLink("Apple Musicで聴く", w.links.appleMusic, "appleMusic");
-  if (w.links?.amazonMusic) addLink("Amazon Musicで聴く", w.links.amazonMusic, "amazonMusic");
-  if (w.links?.itunesBuy) addLink("iTunesで購入", w.links.itunesBuy, "itunesBuy");
-
-  // listen キーがあって上記と重複しない場合
-  if (w.links?.listen) {
-    if (/music\.apple\.com/i.test(w.links.listen)) addLink("Apple Musicで聴く", w.links.listen, "appleMusic");
-    else if (/itunes\.apple\.com/i.test(w.links.listen)) addLink("iTunesで購入", w.links.listen, "itunesBuy");
-    else if (!/spotify/i.test(w.links.listen)) addLink("聴く", w.links.listen, "listen");
+  if (w.type === "music" && !(w.releasedAt && isFutureRelease(w.releasedAt))) {
+    for (const link of getMusicStreamingLinks({
+      type: w.type,
+      href: w.href,
+      primaryHref: w.primaryHref,
+      links: {
+        ...w.links,
+        spotify,
+      },
+    })) {
+      const label =
+        link.kind === "spotify"
+          ? "Spotifyで聴く"
+          : link.kind === "appleMusic"
+          ? "Apple Musicで聴く"
+          : link.kind === "amazonMusic"
+          ? "Amazon Musicで聴く"
+          : "聴く";
+      addLink(label, link.url, link.kind);
+    }
   }
 
   // YouTube
@@ -235,12 +278,14 @@ function getSecondaryLinks(w: Work): { label: string; url: string; icon: string 
 
   // Amazon（本は「読む」、音楽は「購入」）
   if (amazon) {
-    const amazonLabel = w.type === "book" ? "Amazonで読む" : "Amazonで購入";
-    addLink(amazonLabel, amazon, "amazon");
+    if (w.type === "book") {
+      addLink("Amazonで読む", amazon, "amazon");
+    }
   }
   if (w.links?.read) addLink("Amazonで読む", w.links.read, "read");
   if (w.links?.nft) addLink("NFTを見る", w.links.nft, "nft");
-  if (w.href) addLink("Webサイトで見る", w.href, "link");
+  const primaryHref = getPrimaryPublicHref(w);
+  if (primaryHref) addLink("Webサイトで見る", primaryHref, "link");
 
   return links;
 }
@@ -277,7 +322,6 @@ function IconSvg({ icon, size = 18 }: { icon: string; size?: number }) {
         </svg>
       );
     case "appleMusic":
-    case "itunesBuy":
       return (
         <svg viewBox="0 0 24 24" style={s}>
           <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
@@ -410,21 +454,41 @@ function MasonryCard({
 
       {/* Info strip – minimal */}
       <div style={{ padding: "10px 12px 12px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 4 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 8,
+            marginBottom: 6,
+          }}
+        >
           <TypeBadge type={work.type} />
+          {work.releasedAt ? (
+            <span
+              style={{
+                fontSize: 11,
+                letterSpacing: "0.08em",
+                color: "rgba(228,216,189,0.56)",
+                textTransform: "uppercase",
+              }}
+            >
+              {formatReleaseText(work.releasedAt, "ja")}
+            </span>
+          ) : null}
         </div>
         <h3
           style={{
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: 600,
-            lineHeight: 1.35,
+            lineHeight: 1.42,
             margin: 0,
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
             WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
-            color: "#e5e7eb",
+            color: "#f3efe4",
             letterSpacing: "-0.01em",
           }}
         >
@@ -461,7 +525,7 @@ function DetailModal({
     (s) => !primary || s.url !== primary.url
   );
   const displayTags = (work.tags || []).filter(
-    (t) => !/^(ASIN|asin|price|aspect):/i.test(t) && !/^(square|portrait|landscape)$/i.test(t)
+    (t) => isVisibleTag(t)
   );
 
   // Close on ESC
@@ -657,7 +721,7 @@ function DetailModal({
             <TypeBadge type={work.type} />
             {work.releasedAt && (
               <span style={{ fontSize: 12, color: "#888", fontWeight: 400 }}>
-                {work.releasedAt}
+                {formatReleaseText(work.releasedAt, "ja")}
               </span>
             )}
           </div>
@@ -748,9 +812,7 @@ function DetailModal({
                           ? "#ff0000"
                           : primary.icon === "appleMusic"
                             ? "#fc3c44"
-                            : primary.icon === "itunesBuy"
-                              ? "#a259ff"
-                              : primary.icon === "nft"
+                            : primary.icon === "nft"
                                 ? "#9333ea"
                                 : "#3b82f6",
                 color: primary.icon === "spotify" || primary.icon === "amazon" ? "#000" : "#fff",
@@ -899,7 +961,7 @@ function ControlBar({
         </span>
         <input
           type="text"
-          placeholder="Search title or tags…"
+          placeholder="タイトルやタグで探す…"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           style={{
@@ -970,7 +1032,19 @@ function ControlBar({
       >
         {types.map((t) => (
           <option key={t} value={t} style={{ background: "#1a1a1a" }}>
-            {t === "all" ? "All Types" : t.charAt(0).toUpperCase() + t.slice(1)}
+            {t === "all"
+              ? "すべての種別"
+              : t === "music"
+              ? "音楽"
+              : t === "book"
+              ? "本"
+              : t === "video"
+              ? "映像"
+              : t === "art"
+              ? "アート"
+              : t === "article"
+              ? "記事"
+              : t}
           </option>
         ))}
       </select>
@@ -1008,7 +1082,7 @@ function ControlBar({
       >
         {tags.map((t) => (
           <option key={t} value={t} style={{ background: "#1a1a1a" }}>
-            {t === "all" ? "All Tags" : t}
+            {t === "all" ? "すべてのタグ" : t}
           </option>
         ))}
       </select>
@@ -1032,13 +1106,13 @@ function ControlBar({
         }}
       >
         <option value="releasedAt-desc" style={{ background: "#1a1a1a" }}>
-          Newest
+          新しい順
         </option>
         <option value="releasedAt-asc" style={{ background: "#1a1a1a" }}>
-          Oldest
+          古い順
         </option>
         <option value="random" style={{ background: "#1a1a1a" }}>
-          Random
+          ランダム
         </option>
       </select>
 
@@ -1053,7 +1127,7 @@ function ControlBar({
           padding: "0 4px",
         }}
       >
-        {resultCount} {resultCount === 1 ? "work" : "works"}
+        {resultCount} 件
       </span>
     </div>
   );
@@ -1124,7 +1198,7 @@ export default function ExhibitionPage() {
     for (const w of all) {
       (w.tags || []).forEach((t) => {
         // Hide internal tags
-        if (!/^(ASIN|asin|price|aspect):/i.test(t) && !/^(square|portrait|landscape)$/i.test(t)) {
+        if (isVisibleTag(t)) {
           s.add(t);
         }
       });
@@ -1172,6 +1246,35 @@ export default function ExhibitionPage() {
   const visible = filtered.slice(0, visibleCount);
   const hasMore = visibleCount < filtered.length;
 
+  const counts = useMemo(() => {
+    const total = all.length;
+    const music = all.filter((w) => w.type === "music").length;
+    const books = all.filter((w) => w.type === "book").length;
+    return { total, music, books };
+  }, [all]);
+
+  const activeFilterParts = useMemo(() => {
+    const parts: string[] = [];
+    if (typeF !== "all") {
+      parts.push(
+        typeF === "music"
+          ? "音楽"
+          : typeF === "book"
+          ? "本"
+          : typeF === "video"
+          ? "映像"
+          : typeF === "art"
+          ? "アート"
+          : typeF === "article"
+          ? "記事"
+          : typeF
+      );
+    }
+    if (tagF !== "all") parts.push(`タグ: ${tagF}`);
+    if (searchQuery.trim()) parts.push(`検索: ${searchQuery.trim()}`);
+    return parts;
+  }, [typeF, tagF, searchQuery]);
+
   /* ---------- モーダルナビ ---------- */
   const modalIndex = modalWork ? filtered.findIndex((w) => w.id === modalWork.id) : -1;
 
@@ -1213,10 +1316,21 @@ export default function ExhibitionPage() {
       {/* ===== Header ===== */}
       <header
         style={{
-          marginBottom: 36,
+          marginBottom: 28,
           textAlign: "center",
         }}
       >
+        <p
+          style={{
+            margin: "0 0 10px",
+            fontSize: 11,
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "rgba(214, 184, 118, 0.72)",
+          }}
+        >
+          Cosmic Archive
+        </p>
         <h1
           style={{
             fontSize: 42,
@@ -1232,27 +1346,79 @@ export default function ExhibitionPage() {
         <p
           style={{
             fontSize: 15,
-            color: "#666",
+            color: "#9ca3af",
             fontWeight: 400,
             margin: 0,
             letterSpacing: "0.02em",
           }}
         >
-          A curated collection of creative works
+          星図のようにひらく、音と物語の全展示。
         </p>
         <p
           style={{
             fontSize: 12,
-            color: "#555",
+            color: "#6b7280",
             fontWeight: 400,
             margin: "6px 0 0",
             letterSpacing: "0.05em",
             textTransform: "uppercase",
           }}
         >
-          {all.length} works
+          {counts.total} works
         </p>
       </header>
+
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: 12,
+          marginBottom: 20,
+        }}
+      >
+        {[
+          { label: "全展示", value: counts.total, note: "音楽と本をまとめて表示" },
+          { label: "音楽", value: counts.music, note: "最新リリースを含む全楽曲" },
+          { label: "本", value: counts.books, note: "Amazon導線付きの既刊一覧" },
+        ].map((item) => (
+          <div
+            key={item.label}
+            style={{
+              padding: "14px 16px",
+              borderRadius: 14,
+              border: "1px solid rgba(214,184,118,0.12)",
+              background:
+                "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.03)",
+            }}
+          >
+            <div
+              style={{
+                fontSize: 11,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgba(214,184,118,0.7)",
+                marginBottom: 8,
+              }}
+            >
+              {item.label}
+            </div>
+            <div
+              style={{
+                fontSize: 28,
+                fontWeight: 700,
+                letterSpacing: "-0.04em",
+                color: "#f3efe4",
+                lineHeight: 1,
+                marginBottom: 8,
+              }}
+            >
+              {item.value}
+            </div>
+            <div style={{ fontSize: 12, lineHeight: 1.6, color: "#9ca3af" }}>{item.note}</div>
+          </div>
+        ))}
+      </section>
 
       {/* ===== Controls ===== */}
       <ControlBar
@@ -1269,13 +1435,64 @@ export default function ExhibitionPage() {
         resultCount={filtered.length}
       />
 
+      <section
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 10,
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: 18,
+          padding: "12px 14px",
+          borderRadius: 12,
+          background: "rgba(255,255,255,0.03)",
+          border: "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "center" }}>
+          <span
+            style={{
+              fontSize: 12,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(214,184,118,0.72)",
+            }}
+          >
+            View
+          </span>
+          <span style={{ fontSize: 13, color: "#d1d5db" }}>{getSortLabel(sortKey)}</span>
+          {activeFilterParts.length > 0 ? (
+            activeFilterParts.map((part) => (
+              <span
+                key={part}
+                style={{
+                  padding: "4px 9px",
+                  borderRadius: 999,
+                  fontSize: 12,
+                  color: "#cbd5e1",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                {part}
+              </span>
+            ))
+          ) : (
+            <span style={{ fontSize: 13, color: "#9ca3af" }}>フィルタなしで全展示を表示中</span>
+          )}
+        </div>
+        <div style={{ fontSize: 13, color: "#9ca3af" }}>
+          {visible.length} / {filtered.length} 件表示
+        </div>
+      </section>
+
       {/* ===== Ordered Grid ===== */}
       {visible.length > 0 ? (
         <section
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 16,
+            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
+            gap: 18,
             alignItems: "start",
           }}
         >
@@ -1290,8 +1507,8 @@ export default function ExhibitionPage() {
             padding: "80px 20px",
           }}
         >
-          <p style={{ fontSize: 16, color: "#666", marginBottom: 8 }}>No works found</p>
-          <p style={{ fontSize: 13, color: "#555" }}>Try adjusting your search or filters</p>
+          <p style={{ fontSize: 16, color: "#9ca3af", marginBottom: 8 }}>作品が見つかりません</p>
+          <p style={{ fontSize: 13, color: "#6b7280" }}>検索語やフィルタを調整してみてください</p>
         </div>
       )}
 
@@ -1323,7 +1540,7 @@ export default function ExhibitionPage() {
               e.currentTarget.style.color = "#ccc";
             }}
           >
-            Load more ({filtered.length - visibleCount} remaining)
+            さらに表示 ({filtered.length - visibleCount} 件)
           </button>
         </div>
       )}
