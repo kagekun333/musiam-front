@@ -88,6 +88,23 @@ function buildLinks(work: CatalogWork): WorkLinkItem[] {
   return items;
 }
 
+/** Spotifyの作品URLから埋め込み試聴URLを作る。対応外なら null。 */
+function spotifyEmbed(work: CatalogWork): string | null {
+  const links = work.links;
+  let url = "";
+  if (links && !Array.isArray(links) && typeof links === "object") {
+    const v = (links as Record<string, unknown>).spotify;
+    if (typeof v === "string") url = v;
+  }
+  if (!url) {
+    const fb = work.primaryHref || work.salesHref || work.href || "";
+    if (typeof fb === "string" && fb.includes("open.spotify.com")) url = fb;
+  }
+  const m = url.match(/open\.spotify\.com\/(album|track|playlist)\/([A-Za-z0-9]+)/);
+  if (!m) return null;
+  return `https://open.spotify.com/embed/${m[1]}/${m[2]}?utm_source=generator&theme=0`;
+}
+
 function relatedWorks(work: CatalogWork, all: CatalogWork[], n = 4): CatalogWork[] {
   const tags = new Set(work.tags ?? []);
   return all
@@ -146,6 +163,7 @@ export default async function WorkPage(
 
   const t = typeLabel(work.type);
   const links = buildLinks(work);
+  const embed = t === "Music" ? spotifyEmbed(work) : null;
   const related = relatedWorks(work, all);
   const tracks = work.ssd?.tracks?.filter((tr) => tr.title) ?? [];
   const notes =
@@ -214,6 +232,24 @@ export default async function WorkPage(
           </div>
         </div>
       </section>
+
+      {embed && (
+        <section className="work-section">
+          <h2 className="work-section-title">試聴する</h2>
+          <div className="work-embed">
+            <iframe
+              src={embed}
+              width="100%"
+              height="152"
+              frameBorder="0"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              title={`${work.title} 試聴`}
+            />
+          </div>
+          <p className="work-embed-note">気に入ったら、上のボタンから各ストアでお楽しみください。</p>
+        </section>
+      )}
 
       {countNote && (
         <section className="work-section">

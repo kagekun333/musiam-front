@@ -211,3 +211,21 @@
   gap: 0.8rem;
   flex-wrap: wrap;
 }
+
+/* Spotify 試聴 embed */
+.work-embed {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: rgba(18, 18, 21, 0.6);
+}
+.work-embed iframe {
+  display: block;
+  border: 0;
+  border-radius: 12px;
+}
+.work-embed-note {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
