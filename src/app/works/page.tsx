@@ -7,9 +7,9 @@ import { siteUrl } from "@/lib/site-url";
 import WorksCatalog, { type CatalogItem } from "./WorksCatalog";
 
 export const metadata: Metadata = {
-  title: "作品カタログ | 伯爵 MUSIAM",
+  title: "展示 — 作品カタログ | 伯爵 MUSIAM",
   description:
-    "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せる作品カタログ。",
+    "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せる展示室。",
   alternates: { canonical: `${siteUrl()}/works` },
   openGraph: {
     title: "作品カタログ | 伯爵 MUSIAM",
@@ -55,10 +55,12 @@ export default async function WorksIndexPage() {
         <nav className="text-sm opacity-60" aria-label="パンくず" style={{ marginBottom: "0.5rem" }}>
           <Link href="/">ホーム</Link> / <span>作品カタログ</span>
         </nav>
-        <h1 className="wordmark" aria-label="作品カタログ">
-          <span className="wordmark-jp" style={{ fontSize: "1.8rem" }}>作品カタログ</span>
+        <h1 className="wordmark" aria-label="展示">
+          <span className="wordmark-jp" style={{ fontSize: "1.8rem" }}>展示</span>
         </h1>
-        <p className="hero-sub">{items.length}の音楽と物語が、ここに収められています。</p>
+        <p className="hero-sub">
+          全{items.length}作品。気になる一作から、聴いて・読んでみてください。
+        </p>
       </section>
 
       <WorksCatalog items={items} />

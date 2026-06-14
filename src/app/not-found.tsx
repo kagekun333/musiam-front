@@ -19,7 +19,7 @@ export default function NotFound() {
         {[
           { href: "/", label: "ホーム" },
           { href: "/oracle", label: "占いの門" },
-          { href: "/exhibition", label: "展示の門" },
+          { href: "/works", label: "展示の門" },
           { href: "/chat", label: "伯爵の門" },
         ].map((l) => (
           <Link

@@ -13,6 +13,12 @@ const nextConfig = {
       { protocol: 'https', hostname: 'is5-ssl.mzstatic.com' },
     ],
   },
+  // 展示を /works ギャラリーへ統合（可逆: この1ブロックを消せば元に戻る）
+  async redirects() {
+    return [
+      { source: '/exhibition', destination: '/works', permanent: false },
+    ];
+  },
   // 本番ビルドを lint で止めない保険（すでに設定済みならそのまま）
   eslint: { ignoreDuringBuilds: true },
   // （任意）型エラーで止めたくない場合のみ

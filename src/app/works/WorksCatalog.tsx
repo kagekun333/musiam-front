@@ -109,6 +109,9 @@ export default function WorksCatalog({ items }: { items: CatalogItem[] }) {
                   <span className="catalog-type-badge">
                     {w.type === "music" ? "Music" : w.type === "book" ? "Book" : "Work"}
                   </span>
+                  <span className="catalog-hover-hint">
+                    {w.type === "music" ? "▶ 試聴・聴く" : w.type === "book" ? "読む" : "見る"}
+                  </span>
                 </div>
                 <div className="catalog-card-title">{w.title}</div>
               </Link>

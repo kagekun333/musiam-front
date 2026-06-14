@@ -17,7 +17,7 @@ type Gate = {
 
 const GATES: Gate[] = [
   { file: "torii.jpg",       href: "/oracle",     ja: "占いの門", en: "Oracle Gate",     desc: "運命を読み、道をひらく。",       cta: "今日を占う" },
-  { file: "galaxy.jpg",      href: "/exhibition", ja: "展示の門", en: "Exhibition Gate", desc: "無限の展示が、あなたを待つ。",   cta: "展示を見る" },
+  { file: "galaxy.jpg",      href: "/works",      ja: "展示の門", en: "Exhibition Gate", desc: "無限の展示が、あなたを待つ。",   cta: "展示を見る" },
   { file: "gothic-door.jpg", href: "/chat",       ja: "伯爵の門", en: "Count's Gate",    desc: "館の大扉、選ばれし者を迎える。", cta: "伯爵に相談" },
 ];
 

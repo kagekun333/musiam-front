@@ -30,7 +30,7 @@ export default function HomeShowcase() {
         </div>
 
         <div className="showcase-ctas">
-          <Link href="/exhibition" className="showcase-btn showcase-btn--ghost">
+          <Link href="/works" className="showcase-btn showcase-btn--ghost">
             作品を聴く・読む
           </Link>
           <Link href="/business" className="showcase-btn showcase-btn--gold">

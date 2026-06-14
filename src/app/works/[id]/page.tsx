@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { siteUrl } from "@/lib/site-url";
+import { isHyperfollowUrl } from "@/lib/work-links";
 import WorkLinks, { type WorkLinkItem } from "./WorkLinks";
 import DonationCTA from "@/components/cta/DonationCTA";
 import "./work-page.css";
@@ -73,16 +74,19 @@ function buildLinks(work: CatalogWork): WorkLinkItem[] {
   const seen = new Set<string>();
   for (const [key, label] of order) {
     const url = map[key];
-    if (url && !seen.has(url)) {
+    if (url && !isHyperfollowUrl(url) && !seen.has(url)) {
       seen.add(url);
       items.push({ label, url, primary: items.length === 0 });
     }
   }
-  // フォールバック: salesHref / primaryHref / href
-  const fallback = work.salesHref || work.primaryHref || work.href;
+  // フォールバック: salesHref / primaryHref / href (HyperFollow/DistroKidは除外)
+  const fallbackCandidates = [work.salesHref, work.primaryHref, work.href].filter(
+    (u): u is string => typeof u === "string" && !!u && !isHyperfollowUrl(u)
+  );
+  const fallback = fallbackCandidates[0];
   if (items.length === 0 && fallback) {
     items.push({ label: isMusic ? "聴く" : "読む・購入", url: fallback, primary: true });
-  } else if (work.salesHref && !seen.has(work.salesHref)) {
+  } else if (work.salesHref && !isHyperfollowUrl(work.salesHref) && !seen.has(work.salesHref)) {
     items.push({ label: "購入する", url: work.salesHref });
   }
   return items;
@@ -189,7 +193,7 @@ export default async function WorkPage(
       />
 
       <nav className="work-breadcrumb" aria-label="パンくず">
-        <Link href="/">ホーム</Link> / <Link href="/exhibition">展示</Link> /{" "}
+        <Link href="/">ホーム</Link> / <Link href="/works">展示</Link> /{" "}
         <span>{work.title}</span>
       </nav>
 

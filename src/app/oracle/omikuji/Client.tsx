@@ -717,7 +717,7 @@ export default function Client() {
               {lang === "ja" ? "ホームへ" : "Home"}
             </Link>
             <Link
-              href="/exhibition"
+              href="/works"
               className="rounded-md ring-1 ring-white/20 px-4 py-2 text-sm"
             >
               {lang === "ja" ? "展示を見る" : "Browse Exhibition"}

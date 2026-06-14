@@ -84,7 +84,7 @@ export default function BusinessPage() {
         </p>
         <div className="biz-hero-ctas">
           <ContactCTA location="business_hero" subject="【法人窓口】制作のご相談" label="無料で相談する" />
-          <Link href="/exhibition" className="contact-cta contact-cta--ghost">
+          <Link href="/works" className="contact-cta contact-cta--ghost">
             制作実績を見る
           </Link>
         </div>

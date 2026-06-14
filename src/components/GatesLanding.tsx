@@ -18,7 +18,7 @@ type GatesManifest = { items: GateItem[] };
 // “正典”3門（hrefはコード側で管理：manifestは触らない）
 const CANON = [
   { file: "torii.jpg",       href: "/oracle",     title: "占いの門（Oracle Gate）",    desc: "運命を読み、道をひらく。",   tags: ["torii","oracle"],      order: 30 },
-  { file: "galaxy.jpg",      href: "/exhibition", title: "展示の門（Exhibition Gate）", desc: "無限の展示が、あなたを待つ。", tags: ["exhibition","cosmic"], order: 20 },
+  { file: "galaxy.jpg",      href: "/works", title: "展示の門（Exhibition Gate）", desc: "無限の展示が、あなたを待つ。", tags: ["exhibition","cosmic"], order: 20 },
   { file: "gothic-door.jpg", href: "/chat",       title: "伯爵の門（Count’s Gate）",   desc: "館の大扉、選ばれし者を迎える。", tags: ["count","gate"],        order: 10 },
 ] as const;
 
