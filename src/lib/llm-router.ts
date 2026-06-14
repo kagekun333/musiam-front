@@ -1,12 +1,17 @@
 // src/lib/llm-router.ts
 //
 // 統一LLMインターフェース。用途別にモデル/プロバイダを切り替える。
-// - "fast"     : Groq Llama 3.3 70B（雑談・軽量用途）
-// - "quality"  : Anthropic Claude Haiku 4.5（営業・おすすめ・詩作）
+// - "fast"     : 軽量・雑談（OpenRouter→Groq…）
+// - "quality"  : 営業・おすすめ・詩作（OpenRouter主力→Anthropic→Groq…）
 // - "local"    : LMStudio（ローカル開発フォールバック）
 //
+// ★推奨: OpenRouter 1本化★
+//   OPENROUTER_API_KEY を .env.local / Vercel に入れるだけで、OpenRouter が全用途の
+//   主力になる（DeepSeek V4 Flash 主力 + 無料/激安モデルへ自動フォールバック）。
+//   モデルを変えたい時は OPENROUTER_MODEL_* を1行変えるだけ。キー未設定なら従来どおり
+//   Groq / Anthropic / LMStudio にフォールバックする（コードはそのまま）。
+//
 // 呼び出し側は chat({ purpose, system, messages }) だけ気にすれば良い。
-// キー未設定時は自動で他のプロバイダにフォールバックする。
 
 export type LlmRole = "system" | "user" | "assistant";
 export type LlmMessage = { role: LlmRole; content: string };
@@ -25,7 +30,7 @@ export type LlmCallInput = {
 export type LlmCallResult = {
   ok: boolean;
   text: string;
-  provider: "anthropic" | "groq" | "lmstudio" | "none";
+  provider: "openrouter" | "anthropic" | "groq" | "lmstudio" | "none";
   model: string;
   /** 失敗時のエラー詳細（非致命的）。UIには出さない。 */
   error?: string;
@@ -36,6 +41,23 @@ export type LlmCallResult = {
 /* =========================
    プロバイダ設定
    ========================= */
+
+// ── OpenRouter（推奨・主力ゲートウェイ。キー1本で多数のモデルに切替可） ──
+// 正確なモデルIDは https://openrouter.ai/models で確認可（変わったらここ or env を直すだけ）。
+const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY ?? "";
+const OPENROUTER_BASE = process.env.OPENROUTER_API_BASE_URL ?? "https://openrouter.ai/api/v1";
+const OPENROUTER_MODEL_QUALITY =
+  process.env.OPENROUTER_MODEL_QUALITY ?? "deepseek/deepseek-v4-flash";
+const OPENROUTER_MODEL_FAST =
+  process.env.OPENROUTER_MODEL_FAST ?? "google/gemini-2.5-flash-lite";
+// 自動フォールバック（カンマ区切りで上書き可）。落ちても止まらないよう安価/無料を並べる。
+const OPENROUTER_FALLBACKS = (
+  process.env.OPENROUTER_FALLBACK_MODELS ??
+  "google/gemini-2.5-flash-lite,z-ai/glm-4.7-flash:free,deepseek/deepseek-v4-flash"
+)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY ?? "";
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL ?? "claude-haiku-4-5-20251001";
@@ -62,6 +84,81 @@ function splitSystemAndRest(system: string | undefined, messages: LlmMessage[]) 
     };
   }
   return { system: system ?? "", rest: messages };
+}
+
+/* =========================
+   OpenRouter (OpenAI互換・主力ゲートウェイ) 呼び出し
+   - model に主力、models[] にフォールバック列を渡すと OpenRouter 側で自動切替。
+   ========================= */
+
+async function callOpenRouter(
+  input: LlmCallInput,
+  signal?: AbortSignal
+): Promise<LlmCallResult> {
+  if (!OPENROUTER_KEY) {
+    return {
+      ok: false,
+      text: "",
+      provider: "openrouter",
+      model: "",
+      error: "OPENROUTER_API_KEY not set",
+    };
+  }
+
+  const primary =
+    input.purpose === "fast" ? OPENROUTER_MODEL_FAST : OPENROUTER_MODEL_QUALITY;
+  // 主力 + フォールバック（重複除去）。OpenRouter が順に試す。
+  const models = Array.from(new Set([primary, ...OPENROUTER_FALLBACKS]));
+
+  const { system, rest } = splitSystemAndRest(input.system, input.messages);
+  const messages: LlmMessage[] = system
+    ? [{ role: "system", content: system }, ...rest]
+    : rest;
+
+  try {
+    const r = await fetch(`${OPENROUTER_BASE.replace(/\/$/, "")}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${OPENROUTER_KEY}`,
+        // OpenRouter のランキング表示用（任意）。
+        "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hakusyaku.xyz",
+        "X-Title": "伯爵MUSIAM",
+      },
+      body: JSON.stringify({
+        model: primary,
+        models, // フォールバック列（OpenRouter拡張）
+        messages,
+        temperature: input.temperature ?? 0.7,
+        max_tokens: input.maxTokens ?? 512,
+      }),
+      signal,
+    });
+    if (!r.ok) {
+      const errText = await r.text().catch(() => "");
+      return {
+        ok: false,
+        text: "",
+        provider: "openrouter",
+        model: primary,
+        error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
+      };
+    }
+    const j = await r.json();
+    const text = String(j?.choices?.[0]?.message?.content ?? "").trim();
+    // 実際に応答したモデル名を返す（フォールバックでどれが使われたか分かる）。
+    const usedModel = String(j?.model ?? primary);
+    return { ok: Boolean(text), text, provider: "openrouter", model: usedModel };
+  } catch (e) {
+    const err = e as Error;
+    return {
+      ok: false,
+      text: "",
+      provider: "openrouter",
+      model: primary,
+      error: err?.message ?? "openrouter call failed",
+    };
+  }
 }
 
 /* =========================
@@ -270,13 +367,16 @@ type ProviderFn = (input: LlmCallInput, signal?: AbortSignal) => Promise<LlmCall
 
 /**
  * 用途ごとの優先順。並び順にフォールバックする。
- * - quality : Haiku (Anthropic) → Groq → LMStudio
- * - fast    : Groq → Haiku → LMStudio
- * - local   : LMStudio → Groq → Haiku
+ * OpenRouter は設定があれば常に主力（未設定なら自動でスキップ→従来動作）。
+ * - quality : OpenRouter(DeepSeek) → Anthropic → Groq → LMStudio
+ * - fast    : OpenRouter(Gemini Flash-Lite) → Groq → Anthropic → LMStudio
+ * - local   : LMStudio → OpenRouter → Groq → Anthropic
  */
 function providerChainFor(purpose: LlmPurpose): { name: string; fn: ProviderFn }[] {
+  const openrouter = { name: "openrouter", fn: callOpenRouter };
   if (purpose === "quality") {
     return [
+      openrouter,
       { name: "anthropic", fn: callAnthropic },
       { name: "groq", fn: callGroq },
       { name: "lmstudio", fn: callLmStudio },
@@ -285,12 +385,14 @@ function providerChainFor(purpose: LlmPurpose): { name: string; fn: ProviderFn }
   if (purpose === "local") {
     return [
       { name: "lmstudio", fn: callLmStudio },
+      openrouter,
       { name: "groq", fn: callGroq },
       { name: "anthropic", fn: callAnthropic },
     ];
   }
   // fast (default)
   return [
+    openrouter,
     { name: "groq", fn: callGroq },
     { name: "anthropic", fn: callAnthropic },
     { name: "lmstudio", fn: callLmStudio },
@@ -356,6 +458,11 @@ export async function chat(input: LlmCallInput): Promise<LlmCallResult> {
 /** 外部から現在の設定状況を確認したい時に。 */
 export function routerStatus() {
   return {
+    openrouter: {
+      configured: Boolean(OPENROUTER_KEY),
+      model: { quality: OPENROUTER_MODEL_QUALITY, fast: OPENROUTER_MODEL_FAST },
+      fallbacks: OPENROUTER_FALLBACKS,
+    },
     anthropic: { configured: Boolean(ANTHROPIC_KEY), model: ANTHROPIC_MODEL },
     groq: { configured: Boolean(GROQ_KEY), model: GROQ_MODEL },
     lmstudio: { configured: Boolean(LMSTUDIO_BASE && LMSTUDIO_MODEL), model: LMSTUDIO_MODEL },

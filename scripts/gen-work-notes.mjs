@@ -39,7 +39,11 @@ const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || "";
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL || "claude-haiku-4-5-20251001";
 const GROQ_KEY = process.env.GROQ_API_KEY || "";
 const GROQ_MODEL = process.env.GROQ_MODEL || "llama-3.3-70b-versatile";
-// PROVIDER=groq で強制Groq。既定: anthropic優先、失敗時groqフォールバック
+// OpenRouter（推奨・主力）。OPENROUTER_API_KEY を .env.local に入れるだけで使われる。
+const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY || "";
+const OPENROUTER_BASE = process.env.OPENROUTER_API_BASE_URL || "https://openrouter.ai/api/v1";
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL_QUALITY || process.env.OPENROUTER_MODEL || "deepseek/deepseek-v4-flash";
+// PROVIDER=openrouter|groq|anthropic で強制。既定(auto): OpenRouter→Anthropic→Groq の順で利用可能なものを使う
 const PROVIDER = (process.env.PROVIDER || "auto").toLowerCase();
 
 async function readJson(p, fallback) {
@@ -114,10 +118,40 @@ async function callGroq(userText) {
   return (json.choices?.[0]?.message?.content || "").trim();
 }
 
+async function callOpenRouter(userText) {
+  const res = await fetch(`${OPENROUTER_BASE.replace(/\/$/, "")}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${OPENROUTER_KEY}`,
+      "X-Title": "伯爵MUSIAM",
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      max_tokens: 300,
+      messages: [
+        { role: "system", content: SYSTEM },
+        { role: "user", content: userText },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
+  const json = await res.json();
+  return (json.choices?.[0]?.message?.content || "").trim();
+}
+
 async function generate(userText) {
+  if (PROVIDER === "openrouter") return callOpenRouter(userText);
   if (PROVIDER === "groq") return callGroq(userText);
   if (PROVIDER === "anthropic") return callHaiku(userText);
-  // auto: Anthropic優先 → 失敗したらGroq
+  // auto: OpenRouter優先 → Anthropic → Groq
+  if (OPENROUTER_KEY) {
+    try {
+      return await callOpenRouter(userText);
+    } catch (e) {
+      if (!ANTHROPIC_KEY && !GROQ_KEY) throw e;
+    }
+  }
   if (ANTHROPIC_KEY) {
     try {
       return await callHaiku(userText);
@@ -126,7 +160,7 @@ async function generate(userText) {
     }
   }
   if (GROQ_KEY) return callGroq(userText);
-  throw new Error("APIキーがありません (ANTHROPIC_API_KEY / GROQ_API_KEY)");
+  throw new Error("APIキーがありません (OPENROUTER_API_KEY / ANTHROPIC_API_KEY / GROQ_API_KEY)");
 }
 
 async function main() {
@@ -144,11 +178,11 @@ async function main() {
   if (LIMIT > 0) targets = targets.slice(0, LIMIT);
   console.log(`対象 ${targets.length} 件 (既存 ${Object.keys(notes).length} 件)`);
 
-  const hasKey = ANTHROPIC_KEY || GROQ_KEY;
+  const hasKey = OPENROUTER_KEY || ANTHROPIC_KEY || GROQ_KEY;
   if (!hasKey && !DRY_RUN) {
     console.warn("APIキー未設定。DRY_RUN として実行します。");
   }
-  console.log(`provider=${PROVIDER} (anthropic key: ${ANTHROPIC_KEY ? "あり" : "なし"} / groq key: ${GROQ_KEY ? "あり" : "なし"})`);
+  console.log(`provider=${PROVIDER} (openrouter: ${OPENROUTER_KEY ? "あり" : "なし"} / anthropic: ${ANTHROPIC_KEY ? "あり" : "なし"} / groq: ${GROQ_KEY ? "あり" : "なし"})`);
 
   let done = 0;
   for (const w of targets) {
