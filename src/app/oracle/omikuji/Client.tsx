@@ -5,6 +5,9 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import OmikujiCard, { OmikujiEntry } from "@/components/omikuji/OmikujiCard";
+import { loadMergedWorksClient } from "@/lib/loadMergedWorksClient";
+import { getPrimaryPublicHref } from "@/lib/work-links";
+import { formatReleaseText, isFutureRelease } from "@/lib/release-status";
 
 /** ランク序列（上→下） */
 const RANK_ORDER = [
@@ -75,9 +78,9 @@ type WorkItem = {
   cover?: string;      // 例: /works/covers/xxx.webp
   href?: string;       // 外部/内部どちらでもOK
   primaryHref?: string;      // 🆕 優先リンク
-  salesHref?: string;        // 🆕 購入リンク
   amazonMusicHref?: string;  // 🆕 Amazon Musicリンク
   previewUrl?: string;       // 任意：別プレビュー
+  releasedAt?: string;
 };
 
 /** レコメンド型（凶は固定、通常は作品ベース） */
@@ -90,21 +93,15 @@ function serviceLinkLabel(href: string, type: string | undefined, lang: "ja" | "
   const h = href ?? "";
   if (/spotify\.com/i.test(h))        return lang === "ja" ? "Spotifyで聴く"       : "Listen on Spotify";
   if (/music\.apple\.com/i.test(h))   return lang === "ja" ? "Apple Musicで聴く"   : "Listen on Apple Music";
-  if (/itunes\.apple\.com/i.test(h))  return lang === "ja" ? "iTunesで聴く"        : "Listen on iTunes";
   if (/youtube\.com|youtu\.be/i.test(h)) return lang === "ja" ? "YouTubeで観る"    : "Watch on YouTube";
-  if (/amazon\.co\.jp|amazon\.com/i.test(h)) return lang === "ja" ? "Amazonで購入" : "Buy on Amazon";
+  if (/amazon\.co\.jp|amazon\.com/i.test(h)) {
+    return type?.toLowerCase() === "book"
+      ? (lang === "ja" ? "Amazonで読む" : "Read on Amazon")
+      : (lang === "ja" ? "Amazonで購入" : "Buy on Amazon");
+  }
   // サービス不明時はコンテンツタイプで判定
   if (type?.toLowerCase() === "music") return lang === "ja" ? "聴く"  : "Listen";
   return lang === "ja" ? "見る" : "View";
-}
-
-/** 購入リンクのサービス名ラベル */
-function saleLinkLabel(href: string, lang: "ja" | "en"): string {
-  const h = href ?? "";
-  if (/amazon\.co\.jp|amazon\.com/i.test(h))  return lang === "ja" ? "Amazonで購入"  : "Buy on Amazon";
-  if (/itunes\.apple\.com/i.test(h))           return lang === "ja" ? "iTunesで購入"  : "Buy on iTunes";
-  if (/music\.apple\.com/i.test(h))            return lang === "ja" ? "Apple Musicで購入" : "Buy on Apple Music";
-  return lang === "ja" ? "購入" : "Buy";
 }
 
 /** 配列から重複なしランダム抽出 */
@@ -168,60 +165,54 @@ export default function Client() {
 
     // 作品データ：本命 /works/works.json → 予備 /works.json
     async function loadWorks() {
-      const candidates = ["/works/works.json", "/works.json"];
-      for (const p of candidates) {
-        try {
-          const r = await fetch(p, { cache: "no-store" });
-          if (!r.ok) continue;
-          const d = await r.json();
-          const raw: any[] = Array.isArray(d) ? d : Array.isArray(d?.items) ? d.items : [];
+      try {
+        const raw = await loadMergedWorksClient();
 
-          // ID重複検出
-          const idCounts = new Map<string, number>();
-          raw.forEach((w: any) => {
-            const id = String(w?.id ?? "");
-            idCounts.set(id, (idCounts.get(id) || 0) + 1);
-          });
+        const idCounts = new Map<string, number>();
+        raw.forEach((w: any) => {
+          const id = String(w?.id ?? "");
+          idCounts.set(id, (idCounts.get(id) || 0) + 1);
+        });
 
-          const list: WorkItem[] = raw.map((w: any, idx: number) => {
-            const id = String(w.id ?? w.slug ?? `work_${idx}`);
-            const isDuplicate = (idCounts.get(id) || 0) > 1;
-            const stableKey = isDuplicate ? `${id}__${idx}` : id;
+        const list: WorkItem[] = raw.map((w: any, idx: number) => {
+          const id = String(w.id ?? w.slug ?? `work_${idx}`);
+          const isDuplicate = (idCounts.get(id) || 0) > 1;
+          const stableKey = isDuplicate ? `${id}__${idx}` : id;
 
-            const title = String(w.title ?? w.titleJa ?? w.titleEn ?? "Untitled");
-            const type = w.type ?? w.kind ?? "";
-            const cover = w.cover
-              ? (String(w.cover).startsWith("http") || String(w.cover).startsWith("/")
-                  ? String(w.cover)
-                  : "/" + String(w.cover))
-              : (w.slug ? `/works/covers/${w.slug}.webp` : undefined);
+          const title = String(w.title ?? w.titleJa ?? w.titleEn ?? "Untitled");
+          const type = w.type ?? w.kind ?? "";
+          const cover = w.cover
+            ? (String(w.cover).startsWith("http") || String(w.cover).startsWith("/")
+                ? String(w.cover)
+                : "/" + String(w.cover))
+            : (w.slug ? `/works/covers/${w.slug}.webp` : undefined);
 
-            // リンク正規化
-            const links = w?.links ?? {};
-            const primaryHref = w?.primaryHref ?? links?.listen ?? w?.href ?? links?.spotify ?? undefined;
-            const salesHref = w?.salesHref ?? links?.itunesBuy ?? undefined;
-            const amazonMusicHref = links?.amazonMusic ?? undefined;
-            const href = primaryHref || w?.href || w?.url || w?.link || undefined;
+          const links = w?.links ?? {};
+          const primaryHref = getPrimaryPublicHref(w) ?? undefined;
+          const amazonMusicHref = links?.amazonMusic ?? undefined;
+          const normalizedType = String(type || "").toLowerCase();
+          const href =
+            primaryHref ||
+            (normalizedType === "book" ? w?.href || w?.url || w?.link || undefined : undefined);
 
-            return {
-              id,
-              stableKey,
-              title,
-              type,
-              cover,
-              href,
-              primaryHref,
-              salesHref,
-              amazonMusicHref,
-              previewUrl: w?.previewUrl,
-            };
-          });
+          return {
+            id,
+            stableKey,
+            title,
+            type,
+            cover,
+            href,
+            primaryHref,
+            amazonMusicHref,
+            previewUrl: w?.previewUrl,
+            releasedAt: typeof w?.releasedAt === "string" ? w.releasedAt : undefined,
+          };
+        });
 
-          if (alive) setWorks(list);
-          return;
-        } catch { /* 次へ */ }
+        if (alive) setWorks(list);
+      } catch {
+        if (alive) setWorks([]);
       }
-      if (alive) setWorks([]); // 失敗でもUIは壊さない
     }
 
     loadOmikuji();
@@ -353,6 +344,25 @@ export default function Client() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     });
+  };
+
+  /** X(Twitter)シェア: 占い結果はバイラル装置 (STRATEGY_10M.md L1) */
+  const handleShareX = () => {
+    if (!entry) return;
+    const u = new URL(window.location.href);
+    u.searchParams.set("lang", lang);
+    u.searchParams.set("id", String(entry.id));
+    const rank = lang === "ja" ? entry.rank_ja : entry.rank_en;
+    const text =
+      lang === "ja"
+        ? `伯爵MUSIAMの御籤で「${rank}」を引きました`
+        : `I drew "${rank}" at Count MUSIAM's oracle`;
+    const p = new URLSearchParams({ text, url: u.toString(), hashtags: "伯爵MUSIAM" });
+    try {
+      (window as unknown as { posthog?: { capture?: (n: string, p?: object) => void } })
+        .posthog?.capture?.("oracle_share_x", { rank: entry.rank_en });
+    } catch { /* no-op */ }
+    window.open(`https://twitter.com/intent/tweet?${p.toString()}`, "_blank", "noopener");
   };
 
   const switchLang = (to: "ja" | "en") => {
@@ -583,7 +593,11 @@ export default function Client() {
                         <div className="p-2.5 min-h-[72px] flex flex-col">
                           <div className="flex-1 line-clamp-2 text-sm font-medium text-gray-100 mb-1.5">{w.title}</div>
                           <div className="flex gap-2 items-center flex-wrap">
-                            {(w.primaryHref || w.href || w.previewUrl) && (
+                            {w.releasedAt && isFutureRelease(w.releasedAt) ? (
+                              <span className="text-xs text-amber-300/90">
+                                {formatReleaseText(w.releasedAt, lang)}
+                              </span>
+                            ) : (w.primaryHref || w.href || w.previewUrl) && (
                               <Link
                                 href={w.primaryHref || w.href || w.previewUrl!}
                                 target="_blank"
@@ -604,16 +618,6 @@ export default function Client() {
                                 className="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2 transition"
                               >
                                 {lang === "ja" ? "Amazon Musicで聴く" : "Listen on Amazon Music"}
-                              </Link>
-                            )}
-                            {w.salesHref && (
-                              <Link
-                                href={w.salesHref}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2 transition"
-                              >
-                                {saleLinkLabel(w.salesHref || "", lang)}
                               </Link>
                             )}
                           </div>
@@ -649,7 +653,11 @@ export default function Client() {
                         <div className="p-2.5 min-h-[72px] flex flex-col">
                           <div className="flex-1 line-clamp-2 text-sm font-medium text-gray-100 mb-1.5">{w.title}</div>
                           <div className="flex gap-2 items-center flex-wrap">
-                            {(w.primaryHref || w.href || w.previewUrl) && (
+                            {w.releasedAt && isFutureRelease(w.releasedAt) ? (
+                              <span className="text-xs text-amber-300/90">
+                                {formatReleaseText(w.releasedAt, lang)}
+                              </span>
+                            ) : (w.primaryHref || w.href || w.previewUrl) && (
                               <Link
                                 href={w.primaryHref || w.href || w.previewUrl!}
                                 target="_blank"
@@ -662,14 +670,12 @@ export default function Client() {
                                 </svg>
                               </Link>
                             )}
-                            {w.salesHref && (
+                            {w.id != null && (
                               <Link
-                                href={w.salesHref}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs text-gray-400 hover:text-gray-200 underline underline-offset-2 transition"
+                                href={`/works/${encodeURIComponent(String(w.id))}`}
+                                className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-amber-200/90 hover:bg-white/5 transition w-fit"
                               >
-                                {saleLinkLabel(w.salesHref || "", lang)}
+                                {lang === "ja" ? "作品の頁へ" : "View work"}
                               </Link>
                             )}
                           </div>
@@ -684,6 +690,13 @@ export default function Client() {
 
           {/* 操作列 */}
           <div className="mt-6 flex flex-wrap gap-3">
+            <button
+              onClick={handleShareX}
+              className="rounded-md px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg,#d8b65c,#b8923a)", color: "#0a0a0f" }}
+            >
+              {lang === "ja" ? "𝕏 で結果をシェア" : "Share on 𝕏"}
+            </button>
             <button
               onClick={handleCopyShare}
               className="relative rounded-md ring-1 ring-white/20 px-4 py-2 text-sm transition-colors"
@@ -704,7 +717,7 @@ export default function Client() {
               {lang === "ja" ? "ホームへ" : "Home"}
             </Link>
             <Link
-              href="/exhibition"
+              href="/works"
               className="rounded-md ring-1 ring-white/20 px-4 py-2 text-sm"
             >
               {lang === "ja" ? "展示を見る" : "Browse Exhibition"}

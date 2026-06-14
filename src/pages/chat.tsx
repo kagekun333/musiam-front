@@ -1,475 +1,423 @@
-// src/pages/chat.tsx
-import React, { useState, useEffect, useRef } from "react";
+import React, { startTransition, useEffect, useMemo, useRef, useState } from "react";
+import styles from "./chat.module.css";
+import { getChatEntry, getChatEntryGroups, getChatPersona, type ChatEntryId } from "@/lib/chat-experience";
 
-/** ===== 型（このページ内で完結） ===== */
 type ChatRole = "user" | "assistant";
 type ChatMsg = { role: ChatRole; content: string };
-type ChatMode = "recommend" | "chat" | "sales";
-
-type LinkKind = "detail" | "spotify" | "amazon" | string;
+type LinkKind = "listen" | "read" | "open" | "buy" | string;
 type RecoLink = { kind: LinkKind; url: string };
 type RecoCard = {
   id: string;
   title: string;
   cover: string;
   links: RecoLink[];
-  moodTags: string[];
+  moodTags?: string[];
   type?: string;
 };
 
-/** ===== PostHog（無ければ無視） ===== */
+type Memory = {
+  entryId: ChatEntryId;
+  entryNameJa: string;
+  entryNameEn: string;
+  personaId: string;
+  personaNameJa: string;
+  personaNameEn: string;
+  residue: string;
+  cardTitle?: string | null;
+  timestamp: string;
+};
+
 function capture(event: string, props?: Record<string, unknown>) {
   if (typeof window !== "undefined" && (window as any).posthog) {
     (window as any).posthog.capture(event, props || {});
   }
 }
 
-/** ===== UIヘルパ ===== */
-/** URLパターンからサービス名を含むラベルを返す（オラクルゲートと同じアプローチ） */
 function linkLabel(kind: string, url?: string) {
-  const u = url ?? "";
-
-  // まず kind が明示的なサービス名の場合（既存互換）
-  switch (kind) {
-    case "detail":
-      return "詳細を見る";
-    case "itunesBuy":
-      return "iTunesで購入";
-    case "appleMusic":
-      return "Apple Musicで聴く";
-    case "spotify":
-      return "Spotifyで聴く";
-    case "amazon":
-      return "Amazonで購入";
-  }
-
-  // kind が汎用的（buy/listen/read/open）の場合、URLからサービスを推定
-  if (kind === "buy") {
-    if (/amazon\.co\.jp|amazon\.com/i.test(u)) return "Amazonで購入";
-    if (/itunes\.apple\.com/i.test(u)) return "iTunesで購入";
-    // music.apple.com でも ?app=itunes パラメータがあれば iTunes 購入リンク
-    if (/music\.apple\.com/i.test(u) && /[?&]app=itunes/i.test(u)) return "iTunesで購入";
-    if (/music\.apple\.com/i.test(u)) return "Apple Musicで購入";
-    return "購入";
-  }
+  const value = String(url || "");
   if (kind === "listen") {
-    if (/open\.spotify\.com|spotify:/i.test(u)) return "Spotifyで聴く";
-    if (/music\.apple\.com/i.test(u)) return "Apple Musicで聴く";
-    if (/itunes\.apple\.com/i.test(u)) return "iTunesで聴く";
-    if (/music\.amazon\.co\.jp|music\.amazon\.com/i.test(u)) return "Amazon Musicで聴く";
-    if (/youtube\.com|youtu\.be/i.test(u)) return "YouTubeで観る";
+    if (/open\.spotify\.com|spotify:/i.test(value)) return "Spotifyで聴く";
+    if (/music\.apple\.com/i.test(value)) return "Apple Musicで聴く";
+    if (/music\.amazon\.(co\.jp|com)/i.test(value)) return "Amazon Musicで聴く";
     return "聴く";
   }
-  if (kind === "read") {
-    if (/amazon\.co\.jp|amazon\.com/i.test(u)) return "Amazonで読む";
-    return "読む";
-  }
-  if (kind === "open") {
-    if (/open\.spotify\.com|spotify:/i.test(u)) return "Spotifyで聴く";
-    if (/music\.apple\.com/i.test(u)) return "Apple Musicで聴く";
-    if (/itunes\.apple\.com/i.test(u)) return "iTunesで聴く";
-    if (/youtube\.com|youtu\.be/i.test(u)) return "YouTubeで観る";
-    if (/amazon\.co\.jp|amazon\.com/i.test(u)) return "Amazonで見る";
-    return "見る";
-  }
-
-  // フォールバック：URLだけでも推定を試みる
-  if (/open\.spotify\.com|spotify:/i.test(u)) return "Spotifyで聴く";
-  // music.apple.com でも ?app=itunes があれば iTunes 購入として扱う
-  if (/music\.apple\.com/i.test(u) && /[?&]app=itunes/i.test(u)) return "iTunesで購入";
-  if (/music\.apple\.com/i.test(u)) return "Apple Musicで聴く";
-  if (/itunes\.apple\.com/i.test(u)) return "iTunesで購入";
-  if (/music\.amazon\.co\.jp|music\.amazon\.com/i.test(u)) return "Amazon Musicで聴く";
-  if (/youtube\.com|youtu\.be/i.test(u)) return "YouTubeで観る";
-  if (/amazon\.co\.jp|amazon\.com/i.test(u)) return "Amazonで見る";
-
-  return "見る";
+  if (kind === "read") return "読む";
+  if (kind === "buy") return "購入";
+  return "開く";
 }
 
-/** ===== プラットフォーム別CTAカラー ===== */
 function linkBg(kind: string, url?: string): { bg: string; fg: string } {
-  const u = url ?? "";
-  if (kind === "spotify" || /open\.spotify\.com|spotify:/i.test(u))
+  const value = String(url || "");
+  if (kind === "listen" && /open\.spotify\.com|spotify:/i.test(value)) {
     return { bg: "#1ed760", fg: "#000" };
-  if (kind === "amazonMusic" || /music\.amazon\.co\.jp|music\.amazon\.com/i.test(u))
-    return { bg: "#29a8e0", fg: "#fff" };
-  if (kind === "amazon" || /amazon\.co\.jp|amazon\.com/i.test(u))
-    return { bg: "#ff9900", fg: "#000" };
-  // Apple系：kind が buy/itunesBuy なら購入（紫）、listen/appleMusic なら配信（赤）
-  // music.apple.com は kind または ?app=itunes パラメータで購入/ストリーミングを区別する
-  if (kind === "itunesBuy" || /itunes\.apple\.com/i.test(u))
-    return { bg: "#a259ff", fg: "#fff" };
-  if ((kind === "buy" && /music\.apple\.com/i.test(u)) || (/music\.apple\.com/i.test(u) && /[?&]app=itunes/i.test(u)))
-    return { bg: "#a259ff", fg: "#fff" };
-  if (kind === "appleMusic" || /music\.apple\.com/i.test(u))
+  }
+  if (kind === "listen" && /music\.apple\.com/i.test(value)) {
     return { bg: "#fc3c44", fg: "#fff" };
-  if (/youtube\.com|youtu\.be/i.test(u))
-    return { bg: "#ff0000", fg: "#fff" };
-  return { bg: "#2e7d32", fg: "#fff" };
+  }
+  if (kind === "listen" && /music\.amazon\.(co\.jp|com)/i.test(value)) {
+    return { bg: "#29a8e0", fg: "#fff" };
+  }
+  return { bg: "rgba(255,255,255,0.12)", fg: "#fff" };
 }
-
-/** ===== モード定義（lang別ラベル） ===== */
-const MODE_DEFS: Array<{ mode: "recommend" | "chat" | "sales"; ja: string; en: string }> = [
-  { mode: "recommend", ja: "作品のおすすめ", en: "Recommend" },
-  { mode: "chat",      ja: "雑談する",      en: "Just chat" },
-  { mode: "sales",     ja: "営業マンを呼ぶ", en: "Call sales" },
-];
 
 export default function ChatPage() {
-  // ✅ 初回の自動メッセージは入れない（空で開始）
+  const groups = useMemo(() => getChatEntryGroups(), []);
+  const [selectedEntryId, setSelectedEntryId] = useState<ChatEntryId | null>(null);
+  const [selectedLang, setSelectedLang] = useState<"ja" | "en">("ja");
   const [messages, setMessages] = useState<ChatMsg[]>([]);
-  const [input, setInput] = useState("");
   const [cards, setCards] = useState<RecoCard[]>([]);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [selectedMode, setSelectedMode] = useState<ChatMode | null>(null);
-  const [selectedLang, setSelectedLang] = useState<"ja" | "en" | null>(null);
+  const [lastSession, setLastSession] = useState<Memory | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // ✅ 返信受信後（sending が false になったとき）に自動フォーカス
-  useEffect(() => {
-    if (!sending) {
-      inputRef.current?.focus();
-    }
-  }, [sending]);
+  const selectedEntry = selectedEntryId ? getChatEntry(selectedEntryId) : undefined;
+  const selectedPersona = selectedEntry ? getChatPersona(selectedEntry.persona) : undefined;
 
-  // ✅ localStorage復元（セッション復元）
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("musiam_chat_mode");
-      if (saved && ["recommend", "chat", "sales"].includes(saved)) {
-        setSelectedMode(saved as ChatMode);
-      }
       const savedLang = localStorage.getItem("musiam_chat_lang");
-      if (savedLang && ["ja", "en"].includes(savedLang)) {
-        setSelectedLang(savedLang as "ja" | "en");
+      if (savedLang === "ja" || savedLang === "en") setSelectedLang(savedLang);
+
+      const savedEntry = localStorage.getItem("musiam_chat_entry");
+      if (savedEntry && getChatEntry(savedEntry)) {
+        setSelectedEntryId(savedEntry as ChatEntryId);
+        void beginEntry(savedEntry as ChatEntryId);
+      }
+
+      const savedMemory = localStorage.getItem("musiam_chat_memory_v3");
+      if (savedMemory) {
+        const parsed = JSON.parse(savedMemory) as Memory;
+        setLastSession(parsed);
       }
     } catch {
       // ignore
     }
   }, []);
 
-  // ✅ 6択ボタンクリック：モード選択のみ（自動送信なし）
-  function selectMode(mode: "recommend" | "chat" | "sales", lang: "ja" | "en") {
-    setSelectedMode(mode);
-    setSelectedLang(lang);
+  useEffect(() => {
+    if (!sending) inputRef.current?.focus();
+  }, [sending]);
+
+  async function beginEntry(entryId: ChatEntryId) {
+    const entry = getChatEntry(entryId);
+    if (!entry) return;
+    setError(null);
+    setCards([]);
+    setMessages([]);
+
     try {
-      localStorage.setItem("musiam_chat_mode", mode);
-      localStorage.setItem("musiam_chat_lang", lang);
-    } catch {
-      // ignore
+      const res = await fetch("/api/chat-experience-v3", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ entryId, lang: selectedLang, messages: [] }),
+      });
+      const json = await res.json();
+      const assistantText = String(json?.assistantText || "").trim();
+      const nextMemory = json?.memory ? (json.memory as Memory) : null;
+
+      startTransition(() => {
+        setMessages(assistantText ? [{ role: "assistant", content: assistantText }] : []);
+        setCards([]);
+        if (nextMemory) setLastSession(nextMemory);
+      });
+
+      try {
+        localStorage.setItem("musiam_chat_entry", entryId);
+        localStorage.setItem("musiam_chat_lang", selectedLang);
+        if (nextMemory) localStorage.setItem("musiam_chat_memory_v3", JSON.stringify(nextMemory));
+      } catch {
+        // ignore
+      }
+      capture("chat_entry_open", { entryId, persona: entry.persona });
+    } catch (e: any) {
+      setError(e?.message || "会話の入口を開けませんでした。");
     }
-    capture("mode_select", { mode, lang });
   }
 
-  // ✅ 送信ロジック：テキスト直接送信（チップ用）
   async function sendText(text: string) {
-    if (!text || sending) return;
+    const content = text.trim();
+    if (!content || sending || !selectedEntryId) return;
 
-    const nextMsgs: ChatMsg[] = [...messages, { role: "user", content: text }];
-
-    setMessages(nextMsgs);
-    setInput("");
+    const nextMessages: ChatMsg[] = [...messages, { role: "user", content }];
+    setMessages(nextMessages);
     setError(null);
     setSending(true);
-    capture("chat_send", { len: text.length, source: "chip" });
-
-    // ✅ モード決定：ユーザー選択（未選択ならrecommend既定）
-    const effectiveMode = selectedMode ?? "recommend";
-    const effectiveLang = selectedLang ?? "ja";
+    capture("chat_send", { entryId: selectedEntryId, len: content.length });
 
     try {
-      const resp = await fetch("/api/chat-reco", {
+      const res = await fetch("/api/chat-experience-v3", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          mode: effectiveMode,
-          lang: effectiveLang,
-          messages: nextMsgs,
+          entryId: selectedEntryId,
+          lang: selectedLang,
+          messages: nextMessages,
         }),
       });
+      const json = await res.json();
+      const assistantText = String(json?.assistantText || "").trim();
+      const nextCards: RecoCard[] = Array.isArray(json?.cards) ? json.cards : [];
+      const nextMemory = json?.memory ? (json.memory as Memory) : null;
 
-      const res = await resp.json();
+      startTransition(() => {
+        setMessages((prev) => (assistantText ? [...prev, { role: "assistant", content: assistantText }] : prev));
+        setCards(nextCards);
+        if (nextMemory) setLastSession(nextMemory);
+      });
 
-      const mode = res?.mode ?? "chat";
-      const assistantText = String(res?.assistantText ?? res?.text ?? "").trim();
-      const moodTags: string[] = Array.isArray(res?.moodTags) ? res.moodTags : [];
-      const gotCards: RecoCard[] = Array.isArray(res?.cards) ? res.cards : [];
-
-      if (assistantText) {
-        setMessages((prev) => [...prev, { role: "assistant", content: assistantText }]);
-        capture("chat_reply", { mode, hasCards: gotCards.length > 0, moodTags });
+      if (nextCards.length) {
+        capture("chat_gift_show", { entryId: selectedEntryId, count: nextCards.length });
       }
-      setCards(gotCards);
-
-      if (gotCards.length) {
-        capture("reco_show", { count: gotCards.length, moodTags });
+      try {
+        if (nextMemory) localStorage.setItem("musiam_chat_memory_v3", JSON.stringify(nextMemory));
+      } catch {
+        // ignore
       }
     } catch (e: any) {
-      setError(e?.message || "通信エラーが発生しました。もう一度お試しください。");
+      setError(e?.message || "通信エラーが発生しました。");
     } finally {
       setSending(false);
     }
   }
 
-  // ✅ 送信ロジック：入力欄から送信
-  async function send(textOverride?: string) {
-    const text = (textOverride ?? input).trim();
-    if (!text) return;
-    await sendText(text);
+  function onSubmit() {
+    const value = inputRef.current?.value ?? "";
+    const content = value.trim();
+    if (!content) return;
+    void sendText(content);
+    if (inputRef.current) inputRef.current.value = "";
   }
 
+  // 法人ニーズ検知: 制作依頼らしき言葉が出たら控えめに法人の門を案内する
+  // (ペルソナのプロンプトは汚さず、UI側で確実に拾う)
+  const showBizHint = useMemo(() => {
+    const bizWords = /制作依頼|依頼したい|作ってほしい|作って欲しい|BGM.*(欲し|ほし|依頼|作)|楽曲提供|商用利用|仕事をお願い|見積|法人|会社で使|店舗.*(曲|音楽|BGM)|テーマ曲|主題歌.*依頼|commission|hire|quote/i;
+    return messages.some((m) => m.role === "user" && bizWords.test(m.content));
+  }, [messages]);
+
   function onKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    // IME変換中のEnterは無視（誤送信防止）
     if (e.key === "Enter" && !e.nativeEvent.isComposing) {
       e.preventDefault();
-      send();
+      onSubmit();
     }
   }
 
   return (
-    <main style={{ maxWidth: 720, margin: "40px auto", padding: 16 }}>
-      <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 12 }}>伯爵の門</h1>
-
-      {/* モード選択：言語トグル + 3モードボタン */}
-      <div
-        style={{
-          marginBottom: 16,
-          padding: 12,
-          borderRadius: 10,
-          background: "rgba(0,0,0,0.35)",
-          border: "1px solid rgba(255,255,255,0.12)",
-          backdropFilter: "blur(6px)",
-        }}
-      >
-        {/* 言語トグル */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
-          {(["ja", "en"] as const).map((l) => {
-            const isLangActive = (selectedLang ?? "ja") === l;
-            return (
-              <button
-                key={l}
-                onClick={() => {
-                  setSelectedLang(l);
-                  try { localStorage.setItem("musiam_chat_lang", l); } catch { /* ignore */ }
-                  capture("lang_select", { lang: l });
-                }}
-                style={{
-                  padding: "5px 14px",
-                  borderRadius: 6,
-                  fontSize: 12,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  color: isLangActive ? "#fff" : "rgba(255,255,255,0.55)",
-                  background: isLangActive ? "rgba(255,255,255,0.15)" : "transparent",
-                  border: isLangActive
-                    ? "1px solid rgba(255,255,255,0.25)"
-                    : "1px solid rgba(255,255,255,0.1)",
-                  transition: "all 0.15s",
-                }}
-              >
-                {l === "ja" ? "日本語" : "English"}
-              </button>
-            );
-          })}
+    <main className={styles.page}>
+      <section className={styles.hero}>
+        <div>
+          <p className={styles.kicker}>Count MUSIAM</p>
+          <h1 className={styles.title}>伯爵の門</h1>
+          <p className={styles.subtitle}>
+            人格の違う伯爵たちが、それぞれ別の深さで夜を受け止めます。今のあなたに近い入口を選んでください。
+          </p>
         </div>
 
-        {/* 3モードボタン */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
-          {MODE_DEFS.map((def) => {
-            const active = selectedMode === def.mode;
-            const label = (selectedLang ?? "ja") === "en" ? def.en : def.ja;
-            return (
-              <button
-                key={def.mode}
-                onClick={() => selectMode(def.mode, selectedLang ?? "ja")}
-                aria-pressed={active}
-                style={{
-                  padding: "12px 10px",
-                  borderRadius: 10,
-                  cursor: "pointer",
-                  fontSize: 13,
-                  fontWeight: 700,
-                  textAlign: "center",
-                  color: active ? "#fff" : "rgba(255,255,255,0.92)",
-                  background: active ? "rgba(255,255,255,0.18)" : "rgba(255,255,255,0.08)",
-                  border: active
-                    ? "1px solid rgba(255,255,255,0.35)"
-                    : "1px solid rgba(255,255,255,0.15)",
-                  transition: "all 0.2s",
-                }}
-              >
-                {label}
-              </button>
-            );
-          })}
+        <div className={styles.langRow}>
+          {(["ja", "en"] as const).map((lang) => (
+            <button
+              key={lang}
+              className={lang === selectedLang ? styles.langActive : styles.langButton}
+              onClick={() => {
+                setSelectedLang(lang);
+                try {
+                  localStorage.setItem("musiam_chat_lang", lang);
+                } catch {
+                  // ignore
+                }
+              }}
+            >
+              {lang === "ja" ? "日本語" : "English"}
+            </button>
+          ))}
         </div>
+      </section>
 
-        {/* ワンタップ開始チップ（mode別） */}
-        {selectedMode && (
-          <div style={{ display: "flex", gap: 8, marginTop: 12, flexWrap: "wrap" }}>
-            {(() => {
-              const chips = {
-                recommend: { ja: "おすすめして", en: "Recommend now" },
-                chat: { ja: "雑談しよう", en: "Let's chat" },
-                sales: { ja: "営業して", en: "Sell me" },
-              };
-              const chip = chips[selectedMode as keyof typeof chips];
-              const text = (selectedLang ?? "ja") === "en" ? chip.en : chip.ja;
-              return (
-                <button
-                  onClick={() => sendText(text)}
-                  disabled={sending}
-                  style={{
-                    padding: "8px 16px",
-                    borderRadius: 999,
-                    fontSize: 13,
-                    fontWeight: 600,
-                    cursor: sending ? "not-allowed" : "pointer",
-                    opacity: sending ? 0.6 : 1,
-                    background: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.15))",
-                    border: "1px solid rgba(139,92,246,0.3)",
-                    color: "rgba(255,255,255,0.95)",
-                    transition: "all 0.2s",
-                  }}
-                >
-                  {text}
-                </button>
-              );
-            })()}
+      {lastSession && (
+        <section className={styles.memoryPanel}>
+          <div>
+            <p className={styles.memoryLabel}>前回の余韻</p>
+            <p className={styles.memoryText}>{lastSession.residue}</p>
           </div>
-        )}
-      </div>
-
-      <div
-        style={{
-          borderRadius: 10,
-          padding: 12,
-          minHeight: 240,
-          background: "rgba(0,0,0,0.35)",
-          border: "1px solid rgba(255,255,255,0.12)",
-          backdropFilter: "blur(6px)",
-        }}
-      >
-        {messages.length === 0 ? (
-          // ウェルカムメッセージ（伯爵キャラクター）
-          <div style={{ margin: "8px 0" }}>
-            <strong>伯爵</strong>
-            <div style={{ whiteSpace: "pre-wrap", opacity: 0.85, marginTop: 4 }}>
-              {(selectedLang ?? "ja") === "en"
-                ? "Welcome to Count MUSIAM. Pick a mode and say hello."
-                : "伯爵MUSIAMへようこそ。上のモードを選んで、ひとこと話しかけてください。"}
-            </div>
+          <div className={styles.memoryMeta}>
+            <span>{lastSession.entryNameJa}</span>
+            {lastSession.cardTitle ? <span>最後に渡した: 「{lastSession.cardTitle}」</span> : null}
           </div>
-        ) : (
-          messages.map((m, i) => (
-            <div key={i} style={{ margin: "8px 0" }}>
-              <strong>{m.role === "user" ? "You" : "伯爵"}</strong>
-              <div style={{ whiteSpace: "pre-wrap" }}>{m.content}</div>
-            </div>
-          ))
-        )}
-      </div>
-
-      <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
-        <input
-          ref={inputRef}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={onKeyDown}
-          placeholder={selectedLang === "en" ? "Mood? (Free talk is OK)" : "気分は？（フリートークも可能です）"}
-          style={{ flex: 1, padding: 10, borderRadius: 6, border: "1px solid #666" }}
-          disabled={sending}
-          aria-disabled={sending}
-        />
-        
-        <button
-          onClick={() => send()}
-          disabled={sending}
-          aria-disabled={sending}
-          style={{ padding: "10px 16px", borderRadius: 6, opacity: sending ? 0.7 : 1 }}
-        >
-          {sending
-            ? ((selectedLang ?? "ja") === "en" ? "Sending…" : "送信中…")
-            : ((selectedLang ?? "ja") === "en" ? "Send" : "送信")}
-        </button>
-      </div>
-
-      {error && (
-        <div style={{ color: "#f55", marginTop: 8, fontSize: 13 }}>
-          {error}
-        </div>
+        </section>
       )}
 
-      {cards.length > 0 && (
-        <>
-          <h2 style={{ marginTop: 24, fontSize: 18, fontWeight: 700 }}>おすすめ</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
-            {cards.slice(0, 3).map((c) => (
-              <article
-                key={c.id}
-                style={{
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 12,
-                  padding: 12,
-                  background: "rgba(255,255,255,0.04)",
-                  textDecoration: "none",
-                  color: "inherit",
-                }}
+      <section className={styles.entries}>
+        {groups.map((group) => (
+          <article key={group.persona.id} className={styles.personaBlock}>
+            <div className={styles.personaHeader}>
+              <div>
+                <p className={styles.personaName}>{selectedLang === "en" ? group.persona.nameEn : group.persona.nameJa}</p>
+                <p className={styles.personaBlurb}>{selectedLang === "en" ? group.persona.blurbEn : group.persona.blurbJa}</p>
+              </div>
+            </div>
+
+            <div className={styles.entryGrid}>
+              {group.entries.map((entry) => {
+                const active = selectedEntryId === entry.id;
+                return (
+                  <button
+                    key={entry.id}
+                    className={active ? styles.entryCardActive : styles.entryCard}
+                    onClick={() => {
+                      setSelectedEntryId(entry.id);
+                      void beginEntry(entry.id);
+                    }}
+                  >
+                    <span className={styles.entryName}>{selectedLang === "en" ? entry.nameEn : entry.nameJa}</span>
+                    <span className={styles.entrySubtitle}>{selectedLang === "en" ? entry.subtitleEn : entry.subtitleJa}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className={styles.chatShell}>
+        <header className={styles.chatHeader}>
+          <div>
+            <p className={styles.chatLabel}>{selectedPersona ? (selectedLang === "en" ? selectedPersona.nameEn : selectedPersona.nameJa) : "入口を選ぶ"}</p>
+            <h2 className={styles.chatTitle}>
+              {selectedEntry ? (selectedLang === "en" ? selectedEntry.nameEn : selectedEntry.nameJa) : "今夜に近い入口を選んでください"}
+            </h2>
+          </div>
+          <div className={styles.turnPill}>
+            <span>{Math.ceil(messages.filter((message) => message.role === "user").length / 1)}</span>
+            <span>/ 10</span>
+          </div>
+        </header>
+
+        {selectedEntry && selectedEntry.promptsJa.length > 0 && (
+          <div className={styles.promptRow}>
+            {(selectedLang === "en" ? selectedEntry.promptsEn : selectedEntry.promptsJa).map((prompt) => (
+              <button
+                key={prompt}
+                className={styles.promptChip}
+                onClick={() => void sendText(prompt)}
+                disabled={sending}
               >
-                {c.cover && (
-                  <div style={{ aspectRatio: "1/1", overflow: "hidden", borderRadius: 6, marginBottom: 8 }}>
-                    <img
-                      src={c.cover}
-                      alt={c.title}
-                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-                  </div>
-                )}
-                <div style={{ fontWeight: 700, marginBottom: 4 }}>{c.title}</div>
-                {c.type && <div style={{ opacity: 0.8, fontSize: 12 }}>{c.type}</div>}
-
-                {Array.isArray(c.moodTags) && c.moodTags.length > 0 && (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
-                    {c.moodTags.slice(0, 6).map((t) => (
-                      <span
-                        key={t}
-                        style={{ fontSize: 11, padding: "2px 8px", borderRadius: 999, background: "#222", color: "#fff" }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {Array.isArray(c.links) && c.links.length > 0 && (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 }}>
-                    {c.links.map((l) => (
-                      <a
-                        key={l.url}
-                        href={l.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={() => capture("reco_click", { id: c.id, kind: l.kind })}
-                        style={{
-                          fontSize: 13,
-                          padding: "6px 10px",
-                          borderRadius: 6,
-                          background: linkBg(l.kind, l.url).bg,
-                          color: linkBg(l.kind, l.url).fg,
-                          textDecoration: "none",
-                        }}
-                      >
-                        {linkLabel(l.kind, l.url)}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </article>
+                {prompt}
+              </button>
             ))}
           </div>
-        </>
+        )}
+
+        <div className={styles.thread}>
+          {!selectedEntry && <p className={styles.emptyState}>左の入口から、今のあなたに近い伯爵を選んでください。</p>}
+          {selectedEntry && messages.length === 0 && <p className={styles.emptyState}>入口を開いています…</p>}
+          {messages.map((message, index) => (
+            <div key={`${message.role}-${index}`} className={message.role === "assistant" ? styles.assistantBubble : styles.userBubble}>
+              <p className={styles.bubbleRole}>
+                {message.role === "assistant"
+                  ? selectedPersona
+                    ? selectedLang === "en"
+                      ? selectedPersona.nameEn
+                      : selectedPersona.nameJa
+                    : "伯爵"
+                  : "You"}
+              </p>
+              <p className={styles.bubbleText}>{message.content}</p>
+            </div>
+          ))}
+        </div>
+
+        {showBizHint && (
+          <a
+            href="/business"
+            onClick={() => capture("chat_biz_lead_click", { entryId: selectedEntryId })}
+            style={{
+              display: "block",
+              margin: "10px 0",
+              padding: "10px 14px",
+              borderRadius: 10,
+              border: "1px solid rgba(216,182,92,0.4)",
+              background: "rgba(216,182,92,0.08)",
+              color: "#d8b65c",
+              fontSize: 13,
+              textDecoration: "none",
+              textAlign: "center",
+            }}
+          >
+            {selectedLang === "en"
+              ? "Looking to commission music? The Business Gate is open →"
+              : "楽曲のご依頼でしたら、法人の門が開いております →"}
+          </a>
+        )}
+
+        <div className={styles.inputRow}>
+          <input
+            ref={inputRef}
+            className={styles.input}
+            placeholder={
+              selectedLang === "en"
+                ? "Leave the next fragment of your night here"
+                : "今夜の断片を、ひとつ置いてください"
+            }
+            onKeyDown={onKeyDown}
+            disabled={sending || !selectedEntry}
+          />
+          <button className={styles.sendButton} onClick={onSubmit} disabled={sending || !selectedEntry}>
+            {sending ? (selectedLang === "en" ? "Thinking…" : "思案中…") : selectedLang === "en" ? "Send" : "送信"}
+          </button>
+        </div>
+
+        {error && <p className={styles.error}>{error}</p>}
+      </section>
+
+      {cards.length > 0 && (
+        <section className={styles.giftShell}>
+          <div className={styles.giftHeader}>
+            <p className={styles.kicker}>Tonight&apos;s Gift</p>
+            <h3 className={styles.giftTitle}>今夜の贈り物</h3>
+          </div>
+          <div className={styles.giftCard}>
+            {cards[0].cover ? <img src={cards[0].cover} alt={cards[0].title} className={styles.giftCover} /> : null}
+            <div className={styles.giftBody}>
+              <p className={styles.giftWorkType}>{cards[0].type ?? "work"}</p>
+              <h4 className={styles.giftWorkTitle}>{cards[0].title}</h4>
+              {cards[0].moodTags?.length ? (
+                <div className={styles.tagRow}>
+                  {cards[0].moodTags.slice(0, 4).map((tag) => (
+                    <span key={tag} className={styles.tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+              <div className={styles.linkRow}>
+                {cards[0].links.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => capture("chat_gift_click", { entryId: selectedEntryId, kind: link.kind, title: cards[0].title })}
+                    className={styles.linkButton}
+                    style={{ background: linkBg(link.kind, link.url).bg, color: linkBg(link.kind, link.url).fg }}
+                  >
+                    {linkLabel(link.kind, link.url)}
+                  </a>
+                ))}
+                {/* 内部リンク: 作品個別ページ (回遊+SEO) */}
+                <a
+                  href={`/works/${encodeURIComponent(String(cards[0].id))}`}
+                  onClick={() => capture("chat_work_detail_click", { id: cards[0].id, title: cards[0].title })}
+                  className={styles.linkButton}
+                  style={{ background: "rgba(216,182,92,0.15)", color: "#d8b65c" }}
+                >
+                  作品の頁へ
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       )}
     </main>
   );

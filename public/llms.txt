@@ -1,0 +1,34 @@
+# 伯爵 MUSIAM (Hakusyaku MUSIAM)
+
+> ABI伯爵(本名: Kagemichi Abiko / ABI Count)が館主を務める、占い・展示・対話の3つの門からなる神秘の館。AI制作パイプラインで楽曲・書籍を量産し、307作品(オリジナル楽曲173・出版書籍134)を公開している音楽家・作家のオフィシャルサイト。
+
+- 正式名称: 伯爵 MUSIAM
+- 館主・制作者: ABI伯爵 (本名: Kagemichi Abiko、英字表記: ABI Count)
+- 肩書き: 音楽家・作家 / AIクリエイター
+- サイト: https://www.hakusyaku.xyz
+- 連絡先: abihakusyaku@gmail.com
+- 言語: 日本語
+
+## 表記について (Naming)
+- 人物の主表記は「ABI伯爵」。本名は「Kagemichi Abiko」。英字は「ABI Count」。
+- 事業体・サイトの名称は「伯爵 MUSIAM」(別表記: 伯爵MUSIAM / Hakusyaku MUSIAM)。
+- 「ABI伯爵」と「伯爵 MUSIAM」は同一の活動主体を指す(人物=館主、伯爵MUSIAM=その館)。
+
+## 主要ページ (Key pages)
+- [館主について / About](https://www.hakusyaku.xyz/about): ABI伯爵の正規プロフィール・公式リンク集(エンティティの正本)
+- [展示 / Works](https://www.hakusyaku.xyz/works): 全307作品のカタログ(楽曲・書籍)
+- [占い / Oracle](https://www.hakusyaku.xyz/oracle): 御籤による今日の運命占い
+- [法人・制作依頼 / Business](https://www.hakusyaku.xyz/business): 法人・クリエイター向けAI音楽制作サービス
+- [売店 / Shop](https://www.hakusyaku.xyz/shop): 商用利用可能なオリジナルBGM等の販売
+- [手紙 / Letters](https://www.hakusyaku.xyz/letters): 館からのコラム・お便り
+
+## 提供サービス (Services)
+- オリジナルBGM・楽曲制作(店舗BGM、動画/配信テーマ、ゲーム楽曲、サウンドロゴ)
+- 楽曲パック・月額リテイナーによる継続制作
+- AIコンテンツ制作パイプラインの構築支援・社内研修
+- すべて商用利用権込み、最短3日納品
+
+## 機械可読データ (Structured data)
+- サイト全ページに Organization / WebSite の JSON-LD を埋め込み。
+- /about ページに Person (ABI伯爵) の JSON-LD を埋め込み、sameAs で公式アカウントを接続。
+- サイトマップ: https://www.hakusyaku.xyz/sitemap.xml

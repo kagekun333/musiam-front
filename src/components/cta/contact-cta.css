@@ -1,0 +1,31 @@
+/* ContactCTA co-located styles */
+.contact-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-md, 12px);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.contact-cta--primary {
+  background: linear-gradient(135deg, #d8b65c 0%, #b8923a 100%);
+  color: #0a0a0f;
+  box-shadow: 0 4px 20px rgba(216, 182, 92, 0.25);
+}
+.contact-cta--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(216, 182, 92, 0.4);
+}
+.contact-cta--ghost {
+  background: transparent;
+  color: var(--color-text-primary, #e5e7eb);
+  border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.15));
+}
+.contact-cta--ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+}

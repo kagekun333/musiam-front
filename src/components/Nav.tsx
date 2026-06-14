@@ -6,8 +6,12 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { href: "/", label: "ホーム", exact: true },
   { href: "/oracle", label: "占い" },
-  { href: "/exhibition", label: "展示" },
+  { href: "/works", label: "展示" },
   { href: "/chat", label: "伯爵" },
+  { href: "/business", label: "法人" },
+  { href: "/shop", label: "売店" },
+  { href: "/letters", label: "手紙" },
+  { href: "/about", label: "館主" },
 ] as const;
 
 function isActivePath(pathname: string, href: string, exact?: boolean) {

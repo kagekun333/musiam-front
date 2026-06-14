@@ -1,0 +1,88 @@
+/* src/components/todays-pick.css
+ * 「今日の一筆」用スタイル。既存 globals.css のトークンだけを使用する（--radius-*, --shadow-*, --color-*, --bg-panel-*）。
+ * layout.tsx で import するのではなく、TodaysPick.tsx のトップで
+ *   import "./todays-pick.css";
+ * として co-locate する（既存 globals.css は一切改変しない）。
+ */
+
+.todays-wrap {
+  max-width: min(1160px, 92vw);
+  margin: clamp(8px, 1.6vw, 14px) auto 0;
+  padding: 0 clamp(12px, 3vw, 24px);
+}
+
+.todays-title {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--font-serif, serif);
+  font-weight: 500;
+  color: var(--color-text-1, #f5efe2);
+  white-space: nowrap;
+}
+
+.todays-title-ja {
+  font-size: clamp(14px, 1.5vw, 18px);
+  letter-spacing: 0.04em;
+}
+
+.todays-title-en {
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-3, #a39a86);
+}
+
+.todays-panel {
+  padding: clamp(8px, 1.4vw, 12px) clamp(12px, 2vw, 18px);
+  border-radius: 999px;
+  background: rgba(25, 22, 18, 0.42);
+  border: 1px solid var(--color-border-1, rgba(255, 255, 255, 0.08));
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+}
+
+.todays-panel.is-loading {
+  min-height: 48px;
+}
+
+.todays-inline {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.todays-countword {
+  margin: 0;
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--color-text-2, #d8d0c0);
+  font-family: var(--font-serif, serif);
+  max-width: min(100%, 72ch);
+  line-height: 1.6;
+  text-align: left;
+  text-wrap: balance;
+}
+
+@media (max-width: 720px) {
+  .todays-panel {
+    border-radius: var(--radius-md, 12px);
+  }
+
+  .todays-inline {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 6px;
+  }
+
+  .todays-title {
+    white-space: normal;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .todays-countword {
+    text-align: center;
+    max-width: 58ch;
+  }
+}

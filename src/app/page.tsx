@@ -1,6 +1,9 @@
 // src/app/page.tsx
 import Link from "next/link";
 import Image from "next/image";
+import TodaysPick from "@/components/TodaysPick";
+import HomeShowcase from "@/components/HomeShowcase";
+import CoverMarquee from "@/components/CoverMarquee";
 
 
 type Gate = {
@@ -14,7 +17,7 @@ type Gate = {
 
 const GATES: Gate[] = [
   { file: "torii.jpg",       href: "/oracle",     ja: "占いの門", en: "Oracle Gate",     desc: "運命を読み、道をひらく。",       cta: "今日を占う" },
-  { file: "galaxy.jpg",      href: "/exhibition", ja: "展示の門", en: "Exhibition Gate", desc: "無限の展示が、あなたを待つ。",   cta: "展示を見る" },
+  { file: "galaxy.jpg",      href: "/works",      ja: "展示の門", en: "Exhibition Gate", desc: "無限の展示が、あなたを待つ。",   cta: "展示を見る" },
   { file: "gothic-door.jpg", href: "/chat",       ja: "伯爵の門", en: "Count's Gate",    desc: "館の大扉、選ばれし者を迎える。", cta: "伯爵に相談" },
 ];
 
@@ -31,6 +34,9 @@ export default function Home() {
         </h1>
         <p className="hero-sub">音楽と芸術の宮殿へ、ようこそ。</p>
       </section>
+
+      {/* 今日の一筆（毎日更新・静的キャッシュ） */}
+      <TodaysPick />
 
       {/* 3 GATES */}
       <section className="gates-wrap">
@@ -77,6 +83,12 @@ export default function Home() {
           ))}
         </ul>
       </section>
+
+      {/* 作品カバーの流れるコラージュ (307作品の物量訴求) */}
+      <CoverMarquee />
+
+      {/* 工房セクション: 実績数字 + 法人/展示導線 */}
+      <HomeShowcase />
 
       {/* 右下ウォーターマーク：/public/brand/abi-seal.png を配置 */}
       <div aria-hidden className="corner-mark" />
