@@ -5,6 +5,7 @@ import GlobalBackground from "@/components/GlobalBackground";
 import Nav from "@/components/Nav";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import AnalyticsInit from "@/components/AnalyticsInit";
+import { organizationJsonLd, webSiteJsonLd } from "@/lib/entity";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const notoSerif = Noto_Serif_JP({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
@@ -69,6 +70,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
+      <head>
+        {/* AI認知: 全ページ共通の実体定義 (Organization / WebSite) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd()) }}
+        />
+      </head>
       <body className={`${inter.variable} ${notoSerif.variable} antialiased`}>
         {process.env.NODE_ENV !== "production" && (
           // 開発時のみ: 古いService Workerが_next/staticの旧チャンクを

@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/business", label: "法人" },
   { href: "/shop", label: "売店" },
   { href: "/letters", label: "手紙" },
+  { href: "/about", label: "館主" },
 ] as const;
 
 function isActivePath(pathname: string, href: string, exact?: boolean) {
