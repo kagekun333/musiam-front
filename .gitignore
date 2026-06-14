@@ -75,7 +75,7 @@ scripts/optimize-kannon100-v2.py
 
 # local junk
 .gitignore.bak
-content/
+# content/ は /letters・/exhibits のソース。除外しない(誤設定だった)
 
 # Local analysis / enrichment artifacts (generated, not source)
 atugiri.*.json
