@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import OmikujiCard, { OmikujiEntry } from "@/components/omikuji/OmikujiCard";
+import OracleSongPick from "@/components/OracleSongPick";
 import { loadMergedWorksClient } from "@/lib/loadMergedWorksClient";
 import { getPrimaryPublicHref } from "@/lib/work-links";
 import { formatReleaseText, isFutureRelease } from "@/lib/release-status";
@@ -502,6 +503,8 @@ export default function Client() {
           {/* おみくじカード（原文/訳文/解釈） */}
           <div className="mb-6">
             <OmikujiCard entry={entry} lang={lang} />
+            {/* 運勢に合う一曲 → 作品ページ(試聴)へ誘導 */}
+            <OracleSongPick rankJa={entry.rank_ja} />
           </div>
 
           {/* 何度も引いた人へのメッセージ（2回目以降で表示） */}
