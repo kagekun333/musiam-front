@@ -31,6 +31,10 @@ export default function ShopPage() {
             <div className="shop-grid">
               {items.map((p) => (
                 <div key={p.id} className="shop-card">
+                  {p.cover ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="shop-card-img" src={p.cover} alt={p.title} loading="lazy" />
+                  ) : null}
                   <div className="shop-card-title">{p.title}</div>
                   <div className="shop-card-price">
                     ¥{p.price.toLocaleString()}
