@@ -6,6 +6,16 @@ import { getLetters } from "@/lib/letters";
 export const metadata: Metadata = {
   title: "伯爵の手紙 | 伯爵 MUSIAM",
   description: "AI音楽制作の裏側、館の運営記、作品の物語 — 伯爵MUSIAMからの手紙。",
+  openGraph: {
+    title: "伯爵の手紙 | 伯爵 MUSIAM",
+    description: "AI音楽制作の裏側、館の運営記、作品の物語 — 伯爵MUSIAMからの手紙。",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "伯爵の手紙 | 伯爵 MUSIAM",
+    description: "AI音楽制作の裏側、館の運営記、作品の物語 — 伯爵MUSIAMからの手紙。",
+  },
 };
 
 export default async function LettersPage() {

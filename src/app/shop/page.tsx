@@ -10,6 +10,18 @@ export const metadata: Metadata = {
   title: "売店 | 伯爵 MUSIAM",
   description:
     "伯爵MUSIAMの直販売店。高音質音源・AI制作プロンプト集・アート壁紙などを直接販売しています。",
+  openGraph: {
+    title: "売店 | 伯爵 MUSIAM",
+    description:
+      "高音質WAV音源・商用BGMライセンス・AI制作プロンプト集・画集・壁紙を直接販売。ここでしか手に入らない品々を館から。",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "売店 | 伯爵 MUSIAM",
+    description:
+      "高音質WAV音源・商用BGMライセンス・AI制作プロンプト集・画集・壁紙を直接販売。",
+  },
 };
 
 export default function ShopPage() {
@@ -32,7 +44,6 @@ export default function ShopPage() {
               {items.map((p) => (
                 <div key={p.id} className="shop-card">
                   {p.cover ? (
-                    // eslint-disable-next-line @next/next/no-img-element
                     <img className="shop-card-img" src={p.cover} alt={p.title} loading="lazy" />
                   ) : null}
                   <div className="shop-card-title">{p.title}</div>

@@ -17,6 +17,11 @@ export const metadata: Metadata = {
     type: "profile",
     url: `${siteUrl()}/about`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "館主について｜ABI伯爵 | 伯爵 MUSIAM",
+    description: ENTITY.description,
+  },
 };
 
 // sameAsに入っているURLから人間向けのラベルを推定する。

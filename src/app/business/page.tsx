@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     description: "AI×プロ品質の楽曲・BGM制作を最短3日で。制作実績307作品。",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "法人・クリエイター向けAI音楽制作 | 伯爵 MUSIAM",
+    description: "AI×プロ品質の楽曲・BGM制作を最短3日で。商用利用権込み・デモ提案まで無料。",
+  },
 };
 
 const STATS = [
@@ -185,6 +190,13 @@ export default function BusinessPage() {
               <li>社内クリエイター研修</li>
               <li>制作フローの自動化設計</li>
             </ul>
+            <p className="biz-card-desc" style={{ marginTop: "0.6rem" }}>
+              自分で仕組みを作りたい方へ —{" "}
+              <Link href="/atelier" style={{ color: "#d8b65c", textDecoration: "underline" }}>
+                伯爵の工房講座
+              </Link>
+              （AI音楽工場の作り方）も先行案内中。
+            </p>
           </div>
         </div>
       </section>

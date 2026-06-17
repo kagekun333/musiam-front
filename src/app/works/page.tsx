@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { dedupeWorks } from "@/lib/dedupeWorks";
 import { siteUrl } from "@/lib/site-url";
 import WorksCatalog, { type CatalogItem } from "./WorksCatalog";
 
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
     description: "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せます。",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "作品カタログ | 伯爵 MUSIAM",
+    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せます。",
+  },
 };
 
 function typeKey(type?: string): CatalogItem["type"] {
@@ -26,7 +32,7 @@ function typeKey(type?: string): CatalogItem["type"] {
 }
 
 export default async function WorksIndexPage() {
-  const all = await loadMergedWorksServer();
+  const all = dedupeWorks(await loadMergedWorksServer());
   const items: CatalogItem[] = all
     .filter((w) => w.id != null && w.title)
     .map((w) => ({

@@ -1,13 +1,25 @@
 // src/app/atelier/page.tsx — 講座「AI音楽工場の作り方」先行販売LP
 // 戦略: 作る前に売る(需要検証)。興味登録の件数で講座制作のGo/NoGoを判断する。
 import type { Metadata } from "next";
-import ContactCTA from "@/components/cta/ContactCTA";
+import LeadForm from "@/components/cta/LeadForm";
 import "./atelier.css";
 
 export const metadata: Metadata = {
   title: "伯爵の工房講座 — AI音楽工場の作り方 | 伯爵 MUSIAM",
   description:
     "月数ドルの運用費で307作品を生み出した制作パイプラインを、あなたの手に。AI音楽×自動化の実践講座、先行案内受付中。",
+  openGraph: {
+    title: "伯爵の工房講座 — AI音楽工場の作り方 | 伯爵 MUSIAM",
+    description:
+      "月数ドルで307作品を生んだAI音楽×自動化の制作パイプラインを再現可能な手順として講座化。先行案内受付中。",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "伯爵の工房講座 — AI音楽工場の作り方 | 伯爵 MUSIAM",
+    description:
+      "月数ドルで307作品を生んだAI音楽×自動化の制作パイプラインを講座化。先行案内受付中。",
+  },
 };
 
 const CURRICULUM = [
@@ -35,8 +47,8 @@ export default function AtelierPage() {
           先行価格 <strong>¥29,800</strong>
           <small>(正式リリース時 ¥49,800 予定)</small>
         </div>
-        <ContactCTA
-          location="atelier_hero"
+        <LeadForm
+          source="atelier_hero"
           subject="【工房講座】先行案内を希望します"
           label="先行案内を受け取る(無料)"
         />
@@ -68,8 +80,8 @@ export default function AtelierPage() {
           <li>コンテンツ制作を自動化して、本業の傍らで回したい</li>
         </ul>
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
-          <ContactCTA
-            location="atelier_footer"
+          <LeadForm
+            source="atelier_footer"
             subject="【工房講座】先行案内を希望します"
             label="先行案内を受け取る(無料)"
           />
