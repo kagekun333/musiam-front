@@ -3,7 +3,7 @@
 // paymentUrl が null の商品は「準備中」表示になる。
 // inquiry=true の商品は受注制作。paymentUrl が無い間は「オーダーを相談する」(問い合わせ) を表示。
 //
-// 設計方針: 173曲は配信で無料で聴けるため、同じ曲のDL販売はしない。
+// 設計方針: 配信曲は無料で聴けるため、同じ曲のDL販売はしない。
 // 「配信では手に入らない価値」= 商用ライセンス / 高音質・未配信 / 画集・壁紙 / ノウハウ /
 // 占い・伯爵IP / オーダーメイド に絞る。
 
@@ -63,7 +63,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     cover: "/shop/best-collection-vol1.jpg",
   },
 
-  // ── 壁紙・アート（307カバーアート資産。無料代替なし） ──
+  // ── 壁紙・アート（カバーアート資産。無料代替なし） ──
   {
     id: "artbook-pdf",
     title: "画集 — 216のジャケットアート (PDF)",
@@ -118,7 +118,7 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     id: "prompt-grimoire",
     title: "伯爵の魔導書 — AI音楽制作プロンプト集",
     price: 2980,
-    desc: "307作品を生んだプロンプト50選＋制作ワークフロー解説PDF。同じ仕組みを自分の手に。",
+    desc: "350作品を生んだプロンプト50選＋制作ワークフロー解説PDF。同じ仕組みを自分の手に。",
     category: "ノウハウ・講座",
     paymentUrl: "https://buy.stripe.com/8x24gB0mG9ez7kn5YseUU06",
     cover: "/shop/prompt-grimoire.jpg",

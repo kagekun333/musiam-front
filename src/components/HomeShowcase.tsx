@@ -4,8 +4,8 @@ import Link from "next/link";
 import "./home-showcase.css";
 
 const STATS = [
-  { num: "307", label: "公開作品" },
-  { num: "173", label: "楽曲" },
+  { num: "350", label: "公開作品" },
+  { num: "216", label: "楽曲" },
   { num: "134", label: "書籍" },
 ];
 

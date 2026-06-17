@@ -7,18 +7,18 @@ import "./atelier.css";
 export const metadata: Metadata = {
   title: "伯爵の工房講座 — AI音楽工場の作り方 | 伯爵 MUSIAM",
   description:
-    "月数ドルの運用費で307作品を生み出した制作パイプラインを、あなたの手に。AI音楽×自動化の実践講座、先行案内受付中。",
+    "月数ドルの運用費で350作品を生み出した制作パイプラインを、あなたの手に。AI音楽×自動化の実践講座、先行案内受付中。",
   openGraph: {
     title: "伯爵の工房講座 — AI音楽工場の作り方 | 伯爵 MUSIAM",
     description:
-      "月数ドルで307作品を生んだAI音楽×自動化の制作パイプラインを再現可能な手順として講座化。先行案内受付中。",
+      "月数ドルで350作品を生んだAI音楽×自動化の制作パイプラインを再現可能な手順として講座化。先行案内受付中。",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "伯爵の工房講座 — AI音楽工場の作り方 | 伯爵 MUSIAM",
     description:
-      "月数ドルで307作品を生んだAI音楽×自動化の制作パイプラインを講座化。先行案内受付中。",
+      "月数ドルで350作品を生んだAI音楽×自動化の制作パイプラインを講座化。先行案内受付中。",
   },
 };
 
@@ -37,10 +37,10 @@ export default function AtelierPage() {
         <p className="atelier-kicker">Atelier Course — 先行案内</p>
         <h1 className="atelier-title">
           AI音楽工場の作り方
-          <span className="atelier-sub-title">月数ドルで307作品を生んだ、伯爵の製法書</span>
+          <span className="atelier-sub-title">月数ドルで350作品を生んだ、伯爵の製法書</span>
         </h1>
         <p className="atelier-lead">
-          このサイトの楽曲173曲・書籍134冊は、すべて1人とAIで作られています。
+          このサイトの楽曲216曲・書籍134冊は、すべて1人とAIで作られています。
           その制作パイプラインのすべてを、再現可能な手順として講座化します。
         </p>
         <div className="atelier-price">

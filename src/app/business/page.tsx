@@ -8,10 +8,10 @@ import "./business.css";
 export const metadata: Metadata = {
   title: "法人・クリエイター向けAI音楽制作 | 伯爵 MUSIAM",
   description:
-    "AI×プロ品質の楽曲・BGM制作を最短3日で。307作品を制作・公開してきた伯爵MUSIAMが、企業・店舗・配信者・ゲーム開発者の音楽制作を支援します。",
+    "AI×プロ品質の楽曲・BGM制作を最短3日で。350作品を制作・公開してきた伯爵MUSIAMが、企業・店舗・配信者・ゲーム開発者の音楽制作を支援します。",
   openGraph: {
     title: "法人・クリエイター向けAI音楽制作 | 伯爵 MUSIAM",
-    description: "AI×プロ品質の楽曲・BGM制作を最短3日で。制作実績307作品。",
+    description: "AI×プロ品質の楽曲・BGM制作を最短3日で。制作実績350作品。",
     type: "website",
   },
   twitter: {
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { num: "307", label: "公開作品数" },
-  { num: "173", label: "オリジナル楽曲" },
+  { num: "350", label: "公開作品数" },
+  { num: "216", label: "オリジナル楽曲" },
   { num: "134", label: "出版書籍" },
   { num: "3日〜", label: "最短納期" },
 ];
@@ -61,7 +61,7 @@ const PLANS = [
     title: "AIコンテンツ工場 構築支援",
     price: "¥800,000〜",
     unit: "/式",
-    desc: "月数ドルの運用コストで音楽・書籍・画像を量産する制作パイプラインを御社内に構築。当館はこの仕組みで307作品を生み出しています。",
+    desc: "月数ドルの運用コストで音楽・書籍・画像を量産する制作パイプラインを御社内に構築。当館はこの仕組みで350作品を生み出しています。",
     featured: false,
   },
 ];
@@ -84,7 +84,7 @@ export default function BusinessPage() {
           プロ品質の音楽を、最短3日で。
         </h1>
         <p className="biz-hero-sub">
-          伯爵MUSIAMは、AI制作パイプラインで307作品(楽曲173・書籍134)を生み出してきた
+          伯爵MUSIAMは、AI制作パイプラインで350作品(楽曲216・書籍134)を生み出してきた
           制作工房です。その量産力と美意識を、御社のブランド・店舗・コンテンツのために。
         </p>
         <div className="biz-hero-ctas">

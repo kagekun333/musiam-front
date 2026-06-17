@@ -49,7 +49,7 @@ export default async function CoverMarquee() {
 
   return (
     <section className="marquee-wrap" aria-label="作品コレクション">
-      <p className="marquee-caption">— 館内収蔵 307作品より —</p>
+      <p className="marquee-caption">— 館内収蔵 350作品より —</p>
       {renderRow(row1, false, "r1")}
       {renderRow(row2, true, "r2")}
     </section>

@@ -36,7 +36,7 @@ export const ENTITY = {
   email: SITE_CONFIG.contactEmail,
   /** 一行説明 */
   description:
-    "ABI伯爵(本名: Kagemichi Abiko)が館主を務める、占い・展示・対話の3つの門からなる神秘の館「伯爵MUSIAM」。AI制作パイプラインで楽曲・書籍を量産し、307作品(楽曲173・書籍134)を公開している音楽家・作家。",
+    "ABI伯爵(本名: Kagemichi Abiko)が館主を務める、占い・展示・対話の3つの門からなる神秘の館「伯爵MUSIAM」。AI制作パイプラインで楽曲・書籍を量産し、350作品(楽曲216・書籍134)を公開している音楽家・作家。",
 } as const;
 
 /** ロゴ/肖像の絶対URL (OG画像を流用) */

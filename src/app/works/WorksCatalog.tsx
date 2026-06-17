@@ -13,6 +13,7 @@ export type CatalogItem = {
   cover: string;
   type: "music" | "book" | "other";
   tags: string[];
+  releasedAt?: string;
 };
 
 type Filter = "all" | "music" | "book";

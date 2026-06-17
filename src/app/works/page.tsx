@@ -1,4 +1,4 @@
-// src/app/works/page.tsx — 作品カタログ index (307作品の内部リンクハブ / SEO)
+// src/app/works/page.tsx — 作品カタログ index (350作品の内部リンクハブ / SEO)
 // 既存の exhibition.tsx には触れず、新規ルートで軽量な一覧を提供する。
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,17 +10,17 @@ import WorksCatalog, { type CatalogItem } from "./WorksCatalog";
 export const metadata: Metadata = {
   title: "展示 — 作品カタログ | 伯爵 MUSIAM",
   description:
-    "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せる展示室。",
+    "伯爵MUSIAMのオリジナル音楽・本のすべて。350作品を種別・キーワードで探せる展示室。",
   alternates: { canonical: `${siteUrl()}/works` },
   openGraph: {
     title: "作品カタログ | 伯爵 MUSIAM",
-    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せます。",
+    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。350作品を種別・キーワードで探せます。",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "作品カタログ | 伯爵 MUSIAM",
-    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。307作品を種別・キーワードで探せます。",
+    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。350作品を種別・キーワードで探せます。",
   },
 };
 
@@ -41,7 +41,10 @@ export default async function WorksIndexPage() {
       cover: w.cover ?? "",
       type: typeKey(w.type),
       tags: [...(w.moodTags ?? []), ...(w.tags ?? [])].slice(0, 12),
-    }));
+      releasedAt: String(w.releasedAt ?? ""),
+    }))
+    // 新しいリリース順（releasedAt 降順）。日付なしは末尾。
+    .sort((a, b) => (b.releasedAt || "").localeCompare(a.releasedAt || ""));
 
   const jsonLd = {
     "@context": "https://schema.org",

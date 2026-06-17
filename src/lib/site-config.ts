@@ -4,7 +4,7 @@
 
 export const SITE_CONFIG = {
   /** 問い合わせ先 (将来: フォームURL or LINE URL に差し替え) */
-  contactEmail: "abihakusyaku@gmail.com",
+  contactEmail: "oracle@hakusyaku.xyz",
   /** LINE公式アカウントURL (未開設: null のままなら mailto にフォールバック) */
   lineUrl: null as string | null,
   /** X(Twitter) アカウントURL (任意) */
