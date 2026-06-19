@@ -1,5 +1,3 @@
 {
-  "crons": [
-    { "path": "/api/cron/daily-oracle", "schedule": "0 22 * * *" }
-  ]
+  "crons": []
 }

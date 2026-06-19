@@ -35,7 +35,6 @@ export const SHOP_CATEGORY_ORDER: ShopCategory[] = [
   "ライセンス・商用利用",
   "音源・ベスト盤",
   "壁紙・アート",
-  "占い・伯爵",
   "ノウハウ・講座",
   "オーダーメイド",
 ];
@@ -81,36 +80,6 @@ export const SHOP_PRODUCTS: ShopProduct[] = [
     category: "壁紙・アート",
     paymentUrl: "https://buy.stripe.com/7sY3cx2uO8avfQT1IceUU03",
     cover: "/shop/wallpaper-pack.jpg",
-  },
-
-  // ── 占い・伯爵IP（唯一無二・入口商品） ──
-  {
-    id: "special-omikuji",
-    title: "特別な御籤 — 伯爵の親筆",
-    price: 500,
-    desc: "通常の御籤とは別誂えの一枚。あなたのためだけの限定アートと、伯爵の言葉をお届けします。",
-    category: "占い・伯爵",
-    paymentUrl: "https://buy.stripe.com/9B69AV1qKeyT0VZaeIeUU04",
-    cover: "/shop/special-omikuji.jpg",
-  },
-  {
-    id: "oracle-song",
-    title: "今日のあなたの調べ — 占い×一曲",
-    price: 1500,
-    desc: "占いの結果から導いた、あなたの今日に寄り添う一曲をお選びしてお届け。占いと音楽の融合。",
-    category: "占い・伯爵",
-    paymentUrl: "https://buy.stripe.com/3cI5kFb1kgH15cfeuYeUU05",
-    cover: "/shop/oracle-song.jpg",
-  },
-  {
-    id: "oracle-subscription",
-    title: "日々の御籤 — 月額",
-    price: 480,
-    priceSuffix: "/月",
-    desc: "毎日の御籤と、その日限りの限定アート。館に通う習慣を、月額で。",
-    category: "占い・伯爵",
-    paymentUrl: "https://buy.stripe.com/14AcN71qKeyT9sv86AeUU07",
-    cover: "/shop/oracle-subscription.jpg",
   },
 
   // ── ノウハウ・講座（"工場"能力の販売） ──

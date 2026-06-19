@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/", label: "ホーム", exact: true },
-  { href: "/oracle", label: "占い" },
   { href: "/works", label: "展示" },
   { href: "/chat", label: "伯爵" },
   { href: "/business", label: "法人" },

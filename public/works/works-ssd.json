@@ -8767,7 +8767,6 @@
    "type": "music",
    "cover": "/works/covers-ssd/ssd-8fe3413b-31fc-4e15-a42d6337b2c7d68e.jpg",
    "tags": [
-    "ssd-only",
     "genre:K-Pop"
    ],
    "moodTags": [
@@ -8777,7 +8776,10 @@
     "genre:K-Pop"
    ],
    "href": "",
-   "links": {},
+   "links": {
+    "spotify": "https://open.spotify.com/album/1DGVrjNpTxgHV3Ca4Mweuo",
+    "appleMusic": "https://music.apple.com/us/album/%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%83%E1%85%A9%E1%84%8C%E1%85%AC-single/1889633286"
+   },
    "salesHref": "",
    "primaryHref": "",
    "matchInfo": {
@@ -8796,7 +8798,8 @@
     ],
     "hyperfollow_url": "",
     "localCover": "releases/절도죄/cover.jpeg"
-   }
+   },
+   "releasedAt": "2026-04-01"
   },
   {
    "id": "item-146",
@@ -9376,7 +9379,6 @@
    "type": "music",
    "cover": "/works/covers-ssd/ssd-56d83fef-827f-4e08-8913e8bb1665db99.jpg",
    "tags": [
-    "ssd-only",
     "genre:J-Pop"
    ],
    "moodTags": [
@@ -9386,7 +9388,10 @@
     "genre:J-Pop"
    ],
    "href": "",
-   "links": {},
+   "links": {
+    "spotify": "https://open.spotify.com/album/1JbUp7tz3b5Tm8TkRzeOgF",
+    "appleMusic": "https://music.apple.com/us/album/%E3%82%B7%E3%83%B3%E3%83%AA-single/1889784793"
+   },
    "salesHref": "",
    "primaryHref": "",
    "matchInfo": {
@@ -9405,7 +9410,8 @@
     ],
     "hyperfollow_url": "",
     "localCover": "releases/シンリ/cover.jpeg"
-   }
+   },
+   "releasedAt": "2026-04-09"
   },
   {
    "id": "spotify-single-0XRRQgeFdXv0IyuiJ9qCWE",
@@ -9994,7 +10000,6 @@
    "type": "music",
    "cover": "/works/covers-ssd/ssd-9f74c359-3945-4efd-97758b0480ec891b.jpg",
    "tags": [
-    "ssd-only",
     "genre:R&B／ソウル"
    ],
    "moodTags": [
@@ -10004,7 +10009,10 @@
     "genre:R&B／ソウル"
    ],
    "href": "",
-   "links": {},
+   "links": {
+    "spotify": "https://open.spotify.com/album/6yC5ECnoUsaHOV90u2rhsJ",
+    "appleMusic": "https://music.apple.com/us/album/%E5%90%9B%E3%81%A8%E3%81%AA%E3%82%89-single/1889350516"
+   },
    "salesHref": "",
    "primaryHref": "",
    "matchInfo": {
@@ -10023,7 +10031,8 @@
     ],
     "hyperfollow_url": "",
     "localCover": "releases/君となら/cover.jpeg"
-   }
+   },
+   "releasedAt": "2026-04-13"
   },
   {
    "id": "spotify-single-2vZaUnTzyuEmUU9fDPqun7",
@@ -10641,7 +10650,6 @@
    "type": "music",
    "cover": "/works/covers-ssd/ssd-c7458981-5e0d-4baa-b5166a38607ed4d8.jpg",
    "tags": [
-    "ssd-only",
     "genre:トランス"
    ],
    "moodTags": [
@@ -10651,7 +10659,10 @@
     "genre:トランス"
    ],
    "href": "",
-   "links": {},
+   "links": {
+    "spotify": "https://open.spotify.com/album/41TO2Twxb2Zy1o1VKYGxd6",
+    "appleMusic": "https://music.apple.com/us/album/%E7%81%AB%E6%B0%B4%E5%90%8C%E6%BA%90-single/1889349155"
+   },
    "salesHref": "",
    "primaryHref": "",
    "matchInfo": {
@@ -10670,7 +10681,8 @@
     ],
     "hyperfollow_url": "",
     "localCover": "releases/火水同源/cover.jpeg"
-   }
+   },
+   "releasedAt": "2026-03-31"
   },
   {
    "id": "spotify-single-2KmDmGQXJxnYtCsdvceCOm",

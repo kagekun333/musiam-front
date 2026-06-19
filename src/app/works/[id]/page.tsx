@@ -319,9 +319,6 @@ export default async function WorkPage(
           <Link href="/business" className="contact-cta contact-cta--primary">
             楽曲制作を依頼する
           </Link>
-          <Link href="/oracle" className="contact-cta contact-cta--ghost">
-            今日の御籤を引く
-          </Link>
           <Link href="/shop" className="contact-cta contact-cta--ghost">
             画集・壁紙・音源を売店で
           </Link>
