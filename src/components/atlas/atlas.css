@@ -1,0 +1,165 @@
+/* src/components/atlas/atlas.css
+   アトラス（F2）専用スタイル。renovation-tokens.css の特異色・カートグラフィを使用。
+   全て .rnv-atlas 名前空間配下 — 既存スタイルに影響しない。 */
+
+.rnv-atlas {
+  max-width: 1100px;
+  margin: var(--rnv-space-8) auto;
+  padding: 0 var(--rnv-space-5);
+}
+
+/* 見出し */
+.rnv-atlas__head { text-align: center; margin-bottom: var(--rnv-space-6); }
+.rnv-atlas__kicker {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--rnv-text-slate);
+  margin: 0 0 var(--rnv-space-2);
+}
+.rnv-atlas__title {
+  font-size: var(--rnv-text-2xl);
+  color: var(--rnv-text);
+  margin: 0 0 var(--rnv-space-3);
+}
+.rnv-atlas__lede {
+  font-size: var(--rnv-text-sm);
+  color: var(--rnv-text-soft);
+  max-width: 40em;
+  margin: 0 auto;
+  line-height: var(--rnv-leading-prose);
+}
+
+/* 地方グリッド */
+.rnv-atlas__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--rnv-space-4);
+}
+
+/* 地方カード（記号＋等高線） */
+.rnv-atlas__region {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "glyph names count"
+    "blurb blurb blurb";
+  align-items: center;
+  gap: var(--rnv-space-2) var(--rnv-space-3);
+  padding: var(--rnv-space-4);
+  border-radius: var(--rnv-radius-md);
+  border: 1px solid var(--rnv-line-grid);
+  color: var(--rnv-text);
+  cursor: pointer;
+  overflow: hidden;
+}
+.rnv-atlas__region[data-accent="amber"] { border-color: var(--rnv-line-hair); }
+.rnv-atlas__region.is-open {
+  box-shadow: var(--rnv-glow-slate);
+  border-color: var(--rnv-line-strong);
+}
+.rnv-atlas__glyph { grid-area: glyph; font-size: 18px; }
+.rnv-atlas__names { grid-area: names; display: flex; flex-direction: column; min-width: 0; }
+.rnv-atlas__ja { font-size: var(--rnv-text-lg); color: var(--rnv-text); }
+.rnv-atlas__en { font-size: 10px; letter-spacing: 0.14em; color: var(--rnv-text-muted); text-transform: uppercase; }
+.rnv-atlas__count {
+  grid-area: count;
+  align-self: start;
+  font-size: var(--rnv-text-base);
+  color: var(--rnv-amber-200);
+}
+.rnv-atlas__blurb { grid-area: blurb; font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: 1.6; }
+
+/* 詳細パネル */
+.rnv-atlas__detail { margin-top: var(--rnv-space-5); padding: var(--rnv-space-5); }
+.rnv-atlas__detail-head {
+  display: flex;
+  align-items: center;
+  gap: var(--rnv-space-3);
+  padding-bottom: var(--rnv-space-4);
+  border-bottom: 1px solid var(--rnv-line-grid);
+  margin-bottom: var(--rnv-space-4);
+}
+.rnv-atlas__detail-glyph { font-size: 18px; }
+.rnv-atlas__detail-glyph[data-accent="amber"] { border-color: var(--rnv-map-symbol); color: var(--rnv-map-symbol); }
+.rnv-atlas__detail-glyph[data-accent="slate"] { border-color: var(--rnv-map-symbol-new); color: var(--rnv-map-symbol-new); }
+.rnv-atlas__detail-title { font-size: var(--rnv-text-xl); color: var(--rnv-text); margin: 0; }
+.rnv-atlas__detail-blurb { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); margin: 2px 0 0; }
+.rnv-atlas__index {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: var(--rnv-text-sm);
+  color: var(--rnv-text-slate);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rnv-line-hair);
+  padding-bottom: 1px;
+  white-space: nowrap;
+}
+.rnv-atlas__index:hover { color: var(--rnv-amber-200); }
+
+/* 名所 / 最近ひらかれた土地 */
+.rnv-atlas__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--rnv-space-4);
+  margin-bottom: var(--rnv-space-4);
+}
+.rnv-atlas__feature {
+  display: flex;
+  align-items: center;
+  gap: var(--rnv-space-3);
+  padding: var(--rnv-space-3);
+  border-radius: var(--rnv-radius-md);
+  border: 1px solid var(--rnv-line-hair);
+  background: var(--rnv-bg-panel);
+  text-decoration: none;
+  color: var(--rnv-text);
+}
+.rnv-atlas__feature-cover {
+  position: relative;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--rnv-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--rnv-line-grid);
+}
+.rnv-atlas__feature-img { object-fit: cover; }
+.rnv-atlas__feature-meta { display: flex; flex-direction: column; min-width: 0; gap: 2px; }
+.rnv-atlas__feature-label { font-size: 10px; letter-spacing: 0.14em; color: var(--rnv-text-muted); text-transform: uppercase; }
+.rnv-atlas__feature-title { font-size: var(--rnv-text-base); color: var(--rnv-text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rnv-atlas__feature:hover .rnv-atlas__feature-title { color: var(--rnv-amber-200); }
+
+/* 巡る入口（サンプル） */
+.rnv-atlas__sample {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--rnv-space-3);
+}
+.rnv-atlas__sample-item { display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: var(--rnv-text-soft); }
+.rnv-atlas__sample-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--rnv-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--rnv-line-grid);
+}
+.rnv-atlas__sample-img { object-fit: cover; }
+.rnv-atlas__sample-title { font-size: 11px; line-height: 1.3; color: var(--rnv-text-muted); overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.rnv-atlas__sample-item:hover .rnv-atlas__sample-title { color: var(--rnv-text-soft); }
+
+@media (max-width: 520px) {
+  .rnv-atlas { padding: 0 var(--rnv-space-4); }
+  .rnv-atlas__grid { grid-template-columns: 1fr 1fr; gap: var(--rnv-space-3); }
+  .rnv-atlas__region { padding: var(--rnv-space-3); }
+  .rnv-atlas__ja { font-size: var(--rnv-text-base); }
+}

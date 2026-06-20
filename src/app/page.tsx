@@ -4,6 +4,7 @@ import Image from "next/image";
 import TodaysPick from "@/components/TodaysPick";
 import HomeShowcase from "@/components/HomeShowcase";
 import CoverMarquee from "@/components/CoverMarquee";
+import Atlas from "@/components/atlas/Atlas";
 
 
 type Gate = {
@@ -36,6 +37,9 @@ export default function Home() {
 
       {/* 今日の一筆（毎日更新・静的キャッシュ） */}
       <TodaysPick />
+
+      {/* 領土アトラス: 作品の国を地方ごとに巡る探索の入口（F2） */}
+      <Atlas />
 
       {/* 3 GATES */}
       <section className="gates-wrap">
