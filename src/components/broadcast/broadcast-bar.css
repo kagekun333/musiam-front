@@ -1,0 +1,180 @@
+/* src/components/broadcast/broadcast-bar.css
+   放送バー（F1）専用スタイル。renovation-tokens.css の特異色(灰青/琥珀)を使用。
+   全て .rnv-broadcast 名前空間配下 — 既存スタイルに影響しない。 */
+
+.rnv-broadcast {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 60; /* Nav より前面、モーダル未満を想定 */
+  width: min(560px, calc(100vw - 24px));
+  pointer-events: none; /* バー外側はクリックを通す */
+}
+
+.rnv-broadcast__inner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--rnv-space-3);
+  padding: 8px 10px;
+  border-radius: var(--rnv-radius-pill);
+  background: var(--rnv-bg-panel-strong);
+  border: 1px solid var(--rnv-line-grid);
+  box-shadow: var(--rnv-shadow-realm), var(--rnv-glow-slate);
+  backdrop-filter: blur(12px);
+}
+
+/* カバー */
+.rnv-broadcast__cover {
+  position: relative;
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--rnv-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--rnv-line-hair);
+  display: block;
+}
+.rnv-broadcast__img { object-fit: cover; }
+
+/* イコライザ（放送の鼓動・控えめ） */
+.rnv-broadcast__eq {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+  padding: 2px 3px;
+  border-radius: 6px;
+  background: rgba(7, 14, 24, 0.55);
+}
+.rnv-broadcast__eq i {
+  width: 2px;
+  height: 4px;
+  background: var(--rnv-amber-300);
+  border-radius: 1px;
+  animation: rnv-eq 900ms var(--rnv-ease) infinite;
+}
+.rnv-broadcast__eq i:nth-child(2) { animation-delay: 160ms; background: var(--rnv-slate-200); }
+.rnv-broadcast__eq i:nth-child(3) { animation-delay: 320ms; }
+@keyframes rnv-eq {
+  0%, 100% { height: 4px; }
+  50% { height: 12px; }
+}
+
+/* メタ */
+.rnv-broadcast__meta {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.rnv-broadcast__label {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--rnv-text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rnv-broadcast__title {
+  font-size: var(--rnv-text-base);
+  line-height: 1.2;
+  color: var(--rnv-text);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rnv-broadcast__title:hover { color: var(--rnv-amber-200); }
+.rnv-broadcast__realm {
+  font-size: 11px;
+  color: var(--rnv-text-slate);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 聴くボタン */
+.rnv-broadcast__listen {
+  flex: 0 0 auto;
+  padding: 7px 16px;
+  border-radius: var(--rnv-radius-pill);
+  background: linear-gradient(180deg, var(--rnv-amber-300), var(--rnv-amber-400));
+  color: #1a1206;
+  font-size: var(--rnv-text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--rnv-line-strong);
+  transition: transform var(--rnv-dur-fast) var(--rnv-ease), box-shadow var(--rnv-dur-fast) var(--rnv-ease);
+}
+.rnv-broadcast__listen:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--rnv-glow-amber);
+}
+
+/* 閉じる */
+.rnv-broadcast__close {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--rnv-radius-pill);
+  background: transparent;
+  border: 1px solid var(--rnv-line-grid);
+  color: var(--rnv-text-muted);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--rnv-dur-fast) var(--rnv-ease), border-color var(--rnv-dur-fast) var(--rnv-ease);
+}
+.rnv-broadcast__close:hover { color: var(--rnv-text); border-color: var(--rnv-line-hair); }
+
+/* 折りたたみFAB */
+.rnv-broadcast-fab {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 60;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--rnv-radius-pill);
+  display: grid;
+  place-items: center;
+  background: var(--rnv-bg-panel-strong);
+  border: 1px solid var(--rnv-line-hair);
+  box-shadow: var(--rnv-shadow-realm);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+.rnv-broadcast-fab__glyph { color: var(--rnv-amber-300); font-size: 18px; }
+.rnv-broadcast-fab__pulse {
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  border: 1px solid var(--rnv-amber-glow);
+  animation: rnv-pulse 2.4s var(--rnv-ease) infinite;
+}
+@keyframes rnv-pulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  70% { opacity: 0; transform: scale(1.35); }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+
+/* モバイル微調整 */
+@media (max-width: 480px) {
+  .rnv-broadcast__label { font-size: 8px; }
+  .rnv-broadcast__cover { width: 48px; height: 48px; }
+  .rnv-broadcast__listen { padding: 6px 12px; }
+}
+
+/* モーション削減を尊重 */
+@media (prefers-reduced-motion: reduce) {
+  .rnv-broadcast__eq i,
+  .rnv-broadcast-fab__pulse { animation: none; }
+  .rnv-broadcast__eq i { height: 9px; }
+}
