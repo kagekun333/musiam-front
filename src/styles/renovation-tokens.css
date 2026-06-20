@@ -1,0 +1,180 @@
+/* ============================================================
+   renovation-tokens.css — リノベ v1 デザイントークン層 (F0)
+   ------------------------------------------------------------
+   方針:
+   - globals.css は一切触らない。本ファイルは「追加専用」の新token層。
+   - ここで定義するのは :root カスタムプロパティ と `.rnv-*` 名前空間ユーティリティのみ。
+     既存のクラス/要素セレクタは上書きしない（= import しても既存表示は不変）。
+   - 三層世界（領土・放送・工房）と二層視覚（伯爵=人 / 精=AI）の共通言語。
+   - 特異色 = 灰青(slate-blue) + 琥珀(amber)。占いの金から脱し、夜に映える奇抜さを一点に宿す。
+   設計書: docs/DESIGN_SYSTEM_v1.md
+   ============================================================ */
+
+:root {
+  /* ===== 特異色 — 灰青 (cool / 精=AI 層の基調) ===== */
+  --rnv-slate-50:  #e7edf5;
+  --rnv-slate-100: #c7d4e4;
+  --rnv-slate-200: #9fb3cd;
+  --rnv-slate-300: #7c96b8;  /* 灰青・標準アクセント */
+  --rnv-slate-400: #5b7398;
+  --rnv-slate-500: #41577a;
+  --rnv-slate-600: #2e4060;
+  --rnv-slate-700: #1f2d46;
+  --rnv-slate-800: #15203400; /* 透過可変用ベース */
+  --rnv-slate-ink: #0b1422;   /* 国土の夜 */
+
+  /* ===== 特異色 — 琥珀 (warm / 伯爵=人 層の灯) ===== */
+  --rnv-amber-100: #f6e4bd;
+  --rnv-amber-200: #ecca8a;
+  --rnv-amber-300: #e0b35e;  /* 琥珀・標準アクセント */
+  --rnv-amber-400: #d09a3e;
+  --rnv-amber-500: #b07c2a;
+  --rnv-amber-glow: rgba(224, 179, 94, 0.55);
+
+  /* ===== 夜の地（背景は globals.css の #070e18 と調和させる） ===== */
+  --rnv-bg-void:    #070e18;  /* globals と同一 */
+  --rnv-bg-realm:   #0b1422;  /* 領土の床 */
+  --rnv-bg-panel:   rgba(16, 26, 42, 0.55);
+  --rnv-bg-panel-strong: rgba(11, 20, 34, 0.82);
+
+  /* ===== テキスト ===== */
+  --rnv-text:        #e6ebf3;
+  --rnv-text-soft:   #b9c4d6;
+  --rnv-text-muted:  #8290a8;
+  --rnv-text-amber:  var(--rnv-amber-200);
+  --rnv-text-slate:  var(--rnv-slate-200);
+
+  /* ===== 線・縁 (金の細線 → 琥珀の細線へ) ===== */
+  --rnv-line-hair:   rgba(224, 179, 94, 0.28);  /* 伯爵層: 琥珀の細線 */
+  --rnv-line-grid:   rgba(124, 150, 184, 0.20); /* 精層: 灰青グリッド */
+  --rnv-line-strong: rgba(224, 179, 94, 0.5);
+
+  /* ===== カートグラフィ (記号アイコン + 等高線) ===== */
+  --rnv-map-contour:    rgba(124, 150, 184, 0.22); /* 等高線 */
+  --rnv-map-contour-lit:rgba(124, 150, 184, 0.40);
+  --rnv-map-symbol:     var(--rnv-amber-300);      /* 名所=代表作の記号 */
+  --rnv-map-symbol-new: var(--rnv-slate-200);      /* 新着の土地 */
+  --rnv-map-territory:  rgba(20, 32, 52, 0.55);    /* 地方の塗り */
+  --rnv-map-route:      rgba(224, 179, 94, 0.35);  /* 巡路 */
+
+  /* ===== 発光 (精=AI 層) ===== */
+  --rnv-glow-slate: 0 0 18px rgba(124, 150, 184, 0.35);
+  --rnv-glow-amber: 0 0 16px var(--rnv-amber-glow);
+
+  /* ===== タイポグラフィ (二層) =====
+     伯爵=人 層: serif（既存 --font-serif = Noto Serif JP）。荘厳・品格。
+     精=AI 層:   sans/mono（既存 --font-sans = Inter）。クリーン・発光。 */
+  --rnv-font-sovereign: var(--font-serif, "Noto Serif JP", serif);
+  --rnv-font-spirit:    var(--font-sans, "Inter", system-ui, sans-serif);
+  --rnv-font-rune:      ui-monospace, "SFMono-Regular", "Menlo", monospace; /* 記号・座標 */
+
+  /* タイプスケール (1.250 Major Third) */
+  --rnv-text-xs:   0.75rem;
+  --rnv-text-sm:   0.875rem;
+  --rnv-text-base: 1rem;
+  --rnv-text-lg:   1.25rem;
+  --rnv-text-xl:   1.563rem;
+  --rnv-text-2xl:  1.953rem;
+  --rnv-text-3xl:  2.441rem;
+  --rnv-text-4xl:  3.052rem;
+
+  --rnv-tracking-wide:  0.06em;
+  --rnv-tracking-realm: 0.18em;  /* 地名・章題の宮廷的字間 */
+  --rnv-leading-tight:  1.25;
+  --rnv-leading-prose:  1.75;
+
+  /* ===== 余白スケール (8pxベース) ===== */
+  --rnv-space-1: 0.25rem;
+  --rnv-space-2: 0.5rem;
+  --rnv-space-3: 0.75rem;
+  --rnv-space-4: 1rem;
+  --rnv-space-5: 1.5rem;
+  --rnv-space-6: 2rem;
+  --rnv-space-7: 3rem;
+  --rnv-space-8: 4rem;
+  --rnv-space-9: 6rem;
+
+  /* ===== 半径・影 (globals と別系統で命名衝突回避) ===== */
+  --rnv-radius-sm: 8px;
+  --rnv-radius-md: 14px;
+  --rnv-radius-lg: 22px;
+  --rnv-radius-pill: 999px;
+  --rnv-shadow-realm: 0 8px 30px rgba(3, 8, 18, 0.55);
+
+  /* ===== モーション (過剰演出を避け品を保つ) ===== */
+  --rnv-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --rnv-dur-fast: 160ms;
+  --rnv-dur-base: 280ms;
+  --rnv-dur-slow: 520ms;
+}
+
+/* ============================================================
+   名前空間ユーティリティ (.rnv-*) — 任意で使う。既存に影響しない。
+   ============================================================ */
+
+/* 二層タイポ */
+.rnv-sovereign { font-family: var(--rnv-font-sovereign); letter-spacing: var(--rnv-tracking-wide); }
+.rnv-spirit    { font-family: var(--rnv-font-spirit); }
+.rnv-rune      { font-family: var(--rnv-font-rune); letter-spacing: var(--rnv-tracking-wide); }
+
+/* 地名・章題（宮廷的字間） */
+.rnv-realm-title {
+  font-family: var(--rnv-font-sovereign);
+  letter-spacing: var(--rnv-tracking-realm);
+  color: var(--rnv-text);
+}
+
+/* 琥珀の細線 / 灰青の発光テキスト */
+.rnv-text-amber { color: var(--rnv-text-amber); }
+.rnv-text-slate { color: var(--rnv-text-slate); }
+.rnv-hairline   { border: 1px solid var(--rnv-line-hair); }
+.rnv-gridline   { border: 1px solid var(--rnv-line-grid); }
+
+/* パネル（領土の床に浮く面） */
+.rnv-panel {
+  background: var(--rnv-bg-panel);
+  border: 1px solid var(--rnv-line-grid);
+  border-radius: var(--rnv-radius-md);
+  box-shadow: var(--rnv-shadow-realm);
+  backdrop-filter: blur(8px);
+}
+.rnv-panel--sovereign { border-color: var(--rnv-line-hair); }
+
+/* 発光 */
+.rnv-glow-amber { box-shadow: var(--rnv-glow-amber); }
+.rnv-glow-slate { box-shadow: var(--rnv-glow-slate); }
+
+/* 等高線の薄い装飾レイヤ（背景用） */
+.rnv-contours {
+  background-image: repeating-radial-gradient(
+    circle at 30% 20%,
+    var(--rnv-map-contour) 0,
+    var(--rnv-map-contour) 1px,
+    transparent 1px,
+    transparent 26px
+  );
+  background-color: var(--rnv-map-territory);
+}
+
+/* 「土地が呼吸する」ホバー（控えめ） */
+.rnv-breathe { transition: transform var(--rnv-dur-base) var(--rnv-ease), box-shadow var(--rnv-dur-base) var(--rnv-ease); }
+.rnv-breathe:hover { transform: translateY(-2px) scale(1.012); box-shadow: var(--rnv-glow-slate); }
+
+/* 記号アイコン（名所/新着）の基本リング */
+.rnv-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--rnv-radius-pill);
+  border: 1px solid var(--rnv-map-symbol);
+  color: var(--rnv-map-symbol);
+  font-family: var(--rnv-font-rune);
+}
+.rnv-mark--new { border-color: var(--rnv-map-symbol-new); color: var(--rnv-map-symbol-new); }
+
+/* アクセシビリティ: モーション削減を尊重 */
+@media (prefers-reduced-motion: reduce) {
+  .rnv-breathe { transition: none; }
+  .rnv-breathe:hover { transform: none; }
+}

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "../styles/renovation-tokens.css"; // リノベ v1 token層（追加専用・globals非改変）
 import { Inter, Noto_Serif_JP } from "next/font/google";
 import GlobalBackground from "@/components/GlobalBackground";
 import Nav from "@/components/Nav";
@@ -29,7 +30,7 @@ const SITE_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "伯爵 MUSIAM",
-  description: "伯爵MUSIAMは、占い・展示・対話の3つの門からなる神秘の館です。今日の運命を御籤で読み解き、音楽や物語の世界へ。",
+  description: "伯爵MUSIAMは、350の作品でできた、ひとつの奇妙で美しい国。歩けば発見があり、常にどこかで一曲が流れ、その中心では伯爵とAIが世界を鍛え続けている。音楽と物語の世界を巡る。",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -55,14 +56,14 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "伯爵 MUSIAM",
-    description: "占い・展示・対話の3つの門からなる神秘の館。今日の運命を御籤で読み解こう。",
+    description: "350の作品でできた、ひとつの奇妙で美しい国。巡り、聴き、伯爵とAIの工房をのぞく。",
     type: "website",
     images: [{ url: "/brand/og-default.jpg", width: 1200, height: 630, alt: "伯爵 MUSIAM" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "伯爵 MUSIAM",
-    description: "占い・展示・対話の3つの門からなる神秘の館。今日の運命を御籤で読み解こう。",
+    description: "350の作品でできた、ひとつの奇妙で美しい国。巡り、聴き、伯爵とAIの工房をのぞく。",
     images: ["/brand/og-default.jpg"],
   },
 };

@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: "daily", priority: 1 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/oracle/omikuji`, lastModified: now, changeFrequency: "daily", priority: 0.9 },
+    // 占い撤退（2026-06）: /oracle/omikuji はサイトマップから除外（ルートは "/" へリダイレクト）。
     { url: `${base}/works`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/chat`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/business`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },

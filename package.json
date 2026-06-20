@@ -8,7 +8,9 @@
     "export:png": "tsx scripts/export-png.ts",
     "prepare": "husky install",
     "add:exhibit": "tsx scripts/add-exhibit.ts",
-    "build:exhibits": "tsx scripts/build-exhibits.ts"
+    "build:exhibits": "tsx scripts/build-exhibits.ts",
+    "enrich:works": "node scripts/enrich-works.mjs",
+    "audit:works": "node scripts/audit-works.mjs"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
