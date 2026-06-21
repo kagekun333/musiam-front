@@ -22,11 +22,14 @@ export default async function LettersPage() {
   const letters = await getLetters();
   return (
     <main className="page-content" style={{ maxWidth: 720, margin: "0 auto", padding: "3rem 1.25rem 5rem" }}>
+      <p style={{ textAlign: "center", fontFamily: "var(--rnv-font-rune)", fontSize: "0.7rem", letterSpacing: "0.28em", color: "var(--rnv-text-slate)", marginBottom: "0.5rem" }}>
+        EPISTLES · 伯爵の書簡と記録
+      </p>
       <h1 style={{ fontFamily: "var(--font-serif), serif", fontSize: "1.7rem", textAlign: "center", marginBottom: "0.6rem" }}>
         伯爵の手紙
       </h1>
       <p style={{ textAlign: "center", color: "var(--color-text-muted)", fontSize: "0.9rem", marginBottom: "2.5rem" }}>
-        制作の裏側と、館の日々を綴ります。
+        制作の裏側と、国の日々を綴る年代記。読めば、この国の成り立ちが見えてきます。
       </p>
       {letters.length === 0 ? (
         <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>

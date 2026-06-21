@@ -9,7 +9,8 @@ const NAV_LINKS = [
   { href: "/chat", label: "伯爵" },
   { href: "/business", label: "法人" },
   { href: "/atelier", label: "講座" },
-  { href: "/shop", label: "売店" },
+  { href: "/shop", label: "交易所" },
+  { href: "/showcase", label: "新地平" },
   { href: "/letters", label: "手紙" },
   { href: "/about", label: "館主" },
 ] as const;

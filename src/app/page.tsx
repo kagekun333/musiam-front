@@ -5,6 +5,7 @@ import TodaysPick from "@/components/TodaysPick";
 import HomeShowcase from "@/components/HomeShowcase";
 import CoverMarquee from "@/components/CoverMarquee";
 import Atlas from "@/components/atlas/Atlas";
+import WorkshopHub from "@/components/workshop/WorkshopHub";
 
 
 type Gate = {
@@ -89,6 +90,9 @@ export default function Home() {
 
       {/* 作品カバーの流れるコラージュ (307作品の物量訴求) */}
       <CoverMarquee />
+
+      {/* 工房ハブ: 伯爵とAIの錬金の場＝物語の芯。依頼/弟子入り/対話の起点（F3） */}
+      <WorkshopHub />
 
       {/* 工房セクション: 実績数字 + 法人/展示導線 */}
       <HomeShowcase />

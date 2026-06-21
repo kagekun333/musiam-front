@@ -1,0 +1,75 @@
+/* src/app/showcase/showcase.css
+   NFTショーケース（F5）専用。renovation-tokens の特異色・二層タイポを使用。
+   .rnv-nft-* 名前空間。既存スタイルに影響しない。 */
+
+.rnv-nft-main { max-width: 1080px; margin: 0 auto; padding: var(--rnv-space-7) var(--rnv-space-5) var(--rnv-space-9); }
+
+/* 見出し */
+.rnv-nft-head { text-align: center; max-width: 46em; margin: 0 auto var(--rnv-space-7); }
+.rnv-nft-kicker { font-size: 11px; letter-spacing: 0.28em; color: var(--rnv-text-slate); margin: 0 0 var(--rnv-space-2); }
+.rnv-nft-h1 { font-size: var(--rnv-text-2xl); color: var(--rnv-text); margin: 0 0 var(--rnv-space-2); }
+.rnv-nft-tagline { font-size: var(--rnv-text-lg); color: var(--rnv-amber-200); margin: 0 0 var(--rnv-space-3); font-family: var(--rnv-font-sovereign); }
+.rnv-nft-desc { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: var(--rnv-leading-prose); margin: 0 0 var(--rnv-space-5); }
+
+.rnv-nft-cta { display: flex; flex-wrap: wrap; gap: var(--rnv-space-3); justify-content: center; }
+.rnv-nft-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--rnv-radius-pill);
+  font-size: var(--rnv-text-sm);
+  text-decoration: none;
+  border: 1px solid var(--rnv-line-grid);
+  color: var(--rnv-text);
+}
+.rnv-nft-btn--gold {
+  background: linear-gradient(180deg, var(--rnv-amber-300), var(--rnv-amber-400));
+  color: #1a1206;
+  border-color: var(--rnv-line-strong);
+  font-weight: 600;
+}
+.rnv-nft-btn--ghost { background: transparent; color: var(--rnv-text-soft); }
+.rnv-nft-btn--ghost:hover { color: var(--rnv-text); border-color: var(--rnv-line-hair); }
+.rnv-nft-btn--disabled { color: var(--rnv-text-muted); border-style: dashed; cursor: default; }
+
+/* セクション */
+.rnv-nft-section { margin-top: var(--rnv-space-7); }
+.rnv-nft-section-title { font-size: var(--rnv-text-xl); color: var(--rnv-text); margin: 0 0 var(--rnv-space-2); padding-bottom: var(--rnv-space-2); border-bottom: 1px solid var(--rnv-line-hair); }
+.rnv-nft-section-note { font-size: var(--rnv-text-sm); color: var(--rnv-text-muted); margin: 0 0 var(--rnv-space-4); }
+
+/* ショーケース・グリッド */
+.rnv-nft-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--rnv-space-4); }
+.rnv-nft-tile-link { display: flex; flex-direction: column; gap: 8px; text-decoration: none; color: var(--rnv-text-soft); }
+.rnv-nft-tile-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--rnv-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--rnv-line-hair);
+  box-shadow: var(--rnv-shadow-realm);
+}
+.rnv-nft-tile-img { object-fit: cover; }
+.rnv-nft-tile-meta { display: flex; flex-direction: column; gap: 1px; }
+.rnv-nft-tile-region { font-size: 10px; letter-spacing: 0.14em; color: var(--rnv-text-muted); }
+.rnv-nft-tile-title { font-size: var(--rnv-text-sm); color: var(--rnv-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rnv-nft-tile-link:hover .rnv-nft-tile-title { color: var(--rnv-amber-200); }
+
+/* ロードマップ */
+.rnv-nft-roadmap { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--rnv-space-3); }
+.rnv-nft-phase { display: flex; gap: var(--rnv-space-3); padding: var(--rnv-space-4); border-radius: var(--rnv-radius-md); border: 1px solid var(--rnv-line-grid); background: var(--rnv-bg-panel); }
+.rnv-nft-phase.is-now { border-color: var(--rnv-line-strong); box-shadow: var(--rnv-glow-amber); }
+.rnv-nft-phase-no { flex: 0 0 2em; font-size: var(--rnv-text-xl); color: var(--rnv-amber-300); text-align: center; }
+.rnv-nft-phase-title { font-size: var(--rnv-text-lg); color: var(--rnv-text); display: flex; align-items: center; gap: var(--rnv-space-2); }
+.rnv-nft-phase-badge { font-size: 10px; letter-spacing: 0.1em; color: #1a1206; background: var(--rnv-amber-300); padding: 2px 8px; border-radius: var(--rnv-radius-pill); }
+.rnv-nft-phase-body { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: 1.65; margin: 4px 0 0; }
+
+/* 境界の注意 */
+.rnv-nft-boundary { margin-top: var(--rnv-space-7); padding: var(--rnv-space-5); border-radius: var(--rnv-radius-md); border: 1px solid var(--rnv-line-hair); background: rgba(16, 26, 42, 0.45); }
+.rnv-nft-boundary-body { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: var(--rnv-leading-prose); margin: 0 0 var(--rnv-space-4); }
+.rnv-nft-boundary-body strong { color: var(--rnv-amber-200); font-weight: 600; }
+.rnv-nft-meta-links { display: flex; flex-wrap: wrap; gap: var(--rnv-space-3); }
+
+@media (max-width: 520px) {
+  .rnv-nft-main { padding: var(--rnv-space-6) var(--rnv-space-4) var(--rnv-space-8); }
+  .rnv-nft-grid { grid-template-columns: 1fr 1fr; }
+}

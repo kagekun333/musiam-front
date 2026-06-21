@@ -1,0 +1,14 @@
+{
+  "_note": "草案 / DRAFT — トークン1点のメタデータ雛形（ERC-721 Metadata 標準 / OpenSea 互換）。各原画ごとに複製し、image を IPFS 等の確定URLに差し替えてください。発行(mint)・出品はオーナーが行います。",
+  "name": "国の意匠 #001 — {作品タイトル}",
+  "description": "伯爵MUSIAM「{地方名}」の名所より。{一行ロア}",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/001.png",
+  "external_url": "https://www.hakusyaku.xyz/works/{作品ID}",
+  "attributes": [
+    { "trait_type": "地方 (Region)", "value": "{地方名 例: 神々の社}" },
+    { "trait_type": "種別 (Type)", "value": "Sigil / Map / Cover" },
+    { "trait_type": "原作 (Source)", "value": "{作品タイトル}" },
+    { "trait_type": "エディション (Edition)", "value": "1 of 1" },
+    { "display_type": "date", "trait_type": "公開 (Released)", "value": 0 }
+  ]
+}

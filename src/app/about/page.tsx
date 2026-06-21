@@ -46,7 +46,7 @@ const FACTS: [string, string][] = [
   ["肩書き", ENTITY.jobTitle],
   ["拠点", "伯爵 MUSIAM（オンライン上の館）"],
   ["公開作品", "350作品（オリジナル楽曲 216・出版書籍 134）"],
-  ["活動", "AI制作パイプラインによる楽曲・書籍・コンテンツ制作、占い(御籤)、法人向け音楽制作"],
+  ["活動", "AI制作パイプラインによる楽曲・書籍・映像制作、工房依頼（法人向け音楽制作）、弟子入り（講座）"],
   ["連絡先", ENTITY.email],
 ];
 
@@ -68,6 +68,9 @@ export default function AboutPage() {
       </nav>
 
       <header style={{ marginBottom: "2.5rem" }}>
+        <p className="rnv-rune" style={{ fontSize: "0.7rem", letterSpacing: "0.28em", color: "var(--rnv-text-slate)", marginBottom: "0.5rem" }}>
+          THE UNMASKED CHAMBER · 素顔の間
+        </p>
         <h1
           style={{
             fontFamily: "var(--font-serif), serif",
@@ -162,9 +165,10 @@ export default function AboutPage() {
         <ul style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", listStyle: "none", padding: 0, margin: 0 }}>
           {[
             ["/works", "展示（全作品）"],
-            ["/oracle", "占い（御籤）"],
-            ["/business", "法人・制作のご依頼"],
-            ["/shop", "売店"],
+            ["/business", "工房に依頼（法人）"],
+            ["/atelier", "弟子入り（講座）"],
+            ["/shop", "交易所"],
+            ["/showcase", "新地平（ショーケース）"],
           ].map(([href, label]) => (
             <li key={href}>
               <Link

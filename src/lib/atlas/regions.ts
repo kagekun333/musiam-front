@@ -23,6 +23,15 @@ export type RegionDef = {
 // 優先順（上から評価し、最初に一致した地方に属す）。
 export const ATLAS_REGIONS: RegionDef[] = [
   {
+    id: "skyfield",
+    ja: "空撮／映像の高地",
+    en: "Aerial Highlands",
+    glyph: "▶",
+    blurb: "ドローンが見た、地上にない景色の高み。",
+    accent: "slate",
+    keywords: ["film", "video", "movie", "drone", "ドローン", "空撮", "映像", "aerial", "cinematic-film"],
+  },
+  {
     id: "library",
     ja: "物語の書架",
     en: "Archive of Tales",
@@ -135,12 +144,18 @@ function isBook(w: AtlasWork): boolean {
   return t.includes("book") || (Array.isArray(w.tags) && w.tags.includes("English Edition"));
 }
 
+function isFilm(w: AtlasWork): boolean {
+  const t = String(w.type || "").toLowerCase();
+  return t.includes("film") || t.includes("video") || t.includes("movie");
+}
+
 function blobOf(w: AtlasWork): string {
   return [...(w.moodTags || []), ...(w.tags || []), String(w.title || "")].join(" ").toLowerCase();
 }
 
 /** 作品が属す地方IDを返す（優先順で最初の一致／書籍は library／未分類は frontier）。 */
 export function assignRegionId(w: AtlasWork): string {
+  if (isFilm(w)) return "skyfield";
   if (isBook(w)) return "library";
   const blob = blobOf(w);
   for (const r of ATLAS_REGIONS) {

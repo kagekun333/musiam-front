@@ -13,13 +13,13 @@ export default function NotFound() {
       <p style={{ color: "var(--color-text-muted)", lineHeight: 1.9, marginBottom: "2rem" }}>
         お探しの頁は移動したか、霧に消えました。
         <br />
-        三つの門から、改めてお入りください。
+        どこか別の土地から、改めて国をお巡りください。
       </p>
       <div style={{ display: "flex", gap: "0.8rem", justifyContent: "center", flexWrap: "wrap" }}>
         {[
           { href: "/", label: "ホーム" },
-          { href: "/oracle", label: "占いの門" },
           { href: "/works", label: "展示の門" },
+          { href: "/shop", label: "交易所" },
           { href: "/chat", label: "伯爵の門" },
         ].map((l) => (
           <Link

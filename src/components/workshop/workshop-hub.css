@@ -1,0 +1,98 @@
+/* src/components/workshop/workshop-hub.css
+   工房ハブ（F3）専用スタイル。renovation-tokens の特異色・二層タイポを使用。
+   全て .rnv-workshop 名前空間配下 — 既存スタイルに影響しない。 */
+
+.rnv-workshop {
+  position: relative;
+  max-width: 1100px;
+  margin: var(--rnv-space-8) auto;
+  padding: var(--rnv-space-7) var(--rnv-space-5);
+  border-radius: var(--rnv-radius-lg);
+  border: 1px solid var(--rnv-line-hair);
+  overflow: hidden;
+}
+.rnv-workshop__contours {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.rnv-workshop > *:not(.rnv-workshop__contours) { position: relative; z-index: 1; }
+
+/* 見出し */
+.rnv-workshop__head { text-align: center; max-width: 46em; margin: 0 auto var(--rnv-space-6); }
+.rnv-workshop__kicker {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--rnv-text-amber);
+  margin: 0 0 var(--rnv-space-2);
+}
+.rnv-workshop__title {
+  font-size: var(--rnv-text-2xl);
+  color: var(--rnv-text);
+  margin: 0 0 var(--rnv-space-3);
+}
+.rnv-workshop__lede {
+  font-size: var(--rnv-text-sm);
+  color: var(--rnv-text-soft);
+  line-height: var(--rnv-leading-prose);
+  margin: 0 0 var(--rnv-space-4);
+}
+
+/* 制作プロセス（言葉 ▸ 精 ▸ 調べ ▸ 作品） */
+.rnv-workshop__process {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--rnv-space-2);
+  font-size: var(--rnv-text-sm);
+  color: var(--rnv-text-slate);
+  padding: var(--rnv-space-2) var(--rnv-space-4);
+  border: 1px solid var(--rnv-line-grid);
+  border-radius: var(--rnv-radius-pill);
+}
+.rnv-workshop__process i { color: var(--rnv-amber-300); font-style: normal; }
+.rnv-workshop__process-end { color: var(--rnv-amber-200); }
+
+/* 三つの扉 */
+.rnv-workshop__doors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--rnv-space-4);
+}
+.rnv-workshop__door {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--rnv-space-3);
+  height: 100%;
+  padding: var(--rnv-space-5);
+  border-radius: var(--rnv-radius-md);
+  border: 1px solid var(--rnv-line-grid);
+  background: var(--rnv-bg-panel);
+  text-decoration: none;
+  color: var(--rnv-text);
+}
+.rnv-workshop__door[data-accent="amber"] { border-color: var(--rnv-line-hair); }
+.rnv-workshop__door-names { display: flex; flex-direction: column; gap: 2px; }
+.rnv-workshop__door-ja { font-size: var(--rnv-text-lg); color: var(--rnv-text); }
+.rnv-workshop__door-en { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rnv-text-muted); }
+.rnv-workshop__door-desc { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: 1.65; }
+.rnv-workshop__door-cta {
+  align-self: start;
+  font-size: var(--rnv-text-sm);
+  color: var(--rnv-amber-200);
+  border-bottom: 1px solid var(--rnv-line-hair);
+  padding-bottom: 2px;
+  justify-self: start;
+}
+.rnv-workshop__door:hover .rnv-workshop__door-cta { color: var(--rnv-amber-100); border-color: var(--rnv-line-strong); }
+
+@media (max-width: 520px) {
+  .rnv-workshop { padding: var(--rnv-space-6) var(--rnv-space-4); }
+  .rnv-workshop__title { font-size: var(--rnv-text-xl); }
+}

@@ -1,0 +1,9 @@
+{
+  "_note": "草案 / DRAFT — コレクションレベルのメタデータ（OpenSea collection 互換）。発行・出品はオーナーが行います。画像URLはIPFS等へ差し替えてください。",
+  "name": "伯爵MUSIAM — 国の意匠（Sigils of the Realm）",
+  "description": "伯爵MUSIAMという一つの国の意匠——各地方の名所（代表作）の原画、紋章、アトラスの地図を、限定のデジタル・コレクションとして刻む。音源・物理プリントとは別系統の、視覚の宝物庫。",
+  "image": "https://www.hakusyaku.xyz/brand/og-default.jpg",
+  "external_link": "https://www.hakusyaku.xyz/showcase",
+  "seller_fee_basis_points": 0,
+  "fee_recipient": "0xYOUR_WALLET_ADDRESS_HERE"
+}

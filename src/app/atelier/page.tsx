@@ -34,7 +34,7 @@ export default function AtelierPage() {
   return (
     <main className="atelier-main">
       <section className="atelier-hero">
-        <p className="atelier-kicker">Atelier Course — 先行案内</p>
+        <p className="atelier-kicker">Atelier · 弟子入り — 先行案内</p>
         <h1 className="atelier-title">
           AI音楽工場の作り方
           <span className="atelier-sub-title">月数ドルで350作品を生んだ、伯爵の製法書</span>
@@ -49,8 +49,8 @@ export default function AtelierPage() {
         </div>
         <LeadForm
           source="atelier_hero"
-          subject="【工房講座】先行案内を希望します"
-          label="先行案内を受け取る(無料)"
+          subject="【工房・弟子入り】先行案内を希望します"
+          label="弟子入りの先行案内を受け取る(無料)"
         />
         <p className="atelier-note">
           ※ まだ販売は開始していません。メールで先行案内にご登録いただいた方から優先的にご案内します。

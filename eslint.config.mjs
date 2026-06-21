@@ -15,6 +15,7 @@ export default [
 
       // バックアップ・スナップショット・レガシー
       "backup/**",
+      "_archive/**",
       ".musiam/**",
       "musiam-front-2025-09-26/**",
       "src/**/**.backup.*",

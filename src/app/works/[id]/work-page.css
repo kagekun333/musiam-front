@@ -224,6 +224,18 @@
   border: 0;
   border-radius: 12px;
 }
+/* 映像作品(film): 16:9 のレスポンシブ枠 */
+.work-embed--film {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.work-embed--film iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 .work-embed-note {
   margin-top: 0.5rem;
   font-size: 0.8rem;

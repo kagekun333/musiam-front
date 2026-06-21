@@ -47,6 +47,7 @@ function typeLabel(type?: string): string {
   const t = String(type || "").toLowerCase();
   if (t.includes("music")) return "Music";
   if (t.includes("book")) return "Book";
+  if (t.includes("film") || t.includes("video") || t.includes("movie")) return "Film";
   return "Work";
 }
 
@@ -59,13 +60,21 @@ function buildLinks(work: CatalogWork): WorkLinkItem[] {
       if (typeof v === "string" && v) map[k] = v;
     }
   }
-  const isMusic = typeLabel(work.type) === "Music";
+  const label = typeLabel(work.type);
+  const isMusic = label === "Music";
+  const isFilm = label === "Film";
   const order: [string, string][] = isMusic
     ? [
         ["spotify", "Spotifyで聴く"],
         ["appleMusic", "Apple Musicで聴く"],
         ["amazonMusic", "Amazon Musicで聴く"],
         ["itunesBuy", "iTunesで購入"],
+      ]
+    : isFilm
+    ? [
+        ["youtube", "YouTubeで観る"],
+        ["vimeo", "Vimeoで観る"],
+        ["video", "映像を観る"],
       ]
     : [
         ["amazon", "Amazonで読む"],
@@ -85,7 +94,7 @@ function buildLinks(work: CatalogWork): WorkLinkItem[] {
   );
   const fallback = fallbackCandidates[0];
   if (items.length === 0 && fallback) {
-    items.push({ label: isMusic ? "聴く" : "読む・購入", url: fallback, primary: true });
+    items.push({ label: isMusic ? "聴く" : isFilm ? "観る" : "読む・購入", url: fallback, primary: true });
   } else if (work.salesHref && !isHyperfollowUrl(work.salesHref) && !seen.has(work.salesHref)) {
     items.push({ label: "購入する", url: work.salesHref });
   }
@@ -107,6 +116,28 @@ function spotifyEmbed(work: CatalogWork): string | null {
   const m = url.match(/open\.spotify\.com\/(album|track|playlist)\/([A-Za-z0-9]+)/);
   if (!m) return null;
   return `https://open.spotify.com/embed/${m[1]}/${m[2]}?utm_source=generator&theme=0`;
+}
+
+/** 映像作品(film)のYouTube/Vimeo URLから埋め込み視聴URLを作る。対応外なら null。 */
+function videoEmbed(work: CatalogWork): string | null {
+  const links = work.links;
+  const cands: string[] = [];
+  if (links && !Array.isArray(links) && typeof links === "object") {
+    for (const k of ["video", "youtube", "vimeo"]) {
+      const v = (links as Record<string, unknown>)[k];
+      if (typeof v === "string" && v) cands.push(v);
+    }
+  }
+  for (const fb of [work.primaryHref, work.href, work.salesHref]) {
+    if (typeof fb === "string" && /(youtube\.com|youtu\.be|vimeo\.com)/i.test(fb)) cands.push(fb);
+  }
+  for (const url of cands) {
+    const yt = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+    const vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vm) return `https://player.vimeo.com/video/${vm[1]}`;
+  }
+  return null;
 }
 
 function relatedWorks(work: CatalogWork, all: CatalogWork[], n = 4): CatalogWork[] {
@@ -168,6 +199,7 @@ export default async function WorkPage(
   const t = typeLabel(work.type);
   const links = buildLinks(work);
   const embed = t === "Music" ? spotifyEmbed(work) : null;
+  const film = t === "Film" ? videoEmbed(work) : null;
   const related = relatedWorks(work, all);
   const tracks = work.ssd?.tracks?.filter((tr) => tr.title) ?? [];
   const notes =
@@ -178,7 +210,7 @@ export default async function WorkPage(
   // JSON-LD 構造化データ (検索結果のリッチ表示用)
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": t === "Music" ? "MusicAlbum" : "Book",
+    "@type": t === "Music" ? "MusicAlbum" : t === "Film" ? "VideoObject" : "Book",
     name: work.title,
     ...(work.cover ? { image: `${siteUrl()}${work.cover}` } : {}),
     ...(work.releasedAt ? { datePublished: work.releasedAt } : {}),
@@ -209,7 +241,7 @@ export default async function WorkPage(
               priority
             />
           ) : (
-            <div className="work-cover-fallback">{t === "Music" ? "♪" : "✦"}</div>
+            <div className="work-cover-fallback">{t === "Music" ? "♪" : t === "Film" ? "▶" : "✦"}</div>
           )}
         </div>
         <div>
@@ -252,6 +284,25 @@ export default async function WorkPage(
             />
           </div>
           <p className="work-embed-note">気に入ったら、上のボタンから各ストアでお楽しみください。</p>
+        </section>
+      )}
+
+      {film && (
+        <section className="work-section">
+          <h2 className="work-section-title">上映する</h2>
+          <div className="work-embed work-embed--film">
+            <iframe
+              src={film}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              loading="lazy"
+              allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+              allowFullScreen
+              title={`${work.title} 上映`}
+            />
+          </div>
+          <p className="work-embed-note">空撮／映像の高地より。全画面でお楽しみください。</p>
         </section>
       )}
 

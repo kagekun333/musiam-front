@@ -77,7 +77,7 @@ export default function BusinessPage() {
   return (
     <main className="biz-main">
       <section className="biz-hero">
-        <p className="biz-hero-kicker">For Business &amp; Creators</p>
+        <p className="biz-hero-kicker">工房への依頼 — For Business &amp; Creators</p>
         <h1 className="biz-hero-title">
           AIが奏で、伯爵が仕上げる。
           <br />
@@ -86,6 +86,8 @@ export default function BusinessPage() {
         <p className="biz-hero-sub">
           伯爵MUSIAMは、AI制作パイプラインで350作品(楽曲216・書籍134)を生み出してきた
           制作工房です。その量産力と美意識を、御社のブランド・店舗・コンテンツのために。
+          <br />
+          ——あなたのための調べ・紋章・物語を、工房に鍛えさせてください。
         </p>
         <div className="biz-hero-ctas">
           <ContactCTA location="business_hero" subject="【法人窓口】制作のご相談" label="無料で相談する" />
