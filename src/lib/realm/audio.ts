@@ -25,6 +25,20 @@ export function isAudioUnlocked(): boolean {
   return unlocked;
 }
 
+/** 入領の効果音（public/audio/sfx/enter.mp3）。無ければ静かに無視。 */
+export function playEnterSfx(): void {
+  if (typeof window === "undefined" || typeof Audio === "undefined") return;
+  try {
+    const a = new Audio("/audio/sfx/enter.mp3");
+    a.volume = 0.5;
+    void a.play().catch(() => {
+      /* ファイル無し/再生不可は無視 */
+    });
+  } catch {
+    /* no-op */
+  }
+}
+
 export function getAudioContext(): AudioContext | null {
   return ctx;
 }

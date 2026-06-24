@@ -107,6 +107,19 @@
 
 .rlm-hint { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 8; color: #8a7858; font-size: 11px; letter-spacing: .3em; pointer-events: none; }
 
+/* 放送コントロール（環境音 ON/OFF） */
+.rlm-mute {
+  position: absolute; right: 18px; bottom: 16px; z-index: 9;
+  font-size: 11px; letter-spacing: .14em; cursor: pointer; color: #f3e6c4;
+  padding: 6px 14px; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(74,58,30,.92), rgba(46,34,16,.92));
+  border: 1px solid rgba(205,161,74,.5);
+  box-shadow: 0 4px 14px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,236,180,.2);
+  transition: color var(--rnv-dur-fast) var(--rnv-ease), border-color var(--rnv-dur-fast) var(--rnv-ease);
+}
+.rlm-mute:hover { color: var(--rnv-gold-1); border-color: rgba(244,227,173,.7); }
+.rlm-mute[aria-pressed="true"] { color: #8a7858; }
+
 /* ===== SEO二層 / 索引 ===== */
 .rlm-index { max-width: 900px; margin: var(--rnv-space-7) auto; padding: 0 var(--rnv-space-5); }
 .rlm-index-title { font-size: var(--rnv-text-xl); color: var(--rnv-text); margin: 0 0 var(--rnv-space-2); }

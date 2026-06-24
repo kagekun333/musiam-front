@@ -7,7 +7,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { track as metric } from "@/lib/metrics";
-import { unlockAudio } from "@/lib/realm/audio";
+import { unlockAudio, playEnterSfx } from "@/lib/realm/audio";
+import { setRegionAmbient, setMuted, isMuted } from "@/lib/realm/ambient";
 import "./realm-home.css";
 
 type Landmark = { id: string; title: string; cover: string; href: string };
@@ -42,9 +43,26 @@ const WORLD = { w: 1300, h: 820 };
 export default function RealmHome({ regions, counts }: { regions: Region[]; counts: Counts }) {
   const [entered, setEntered] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
+  const [muted, setMutedState] = useState(false);
   const [tf, setTf] = useState({ x: 0, y: 0, s: 1 });
   const drag = useRef<{ x: number; y: number; tx: number; ty: number } | null>(null);
   const viewRef = useRef<HTMLDivElement | null>(null);
+
+  const shownRef = useRef<Region[]>([]);
+
+  const visitRegion = useCallback((id: string) => {
+    setHover(id);
+    setRegionAmbient(id); // 地方を移ると環境音がクロスフェード（音源があれば）
+  }, []);
+
+  const toggleMute = useCallback(() => {
+    setMutedState((m) => {
+      const next = !m;
+      setMuted(next);
+      metric("realm_mute", { muted: next });
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     try {
@@ -52,6 +70,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
     } catch {
       /* no-op */
     }
+    setMutedState(isMuted());
   }, []);
 
   const enter = useCallback(() => {
@@ -61,7 +80,11 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
     } catch {
       /* no-op */
     }
-    unlockAudio(); // ブラウザ自動再生制限の解錠（環境音は R3 / ファイル受領後に有効化）
+    unlockAudio(); // ブラウザ自動再生制限の解錠
+    playEnterSfx(); // 入領の効果音（任意・無ければ静か）
+    // 入領したら最初の地方の環境音を始める（音源があれば。無ければ静寂）
+    const first = shownRef.current[0];
+    if (first) setRegionAmbient(first.id);
     metric("realm_enter", {});
   }, []);
 
@@ -92,6 +115,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
   };
 
   const shown = regions.filter((r) => POS[r.id] && r.landmark);
+  shownRef.current = shown;
 
   return (
     <main className="rlm" aria-label="伯爵MUSIAM 領土天球図">
@@ -172,9 +196,9 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
                 href={r.landmark!.href}
                 className={`rlm-node ${r.accent} ${isHover ? "is-hover" : ""}`}
                 style={{ left: p.x, top: p.y }}
-                onMouseEnter={() => setHover(r.id)}
+                onMouseEnter={() => visitRegion(r.id)}
                 onMouseLeave={() => setHover((h) => (h === r.id ? null : h))}
-                onFocus={() => setHover(r.id)}
+                onFocus={() => visitRegion(r.id)}
                 onBlur={() => setHover((h) => (h === r.id ? null : h))}
                 onClick={() => metric("realm_node", { id: r.id })}
                 aria-label={`${r.ja}（${r.count}作品）を巡る`}
@@ -202,6 +226,20 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
         </div>
 
         <p className="rlm-hint rnv-rune" aria-hidden="true">— DRAG TO ROAM · 地図を掴んで巡れ —</p>
+
+        {/* 放送コントロール（環境音 / R3） */}
+        {entered && (
+          <button
+            type="button"
+            className="rlm-mute rnv-rune"
+            onClick={toggleMute}
+            aria-pressed={muted}
+            aria-label={muted ? "放送をオンにする" : "放送をミュート"}
+            title={muted ? "放送オン" : "放送ミュート"}
+          >
+            {muted ? "♪ OFF" : "♪ ON"}
+          </button>
+        )}
       </div>
 
       {/* SEO二層・アクセシビリティ: 索引リンク（テキスト） */}
