@@ -106,7 +106,38 @@
   --rnv-dur-fast: 160ms;
   --rnv-dur-base: 280ms;
   --rnv-dur-slow: 520ms;
+
+  /* ===== 羊皮紙×星図（没入ホーム v2） =====
+     人=伯爵層の素材。古い天球図のページの質感。プロトタイプ準拠。 */
+  --rnv-parch-1: #f0e2bc;   /* 中心の明るい紙 */
+  --rnv-parch-2: #e4d1a3;
+  --rnv-parch-3: #cfb47c;
+  --rnv-parch-4: #ad8f57;   /* 縁の焼け */
+  --rnv-ink: #33271a;        /* 羊皮紙上の主インク */
+  --rnv-ink-soft: #5b4a35;
+  --rnv-ink-faded: #46527a;  /* 退色した座標網 */
+  --rnv-wax: #7e2330;        /* 蝋封の臙脂 */
+  --rnv-gold-1: #f4e3ad;     /* 金箔ハイライト */
+  --rnv-gold-2: #cda14a;
+  --rnv-gold-3: #8a6322;
+  --rnv-gold-hi: #fff3c9;
+  --rnv-gold-grad: linear-gradient(176deg, var(--rnv-gold-hi), var(--rnv-gold-1) 22%, var(--rnv-gold-2) 52%, var(--rnv-gold-3) 74%, var(--rnv-gold-1));
+
+  /* 三層タイポ拡張: 古典ディスプレイ(題字) / 古典セリフ(本文) / 和セリフ */
+  --rnv-font-display: var(--font-display, "Cinzel", "Noto Serif JP", serif);
+  --rnv-font-classic: var(--font-classic, "EB Garamond", "Noto Serif JP", serif);
 }
+
+/* 金箔テキスト・ユーティリティ */
+.rnv-gold-text {
+  background: var(--rnv-gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25), 0 2px 5px rgba(70, 45, 12, 0.35);
+}
+.rnv-display { font-family: var(--rnv-font-display); letter-spacing: 0.14em; }
+.rnv-classic { font-family: var(--rnv-font-classic); }
 
 /* ============================================================
    名前空間ユーティリティ (.rnv-*) — 任意で使う。既存に影響しない。

@@ -1,104 +1,34 @@
-// src/app/page.tsx
-import Link from "next/link";
-import Image from "next/image";
-import TodaysPick from "@/components/TodaysPick";
-import HomeShowcase from "@/components/HomeShowcase";
-import CoverMarquee from "@/components/CoverMarquee";
-import Atlas from "@/components/atlas/Atlas";
-import WorkshopHub from "@/components/workshop/WorkshopHub";
+// src/app/page.tsx — 没入アトラス・ホーム（リノベv2）。
+// サーバーで地方サマリ＋件数を算出し、クライアントの RealmHome（入領ゲート＋地図）へ渡す。
+// 旧ホームは /classic に退避（フォールバック）。
+import type { Metadata } from "next";
+import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { dedupeWorks } from "@/lib/dedupeWorks";
+import { buildAtlas, type AtlasWork } from "@/lib/atlas/regions";
+import { getCatalogCounts } from "@/lib/catalog-counts";
+import RealmHome from "@/components/realm/RealmHome";
 
-
-type Gate = {
-  file: string;
-  href: string;
-  ja: string;
-  en: string;
-  desc: string;
-  cta: string; // CTAボタンの文言
+export const metadata: Metadata = {
+  title: "伯爵 MUSIAM — 作品でできた国を巡る",
+  description:
+    "伯爵MUSIAMは、作品でできた、ひとつの奇妙で美しい国。羊皮紙の天球図を歩いて、聴いて、発見する。地方を巡り、伯爵とAIの工房をのぞく。",
 };
 
-const GATES: Gate[] = [
-  { file: "galaxy.jpg",      href: "/works",      ja: "展示の門", en: "Exhibition Gate", desc: "無限の展示が、あなたを待つ。",   cta: "展示を見る" },
-  { file: "gothic-door.jpg", href: "/chat",       ja: "伯爵の門", en: "Count's Gate",    desc: "館の大扉、選ばれし者を迎える。", cta: "伯爵に相談" },
-];
+export const revalidate = 3600;
 
-export default function Home() {
-  return (
-    <main className="page-content">
-      {/* グローバル背景は layout.tsx で提供 */}
+export default async function Home() {
+  const merged = (await loadMergedWorksServer()) as AtlasWork[];
+  const display = dedupeWorks(merged as Parameters<typeof dedupeWorks>[0]) as AtlasWork[];
+  const regions = buildAtlas(display, (w) => `/works/${encodeURIComponent(String(w.id))}`).map((r) => ({
+    id: r.id,
+    ja: r.ja,
+    en: r.en,
+    glyph: r.glyph,
+    accent: r.accent,
+    count: r.count,
+    landmark: r.landmark,
+  }));
+  const counts = await getCatalogCounts();
 
-      {/* Wordmark */}
-      <section className="hero hero--tight">
-        <h1 className="wordmark" aria-label="伯爵 MUSIAM">
-          <span className="wordmark-jp">伯爵</span>
-          <span className="wordmark-en">MUSIAM</span>
-        </h1>
-        <p className="hero-sub">音楽と芸術の宮殿へ、ようこそ。</p>
-      </section>
-
-      {/* 今日の一筆（毎日更新・静的キャッシュ） */}
-      <TodaysPick />
-
-      {/* 領土アトラス: 作品の国を地方ごとに巡る探索の入口（F2） */}
-      <Atlas />
-
-      {/* 3 GATES */}
-      <section className="gates-wrap">
-        <h2 className="gates-title">2 GATES</h2>
-
-        <ul className="gates-grid">
-          {GATES.map((g) => (
-            <li key={g.file}>
-              {/* div+onClick を <Link> に統一。ネスト anchor 回避のため内側CTAはspanに */}
-              <Link
-                href={g.href}
-                className="gate-link"
-                style={{ display: "block" }}
-                aria-label={`${g.ja}へ移動`}
-              >
-                <div className="gate-card">
-                  <div className="media square">
-                    <Image
-                      src={`/gates/${g.file}`}
-                      alt={`${g.ja}（${g.en}）`}
-                      fill
-                      className="gate-img"
-                      sizes="(max-width:640px) 30vw, (max-width:1024px) 30vw, 360px"
-                      priority={g.file === "torii.jpg"}
-                    />
-                  </div>
-
-                  {/* 画像の外にキャプション */}
-                  <div className="gate-caption">
-                    <div className="gate-title">
-                      <span className="gate-title-ja">{g.ja}</span>
-                      <span className="gate-title-en" aria-hidden="true">{g.en}</span>
-                    </div>
-                    <div className="gate-desc">{g.desc}</div>
-
-                    {/* CTAラベル（親Linkがナビ担当のためspanに変更） */}
-                    <span className="gate-cta" aria-hidden="true">
-                      {g.cta}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 作品カバーの流れるコラージュ (307作品の物量訴求) */}
-      <CoverMarquee />
-
-      {/* 工房ハブ: 伯爵とAIの錬金の場＝物語の芯。依頼/弟子入り/対話の起点（F3） */}
-      <WorkshopHub />
-
-      {/* 工房セクション: 実績数字 + 法人/展示導線 */}
-      <HomeShowcase />
-
-      {/* 右下ウォーターマーク：/public/brand/abi-seal.png を配置 */}
-      <div aria-hidden className="corner-mark" />
-    </main>
-  );
+  return <RealmHome regions={regions} counts={counts} />;
 }

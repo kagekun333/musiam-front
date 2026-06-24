@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "../styles/renovation-tokens.css"; // リノベ v1 token層（追加専用・globals非改変）
-import { Inter, Noto_Serif_JP } from "next/font/google";
+import { Inter, Noto_Serif_JP, Cinzel, EB_Garamond } from "next/font/google";
 import GlobalBackground from "@/components/GlobalBackground";
 import Nav from "@/components/Nav";
 import BroadcastBar from "@/components/broadcast/BroadcastBar";
@@ -11,6 +11,9 @@ import { organizationJsonLd, webSiteJsonLd } from "@/lib/entity";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const notoSerif = Noto_Serif_JP({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
+// 没入ホーム v2: 古典ディスプレイ(題字) + 古典セリフ(本文)。羊皮紙×星図の品格。
+const cinzel = Cinzel({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-display", display: "swap" });
+const ebGaramond = EB_Garamond({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-classic", display: "swap" });
 
 export const viewport: Viewport = {
   themeColor: [
@@ -83,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteJsonLd()) }}
         />
       </head>
-      <body className={`${inter.variable} ${notoSerif.variable} antialiased`}>
+      <body className={`${inter.variable} ${notoSerif.variable} ${cinzel.variable} ${ebGaramond.variable} antialiased`}>
         {process.env.NODE_ENV !== "production" && (
           // 開発時のみ: 古いService Workerが_next/staticの旧チャンクを
           // Cache Firstで配信してReactを壊すため、Reactに依存せず
