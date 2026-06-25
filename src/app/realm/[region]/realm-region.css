@@ -15,14 +15,40 @@
 .rgn-title { font-size: clamp(28px, 5vw, 44px); margin: 0; }
 .rgn-en { font-size: 11px; letter-spacing: .3em; color: var(--rnv-ink-soft); text-transform: uppercase; margin: .4rem 0 0; }
 .rgn-blurb { font-family: var(--rnv-font-classic); font-size: 1.05rem; color: var(--rnv-ink); margin: 1rem 0 .4rem; line-height: 1.7; }
-.rgn-count { font-size: 12px; letter-spacing: .14em; color: var(--rnv-gold-3); }
+.rgn-room { font-size: 12px; letter-spacing: .16em; color: var(--rnv-gold-3); margin: 1rem 0 .3rem; }
+.rgn-roomline { font-family: var(--rnv-font-classic); font-style: italic; font-size: 1rem; color: var(--rnv-ink-soft); margin: 0; }
 
-.rgn-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.25rem; }
+.rgn-grid { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; gap: 1.4rem; }
+/* 媒体ごとの“部屋”レイアウト */
+.rgn-grid--music { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.rgn-grid--book { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.8rem 1.4rem; }
+.rgn-grid--film { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.rgn-grid--other { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+
 .rgn-card { display: flex; flex-direction: column; gap: .5rem; text-decoration: none; color: var(--rnv-ink); }
 .rgn-card-cover { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; border: 1px solid var(--rnv-gold-2); box-shadow: 0 8px 22px rgba(40,24,8,.4); transition: transform var(--rnv-dur-base) var(--rnv-ease), box-shadow var(--rnv-dur-base) var(--rnv-ease); }
 .rgn-card:hover .rgn-card-cover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(40,24,8,.5), 0 0 18px rgba(224,179,94,.5); }
 .rgn-card-img { object-fit: cover; }
 .rgn-card-title { font-family: var(--rnv-font-classic); font-size: .9rem; color: var(--rnv-ink-soft); line-height: 1.35; }
+
+/* 閲覧室（書籍）= 縦長の装丁・棚に立つ本 */
+.rgn-grid--book .rgn-card-cover { aspect-ratio: 3 / 4; box-shadow: -6px 8px 20px rgba(40,24,8,.45); border-left: 3px solid var(--rnv-gold-3); border-radius: 3px 8px 8px 3px; }
+.rgn-grid--book .rgn-card-title { font-size: .95rem; color: var(--rnv-ink); }
+
+/* 上映室（映像）= 横長 16:9 のスクリーン */
+.rgn-grid--film .rgn-card-cover { aspect-ratio: 16 / 9; border-radius: 6px; }
+
+/* CTAバッジ（聴く/読む/観る） */
+.rgn-card-cta {
+  position: absolute; left: 8px; bottom: 8px; font-size: 11px; letter-spacing: .08em;
+  color: #1c140a; background: linear-gradient(180deg, var(--rnv-gold-1), var(--rnv-gold-2));
+  padding: 3px 10px; border-radius: 999px; opacity: 0; transform: translateY(4px);
+  transition: opacity var(--rnv-dur-base) var(--rnv-ease), transform var(--rnv-dur-base) var(--rnv-ease);
+}
+.rgn-card:hover .rgn-card-cta, .rgn-card:focus-visible .rgn-card-cta { opacity: 1; transform: translateY(0); }
+/* 上映室は再生グリフを中央に大きく */
+.rgn-grid--film .rgn-card-cta { left: 50%; bottom: 50%; transform: translate(-50%, 50%) scale(.9); font-size: 13px; padding: 6px 16px; }
+.rgn-grid--film .rgn-card:hover .rgn-card-cta { transform: translate(-50%, 50%) scale(1); }
 
 .rgn-empty { text-align: center; color: var(--rnv-ink-soft); font-family: var(--rnv-font-classic); padding: 3rem 0; }
 .rgn-foot { text-align: center; margin-top: 3rem; font-family: var(--rnv-font-classic); }

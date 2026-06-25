@@ -21,7 +21,16 @@ export function generateStaticParams() {
   return [...ATLAS_REGIONS, FRONTIER_REGION].map((r) => ({ region: r.id }));
 }
 
-type RegionWork = { id: string; title: string; cover: string; href: string; releasedAt: string };
+type Medium = "music" | "book" | "film" | "other";
+type RegionWork = { id: string; title: string; cover: string; href: string; releasedAt: string; medium: Medium };
+
+function mediumOf(type?: string, tags?: string[]): Medium {
+  const t = String(type || "").toLowerCase();
+  if (t.includes("film") || t.includes("video") || t.includes("movie")) return "film";
+  if (t.includes("book") || (Array.isArray(tags) && tags.includes("English Edition"))) return "book";
+  if (t === "music" || t.includes("album") || t.includes("track") || t.includes("song")) return "music";
+  return t ? "other" : "music";
+}
 
 async function loadRegionWorks(regionId: string): Promise<RegionWork[]> {
   const merged = (await loadMergedWorksServer()) as AtlasWork[];
@@ -34,9 +43,24 @@ async function loadRegionWorks(regionId: string): Promise<RegionWork[]> {
       cover: String(w.cover || ""),
       href: `/works/${encodeURIComponent(String(w.id))}`,
       releasedAt: String(w.releasedAt || ""),
+      medium: mediumOf(w.type, w.tags),
     }))
     .filter((w) => w.cover)
     .sort((a, b) => b.releasedAt.localeCompare(a.releasedAt));
+}
+
+// その地方の主たる媒体で「部屋」の性格を決める。
+const ROOMS: Record<Medium, { room: string; en: string; line: string; cta: string; glyph: string }> = {
+  music: { room: "試聴の広間", en: "LISTENING HALL", line: "この地に流れる調べ。耳をすませて。", cta: "聴く", glyph: "♪" },
+  book: { room: "閲覧室", en: "READING ROOM", line: "棚にならぶ物語。手に取って。", cta: "読む", glyph: "▤" },
+  film: { room: "上映室", en: "SCREENING ROOM", line: "上映中の景色。腰をおろして。", cta: "観る", glyph: "▶" },
+  other: { room: "展示室", en: "GALLERY", line: "この地の作品を巡る。", cta: "ひらく", glyph: "◆" },
+};
+
+function dominantMedium(works: RegionWork[]): Medium {
+  const c: Record<Medium, number> = { music: 0, book: 0, film: 0, other: 0 };
+  for (const w of works) c[w.medium]++;
+  return (Object.keys(c) as Medium[]).sort((a, b) => c[b] - c[a])[0] || "music";
 }
 
 export async function generateMetadata(
@@ -59,9 +83,11 @@ export default async function RegionPage(
 
   const def = regionDefById(region);
   const works = await loadRegionWorks(region);
+  const medium = dominantMedium(works);
+  const room = ROOMS[medium];
 
   return (
-    <main className="rgn">
+    <main className={`rgn rgn--${medium}`} data-medium={medium}>
       <div className="rgn-parch" aria-hidden="true">
         <svg className="rgn-tex fiber" preserveAspectRatio="none"><defs><filter id="rgnFiber"><feTurbulence type="fractalNoise" baseFrequency="0.86" numOctaves="2" seed="8" stitchTiles="stitch" /><feColorMatrix type="matrix" values="0 0 0 0 0.30  0 0 0 0 0.22  0 0 0 0 0.11  0 0 0 0.6 0" /></filter></defs><rect width="100%" height="100%" filter="url(#rgnFiber)" /></svg>
       </div>
@@ -76,18 +102,20 @@ export default async function RegionPage(
           <h1 className="rgn-title rnv-display rnv-gold-text">{def.ja}</h1>
           <p className="rgn-en rnv-rune">{def.en}</p>
           <p className="rgn-blurb">{def.blurb}</p>
-          <p className="rgn-count rnv-rune">{works.length} 作品</p>
+          <p className="rgn-room rnv-rune">{room.glyph} {room.room} · {room.en} — {works.length}</p>
+          <p className="rgn-roomline">{room.line}</p>
         </header>
 
         {works.length === 0 ? (
           <p className="rgn-empty">この地は、まだ誰もひらいていません。</p>
         ) : (
-          <ul className="rgn-grid" role="list">
+          <ul className={`rgn-grid rgn-grid--${medium}`} role="list">
             {works.map((w) => (
               <li key={w.id}>
                 <Link href={w.href} className="rgn-card">
                   <span className="rgn-card-cover">
-                    <Image src={w.cover} alt={w.title} fill sizes="(max-width:640px) 40vw, 200px" className="rgn-card-img" />
+                    <Image src={w.cover} alt={w.title} fill sizes="(max-width:640px) 40vw, 220px" className="rgn-card-img" />
+                    <span className="rgn-card-cta rnv-rune" aria-hidden="true">{room.glyph} {room.cta}</span>
                   </span>
                   <span className="rgn-card-title">{w.title}</span>
                 </Link>
