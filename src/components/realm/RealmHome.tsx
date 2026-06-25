@@ -41,6 +41,15 @@ const POS: Record<string, { x: number; y: number }> = {
 const THRONE = { x: 660, y: 392 };
 const WORLD = { w: 1300, h: 820 };
 
+// 施設（機能の部屋）— 国の全機能を地図の縁から入れる。領地ノードと別レイヤー。
+type Facility = { id: string; ja: string; href: string; glyph: string; x: number; y: number };
+const FACILITIES: Facility[] = [
+  { id: "showcase", ja: "国の意匠", href: "/showcase", glyph: "❖", x: 1190, y: 150 },
+  { id: "shop", ja: "交易所", href: "/shop", glyph: "⚖", x: 1210, y: 360 },
+  { id: "atelier", ja: "弟子入り", href: "/atelier", glyph: "✎", x: 95, y: 200 },
+  { id: "business", ja: "工房依頼", href: "/business", glyph: "⚒", x: 95, y: 470 },
+];
+
 export default function RealmHome({ regions, counts }: { regions: Region[]; counts: Counts }) {
   const [entered, setEntered] = useState(false);
   const [hover, setHover] = useState<string | null>(null);
@@ -99,7 +108,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
     if (!drag.current) return;
     const dx = e.clientX - drag.current.x;
     const dy = e.clientY - drag.current.y;
-    const lim = 260 * tf.s;
+    const lim = 380 * tf.s;
     setTf((p) => ({
       ...p,
       x: Math.max(-lim, Math.min(lim, drag.current!.tx + dx)),
@@ -217,6 +226,21 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
               </Link>
             );
           })}
+
+          {/* 施設（機能の部屋）— 国の縁に建つ */}
+          {FACILITIES.map((f) => (
+            <Link
+              key={f.id}
+              href={f.href}
+              className="rlm-facility"
+              style={{ left: f.x, top: f.y }}
+              onClick={() => metric("realm_facility", { id: f.id })}
+              aria-label={`${f.ja}へ`}
+            >
+              <span className="rlm-facility-ring" aria-hidden="true">{f.glyph}</span>
+              <span className="rlm-facility-name rnv-display">{f.ja}</span>
+            </Link>
+          ))}
         </div>
 
         {/* 題字オーバーレイ */}

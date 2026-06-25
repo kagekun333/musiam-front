@@ -87,6 +87,22 @@
 .rlm-node-count { font-size: 10px; color: var(--rnv-gold-3); letter-spacing: .1em; }
 .rlm-node:hover .rlm-node-ring, .rlm-node:focus-visible .rlm-node-ring { transform: scale(1.18); box-shadow: 0 0 26px rgba(224,179,94,.6); }
 
+/* 施設（機能の部屋）— 国の縁に建つ。領地より小さく・矩形の館印で区別 */
+.rlm-facility {
+  position: absolute; transform: translate(-50%,-50%); z-index: 4;
+  display: grid; justify-items: center; gap: 4px; text-decoration: none; color: #5b4a35;
+  width: 96px; text-align: center;
+}
+.rlm-facility-ring {
+  display: grid; place-items: center; width: 36px; height: 36px; border-radius: 7px;
+  font-family: var(--rnv-font-rune); font-size: 16px; color: var(--rnv-wax);
+  background: radial-gradient(circle at 50% 40%, rgba(241,229,198,.95), rgba(228,209,163,.55));
+  border: 1px solid var(--rnv-wax);
+  transition: transform var(--rnv-dur-base) var(--rnv-ease), box-shadow var(--rnv-dur-base) var(--rnv-ease);
+}
+.rlm-facility-name { font-size: 13px; letter-spacing: .12em; color: #5b4a35; padding: 1px 7px; border-radius: 4px; background: rgba(238,224,188,.55); border: 1px dashed rgba(126,35,48,.4); }
+.rlm-facility:hover .rlm-facility-ring, .rlm-facility:focus-visible .rlm-facility-ring { transform: scale(1.16); box-shadow: 0 0 20px rgba(126,35,48,.4); }
+
 /* ホバーで代表作カバーが咲く */
 .rlm-bloom {
   position: absolute; left: 50%; bottom: 100%; transform: translate(-50%, 6px) scale(.8);

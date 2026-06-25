@@ -54,6 +54,23 @@
 .rnv-nft-tile-title { font-size: var(--rnv-text-sm); color: var(--rnv-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .rnv-nft-tile-link:hover .rnv-nft-tile-title { color: var(--rnv-amber-200); }
 
+/* 意匠（Sigil）グリッド */
+.rnv-sigil-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--rnv-space-4); }
+.rnv-sigil-card { display: flex; gap: var(--rnv-space-4); padding: var(--rnv-space-4); border-radius: var(--rnv-radius-md); border: 1px solid var(--rnv-line-hair); background: var(--rnv-bg-panel); }
+.rnv-sigil-medal { width: 74px; height: 74px; flex: 0 0 auto; filter: drop-shadow(0 5px 9px rgba(40,10,15,.5)); }
+.rnv-sigil-meta { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.rnv-sigil-name { font-size: var(--rnv-text-lg); color: var(--rnv-text); }
+.rnv-sigil-en { font-size: 10px; letter-spacing: .12em; color: var(--rnv-text-muted); text-transform: uppercase; }
+.rnv-sigil-blurb { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: 1.55; margin: 3px 0; }
+.rnv-sigil-link { font-size: var(--rnv-text-sm); color: var(--rnv-amber-200); text-decoration: none; align-self: flex-start; border-bottom: 1px solid var(--rnv-line-hair); }
+.rnv-sigil-link:hover { color: var(--rnv-amber-100); }
+
+/* ユーティリティ */
+.rnv-sigil-util { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--rnv-space-4); }
+.rnv-sigil-util-item { padding: var(--rnv-space-4); border-radius: var(--rnv-radius-md); border: 1px solid var(--rnv-line-grid); background: rgba(16,26,42,.4); display: flex; flex-direction: column; gap: 6px; }
+.rnv-sigil-util-title { font-size: var(--rnv-text-base); color: var(--rnv-amber-200); letter-spacing: .06em; }
+.rnv-sigil-util-body { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: 1.6; }
+
 /* ロードマップ */
 .rnv-nft-roadmap { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--rnv-space-3); }
 .rnv-nft-phase { display: flex; gap: var(--rnv-space-3); padding: var(--rnv-space-4); border-radius: var(--rnv-radius-md); border: 1px solid var(--rnv-line-grid); background: var(--rnv-bg-panel); }

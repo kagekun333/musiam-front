@@ -125,7 +125,8 @@ export default async function RegionPage(
         )}
 
         <p className="rgn-foot">
-          <Link href="/">← 地図へ戻る</Link> · <Link href="/works">全作品の索引（展示）</Link>
+          <Link href="/">← 地図へ戻る</Link> · <Link href="/works">全作品の索引（展示）</Link> ·{" "}
+          <Link href="/showcase">この地の意匠（Sigil）</Link>
         </p>
       </div>
     </main>
