@@ -1,118 +1,72 @@
-/* src/app/shop/trading-post.css
-   交易所/宝物庫（F4）専用スタイル。renovation-tokens の特異色・二層タイポを使用。
-   .rnv-trade-* 名前空間。既存 .shop-* には触れない（BuyButton の .shop-buy は shop.css を継続使用）。 */
+/* src/app/shop/trading-post.css — 交易所/宝物庫（R4: 羊皮紙世界へ統一）
+   .rnv-trade-* 名前空間。インク・羊皮紙・金/蝋で構成。本文は背景の上に。 */
 
 .rnv-trade-main {
+  position: relative;
+  z-index: 1; /* ParchmentBackdrop(z:0) の上 */
   max-width: 1080px;
   margin: 0 auto;
   padding: var(--rnv-space-7) var(--rnv-space-5) var(--rnv-space-9);
+  color: var(--rnv-ink);
 }
 
 /* 見出し */
 .rnv-trade-head { text-align: center; max-width: 44em; margin: 0 auto var(--rnv-space-7); }
-.rnv-trade-kicker { font-size: 11px; letter-spacing: 0.28em; color: var(--rnv-text-amber); margin: 0 0 var(--rnv-space-2); }
-.rnv-trade-h1 { font-size: var(--rnv-text-3xl); color: var(--rnv-text); margin: 0 0 var(--rnv-space-3); }
-.rnv-trade-lede { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: var(--rnv-leading-prose); margin: 0; }
+.rnv-trade-kicker { font-size: 11px; letter-spacing: 0.28em; color: var(--rnv-gold-3); margin: 0 0 var(--rnv-space-2); }
+.rnv-trade-h1 { font-family: var(--rnv-font-display); font-size: var(--rnv-text-3xl); letter-spacing: .1em; margin: 0 0 var(--rnv-space-3); }
+.rnv-trade-lede { font-family: var(--rnv-font-classic); font-size: 1.02rem; color: var(--rnv-ink-soft); line-height: 1.8; margin: 0; }
 
 /* セクション */
 .rnv-trade-section { margin-top: var(--rnv-space-7); }
-.rnv-trade-section-title {
-  font-size: var(--rnv-text-xl);
-  color: var(--rnv-text);
-  margin: 0 0 var(--rnv-space-4);
-  padding-bottom: var(--rnv-space-2);
-  border-bottom: 1px solid var(--rnv-line-hair);
-}
+.rnv-trade-section-title { font-family: var(--rnv-font-display); font-size: var(--rnv-text-xl); letter-spacing: .08em; color: var(--rnv-ink); margin: 0 0 var(--rnv-space-4); padding-bottom: var(--rnv-space-2); border-bottom: 1px solid rgba(138,99,34,.5); }
 
 /* グリッド */
-.rnv-trade-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: var(--rnv-space-5);
-}
+.rnv-trade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--rnv-space-5); }
 
-/* カード */
+/* カード = 古びた札・宝物 */
 .rnv-trade-card {
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column; overflow: hidden;
   border-radius: var(--rnv-radius-md);
-  border: 1px solid var(--rnv-line-grid);
-  background: var(--rnv-bg-panel);
-  overflow: hidden;
+  border: 1px solid rgba(138,99,34,.5);
+  background: rgba(245, 234, 205, 0.5);
+  box-shadow: 0 8px 22px rgba(40,24,8,.22);
 }
-.rnv-trade-card[data-realm="treasure"] { border-color: var(--rnv-line-hair); }
+.rnv-trade-card[data-realm="treasure"] { border-color: var(--rnv-gold-3); }
 .rnv-trade-card.is-physical { border-style: dashed; }
 
-.rnv-trade-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-  border-bottom: 1px solid var(--rnv-line-grid);
-}
+.rnv-trade-img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-bottom: 1px solid rgba(138,99,34,.4); }
 .rnv-trade-img--physical {
-  display: grid;
-  place-items: center;
-  background-color: var(--rnv-map-territory);
-  background-image: repeating-radial-gradient(
-    circle at 50% 40%,
-    var(--rnv-map-contour) 0,
-    var(--rnv-map-contour) 1px,
-    transparent 1px,
-    transparent 24px
-  );
-  color: var(--rnv-text-muted);
-  letter-spacing: 0.3em;
-  font-size: var(--rnv-text-sm);
+  display: grid; place-items: center;
+  background-color: rgba(207, 180, 124, .5);
+  background-image: repeating-radial-gradient(circle at 50% 40%, rgba(70,82,122,.18) 0, rgba(70,82,122,.18) 1px, transparent 1px, transparent 24px);
+  color: var(--rnv-ink-soft); letter-spacing: 0.3em; font-size: var(--rnv-text-sm);
 }
 
 .rnv-trade-body { display: flex; flex-direction: column; gap: var(--rnv-space-2); padding: var(--rnv-space-4); flex: 1 1 auto; }
-.rnv-trade-title { font-size: var(--rnv-text-base); color: var(--rnv-text); line-height: 1.4; }
-.rnv-trade-price { font-size: var(--rnv-text-lg); color: var(--rnv-amber-200); display: flex; align-items: baseline; gap: 4px; }
-.rnv-trade-price small { font-size: 10px; color: var(--rnv-text-muted); font-family: var(--rnv-font-spirit); }
-.rnv-trade-suffix { font-style: normal; font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); }
-.rnv-trade-price-tbd { font-size: var(--rnv-text-base); color: var(--rnv-text-slate); letter-spacing: 0.12em; }
-.rnv-trade-desc { font-size: var(--rnv-text-sm); color: var(--rnv-text-soft); line-height: 1.65; margin: 0; flex: 1 1 auto; }
+.rnv-trade-title { font-family: var(--rnv-font-classic); font-size: 1.02rem; color: var(--rnv-ink); line-height: 1.4; }
+.rnv-trade-price { font-family: var(--rnv-font-display); font-size: var(--rnv-text-lg); color: var(--rnv-gold-3); display: flex; align-items: baseline; gap: 4px; }
+.rnv-trade-price small { font-size: 10px; color: var(--rnv-ink-soft); font-family: var(--rnv-font-classic); }
+.rnv-trade-suffix { font-style: normal; font-size: var(--rnv-text-sm); color: var(--rnv-ink-soft); }
+.rnv-trade-price-tbd { font-size: var(--rnv-text-base); color: var(--rnv-wax); letter-spacing: 0.12em; }
+.rnv-trade-desc { font-family: var(--rnv-font-classic); font-size: .92rem; color: var(--rnv-ink-soft); line-height: 1.7; margin: 0; flex: 1 1 auto; }
 
 /* 物理仕様 */
-.rnv-trade-spec {
-  margin: 0;
-  padding: var(--rnv-space-3);
-  border: 1px solid var(--rnv-line-grid);
-  border-radius: var(--rnv-radius-sm);
-  background: rgba(7, 14, 24, 0.4);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+.rnv-trade-spec { margin: 0; padding: var(--rnv-space-3); border: 1px solid rgba(138,99,34,.4); border-radius: var(--rnv-radius-sm); background: rgba(238,224,188,.5); display: flex; flex-direction: column; gap: 6px; }
 .rnv-trade-spec > div { display: flex; gap: var(--rnv-space-3); font-size: 12px; }
-.rnv-trade-spec dt { flex: 0 0 3.5em; color: var(--rnv-text-muted); font-family: var(--rnv-font-rune); letter-spacing: 0.1em; margin: 0; }
-.rnv-trade-spec dd { margin: 0; color: var(--rnv-text-soft); }
+.rnv-trade-spec dt { flex: 0 0 3.5em; color: var(--rnv-gold-3); font-family: var(--rnv-font-rune); letter-spacing: 0.1em; margin: 0; }
+.rnv-trade-spec dd { margin: 0; color: var(--rnv-ink-soft); }
 
 /* 移管バンド */
-.rnv-trade-transfer-note {
-  font-size: var(--rnv-text-sm);
-  color: var(--rnv-text-soft);
-  line-height: var(--rnv-leading-prose);
-  margin: 0 0 var(--rnv-space-4);
-  padding: var(--rnv-space-3) var(--rnv-space-4);
-  border-left: 2px solid var(--rnv-line-hair);
-  background: rgba(16, 26, 42, 0.4);
-  border-radius: 0 var(--rnv-radius-sm) var(--rnv-radius-sm) 0;
-}
+.rnv-trade-transfer-note { font-family: var(--rnv-font-classic); font-size: .95rem; color: var(--rnv-ink-soft); line-height: 1.8; margin: 0 0 var(--rnv-space-4); padding: var(--rnv-space-3) var(--rnv-space-4); border-left: 3px solid var(--rnv-gold-3); background: rgba(238,224,188,.5); border-radius: 0 var(--rnv-radius-sm) var(--rnv-radius-sm) 0; }
 
 /* フッタ */
-.rnv-trade-foot { text-align: center; margin-top: var(--rnv-space-8); font-size: var(--rnv-text-sm); color: var(--rnv-text-muted); }
-.rnv-trade-foot a { color: var(--rnv-text-slate); }
+.rnv-trade-foot { text-align: center; margin-top: var(--rnv-space-8); font-family: var(--rnv-font-classic); font-size: .95rem; color: var(--rnv-ink-soft); }
+.rnv-trade-foot a { color: var(--rnv-gold-3); }
 
-/* BuyButton 拡張（移管の2ボタン行・従ボタン） */
+/* BuyButton 拡張（羊皮紙トーン） */
 .shop-buy-row { display: flex; flex-wrap: wrap; gap: var(--rnv-space-2); }
-.shop-buy--ghost {
-  background: transparent;
-  border: 1px solid var(--rnv-line-grid);
-  color: var(--rnv-text-soft);
-}
-.shop-buy--ghost:hover { border-color: var(--rnv-line-hair); color: var(--rnv-text); }
+.shop-buy--ghost { background: transparent; border: 1px solid rgba(138,99,34,.5); color: var(--rnv-ink-soft); }
+.shop-buy--ghost:hover { border-color: var(--rnv-gold-3); color: var(--rnv-ink); }
 
 @media (max-width: 520px) {
   .rnv-trade-main { padding: var(--rnv-space-6) var(--rnv-space-4) var(--rnv-space-8); }

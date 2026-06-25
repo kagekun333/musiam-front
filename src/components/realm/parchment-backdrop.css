@@ -1,0 +1,18 @@
+/* src/components/realm/parchment-backdrop.css — 再利用の羊皮紙下地 */
+.rnv-pb {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* 宇宙背景(GlobalBackground)を覆う。本文は z-index:1 で上に。 */
+  pointer-events: none;
+  background: radial-gradient(125% 120% at 50% 12%, var(--rnv-parch-1) 0%, var(--rnv-parch-2) 38%, var(--rnv-parch-3) 72%, var(--rnv-parch-4) 100%);
+}
+.rnv-pb-tex { position: absolute; inset: 0; width: 100%; height: 100%; }
+.rnv-pb-tex.fiber { mix-blend-mode: multiply; opacity: .6; }
+.rnv-pb-tex.blot { mix-blend-mode: multiply; opacity: .5; }
+.rnv-pb:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 200px rgba(64, 40, 15, .45);
+  background: radial-gradient(130% 110% at 50% 24%, rgba(0, 0, 0, 0) 58%, rgba(50, 32, 12, .26) 100%);
+}

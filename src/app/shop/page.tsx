@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SHOP_PRODUCTS, SHOP_CATEGORY_ORDER, type ShopProduct } from "@/lib/shop-config";
 import BuyButton from "./BuyButton";
+import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 import "./shop.css";
 import "./trading-post.css";
 
@@ -80,6 +81,7 @@ export default function ShopPage() {
 
   return (
     <main className="rnv-trade-main">
+      <ParchmentBackdrop />
       <header className="rnv-trade-head">
         <p className="rnv-trade-kicker rnv-rune">TRADING POST · 交易所</p>
         <h1 className="rnv-trade-h1 rnv-realm-title">国の宝物庫</h1>
