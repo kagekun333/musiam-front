@@ -99,11 +99,12 @@
 .rlm-bloom-title { font-size: 11px; color: #5b4a35; background: rgba(238,224,188,.85); padding: 1px 6px; border-radius: 4px; max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* 題字オーバーレイ */
-.rlm-head { position: absolute; left: 28px; top: 22px; z-index: 8; pointer-events: none; }
-.rlm-head:before { content: ""; position: absolute; left: -30px; top: -26px; width: min(60vw,520px); height: 180px; z-index: -1; background: radial-gradient(70% 70% at 28% 40%, rgba(20,15,9,.62), rgba(20,15,9,0) 72%); }
-.rlm-kicker { font-size: 10px; letter-spacing: .4em; color: #b89a63; }
-.rlm-title { font-size: clamp(26px, 4.4vw, 42px); letter-spacing: .14em; margin: 6px 0 0; }
-.rlm-sub { font-family: var(--rnv-font-classic); font-size: clamp(12px,1.6vw,15px); color: #cbb888; margin-top: 8px; letter-spacing: .08em; }
+.rlm-head { position: absolute; left: 30px; top: 24px; z-index: 8; pointer-events: none; max-width: min(70vw, 460px); }
+.rlm-head:before { content: ""; position: absolute; left: -34px; top: -30px; right: -28px; bottom: -22px; z-index: -1; border-radius: 12px;
+  background: radial-gradient(80% 80% at 30% 45%, rgba(14,10,6,.82), rgba(14,10,6,.45) 70%, rgba(14,10,6,0) 100%); }
+.rlm-kicker { font-size: 10px; letter-spacing: .4em; color: #d8be86; }
+.rlm-title { font-size: clamp(26px, 4.2vw, 40px); letter-spacing: .14em; margin: 6px 0 0; }
+.rlm-sub { font-family: var(--rnv-font-classic); font-weight: 500; font-size: clamp(13px,1.7vw,16px); color: #f4ead0; margin-top: 9px; letter-spacing: .06em; text-shadow: 0 1px 4px rgba(0,0,0,.8); }
 
 .rlm-hint { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 8; color: #8a7858; font-size: 11px; letter-spacing: .3em; pointer-events: none; }
 

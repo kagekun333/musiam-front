@@ -24,20 +24,21 @@ type Region = {
 type Counts = { total: number; music: number; books: number; films: number };
 
 // 世界座標（1300×820）における地方の位置。atlas/regions.ts の id と対応。
+// 左上（題字ゾーン x<430,y<210）と中心（玉座）を避けて配置し、重なりを防ぐ。
 const POS: Record<string, { x: number; y: number }> = {
-  shrine: { x: 645, y: 150 },
-  citadel: { x: 470, y: 150 },
-  highland: { x: 980, y: 235 },
-  skyfield: { x: 300, y: 255 },
-  dawn: { x: 205, y: 420 },
-  reverie: { x: 650, y: 470 },
-  coast: { x: 1010, y: 430 },
-  market: { x: 1055, y: 610 },
-  alley: { x: 440, y: 625 },
-  library: { x: 805, y: 620 },
-  frontier: { x: 195, y: 650 },
+  shrine: { x: 715, y: 150 },
+  highland: { x: 1000, y: 250 },
+  coast: { x: 1060, y: 450 },
+  market: { x: 1000, y: 640 },
+  library: { x: 740, y: 678 },
+  alley: { x: 470, y: 660 },
+  reverie: { x: 560, y: 530 },
+  dawn: { x: 250, y: 545 },
+  skyfield: { x: 200, y: 380 },
+  citadel: { x: 300, y: 245 },
+  frontier: { x: 130, y: 665 },
 };
-const THRONE = { x: 645, y: 400 };
+const THRONE = { x: 660, y: 392 };
 const WORLD = { w: 1300, h: 820 };
 
 export default function RealmHome({ regions, counts }: { regions: Region[]; counts: Counts }) {
@@ -193,7 +194,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
             return (
               <Link
                 key={r.id}
-                href={r.landmark!.href}
+                href={`/realm/${r.id}`}
                 className={`rlm-node ${r.accent} ${isHover ? "is-hover" : ""}`}
                 style={{ left: p.x, top: p.y }}
                 onMouseEnter={() => visitRegion(r.id)}

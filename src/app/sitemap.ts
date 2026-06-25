@@ -4,6 +4,7 @@ import type { MetadataRoute } from "next";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { getLetters } from "@/lib/letters";
 import { siteUrl } from "@/lib/site-url";
+import { ATLAS_REGIONS, FRONTIER_REGION } from "@/lib/atlas/regions";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteUrl();
@@ -21,6 +22,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/atelier`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/letters`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
   ];
+
+  // 地方ページ（没入ホームの各地方）
+  const regionRoutes: MetadataRoute.Sitemap = [...ATLAS_REGIONS, FRONTIER_REGION].map((r) => ({
+    url: `${base}/realm/${r.id}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
 
   let letterRoutes: MetadataRoute.Sitemap = [];
   try {
@@ -50,5 +59,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // works 読み込み失敗時は静的ルートのみ (fail-silent)
   }
 
-  return [...staticRoutes, ...letterRoutes, ...workRoutes];
+  return [...staticRoutes, ...regionRoutes, ...letterRoutes, ...workRoutes];
 }

@@ -1,0 +1,29 @@
+/* src/app/realm/[region]/realm-region.css — 地方ページ（羊皮紙ギャラリー） */
+.rgn { position: relative; min-height: 100vh; background: radial-gradient(125% 120% at 48% 20%, var(--rnv-parch-1), var(--rnv-parch-2) 40%, var(--rnv-parch-3) 75%, var(--rnv-parch-4)); }
+.rgn-parch { position: absolute; inset: 0; pointer-events: none; }
+.rgn-tex { position: absolute; inset: 0; width: 100%; height: 100%; mix-blend-mode: multiply; opacity: .55; }
+.rgn-parch:after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 160px rgba(64,40,15,.45); background: radial-gradient(130% 110% at 50% 30%, rgba(0,0,0,0) 55%, rgba(50,32,12,.28) 100%); }
+
+.rgn-inner { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 5rem; color: var(--rnv-ink); }
+.rgn-crumb { font-family: var(--rnv-font-classic); font-size: .85rem; color: var(--rnv-ink-soft); margin-bottom: 1.5rem; }
+.rgn-crumb a { color: var(--rnv-gold-3); text-decoration: none; }
+
+.rgn-head { text-align: center; max-width: 40em; margin: 0 auto 2.5rem; }
+.rgn-glyph { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; font-family: var(--rnv-font-rune); font-size: 24px; margin-bottom: .8rem; background: radial-gradient(circle at 50% 40%, rgba(241,229,198,.95), rgba(228,209,163,.6)); }
+.rgn-glyph.amber { border: 1px solid var(--rnv-gold-3); color: var(--rnv-gold-3); }
+.rgn-glyph.slate { border: 1px solid #5b7398; color: #46527a; }
+.rgn-title { font-size: clamp(28px, 5vw, 44px); margin: 0; }
+.rgn-en { font-size: 11px; letter-spacing: .3em; color: var(--rnv-ink-soft); text-transform: uppercase; margin: .4rem 0 0; }
+.rgn-blurb { font-family: var(--rnv-font-classic); font-size: 1.05rem; color: var(--rnv-ink); margin: 1rem 0 .4rem; line-height: 1.7; }
+.rgn-count { font-size: 12px; letter-spacing: .14em; color: var(--rnv-gold-3); }
+
+.rgn-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.25rem; }
+.rgn-card { display: flex; flex-direction: column; gap: .5rem; text-decoration: none; color: var(--rnv-ink); }
+.rgn-card-cover { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 8px; overflow: hidden; border: 1px solid var(--rnv-gold-2); box-shadow: 0 8px 22px rgba(40,24,8,.4); transition: transform var(--rnv-dur-base) var(--rnv-ease), box-shadow var(--rnv-dur-base) var(--rnv-ease); }
+.rgn-card:hover .rgn-card-cover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(40,24,8,.5), 0 0 18px rgba(224,179,94,.5); }
+.rgn-card-img { object-fit: cover; }
+.rgn-card-title { font-family: var(--rnv-font-classic); font-size: .9rem; color: var(--rnv-ink-soft); line-height: 1.35; }
+
+.rgn-empty { text-align: center; color: var(--rnv-ink-soft); font-family: var(--rnv-font-classic); padding: 3rem 0; }
+.rgn-foot { text-align: center; margin-top: 3rem; font-family: var(--rnv-font-classic); }
+.rgn-foot a { color: var(--rnv-gold-3); text-decoration: none; }
