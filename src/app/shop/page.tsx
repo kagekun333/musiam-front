@@ -80,9 +80,10 @@ export default function ShopPage() {
   const transfers = SHOP_PRODUCTS.filter((p) => p.realm === "transfer");
 
   return (
-    <main className="rnv-trade-main">
+    <>
       <ParchmentBackdrop />
-      <header className="rnv-trade-head">
+      <main className="rnv-trade-main">
+        <header className="rnv-trade-head">
         <p className="rnv-trade-kicker rnv-rune">TRADING POST · 交易所</p>
         <h1 className="rnv-trade-h1 rnv-realm-title">国の宝物庫</h1>
         <p className="rnv-trade-lede">
@@ -127,6 +128,7 @@ export default function ShopPage() {
         <br />
         <Link href="/tokushoho">特定商取引法に基づく表記</Link>
       </p>
-    </main>
+      </main>
+    </>
   );
 }
