@@ -18,7 +18,18 @@
 .rgn-room { font-size: 12px; letter-spacing: .16em; color: var(--rnv-gold-3); margin: 1rem 0 .3rem; }
 .rgn-roomline { font-family: var(--rnv-font-classic); font-style: italic; font-size: 1rem; color: var(--rnv-ink-soft); margin: 0; }
 
-.rgn-grid { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; gap: 1.4rem; }
+/* ジャンルの小部屋（フィルタ） */
+.rgn-genres { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: 2rem 0 .5rem; }
+.rgn-chip {
+  font-family: var(--rnv-font-classic); font-size: .85rem; letter-spacing: .04em; cursor: pointer;
+  color: var(--rnv-ink-soft); padding: .35rem 1rem; border-radius: 999px;
+  background: rgba(238,224,188,.5); border: 1px solid rgba(154,114,40,.4);
+  transition: background var(--rnv-dur-fast) var(--rnv-ease), color var(--rnv-dur-fast) var(--rnv-ease);
+}
+.rgn-chip:hover { color: var(--rnv-ink); border-color: var(--rnv-gold-3); }
+.rgn-chip.is-on { background: linear-gradient(180deg, var(--rnv-gold-1), var(--rnv-gold-2)); color: #1c140a; border-color: var(--rnv-gold-3); }
+
+.rgn-grid { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 1.4rem; }
 /* 媒体ごとの“部屋”レイアウト */
 .rgn-grid--music { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 .rgn-grid--book { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.8rem 1.4rem; }

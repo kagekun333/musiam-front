@@ -2,7 +2,6 @@
 // その地方に属する作品群を羊皮紙のギャラリーで一望できる。地方=タグ駆動（assignRegionId）。
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { dedupeWorks } from "@/lib/dedupeWorks";
@@ -13,6 +12,7 @@ import {
   regionDefById,
   type AtlasWork,
 } from "@/lib/atlas/regions";
+import RegionGallery from "./RegionGallery";
 import "./realm-region.css";
 
 export const revalidate = 3600;
@@ -22,7 +22,15 @@ export function generateStaticParams() {
 }
 
 type Medium = "music" | "book" | "film" | "other";
-type RegionWork = { id: string; title: string; cover: string; href: string; releasedAt: string; medium: Medium };
+type RegionWork = { id: string; title: string; cover: string; href: string; releasedAt: string; medium: Medium; genres: string[] };
+
+function genresOf(tags?: string[]): string[] {
+  return (Array.isArray(tags) ? tags : [])
+    .map((t) => String(t))
+    .filter((t) => /^genre:/i.test(t))
+    .map((t) => t.replace(/^genre:/i, "").trim())
+    .filter(Boolean);
+}
 
 function mediumOf(type?: string, tags?: string[]): Medium {
   const t = String(type || "").toLowerCase();
@@ -44,6 +52,7 @@ async function loadRegionWorks(regionId: string): Promise<RegionWork[]> {
       href: `/works/${encodeURIComponent(String(w.id))}`,
       releasedAt: String(w.releasedAt || ""),
       medium: mediumOf(w.type, w.tags),
+      genres: genresOf(w.tags),
     }))
     .filter((w) => w.cover)
     .sort((a, b) => b.releasedAt.localeCompare(a.releasedAt));
@@ -109,19 +118,7 @@ export default async function RegionPage(
         {works.length === 0 ? (
           <p className="rgn-empty">この地は、まだ誰もひらいていません。</p>
         ) : (
-          <ul className={`rgn-grid rgn-grid--${medium}`} role="list">
-            {works.map((w) => (
-              <li key={w.id}>
-                <Link href={w.href} className="rgn-card">
-                  <span className="rgn-card-cover">
-                    <Image src={w.cover} alt={w.title} fill sizes="(max-width:640px) 40vw, 220px" className="rgn-card-img" />
-                    <span className="rgn-card-cta rnv-rune" aria-hidden="true">{room.glyph} {room.cta}</span>
-                  </span>
-                  <span className="rgn-card-title">{w.title}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <RegionGallery regionId={region} medium={medium} works={works} cta={room.cta} glyph={room.glyph} />
         )}
 
         <p className="rgn-foot">
