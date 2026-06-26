@@ -85,7 +85,7 @@ export default function WorksCatalog({ items }: { items: CatalogItem[] }) {
         <p className="catalog-empty">該当する作品が見つかりませんでした。</p>
       ) : (
         <ul className="catalog-grid">
-          {visible.map((w) => (
+          {visible.map((w, i) => (
             <li key={w.id}>
               <Link
                 href={`/works/${encodeURIComponent(w.id)}`}
@@ -100,7 +100,8 @@ export default function WorksCatalog({ items }: { items: CatalogItem[] }) {
                       fill
                       sizes="(max-width:640px) 45vw, 200px"
                       style={{ objectFit: "cover" }}
-                      loading="lazy"
+                      priority={i < 8}
+                      loading={i < 8 ? undefined : "lazy"}
                     />
                   ) : (
                     <span className="catalog-cover-fallback">

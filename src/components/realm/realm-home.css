@@ -116,8 +116,8 @@
 
 /* 題字オーバーレイ */
 .rlm-head { position: absolute; left: 30px; top: 24px; z-index: 8; pointer-events: none; max-width: min(70vw, 460px); }
-.rlm-head:before { content: ""; position: absolute; left: -34px; top: -30px; right: -28px; bottom: -22px; z-index: -1; border-radius: 12px;
-  background: radial-gradient(80% 80% at 30% 45%, rgba(14,10,6,.82), rgba(14,10,6,.45) 70%, rgba(14,10,6,0) 100%); }
+.rlm-head:before { content: ""; position: absolute; left: -120px; top: -90px; width: 640px; height: 360px; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 55% at 26% 42%, rgba(12,8,4,.78), rgba(12,8,4,.4) 52%, rgba(12,8,4,0) 78%); }
 .rlm-kicker { font-size: 10px; letter-spacing: .4em; color: #d8be86; }
 .rlm-title { font-size: clamp(26px, 4.2vw, 40px); letter-spacing: .14em; margin: 6px 0 0; }
 .rlm-sub { font-family: var(--rnv-font-classic); font-weight: 500; font-size: clamp(13px,1.7vw,16px); color: #f4ead0; margin-top: 9px; letter-spacing: .06em; text-shadow: 0 1px 4px rgba(0,0,0,.8); }

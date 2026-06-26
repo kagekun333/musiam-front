@@ -65,11 +65,11 @@ export default function RegionGallery({
       )}
 
       <ul className={`rgn-grid rgn-grid--${medium}`} role="list">
-        {filtered.map((w) => (
+        {filtered.map((w, i) => (
           <li key={w.id}>
             <Link href={w.href} className="rgn-card">
               <span className="rgn-card-cover">
-                <Image src={w.cover} alt={w.title} fill sizes="(max-width:640px) 40vw, 220px" className="rgn-card-img" />
+                <Image src={w.cover} alt={w.title} fill sizes="(max-width:640px) 40vw, 220px" className="rgn-card-img" priority={i < 8} loading={i < 8 ? undefined : "lazy"} />
                 <span className="rgn-card-cta rnv-rune" aria-hidden="true">{glyph} {cta}</span>
               </span>
               <span className="rgn-card-title">{w.title}</span>
