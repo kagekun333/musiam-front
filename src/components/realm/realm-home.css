@@ -149,6 +149,15 @@
 
 @keyframes rlm-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
+/* キーボード操作の可視フォーカス */
+.rlm-node:focus-visible,
+.rlm-facility:focus-visible,
+.rlm-throne-label:focus-visible { outline: 2px solid var(--rnv-gold-1); outline-offset: 4px; border-radius: 8px; }
+.rlm-gate-btn:focus-visible,
+.rlm-mute:focus-visible { outline: 2px solid var(--rnv-gold-1); outline-offset: 3px; }
+.rlm-node:focus-visible .rlm-node-ring,
+.rlm-facility:focus-visible .rlm-facility-ring { transform: scale(1.18); box-shadow: 0 0 24px rgba(224,179,94,.6); }
+
 @media (prefers-reduced-motion: reduce) {
   .rlm-gate { animation: none; }
   .rlm-gate-seal, .rlm-throne-glow, .rlm-throne-ring { animation: none; }

@@ -142,7 +142,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
             <p className="rlm-gate-kicker rnv-rune">ATLAS COELESTIS · 領土天球図</p>
             <h1 className="rlm-gate-title rnv-display rnv-gold-text">伯爵 MVSIAM</h1>
             <p className="rlm-gate-sub">{counts.total}の作品でできた、ひとつの国。</p>
-            <button type="button" className="rlm-gate-btn rnv-display" onClick={enter}>
+            <button type="button" className="rlm-gate-btn rnv-display" onClick={enter} autoFocus>
               国に入る
             </button>
             <p className="rlm-gate-note">クリックで地図がひらき、放送がはじまります</p>
@@ -154,6 +154,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
       <div
         className={`rlm-view ${entered ? "is-entered" : ""}`}
         ref={viewRef}
+        aria-hidden={!entered}
         onPointerDown={onDown}
         onPointerMove={onMove}
         onPointerUp={onUp}

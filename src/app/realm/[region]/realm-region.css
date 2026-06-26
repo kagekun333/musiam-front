@@ -26,6 +26,14 @@
 .rgn-room { font-size: 12px; letter-spacing: .16em; color: var(--rnv-gold-3); margin: 1rem 0 .3rem; }
 .rgn-roomline { font-family: var(--rnv-font-classic); font-style: italic; font-size: 1rem; color: var(--rnv-ink-soft); margin: 0; }
 
+/* キーボード操作の可視フォーカス */
+.rgn-card:focus-visible,
+.rgn-chip:focus-visible,
+.rgn-now-listen:focus-visible,
+.rgn-crumb a:focus-visible,
+.rgn-foot a:focus-visible { outline: 2px solid var(--rnv-gold-3); outline-offset: 3px; border-radius: 6px; }
+.rgn-card:focus-visible .rgn-card-cover { transform: translateY(-3px); box-shadow: 0 14px 30px rgba(40,24,8,.5), 0 0 18px rgba(224,179,94,.5); }
+
 /* 今、この地で流れている一曲 */
 .rgn-now {
   display: flex; align-items: center; gap: 12px;
