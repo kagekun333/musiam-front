@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getLetters } from "@/lib/letters";
+import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 
 export const metadata: Metadata = {
   title: "伯爵の手紙 | 伯爵 MUSIAM",
@@ -21,7 +22,9 @@ export const metadata: Metadata = {
 export default async function LettersPage() {
   const letters = await getLetters();
   return (
-    <main className="page-content" style={{ maxWidth: 720, margin: "0 auto", padding: "3rem 1.25rem 5rem" }}>
+    <>
+      <ParchmentBackdrop />
+      <main className="page-content rnv-parchment-page" style={{ maxWidth: 720, margin: "0 auto", padding: "3rem 1.25rem 5rem", position: "relative" }}>
       <p style={{ textAlign: "center", fontFamily: "var(--rnv-font-rune)", fontSize: "0.7rem", letterSpacing: "0.28em", color: "var(--rnv-text-slate)", marginBottom: "0.5rem" }}>
         EPISTLES · 伯爵の書簡と記録
       </p>
@@ -60,6 +63,7 @@ export default async function LettersPage() {
           ))}
         </div>
       )}
-    </main>
+      </main>
+    </>
   );
 }

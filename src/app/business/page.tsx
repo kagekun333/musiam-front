@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContactCTA from "@/components/cta/ContactCTA";
+import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 import "./business.css";
 
 export const metadata: Metadata = {
@@ -75,7 +76,9 @@ const FLOW = [
 
 export default function BusinessPage() {
   return (
-    <main className="biz-main">
+    <>
+      <ParchmentBackdrop />
+      <main className="biz-main rnv-parchment-page">
       <section className="biz-hero">
         <p className="biz-hero-kicker">工房への依頼 — For Business &amp; Creators</p>
         <h1 className="biz-hero-title">
@@ -212,6 +215,7 @@ export default function BusinessPage() {
         </p>
         <ContactCTA location="business_footer" subject="【法人窓口】制作のご相談" label="無料で相談する" />
       </section>
-    </main>
+      </main>
+    </>
   );
 }

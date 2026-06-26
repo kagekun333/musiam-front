@@ -16,3 +16,24 @@
   box-shadow: inset 0 0 200px rgba(64, 40, 15, .45);
   background: radial-gradient(130% 110% at 50% 24%, rgba(0, 0, 0, 0) 58%, rgba(50, 32, 12, .26) 100%);
 }
+
+/* 既存ページを羊皮紙世界へ一括変換するラッパー。
+   レガシーの --color-* / --bg-panel-* トークンをインク/羊皮紙へ局所上書き。
+   本文を ParchmentBackdrop(z:0) の上(z:1)に置く。 */
+.rnv-parchment-page {
+  position: relative;
+  z-index: 1;
+  color: var(--rnv-ink);
+  --color-text-primary: #33271a;
+  --color-text-secondary: #4a3a28;
+  --color-text-muted: #6a5a3e;
+  --color-border-subtle: rgba(138, 99, 34, .28);
+  --color-border-medium: rgba(138, 99, 34, .45);
+  --bg-panel-light: rgba(245, 234, 205, .55);
+  --bg-panel-strong: rgba(238, 224, 188, .68);
+  --shadow-sm: 0 2px 8px rgba(40, 24, 8, .12);
+  --shadow-md: 0 4px 16px rgba(40, 24, 8, .16);
+  --shadow-lg: 0 6px 24px rgba(40, 24, 8, .2);
+}
+/* 見出しは古典書体・インクへ寄せる */
+.rnv-parchment-page h1, .rnv-parchment-page h2, .rnv-parchment-page h3 { color: var(--rnv-ink); }

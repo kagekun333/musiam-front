@@ -2,6 +2,7 @@
 // 戦略: 作る前に売る(需要検証)。興味登録の件数で講座制作のGo/NoGoを判断する。
 import type { Metadata } from "next";
 import LeadForm from "@/components/cta/LeadForm";
+import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 import "./atelier.css";
 
 export const metadata: Metadata = {
@@ -32,7 +33,9 @@ const CURRICULUM = [
 
 export default function AtelierPage() {
   return (
-    <main className="atelier-main">
+    <>
+      <ParchmentBackdrop />
+      <main className="atelier-main rnv-parchment-page">
       <section className="atelier-hero">
         <p className="atelier-kicker">Atelier · 弟子入り — 先行案内</p>
         <h1 className="atelier-title">
@@ -87,6 +90,7 @@ export default function AtelierPage() {
           />
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }

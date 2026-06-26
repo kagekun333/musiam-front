@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteUrl } from "@/lib/site-url";
 import { ENTITY, SAME_AS, personJsonLd } from "@/lib/entity";
+import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 
 export const metadata: Metadata = {
   title: "館主について｜ABI伯爵 (Kagemichi Abiko) | 伯爵 MUSIAM",
@@ -54,8 +55,10 @@ export default function AboutPage() {
   const jsonLd = personJsonLd();
 
   return (
-    <main
-      className="page-content"
+    <>
+      <ParchmentBackdrop />
+      <main
+      className="page-content rnv-parchment-page"
       style={{ maxWidth: 760, margin: "0 auto", padding: "3rem 1.25rem 5rem" }}
     >
       <script
@@ -188,6 +191,7 @@ export default function AboutPage() {
           ))}
         </ul>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
