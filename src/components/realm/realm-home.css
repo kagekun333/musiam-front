@@ -169,3 +169,33 @@
   .rlm-node { width: 96px; }
   .rlm-node-name { font-size: 13px; }
 }
+
+/* ── 入領ゲート: 二択（伯爵と話す / 国を巡る） ── */
+.rlm-gate-actions { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; margin: 0 0 .4rem; }
+.rlm-gate-actions .rlm-gate-btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.rlm-gate-btn-ghost { background: transparent; box-shadow: none; border: 1px solid rgba(224,179,94,.5); color: #e0b35e; }
+.rlm-gate-btn-ghost:hover { background: rgba(224,179,94,.12); box-shadow: none; transform: translateY(-2px); }
+
+/* ── 施設の副題（かざすと浮かび上がる） ── */
+.rlm-facility-sub {
+  font-size: 10px; letter-spacing: .14em; color: #7e2330;
+  opacity: 0; transform: translateY(-2px); pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.rlm-facility:hover .rlm-facility-sub,
+.rlm-facility:focus-visible .rlm-facility-sub { opacity: .95; transform: translateY(0); }
+
+/* ── 主要な入口（近道メニュー：モバイル＆SEO） ── */
+.rlm-quicklinks { list-style: none; margin: 0 0 var(--rnv-space-6); padding: 0; display: flex; flex-wrap: wrap; gap: .6rem; }
+.rlm-quicklinks a {
+  display: inline-block; padding: .55rem 1.05rem; border-radius: 999px;
+  border: 1px solid rgba(224,179,94,.45); color: var(--rnv-amber-200, #e7d6a6);
+  text-decoration: none; font-size: var(--rnv-text-sm); letter-spacing: .03em;
+}
+.rlm-quicklinks a:hover { background: rgba(224,179,94,.12); }
+.rlm-quicklinks li:first-child a { background: rgba(224,179,94,.18); font-weight: 600; } /* 「伯爵と話す」を強調 */
+
+/* ── モバイル軽量化: 重い羊皮紙フィルタを省きLCP改善 ── */
+@media (max-width: 768px) {
+  .rlm-tex { display: none; }
+}

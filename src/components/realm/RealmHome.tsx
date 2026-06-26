@@ -42,12 +42,21 @@ const THRONE = { x: 660, y: 392 };
 const WORLD = { w: 1300, h: 820 };
 
 // 施設（機能の部屋）— 国の全機能を地図の縁から入れる。領地ノードと別レイヤー。
-type Facility = { id: string; ja: string; href: string; glyph: string; x: number; y: number };
+type Facility = { id: string; ja: string; sub: string; href: string; glyph: string; x: number; y: number };
 const FACILITIES: Facility[] = [
-  { id: "showcase", ja: "国の意匠", href: "/showcase", glyph: "❖", x: 1190, y: 150 },
-  { id: "shop", ja: "交易所", href: "/shop", glyph: "⚖", x: 1210, y: 360 },
-  { id: "atelier", ja: "弟子入り", href: "/atelier", glyph: "✎", x: 95, y: 200 },
-  { id: "business", ja: "工房依頼", href: "/business", glyph: "⚒", x: 95, y: 470 },
+  { id: "showcase", ja: "国の意匠", sub: "ショーケース", href: "/showcase", glyph: "❖", x: 1190, y: 150 },
+  { id: "shop", ja: "交易所", sub: "ショップ", href: "/shop", glyph: "⚖", x: 1210, y: 360 },
+  { id: "atelier", ja: "弟子入り", sub: "講座", href: "/atelier", glyph: "✎", x: 95, y: 200 },
+  { id: "business", ja: "工房依頼", sub: "法人・楽曲制作", href: "/business", glyph: "⚒", x: 95, y: 470 },
+];
+
+// 近道メニュー（モバイル＆SEO用・常時テキストで提示）。
+const QUICKLINKS: { id: string; ja: string; href: string }[] = [
+  { id: "chat", ja: "伯爵と話す", href: "/chat" },
+  { id: "works", ja: "展示（全作品）", href: "/works" },
+  { id: "shop", ja: "交易所〈ショップ〉", href: "/shop" },
+  { id: "business", ja: "工房依頼〈法人・楽曲制作〉", href: "/business" },
+  { id: "atelier", ja: "弟子入り〈講座〉", href: "/atelier" },
 ];
 
 export default function RealmHome({ regions, counts }: { regions: Region[]; counts: Counts }) {
@@ -142,10 +151,24 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
             <p className="rlm-gate-kicker rnv-rune">ATLAS COELESTIS · 領土天球図</p>
             <h1 className="rlm-gate-title rnv-display rnv-gold-text">伯爵 MVSIAM</h1>
             <p className="rlm-gate-sub">{counts.total}の作品でできた、ひとつの国。</p>
-            <button type="button" className="rlm-gate-btn rnv-display" onClick={enter} autoFocus>
-              国に入る
-            </button>
-            <p className="rlm-gate-note">クリックで地図がひらき、放送がはじまります</p>
+            <div className="rlm-gate-actions">
+              <Link
+                href="/chat"
+                className="rlm-gate-btn rlm-gate-btn-primary rnv-display"
+                onClick={() => metric("realm_gate", { choice: "chat" })}
+                autoFocus
+              >
+                伯爵と話す
+              </Link>
+              <button
+                type="button"
+                className="rlm-gate-btn rlm-gate-btn-ghost rnv-display"
+                onClick={() => { metric("realm_gate", { choice: "roam" }); enter(); }}
+              >
+                国を巡る
+              </button>
+            </div>
+            <p className="rlm-gate-note">「話す」は館主・伯爵との対話へ。「巡る」で地図がひらきます。</p>
           </div>
         </div>
       )}
@@ -192,9 +215,9 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
             <circle className="rlm-throne-ring" cx={THRONE.x} cy={THRONE.y} r="17" fill="none" stroke="#7fc6d6" strokeWidth="1" opacity="0.6" />
           </svg>
 
-          {/* 玉座ラベル（工房） */}
+          {/* 玉座ラベル（伯爵との対話へ） */}
           <Link href="/chat" className="rlm-throne-label rnv-display" style={{ left: THRONE.x, top: THRONE.y + 30 }} onClick={() => metric("realm_node", { id: "throne" })}>
-            工房
+            伯爵と話す
           </Link>
 
           {/* 地方ノード */}
@@ -236,10 +259,11 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
               className="rlm-facility"
               style={{ left: f.x, top: f.y }}
               onClick={() => metric("realm_facility", { id: f.id })}
-              aria-label={`${f.ja}へ`}
+              aria-label={`${f.ja}（${f.sub}）へ`}
             >
               <span className="rlm-facility-ring" aria-hidden="true">{f.glyph}</span>
               <span className="rlm-facility-name rnv-display">{f.ja}</span>
+              <span className="rlm-facility-sub rnv-rune" aria-hidden="true">{f.sub}</span>
             </Link>
           ))}
         </div>
@@ -269,7 +293,19 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
       </div>
 
       {/* SEO二層・アクセシビリティ: 索引リンク（テキスト） */}
-      <nav className="rlm-index" aria-label="地方の索引">
+      <nav className="rlm-index" aria-label="館の入口と索引">
+        {/* 主要な入口（モバイルでも迷わず辿り着ける近道） */}
+        <h2 className="rlm-index-title rnv-display">主要な入口</h2>
+        <ul className="rlm-quicklinks">
+          {QUICKLINKS.map((q) => (
+            <li key={q.id}>
+              <Link href={q.href} onClick={() => metric("home_quicklink", { id: q.id })}>
+                {q.ja}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <h2 className="rlm-index-title rnv-display">領土の索引</h2>
         <p className="rlm-index-lead">
           {counts.total}の作品（楽曲{counts.music}・書籍{counts.books}

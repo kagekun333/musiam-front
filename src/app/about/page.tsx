@@ -9,7 +9,7 @@ import { ENTITY, SAME_AS, personJsonLd } from "@/lib/entity";
 import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 
 export const metadata: Metadata = {
-  title: "館主について｜ABI伯爵 (Kagemichi Abiko) | 伯爵 MUSIAM",
+  title: "館主について｜ABI伯爵 | 伯爵 MUSIAM",
   description: ENTITY.description,
   alternates: { canonical: `${siteUrl()}/about` },
   openGraph: {
@@ -43,7 +43,7 @@ function linkLabel(url: string): string {
 }
 
 const FACTS: [string, string][] = [
-  ["名義", "ABI伯爵 (本名: Kagemichi Abiko)"],
+  ["名義", "ABI伯爵"],
   ["肩書き", ENTITY.jobTitle],
   ["拠点", "伯爵 MUSIAM（オンライン上の館）"],
   ["公開作品", "350作品（オリジナル楽曲 216・出版書籍 134）"],
@@ -83,9 +83,6 @@ export default function AboutPage() {
           }}
         >
           ABI伯爵
-          <span style={{ fontSize: "1rem", opacity: 0.6, marginLeft: "0.75rem" }}>
-            Kagemichi Abiko
-          </span>
         </h1>
         <p style={{ fontSize: "0.95rem", lineHeight: 1.9, opacity: 0.9 }}>
           {ENTITY.description}
