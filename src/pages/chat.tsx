@@ -256,7 +256,13 @@ export default function ChatPage() {
 
         {/* 商材の案内ボタン（伯爵/公爵が処方したとき） */}
         {cta && (
-          <a href={cta.href} className={styles.commerceCta} onClick={() => capture("salon_cta_click", { href: cta.href })}>
+          <a
+            href={cta.href}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.commerceCta}
+            onClick={() => capture("salon_cta_click", { href: cta.href })}
+          >
             {cta.label} →
           </a>
         )}

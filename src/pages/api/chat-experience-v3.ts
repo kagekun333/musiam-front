@@ -95,7 +95,7 @@ type Commercial = "business" | "order" | null;
 function commercialIntent(t: string): Commercial {
   if (/(法人|会社|店舗|お店|企業|商用|ライセンス|配信で使|ゲーム|アプリ|CM|広告|店で流|BGM.*(依頼|制作|ほし|欲し)|commercial|license|brand|for my (shop|store|business|company))/i.test(t))
     return "business";
-  if (/(オーダー|オーダーメイド|作ってほし|作って欲し|世界に一つ|記念日|誕生日|結婚|プロポーズ|贈り(物|たい)|プレゼント|推し|ペット|故人|custom song|made to order|for (a|my) (wedding|anniversary|gift)|commission)/i.test(t))
+  if (/(オーダー|オーダーメイド|別注|カスタム|作ってほし|作って欲し|世界に一つ|記念日|誕生日|結婚|プロポーズ|贈り|贈る|プレゼント|大切な人|大事な人|推し|ペット|故人|custom song|made to order|for (a|my) (wedding|anniversary|gift)|commission|gift)/i.test(t))
     return "order";
   return null;
 }
@@ -219,11 +219,16 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
         "■ あなたの声",
         DUKE_PERSONA.voiceJa,
         "",
-        "■ いまの役割（VIP対応）",
+        "■ いまの役割（VIP対応・営業の核）",
         "- 登場で『あなたは特別な客人だ』と格上げする。見下しは厳禁、客を持ち上げる。",
-        product ? `- 相手の用件は「${product.nameJa}」に近い。値段やURLは書かない（画面下に案内ボタンが出る）。まず望みを最良の形に言語化し、確かな次の一歩へ橋渡しする。` : "- 望みを最良の形に言語化し、次の一歩へ橋渡しする。",
-        "- 押し売りはしない。誇大・虚偽は禁止。相手の利益を最優先に。",
-        "- 必ず自然な日本語のみで書く（他言語・ハングルを混ぜない）。2〜4文。",
+        "- まず相手の心づかい・センスを具体的に褒める（観察→称賛）。社交辞令でなく、相手の言葉を根拠に。",
+        product?.id === "order-song"
+          ? "- これは『あなた自身（館の作り手）が、その大切な方のために“世界に一つの曲”を制作してお届けする』ご依頼。相手を想う気持ちを心から称え、誰へ・どんな日へ・どんな想いを込めたいかを1つだけ尋ね、完成した時の情景を一筆描き、『その想いは、必ず一曲に仕立てられます』と確信をもって伝える。下の『この一曲をオーダーする』から承れることを、はっきり案内する。"
+          : product?.id === "business"
+          ? "- これは店舗・事業の楽曲/BGM制作の案件。用途・場所・雰囲気を手際よく汲み、AI×プロ品質で最短数日・商用利用OKで形にできる強みを添え、下の『法人の門を見る』から相談・見積もりへ進めることをはっきり案内する。"
+          : product ? `- 相手の用件は「${product.nameJa}」に近い。望みを最良の形に言語化し、下の案内ボタンへはっきり橋渡しする。` : "- 望みを最良の形に言語化し、次の一歩へ橋渡しする。",
+        "- 値段やURLは本文に書かない（画面下にボタンが出る）。ためらわず、しかし品よく“次の一歩”へ導く。",
+        "- 嘘・誇大は禁止。相手の利益を最優先に。必ず自然な日本語のみ（他言語・ハングル禁止）。2〜4文。",
         summary ? `- これまで: ${summary}` : "",
       ].filter(Boolean).join("\n");
     }
