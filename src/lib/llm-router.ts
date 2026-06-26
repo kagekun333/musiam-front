@@ -49,11 +49,12 @@ const OPENROUTER_BASE = process.env.OPENROUTER_API_BASE_URL ?? "https://openrout
 const OPENROUTER_MODEL_QUALITY =
   process.env.OPENROUTER_MODEL_QUALITY ?? "deepseek/deepseek-v4-flash";
 const OPENROUTER_MODEL_FAST =
-  process.env.OPENROUTER_MODEL_FAST ?? "google/gemini-2.5-flash-lite";
-// 自動フォールバック（カンマ区切りで上書き可）。落ちても止まらないよう安価/無料を並べる。
+  process.env.OPENROUTER_MODEL_FAST ?? "google/gemini-3.1-flash-lite";
+// 自動フォールバック（カンマ区切りで上書き可）。現存IDのみ・安価順。
+// ※ 2026-06 OpenRouter 一覧で実在を確認済み。存在しないIDを混ぜると無言で品質が落ちるので注意。
 const OPENROUTER_FALLBACKS = (
   process.env.OPENROUTER_FALLBACK_MODELS ??
-  "google/gemini-2.5-flash-lite,z-ai/glm-4.7-flash:free,deepseek/deepseek-v4-flash"
+  "deepseek/deepseek-v4-pro,google/gemini-3.1-flash-lite,z-ai/glm-5.2"
 )
   .split(",")
   .map((s) => s.trim())
@@ -64,7 +65,7 @@ const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL ?? "claude-haiku-4-5-2025100
 
 const GROQ_KEY = process.env.GROQ_API_KEY ?? "";
 const GROQ_BASE = process.env.GROQ_API_BASE_URL ?? "https://api.groq.com/openai/v1";
-const GROQ_MODEL = process.env.GROQ_MODEL ?? "llama-3.3-70b-versatile";
+const GROQ_MODEL = process.env.GROQ_MODEL ?? "llama-3.3-70b-versatile"; // 8B等の小型はenvで上書きしない方が無難
 
 const LMSTUDIO_BASE = process.env.LMSTUDIO_BASE_URL ?? "";
 const LMSTUDIO_MODEL = process.env.LMSTUDIO_MODEL ?? "";

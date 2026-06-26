@@ -4,6 +4,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { rateLimit, ipFromRequest } from "@/lib/rate";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,15 @@ function isValidEmail(e: string): boolean {
 }
 
 export async function POST(req: NextRequest) {
+  // 受信箱スパム防止: 同一IPからの登録は短時間で制限
+  const rl = rateLimit(`subscribe:${ipFromRequest(req)}`, 5, 60_000);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(rl.retryAfter / 1000)) } }
+    );
+  }
+
   let body: { email?: string; source?: string } = {};
   try {
     body = (await req.json()) as { email?: string; source?: string };
