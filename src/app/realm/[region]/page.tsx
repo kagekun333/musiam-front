@@ -13,6 +13,7 @@ import {
   type AtlasWork,
 } from "@/lib/atlas/regions";
 import RegionGallery from "./RegionGallery";
+import { toneOf } from "@/lib/realm/region-tones";
 import "./realm-region.css";
 
 export const revalidate = 3600;
@@ -94,9 +95,14 @@ export default async function RegionPage(
   const works = await loadRegionWorks(region);
   const medium = dominantMedium(works);
   const room = ROOMS[medium];
+  const tone = toneOf(region);
 
   return (
-    <main className={`rgn rgn--${medium}`} data-medium={medium}>
+    <main
+      className={`rgn rgn--${medium}`}
+      data-medium={medium}
+      style={{ "--rgn-tint": tone.tint, "--rgn-deep": tone.deep } as React.CSSProperties}
+    >
       <div className="rgn-parch" aria-hidden="true">
         <svg className="rgn-tex fiber" preserveAspectRatio="none"><defs><filter id="rgnFiber"><feTurbulence type="fractalNoise" baseFrequency="0.86" numOctaves="2" seed="8" stitchTiles="stitch" /><feColorMatrix type="matrix" values="0 0 0 0 0.30  0 0 0 0 0.22  0 0 0 0 0.11  0 0 0 0.6 0" /></filter></defs><rect width="100%" height="100%" filter="url(#rgnFiber)" /></svg>
       </div>
