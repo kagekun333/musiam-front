@@ -2,6 +2,7 @@
 // その地方に属する作品群を羊皮紙のギャラリーで一望できる。地方=タグ駆動（assignRegionId）。
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { dedupeWorks } from "@/lib/dedupeWorks";
@@ -12,6 +13,7 @@ import {
   regionDefById,
   type AtlasWork,
 } from "@/lib/atlas/regions";
+import { getMusicStreamingLinks } from "@/lib/work-links";
 import RegionGallery from "./RegionGallery";
 import { toneOf } from "@/lib/realm/region-tones";
 import "./realm-region.css";
@@ -23,7 +25,7 @@ export function generateStaticParams() {
 }
 
 type Medium = "music" | "book" | "film" | "other";
-type RegionWork = { id: string; title: string; cover: string; href: string; releasedAt: string; medium: Medium; genres: string[] };
+type RegionWork = { id: string; title: string; cover: string; href: string; releasedAt: string; medium: Medium; genres: string[]; listen: string };
 
 function genresOf(tags?: string[]): string[] {
   return (Array.isArray(tags) ? tags : [])
@@ -54,6 +56,7 @@ async function loadRegionWorks(regionId: string): Promise<RegionWork[]> {
       releasedAt: String(w.releasedAt || ""),
       medium: mediumOf(w.type, w.tags),
       genres: genresOf(w.tags),
+      listen: getMusicStreamingLinks(w as Parameters<typeof getMusicStreamingLinks>[0])[0]?.url || "",
     }))
     .filter((w) => w.cover)
     .sort((a, b) => b.releasedAt.localeCompare(a.releasedAt));
@@ -96,6 +99,8 @@ export default async function RegionPage(
   const medium = dominantMedium(works);
   const room = ROOMS[medium];
   const tone = toneOf(region);
+  // 今、この地で流れている一曲（音楽地方で配信リンクのある最新作）
+  const nowPlaying = medium === "music" ? works.find((w) => w.listen) : undefined;
 
   return (
     <main
@@ -120,6 +125,20 @@ export default async function RegionPage(
           <p className="rgn-room rnv-rune">{room.glyph} {room.room} · {room.en} — {works.length}</p>
           <p className="rgn-roomline">{room.line}</p>
         </header>
+
+        {nowPlaying && (
+          <aside className="rgn-now" aria-label="今、この地で流れている一曲">
+            <span className="rgn-now-cover">
+              <Image src={nowPlaying.cover} alt="" fill sizes="56px" className="rgn-now-img" />
+              <span className="rgn-now-eq" aria-hidden="true"><i /><i /><i /></span>
+            </span>
+            <span className="rgn-now-meta">
+              <span className="rgn-now-label rnv-rune">NOW BROADCASTING · 今、この地で流れている一曲</span>
+              <span className="rgn-now-title rnv-display">{nowPlaying.title}</span>
+            </span>
+            <a href={nowPlaying.listen} target="_blank" rel="noopener noreferrer" className="rgn-now-listen">聴く</a>
+          </aside>
+        )}
 
         {works.length === 0 ? (
           <p className="rgn-empty">この地は、まだ誰もひらいていません。</p>
