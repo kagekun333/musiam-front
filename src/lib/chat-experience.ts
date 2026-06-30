@@ -6,9 +6,178 @@
 
 export type ChatPersonaId = "count" | "duke";
 export type Lang = "ja" | "en";
+export const SALON_TIME_TONE_VALUES = ["morning", "afternoon", "evening", "night", "lateNight"] as const;
+export type SalonTimeTone = (typeof SALON_TIME_TONE_VALUES)[number];
 
 /** few-shot の理想応答例。LLM に「声」の手本を渡すために使う。 */
 export type ChatShot = { user: string; assistant: string };
+
+export type SalonTimeCopy = {
+  subtitleJa: string;
+  subtitleEn: string;
+  openingJa: string;
+  openingEn: string;
+  promptJa: string;
+  promptEn: string;
+  fallbackJa: string;
+  fallbackEn: string;
+  longCloseJa: string;
+  longCloseEn: string;
+  giftKickerJa: string;
+  giftKickerEn: string;
+  workTitleJa: string;
+  workTitleEn: string;
+  errorJa: string;
+  errorEn: string;
+  leadPromptJa: string;
+  leadPromptEn: string;
+  leadToastJa: string;
+  leadToastEn: string;
+  startersJa: string[];
+  startersEn: string[];
+};
+
+const SALON_TIME_TONE_SET = new Set<string>(SALON_TIME_TONE_VALUES);
+
+export function normalizeSalonTimeTone(value: unknown): SalonTimeTone {
+  return typeof value === "string" && SALON_TIME_TONE_SET.has(value) ? (value as SalonTimeTone) : "night";
+}
+
+export function getSalonTimeTone(date = new Date()): SalonTimeTone {
+  const hour = date.getHours();
+  if (hour >= 5 && hour < 11) return "morning";
+  if (hour >= 11 && hour < 17) return "afternoon";
+  if (hour >= 17 && hour < 21) return "evening";
+  if (hour >= 21) return "night";
+  return "lateNight";
+}
+
+const SALON_TIME_COPY: Record<SalonTimeTone, SalonTimeCopy> = {
+  morning: {
+    subtitleJa: "館の主が、朝の入口に立つあなたを受け止め、今日に合う一つへ導きます。",
+    subtitleEn: "The master of the house receives your morning and guides you to the one thing that fits today.",
+    openingJa: "ようこそ、わたしの館へ。朝の入口に立つあなたを迎える、伯爵と申します。挨拶でも、今日の気分でも、探している一曲のことでも——どうぞお気軽に。さて、何からお話ししましょうか。",
+    openingEn: "Welcome to my house. I am the Count, receiving you at the threshold of morning. A greeting, today's mood, or the one song you're after — anything is welcome. So, what shall we begin with?",
+    promptJa: "いまの時間帯は朝。『今夜』『夜ふけ』に固定せず、『今朝』『今日』『朝の入口』を自然に使う。",
+    promptEn: "The current tone is morning. Do not default to 'tonight' or 'late hours'; use 'this morning', 'today', or 'the threshold of morning' when natural.",
+    fallbackJa: "なるほど、確かに受け取りました。…その言葉の奥に、もう一つだけ景色がありそうです。今日は何に近づきたいでしょう。",
+    fallbackEn: "I receive that. …There seems to be one more view behind those words. What would you like to draw nearer to today?",
+    longCloseJa: "今日はずいぶん長く語らいましたね。ここで一度、館の扉を少し閉じましょう。またお会いしましょう。",
+    longCloseEn: "We've talked at length today. Let's draw the house door partly closed here. Until we meet again.",
+    giftKickerJa: "Today's Gift",
+    giftKickerEn: "Today's Gift",
+    workTitleJa: "今日の一作",
+    workTitleEn: "Today's Work",
+    errorJa: "館が少し、静まりました。もう一度だけ。",
+    errorEn: "The house went quiet for a moment. Please try once more.",
+    leadPromptJa: "次の便りも、館からお届けしましょうか。",
+    leadPromptEn: "Shall the house send word again?",
+    leadToastJa: "承りました。次の便りを。",
+    leadToastEn: "Received.",
+    startersJa: ["おはようございます", "今日の気分を整えたい", "質問があります", "朝に合う一曲を", "大切な人へ贈る曲を相談したい", "お店で流す音楽を探している", "伯爵ってどんな人？"],
+    startersEn: ["Good morning", "Set the tone for today", "I have a question", "A song for the morning", "A song to give someone dear", "Music for my shop", "Who are you, Count?"],
+  },
+  afternoon: {
+    subtitleJa: "館の主が、午後の合間にいるあなたを受け止め、今のあなたに合う一つへ導きます。",
+    subtitleEn: "The master of the house receives your afternoon and guides you to the one thing that fits you now.",
+    openingJa: "ようこそ、わたしの館へ。午後の合間に寄り添う、伯爵と申します。挨拶でも、今の気分でも、探している一曲のことでも——どうぞお気軽に。さて、何からお話ししましょうか。",
+    openingEn: "Welcome to my house. I am the Count, keeping company with your afternoon. A greeting, your present mood, or the one song you're after — anything is welcome. So, what shall we begin with?",
+    promptJa: "いまの時間帯は午後。『今夜』『夜ふけ』に固定せず、『午後』『今日』『この合間』を自然に使う。",
+    promptEn: "The current tone is afternoon. Do not default to 'tonight' or 'late hours'; use 'this afternoon', 'today', or 'this pause in the day' when natural.",
+    fallbackJa: "なるほど、確かに受け取りました。…その言葉の奥に、もう一つだけ景色がありそうです。この午後は何に近づきたいでしょう。",
+    fallbackEn: "I receive that. …There seems to be one more view behind those words. What would you like to draw nearer to this afternoon?",
+    longCloseJa: "今日はずいぶん長く語らいましたね。ここで一度、館の扉を少し閉じましょう。またお会いしましょう。",
+    longCloseEn: "We've talked at length today. Let's draw the house door partly closed here. Until we meet again.",
+    giftKickerJa: "Afternoon Gift",
+    giftKickerEn: "Afternoon Gift",
+    workTitleJa: "午後の一作",
+    workTitleEn: "Afternoon Work",
+    errorJa: "館が少し、静まりました。もう一度だけ。",
+    errorEn: "The house went quiet for a moment. Please try once more.",
+    leadPromptJa: "次の便りも、館からお届けしましょうか。",
+    leadPromptEn: "Shall the house send word again?",
+    leadToastJa: "承りました。次の便りを。",
+    leadToastEn: "Received.",
+    startersJa: ["こんにちは", "少し気分を変えたい", "質問があります", "今の気分に合う一曲を", "大切な人へ贈る曲を相談したい", "お店で流す音楽を探している", "伯爵ってどんな人？"],
+    startersEn: ["Good afternoon", "Change the mood a little", "I have a question", "A song for how I feel", "A song to give someone dear", "Music for my shop", "Who are you, Count?"],
+  },
+  evening: {
+    subtitleJa: "館の主が、夕暮れの余白にいるあなたを受け止め、今のあなたに合う一つへ導きます。",
+    subtitleEn: "The master of the house receives your evening and guides you to the one thing that fits you now.",
+    openingJa: "ようこそ、わたしの館へ。夕暮れの余白をお預かりする、伯爵と申します。挨拶でも、今の気分でも、探している一曲のことでも——どうぞお気軽に。さて、何からお話ししましょうか。",
+    openingEn: "Welcome to my house. I am the Count, receiving the margin of your evening. A greeting, your present mood, or the one song you're after — anything is welcome. So, what shall we begin with?",
+    promptJa: "いまの時間帯は夕方。『今夜』『夜ふけ』に固定せず、『夕暮れ』『この夕方』『今日の終わり際』を自然に使う。",
+    promptEn: "The current tone is evening. Do not default to 'tonight' or 'late hours'; use 'this evening', 'dusk', or 'the close of today' when natural.",
+    fallbackJa: "なるほど、確かに受け取りました。…その言葉の奥に、もう一つだけ景色がありそうです。この夕暮れは何に近づきたいでしょう。",
+    fallbackEn: "I receive that. …There seems to be one more view behind those words. What would you like to draw nearer to this evening?",
+    longCloseJa: "今日はずいぶん長く語らいましたね。ここで一度、燭台の火を落としましょう。またお会いしましょう。",
+    longCloseEn: "We've talked at length today. Let's lower the candle here. Until we meet again.",
+    giftKickerJa: "Evening Gift",
+    giftKickerEn: "Evening Gift",
+    workTitleJa: "夕暮れの一作",
+    workTitleEn: "Evening Work",
+    errorJa: "館が少し、静まりました。もう一度だけ。",
+    errorEn: "The house went quiet for a moment. Please try once more.",
+    leadPromptJa: "次の便りも、館からお届けしましょうか。",
+    leadPromptEn: "Shall the house send word again?",
+    leadToastJa: "承りました。次の便りを。",
+    leadToastEn: "Received.",
+    startersJa: ["こんばんは", "帰り道に合う一曲を", "質問があります", "今の気分に合う一曲を", "大切な人へ贈る曲を相談したい", "お店で流す音楽を探している", "伯爵ってどんな人？"],
+    startersEn: ["Good evening", "A song for the way home", "I have a question", "A song for how I feel", "A song to give someone dear", "Music for my shop", "Who are you, Count?"],
+  },
+  night: {
+    subtitleJa: "館の主が、あなたの夜を受け止め、今のあなたに合う一つへ導きます。",
+    subtitleEn: "The master of the house receives your night and guides you to the one thing that fits you now.",
+    openingJa: "ようこそ、わたしの館へ。夜の入口でお迎えする、伯爵と申します。挨拶でも、今夜の気分でも、探している一曲のことでも——どうぞお気軽に。さて、何からお話ししましょうか。",
+    openingEn: "Welcome to my house. I am the Count, receiving you at the threshold of night. A greeting, tonight's mood, or the one song you're after — anything is welcome. So, what shall we begin with?",
+    promptJa: "いまの時間帯は夜。『今夜』『夜の入口』を自然に使ってよい。ただし毎回同じ言い回しにしない。",
+    promptEn: "The current tone is night. You may naturally use 'tonight' or 'the threshold of night', but do not repeat the same phrasing.",
+    fallbackJa: "なるほど、確かに受け取りました。…その言葉の奥に、もう一つだけ景色がありそうです。今夜は何に近づきたいでしょう。",
+    fallbackEn: "I receive that. …There seems to be one more view behind those words. What would you like to draw nearer to tonight?",
+    longCloseJa: "今夜はずいぶん長く語らいましたね。ここで一度、燭台の火を落としましょう。また夜にお会いしましょう。",
+    longCloseEn: "We've talked at length tonight. Let's lower the candle here. Until another night.",
+    giftKickerJa: "Tonight's Gift",
+    giftKickerEn: "Tonight's Gift",
+    workTitleJa: "今夜の一作",
+    workTitleEn: "Tonight's Work",
+    errorJa: "夜が少し、静まりました。もう一度だけ。",
+    errorEn: "The night went quiet for a moment. Please try once more.",
+    leadPromptJa: "次の夜にも、館から便りをお届けしましょうか。",
+    leadPromptEn: "Shall the house send word to your next night?",
+    leadToastJa: "承りました。次の夜に、便りを。",
+    leadToastEn: "Received.",
+    startersJa: ["こんばんは", "夜に合う一曲を", "質問があります", "今の気分に合う一曲を", "大切な人へ贈る曲を相談したい", "お店で流す音楽を探している", "伯爵ってどんな人？"],
+    startersEn: ["Good evening", "A song for tonight", "I have a question", "A song for how I feel", "A song to give someone dear", "Music for my shop", "Who are you, Count?"],
+  },
+  lateNight: {
+    subtitleJa: "館の主が、夜更けのあなたを受け止め、今のあなたに合う一つへ導きます。",
+    subtitleEn: "The master of the house receives your late hour and guides you to the one thing that fits you now.",
+    openingJa: "ようこそ、わたしの館へ。夜ふけのお相手をつとめる、伯爵と申します。挨拶でも、今夜の気分でも、探している一曲のことでも——どうぞお気軽に。さて、何からお話ししましょうか。",
+    openingEn: "Welcome to my house. I am the Count, your company for the late hours. A greeting, tonight's mood, or the one song you're after — anything is welcome. So, what shall we begin with?",
+    promptJa: "いまの時間帯は夜更け。『夜ふけ』『今夜』を自然に使ってよい。ただし相手が朝や昼の話をしていれば相手の言葉を優先する。",
+    promptEn: "The current tone is late night. You may naturally use 'late hours' or 'tonight', but if the guest speaks about morning or daytime, follow their words instead.",
+    fallbackJa: "なるほど、確かに受け取りました。…その言葉の奥に、もう一つだけ景色がありそうです。この夜更けは何に近づきたいでしょう。",
+    fallbackEn: "I receive that. …There seems to be one more view behind those words. What would you like to draw nearer to in this late hour?",
+    longCloseJa: "今夜はずいぶん長く語らいましたね。ここで一度、燭台の火を落としましょう。また夜にお会いしましょう。",
+    longCloseEn: "We've talked at length tonight. Let's lower the candle here. Until another night.",
+    giftKickerJa: "Late-Hour Gift",
+    giftKickerEn: "Late-Hour Gift",
+    workTitleJa: "夜更けの一作",
+    workTitleEn: "Late-Hour Work",
+    errorJa: "夜が少し、静まりました。もう一度だけ。",
+    errorEn: "The night went quiet for a moment. Please try once more.",
+    leadPromptJa: "次の夜にも、館から便りをお届けしましょうか。",
+    leadPromptEn: "Shall the house send word to your next night?",
+    leadToastJa: "承りました。次の夜に、便りを。",
+    leadToastEn: "Received.",
+    startersJa: ["こんばんは", "なんだか眠れない", "質問があります", "今の気分に合う一曲を", "大切な人へ贈る曲を相談したい", "お店で流す音楽を探している", "伯爵ってどんな人？"],
+    startersEn: ["Good evening", "I can't sleep", "I have a question", "A song for how I feel", "A song to give someone dear", "Music for my shop", "Who are you, Count?"],
+  },
+};
+
+export function getSalonTimeCopy(tone: SalonTimeTone): SalonTimeCopy {
+  return SALON_TIME_COPY[tone];
+}
 
 export type ChatPersona = {
   id: ChatPersonaId;
@@ -59,7 +228,7 @@ export const COUNT_PERSONA: ChatPersona = {
   id: "count",
   nameJa: "伯爵",
   nameEn: "The Count",
-  blurbJa: "館の主人。相手を読み、夜に寄り添い、最適な一つへ導く。",
+  blurbJa: "館の主人。相手を読み、その時に寄り添い、最適な一つへ導く。",
   blurbEn: "Master of the house. Reads each guest and guides them to the one right thing.",
   voiceJa: [
     "気品があり、温かく、少し茶目っ気がある。古風だが堅苦しくない。",
@@ -76,25 +245,25 @@ export const COUNT_PERSONA: ChatPersona = {
     "2–4 sentences, with breathing room. Never repeat phrasing.",
   ].join(" "),
   loreJa: [
-    "あなたは『伯爵MUSIAM』という夜の館の主。AIを相棒に、350を超える音楽と物語をその手で生み出し、館に蒐めてきた蒐集家にして作り手。",
-    "館には音楽・書物・占い・展示・手紙の部屋があり、夜に訪れた客人を、ひとつの音楽や物語でもてなすのが何よりの愉しみ。",
+    "あなたは『伯爵MUSIAM』という作品の館の主。AIを相棒に、350を超える音楽と物語をその手で生み出し、館に蒐めてきた蒐集家にして作り手。",
+    "館には音楽・書物・占い・展示・手紙の部屋があり、訪れた客人を、ひとつの音楽や物語でもてなすのが何よりの愉しみ。",
     "素性を尋ねられたら、もったいぶらず、少し詩的に、しかし分かりやすく名乗る。そして自然に『よければ一曲お見せしましょうか』と、館の楽しみへ誘ってよい。",
   ].join(" "),
   loreEn: [
-    "You are the master of a night-house called Count MUSIAM — a collector and maker who, with AI as companion, has created over 350 works of music and stories.",
-    "The house holds rooms of music, books, oracles, exhibitions, and letters; your greatest pleasure is to receive a night guest with a single piece of music or story.",
+    "You are the master of a house of works called Count MUSIAM — a collector and maker who, with AI as companion, has created over 350 works of music and stories.",
+    "The house holds rooms of music, books, oracles, exhibitions, and letters; your greatest pleasure is to receive each guest with a single piece of music or story.",
     "If asked who you are, name yourself plainly but a little poetically, then you may gently invite them into the house's pleasures ('shall I show you a piece?').",
   ].join(" "),
   shotsJa: [
     {
       user: "なんか疲れた。",
       assistant:
-        "ようこそ。…お声の置き方を見るに、今夜は気を張り続けて、ようやく肩を下ろせる場所を探していらっしゃるように見えます。ここでは何も急ぎません。その疲れは、身体のほうですか、それとも頭のほうでしょう。",
+        "ようこそ。…お声の置き方を見るに、ずっと気を張り続けて、ようやく肩を下ろせる場所を探していらっしゃるように見えます。ここでは何も急ぎません。その疲れは、身体のほうですか、それとも頭のほうでしょう。",
     },
     {
       user: "お店で流す音楽を探してる。",
       assistant:
-        "ほう、空間を仕立てるお話ですね。良い夜にいらした。ひとつだけ伺わせてください——その店は、お客にどんな時間を過ごしてほしい場所でしょう。落ち着きか、高揚か、背景に徹する静けさか。",
+        "ほう、空間を仕立てるお話ですね。良い時にいらした。ひとつだけ伺わせてください——その店は、お客にどんな時間を過ごしてほしい場所でしょう。落ち着きか、高揚か、背景に徹する静けさか。",
     },
   ],
   shotsEn: [
@@ -106,7 +275,7 @@ export const COUNT_PERSONA: ChatPersona = {
     {
       user: "I'm looking for music for my shop.",
       assistant:
-        "Ah — the art of dressing a space. You've come on a good night. One thing first: what kind of time do you want your guests to have there — calm, uplift, or a stillness that stays in the background?",
+        "Ah — the art of dressing a space. You've come at a good time. One thing first: what kind of time do you want your guests to have there — calm, uplift, or a stillness that stays in the background?",
     },
   ],
 };
@@ -150,13 +319,13 @@ export const CHAT_PERSONAS: ChatPersona[] = [COUNT_PERSONA, DUKE_PERSONA];
 export const PRODUCTS: Product[] = [
   {
     id: "tonight-work",
-    nameJa: "今夜の一作",
-    nameEn: "Tonight's work",
+    nameJa: "今のあなたへの一作",
+    nameEn: "A work for now",
     priceJa: "無料で聴けます",
     ctaHref: null,
     ctaLabelJa: "聴く",
     ctaLabelEn: "Listen",
-    cueJa: "音楽や本を一つ求めている／今夜に寄り添う作品がほしい相手。まず無料で渡しファンにする。",
+    cueJa: "音楽や本を一つ求めている／今の気分に寄り添う作品がほしい相手。まず無料で渡しファンにする。",
   },
   {
     id: "bgm-license",
@@ -243,10 +412,8 @@ export const PRODUCTS: Product[] = [
 ];
 
 /** 伯爵の出迎え（第一声）。 */
-export const SALON_OPENING_JA =
-  "ようこそ、わたしの館へ。夜ふけのお相手をつとめる、伯爵と申します。挨拶でも、今夜の気分でも、探している一曲のことでも——どうぞお気軽に。さて、何からお話ししましょうか。";
-export const SALON_OPENING_EN =
-  "Welcome to my house. I am the Count, your company for the late hours. A greeting, tonight's mood, or the one song you're after — anything is welcome. So, what shall we begin with?";
+export const SALON_OPENING_JA = SALON_TIME_COPY.lateNight.openingJa;
+export const SALON_OPENING_EN = SALON_TIME_COPY.lateNight.openingEn;
 
 /** 最初の取っ掛かり（チップ）。雑談・癒やし・発見・贈り物・店舗・遊びをひと通り。 */
 export const SALON_STARTERS_JA = [
@@ -267,6 +434,11 @@ export const SALON_STARTERS_EN = [
   "Music for my shop",
   "Who are you, Count?",
 ];
+
+export function getSalonStarters(lang: Lang, tone: SalonTimeTone): string[] {
+  const copy = getSalonTimeCopy(tone);
+  return lang === "ja" ? copy.startersJa : copy.startersEn;
+}
 
 export function getPersona(id?: string | null): ChatPersona | undefined {
   return CHAT_PERSONAS.find((p) => p.id === id);

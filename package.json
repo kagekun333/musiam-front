@@ -5,6 +5,7 @@
     "start": "next start -p 3000",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --max-warnings=0",
     "typecheck": "tsc --noEmit",
+    "validate:chat-time-copy": "tsx scripts/validate-chat-time-copy.ts",
     "export:png": "tsx scripts/export-png.ts",
     "prepare": "husky install",
     "add:exhibit": "tsx scripts/add-exhibit.ts",

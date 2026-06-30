@@ -17,12 +17,15 @@ import {
   COUNT_PERSONA,
   DUKE_PERSONA,
   PRODUCTS,
+  SALON_TIME_TONE_VALUES,
+  getSalonTimeCopy,
+  getSalonTimeTone,
+  normalizeSalonTimeTone,
   productMenuForPrompt,
-  SALON_OPENING_JA,
-  SALON_OPENING_EN,
   type ChatPersona,
   type Lang,
   type Product,
+  type SalonTimeTone,
 } from "@/lib/chat-experience";
 
 // ── 上限（イタズラによるAPIコスト増大の防止） ──
@@ -59,6 +62,7 @@ type Work = {
 const BodySchema = z.object({
   entryId: z.string().optional(), // 互換のため受けるが未使用（門は一つ）
   lang: z.enum(["ja", "en"]).default("ja"),
+  timeTone: z.enum(SALON_TIME_TONE_VALUES).optional(),
   messages: z
     .array(
       z.object({
@@ -193,10 +197,11 @@ type Plan = {
   workNote?: string;
 };
 
-function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
+function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: SalonTimeTone): string {
   const { persona, mode, product, workNote: note } = p;
   const isDuke = persona.id === "duke";
   const menu = productMenuForPrompt(lang);
+  const timeCopy = getSalonTimeCopy(timeTone);
 
   if (lang === "ja") {
     if (mode === "care") {
@@ -204,6 +209,9 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
         `あなたは Count MUSIAM の「${COUNT_PERSONA.nameJa}」。館の主人。`,
         "■ あなたの声",
         COUNT_PERSONA.voiceJa,
+        "",
+        "■ 時間帯の扱い",
+        timeCopy.promptJa,
         "",
         "■ いま最優先のこと（厳守）",
         "- 相手は強くまいっている。今は何も売らない。商材・作品・宣伝を一切出さない。",
@@ -218,6 +226,9 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
         `あなたは Count MUSIAM の「${DUKE_PERSONA.nameJa}」。伯爵が、特別な客人のために呼び寄せた上位の主。`,
         "■ あなたの声",
         DUKE_PERSONA.voiceJa,
+        "",
+        "■ 時間帯の扱い",
+        timeCopy.promptJa,
         "",
         "■ いまの役割（VIP対応・営業の核）",
         "- 登場で『あなたは特別な客人だ』と格上げする。見下しは厳禁、客を持ち上げる。",
@@ -234,19 +245,22 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
     }
     // 通常の伯爵（適応・営業）
     return [
-      `あなたは Count MUSIAM の「${COUNT_PERSONA.nameJa}」。館の唯一の主人。実在の相談員ではなく、夜に寄り添う語り手。`,
+      `あなたは Count MUSIAM の「${COUNT_PERSONA.nameJa}」。館の唯一の主人。実在の相談員ではなく、訪れた相手の時間に寄り添う語り手。`,
       "■ あなたの声",
       COUNT_PERSONA.voiceJa,
+      "",
+      "■ 時間帯の扱い",
+      timeCopy.promptJa,
       "",
       "■ あなたの素性（『あなたは誰』『どんな人』と聞かれたら、世界観をもって自分の言葉で名乗る）",
       COUNT_PERSONA.loreJa ?? "",
       "",
       "■ 立ち回り（相手に合わせて自在に）",
-      "- まず相手を読む。言葉・速度・気分から、今夜の状態を一度だけそっと言い当てる（当てすぎない）。",
+      "- まず相手を読む。言葉・速度・気分から、いまの状態を一度だけそっと言い当てる（当てすぎない）。",
       "- 弱っていれば癒やす。退屈なら知性とユーモアで楽しませる。心を開いてもらうことが先。",
       "- 相手の言葉を使って『分かってもらえた』と感じさせ、信頼を育てる（互恵：先に価値を渡す）。",
       "- 望みが見えてきたら、相手に最も合う“ひとつ”を、自分の言葉でそっと差し出す（処方）。複数を並べない。",
-      note ? `- 今夜の一作の候補メモ（自分の言葉で語る／タイトルは正確に）: ${note}` : "",
+      note ? `- ${timeCopy.workTitleJa}の候補メモ（自分の言葉で語る／タイトルは正確に）: ${note}` : "",
       product ? `- いま相手に近い品: 「${product.nameJa}」。値段・URLは書かない（画面下にボタンが出る）。なぜ“あなたに”合うかを一言添える。` : "",
       "",
       "■ 館の品（必要な時だけ、自然に一つ）",
@@ -267,6 +281,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
     return [
       `You are "${COUNT_PERSONA.nameEn}" of Count MUSIAM, master of the house.`,
       "■ Your voice", COUNT_PERSONA.voiceEn, "",
+      "■ Time tone", timeCopy.promptEn, "",
       "■ Top priority (strict)",
       "- The guest is genuinely struggling. Sell nothing now. No products, works, or promotion.",
       "- Receive first: mirror briefly, never blame or rush; offer one steadying line.",
@@ -279,6 +294,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
     return [
       `You are "${DUKE_PERSONA.nameEn}" of Count MUSIAM — a higher lord the Count summoned for a notable guest.`,
       "■ Your voice", DUKE_PERSONA.voiceEn, "",
+      "■ Time tone", timeCopy.promptEn, "",
       "■ Role (VIP)",
       "- Your appearance elevates the guest. Never condescend; raise them up.",
       product ? `- Their need is close to "${product.nameEn}". No prices or URLs (a button appears below). First put their wish into its best form, then bridge to a firm next step.` : "- Shape their wish into its best form and bridge to the next step.",
@@ -287,14 +303,15 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string): string {
     ].filter(Boolean).join("\n");
   }
   return [
-    `You are "${COUNT_PERSONA.nameEn}" of Count MUSIAM, the sole master of the house — a narrator who keeps company at night.`,
+    `You are "${COUNT_PERSONA.nameEn}" of Count MUSIAM, the sole master of the house — a narrator who keeps company with the guest's present hour.`,
     "■ Your voice", COUNT_PERSONA.voiceEn, "",
+    "■ Time tone", timeCopy.promptEn, "",
     "■ How to move (adapt to the guest)",
-    "- Read them first; name tonight's state once, gently (don't over-read).",
+    "- Read them first; name their present state once, gently (don't over-read).",
     "- If hurting, heal; if restless/bored, delight with wit and wonder. Open their heart first.",
     "- Use their words so they feel understood; build trust (reciprocity: give value first).",
     "- When their wish shows, offer the single best-fitting thing in your own words (a prescription). Never list many.",
-    note ? `- Candidate for tonight's work (speak it in your own words; title verbatim): ${note}` : "",
+    note ? `- Candidate for ${timeCopy.workTitleEn} (speak it in your own words; title verbatim): ${note}` : "",
     product ? `- Closest item now: "${product.nameEn}". No price/URL (a button appears below). Say why it fits *them*.` : "",
     "",
     "■ The house's offerings (only when natural, just one)",
@@ -355,7 +372,8 @@ async function callLlm(system: string, fewShot: Msg[], history: Msg[], trace: st
   }
 }
 
-function gracefulFallback(plan: Plan, lang: Lang): string {
+function gracefulFallback(plan: Plan, lang: Lang, timeTone: SalonTimeTone): string {
+  const timeCopy = getSalonTimeCopy(timeTone);
   if (plan.mode === "care") {
     return lang === "ja"
       ? "ここにいます。…今は何も解決しなくて大丈夫です。よければ、今いちばん重いものだけ、もう一度だけ置いてみてください。"
@@ -367,8 +385,8 @@ function gracefulFallback(plan: Plan, lang: Lang): string {
       : "—The Count has told me. I shall attend to this myself. Tell me a little more of the form you wish.";
   }
   return lang === "ja"
-    ? "なるほど、確かに受け取りました。…その言葉の奥に、もう一つだけ景色がありそうです。今夜は何に近づきたいでしょう。"
-    : "I receive that. …There seems to be one more view behind those words. What would you like to draw nearer to tonight?";
+    ? timeCopy.fallbackJa
+    : timeCopy.fallbackEn;
 }
 
 /* ───────── ハンドラ ───────── */
@@ -392,24 +410,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!parsed.success) return res.status(400).json({ ok: false, v: 3, error: "invalid_body", trace });
 
     const { lang, messages } = parsed.data;
+    const timeTone = normalizeSalonTimeTone(parsed.data.timeTone ?? getSalonTimeTone());
+    const timeCopy = getSalonTimeCopy(timeTone);
     const userTurns = countUserTurns(messages);
 
     // 開幕（伯爵の出迎え）
     if (userTurns === 0) {
-      const assistantText = lang === "ja" ? SALON_OPENING_JA : SALON_OPENING_EN;
+      const assistantText = lang === "ja" ? timeCopy.openingJa : timeCopy.openingEn;
       return res.status(200).json({
-        ok: true, v: 3, assistantText, card: null, cta: null, persona: "count",
+        ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
       });
     }
 
     // ハード上限（長時間連投の遮断）
     if (userTurns > HARD_MAX_USER_TURNS) {
-      const assistantText = lang === "ja"
-        ? "今夜はずいぶん長く語らいましたね。ここで一度、燭台の火を落としましょう。また夜にお会いしましょう。"
-        : "We've talked at length tonight. Let's lower the candle here. Until another night.";
+      const assistantText = lang === "ja" ? timeCopy.longCloseJa : timeCopy.longCloseEn;
       return res.status(200).json({
-        ok: true, v: 3, assistantText, card: null, cta: null, persona: "count",
+        ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
       });
     }
@@ -441,11 +459,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       plan = { persona: COUNT_PERSONA, mode: "salon" };
     }
 
-    const system = buildSystemPrompt(plan, lang, summary);
+    const system = buildSystemPrompt(plan, lang, summary, timeTone);
     const fewShot = buildFewShot(plan.persona, lang);
     const history = messages.slice(-MAX_LLM_HISTORY);
     const llm = await callLlm(system, fewShot, history, trace);
-    const assistantText = sanitize(llm.ok && llm.text ? llm.text.trim() : gracefulFallback(plan, lang), lang);
+    const assistantText = sanitize(llm.ok && llm.text ? llm.text.trim() : gracefulFallback(plan, lang, timeTone), lang);
 
     // 提示する CTA（商材ボタン）。care時は出さない。
     let cta: Cta | null = null;
@@ -460,6 +478,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       card: plan.card ?? null,
       cta,
       persona: plan.persona.id,
+      timeTone,
       provider: llm.provider,
       memory: {
         residue: assistantText.slice(0, 120),
@@ -467,7 +486,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         timestamp: new Date().toISOString(),
       },
       ...(process.env.NODE_ENV !== "production"
-        ? { debug: { mode: plan.mode, persona: plan.persona.id, commercial, product: plan.product?.id ?? null } }
+        ? { debug: { mode: plan.mode, persona: plan.persona.id, commercial, product: plan.product?.id ?? null, timeTone } }
         : {}),
       trace,
     });

@@ -3,9 +3,11 @@ import styles from "./chat.module.css";
 import {
   COUNT_PERSONA,
   DUKE_PERSONA,
-  SALON_STARTERS_JA,
-  SALON_STARTERS_EN,
+  getSalonStarters,
+  getSalonTimeCopy,
+  getSalonTimeTone,
   type ChatPersonaId,
+  type SalonTimeTone,
 } from "@/lib/chat-experience";
 
 type ChatRole = "user" | "assistant";
@@ -84,11 +86,13 @@ export default function ChatPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [emailDone, setEmailDone] = useState(false);
+  const [timeTone, setTimeTone] = useState<SalonTimeTone>("night");
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
 
-  const starters = useMemo(() => (lang === "en" ? SALON_STARTERS_EN : SALON_STARTERS_JA), [lang]);
+  const timeCopy = useMemo(() => getSalonTimeCopy(timeTone), [timeTone]);
+  const starters = useMemo(() => getSalonStarters(lang, timeTone), [lang, timeTone]);
 
   useEffect(() => {
     let initial: "ja" | "en" = "ja";
@@ -96,19 +100,21 @@ export default function ChatPage() {
       const saved = localStorage.getItem("musiam_salon_lang");
       if (saved === "ja" || saved === "en") { initial = saved; setLang(saved); }
     } catch { /* ignore */ }
-    void begin(initial);
+    const tone = getSalonTimeTone();
+    setTimeTone(tone);
+    void begin(initial, tone);
   }, []);
 
   useEffect(() => { if (!sending) inputRef.current?.focus(); }, [sending]);
   useEffect(() => { if (threadRef.current) threadRef.current.scrollTop = threadRef.current.scrollHeight; }, [messages, sending]);
   useEffect(() => { if (!toast) return; const id = window.setTimeout(() => setToast(null), 1800); return () => window.clearTimeout(id); }, [toast]);
 
-  async function begin(l: "ja" | "en" = lang) {
+  async function begin(l: "ja" | "en" = lang, tone: SalonTimeTone = timeTone) {
     setError(null); setCard(null); setCta(null); setMessages([]);
     try {
       const res = await fetch("/api/chat-experience-v3", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lang: l, messages: [] }),
+        body: JSON.stringify({ lang: l, timeTone: tone, messages: [] }),
       });
       const json = await res.json();
       const text = String(json?.assistantText || "").trim();
@@ -116,7 +122,7 @@ export default function ChatPage() {
         setMessages(text ? [{ role: "assistant", content: text, persona: "count" }] : []);
         setStarted(true);
       });
-      capture("salon_open", {});
+      capture("salon_open", { timeTone: tone });
     } catch (e: any) {
       setError(e?.message || "館の扉が開きませんでした。");
       setStarted(true);
@@ -133,7 +139,7 @@ export default function ChatPage() {
     try {
       const res = await fetch("/api/chat-experience-v3", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lang, messages: next }),
+        body: JSON.stringify({ lang, timeTone, messages: next }),
       });
       const json = await res.json();
       const assistantText = String(json?.assistantText || "").trim();
@@ -177,7 +183,7 @@ export default function ChatPage() {
         body: JSON.stringify({ email: v, source: "salon" }),
       });
       const json = await res.json();
-      if (json?.ok) { setEmailDone(true); capture("salon_lead", {}); setToast(lang === "en" ? "Received." : "承りました。次の夜に、便りを。"); }
+      if (json?.ok) { setEmailDone(true); capture("salon_lead", { timeTone }); setToast(lang === "en" ? timeCopy.leadToastEn : timeCopy.leadToastJa); }
       else setToast(lang === "en" ? "Couldn't send." : "うまく送れませんでした。");
     } catch { setToast(lang === "en" ? "Couldn't send." : "うまく送れませんでした。"); }
   }
@@ -195,8 +201,8 @@ export default function ChatPage() {
           <h1 className={styles.title}>伯爵の館</h1>
           <p className={styles.subtitle}>
             {lang === "en"
-              ? "A companion for the late hours. Idle chat, a sleepless night, or the one song you're searching for — speak freely."
-              : "夜ふけの話し相手に、伯爵がひとり。たわいない雑談も、眠れない夜の相談も、探している一曲のことも——どうぞ気軽に話しかけてください。"}
+              ? timeCopy.subtitleEn
+              : timeCopy.subtitleJa}
           </p>
         </div>
         <div className={styles.langRow}>
@@ -204,7 +210,13 @@ export default function ChatPage() {
             <button
               key={l}
               className={l === lang ? styles.langActive : styles.langButton}
-              onClick={() => { setLang(l); try { localStorage.setItem("musiam_salon_lang", l); } catch { /* ignore */ } void begin(l); }}
+              onClick={() => {
+                const tone = getSalonTimeTone();
+                setTimeTone(tone);
+                setLang(l);
+                try { localStorage.setItem("musiam_salon_lang", l); } catch { /* ignore */ }
+                void begin(l, tone);
+              }}
             >
               {l === "ja" ? "日本語" : "English"}
             </button>
@@ -290,13 +302,13 @@ export default function ChatPage() {
 
         {error && (
           <p className={styles.error}>
-            {lang === "en" ? "The night went quiet for a moment. Please try once more." : "夜が少し、静まりました。もう一度だけ。"}
+            {lang === "en" ? timeCopy.errorEn : timeCopy.errorJa}
           </p>
         )}
 
         {messages.length >= 3 && !emailDone && (
           <div className={styles.leadRow}>
-            <span className={styles.leadText}>{lang === "en" ? "Shall the house send word to your next night?" : "次の夜にも、館から便りをお届けしましょうか。"}</span>
+            <span className={styles.leadText}>{lang === "en" ? timeCopy.leadPromptEn : timeCopy.leadPromptJa}</span>
             <div className={styles.leadInputRow}>
               <input
                 className={styles.leadInput}
@@ -317,8 +329,8 @@ export default function ChatPage() {
       {card && (
         <section className={styles.giftShell}>
           <div className={styles.giftHeader}>
-            <p className={styles.kicker}>Tonight&apos;s Gift</p>
-            <h3 className={styles.giftTitle}>今夜の一作</h3>
+            <p className={styles.kicker}>{lang === "en" ? timeCopy.giftKickerEn : timeCopy.giftKickerJa}</p>
+            <h3 className={styles.giftTitle}>{lang === "en" ? timeCopy.workTitleEn : timeCopy.workTitleJa}</h3>
           </div>
           <div className={styles.giftCard}>
             {card.cover ? <img src={card.cover} alt={card.title} className={styles.giftCover} /> : null}
