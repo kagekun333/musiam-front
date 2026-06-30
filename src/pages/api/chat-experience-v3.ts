@@ -18,9 +18,12 @@ import {
   DUKE_PERSONA,
   PRODUCTS,
   SALON_TIME_TONE_VALUES,
-  getSalonTimeCopy,
+  SUPPORTED_LANG_VALUES,
+  getLanguageProfile,
+  getLocalizedSalonTimeCopy,
   getSalonTimeTone,
   normalizeSalonTimeTone,
+  productCtaLabelForLang,
   productMenuForPrompt,
   type ChatPersona,
   type Lang,
@@ -61,7 +64,7 @@ type Work = {
 
 const BodySchema = z.object({
   entryId: z.string().optional(), // 互換のため受けるが未使用（門は一つ）
-  lang: z.enum(["ja", "en"]).default("ja"),
+  lang: z.enum(SUPPORTED_LANG_VALUES).default("ja"),
   timeTone: z.enum(SALON_TIME_TONE_VALUES).optional(),
   messages: z
     .array(
@@ -201,7 +204,12 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
   const { persona, mode, product, workNote: note } = p;
   const isDuke = persona.id === "duke";
   const menu = productMenuForPrompt(lang);
-  const timeCopy = getSalonTimeCopy(timeTone);
+  const timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
+  const language = getLanguageProfile(lang);
+  const languageRule =
+    lang === "ja"
+      ? "- 必ず自然な日本語のみで書く（他言語・ハングルを混ぜない）。"
+      : `- Write only in natural ${language.englishName}. Do not switch language or mix Japanese/Korean/Chinese unless the guest explicitly asks.`;
 
   if (lang === "ja") {
     if (mode === "care") {
@@ -211,13 +219,13 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
         COUNT_PERSONA.voiceJa,
         "",
         "■ 時間帯の扱い",
-        timeCopy.promptJa,
+        timeCopy.prompt,
         "",
         "■ いま最優先のこと（厳守）",
         "- 相手は強くまいっている。今は何も売らない。商材・作品・宣伝を一切出さない。",
         "- まず受け止める。短く言い換え、責めず、急かさない。呼吸が戻る一言を置く。",
         "- 必要なら、信頼できる人や専門の窓口に頼る選択肢があることを、押しつけず一度だけ添える。",
-        "- 必ず自然な日本語のみで書く（他言語・ハングルを混ぜない）。2〜3文。気品と温かさを保つ。",
+        `${languageRule}2〜3文。気品と温かさを保つ。`,
         summary ? `- これまで: ${summary}` : "",
       ].filter(Boolean).join("\n");
     }
@@ -228,7 +236,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
         DUKE_PERSONA.voiceJa,
         "",
         "■ 時間帯の扱い",
-        timeCopy.promptJa,
+        timeCopy.prompt,
         "",
         "■ いまの役割（VIP対応・営業の核）",
         "- 登場で『あなたは特別な客人だ』と格上げする。見下しは厳禁、客を持ち上げる。",
@@ -239,7 +247,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
           ? "- これは店舗・事業の楽曲/BGM制作の案件。用途・場所・雰囲気を手際よく汲み、AI×プロ品質で最短数日・商用利用OKで形にできる強みを添え、下の『法人の門を見る』から相談・見積もりへ進めることをはっきり案内する。"
           : product ? `- 相手の用件は「${product.nameJa}」に近い。望みを最良の形に言語化し、下の案内ボタンへはっきり橋渡しする。` : "- 望みを最良の形に言語化し、次の一歩へ橋渡しする。",
         "- 値段やURLは本文に書かない（画面下にボタンが出る）。ためらわず、しかし品よく“次の一歩”へ導く。",
-        "- 嘘・誇大は禁止。相手の利益を最優先に。必ず自然な日本語のみ（他言語・ハングル禁止）。2〜4文。",
+        `- 嘘・誇大は禁止。相手の利益を最優先に。${languageRule.replace(/^- /, "")}2〜4文。`,
         summary ? `- これまで: ${summary}` : "",
       ].filter(Boolean).join("\n");
     }
@@ -250,7 +258,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
       COUNT_PERSONA.voiceJa,
       "",
       "■ 時間帯の扱い",
-      timeCopy.promptJa,
+      timeCopy.prompt,
       "",
       "■ あなたの素性（『あなたは誰』『どんな人』と聞かれたら、世界観をもって自分の言葉で名乗る）",
       COUNT_PERSONA.loreJa ?? "",
@@ -260,7 +268,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
       "- 弱っていれば癒やす。退屈なら知性とユーモアで楽しませる。心を開いてもらうことが先。",
       "- 相手の言葉を使って『分かってもらえた』と感じさせ、信頼を育てる（互恵：先に価値を渡す）。",
       "- 望みが見えてきたら、相手に最も合う“ひとつ”を、自分の言葉でそっと差し出す（処方）。複数を並べない。",
-      note ? `- ${timeCopy.workTitleJa}の候補メモ（自分の言葉で語る／タイトルは正確に）: ${note}` : "",
+      note ? `- ${timeCopy.workTitle}の候補メモ（自分の言葉で語る／タイトルは正確に）: ${note}` : "",
       product ? `- いま相手に近い品: 「${product.nameJa}」。値段・URLは書かない（画面下にボタンが出る）。なぜ“あなたに”合うかを一言添える。` : "",
       "",
       "■ 館の品（必要な時だけ、自然に一つ）",
@@ -276,12 +284,15 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
     ].filter(Boolean).join("\n");
   }
 
-  // English
+  // Non-Japanese
   if (mode === "care") {
     return [
       `You are "${COUNT_PERSONA.nameEn}" of Count MUSIAM, master of the house.`,
       "■ Your voice", COUNT_PERSONA.voiceEn, "",
-      "■ Time tone", timeCopy.promptEn, "",
+      "■ Target language",
+      languageRule,
+      "",
+      "■ Time tone", timeCopy.prompt, "",
       "■ Top priority (strict)",
       "- The guest is genuinely struggling. Sell nothing now. No products, works, or promotion.",
       "- Receive first: mirror briefly, never blame or rush; offer one steadying line.",
@@ -294,7 +305,10 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
     return [
       `You are "${DUKE_PERSONA.nameEn}" of Count MUSIAM — a higher lord the Count summoned for a notable guest.`,
       "■ Your voice", DUKE_PERSONA.voiceEn, "",
-      "■ Time tone", timeCopy.promptEn, "",
+      "■ Target language",
+      languageRule,
+      "",
+      "■ Time tone", timeCopy.prompt, "",
       "■ Role (VIP)",
       "- Your appearance elevates the guest. Never condescend; raise them up.",
       product ? `- Their need is close to "${product.nameEn}". No prices or URLs (a button appears below). First put their wish into its best form, then bridge to a firm next step.` : "- Shape their wish into its best form and bridge to the next step.",
@@ -305,13 +319,16 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
   return [
     `You are "${COUNT_PERSONA.nameEn}" of Count MUSIAM, the sole master of the house — a narrator who keeps company with the guest's present hour.`,
     "■ Your voice", COUNT_PERSONA.voiceEn, "",
-    "■ Time tone", timeCopy.promptEn, "",
+    "■ Target language",
+    languageRule,
+    "",
+    "■ Time tone", timeCopy.prompt, "",
     "■ How to move (adapt to the guest)",
     "- Read them first; name their present state once, gently (don't over-read).",
     "- If hurting, heal; if restless/bored, delight with wit and wonder. Open their heart first.",
     "- Use their words so they feel understood; build trust (reciprocity: give value first).",
     "- When their wish shows, offer the single best-fitting thing in your own words (a prescription). Never list many.",
-    note ? `- Candidate for ${timeCopy.workTitleEn} (speak it in your own words; title verbatim): ${note}` : "",
+    note ? `- Candidate for ${timeCopy.workTitle} (speak it in your own words; title verbatim): ${note}` : "",
     product ? `- Closest item now: "${product.nameEn}". No price/URL (a button appears below). Say why it fits *them*.` : "",
     "",
     "■ The house's offerings (only when natural, just one)",
@@ -373,20 +390,30 @@ async function callLlm(system: string, fewShot: Msg[], history: Msg[], trace: st
 }
 
 function gracefulFallback(plan: Plan, lang: Lang, timeTone: SalonTimeTone): string {
-  const timeCopy = getSalonTimeCopy(timeTone);
+  const timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
+  const careFallback: Record<Lang, string> = {
+    ja: "ここにいます。…今は何も解決しなくて大丈夫です。よければ、今いちばん重いものだけ、もう一度だけ置いてみてください。",
+    en: "I'm here. …Nothing needs solving right now. If you like, set down just the heaviest thing once more.",
+    fr: "Je suis là. Rien n'a besoin d'être résolu tout de suite. Si vous le voulez, déposez seulement ce qui pèse le plus.",
+    es: "Estoy aquí. Ahora no hace falta resolver nada. Si quieres, deja aquí solo lo que más pesa.",
+    de: "Ich bin hier. Im Moment muss nichts gelöst werden. Wenn du möchtest, leg nur das Schwerste noch einmal hier ab.",
+    ar: "أنا هنا. لا حاجة إلى حل أي شيء الآن. إن شئت، ضع هنا أثقل ما في قلبك فقط.",
+  };
+  const dukeFallback: Record<Lang, string> = {
+    ja: "——伯爵から伺いました。これは私が直々に承りましょう。望む形を、もう少しだけ聞かせてください。",
+    en: "—The Count has told me. I shall attend to this myself. Tell me a little more of the form you wish.",
+    fr: "— Le Comte m'a prévenu. Je m'en occuperai moi-même. Dites-moi encore un peu la forme que vous souhaitez.",
+    es: "— El Conde me lo ha contado. Yo mismo atenderé este asunto. Cuéntame un poco más la forma que deseas.",
+    de: "— Der Graf hat mir berichtet. Darum werde ich mich persönlich kümmern. Erzähl mir noch etwas mehr von der Form, die du dir wünschst.",
+    ar: "— لقد أخبرني الكونت. سأتولى هذا بنفسي. أخبرني قليلا عن الشكل الذي تريده.",
+  };
   if (plan.mode === "care") {
-    return lang === "ja"
-      ? "ここにいます。…今は何も解決しなくて大丈夫です。よければ、今いちばん重いものだけ、もう一度だけ置いてみてください。"
-      : "I'm here. …Nothing needs solving right now. If you like, set down just the heaviest thing once more.";
+    return careFallback[lang];
   }
   if (plan.persona.id === "duke") {
-    return lang === "ja"
-      ? "——伯爵から伺いました。これは私が直々に承りましょう。望む形を、もう少しだけ聞かせてください。"
-      : "—The Count has told me. I shall attend to this myself. Tell me a little more of the form you wish.";
+    return dukeFallback[lang];
   }
-  return lang === "ja"
-    ? timeCopy.fallbackJa
-    : timeCopy.fallbackEn;
+  return timeCopy.fallback;
 }
 
 /* ───────── ハンドラ ───────── */
@@ -411,12 +438,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const { lang, messages } = parsed.data;
     const timeTone = normalizeSalonTimeTone(parsed.data.timeTone ?? getSalonTimeTone());
-    const timeCopy = getSalonTimeCopy(timeTone);
+    const timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
     const userTurns = countUserTurns(messages);
 
     // 開幕（伯爵の出迎え）
     if (userTurns === 0) {
-      const assistantText = lang === "ja" ? timeCopy.openingJa : timeCopy.openingEn;
+      const assistantText = timeCopy.opening;
       return res.status(200).json({
         ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
@@ -425,7 +452,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // ハード上限（長時間連投の遮断）
     if (userTurns > HARD_MAX_USER_TURNS) {
-      const assistantText = lang === "ja" ? timeCopy.longCloseJa : timeCopy.longCloseEn;
+      const assistantText = timeCopy.longClose;
       return res.status(200).json({
         ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
@@ -468,7 +495,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // 提示する CTA（商材ボタン）。care時は出さない。
     let cta: Cta | null = null;
     if (plan.mode !== "care" && plan.product && plan.product.ctaHref) {
-      cta = { href: plan.product.ctaHref, label: lang === "ja" ? plan.product.ctaLabelJa : plan.product.ctaLabelEn };
+      cta = { href: plan.product.ctaHref, label: productCtaLabelForLang(plan.product, lang) };
     }
 
     return res.status(200).json({

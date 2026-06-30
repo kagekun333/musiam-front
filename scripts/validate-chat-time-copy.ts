@@ -3,15 +3,23 @@
 import assert from "node:assert/strict";
 import {
   SALON_TIME_TONE_VALUES,
+  PRODUCTS,
+  SUPPORTED_LANG_VALUES,
+  getChatUiText,
+  getLanguageProfile,
+  getLocalizedSalonTimeCopy,
   getSalonStarters,
   getSalonTimeCopy,
   getSalonTimeTone,
+  normalizeLang,
   normalizeSalonTimeTone,
+  productCtaLabelForLang,
   type Lang,
   type SalonTimeTone,
 } from "../src/lib/chat-experience";
 
 const expectedTones = ["morning", "afternoon", "evening", "night", "lateNight"] as const;
+const expectedLangs = ["ja", "en", "fr", "es", "de", "ar"] as const;
 
 function at(hour: number, minute = 0) {
   return new Date(2026, 5, 29, hour, minute, 0, 0);
@@ -30,34 +38,44 @@ function assertTextPresent(label: string, value: string) {
   assert.ok(value.trim().length > 0, `${label} should not be empty`);
 }
 
-function assertNoNightBias(tone: SalonTimeTone) {
+const nightBiasPattern: Record<Lang, RegExp> = {
+  ja: /今夜|夜ふけ|夜更け/,
+  en: /tonight|late[- ]?hour|late hours/i,
+  fr: /cette nuit|heure tardive|heures tardives|\bnuit\b/i,
+  es: /esta noche|madrugada|\bnoche\b/i,
+  de: /diese Nacht|späte Stunde|späten Stunde|\bNacht\b/i,
+  ar: /آخر الليل|هذه الليلة|عتبة الليل|الليل|ليلك/,
+};
+
+function assertNoNightBias(lang: Lang, tone: SalonTimeTone) {
   if (tone === "night" || tone === "lateNight") return;
-  const copy = getSalonTimeCopy(tone);
-  const visibleJa = [
-    copy.subtitleJa,
-    copy.openingJa,
-    copy.fallbackJa,
-    copy.longCloseJa,
-    copy.giftKickerJa,
-    copy.workTitleJa,
-    copy.errorJa,
-    copy.leadPromptJa,
-    copy.leadToastJa,
-    ...copy.startersJa,
+  const copy = getLocalizedSalonTimeCopy(lang, tone);
+  const visibleCopy = [
+    copy.subtitle,
+    copy.opening,
+    copy.fallback,
+    copy.longClose,
+    copy.giftKicker,
+    copy.workTitle,
+    copy.error,
+    copy.leadPrompt,
+    copy.leadToast,
+    ...copy.starters,
   ].join("\n");
 
-  assert.doesNotMatch(visibleJa, /今夜|夜ふけ|夜更け/, `${tone} visible JA copy should not force late-night wording`);
+  assert.doesNotMatch(visibleCopy, nightBiasPattern[lang], `${tone}/${lang} visible copy should not force night wording`);
 }
 
 function assertStarters(lang: Lang, tone: SalonTimeTone) {
-  const copy = getSalonTimeCopy(tone);
+  const copy = getLocalizedSalonTimeCopy(lang, tone);
   const starters = getSalonStarters(lang, tone);
-  assert.deepEqual(starters, lang === "ja" ? copy.startersJa : copy.startersEn);
+  assert.deepEqual(starters, copy.starters);
   assert.ok(starters.length >= 5, `${tone}/${lang} should keep enough starter chips`);
   for (const starter of starters) assertTextPresent(`${tone}.${lang}.starter`, starter);
 }
 
 assert.deepEqual(SALON_TIME_TONE_VALUES, expectedTones);
+assert.deepEqual(SUPPORTED_LANG_VALUES, expectedLangs);
 
 assertBoundary(0, 0, "lateNight");
 assertBoundary(4, 59, "lateNight");
@@ -77,6 +95,14 @@ assert.equal(normalizeSalonTimeTone("night"), "night");
 assert.equal(normalizeSalonTimeTone("lateNight"), "lateNight");
 assert.equal(normalizeSalonTimeTone("late-night"), "night");
 assert.equal(normalizeSalonTimeTone(null), "night");
+
+assert.equal(normalizeLang("ja"), "ja");
+assert.equal(normalizeLang("en-US"), "en");
+assert.equal(normalizeLang("fr-FR"), "fr");
+assert.equal(normalizeLang("es_MX"), "es");
+assert.equal(normalizeLang("ar-EG"), "ar");
+assert.equal(normalizeLang("de-DE"), "de");
+assert.equal(normalizeLang(null), "ja");
 
 for (const tone of SALON_TIME_TONE_VALUES) {
   const copy = getSalonTimeCopy(tone);
@@ -100,9 +126,38 @@ for (const tone of SALON_TIME_TONE_VALUES) {
   assertTextPresent(`${tone}.leadPromptEn`, copy.leadPromptEn);
   assertTextPresent(`${tone}.leadToastJa`, copy.leadToastJa);
   assertTextPresent(`${tone}.leadToastEn`, copy.leadToastEn);
-  assertStarters("ja", tone);
-  assertStarters("en", tone);
-  assertNoNightBias(tone);
+  for (const lang of SUPPORTED_LANG_VALUES) {
+    const localized = getLocalizedSalonTimeCopy(lang, tone);
+    assertTextPresent(`${tone}.${lang}.subtitle`, localized.subtitle);
+    assertTextPresent(`${tone}.${lang}.opening`, localized.opening);
+    assertTextPresent(`${tone}.${lang}.prompt`, localized.prompt);
+    assertTextPresent(`${tone}.${lang}.fallback`, localized.fallback);
+    assertTextPresent(`${tone}.${lang}.longClose`, localized.longClose);
+    assertTextPresent(`${tone}.${lang}.giftKicker`, localized.giftKicker);
+    assertTextPresent(`${tone}.${lang}.workTitle`, localized.workTitle);
+    assertTextPresent(`${tone}.${lang}.error`, localized.error);
+    assertTextPresent(`${tone}.${lang}.leadPrompt`, localized.leadPrompt);
+    assertTextPresent(`${tone}.${lang}.leadToast`, localized.leadToast);
+    assertStarters(lang, tone);
+    assertNoNightBias(lang, tone);
+  }
 }
 
-console.log(`[validate-chat-time-copy] ${SALON_TIME_TONE_VALUES.length} time tones passed.`);
+for (const lang of SUPPORTED_LANG_VALUES) {
+  const profile = getLanguageProfile(lang);
+  assertTextPresent(`${lang}.label`, profile.label);
+  assertTextPresent(`${lang}.nativeName`, profile.nativeName);
+  assertTextPresent(`${lang}.englishName`, profile.englishName);
+  assert.ok(profile.dir === "ltr" || profile.dir === "rtl", `${lang}.dir should be ltr or rtl`);
+
+  const ui = getChatUiText(lang);
+  for (const [key, value] of Object.entries(ui)) {
+    assertTextPresent(`${lang}.ui.${key}`, value);
+  }
+
+  for (const product of PRODUCTS) {
+    assertTextPresent(`${lang}.product.${product.id}.ctaLabel`, productCtaLabelForLang(product, lang));
+  }
+}
+
+console.log(`[validate-chat-time-copy] ${SUPPORTED_LANG_VALUES.length} languages x ${SALON_TIME_TONE_VALUES.length} time tones passed.`);

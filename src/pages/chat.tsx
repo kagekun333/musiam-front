@@ -1,12 +1,16 @@
 import React, { startTransition, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./chat.module.css";
 import {
-  COUNT_PERSONA,
-  DUKE_PERSONA,
+  SUPPORTED_LANG_VALUES,
+  getChatUiText,
+  getLanguageProfile,
+  getLocalizedSalonTimeCopy,
   getSalonStarters,
-  getSalonTimeCopy,
   getSalonTimeTone,
+  normalizeLang,
   type ChatPersonaId,
+  type ChatUiText,
+  type Lang,
   type SalonTimeTone,
 } from "@/lib/chat-experience";
 
@@ -22,22 +26,73 @@ function capture(event: string, props?: Record<string, unknown>) {
   }
 }
 
-function personaName(id: ChatPersonaId | undefined, lang: "ja" | "en") {
-  if (id === "duke") return lang === "en" ? DUKE_PERSONA.nameEn : DUKE_PERSONA.nameJa;
-  return lang === "en" ? COUNT_PERSONA.nameEn : COUNT_PERSONA.nameJa;
+const PERSONA_NAMES: Record<ChatPersonaId, Record<Lang, string>> = {
+  count: {
+    ja: "伯爵",
+    en: "The Count",
+    fr: "Le Comte",
+    es: "El Conde",
+    de: "Der Graf",
+    ar: "الكونت",
+  },
+  duke: {
+    ja: "公爵",
+    en: "The Duke",
+    fr: "Le Duc",
+    es: "El Duque",
+    de: "Der Herzog",
+    ar: "الدوق",
+  },
+};
+
+function personaName(id: ChatPersonaId | undefined, lang: Lang) {
+  return PERSONA_NAMES[id === "duke" ? "duke" : "count"][lang];
 }
 
-function linkLabel(kind: string, url?: string) {
+const SERVICE_LISTEN_LABELS: Record<Lang, Record<"spotify" | "apple" | "amazon", string>> = {
+  ja: {
+    spotify: "Spotifyで聴く",
+    apple: "Apple Musicで聴く",
+    amazon: "Amazon Musicで聴く",
+  },
+  en: {
+    spotify: "Listen on Spotify",
+    apple: "Listen on Apple Music",
+    amazon: "Listen on Amazon Music",
+  },
+  fr: {
+    spotify: "Écouter sur Spotify",
+    apple: "Écouter sur Apple Music",
+    amazon: "Écouter sur Amazon Music",
+  },
+  es: {
+    spotify: "Escuchar en Spotify",
+    apple: "Escuchar en Apple Music",
+    amazon: "Escuchar en Amazon Music",
+  },
+  de: {
+    spotify: "Auf Spotify hören",
+    apple: "Auf Apple Music hören",
+    amazon: "Auf Amazon Music hören",
+  },
+  ar: {
+    spotify: "استمع على Spotify",
+    apple: "استمع على Apple Music",
+    amazon: "استمع على Amazon Music",
+  },
+};
+
+function linkLabel(kind: string, ui: ChatUiText, lang: Lang, url?: string) {
   const v = String(url || "");
   if (kind === "listen") {
-    if (/open\.spotify\.com|spotify:/i.test(v)) return "Spotifyで聴く";
-    if (/music\.apple\.com/i.test(v)) return "Apple Musicで聴く";
-    if (/music\.amazon\.(co\.jp|com)/i.test(v)) return "Amazon Musicで聴く";
-    return "聴く";
+    if (/open\.spotify\.com|spotify:/i.test(v)) return SERVICE_LISTEN_LABELS[lang].spotify;
+    if (/music\.apple\.com/i.test(v)) return SERVICE_LISTEN_LABELS[lang].apple;
+    if (/music\.amazon\.(co\.jp|com)/i.test(v)) return SERVICE_LISTEN_LABELS[lang].amazon;
+    return ui.linkListen;
   }
-  if (kind === "read") return "読む";
-  if (kind === "buy") return "購入";
-  return "開く";
+  if (kind === "read") return ui.linkRead;
+  if (kind === "buy") return ui.linkBuy;
+  return ui.linkOpen;
 }
 function linkBg(kind: string, url?: string): { bg: string; fg: string } {
   const v = String(url || "");
@@ -67,16 +122,16 @@ function TypewriterText({ text, animate }: { text: string; animate: boolean }) {
   return <>{shown}</>;
 }
 
-async function shareLine(text: string, onDone: (m: string) => void) {
-  const payload = `${text}\n\n— Count MUSIAM 伯爵の館`;
+async function shareLine(text: string, ui: ChatUiText, onDone: (m: string) => void) {
+  const payload = `${text}\n\n${ui.shareAttribution}`;
   try {
-    if (typeof navigator !== "undefined" && (navigator as any).share) { await (navigator as any).share({ text: payload }); onDone("共有しました"); return; }
-    if (typeof navigator !== "undefined" && navigator.clipboard) { await navigator.clipboard.writeText(payload); onDone("コピーしました"); return; }
+    if (typeof navigator !== "undefined" && (navigator as any).share) { await (navigator as any).share({ text: payload }); onDone(ui.shared); return; }
+    if (typeof navigator !== "undefined" && navigator.clipboard) { await navigator.clipboard.writeText(payload); onDone(ui.copied); return; }
   } catch { /* cancel */ }
 }
 
 export default function ChatPage() {
-  const [lang, setLang] = useState<"ja" | "en">("ja");
+  const [lang, setLang] = useState<Lang>("ja");
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [card, setCard] = useState<RecoCard | null>(null);
   const [cta, setCta] = useState<Cta | null>(null);
@@ -91,14 +146,21 @@ export default function ChatPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
 
-  const timeCopy = useMemo(() => getSalonTimeCopy(timeTone), [timeTone]);
+  const timeCopy = useMemo(() => getLocalizedSalonTimeCopy(lang, timeTone), [lang, timeTone]);
+  const ui = useMemo(() => getChatUiText(lang), [lang]);
+  const langProfile = useMemo(() => getLanguageProfile(lang), [lang]);
   const starters = useMemo(() => getSalonStarters(lang, timeTone), [lang, timeTone]);
 
   useEffect(() => {
-    let initial: "ja" | "en" = "ja";
+    let initial: Lang = "ja";
     try {
       const saved = localStorage.getItem("musiam_salon_lang");
-      if (saved === "ja" || saved === "en") { initial = saved; setLang(saved); }
+      if (saved) {
+        initial = normalizeLang(saved);
+      } else if (typeof navigator !== "undefined") {
+        initial = normalizeLang(navigator.languages?.[0] ?? navigator.language);
+      }
+      setLang(initial);
     } catch { /* ignore */ }
     const tone = getSalonTimeTone();
     setTimeTone(tone);
@@ -109,7 +171,7 @@ export default function ChatPage() {
   useEffect(() => { if (threadRef.current) threadRef.current.scrollTop = threadRef.current.scrollHeight; }, [messages, sending]);
   useEffect(() => { if (!toast) return; const id = window.setTimeout(() => setToast(null), 1800); return () => window.clearTimeout(id); }, [toast]);
 
-  async function begin(l: "ja" | "en" = lang, tone: SalonTimeTone = timeTone) {
+  async function begin(l: Lang = lang, tone: SalonTimeTone = timeTone) {
     setError(null); setCard(null); setCta(null); setMessages([]);
     try {
       const res = await fetch("/api/chat-experience-v3", {
@@ -122,9 +184,9 @@ export default function ChatPage() {
         setMessages(text ? [{ role: "assistant", content: text, persona: "count" }] : []);
         setStarted(true);
       });
-      capture("salon_open", { timeTone: tone });
+      capture("salon_open", { timeTone: tone, lang: l });
     } catch (e: any) {
-      setError(e?.message || "館の扉が開きませんでした。");
+      setError(e?.message || timeCopy.error);
       setStarted(true);
     }
   }
@@ -135,7 +197,7 @@ export default function ChatPage() {
     const next: ChatMsg[] = [...messages, { role: "user", content }];
     setMessages(next);
     setError(null); setSending(true);
-    capture("salon_send", { len: content.length });
+    capture("salon_send", { len: content.length, lang });
     try {
       const res = await fetch("/api/chat-experience-v3", {
         method: "POST", headers: { "Content-Type": "application/json" },
@@ -151,11 +213,11 @@ export default function ChatPage() {
         setCard(nextCard);
         setCta(nextCta);
       });
-      if (persona === "duke") capture("salon_duke", {});
+      if (persona === "duke") capture("salon_duke", { lang });
       if (nextCard) capture("salon_work_show", { title: nextCard.title });
       if (nextCta) capture("salon_cta_show", { href: nextCta.href });
     } catch (e: any) {
-      setError(e?.message || "通信が途切れました。");
+      setError(e?.message || timeCopy.error);
     } finally {
       setSending(false);
     }
@@ -176,16 +238,16 @@ export default function ChatPage() {
 
   async function submitEmail() {
     const v = email.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { setToast(lang === "en" ? "Please check the email." : "メールの形式をご確認ください。"); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { setToast(ui.emailInvalid); return; }
     try {
       const res = await fetch("/api/subscribe", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: v, source: "salon" }),
       });
       const json = await res.json();
-      if (json?.ok) { setEmailDone(true); capture("salon_lead", { timeTone }); setToast(lang === "en" ? timeCopy.leadToastEn : timeCopy.leadToastJa); }
-      else setToast(lang === "en" ? "Couldn't send." : "うまく送れませんでした。");
-    } catch { setToast(lang === "en" ? "Couldn't send." : "うまく送れませんでした。"); }
+      if (json?.ok) { setEmailDone(true); capture("salon_lead", { timeTone, lang }); setToast(timeCopy.leadToast); }
+      else setToast(ui.emailFailed);
+    } catch { setToast(ui.emailFailed); }
   }
 
   const lastAssistantIndex = (() => {
@@ -194,19 +256,15 @@ export default function ChatPage() {
   })();
 
   return (
-    <main className={styles.page}>
+    <main className={styles.page} lang={langProfile.htmlLang} dir={langProfile.dir}>
       <section className={styles.hero}>
         <div>
           <p className={styles.kicker}>Count MUSIAM</p>
           <h1 className={styles.title}>伯爵の館</h1>
-          <p className={styles.subtitle}>
-            {lang === "en"
-              ? timeCopy.subtitleEn
-              : timeCopy.subtitleJa}
-          </p>
+          <p className={styles.subtitle}>{timeCopy.subtitle}</p>
         </div>
         <div className={styles.langRow}>
-          {(["ja", "en"] as const).map((l) => (
+          {SUPPORTED_LANG_VALUES.map((l) => (
             <button
               key={l}
               className={l === lang ? styles.langActive : styles.langButton}
@@ -218,7 +276,7 @@ export default function ChatPage() {
                 void begin(l, tone);
               }}
             >
-              {l === "ja" ? "日本語" : "English"}
+              {getLanguageProfile(l).label}
             </button>
           ))}
         </div>
@@ -234,24 +292,24 @@ export default function ChatPage() {
         )}
 
         <div className={styles.thread} ref={threadRef}>
-          {!started && <p className={styles.emptyState}>{lang === "en" ? "Opening the door…" : "扉を開いています…"}</p>}
+          {!started && <p className={styles.emptyState}>{ui.emptyState}</p>}
           {messages.map((m, i) => {
             const isDukeEntry = m.role === "assistant" && m.persona === "duke" && (i === 0 || messages[i - 1]?.persona !== "duke");
             return (
               <React.Fragment key={`${m.role}-${i}`}>
                 {isDukeEntry && (
-                  <div className={styles.dukeDivider}>{lang === "en" ? "— The Duke enters —" : "—— 公爵がお見えになりました ——"}</div>
+                  <div className={styles.dukeDivider}>{ui.dukeDivider}</div>
                 )}
                 <div className={m.role === "assistant" ? (m.persona === "duke" ? styles.dukeBubble : styles.assistantBubble) : styles.userBubble}>
-                  <p className={styles.bubbleRole}>{m.role === "assistant" ? personaName(m.persona, lang) : "You"}</p>
+                  <p className={styles.bubbleRole}>{m.role === "assistant" ? personaName(m.persona, lang) : ui.userLabel}</p>
                   <p className={styles.bubbleText}>
                     {m.role === "assistant"
                       ? <TypewriterText text={m.content} animate={i === lastAssistantIndex} />
                       : m.content}
                   </p>
                   {m.role === "assistant" && i === lastAssistantIndex && !sending && (
-                    <button className={styles.shareInline} onClick={() => { capture("salon_line_share", {}); void shareLine(m.content, setToast); }}>
-                      {lang === "en" ? "Keep this line" : "この一行を残す"}
+                    <button className={styles.shareInline} onClick={() => { capture("salon_line_share", { lang }); void shareLine(m.content, ui, setToast); }}>
+                      {ui.keepLine}
                     </button>
                   )}
                 </div>
@@ -284,43 +342,39 @@ export default function ChatPage() {
             ref={inputRef}
             className={styles.input}
             rows={1}
-            placeholder={lang === "en" ? "Say anything — speak to the Count" : "なんでもどうぞ。伯爵に話しかけてみてください"}
+            placeholder={ui.inputPlaceholder}
             onKeyDown={onKeyDown}
             onInput={autoGrow}
             disabled={sending || !started}
           />
           <button className={styles.sendButton} onClick={onSubmit} disabled={sending || !started}>
-            {sending ? "…" : lang === "en" ? "Send" : "渡す"}
+            {sending ? "…" : ui.sendLabel}
           </button>
         </div>
 
-        <p className={styles.inputHint}>
-          {lang === "en"
-            ? "Greetings, worries, or idle talk — the Count listens to all. You can just chat freely."
-            : "挨拶でも、相談でも、ただの雑談でも。自由に話して大丈夫です——伯爵はなんでもお聞きします。"}
-        </p>
+        <p className={styles.inputHint}>{ui.inputHint}</p>
 
         {error && (
           <p className={styles.error}>
-            {lang === "en" ? timeCopy.errorEn : timeCopy.errorJa}
+            {timeCopy.error}
           </p>
         )}
 
         {messages.length >= 3 && !emailDone && (
           <div className={styles.leadRow}>
-            <span className={styles.leadText}>{lang === "en" ? timeCopy.leadPromptEn : timeCopy.leadPromptJa}</span>
+            <span className={styles.leadText}>{timeCopy.leadPrompt}</span>
             <div className={styles.leadInputRow}>
               <input
                 className={styles.leadInput}
                 type="email"
                 inputMode="email"
                 autoComplete="email"
-                placeholder={lang === "en" ? "your@email" : "メールアドレス"}
+                placeholder={ui.emailPlaceholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); void submitEmail(); } }}
               />
-              <button className={styles.leadButton} onClick={() => void submitEmail()}>{lang === "en" ? "Keep in touch" : "受け取る"}</button>
+              <button className={styles.leadButton} onClick={() => void submitEmail()}>{ui.leadButton}</button>
             </div>
           </div>
         )}
@@ -329,8 +383,8 @@ export default function ChatPage() {
       {card && (
         <section className={styles.giftShell}>
           <div className={styles.giftHeader}>
-            <p className={styles.kicker}>{lang === "en" ? timeCopy.giftKickerEn : timeCopy.giftKickerJa}</p>
-            <h3 className={styles.giftTitle}>{lang === "en" ? timeCopy.workTitleEn : timeCopy.workTitleJa}</h3>
+            <p className={styles.kicker}>{timeCopy.giftKicker}</p>
+            <h3 className={styles.giftTitle}>{timeCopy.workTitle}</h3>
           </div>
           <div className={styles.giftCard}>
             {card.cover ? <img src={card.cover} alt={card.title} className={styles.giftCover} /> : null}
@@ -353,7 +407,7 @@ export default function ChatPage() {
                     className={styles.linkButton}
                     style={{ background: linkBg(link.kind, link.url).bg, color: linkBg(link.kind, link.url).fg }}
                   >
-                    {linkLabel(link.kind, link.url)}
+                    {linkLabel(link.kind, ui, lang, link.url)}
                   </a>
                 ))}
                 <a
@@ -362,7 +416,7 @@ export default function ChatPage() {
                   className={styles.linkButton}
                   style={{ background: "rgba(216,182,92,0.16)", color: "#e7d6a6" }}
                 >
-                  作品の頁へ
+                  {ui.workDetail}
                 </a>
               </div>
             </div>

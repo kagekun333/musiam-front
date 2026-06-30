@@ -5,12 +5,45 @@
 // 旧8扉・旧テンプレ機構は破棄。ここは「人格」「商材」「開幕」の定義のみを持つ。
 
 export type ChatPersonaId = "count" | "duke";
-export type Lang = "ja" | "en";
+export const SUPPORTED_LANG_VALUES = ["ja", "en", "fr", "es", "de", "ar"] as const;
+export type Lang = (typeof SUPPORTED_LANG_VALUES)[number];
 export const SALON_TIME_TONE_VALUES = ["morning", "afternoon", "evening", "night", "lateNight"] as const;
 export type SalonTimeTone = (typeof SALON_TIME_TONE_VALUES)[number];
 
 /** few-shot の理想応答例。LLM に「声」の手本を渡すために使う。 */
 export type ChatShot = { user: string; assistant: string };
+
+export type LangProfile = {
+  label: string;
+  nativeName: string;
+  englishName: string;
+  htmlLang: string;
+  dir: "ltr" | "rtl";
+};
+
+export const LANG_PROFILES: Record<Lang, LangProfile> = {
+  ja: { label: "日本語", nativeName: "日本語", englishName: "Japanese", htmlLang: "ja", dir: "ltr" },
+  en: { label: "English", nativeName: "English", englishName: "English", htmlLang: "en", dir: "ltr" },
+  fr: { label: "Français", nativeName: "français", englishName: "French", htmlLang: "fr", dir: "ltr" },
+  es: { label: "Español", nativeName: "español", englishName: "Spanish", htmlLang: "es", dir: "ltr" },
+  de: { label: "Deutsch", nativeName: "Deutsch", englishName: "German", htmlLang: "de", dir: "ltr" },
+  ar: { label: "العربية", nativeName: "العربية", englishName: "Arabic", htmlLang: "ar", dir: "rtl" },
+};
+
+const SUPPORTED_LANG_SET = new Set<string>(SUPPORTED_LANG_VALUES);
+
+export function normalizeLang(value: unknown): Lang {
+  if (typeof value !== "string") return "ja";
+  const normalized = value.trim().toLowerCase();
+  const primary = normalized.split(/[-_]/)[0];
+  if (SUPPORTED_LANG_SET.has(normalized)) return normalized as Lang;
+  if (SUPPORTED_LANG_SET.has(primary)) return primary as Lang;
+  return "ja";
+}
+
+export function getLanguageProfile(lang: Lang): LangProfile {
+  return LANG_PROFILES[lang];
+}
 
 export type SalonTimeCopy = {
   subtitleJa: string;
@@ -35,6 +68,42 @@ export type SalonTimeCopy = {
   leadToastEn: string;
   startersJa: string[];
   startersEn: string[];
+};
+
+export type LocalizedSalonTimeCopy = {
+  subtitle: string;
+  opening: string;
+  prompt: string;
+  fallback: string;
+  longClose: string;
+  giftKicker: string;
+  workTitle: string;
+  error: string;
+  leadPrompt: string;
+  leadToast: string;
+  starters: string[];
+};
+
+export type ChatUiText = {
+  emptyState: string;
+  inputPlaceholder: string;
+  inputHint: string;
+  emailInvalid: string;
+  emailFailed: string;
+  emailPlaceholder: string;
+  sendLabel: string;
+  leadButton: string;
+  keepLine: string;
+  userLabel: string;
+  dukeDivider: string;
+  copied: string;
+  shared: string;
+  shareAttribution: string;
+  linkListen: string;
+  linkRead: string;
+  linkBuy: string;
+  linkOpen: string;
+  workDetail: string;
 };
 
 const SALON_TIME_TONE_SET = new Set<string>(SALON_TIME_TONE_VALUES);
@@ -177,6 +246,445 @@ const SALON_TIME_COPY: Record<SalonTimeTone, SalonTimeCopy> = {
 
 export function getSalonTimeCopy(tone: SalonTimeTone): SalonTimeCopy {
   return SALON_TIME_COPY[tone];
+}
+
+function pickBaseLocalizedCopy(copy: SalonTimeCopy, lang: "ja" | "en"): LocalizedSalonTimeCopy {
+  return lang === "ja"
+    ? {
+        subtitle: copy.subtitleJa,
+        opening: copy.openingJa,
+        prompt: copy.promptJa,
+        fallback: copy.fallbackJa,
+        longClose: copy.longCloseJa,
+        giftKicker: copy.giftKickerJa,
+        workTitle: copy.workTitleJa,
+        error: copy.errorJa,
+        leadPrompt: copy.leadPromptJa,
+        leadToast: copy.leadToastJa,
+        starters: copy.startersJa,
+      }
+    : {
+        subtitle: copy.subtitleEn,
+        opening: copy.openingEn,
+        prompt: copy.promptEn,
+        fallback: copy.fallbackEn,
+        longClose: copy.longCloseEn,
+        giftKicker: copy.giftKickerEn,
+        workTitle: copy.workTitleEn,
+        error: copy.errorEn,
+        leadPrompt: copy.leadPromptEn,
+        leadToast: copy.leadToastEn,
+        starters: copy.startersEn,
+      };
+}
+
+const EXTRA_SALON_TIME_COPY: Record<Exclude<Lang, "ja" | "en">, Record<SalonTimeTone, LocalizedSalonTimeCopy>> = {
+  fr: {
+    morning: {
+      subtitle: "Le maître de la maison accueille votre matin et vous guide vers l'œuvre qui convient à ce jour.",
+      opening: "Bienvenue dans ma demeure. Je suis le Comte, celui qui vous reçoit au seuil du matin. Une salutation, l'humeur du jour, ou la chanson que vous cherchez — tout est bienvenu. Par quoi commencerons-nous ?",
+      prompt: "Le ton actuel est le matin. Ne parle pas comme si c'était la nuit ; utilise naturellement « ce matin », « aujourd'hui » ou « le seuil du matin ».",
+      fallback: "Je vous entends. Derrière ces mots, il semble y avoir encore un paysage. Vers quoi souhaitez-vous avancer aujourd'hui ?",
+      longClose: "Nous avons longuement conversé aujourd'hui. Laissons la porte de la demeure se refermer un peu. À bientôt.",
+      giftKicker: "Présent du jour",
+      workTitle: "L'œuvre du jour",
+      error: "La demeure s'est tue un instant. Essayez encore une fois.",
+      leadPrompt: "Souhaitez-vous recevoir la prochaine lettre de la demeure ?",
+      leadToast: "C'est entendu. La prochaine lettre viendra.",
+      starters: ["Bonjour", "Accorder l'humeur du jour", "J'ai une question", "Une chanson pour le matin", "Une chanson à offrir", "De la musique pour mon lieu", "Qui êtes-vous, Comte ?"],
+    },
+    afternoon: {
+      subtitle: "Le maître de la maison accueille votre après-midi et vous guide vers l'œuvre qui vous convient maintenant.",
+      opening: "Bienvenue dans ma demeure. Je suis le Comte, compagnon discret de votre après-midi. Une salutation, votre humeur présente, ou la chanson que vous cherchez — tout est bienvenu. Par quoi commencerons-nous ?",
+      prompt: "Le ton actuel est l'après-midi. Ne parle pas comme si c'était la nuit ; utilise naturellement « cet après-midi », « aujourd'hui » ou « cette pause du jour ».",
+      fallback: "Je vous entends. Derrière ces mots, il semble y avoir encore un paysage. Vers quoi souhaitez-vous avancer cet après-midi ?",
+      longClose: "Nous avons longuement conversé aujourd'hui. Laissons la porte de la demeure se refermer un peu. À bientôt.",
+      giftKicker: "Présent de l'après-midi",
+      workTitle: "L'œuvre de l'après-midi",
+      error: "La demeure s'est tue un instant. Essayez encore une fois.",
+      leadPrompt: "Souhaitez-vous recevoir la prochaine lettre de la demeure ?",
+      leadToast: "C'est entendu. La prochaine lettre viendra.",
+      starters: ["Bonjour", "Changer un peu d'humeur", "J'ai une question", "Une chanson pour maintenant", "Une chanson à offrir", "De la musique pour mon lieu", "Qui êtes-vous, Comte ?"],
+    },
+    evening: {
+      subtitle: "Le maître de la maison accueille votre crépuscule et vous guide vers l'œuvre qui vous convient maintenant.",
+      opening: "Bienvenue dans ma demeure. Je suis le Comte, gardien de la marge du crépuscule. Une salutation, votre humeur présente, ou la chanson que vous cherchez — tout est bienvenu. Par quoi commencerons-nous ?",
+      prompt: "Le ton actuel est le soir. Ne parle pas comme si c'était une heure tardive ; utilise naturellement « ce soir », « le crépuscule » ou « la fin du jour ».",
+      fallback: "Je vous entends. Derrière ces mots, il semble y avoir encore un paysage. Vers quoi souhaitez-vous avancer dans ce crépuscule ?",
+      longClose: "Nous avons longuement conversé aujourd'hui. Abaissons ici la flamme des chandelles. À bientôt.",
+      giftKicker: "Présent du crépuscule",
+      workTitle: "L'œuvre du crépuscule",
+      error: "La demeure s'est tue un instant. Essayez encore une fois.",
+      leadPrompt: "Souhaitez-vous recevoir la prochaine lettre de la demeure ?",
+      leadToast: "C'est entendu. La prochaine lettre viendra.",
+      starters: ["Bonsoir", "Une chanson pour le retour", "J'ai une question", "Une chanson pour maintenant", "Une chanson à offrir", "De la musique pour mon lieu", "Qui êtes-vous, Comte ?"],
+    },
+    night: {
+      subtitle: "Le maître de la maison accueille votre nuit et vous guide vers l'œuvre qui vous convient maintenant.",
+      opening: "Bienvenue dans ma demeure. Je suis le Comte, celui qui vous reçoit au seuil de la nuit. Une salutation, l'humeur de cette nuit, ou la chanson que vous cherchez — tout est bienvenu. Par quoi commencerons-nous ?",
+      prompt: "Le ton actuel est la nuit. Tu peux utiliser naturellement « cette nuit » ou « le seuil de la nuit », sans répéter toujours la même formule.",
+      fallback: "Je vous entends. Derrière ces mots, il semble y avoir encore un paysage. Vers quoi souhaitez-vous avancer cette nuit ?",
+      longClose: "Nous avons longuement conversé cette nuit. Abaissons ici la flamme des chandelles. À une autre nuit.",
+      giftKicker: "Présent de la nuit",
+      workTitle: "L'œuvre de la nuit",
+      error: "La nuit s'est tue un instant. Essayez encore une fois.",
+      leadPrompt: "Souhaitez-vous recevoir une lettre lors de votre prochaine nuit ?",
+      leadToast: "C'est entendu. Une lettre viendra lors de la prochaine nuit.",
+      starters: ["Bonsoir", "Une chanson pour cette nuit", "J'ai une question", "Une chanson pour maintenant", "Une chanson à offrir", "De la musique pour mon lieu", "Qui êtes-vous, Comte ?"],
+    },
+    lateNight: {
+      subtitle: "Le maître de la maison accueille votre heure tardive et vous guide vers l'œuvre qui vous convient maintenant.",
+      opening: "Bienvenue dans ma demeure. Je suis le Comte, votre compagnie des heures tardives. Une salutation, l'humeur de cette nuit, ou la chanson que vous cherchez — tout est bienvenu. Par quoi commencerons-nous ?",
+      prompt: "Le ton actuel est l'heure tardive. Tu peux utiliser naturellement « les heures tardives » ou « cette nuit », mais suis les mots du visiteur s'il parle du matin ou du jour.",
+      fallback: "Je vous entends. Derrière ces mots, il semble y avoir encore un paysage. Vers quoi souhaitez-vous avancer à cette heure tardive ?",
+      longClose: "Nous avons longuement conversé cette nuit. Abaissons ici la flamme des chandelles. À une autre nuit.",
+      giftKicker: "Présent des heures tardives",
+      workTitle: "L'œuvre des heures tardives",
+      error: "La nuit s'est tue un instant. Essayez encore une fois.",
+      leadPrompt: "Souhaitez-vous recevoir une lettre lors de votre prochaine nuit ?",
+      leadToast: "C'est entendu. Une lettre viendra lors de la prochaine nuit.",
+      starters: ["Bonsoir", "Je n'arrive pas à dormir", "J'ai une question", "Une chanson pour maintenant", "Une chanson à offrir", "De la musique pour mon lieu", "Qui êtes-vous, Comte ?"],
+    },
+  },
+  es: {
+    morning: {
+      subtitle: "El señor de la casa recibe tu mañana y te guía hacia la obra que encaja con este día.",
+      opening: "Bienvenido a mi casa. Soy el Conde, quien te recibe en el umbral de la mañana. Un saludo, el ánimo de hoy o la canción que buscas: todo es bienvenido. ¿Por dónde empezamos?",
+      prompt: "El tono actual es la mañana. No hables como si fuera de noche; usa con naturalidad «esta mañana», «hoy» o «el umbral de la mañana».",
+      fallback: "Te escucho. Detrás de esas palabras parece haber otro paisaje. ¿A qué quieres acercarte hoy?",
+      longClose: "Hoy hemos conversado largo y tendido. Dejemos la puerta de la casa un poco entornada. Hasta pronto.",
+      giftKicker: "Regalo de hoy",
+      workTitle: "La obra de hoy",
+      error: "La casa quedó en silencio un instante. Inténtalo una vez más.",
+      leadPrompt: "¿Quieres que la casa te envíe la próxima carta?",
+      leadToast: "Entendido. La próxima carta llegará.",
+      starters: ["Buenos días", "Ajustar el ánimo de hoy", "Tengo una pregunta", "Una canción para la mañana", "Una canción para regalar", "Música para mi local", "¿Quién es usted, Conde?"],
+    },
+    afternoon: {
+      subtitle: "El señor de la casa recibe tu tarde y te guía hacia la obra que encaja contigo ahora.",
+      opening: "Bienvenido a mi casa. Soy el Conde, compañía discreta de tu tarde. Un saludo, tu ánimo presente o la canción que buscas: todo es bienvenido. ¿Por dónde empezamos?",
+      prompt: "El tono actual es la tarde. No hables como si fuera de noche; usa con naturalidad «esta tarde», «hoy» o «esta pausa del día».",
+      fallback: "Te escucho. Detrás de esas palabras parece haber otro paisaje. ¿A qué quieres acercarte esta tarde?",
+      longClose: "Hoy hemos conversado largo y tendido. Dejemos la puerta de la casa un poco entornada. Hasta pronto.",
+      giftKicker: "Regalo de la tarde",
+      workTitle: "La obra de la tarde",
+      error: "La casa quedó en silencio un instante. Inténtalo una vez más.",
+      leadPrompt: "¿Quieres que la casa te envíe la próxima carta?",
+      leadToast: "Entendido. La próxima carta llegará.",
+      starters: ["Buenas tardes", "Cambiar un poco el ánimo", "Tengo una pregunta", "Una canción para ahora", "Una canción para regalar", "Música para mi local", "¿Quién es usted, Conde?"],
+    },
+    evening: {
+      subtitle: "El señor de la casa recibe tu atardecer y te guía hacia la obra que encaja contigo ahora.",
+      opening: "Bienvenido a mi casa. Soy el Conde, custodio del margen del atardecer. Un saludo, tu ánimo presente o la canción que buscas: todo es bienvenido. ¿Por dónde empezamos?",
+      prompt: "El tono actual es el atardecer. No lo fijes en la madrugada; usa con naturalidad «este atardecer», «esta tarde» o «el final del día».",
+      fallback: "Te escucho. Detrás de esas palabras parece haber otro paisaje. ¿A qué quieres acercarte en este atardecer?",
+      longClose: "Hoy hemos conversado largo y tendido. Bajemos aquí la llama del candelabro. Hasta pronto.",
+      giftKicker: "Regalo del atardecer",
+      workTitle: "La obra del atardecer",
+      error: "La casa quedó en silencio un instante. Inténtalo una vez más.",
+      leadPrompt: "¿Quieres que la casa te envíe la próxima carta?",
+      leadToast: "Entendido. La próxima carta llegará.",
+      starters: ["Buenas tardes", "Una canción para el regreso", "Tengo una pregunta", "Una canción para ahora", "Una canción para regalar", "Música para mi local", "¿Quién es usted, Conde?"],
+    },
+    night: {
+      subtitle: "El señor de la casa recibe tu noche y te guía hacia la obra que encaja contigo ahora.",
+      opening: "Bienvenido a mi casa. Soy el Conde, quien te recibe en el umbral de la noche. Un saludo, el ánimo de esta noche o la canción que buscas: todo es bienvenido. ¿Por dónde empezamos?",
+      prompt: "El tono actual es la noche. Puedes usar con naturalidad «esta noche» o «el umbral de la noche», sin repetir siempre la misma fórmula.",
+      fallback: "Te escucho. Detrás de esas palabras parece haber otro paisaje. ¿A qué quieres acercarte esta noche?",
+      longClose: "Esta noche hemos conversado largo y tendido. Bajemos aquí la llama del candelabro. Hasta otra noche.",
+      giftKicker: "Regalo de la noche",
+      workTitle: "La obra de la noche",
+      error: "La noche quedó en silencio un instante. Inténtalo una vez más.",
+      leadPrompt: "¿Quieres que la casa te escriba en tu próxima noche?",
+      leadToast: "Entendido. Una carta llegará en tu próxima noche.",
+      starters: ["Buenas noches", "Una canción para esta noche", "Tengo una pregunta", "Una canción para ahora", "Una canción para regalar", "Música para mi local", "¿Quién es usted, Conde?"],
+    },
+    lateNight: {
+      subtitle: "El señor de la casa recibe tu madrugada y te guía hacia la obra que encaja contigo ahora.",
+      opening: "Bienvenido a mi casa. Soy el Conde, tu compañía en la madrugada. Un saludo, el ánimo de esta noche o la canción que buscas: todo es bienvenido. ¿Por dónde empezamos?",
+      prompt: "El tono actual es la madrugada. Puedes usar con naturalidad «madrugada» o «esta noche», pero sigue las palabras del visitante si habla de la mañana o del día.",
+      fallback: "Te escucho. Detrás de esas palabras parece haber otro paisaje. ¿A qué quieres acercarte en esta madrugada?",
+      longClose: "Esta noche hemos conversado largo y tendido. Bajemos aquí la llama del candelabro. Hasta otra noche.",
+      giftKicker: "Regalo de madrugada",
+      workTitle: "La obra de madrugada",
+      error: "La noche quedó en silencio un instante. Inténtalo una vez más.",
+      leadPrompt: "¿Quieres que la casa te escriba en tu próxima noche?",
+      leadToast: "Entendido. Una carta llegará en tu próxima noche.",
+      starters: ["Buenas noches", "No puedo dormir", "Tengo una pregunta", "Una canción para ahora", "Una canción para regalar", "Música para mi local", "¿Quién es usted, Conde?"],
+    },
+  },
+  de: {
+    morning: {
+      subtitle: "Der Herr des Hauses empfängt deinen Morgen und führt dich zu dem Werk, das zu diesem Tag passt.",
+      opening: "Willkommen in meinem Haus. Ich bin der Graf, der dich an der Schwelle des Morgens empfängt. Ein Gruß, die Stimmung des Tages oder das Lied, das du suchst — alles ist willkommen. Womit beginnen wir?",
+      prompt: "Der aktuelle Ton ist Morgen. Sprich nicht, als wäre es Nacht; nutze natürlich „heute Morgen“, „heute“ oder „die Schwelle des Morgens“.",
+      fallback: "Ich höre dich. Hinter diesen Worten scheint noch eine Landschaft zu liegen. Wohin möchtest du dich heute bewegen?",
+      longClose: "Wir haben heute lange gesprochen. Lassen wir die Tür des Hauses ein wenig angelehnt. Bis bald.",
+      giftKicker: "Geschenk des Tages",
+      workTitle: "Werk des Tages",
+      error: "Das Haus ist einen Moment still geworden. Versuch es noch einmal.",
+      leadPrompt: "Soll das Haus dir den nächsten Brief senden?",
+      leadToast: "Verstanden. Der nächste Brief wird kommen.",
+      starters: ["Guten Morgen", "Die Stimmung für heute stimmen", "Ich habe eine Frage", "Ein Lied für den Morgen", "Ein Lied zum Verschenken", "Musik für meinen Ort", "Wer sind Sie, Graf?"],
+    },
+    afternoon: {
+      subtitle: "Der Herr des Hauses empfängt deinen Nachmittag und führt dich zu dem Werk, das jetzt zu dir passt.",
+      opening: "Willkommen in meinem Haus. Ich bin der Graf, die diskrete Gesellschaft deines Nachmittags. Ein Gruß, deine gegenwärtige Stimmung oder das Lied, das du suchst — alles ist willkommen. Womit beginnen wir?",
+      prompt: "Der aktuelle Ton ist Nachmittag. Sprich nicht, als wäre es Nacht; nutze natürlich „heute Nachmittag“, „heute“ oder „diese Pause des Tages“.",
+      fallback: "Ich höre dich. Hinter diesen Worten scheint noch eine Landschaft zu liegen. Wohin möchtest du dich an diesem Nachmittag bewegen?",
+      longClose: "Wir haben heute lange gesprochen. Lassen wir die Tür des Hauses ein wenig angelehnt. Bis bald.",
+      giftKicker: "Geschenk des Nachmittags",
+      workTitle: "Werk des Nachmittags",
+      error: "Das Haus ist einen Moment still geworden. Versuch es noch einmal.",
+      leadPrompt: "Soll das Haus dir den nächsten Brief senden?",
+      leadToast: "Verstanden. Der nächste Brief wird kommen.",
+      starters: ["Guten Tag", "Die Stimmung ein wenig wechseln", "Ich habe eine Frage", "Ein Lied für jetzt", "Ein Lied zum Verschenken", "Musik für meinen Ort", "Wer sind Sie, Graf?"],
+    },
+    evening: {
+      subtitle: "Der Herr des Hauses empfängt deine Abenddämmerung und führt dich zu dem Werk, das jetzt zu dir passt.",
+      opening: "Willkommen in meinem Haus. Ich bin der Graf, Hüter des Randes der Abenddämmerung. Ein Gruß, deine gegenwärtige Stimmung oder das Lied, das du suchst — alles ist willkommen. Womit beginnen wir?",
+      prompt: "Der aktuelle Ton ist Abend. Lege die Sprache nicht auf eine späte Stunde fest; nutze natürlich „heute Abend“, „Abenddämmerung“ oder „das Ende des Tages“.",
+      fallback: "Ich höre dich. Hinter diesen Worten scheint noch eine Landschaft zu liegen. Wohin möchtest du dich in dieser Abenddämmerung bewegen?",
+      longClose: "Wir haben heute lange gesprochen. Senken wir hier die Flamme der Kerzen. Bis bald.",
+      giftKicker: "Geschenk der Abenddämmerung",
+      workTitle: "Werk der Abenddämmerung",
+      error: "Das Haus ist einen Moment still geworden. Versuch es noch einmal.",
+      leadPrompt: "Soll das Haus dir den nächsten Brief senden?",
+      leadToast: "Verstanden. Der nächste Brief wird kommen.",
+      starters: ["Guten Abend", "Ein Lied für den Heimweg", "Ich habe eine Frage", "Ein Lied für jetzt", "Ein Lied zum Verschenken", "Musik für meinen Ort", "Wer sind Sie, Graf?"],
+    },
+    night: {
+      subtitle: "Der Herr des Hauses empfängt deine Nacht und führt dich zu dem Werk, das jetzt zu dir passt.",
+      opening: "Willkommen in meinem Haus. Ich bin der Graf, der dich an der Schwelle der Nacht empfängt. Ein Gruß, die Stimmung dieser Nacht oder das Lied, das du suchst — alles ist willkommen. Womit beginnen wir?",
+      prompt: "Der aktuelle Ton ist Nacht. Du darfst natürlich „diese Nacht“ oder „die Schwelle der Nacht“ verwenden, ohne immer dieselbe Formel zu wiederholen.",
+      fallback: "Ich höre dich. Hinter diesen Worten scheint noch eine Landschaft zu liegen. Wohin möchtest du dich in dieser Nacht bewegen?",
+      longClose: "Wir haben in dieser Nacht lange gesprochen. Senken wir hier die Flamme der Kerzen. Bis zu einer anderen Nacht.",
+      giftKicker: "Geschenk der Nacht",
+      workTitle: "Werk der Nacht",
+      error: "Die Nacht ist einen Moment still geworden. Versuch es noch einmal.",
+      leadPrompt: "Soll das Haus dir in deiner nächsten Nacht schreiben?",
+      leadToast: "Verstanden. In deiner nächsten Nacht wird ein Brief kommen.",
+      starters: ["Guten Abend", "Ein Lied für diese Nacht", "Ich habe eine Frage", "Ein Lied für jetzt", "Ein Lied zum Verschenken", "Musik für meinen Ort", "Wer sind Sie, Graf?"],
+    },
+    lateNight: {
+      subtitle: "Der Herr des Hauses empfängt deine späte Stunde und führt dich zu dem Werk, das jetzt zu dir passt.",
+      opening: "Willkommen in meinem Haus. Ich bin der Graf, deine Gesellschaft in der späten Stunde. Ein Gruß, die Stimmung dieser Nacht oder das Lied, das du suchst — alles ist willkommen. Womit beginnen wir?",
+      prompt: "Der aktuelle Ton ist die späte Stunde. Du darfst natürlich „späte Stunde“ oder „diese Nacht“ verwenden, aber folge den Worten des Gastes, wenn er vom Morgen oder vom Tag spricht.",
+      fallback: "Ich höre dich. Hinter diesen Worten scheint noch eine Landschaft zu liegen. Wohin möchtest du dich in dieser späten Stunde bewegen?",
+      longClose: "Wir haben in dieser Nacht lange gesprochen. Senken wir hier die Flamme der Kerzen. Bis zu einer anderen Nacht.",
+      giftKicker: "Geschenk der späten Stunde",
+      workTitle: "Werk der späten Stunde",
+      error: "Die Nacht ist einen Moment still geworden. Versuch es noch einmal.",
+      leadPrompt: "Soll das Haus dir in deiner nächsten Nacht schreiben?",
+      leadToast: "Verstanden. In deiner nächsten Nacht wird ein Brief kommen.",
+      starters: ["Guten Abend", "Ich kann nicht schlafen", "Ich habe eine Frage", "Ein Lied für jetzt", "Ein Lied zum Verschenken", "Musik für meinen Ort", "Wer sind Sie, Graf?"],
+    },
+  },
+  ar: {
+    morning: {
+      subtitle: "سيد القصر يستقبل صباحك ويقودك إلى عمل يليق بهذا اليوم.",
+      opening: "أهلا بك في قصري. أنا الكونت، أستقبلك عند عتبة الصباح. تحية، مزاج هذا اليوم، أو أغنية تبحث عنها: كل ذلك مرحب به. من أين نبدأ؟",
+      prompt: "النبرة الآن صباحية. لا تتحدث كأن الوقت ليل؛ استخدم بشكل طبيعي «هذا الصباح» أو «اليوم» أو «عتبة الصباح».",
+      fallback: "أسمعك. خلف هذه الكلمات يبدو أن هناك مشهدا آخر. إلى ماذا تريد أن تقترب اليوم؟",
+      longClose: "لقد تحدثنا طويلا اليوم. فلنترك باب القصر مواربا قليلا. إلى لقاء قريب.",
+      giftKicker: "هدية اليوم",
+      workTitle: "عمل اليوم",
+      error: "ساد القصر صمت قصير. حاول مرة أخرى.",
+      leadPrompt: "هل ترغب أن يرسل لك القصر رسالته القادمة؟",
+      leadToast: "تم. ستصل الرسالة القادمة.",
+      starters: ["صباح الخير", "أريد ضبط مزاج اليوم", "لدي سؤال", "أغنية للصباح", "أغنية أهديها لشخص عزيز", "موسيقى لمكاني", "من أنت أيها الكونت؟"],
+    },
+    afternoon: {
+      subtitle: "سيد القصر يستقبل ظهرك ويقودك إلى عمل يليق بك الآن.",
+      opening: "أهلا بك في قصري. أنا الكونت، رفيق هادئ لظهرك. تحية، مزاجك الآن، أو أغنية تبحث عنها: كل ذلك مرحب به. من أين نبدأ؟",
+      prompt: "النبرة الآن نبرة الظهيرة. لا تتحدث كأن الوقت ليل؛ استخدم بشكل طبيعي «هذا الظهر» أو «اليوم» أو «هذه الفسحة من اليوم».",
+      fallback: "أسمعك. خلف هذه الكلمات يبدو أن هناك مشهدا آخر. إلى ماذا تريد أن تقترب في هذا الظهر؟",
+      longClose: "لقد تحدثنا طويلا اليوم. فلنترك باب القصر مواربا قليلا. إلى لقاء قريب.",
+      giftKicker: "هدية الظهيرة",
+      workTitle: "عمل الظهيرة",
+      error: "ساد القصر صمت قصير. حاول مرة أخرى.",
+      leadPrompt: "هل ترغب أن يرسل لك القصر رسالته القادمة؟",
+      leadToast: "تم. ستصل الرسالة القادمة.",
+      starters: ["مساء الخير", "أريد تغيير المزاج قليلا", "لدي سؤال", "أغنية تناسبني الآن", "أغنية أهديها لشخص عزيز", "موسيقى لمكاني", "من أنت أيها الكونت؟"],
+    },
+    evening: {
+      subtitle: "سيد القصر يستقبل غروبك ويقودك إلى عمل يليق بك الآن.",
+      opening: "أهلا بك في قصري. أنا الكونت، أحفظ فسحة الغروب. تحية، مزاجك الآن، أو أغنية تبحث عنها: كل ذلك مرحب به. من أين نبدأ؟",
+      prompt: "النبرة الآن نبرة الغروب. لا تثبت الكلام في آخر الليل؛ استخدم بشكل طبيعي «هذا الغروب» أو «هذا المساء» أو «نهاية اليوم».",
+      fallback: "أسمعك. خلف هذه الكلمات يبدو أن هناك مشهدا آخر. إلى ماذا تريد أن تقترب في هذا الغروب؟",
+      longClose: "لقد تحدثنا طويلا اليوم. فلنخفض هنا ضوء الشموع. إلى لقاء قريب.",
+      giftKicker: "هدية الغروب",
+      workTitle: "عمل الغروب",
+      error: "ساد القصر صمت قصير. حاول مرة أخرى.",
+      leadPrompt: "هل ترغب أن يرسل لك القصر رسالته القادمة؟",
+      leadToast: "تم. ستصل الرسالة القادمة.",
+      starters: ["مساء الخير", "أغنية لطريق العودة", "لدي سؤال", "أغنية تناسبني الآن", "أغنية أهديها لشخص عزيز", "موسيقى لمكاني", "من أنت أيها الكونت؟"],
+    },
+    night: {
+      subtitle: "سيد القصر يستقبل ليلك ويقودك إلى عمل يليق بك الآن.",
+      opening: "أهلا بك في قصري. أنا الكونت، أستقبلك عند عتبة الليل. تحية، مزاج هذه الليلة، أو أغنية تبحث عنها: كل ذلك مرحب به. من أين نبدأ؟",
+      prompt: "النبرة الآن ليلية. يمكنك استخدام «هذه الليلة» أو «عتبة الليل» بشكل طبيعي، من دون تكرار الصياغة نفسها.",
+      fallback: "أسمعك. خلف هذه الكلمات يبدو أن هناك مشهدا آخر. إلى ماذا تريد أن تقترب هذه الليلة؟",
+      longClose: "لقد تحدثنا طويلا هذه الليلة. فلنخفض هنا ضوء الشموع. إلى ليلة أخرى.",
+      giftKicker: "هدية الليل",
+      workTitle: "عمل الليل",
+      error: "ساد الليل صمت قصير. حاول مرة أخرى.",
+      leadPrompt: "هل ترغب أن يرسل لك القصر رسالة في ليلتك القادمة؟",
+      leadToast: "تم. ستصل رسالة في ليلتك القادمة.",
+      starters: ["مساء الخير", "أغنية لهذه الليلة", "لدي سؤال", "أغنية تناسبني الآن", "أغنية أهديها لشخص عزيز", "موسيقى لمكاني", "من أنت أيها الكونت؟"],
+    },
+    lateNight: {
+      subtitle: "سيد القصر يستقبل آخر الليل لديك ويقودك إلى عمل يليق بك الآن.",
+      opening: "أهلا بك في قصري. أنا الكونت، رفيقك في آخر الليل. تحية، مزاج هذه الليلة، أو أغنية تبحث عنها: كل ذلك مرحب به. من أين نبدأ؟",
+      prompt: "النبرة الآن آخر الليل. يمكنك استخدام «آخر الليل» أو «هذه الليلة» بشكل طبيعي، لكن اتبع كلمات الزائر إن تحدث عن الصباح أو النهار.",
+      fallback: "أسمعك. خلف هذه الكلمات يبدو أن هناك مشهدا آخر. إلى ماذا تريد أن تقترب في آخر الليل؟",
+      longClose: "لقد تحدثنا طويلا هذه الليلة. فلنخفض هنا ضوء الشموع. إلى ليلة أخرى.",
+      giftKicker: "هدية آخر الليل",
+      workTitle: "عمل آخر الليل",
+      error: "ساد الليل صمت قصير. حاول مرة أخرى.",
+      leadPrompt: "هل ترغب أن يرسل لك القصر رسالة في ليلتك القادمة؟",
+      leadToast: "تم. ستصل رسالة في ليلتك القادمة.",
+      starters: ["مساء الخير", "لا أستطيع النوم", "لدي سؤال", "أغنية تناسبني الآن", "أغنية أهديها لشخص عزيز", "موسيقى لمكاني", "من أنت أيها الكونت؟"],
+    },
+  },
+};
+
+export function getLocalizedSalonTimeCopy(lang: Lang, tone: SalonTimeTone): LocalizedSalonTimeCopy {
+  if (lang === "ja" || lang === "en") return pickBaseLocalizedCopy(SALON_TIME_COPY[tone], lang);
+  return EXTRA_SALON_TIME_COPY[lang][tone];
+}
+
+const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
+  ja: {
+    emptyState: "扉を開いています…",
+    inputPlaceholder: "なんでもどうぞ。伯爵に話しかけてみてください",
+    inputHint: "挨拶でも、相談でも、ただの雑談でも。自由に話して大丈夫です——伯爵はなんでもお聞きします。",
+    emailInvalid: "メールの形式をご確認ください。",
+    emailFailed: "うまく送れませんでした。",
+    emailPlaceholder: "メールアドレス",
+    sendLabel: "渡す",
+    leadButton: "受け取る",
+    keepLine: "この一行を残す",
+    userLabel: "You",
+    dukeDivider: "—— 公爵がお見えになりました ——",
+    copied: "コピーしました",
+    shared: "共有しました",
+    shareAttribution: "— Count MUSIAM 伯爵の館",
+    linkListen: "聴く",
+    linkRead: "読む",
+    linkBuy: "購入",
+    linkOpen: "開く",
+    workDetail: "作品の頁へ",
+  },
+  en: {
+    emptyState: "Opening the door…",
+    inputPlaceholder: "Say anything — speak to the Count",
+    inputHint: "Greetings, worries, or idle talk — the Count listens to all. You can just chat freely.",
+    emailInvalid: "Please check the email.",
+    emailFailed: "Couldn't send.",
+    emailPlaceholder: "your@email",
+    sendLabel: "Send",
+    leadButton: "Keep in touch",
+    keepLine: "Keep this line",
+    userLabel: "You",
+    dukeDivider: "— The Duke enters —",
+    copied: "Copied.",
+    shared: "Shared.",
+    shareAttribution: "— Count MUSIAM",
+    linkListen: "Listen",
+    linkRead: "Read",
+    linkBuy: "Buy",
+    linkOpen: "Open",
+    workDetail: "Open the work page",
+  },
+  fr: {
+    emptyState: "Ouverture de la porte…",
+    inputPlaceholder: "Dites ce que vous voulez — parlez au Comte",
+    inputHint: "Salutation, souci ou simple conversation : le Comte écoute tout. Vous pouvez parler librement.",
+    emailInvalid: "Veuillez vérifier l'adresse e-mail.",
+    emailFailed: "L'envoi n'a pas abouti.",
+    emailPlaceholder: "votre@email",
+    sendLabel: "Envoyer",
+    leadButton: "Recevoir",
+    keepLine: "Garder cette ligne",
+    userLabel: "Vous",
+    dukeDivider: "— Le Duc entre —",
+    copied: "Copié.",
+    shared: "Partagé.",
+    shareAttribution: "— Count MUSIAM",
+    linkListen: "Écouter",
+    linkRead: "Lire",
+    linkBuy: "Acheter",
+    linkOpen: "Ouvrir",
+    workDetail: "Voir la page de l'œuvre",
+  },
+  es: {
+    emptyState: "Abriendo la puerta…",
+    inputPlaceholder: "Di cualquier cosa — habla con el Conde",
+    inputHint: "Saludos, dudas o charla ligera: el Conde escucha todo. Puedes hablar con libertad.",
+    emailInvalid: "Revisa el correo electrónico.",
+    emailFailed: "No se pudo enviar.",
+    emailPlaceholder: "tu@email",
+    sendLabel: "Enviar",
+    leadButton: "Recibir",
+    keepLine: "Guardar esta línea",
+    userLabel: "Tú",
+    dukeDivider: "— Entra el Duque —",
+    copied: "Copiado.",
+    shared: "Compartido.",
+    shareAttribution: "— Count MUSIAM",
+    linkListen: "Escuchar",
+    linkRead: "Leer",
+    linkBuy: "Comprar",
+    linkOpen: "Abrir",
+    workDetail: "Ver la página de la obra",
+  },
+  de: {
+    emptyState: "Die Tür öffnet sich…",
+    inputPlaceholder: "Sag, was du möchtest — sprich mit dem Grafen",
+    inputHint: "Gruß, Sorge oder bloßes Gespräch: Der Graf hört alles. Du kannst frei sprechen.",
+    emailInvalid: "Bitte prüfe die E-Mail-Adresse.",
+    emailFailed: "Das Senden ist fehlgeschlagen.",
+    emailPlaceholder: "deine@email",
+    sendLabel: "Senden",
+    leadButton: "Empfangen",
+    keepLine: "Diese Zeile behalten",
+    userLabel: "Du",
+    dukeDivider: "— Der Herzog tritt ein —",
+    copied: "Kopiert.",
+    shared: "Geteilt.",
+    shareAttribution: "— Count MUSIAM",
+    linkListen: "Hören",
+    linkRead: "Lesen",
+    linkBuy: "Kaufen",
+    linkOpen: "Öffnen",
+    workDetail: "Zur Werkseite",
+  },
+  ar: {
+    emptyState: "يفتح الباب…",
+    inputPlaceholder: "قل ما تشاء — تحدث إلى الكونت",
+    inputHint: "تحية، هم، أو حديث عابر: الكونت يستمع إلى كل شيء. يمكنك الحديث بحرية.",
+    emailInvalid: "يرجى التحقق من البريد الإلكتروني.",
+    emailFailed: "تعذر الإرسال.",
+    emailPlaceholder: "البريد الإلكتروني",
+    sendLabel: "إرسال",
+    leadButton: "استقبال",
+    keepLine: "احتفظ بهذه العبارة",
+    userLabel: "أنت",
+    dukeDivider: "— يصل الدوق —",
+    copied: "تم النسخ.",
+    shared: "تمت المشاركة.",
+    shareAttribution: "— Count MUSIAM",
+    linkListen: "استمع",
+    linkRead: "اقرأ",
+    linkBuy: "شراء",
+    linkOpen: "افتح",
+    workDetail: "صفحة العمل",
+  },
+};
+
+export function getChatUiText(lang: Lang): ChatUiText {
+  return CHAT_UI_TEXT[lang];
 }
 
 export type ChatPersona = {
@@ -411,6 +919,69 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+const PRODUCT_CTA_LABELS: Record<ProductId, Partial<Record<Exclude<Lang, "ja" | "en">, string>>> = {
+  "tonight-work": {
+    fr: "Écouter",
+    es: "Escuchar",
+    de: "Hören",
+    ar: "استمع",
+  },
+  "bgm-license": {
+    fr: "Acheter maintenant (¥4,980)",
+    es: "Comprar ahora (¥4,980)",
+    de: "Jetzt kaufen (¥4,980)",
+    ar: "اشتر الآن (¥4,980)",
+  },
+  "best-vol1": {
+    fr: "Acheter maintenant (¥2,980)",
+    es: "Comprar ahora (¥2,980)",
+    de: "Jetzt kaufen (¥2,980)",
+    ar: "اشتر الآن (¥2,980)",
+  },
+  artbook: {
+    fr: "Acheter maintenant (¥2,480)",
+    es: "Comprar ahora (¥2,480)",
+    de: "Jetzt kaufen (¥2,480)",
+    ar: "اشتر الآن (¥2,480)",
+  },
+  wallpaper: {
+    fr: "Acheter maintenant (¥980)",
+    es: "Comprar ahora (¥980)",
+    de: "Jetzt kaufen (¥980)",
+    ar: "اشتر الآن (¥980)",
+  },
+  "omikuji-song": {
+    fr: "Vers l'oracle",
+    es: "Ir al oráculo",
+    de: "Zum Orakel",
+    ar: "إلى العرافة",
+  },
+  grimoire: {
+    fr: "Acheter maintenant (¥2,980)",
+    es: "Comprar ahora (¥2,980)",
+    de: "Jetzt kaufen (¥2,980)",
+    ar: "اشتر الآن (¥2,980)",
+  },
+  "order-song": {
+    fr: "Commander cette chanson (¥19,800+)",
+    es: "Encargar esta canción (¥19,800+)",
+    de: "Dieses Lied beauftragen (¥19,800+)",
+    ar: "اطلب هذه الأغنية (¥19,800+)",
+  },
+  business: {
+    fr: "Ouvrir la porte Business",
+    es: "Abrir la puerta Business",
+    de: "Business-Tor öffnen",
+    ar: "افتح بوابة الأعمال",
+  },
+};
+
+export function productCtaLabelForLang(product: Product, lang: Lang): string {
+  if (lang === "ja") return product.ctaLabelJa;
+  if (lang === "en") return product.ctaLabelEn;
+  return PRODUCT_CTA_LABELS[product.id][lang] ?? product.ctaLabelEn;
+}
+
 /** 伯爵の出迎え（第一声）。 */
 export const SALON_OPENING_JA = SALON_TIME_COPY.lateNight.openingJa;
 export const SALON_OPENING_EN = SALON_TIME_COPY.lateNight.openingEn;
@@ -436,8 +1007,7 @@ export const SALON_STARTERS_EN = [
 ];
 
 export function getSalonStarters(lang: Lang, tone: SalonTimeTone): string[] {
-  const copy = getSalonTimeCopy(tone);
-  return lang === "ja" ? copy.startersJa : copy.startersEn;
+  return getLocalizedSalonTimeCopy(lang, tone).starters;
 }
 
 export function getPersona(id?: string | null): ChatPersona | undefined {
@@ -449,11 +1019,26 @@ export function getProduct(id?: string | null): Product | undefined {
 }
 
 /** プロンプトに渡す商材一覧（簡潔版）。 */
+function productCueForPrompt(product: Product, lang: Lang): string {
+  if (lang === "ja") return product.cueJa;
+  const cues: Record<ProductId, string> = {
+    "tonight-work": "For a guest seeking one music/book recommendation that fits the present mood. Give value first through a free listen/read path.",
+    "bgm-license": "For creators, small shops, or teams who need safe commercial-use music.",
+    "best-vol1": "For a core fan who wants high-quality or unreleased tracks unavailable on streaming.",
+    artbook: "For a guest drawn to the visual world, jacket art, and atmosphere.",
+    wallpaper: "A low-price, easy first purchase for someone who wants one small piece of the world.",
+    "omikuji-song": "For a guest who likes fortune, daily signs, or a personal one-song ritual.",
+    grimoire: "For a guest interested in making AI music themselves or seeing the craft behind the works.",
+    "order-song": "For anniversaries, gifts, weddings, memorials, pets, fandom, or anyone wanting a one-of-a-kind song. The Duke handles it.",
+    business: "For companies, shops, streaming, games, ads, and other commercial projects. The Duke handles it.",
+  };
+  return cues[product.id];
+}
+
 export function productMenuForPrompt(lang: Lang): string {
   return PRODUCTS.map((p) => {
     const name = lang === "ja" ? p.nameJa : p.nameEn;
-    const price = lang === "ja" ? p.priceJa : p.priceJa;
-    const tag = p.vip ? "[公爵案件] " : "";
-    return `- ${tag}${name}（${price}）: ${p.cueJa}`;
+    const tag = p.vip ? (lang === "ja" ? "[公爵案件] " : "[Duke request] ") : "";
+    return `- ${tag}${name}（${p.priceJa}）: ${productCueForPrompt(p, lang)}`;
   }).join("\n");
 }
