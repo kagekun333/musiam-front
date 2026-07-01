@@ -10,7 +10,7 @@
 .atelier-kicker {
   font-size: 0.78rem;
   letter-spacing: 0.32em;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
@@ -43,7 +43,7 @@
 }
 .atelier-price strong {
   font-size: 1.7rem;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
   margin: 0 0.3rem;
 }
 .atelier-price small {
@@ -85,7 +85,7 @@
   flex: none;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
   padding-top: 0.2rem;
 }
 .atelier-chapter-title {
@@ -119,5 +119,5 @@
   left: 0;
   top: 0.45em;
   font-size: 0.6em;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
 }

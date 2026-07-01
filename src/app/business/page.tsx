@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 const STATS = [
   { num: "350", label: "公開作品数" },
-  { num: "216", label: "オリジナル楽曲" },
+  { num: "216", label: "楽曲リリース" },
   { num: "134", label: "出版書籍" },
   { num: "3日〜", label: "最短納期" },
 ];
@@ -87,7 +87,7 @@ export default function BusinessPage() {
           プロ品質の音楽を、最短3日で。
         </h1>
         <p className="biz-hero-sub">
-          伯爵MUSIAMは、AI制作パイプラインで350作品(楽曲216・書籍134)を生み出してきた
+          伯爵MUSIAMは、AI制作パイプラインで350作品(楽曲216リリース・書籍134)を生み出してきた
           制作工房です。その量産力と美意識を、御社のブランド・店舗・コンテンツのために。
           <br />
           ——あなたのための調べ・紋章・物語を、工房に鍛えさせてください。
@@ -197,7 +197,7 @@ export default function BusinessPage() {
             </ul>
             <p className="biz-card-desc" style={{ marginTop: "0.6rem" }}>
               自分で仕組みを作りたい方へ —{" "}
-              <Link href="/atelier" style={{ color: "#d8b65c", textDecoration: "underline" }}>
+              <Link href="/atelier" style={{ color: "var(--rnv-text-amber)", textDecoration: "underline" }}>
                 伯爵の工房講座
               </Link>
               （AI音楽工場の作り方）も先行案内中。

@@ -5,7 +5,7 @@ import "./home-showcase.css";
 
 const STATS = [
   { num: "350", label: "公開作品" },
-  { num: "216", label: "楽曲" },
+  { num: "216", label: "楽曲リリース" },
   { num: "134", label: "書籍" },
 ];
 

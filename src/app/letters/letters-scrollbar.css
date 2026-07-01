@@ -1,0 +1,32 @@
+/* src/app/letters/letters-scrollbar.css
+   /letters 配下だけスクロールバーを可視化する。
+   globals.css がサイト全体で `html, body` のスクロールバーを非表示にしているため
+   （`html::-webkit-scrollbar, body::-webkit-scrollbar { width: 0 !important; }` 等）、
+   同じ要素・同等以上の詳細度で上書きする。実際のスクロール対象が html/body の
+   どちらであっても効くよう両方に付与している (LettersScrollFx.tsx 参照)。 */
+html.letters-scrollbar,
+body.letters-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #8a6322 rgba(51, 39, 26, 0.12);
+}
+html.letters-scrollbar::-webkit-scrollbar,
+body.letters-scrollbar::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+  background: rgba(51, 39, 26, 0.08);
+}
+html.letters-scrollbar::-webkit-scrollbar-track,
+body.letters-scrollbar::-webkit-scrollbar-track {
+  background: rgba(51, 39, 26, 0.06);
+}
+html.letters-scrollbar::-webkit-scrollbar-thumb,
+body.letters-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #8a6322;
+  background-image: linear-gradient(180deg, #cda14a, #63430e);
+  border-radius: 999px;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+}
+html.letters-scrollbar::-webkit-scrollbar-thumb:hover,
+body.letters-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-image: linear-gradient(180deg, #e9cd80, #8a6322);
+}

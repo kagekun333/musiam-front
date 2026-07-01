@@ -37,7 +37,9 @@
 }
 /* 見出しは古典書体・インクへ寄せる */
 .rnv-parchment-page h1, .rnv-parchment-page h2, .rnv-parchment-page h3 { color: var(--rnv-ink); }
-/* キッカー等の淡色（暗背景用）を羊皮紙で読める濃さへ */
-.rnv-parchment-page { --rnv-text-slate: #3f4f74; --rnv-text-amber: #8a6322; --rnv-text-muted: #6a5a3e; }
+/* キッカー等の淡色（暗背景用）を羊皮紙で読める濃さへ。
+   2026-07: 金文字が羊皮紙に対して低コントラスト(肌色オン肌色)だった問題を修正し、
+   WCAG AA(4.5:1)を満たす濃さに調整。 */
+.rnv-parchment-page { --rnv-text-slate: #33415f; --rnv-text-amber: #63430e; --rnv-text-muted: #584a30; }
 .rnv-parchment-page .biz-hero-kicker,
 .rnv-parchment-page .atelier-kicker { color: var(--rnv-gold-3); }

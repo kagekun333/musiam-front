@@ -47,7 +47,7 @@ export default function LeadForm({
 
   if (state === "ok") {
     return (
-      <p className="contact-cta-msg" style={{ color: "#d8b65c", fontWeight: 600 }}>
+      <p className="contact-cta-msg" style={{ color: "var(--rnv-text-amber)", fontWeight: 600 }}>
         ご登録ありがとうございます。先行案内をメールでお送りします。
       </p>
     );
@@ -82,7 +82,7 @@ export default function LeadForm({
       {state === "error" && (
         <p className="contact-cta-msg" style={{ width: "100%", textAlign: "center", opacity: 0.85, fontSize: "0.85rem" }}>
           送信に失敗しました。お手数ですが{" "}
-          <a href={contactHref(subject)} style={{ color: "#d8b65c", textDecoration: "underline" }}>
+          <a href={contactHref(subject)} style={{ color: "var(--rnv-text-amber)", textDecoration: "underline" }}>
             メールでご連絡
           </a>
           ください。

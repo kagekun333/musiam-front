@@ -43,7 +43,7 @@ export default function AtelierPage() {
           <span className="atelier-sub-title">月数ドルで350作品を生んだ、伯爵の製法書</span>
         </h1>
         <p className="atelier-lead">
-          このサイトの楽曲216曲・書籍134冊は、すべて1人とAIで作られています。
+          このサイトの楽曲216リリース・書籍134冊は、すべて1人とAIで作られています。
           その制作パイプラインのすべてを、再現可能な手順として講座化します。
         </p>
         <div className="atelier-price">
