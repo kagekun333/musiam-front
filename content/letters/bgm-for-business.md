@@ -2,6 +2,7 @@
 title: 配信の曲を、お店やYouTubeで流してはいけない理由
 date: 2026-06-14
 description: SpotifyやApple Musicの曲を店舗BGMや動画に使うのは、実は権利侵害になりがち。安心して商用利用できる音楽の話。
+keywords: 商用利用,BGM,著作権,店舗BGM,YouTube,ライセンス,伯爵MUSIAM
 ---
 
 よく聞かれます。「Spotifyで聴けるこの曲、お店で流していいですか?」と。

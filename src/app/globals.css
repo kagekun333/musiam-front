@@ -29,6 +29,22 @@ html, body { height: 100%; }
 }
 .prose-tight p { line-height: 1.7; }
 
+/* 手紙内PR/アフィリエイトリンク ({sponsored}記法, src/lib/letters.ts renderMarkdown) */
+.prose-tight a[rel~="sponsored"] { color: var(--rnv-text-amber, #ecca8a); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.letter-pr-badge {
+  display: inline-block;
+  margin-left: 0.4em;
+  padding: 0.04em 0.44em;
+  font-size: 0.65em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-medium);
+  border-radius: 4px;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
 /* スクロールバーを非表示（スクロール自体は可能） */
 html, body {
   overflow-y: auto;

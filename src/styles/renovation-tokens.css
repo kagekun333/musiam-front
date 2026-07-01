@@ -119,7 +119,7 @@
   --rnv-wax: #7e2330;        /* 蝋封の臙脂 */
   --rnv-gold-1: #f4e3ad;     /* 金箔ハイライト */
   --rnv-gold-2: #cda14a;
-  --rnv-gold-3: #8a6322;
+  --rnv-gold-3: #63430e;     /* 羊皮紙上の金文字。WCAG AA可読性のため濃色に調整 (2026-07) */
   --rnv-gold-hi: #fff3c9;
   --rnv-gold-grad: linear-gradient(176deg, var(--rnv-gold-hi), var(--rnv-gold-1) 22%, var(--rnv-gold-2) 52%, var(--rnv-gold-3) 74%, var(--rnv-gold-1));
 

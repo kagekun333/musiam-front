@@ -16,7 +16,7 @@
 .biz-hero-kicker {
   font-size: 0.8rem;
   letter-spacing: 0.35em;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
@@ -59,7 +59,7 @@
 .biz-stat-num {
   font-size: 2rem;
   font-weight: 700;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
   font-variant-numeric: tabular-nums;
 }
 .biz-stat-label {
@@ -133,7 +133,7 @@
 .biz-card-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
 }
 .biz-card-price small {
   font-size: 0.75rem;
@@ -167,7 +167,7 @@
   left: 0;
   font-size: 0.6em;
   top: 0.5em;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
 }
 
 /* 制作フロー */
@@ -189,7 +189,7 @@
   display: block;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
-  color: #d8b65c;
+  color: var(--rnv-text-amber);
   margin-bottom: 0.5rem;
 }
 .biz-flow-title {
