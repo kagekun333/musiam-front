@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getLetter, getLetters, renderMarkdown } from "@/lib/letters";
+import { siteUrl } from "@/lib/site-url";
 
 export const dynamicParams = false;
 
@@ -30,8 +31,27 @@ export default async function LetterPage(
   const letter = await getLetter(slug);
   if (!letter) notFound();
 
+  const base = siteUrl();
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: letter.title,
+    description: letter.description,
+    datePublished: letter.date || undefined,
+    dateModified: letter.date || undefined,
+    inLanguage: "ja",
+    url: `${base}/letters/${letter.slug}`,
+    mainEntityOfPage: `${base}/letters/${letter.slug}`,
+    author: { "@type": "Person", name: "ABI伯爵", url: `${base}/about` },
+    publisher: { "@type": "Organization", name: "伯爵 MUSIAM", url: base },
+  };
+
   return (
     <main className="page-content" style={{ maxWidth: 680, margin: "0 auto", padding: "3rem 1.25rem 5rem" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <p style={{ fontSize: "0.78rem", color: "#d8b65c", textAlign: "center", marginBottom: 8 }}>{letter.date}</p>
       <h1 style={{ fontFamily: "var(--font-serif), serif", fontSize: "1.6rem", textAlign: "center", marginBottom: "2.2rem", lineHeight: 1.5 }}>
         {letter.title}

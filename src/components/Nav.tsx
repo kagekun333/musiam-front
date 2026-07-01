@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/shop", label: "交易所" },
   { href: "/showcase", label: "新地平" },
   { href: "/letters", label: "手紙" },
+  { href: "/faq", label: "FAQ" },
   { href: "/about", label: "館主" },
 ] as const;
 
