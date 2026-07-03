@@ -92,6 +92,8 @@ export type ChatUiText = {
   emailFailed: string;
   emailPlaceholder: string;
   sendLabel: string;
+  readButton: string;
+  typingLabel: string;
   leadButton: string;
   keepLine: string;
   userLabel: string;
@@ -563,6 +565,8 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     emailFailed: "うまく送れませんでした。",
     emailPlaceholder: "メールアドレス",
     sendLabel: "渡す",
+    readButton: "既読",
+    typingLabel: "記入中",
     leadButton: "受け取る",
     keepLine: "この一行を残す",
     userLabel: "You",
@@ -584,6 +588,8 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     emailFailed: "Couldn't send.",
     emailPlaceholder: "your@email",
     sendLabel: "Send",
+    readButton: "Seen",
+    typingLabel: "Typing",
     leadButton: "Keep in touch",
     keepLine: "Keep this line",
     userLabel: "You",
@@ -605,6 +611,8 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     emailFailed: "L'envoi n'a pas abouti.",
     emailPlaceholder: "votre@email",
     sendLabel: "Envoyer",
+    readButton: "Lu",
+    typingLabel: "Écriture",
     leadButton: "Recevoir",
     keepLine: "Garder cette ligne",
     userLabel: "Vous",
@@ -626,6 +634,8 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     emailFailed: "No se pudo enviar.",
     emailPlaceholder: "tu@email",
     sendLabel: "Enviar",
+    readButton: "Visto",
+    typingLabel: "Escribiendo",
     leadButton: "Recibir",
     keepLine: "Guardar esta línea",
     userLabel: "Tú",
@@ -647,6 +657,8 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     emailFailed: "Das Senden ist fehlgeschlagen.",
     emailPlaceholder: "deine@email",
     sendLabel: "Senden",
+    readButton: "Gelesen",
+    typingLabel: "Schreibt",
     leadButton: "Empfangen",
     keepLine: "Diese Zeile behalten",
     userLabel: "Du",
@@ -668,6 +680,8 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     emailFailed: "تعذر الإرسال.",
     emailPlaceholder: "البريد الإلكتروني",
     sendLabel: "إرسال",
+    readButton: "تمت القراءة",
+    typingLabel: "يكتب",
     leadButton: "استقبال",
     keepLine: "احتفظ بهذه العبارة",
     userLabel: "أنت",

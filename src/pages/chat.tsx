@@ -19,6 +19,19 @@ type ChatMsg = { role: ChatRole; content: string; persona?: ChatPersonaId };
 type RecoLink = { kind: string; url: string };
 type RecoCard = { id: string; title: string; cover: string; links: RecoLink[]; moodTags?: string[]; type?: string };
 type Cta = { href: string; label: string };
+type ReplyPhase = "idle" | "awaitingRead" | "typing";
+type AssistantReply = {
+  assistantText: string;
+  persona: ChatPersonaId;
+  nextCard: RecoCard | null;
+  nextCta: Cta | null;
+};
+type PendingReplyResult =
+  | { ok: true; reply: AssistantReply }
+  | { ok: false; error: unknown };
+
+const HUMAN_REPLY_DELAY_MS = 3000;
+const READ_RECEIPT_DELAY_MS = 450;
 
 function capture(event: string, props?: Record<string, unknown>) {
   if (typeof window !== "undefined" && (window as any).posthog) {
@@ -122,6 +135,12 @@ function TypewriterText({ text, animate }: { text: string; animate: boolean }) {
   return <>{shown}</>;
 }
 
+function wait(ms: number) {
+  return new Promise<void>((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
 async function shareLine(text: string, ui: ChatUiText, onDone: (m: string) => void) {
   const payload = `${text}\n\n${ui.shareAttribution}`;
   try {
@@ -136,6 +155,8 @@ export default function ChatPage() {
   const [card, setCard] = useState<RecoCard | null>(null);
   const [cta, setCta] = useState<Cta | null>(null);
   const [sending, setSending] = useState(false);
+  const [replyPhase, setReplyPhase] = useState<ReplyPhase>("idle");
+  const [readReceiptMessageIndex, setReadReceiptMessageIndex] = useState<number | null>(null);
   const [started, setStarted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
@@ -145,6 +166,7 @@ export default function ChatPage() {
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
+  const replyRequestIdRef = useRef(0);
 
   const timeCopy = useMemo(() => getLocalizedSalonTimeCopy(lang, timeTone), [lang, timeTone]);
   const ui = useMemo(() => getChatUiText(lang), [lang]);
@@ -168,10 +190,14 @@ export default function ChatPage() {
   }, []);
 
   useEffect(() => { if (!sending) inputRef.current?.focus(); }, [sending]);
-  useEffect(() => { if (threadRef.current) threadRef.current.scrollTop = threadRef.current.scrollHeight; }, [messages, sending]);
+  useEffect(() => { if (threadRef.current) threadRef.current.scrollTop = threadRef.current.scrollHeight; }, [messages, sending, replyPhase, readReceiptMessageIndex]);
   useEffect(() => { if (!toast) return; const id = window.setTimeout(() => setToast(null), 1800); return () => window.clearTimeout(id); }, [toast]);
 
   async function begin(l: Lang = lang, tone: SalonTimeTone = timeTone) {
+    replyRequestIdRef.current += 1;
+    setSending(false);
+    setReplyPhase("idle");
+    setReadReceiptMessageIndex(null);
     setError(null); setCard(null); setCta(null); setMessages([]);
     try {
       const res = await fetch("/api/chat-experience-v3", {
@@ -191,36 +217,76 @@ export default function ChatPage() {
     }
   }
 
-  async function sendText(text: string) {
+  async function requestAssistantReply(next: ChatMsg[]): Promise<AssistantReply> {
+    const res = await fetch("/api/chat-experience-v3", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lang, timeTone, messages: next }),
+    });
+    const json = await res.json();
+    if (!res.ok || json?.ok === false) {
+      throw new Error(String(json?.error || timeCopy.error));
+    }
+    return {
+      assistantText: String(json?.assistantText || "").trim(),
+      persona: json?.persona === "duke" ? "duke" : "count",
+      nextCard: json?.card ?? null,
+      nextCta: json?.cta ?? null,
+    };
+  }
+
+  function sendText(text: string) {
     const content = text.trim();
     if (!content || sending) return;
     const next: ChatMsg[] = [...messages, { role: "user", content }];
+    const userMessageIndex = next.length - 1;
+    const requestId = replyRequestIdRef.current + 1;
+    replyRequestIdRef.current = requestId;
     setMessages(next);
-    setError(null); setSending(true);
+    setError(null);
+    setSending(true);
+    setReplyPhase("awaitingRead");
+    setReadReceiptMessageIndex(null);
+    const pending = requestAssistantReply(next)
+      .then((reply): PendingReplyResult => ({ ok: true, reply }))
+      .catch((error): PendingReplyResult => ({ ok: false, error }));
     capture("salon_send", { len: content.length, lang });
-    try {
-      const res = await fetch("/api/chat-experience-v3", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ lang, timeTone, messages: next }),
-      });
-      const json = await res.json();
-      const assistantText = String(json?.assistantText || "").trim();
-      const persona: ChatPersonaId = json?.persona === "duke" ? "duke" : "count";
-      const nextCard: RecoCard | null = json?.card ?? null;
-      const nextCta: Cta | null = json?.cta ?? null;
-      startTransition(() => {
-        setMessages((prev) => (assistantText ? [...prev, { role: "assistant", content: assistantText, persona }] : prev));
-        setCard(nextCard);
-        setCta(nextCta);
-      });
-      if (persona === "duke") capture("salon_duke", { lang });
-      if (nextCard) capture("salon_work_show", { title: nextCard.title });
-      if (nextCta) capture("salon_cta_show", { href: nextCta.href });
-    } catch (e: any) {
+    void runReplyFlow(requestId, userMessageIndex, pending);
+  }
+
+  async function runReplyFlow(requestId: number, userMessageIndex: number, pending: Promise<PendingReplyResult>) {
+    await wait(READ_RECEIPT_DELAY_MS);
+    if (requestId !== replyRequestIdRef.current) return;
+
+    setReadReceiptMessageIndex(userMessageIndex);
+    setReplyPhase("typing");
+    capture("salon_read_receipt", { lang });
+
+    await wait(HUMAN_REPLY_DELAY_MS);
+    if (requestId !== replyRequestIdRef.current) return;
+
+    const result = await pending;
+    if (requestId !== replyRequestIdRef.current) return;
+
+    if (!result.ok) {
+      const e = result.error as Error;
       setError(e?.message || timeCopy.error);
-    } finally {
+      setReplyPhase("idle");
       setSending(false);
+      return;
     }
+
+    const { assistantText, persona, nextCard, nextCta } = result.reply;
+    startTransition(() => {
+      setMessages((prev) => (assistantText ? [...prev, { role: "assistant", content: assistantText, persona }] : prev));
+      setCard(nextCard);
+      setCta(nextCta);
+    });
+    if (persona === "duke") capture("salon_duke", { lang });
+    if (nextCard) capture("salon_work_show", { title: nextCard.title });
+    if (nextCta) capture("salon_cta_show", { href: nextCta.href });
+
+    setReplyPhase("idle");
+    setSending(false);
   }
 
   function onSubmit() {
@@ -286,7 +352,7 @@ export default function ChatPage() {
         {started && messages.length <= 1 && (
           <div className={styles.promptRow}>
             {starters.map((s) => (
-              <button key={s} className={styles.promptChip} onClick={() => void sendText(s)} disabled={sending}>{s}</button>
+              <button key={s} className={styles.promptChip} onClick={() => sendText(s)} disabled={sending}>{s}</button>
             ))}
           </div>
         )}
@@ -307,6 +373,11 @@ export default function ChatPage() {
                       ? <TypewriterText text={m.content} animate={i === lastAssistantIndex} />
                       : m.content}
                   </p>
+                  {m.role === "user" && i === readReceiptMessageIndex && (
+                    <span className={styles.readReceiptBadge}>
+                      {ui.readButton}
+                    </span>
+                  )}
                   {m.role === "assistant" && i === lastAssistantIndex && !sending && (
                     <button className={styles.shareInline} onClick={() => { capture("salon_line_share", { lang }); void shareLine(m.content, ui, setToast); }}>
                       {ui.keepLine}
@@ -316,10 +387,13 @@ export default function ChatPage() {
               </React.Fragment>
             );
           })}
-          {sending && (
+          {replyPhase === "typing" && (
             <div className={styles.assistantBubble}>
               <p className={styles.bubbleRole}>{personaName("count", lang)}</p>
-              <p className={styles.thinking}><span /><span /><span /></p>
+              <p className={styles.thinking} aria-label={ui.typingLabel}>
+                <span /><span /><span />
+                <span className={styles.thinkingText}>{ui.typingLabel}</span>
+              </p>
             </div>
           )}
         </div>

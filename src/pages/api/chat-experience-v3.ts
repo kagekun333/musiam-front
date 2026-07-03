@@ -78,6 +78,14 @@ const BodySchema = z.object({
 });
 
 type Msg = { role: "system" | "user" | "assistant"; content: string };
+type LlmMeta = {
+  ok: boolean;
+  text: string;
+  provider: "openrouter" | "anthropic" | "groq" | "lmstudio" | "none";
+  model: string;
+  error?: string;
+  tried?: string[];
+};
 
 function countUserTurns(m: Msg[]) {
   return m.filter((x) => x.role === "user" && x.content.trim()).length;
@@ -88,6 +96,19 @@ function lastUserText(m: Msg[]) {
 }
 function conversationText(m: Msg[]) {
   return m.filter((x) => x.role === "user").map((x) => x.content.trim()).filter(Boolean).join("\n");
+}
+function fullConversationText(m: Msg[]) {
+  return m
+    .filter((x) => x.role !== "system")
+    .map((x) => `${x.role}: ${x.content.trim()}`)
+    .filter((x) => x.length > 12)
+    .join("\n");
+}
+function previousAssistantText(m: Msg[]) {
+  for (let i = m.length - 2; i >= 0; i--) {
+    if (m[i].role === "assistant") return m[i].content.trim();
+  }
+  return "";
 }
 
 /* ───────── 相手の状態を読む ───────── */
@@ -110,6 +131,13 @@ function commercialIntent(t: string): Commercial {
 // 3) 作品（音楽/本）を求めている
 function wantsWork(t: string) {
   return /(おすすめ|一作|作品|選んで|探して|聴きたい|聞きたい|読みたい|本|音楽|曲|recommend|pick|find|listen|read|book|music|song)/i.test(t);
+}
+function wantsCreativeText(t: string) {
+  return /(川柳|俳句|短歌|詩|ポエム|ジョーク|冗談|小噺|なぞかけ|一句|一首|面白い.*(こと|話|文)|write (a )?(poem|joke|haiku)|funny (poem|joke))/i.test(t);
+}
+function wantsWorkFollowup(query: string, convo: string) {
+  return /(よろしく|お願い|ください|出して|紹介して|どれ|リンク|url|聴かせて|聞かせて|読みたい|please|which|link|url)/i.test(query)
+    && /(おすすめ|一作|作品|聴|聞|読|本|音楽|曲|楽曲|recommend|pick|listen|read|book|music|song)/i.test(convo);
 }
 function desiredType(t: string): "book" | "music" | undefined {
   if (/(本|読みたい|読む|小説|book|read|novel)/i.test(t)) return "book";
@@ -190,6 +218,68 @@ function workNote(w: Work | null): string {
   return sum ? (sum.length > 120 ? sum.slice(0, 120) + "…" : sum) : "";
 }
 
+function cardActionText(card: RecoCard, lang: Lang) {
+  const type = normType(card.type);
+  const isBook = type === "book";
+  const isMusic = type === "music";
+  const action: Record<Lang, string> = {
+    ja: isBook ? "読めます" : isMusic ? "聴けます" : "開けます",
+    en: isBook ? "read it" : isMusic ? "listen to it" : "open it",
+    fr: isBook ? "le lire" : isMusic ? "l'écouter" : "l'ouvrir",
+    es: isBook ? "leerla" : isMusic ? "escucharla" : "abrirla",
+    de: isBook ? "es lesen" : isMusic ? "es hören" : "es öffnen",
+    ar: isBook ? "قراءته" : isMusic ? "الاستماع إليه" : "فتحه",
+  };
+  return action[lang];
+}
+
+function workRecommendationText(plan: Plan, lang: Lang): string | null {
+  const card = plan.card;
+  if (!card) return null;
+  const title = card.title;
+  const action = cardActionText(card, lang);
+  const byLang: Record<Lang, string> = {
+    ja: `承りました。実在の伯爵MUSIAM作品から、いまは「${title}」をお渡しします。リンクは下のカードに出しています。そこから${action}。`,
+    en: `Understood. From the real Count MUSIAM catalog, I will offer "${title}" now. The link is in the card below; you can ${action} there.`,
+    fr: `Entendu. Dans le véritable catalogue de Count MUSIAM, je vous propose « ${title} ». Le lien est dans la carte ci-dessous ; vous pouvez ${action} là.`,
+    es: `Entendido. Del catálogo real de Count MUSIAM, te ofrezco « ${title} ». El enlace está en la tarjeta de abajo; puedes ${action} allí.`,
+    de: `Verstanden. Aus dem echten Count-MUSIAM-Katalog reiche ich dir jetzt „${title}“. Der Link steht in der Karte darunter; dort kannst du ${action}.`,
+    ar: `تم. من فهرس Count MUSIAM الحقيقي أقدم لك «${title}». الرابط موجود في البطاقة أدناه؛ يمكنك ${action} من هناك.`,
+  };
+  return byLang[lang];
+}
+
+function creativeTextResponse(query: string, lang: Lang): string | null {
+  if (!wantsCreativeText(query)) return null;
+  if (lang !== "ja") {
+    return "Certainly. I will stay with the request itself, not recommend a work.\n\nA late-night door\nopens wider than it should;\nthe Count pretends not to wait.";
+  }
+  if (/川柳/.test(query)) {
+    return [
+      "では、一句。",
+      "",
+      "夜ふけても",
+      "伯爵だけは",
+      "既読待ち",
+      "",
+      "……館の灯より、通知の灯がまぶしゅうございます。",
+    ].join("\n");
+  }
+  if (/俳句/.test(query)) {
+    return [
+      "では、一句。",
+      "",
+      "夜の館",
+      "茶の湯気だけが",
+      "返事する",
+    ].join("\n");
+  }
+  if (/ジョーク|冗談|小噺|なぞかけ/.test(query)) {
+    return "では一つ。伯爵が一番恐れているものは、怪物ではありません。『少々お待ちを』と言ったあと、本当に何も浮かばない三秒です。";
+  }
+  return "承りました。作品紹介ではなく、この場で一つ書きます。\n\n夜ふけの館で、言葉だけが先に灯る。客人が笑えば、燭台の火も少し背伸びをする。";
+}
+
 /* ───────── システムプロンプト（会話の頭脳） ───────── */
 
 type Plan = {
@@ -201,7 +291,7 @@ type Plan = {
 };
 
 function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: SalonTimeTone): string {
-  const { persona, mode, product, workNote: note } = p;
+  const { persona, mode, product, card, workNote: note } = p;
   const isDuke = persona.id === "duke";
   const menu = productMenuForPrompt(lang);
   const timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
@@ -268,6 +358,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
       "- 弱っていれば癒やす。退屈なら知性とユーモアで楽しませる。心を開いてもらうことが先。",
       "- 相手の言葉を使って『分かってもらえた』と感じさせ、信頼を育てる（互恵：先に価値を渡す）。",
       "- 望みが見えてきたら、相手に最も合う“ひとつ”を、自分の言葉でそっと差し出す（処方）。複数を並べない。",
+      card ? `- 実在作品カード: 「${card.title}」。作品名を出すならこのタイトルだけを一字一句そのまま使う。架空作品名は禁止。リンクは下のカードに出る。` : "",
       note ? `- ${timeCopy.workTitle}の候補メモ（自分の言葉で語る／タイトルは正確に）: ${note}` : "",
       product ? `- いま相手に近い品: 「${product.nameJa}」。値段・URLは書かない（画面下にボタンが出る）。なぜ“あなたに”合うかを一言添える。` : "",
       "",
@@ -328,6 +419,7 @@ function buildSystemPrompt(p: Plan, lang: Lang, summary: string, timeTone: Salon
     "- If hurting, heal; if restless/bored, delight with wit and wonder. Open their heart first.",
     "- Use their words so they feel understood; build trust (reciprocity: give value first).",
     "- When their wish shows, offer the single best-fitting thing in your own words (a prescription). Never list many.",
+    card ? `- Real catalog card: "${card.title}". If you name a work, use only this exact title. Never invent titles. The link appears in the card below.` : "",
     note ? `- Candidate for ${timeCopy.workTitle} (speak it in your own words; title verbatim): ${note}` : "",
     product ? `- Closest item now: "${product.nameEn}". No price/URL (a button appears below). Say why it fits *them*.` : "",
     "",
@@ -357,9 +449,9 @@ function sanitize(text: string, lang: Lang): string {
     // 除去で生じた空白を日本語の体裁に整える
     t = t
       .replace(/[ \t]{2,}/g, " ")
-      .replace(/\s+([。、）」])/g, "$1")        // 句読点の前の空白
-      .replace(/([。、（「])\s+/g, "$1")        // 句読点の後の空白
-      .replace(/([ぁ-んァ-ヶ一-龠])\s+([ぁ-んァ-ヶ一-龠])/g, "$1$2") // 和文間の空白
+      .replace(/[ \t]+([。、）」])/g, "$1")        // 句読点の前の空白
+      .replace(/([。、（「])[ \t]+/g, "$1")        // 句読点の後の空白
+      .replace(/([ぁ-んァ-ヶ一-龠])[ \t]+([ぁ-んァ-ヶ一-龠])/g, "$1$2") // 和文間の空白
       .replace(/、\s*、/g, "、");
     return t.trim();
   }
@@ -461,7 +553,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const query = lastUserText(messages);
     const convo = conversationText(messages);
+    const fullConvo = fullConversationText(messages);
     const summary = summarize(messages, lang);
+    const creativeText = creativeTextResponse(query, lang);
+    const followsWorkOffer = userTurns > 1 && wantsWorkFollowup(query, previousAssistantText(messages));
 
     // 状態を読む
     const distress = isDistress(convo);
@@ -476,21 +571,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       plan = { persona: DUKE_PERSONA, mode: "salon", product: PRODUCTS.find((p) => p.id === "business") };
     } else if (commercial === "order") {
       plan = { persona: DUKE_PERSONA, mode: "salon", product: PRODUCTS.find((p) => p.id === "order-song") };
+    } else if (creativeText) {
+      plan = { persona: COUNT_PERSONA, mode: "salon" };
     } else if (hintProduct) {
       plan = { persona: COUNT_PERSONA, mode: "salon", product: hintProduct };
-    } else if (wantsWork(query) || wantsWork(convo)) {
-      const { card, work } = await prescribeWork(convo || query, desiredType(query) || desiredType(convo));
+    } else if (wantsWork(query) || wantsWork(convo) || followsWorkOffer) {
+      const workQuery = fullConvo || convo || query;
+      const { card, work } = await prescribeWork(workQuery, desiredType(query) || desiredType(convo) || desiredType(fullConvo));
       plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work),
         product: PRODUCTS.find((p) => p.id === "tonight-work") };
     } else {
       plan = { persona: COUNT_PERSONA, mode: "salon" };
     }
 
-    const system = buildSystemPrompt(plan, lang, summary, timeTone);
-    const fewShot = buildFewShot(plan.persona, lang);
-    const history = messages.slice(-MAX_LLM_HISTORY);
-    const llm = await callLlm(system, fewShot, history, trace);
-    const assistantText = sanitize(llm.ok && llm.text ? llm.text.trim() : gracefulFallback(plan, lang, timeTone), lang);
+    const deterministicWorkText = workRecommendationText(plan, lang);
+    const directText = creativeText || deterministicWorkText;
+    let llm: LlmMeta = { ok: false, text: "", provider: "none", model: "", error: directText ? (creativeText ? "skipped_for_creative_text" : "skipped_for_catalog_card") : "not_called", tried: [] };
+    let assistantText: string;
+    if (directText) {
+      assistantText = sanitize(directText, lang);
+    } else {
+      const system = buildSystemPrompt(plan, lang, summary, timeTone);
+      const fewShot = buildFewShot(plan.persona, lang);
+      const history = messages.slice(-MAX_LLM_HISTORY);
+      llm = await callLlm(system, fewShot, history, trace);
+      assistantText = sanitize(llm.ok && llm.text ? llm.text.trim() : gracefulFallback(plan, lang, timeTone), lang);
+    }
 
     // 提示する CTA（商材ボタン）。care時は出さない。
     let cta: Cta | null = null;
