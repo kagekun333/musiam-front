@@ -493,3 +493,32 @@
 - sponsoredリンク合計: **133通/133リンク**（自著59+外部74）。
 - 残りの厳選ショートリスト110件（149件-累計39件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。次回以降も同じ手順で継続する。
 - git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
+
+---
+
+# 第8セッション（人間レビュー担当のClaudeによる直接追加）— 2026-07-05（続き3、自律作業モード）
+
+ユーザーから「次　完了まで一時間くらいかけてじっくり高性能に自律作業できない？」との指示を受け、確認を挟まず複数バッチを連続処理する自律モードを開始。ショートリスト消化4巡目として13件を選びWebSearchで実在確認のうえ、テーマの合う未リンク回に直接追加した。
+
+| 手紙 | 商品 | ASIN | ジャンル |
+|---|---|---|---|
+| 2025-12-21-sundays-shortest-light | モンベル スペリオ ダウンジャケット | B00M3KFQK4 | 旅・アウトドア(冬至前日の回) |
+| 2026-04-25-saturdays-golden-week-prelude | 空気式ネックピロー(U型) | B0BMKBJ5CY | 旅・アウトドア(連休前の回) |
+| 2026-04-21-tuesdays-quiet-craft | Focusrite Scarlett Solo (4th Gen) | B0C5JSHP7M | 音楽制作ガジェット(構想段階の回) |
+| 2025-09-10-wednesdays-undercurrent | ロディア No.11 メモ帳(3冊セット) | B00JO1IFLW | 執筆・読書(底流の回) |
+| 2026-01-14-wednesdays-careful-selection | Logicool MX Keys | B07XQ7G6BH | AI・PC周辺機器(選別作業の回) |
+| 2026-04-02-thursdays-fresh-start | l'arbre blanc 観葉植物(本物・ミニ) | B0D254SS3N | 文房具・デスク環境(新年度の回) |
+| 2026-04-03-fridays-cherry-blossom-watch | SONY α7C II ボディ | B0CGW8Q4JM | カメラ・映像機材(桜便りの回) |
+| 2026-05-06-wednesdays-return-to-routine | デロンギ Magnifica Start (ECAM22020B) | B0CM5LSZYF | 家電(連休明けの回) |
+| 2026-02-04-the-first-day-of-spring | LUPICIA マスカット紅茶 | B01DLQMWZA | 暮らし・内省系(立春の回) |
+| 2026-01-15-thursdays-midmonth-ledger | オムロン 上腕式血圧計 HCR-7104 | B07ZVL1D9F | 健康・生活リズム(月半ば帳簿の回) |
+| 2026-04-05-sundays-new-faces | アイリスオーヤマ 新生活家電3点セット | B0CP3MKWND | 家電(新しい顔ぶれの回) |
+| 2026-05-19-tuesdays-small-victories | ビジネスパーソンのためのChatGPT活用大全 | 4054069568 | 時事連動(小さな勝利の回) |
+| 2026-02-17-gold-in-the-halfpipe | ミラノ・コルティナ2026 TEAM JAPAN公式写真集 | 4990495926 | 時事連動(ハーフパイプ金メダルの回) |
+
+- 全13件、WebSearchで`site:amazon.co.jp`検索し実際に`/dp/ASIN`ページが商品名付きで出ることを確認済み。代替・差し替えは今回なし。
+- 除外ルール（政治・皇室・戦争・災害・追悼・W杯試合回・月次決算回・総裁選・内閣・外交・首脳会談等）を今回も遵守。1通1リンク。
+- 追加後、全552通の機械検証（署名末尾/sponsored厳密記法/1通1リンク/FAQ内混入なし/frontmatter日付一致）を再実行 → **エラー0件**（`bgm-for-business.md`等、日付プレフィックスを持たない特集ページ6件のみ、検証スクリプトのファイル名パースの都合で「日付不一致」の誤検知が出るが、これはsponsoredリンクと無関係の既知の仕様であり実害なし）。
+- sponsoredリンク合計: **146通/146リンク**（自著59+外部87）。
+- 残りの厳選ショートリスト97件（149件-累計52件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。外部商品の生涯目標(100〜150件)に対し、現在87件。次バッチ以降も自律モードを継続するが、目標上限に近づき次第、選定基準をさらに厳しくして自然な停止点を判断する。
+- git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
