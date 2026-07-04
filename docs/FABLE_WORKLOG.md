@@ -435,3 +435,32 @@
 - sponsoredリンク合計: **107通/107リンク**（自著59+外部48）。
 - 残りの厳選ショートリスト136件（149件-今回13件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。次回以降も同じ手順（未リンク回の選定→WebSearchでdp確認→1通1商品で追加）で継続する。
 - git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
+
+---
+
+# 第6セッション（人間レビュー担当のClaudeによる直接追加）— 2026-07-05（続き）
+
+厳選149件ショートリストから、さらに13件を選びWebSearchで実在確認のうえ、テーマの合う未リンク回に直接追加した（第5セッションからの続き、ショートリスト消化2巡目）。
+
+| 手紙 | 商品 | ASIN | ジャンル |
+|---|---|---|---|
+| 2025-12-01-decembers-first-page | Leuchtturm1917 A5 横罫(ブラック) | B002CVAU1Y | 執筆・読書(新しい月の回) |
+| 2025-01-19-the-calm-before-deepseek | Logicool MX Master 3S | B0B1Q6VB16 | AI・PC周辺機器 |
+| 2025-01-15-mid-month-ledger | BenQ ScreenBar Halo | B08WT889V3 | 文房具・デスク環境(夜の帳簿回) |
+| 2025-12-28-sundays-last-quiet-sunday | サーモス 山専ボトル | B07Z7BP7BS | 暮らし・内省系(今年最後の日曜) |
+| 2025-01-09-the-loneliness-of-one-person-kingdom | Bose QuietComfort Ultra | B0CFYBTD72 | 家電(孤独と静寂の回) |
+| 2025-03-07-the-pause-and-the-poet | BALMUDA The Lantern | B07XBYPR6B | 暮らし・内省系(静寂の回) |
+| 2025-11-20-thursdays-soft-landing | Oura Ring 4 | B0D9WVSZ56 | 健康・生活リズム(軟着陸の回) |
+| 2026-04-26-sundays-anniversary-thoughts | 名入れペアグラス(きざむ) | B09NKNMNK6 | ギフト・季節性(一周年準備の回) |
+| 2025-08-18-plaything | Nintendo Switch 2 | B0DX1BC3R8 | 時事連動(遊び心の回) |
+| 2025-05-14-the-record-crowd-at-expo | 大阪・関西万博公式グッズ(ミャクミャクぬいバッジ) | B0DX2LWNK9 | 時事連動(万博来場者数の回) |
+| 2025-01-04-the-art-of-throwing-away | MacBook Air M4 | B0DZDFT2YV | AI・PC周辺機器(選別哲学の回) |
+| 2025-06-12-funk-mindfulness-and-pikassoism | YAMAHA HS5 | B00CDJ8HK6 | 音楽制作ガジェット(ミックス確認の回) |
+| 2025-06-10-tuesdays-spirit-of-the-wilderness | Herman Miller アーロンチェア | B01MUZOWBH | 文房具・デスク環境(在野精神の回) |
+
+- 全13件、WebSearchで`site:amazon.co.jp`検索し実際に`/dp/ASIN`ページが商品名付きで出ることを確認済み。
+- 除外ルール（政治・皇室・戦争・災害・追悼・W杯試合回・月次決算回）は今回も遵守。1通1リンク。1件（mid-month-ledger）はFAQ形式（館より/伯爵の独白/よくある質問）だったため、sponsoredリンクをFAQセクション外（伯爵の独白）に配置し混入なしを確認。
+- 追加後、全552通の機械検証（署名末尾/sponsored厳密記法/1通1リンク/FAQ内混入なし/未対応記法なし/frontmatter日付一致）を再実行 → **エラー0件**。
+- sponsoredリンク合計: **120通/120リンク**（自著59+外部61）。
+- 残りの厳選ショートリスト123件（149件-累計26件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。次回以降も同じ手順（未リンク回の選定→WebSearchでdp確認→1通1商品で追加）で継続する。
+- git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
