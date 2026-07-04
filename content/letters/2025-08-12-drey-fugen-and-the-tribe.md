@@ -8,7 +8,7 @@ keywords: Drey Fugen,Harmonia Mundi,WE ARE THE TRIBE,新作,音楽
 
 本日の二曲は**『Drey Fugen: Harmonia Mundi』**と**『WE ARE THE TRIBE』**。世界の調和と、部族としての結束、規模の異なる二つのテーマです。
 
-『Drey Fugen』は三つの声部が絡み合う対位法的な構造、『WE ARE THE TRIBE』は一つの旗のもとに集う力強さ。秩序と結束は、似ているようで違う美しさを持っています。
+『Drey Fugen』は三つの声部が絡み合う対位法的な構造、『WE ARE THE TRIBE』は一つの旗のもとに集う力強さ。秩序と結束は、似ているようで違う美しさを持っています。三声の絡み合いは、机の[YAMAHA HS5](https://www.amazon.co.jp/dp/B00CDJ8GDE?tag=hakusyaku04-22){sponsored}で何度も鳴らして確かめました。声部の重なりを飾らずに見せてくれる、正直なスピーカーです。
 
 調和は対話から生まれ、結束は共通の目的から生まれる。どちらも館の運営に欠かせない要素です。一人館主の私にとって、AIたちは声部であり、また小さな部族でもあります。
 
