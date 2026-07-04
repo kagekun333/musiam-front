@@ -464,3 +464,32 @@
 - sponsoredリンク合計: **120通/120リンク**（自著59+外部61）。
 - 残りの厳選ショートリスト123件（149件-累計26件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。次回以降も同じ手順（未リンク回の選定→WebSearchでdp確認→1通1商品で追加）で継続する。
 - git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
+
+---
+
+# 第7セッション（人間レビュー担当のClaudeによる直接追加）— 2026-07-05（続き2）
+
+ショートリスト消化3巡目。13件を選びWebSearchで実在確認のうえ、テーマの合う未リンク回に直接追加した。
+
+| 手紙 | 商品 | ASIN | ジャンル |
+|---|---|---|---|
+| 2025-11-02-sundays-low-tide | Kindle Scribe | B0FC1PBJRB | 執筆・読書(引き潮の日) |
+| 2025-11-25-tuesdays-inventory-again | HHKB Professional Hybrid | B082TZPCGJ | AI・PC周辺機器(棚卸しの回) |
+| 2025-10-15-wednesdays-quiet-thread | FlexiSpot E7 電動昇降デスク | B0CC1RCDC5 | 文房具・デスク環境(日常回帰の回) |
+| 2025-10-18-saturdays-deep-breath | SONY ZV-E10 II | B0D97HW6S6 | カメラ・映像機材(発表前夜) |
+| 2025-12-05-fridays-quiet-before-the-shake | ルンバ コンボ Essential | B0CZ4CHTTC | 家電(平穏な金曜) |
+| 2025-10-06-the-cell-that-says-enough | Kalita Wave ドリッパー | B004W5L1XY | 暮らし・内省系(ノーベル賞の朝) |
+| 2025-11-24-mondays-quiet-resolve | タニタ体組成計 BC-705N | B00E37SO0Y | 健康・生活リズム(決意の月曜) |
+| 2025-11-28-fridays-gratitude-list | Jackery ポータブル電源240 | B07PJYY115 | 旅・アウトドア(感謝の回) |
+| 2025-11-19-wednesdays-long-exhale | SHURE SM7B | B0002E4Z8M | 音楽制作ガジェット(息抜きの回) |
+| 2025-07-24-thoughts-melting-in-the-heat | 三輪山本 手延べそうめん(お中元) | B0BVB138WJ | ギフト・季節性(猛暑の回) |
+| 2025-11-13-the-tanic-and-the-fourth-mvp | 大谷翔平120の思考 | 4835638158 | 時事連動(大谷MVPの回) |
+| 2025-06-11-zenimal-planet | ゼルダの伝説 TotK Switch2版 | B0F5WS7GYN | 時事連動(動物と禅の新作回) |
+| 2025-10-16-thursdays-second-wind | AirPods Pro 3 | B0FQFQDN6K | 時事連動(二度目の風の回) |
+
+- 全13件、WebSearchで`site:amazon.co.jp`検索し実際に`/dp/ASIN`ページが商品名付きで出ることを確認済み。iRobotは当初候補の「Roomba Combo j9+」がamazon.co.jp上で確認できなかったため、実在確認できた「ルンバ コンボ Essential」に差し替えて採用。
+- 除外ルール（政治・皇室・戦争・災害・追悼・W杯試合回・月次決算回）は今回も遵守。加えて、総裁選・内閣・外交・首脳会談など政治色の強い回は候補から除外し、科学(ノーベル賞)・スポーツ・穏やかな日常回のみを選定。1通1リンク。
+- 追加後、全552通の機械検証（署名末尾/sponsored厳密記法/1通1リンク/FAQ内混入なし/未対応記法なし/frontmatter日付一致）を再実行 → **エラー0件**。
+- sponsoredリンク合計: **133通/133リンク**（自著59+外部74）。
+- 残りの厳選ショートリスト110件（149件-累計39件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。次回以降も同じ手順で継続する。
+- git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
