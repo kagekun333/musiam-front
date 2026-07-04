@@ -406,3 +406,32 @@
 - 追加後、全552通の機械検証（署名末尾/sponsored厳密記法/1通1リンク/FAQ内混入なし/未対応記法なし/frontmatter日付一致）を再実行 → **エラー0件**。
 - sponsoredリンク合計: **94通/94リンク**（自著59+外部35）。外部の月別分布(2025年): 1月2,3月1,4月2,5月1,6月2,7月1,8月4,9月2,10月2,11月4,12月3。(2026年): 1月2,2月2,3月2,4月1,5月2,6月1。日付なし1。
 - git push未実施。バッチD・E・本補遺分がローカル未コミットのまま人間の最終確認後にpushされる想定。
+
+---
+
+# 第5セッション（人間レビュー担当のClaudeによる直接追加）— 2026-07-05
+
+`docs/PRODUCT_CANDIDATES_1000.md`（候補1000件）→`docs/PRODUCT_CANDIDATES_SHORTLIST.md`（厳選149件）の一次選別を経て、そこから13件を選びWebSearchで実在確認のうえ、テーマの合う未リンク回に直接追加した。Fableへの再委任はせず、人間レビュー担当のこのセッションが直接編集した。
+
+| 手紙 | 商品 | ASIN | ジャンル |
+|---|---|---|---|
+| 2025-05-23-coffee-love-and-the-mirror | HARIO V60 ドリッパー | B001HC9GIC | 暮らし(コーヒーがテーマの回) |
+| 2025-07-26-the-small-world-on-my-desk | LAMYサファリ 万年筆(レッド) | B001ANHZP4 | 執筆・読書(机の道具) |
+| 2025-03-25-the-quiet-quarter | Kindle Paperwhite | B0CFPL6CFY | 執筆・読書(棚卸しの回) |
+| 2025-07-11-fridays-stock-check | Rocketbook Core | B07ZHZBPNM | 執筆・読書(在庫確認の回) |
+| 2025-01-12-sunday-with-the-electronic-vassals | Anker PowerCore 10000 | B019GNUT0C | AI・PC周辺機器 |
+| 2025-06-07-saturday-maintenance | Dyson V15 Detect | B0CLL1M5C7 | 家電(手入れの回) |
+| 2025-05-06-after-the-festival | Philips Hue Playスターターキット | B07Z8B99YS | 家電(静かな夜の回) |
+| 2025-07-08-tuesdays-quiet-experiment | Loop Quiet 耳栓 | B0D3V61JC8 | 文房具・デスク環境(集中の回) |
+| 2026-05-09-saturdays-numbers-fatigue | uFit RELEASER マッサージガン | B0DK14CDR7 | 健康・生活リズム(疲労の回) |
+| 2025-06-02-the-second-month-begins | BALMUDA The Toaster | B08HCTTL8B | 家電(朝がテーマの回) |
+| 2025-01-28-eve-of-the-first-exhibit | Peak Design トラベル三脚(アルミ) | B085BQS6K4 | カメラ・映像機材(初公開前夜) |
+| 2025-04-29-eve-of-the-first-sound | SHURE MV7 | B08KY7G1GV | 音楽制作ガジェット(初音前夜) |
+| 2025-07-09-wednesdays-detour | ASICS GEL-KAYANO 30 | B0BN9SL2X1 | 健康・生活リズム(遠回りの回) |
+
+- 全13件、WebSearchで`site:amazon.co.jp`検索し実際に`/dp/ASIN`ページが商品名付きで出ることを確認済み。マッサージガンは候補リストでは商品名なしの一般枠だったため、実在確認できた具体的な製品名（uFit RELEASER）に差し替えて採用。
+- 除外ルール（政治・皇室・戦争・災害・追悼・W杯試合回・月次決算回）は今回も遵守。1通1リンク。FAQ形式の回は対象外だったため混入リスクなし。
+- 追加後、対象13通を機械検証（署名末尾/sponsored厳密記法/1通1リンク/FAQ内混入なし/未対応記法なし/frontmatter日付一致）→ **エラー0件**。
+- sponsoredリンク合計: **107通/107リンク**（自著59+外部48）。
+- 残りの厳選ショートリスト136件（149件-今回13件）は`docs/PRODUCT_CANDIDATES_SHORTLIST.md`に残存。次回以降も同じ手順（未リンク回の選定→WebSearchでdp確認→1通1商品で追加）で継続する。
+- git push未実施。今回分もローカル未コミットのまま人間の最終確認後にpushされる想定。
