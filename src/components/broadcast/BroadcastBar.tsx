@@ -2,13 +2,17 @@
 // src/components/broadcast/BroadcastBar.tsx
 // 放送（F1）: 全ページ下部に常駐する「今、領内に流れている一曲」バー。
 // - /api/now-playing から時間バケットの一曲を取得。バケットが変わると自動で移ろう。
-// - 音声の自動再生はしない（試聴音源が無いため）。一click で配信へ（聴く摩擦ゼロ）。
+// - 自動再生はしない(ブラウザの自動再生ポリシー・ユーザー操作尊重のため)が、
+//   「聴く」を押すと実際にSpotify公式埋め込みプレイヤーが展開しその場で音声が流れる
+//   (サイトを離れず一click で本当に再生できる)。Spotifyリンクが無い作品は、
+//   従来通り配信ページへの直接リンクにフォールバックする。
 // - 折りたたみ/再開はローカル保存。reduced-motion を尊重。
 // - 既存レイアウトを壊さないよう fixed・pointer-events 最小で重ねる。
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { track as metric } from "@/lib/metrics";
+import { getSpotifyEmbedUrl } from "@/lib/work-links";
 import "./broadcast-bar.css";
 
 type NowTrack = {
@@ -35,6 +39,7 @@ export default function BroadcastBar() {
   const [data, setData] = useState<NowPlaying | null>(null);
   const [collapsed, setCollapsed] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [playerOpenFor, setPlayerOpenFor] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // 折りたたみ状態を復元（SSR不一致を避けるため mount 後に反映）。
@@ -87,6 +92,13 @@ export default function BroadcastBar() {
   if (!mounted || !data?.now) return null;
   const t = data.now;
   const listenHref = t.spotify || t.appleMusic || t.href;
+  const embedUrl = getSpotifyEmbedUrl(t.spotify);
+  const isPlayerOpen = playerOpenFor === t.id;
+
+  const openInlinePlayer = () => {
+    metric("broadcast_listen", { id: t.id, via: "inline_player" });
+    setPlayerOpenFor(t.id);
+  };
 
   if (collapsed) {
     return (
@@ -105,23 +117,53 @@ export default function BroadcastBar() {
 
   return (
     <aside className="rnv-broadcast" aria-label="放送：今、領内に流れている一曲" role="complementary">
+      {isPlayerOpen && embedUrl && (
+        <div className="rnv-broadcast__player">
+          <iframe
+            key={embedUrl}
+            src={embedUrl}
+            title={`${t.title} を再生`}
+            width="100%"
+            height="80"
+            frameBorder="0"
+            allow="autoplay; encrypted-media; clipboard-write; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        </div>
+      )}
       <div className="rnv-broadcast__inner">
-        <a
-          href={listenHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rnv-broadcast__cover rnv-breathe"
-          onClick={() => metric("broadcast_listen", { id: t.id, via: "cover" })}
-          aria-label={`${t.title} を聴く`}
-        >
-          <Image src={t.cover} alt="" fill sizes="56px" className="rnv-broadcast__img" />
-          <span className="rnv-broadcast__eq" aria-hidden="true">
-            <i /><i /><i />
-          </span>
-        </a>
+        {embedUrl ? (
+          <button
+            type="button"
+            className="rnv-broadcast__cover rnv-breathe"
+            onClick={() => (isPlayerOpen ? setPlayerOpenFor(null) : openInlinePlayer())}
+            aria-label={isPlayerOpen ? `${t.title} のプレイヤーを閉じる` : `${t.title} をこの場で再生`}
+          >
+            <Image src={t.cover} alt="" fill sizes="56px" className="rnv-broadcast__img" />
+            <span className="rnv-broadcast__eq" aria-hidden="true">
+              <i /><i /><i />
+            </span>
+          </button>
+        ) : (
+          <a
+            href={listenHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rnv-broadcast__cover rnv-breathe"
+            onClick={() => metric("broadcast_listen", { id: t.id, via: "cover" })}
+            aria-label={`${t.title} を聴く`}
+          >
+            <Image src={t.cover} alt="" fill sizes="56px" className="rnv-broadcast__img" />
+            <span className="rnv-broadcast__eq" aria-hidden="true">
+              <i /><i /><i />
+            </span>
+          </a>
+        )}
 
         <div className="rnv-broadcast__meta">
-          <span className="rnv-broadcast__label rnv-rune">NOW BROADCASTING · 今、領内に流れている一曲</span>
+          <span className="rnv-broadcast__label rnv-rune">
+            {isPlayerOpen ? "NOW PLAYING · この場で再生中" : "NOW BROADCASTING · 今、領内に流れている一曲"}
+          </span>
           <a
             href={listenHref}
             target="_blank"
@@ -136,15 +178,25 @@ export default function BroadcastBar() {
           )}
         </div>
 
-        <a
-          href={listenHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rnv-broadcast__listen"
-          onClick={() => metric("broadcast_listen", { id: t.id, via: "button" })}
-        >
-          聴く
-        </a>
+        {embedUrl ? (
+          <button
+            type="button"
+            className="rnv-broadcast__listen"
+            onClick={() => (isPlayerOpen ? setPlayerOpenFor(null) : openInlinePlayer())}
+          >
+            {isPlayerOpen ? "閉じる" : "聴く"}
+          </button>
+        ) : (
+          <a
+            href={listenHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rnv-broadcast__listen"
+            onClick={() => metric("broadcast_listen", { id: t.id, via: "button" })}
+          >
+            聴く
+          </a>
+        )}
 
         <button
           type="button"

@@ -143,7 +143,27 @@ export default async function LettersPage() {
                     }}
                   >
                     <div style={{ fontSize: "0.75rem", color: "var(--rnv-text-amber)", fontWeight: 600, marginBottom: 4 }}>{l.date}</div>
-                    <div style={{ fontWeight: 700, marginBottom: 6 }}>{l.title}</div>
+                    <div style={{ fontWeight: 700, marginBottom: 6, display: "flex", alignItems: "center", gap: "0.5em" }}>
+                      <span>{l.title}</span>
+                      {l.hasSponsored && (
+                        <span
+                          title="この手紙にはPR/アフィリエイトリンクが含まれます"
+                          style={{
+                            display: "inline-block",
+                            flex: "0 0 auto",
+                            padding: "0.04em 0.44em",
+                            fontSize: "0.62rem",
+                            fontWeight: 700,
+                            letterSpacing: "0.04em",
+                            color: "var(--color-text-muted)",
+                            border: "1px solid var(--color-border-medium)",
+                            borderRadius: 4,
+                          }}
+                        >
+                          PR
+                        </span>
+                      )}
+                    </div>
                     <div style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", lineHeight: 1.7 }}>
                       {l.description}
                     </div>

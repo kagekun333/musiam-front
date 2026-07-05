@@ -46,11 +46,14 @@ function restoreScroll() {
   if (!y) return;
   // 直後に走る可能性のある他のスクロール処理(Next側の既定のトップスクロール等)に
   // 上書きされないよう、1フレーム以上遅らせてから復元する。
+  // さらに、Next側の処理がハイドレーション完了後など「もっと後」に走るケースにも
+  // 備え、少し時間を空けて複数回念押しする（既に正しい位置ならno-op同然の軽い処理）。
+  const apply = () => window.scrollTo(0, y);
   requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      window.scrollTo(0, y);
-    });
+    requestAnimationFrame(apply);
   });
+  setTimeout(apply, 60);
+  setTimeout(apply, 200);
 }
 
 export default function LettersScrollFx() {
@@ -82,9 +85,14 @@ export default function LettersScrollFx() {
 
   // ブラウザの「戻る/進む」(popstate)でも復元を試みる。pathnameの変化に伴う
   // 下のeffectと合わせて二重に発火させることで、タイミングの取りこぼしを防ぐ。
+  //
+  // 注意: popstate発火時点では、まだReactが新しいpathnameで再描画していないため
+  // isListPageRef（Reactのレンダー結果に依存する値）は直前のページの値のままで
+  // 古い(stale)。popstateはブラウザが既にURLを書き換えた後に発火するので、
+  // window.location.pathname を直接読めば遷移先を正しく判定できる。
   useEffect(() => {
     const onPopState = () => {
-      if (isListPageRef.current) restoreScroll();
+      if (window.location.pathname === "/letters") restoreScroll();
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);

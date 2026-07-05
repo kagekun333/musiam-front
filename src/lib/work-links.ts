@@ -29,6 +29,16 @@ export function isSpotifyUrl(url?: string) {
   return /open\.spotify\.com|spotify:/i.test(String(url || ""));
 }
 
+/** open.spotify.com の通常URL(album/track/episode等)を、実際に音声を再生できる
+ *  公式埋め込みプレイヤーのURLに変換する。変換できない場合はnull。
+ *  例: https://open.spotify.com/album/xxxx → https://open.spotify.com/embed/album/xxxx */
+export function getSpotifyEmbedUrl(url?: string): string | null {
+  const value = String(url || "");
+  const m = value.match(/open\.spotify\.com\/(track|album|episode|show|playlist)\/([A-Za-z0-9]+)/i);
+  if (!m) return null;
+  return `https://open.spotify.com/embed/${m[1]}/${m[2]}?utm_source=generator&theme=0`;
+}
+
 export function isAppleMusicStreamingUrl(url?: string) {
   const value = String(url || "");
   return /music\.apple\.com/i.test(value) && !/[?&]app=itunes/i.test(value);

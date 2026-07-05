@@ -20,7 +20,14 @@ export type Letter = {
   body: string;
   /** frontmatterの `keywords: a,b,c` をカンマ分割したもの。SEO(meta keywords)/GEO(JSON-LD keywords)で使う。 */
   keywords: string[];
+  /** 本文中に `{sponsored}` 記法のPR/アフィリエイトリンクを含むかどうか。一覧でのPRバッジ表示に使う。 */
+  hasSponsored: boolean;
 };
+
+/** 本文に `{sponsored}` 記法のリンクが含まれるか判定する。renderMarkdown内の正規表現と対応。 */
+function detectSponsored(body: string): boolean {
+  return /\[([^\]]+)\]\((https?:\/\/[^)]+|\/[^)]*)\)\{sponsored\}/.test(body);
+}
 
 const DIR = path.join(process.cwd(), "content/letters");
 
@@ -81,6 +88,7 @@ export async function getLetters(): Promise<Letter[]> {
       keywords: meta.keywords
         ? meta.keywords.split(/[、,]/).map((k) => k.trim()).filter(Boolean)
         : [],
+      hasSponsored: detectSponsored(body),
     });
   }
   return letters.sort((a, b) => b.date.localeCompare(a.date));

@@ -25,7 +25,7 @@
   backdrop-filter: blur(12px);
 }
 
-/* カバー */
+/* カバー（<a>版と<button>版=埋め込み再生トグルの両方で共通の見た目にする） */
 .rnv-broadcast__cover {
   position: relative;
   flex: 0 0 auto;
@@ -35,6 +35,24 @@
   overflow: hidden;
   border: 1px solid var(--rnv-line-hair);
   display: block;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* インラインSpotifyプレイヤー（実際に音声が流れるカード。バーの上に重ねて表示） */
+.rnv-broadcast__player {
+  pointer-events: auto;
+  margin-bottom: 8px;
+  border-radius: var(--rnv-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--rnv-line-grid);
+  box-shadow: var(--rnv-shadow-realm);
+  background: var(--rnv-bg-panel-strong);
+}
+.rnv-broadcast__player iframe {
+  display: block;
+  border: none;
 }
 .rnv-broadcast__img { object-fit: cover; }
 
@@ -100,7 +118,7 @@
   text-overflow: ellipsis;
 }
 
-/* 聴くボタン */
+/* 聴くボタン（<a>版と<button>版=埋め込み再生トグルの両方で使う） */
 .rnv-broadcast__listen {
   flex: 0 0 auto;
   padding: 7px 16px;
@@ -109,8 +127,10 @@
   color: #1a1206;
   font-size: var(--rnv-text-sm);
   font-weight: 600;
+  font-family: inherit;
   text-decoration: none;
   border: 1px solid var(--rnv-line-strong);
+  cursor: pointer;
   transition: transform var(--rnv-dur-fast) var(--rnv-ease), box-shadow var(--rnv-dur-fast) var(--rnv-ease);
 }
 .rnv-broadcast__listen:hover {
