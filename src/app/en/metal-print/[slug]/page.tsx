@@ -42,7 +42,8 @@ export default async function EnglishMetalPrintEditionPage({ params }: { params:
   const edition = getEdition(slug);
   if (!edition) notFound();
   const isPublicOffer = Boolean(getApprovedMetalPrintOffer(edition.id));
-  const chatHref = `/chat?intent=metal-print&work=${encodeURIComponent(edition.title)}`;
+  const catalogWorkId = edition.id.startsWith("CATALOG-WORK:") ? edition.id.slice("CATALOG-WORK:".length) : "";
+  const chatHref = `/chat?intent=metal-print&work=${encodeURIComponent(edition.title)}${catalogWorkId ? `&workId=${encodeURIComponent(catalogWorkId)}` : ""}`;
   const canonical = `${siteUrl()}/en/metal-print/${edition.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -53,7 +54,7 @@ export default async function EnglishMetalPrintEditionPage({ params }: { params:
     description: edition.en.searchDescription,
     image: `${siteUrl()}${edition.cover}`,
     creator: { "@type": "Person", name: "ABI Hakusyaku" },
-    artform: "Limited-edition ChromaLuxe metal print candidate",
+    artform: "Limited-edition made-to-order ChromaLuxe metal print",
     artMedium: edition.format.medium,
     artworkSurface: edition.format.finish,
     width: { "@type": "QuantitativeValue", value: edition.format.widthMm, unitCode: "MMT" },

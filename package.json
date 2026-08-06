@@ -109,6 +109,7 @@
     "prepare": "husky install",
     "add:exhibit": "tsx scripts/add-exhibit.ts",
     "build:exhibits": "tsx scripts/build-exhibits.ts",
+    "sync:apple-music-works": "node scripts/syncAppleMusicWorks.mjs",
     "enrich:works": "node scripts/enrich-works.mjs",
     "audit:works": "node scripts/audit-works.mjs"
   },

@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/site-url";
 import { isHyperfollowUrl } from "@/lib/work-links";
 import WorkLinks, { type WorkLinkItem } from "./WorkLinks";
 import DonationCTA from "@/components/cta/DonationCTA";
-import { getCatalogMetalPrintEditionId, METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
+import { getMetalPrintEditionIdForWork, METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./work-page.css";
 
@@ -208,11 +208,9 @@ export default async function WorkPage(
     typeof work.matchInfo === "object" && work.matchInfo
       ? (work.matchInfo as { summary?: string }).summary
       : undefined;
-  const metalEditionId = getCatalogMetalPrintEditionId(String(work.id));
-  const metalEdition = METAL_PRINT_VIP_EDITIONS.find((edition) => edition.id === metalEditionId);
+  const metalEditionId = t === "Music" ? getMetalPrintEditionIdForWork(String(work.id), String(work.title)) : null;
+  const metalEdition = metalEditionId ? METAL_PRINT_VIP_EDITIONS.find((edition) => edition.id === metalEditionId) : null;
   const metalOfferApproved = metalEdition ? Boolean(getApprovedMetalPrintOffer(metalEdition.id)) : false;
-  const metalConsultationHref = `/chat?intent=metal-print&work=${encodeURIComponent(String(work.title))}&workId=${encodeURIComponent(String(work.id))}&utm_source=work_page&utm_medium=owned&utm_campaign=all_catalog_metal&utm_content=${encodeURIComponent(String(work.id))}`;
-
   // JSON-LD 構造化データ (検索結果のリッチ表示用)
   const jsonLd = {
     "@context": "https://schema.org",
@@ -283,23 +281,19 @@ export default async function WorkPage(
           <p>{metalEdition.collectorPromise} 60cm角・Edition 3点の正式Offerとして、あなたの空間との相性を伯爵が見立てます。</p>
           <Link
             className="work-metal-cta"
-            href={`/metal-print/${metalEdition.slug}?utm_source=work_page&utm_medium=owned&utm_campaign=catalog_to_metal&utm_content=${metalEdition.slug}&space=${metalEdition.spaceSegment}`}
+            href={`/metal-print/${metalEdition.slug}?utm_source=work_page&utm_medium=owned&utm_campaign=catalog_to_metal&utm_content=${metalEdition.slug}&space=${metalEdition.spaceSegment}&workId=${encodeURIComponent(String(work.id))}`}
           >
             この作品のCollector Dossierを見る
           </Link>
           <small>{metalOfferApproved
-            ? `${metalEdition.title}は税込330,000円の正式Offerです。実物proofは未承認で、Stripe入金後に受注制作します。`
+            ? `${metalEdition.title}は税込330,000円の正式Offerです。Stripe入金後に一点ずつ受注制作します。`
             : "購入義務はありません。仕様・印刷適性・配送条件を確認後、正式Offerを発行します。"}</small>
           </>
         ) : (
           <>
-            <p className="work-metal-eyebrow">THE ENTIRE CATALOG · MADE TO ORDER</p>
-            <h2>この作品を、あなたの空間だけのメタルプリントへ。</h2>
-            <p>全作品を受注生産の相談対象として公開しています。伯爵Chatが空間との相性を見立て、原画解像度・印刷適性・サイズ・配送条件を確認して正式Offerを組み立てます。</p>
-            <Link className="work-metal-cta" href={metalConsultationHref}>
-              この作品を伯爵に相談する
-            </Link>
-            <small>一問から。購入義務なし。未確認の仕様や価格を確定情報として表示することはありません。</small>
+            <p className="work-metal-eyebrow">BOOK COLLECTION</p>
+            <h2>この作品を読む。</h2>
+            <p>書籍はメタルプリント販売の対象外です。作品ページから本文・購入先をご覧ください。</p>
           </>
         )}
       </section>

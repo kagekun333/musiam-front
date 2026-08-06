@@ -35,7 +35,7 @@ export default function VipMetalPrintPage() {
           伯爵があなたの空間に合う一枚を選び、正式Offerへの同意と入金後に1点ずつ制作します。
         </p>
         <a className="vip-metal-primary" href="/works">全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ</a>
-        <p className="vip-metal-micro">カタログ全{METAL_PRINT_CATALOG_WORK_COUNT}作品とFeatured 4作品、合計{METAL_PRINT_TOTAL_EDITION_COUNT}作品を各3点の正式Offerとして公開しています。</p>
+        <p className="vip-metal-micro">公開中の音楽ジャケット全{METAL_PRINT_TOTAL_EDITION_COUNT}作品から選べます。</p>
       </section>
 
       <section className="vip-metal-proof" aria-label="価格方針">
@@ -44,7 +44,7 @@ export default function VipMetalPrintPage() {
           <strong>¥{METAL_PRINT_VIP_PRICE_POLICY.anchorYen.toLocaleString()}</strong>
           <span>全作品共通の正式Collector価格</span>
         </div>
-        <small>正方形原画をトリミングせず、白下地ChromaLuxeへ原寸比率で制作します。受注生産のため、Stripe入金確認後に1点ずつ印刷会社へ発注します。実物proofは未承認です。通常は製造開始から約12営業日＋配送期間が目安です。</small>
+        <small>正方形原画をトリミングせず、白下地ChromaLuxeへ原寸比率で制作します。Stripe入金確認後に1点ずつ制作し、通常は製造開始から約12営業日＋配送期間が目安です。</small>
       </section>
 
       <section className="vip-metal-spaces" aria-label="空間から選ぶ">
@@ -81,8 +81,8 @@ export default function VipMetalPrintPage() {
       </section>
 
       <section className="vip-metal-trust">
-        <h2>全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ。</h2>
-        <p>音楽267作品・書籍134作品の各作品ページから、その作品専用の60cm角・限定3点のCollector Dossierと正式Offerへ進めます。</p>
+        <h2>音楽ジャケット全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ。</h2>
+        <p>各音楽作品ページから、その作品専用の60cm角・限定3点のCollector Dossierと正式Offerへ進めます。</p>
         <a className="vip-metal-primary" href="/works">全作品カタログを開く</a>
       </section>
 

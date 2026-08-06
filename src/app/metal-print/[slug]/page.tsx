@@ -41,7 +41,8 @@ export default async function MetalPrintEditionPage({ params }: { params: Promis
   const edition = getEdition(slug);
   if (!edition) notFound();
   const isPublicOffer = Boolean(getApprovedMetalPrintOffer(edition.id));
-  const chatHref = `/chat?intent=metal-print&work=${encodeURIComponent(edition.title)}`;
+  const catalogWorkId = edition.id.startsWith("CATALOG-WORK:") ? edition.id.slice("CATALOG-WORK:".length) : "";
+  const chatHref = `/chat?intent=metal-print&work=${encodeURIComponent(edition.title)}${catalogWorkId ? `&workId=${encodeURIComponent(catalogWorkId)}` : ""}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "VisualArtwork",
@@ -51,7 +52,7 @@ export default async function MetalPrintEditionPage({ params }: { params: Promis
     description: edition.searchDescription,
     image: `${siteUrl()}${edition.cover}`,
     creator: { "@type": "Person", name: "ABI伯爵" },
-    artform: "Limited-edition ChromaLuxe metal print candidate",
+    artform: "Limited-edition made-to-order ChromaLuxe metal print",
     width: { "@type": "QuantitativeValue", value: edition.format.widthMm, unitCode: "MMT" },
     height: { "@type": "QuantitativeValue", value: edition.format.heightMm, unitCode: "MMT" },
   };

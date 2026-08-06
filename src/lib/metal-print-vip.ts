@@ -154,10 +154,21 @@ type CatalogSourceWork = {
   moodTags?: string[];
 };
 
-const catalogItems = (worksCatalog as { items: CatalogSourceWork[] }).items;
+const catalogItems = (worksCatalog as { items: CatalogSourceWork[] }).items
+  .filter((work) => String(work.type).toLowerCase() === "music");
+
+function normalizedTitle(title: string) {
+  return title.normalize("NFKC").toLowerCase().replace(/\s+/g, " ").trim();
+}
+
+const featuredByTitle = new Map(METAL_PRINT_FEATURED_EDITIONS.map((edition) => [normalizedTitle(edition.title), edition]));
 
 export function getCatalogMetalPrintEditionId(workId: string | number) {
   return `CATALOG-WORK:${String(workId)}`;
+}
+
+export function getMetalPrintEditionIdForWork(workId: string | number, title: string) {
+  return featuredByTitle.get(normalizedTitle(title))?.id ?? getCatalogMetalPrintEditionId(workId);
 }
 
 function catalogEdition(work: CatalogSourceWork): MetalPrintVipEdition {
@@ -191,7 +202,9 @@ function catalogEdition(work: CatalogSourceWork): MetalPrintVipEdition {
   };
 }
 
-export const METAL_PRINT_CATALOG_EDITIONS: MetalPrintVipEdition[] = catalogItems.map(catalogEdition);
+export const METAL_PRINT_CATALOG_EDITIONS: MetalPrintVipEdition[] = catalogItems
+  .filter((work) => !featuredByTitle.has(normalizedTitle(work.title)))
+  .map(catalogEdition);
 
 /** Featured capsules remain intact; every canonical catalog work is also a formal Edition. */
 export const METAL_PRINT_VIP_EDITIONS: MetalPrintVipEdition[] = [
@@ -199,5 +212,5 @@ export const METAL_PRINT_VIP_EDITIONS: MetalPrintVipEdition[] = [
   ...METAL_PRINT_CATALOG_EDITIONS,
 ];
 
-export const METAL_PRINT_CATALOG_WORK_COUNT = METAL_PRINT_CATALOG_EDITIONS.length;
+export const METAL_PRINT_CATALOG_WORK_COUNT = catalogItems.length;
 export const METAL_PRINT_TOTAL_EDITION_COUNT = METAL_PRINT_VIP_EDITIONS.length;

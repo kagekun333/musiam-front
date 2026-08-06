@@ -1,6 +1,888 @@
 {
   "items": [
     {
+      "id": "apple-album-6797260493",
+      "title": "Fractal Hands",
+      "type": "music",
+      "cover": "/works/covers/apple_6797260493.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-06",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/fractal-hands-single/6797260493",
+      "primaryHref": "https://music.apple.com/us/album/fractal-hands-single/6797260493",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/fractal-hands-single/6797260493",
+        "listen": "https://music.apple.com/us/album/fractal-hands-single/6797260493"
+      }
+    },
+    {
+      "id": "apple-album-6797260614",
+      "title": "LOW TRICKSTER",
+      "type": "music",
+      "cover": "/works/covers/apple_6797260614.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-06",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/low-trickster-single/6797260614",
+      "primaryHref": "https://music.apple.com/us/album/low-trickster-single/6797260614",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/low-trickster-single/6797260614",
+        "listen": "https://music.apple.com/us/album/low-trickster-single/6797260614"
+      }
+    },
+    {
+      "id": "apple-album-6797806860",
+      "title": "NEKOGAMI",
+      "type": "music",
+      "cover": "/works/covers/apple_6797806860.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-06",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/nekogami-single/6797806860",
+      "primaryHref": "https://music.apple.com/us/album/nekogami-single/6797806860",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/nekogami-single/6797806860",
+        "listen": "https://music.apple.com/us/album/nekogami-single/6797806860"
+      }
+    },
+    {
+      "id": "apple-album-6797256001",
+      "title": "FINAL WARNING TO EARTH",
+      "type": "music",
+      "cover": "/works/covers/apple_6797256001.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-05",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/final-warning-to-earth-single/6797256001",
+      "primaryHref": "https://music.apple.com/us/album/final-warning-to-earth-single/6797256001",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/final-warning-to-earth-single/6797256001",
+        "listen": "https://music.apple.com/us/album/final-warning-to-earth-single/6797256001"
+      }
+    },
+    {
+      "id": "apple-album-6797258577",
+      "title": "地球レビュー星1.8",
+      "type": "music",
+      "cover": "/works/covers/apple_6797258577.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-05",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%9C%B0%E7%90%83%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%98%9F1-8-single/6797258577",
+      "primaryHref": "https://music.apple.com/us/album/%E5%9C%B0%E7%90%83%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%98%9F1-8-single/6797258577",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%9C%B0%E7%90%83%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%98%9F1-8-single/6797258577",
+        "listen": "https://music.apple.com/us/album/%E5%9C%B0%E7%90%83%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%98%9F1-8-single/6797258577"
+      }
+    },
+    {
+      "id": "apple-album-6797260277",
+      "title": "電脳神楽",
+      "type": "music",
+      "cover": "/works/covers/apple_6797260277.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-04",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E9%9B%BB%E8%84%B3%E7%A5%9E%E6%A5%BD-single/6797260277",
+      "primaryHref": "https://music.apple.com/us/album/%E9%9B%BB%E8%84%B3%E7%A5%9E%E6%A5%BD-single/6797260277",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E9%9B%BB%E8%84%B3%E7%A5%9E%E6%A5%BD-single/6797260277",
+        "listen": "https://music.apple.com/us/album/%E9%9B%BB%E8%84%B3%E7%A5%9E%E6%A5%BD-single/6797260277"
+      }
+    },
+    {
+      "id": "apple-album-6797260341",
+      "title": "月影パラドックス",
+      "type": "music",
+      "cover": "/works/covers/apple_6797260341.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-04",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E6%9C%88%E5%BD%B1%E3%83%91%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%82%B9-single/6797260341",
+      "primaryHref": "https://music.apple.com/us/album/%E6%9C%88%E5%BD%B1%E3%83%91%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%82%B9-single/6797260341",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E6%9C%88%E5%BD%B1%E3%83%91%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%82%B9-single/6797260341",
+        "listen": "https://music.apple.com/us/album/%E6%9C%88%E5%BD%B1%E3%83%91%E3%83%A9%E3%83%89%E3%83%83%E3%82%AF%E3%82%B9-single/6797260341"
+      }
+    },
+    {
+      "id": "apple-album-6797799140",
+      "title": "月読幻舞",
+      "type": "music",
+      "cover": "/works/covers/apple_6797799140.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-04",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E6%9C%88%E8%AA%AD%E5%B9%BB%E8%88%9E-single/6797799140",
+      "primaryHref": "https://music.apple.com/us/album/%E6%9C%88%E8%AA%AD%E5%B9%BB%E8%88%9E-single/6797799140",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E6%9C%88%E8%AA%AD%E5%B9%BB%E8%88%9E-single/6797799140",
+        "listen": "https://music.apple.com/us/album/%E6%9C%88%E8%AA%AD%E5%B9%BB%E8%88%9E-single/6797799140"
+      }
+    },
+    {
+      "id": "apple-album-6797259250",
+      "title": "上善若水",
+      "type": "music",
+      "cover": "/works/covers/apple_6797259250.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-03",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E4%B8%8A%E5%96%84%E8%8B%A5%E6%B0%B4-single/6797259250",
+      "primaryHref": "https://music.apple.com/us/album/%E4%B8%8A%E5%96%84%E8%8B%A5%E6%B0%B4-single/6797259250",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E4%B8%8A%E5%96%84%E8%8B%A5%E6%B0%B4-single/6797259250",
+        "listen": "https://music.apple.com/us/album/%E4%B8%8A%E5%96%84%E8%8B%A5%E6%B0%B4-single/6797259250"
+      }
+    },
+    {
+      "id": "apple-album-6797156730",
+      "title": "珊瑚の大聖堂",
+      "type": "music",
+      "cover": "/works/covers/apple_6797156730.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-02",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E7%8F%8A%E7%91%9A%E3%81%AE%E5%A4%A7%E8%81%96%E5%A0%82-single/6797156730",
+      "primaryHref": "https://music.apple.com/us/album/%E7%8F%8A%E7%91%9A%E3%81%AE%E5%A4%A7%E8%81%96%E5%A0%82-single/6797156730",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E7%8F%8A%E7%91%9A%E3%81%AE%E5%A4%A7%E8%81%96%E5%A0%82-single/6797156730",
+        "listen": "https://music.apple.com/us/album/%E7%8F%8A%E7%91%9A%E3%81%AE%E5%A4%A7%E8%81%96%E5%A0%82-single/6797156730"
+      }
+    },
+    {
+      "id": "apple-album-6796901515",
+      "title": "E Hoki Mai Ra",
+      "type": "music",
+      "cover": "/works/covers/apple_6796901515.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-01",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/e-hoki-mai-ra-single/6796901515",
+      "primaryHref": "https://music.apple.com/us/album/e-hoki-mai-ra-single/6796901515",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/e-hoki-mai-ra-single/6796901515",
+        "listen": "https://music.apple.com/us/album/e-hoki-mai-ra-single/6796901515"
+      }
+    },
+    {
+      "id": "apple-album-6796986796",
+      "title": "Kerama Blue",
+      "type": "music",
+      "cover": "/works/covers/apple_6796986796.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-01",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/kerama-blue-single/6796986796",
+      "primaryHref": "https://music.apple.com/us/album/kerama-blue-single/6796986796",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/kerama-blue-single/6796986796",
+        "listen": "https://music.apple.com/us/album/kerama-blue-single/6796986796"
+      }
+    },
+    {
+      "id": "apple-album-6796578099",
+      "title": "イルカは裁判を知らない",
+      "type": "music",
+      "cover": "/works/covers/apple_6796578099.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-07-31",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E3%82%A4%E3%83%AB%E3%82%AB%E3%81%AF%E8%A3%81%E5%88%A4%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84-single/6796578099",
+      "primaryHref": "https://music.apple.com/us/album/%E3%82%A4%E3%83%AB%E3%82%AB%E3%81%AF%E8%A3%81%E5%88%A4%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84-single/6796578099",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E3%82%A4%E3%83%AB%E3%82%AB%E3%81%AF%E8%A3%81%E5%88%A4%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84-single/6796578099",
+        "listen": "https://music.apple.com/us/album/%E3%82%A4%E3%83%AB%E3%82%AB%E3%81%AF%E8%A3%81%E5%88%A4%E3%82%92%E7%9F%A5%E3%82%89%E3%81%AA%E3%81%84-single/6796578099"
+      }
+    },
+    {
+      "id": "apple-album-1894668740",
+      "title": "WAIATA RISE",
+      "type": "music",
+      "cover": "/works/covers/apple_1894668740.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-05-06",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/waiata-rise-single/1894668740",
+      "primaryHref": "https://music.apple.com/us/album/waiata-rise-single/1894668740",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/waiata-rise-single/1894668740",
+        "listen": "https://music.apple.com/us/album/waiata-rise-single/1894668740"
+      }
+    },
+    {
+      "id": "apple-album-1895130876",
+      "title": "TU — TE TOA AKE",
+      "type": "music",
+      "cover": "/works/covers/apple_1895130876.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-05-04",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/tu-te-toa-ake-single/1895130876",
+      "primaryHref": "https://music.apple.com/us/album/tu-te-toa-ake-single/1895130876",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/tu-te-toa-ake-single/1895130876",
+        "listen": "https://music.apple.com/us/album/tu-te-toa-ake-single/1895130876"
+      }
+    },
+    {
+      "id": "apple-album-1894841331",
+      "title": "Rotorua",
+      "type": "music",
+      "cover": "/works/covers/apple_1894841331.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-05-03",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/rotorua-single/1894841331",
+      "primaryHref": "https://music.apple.com/us/album/rotorua-single/1894841331",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/rotorua-single/1894841331",
+        "listen": "https://music.apple.com/us/album/rotorua-single/1894841331"
+      }
+    },
+    {
+      "id": "apple-album-1894668705",
+      "title": "TANGAROA",
+      "type": "music",
+      "cover": "/works/covers/apple_1894668705.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-05-02",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/tangaroa-single/1894668705",
+      "primaryHref": "https://music.apple.com/us/album/tangaroa-single/1894668705",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/tangaroa-single/1894668705",
+        "listen": "https://music.apple.com/us/album/tangaroa-single/1894668705"
+      }
+    },
+    {
+      "id": "apple-album-1894668602",
+      "title": "MAORI TRIBE",
+      "type": "music",
+      "cover": "/works/covers/apple_1894668602.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-30",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/maori-tribe-single/1894668602",
+      "primaryHref": "https://music.apple.com/us/album/maori-tribe-single/1894668602",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/maori-tribe-single/1894668602",
+        "listen": "https://music.apple.com/us/album/maori-tribe-single/1894668602"
+      }
+    },
+    {
+      "id": "apple-album-1894668301",
+      "title": "AOTEAROA HEARTBEAT",
+      "type": "music",
+      "cover": "/works/covers/apple_1894668301.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-29",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/aotearoa-heartbeat-single/1894668301",
+      "primaryHref": "https://music.apple.com/us/album/aotearoa-heartbeat-single/1894668301",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/aotearoa-heartbeat-single/1894668301",
+        "listen": "https://music.apple.com/us/album/aotearoa-heartbeat-single/1894668301"
+      }
+    },
+    {
+      "id": "apple-album-1895130886",
+      "title": "光の迷路",
+      "type": "music",
+      "cover": "/works/covers/apple_1895130886.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-26",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%85%89%E3%81%AE%E8%BF%B7%E8%B7%AF-single/1895130886",
+      "primaryHref": "https://music.apple.com/us/album/%E5%85%89%E3%81%AE%E8%BF%B7%E8%B7%AF-single/1895130886",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%85%89%E3%81%AE%E8%BF%B7%E8%B7%AF-single/1895130886",
+        "listen": "https://music.apple.com/us/album/%E5%85%89%E3%81%AE%E8%BF%B7%E8%B7%AF-single/1895130886"
+      }
+    },
+    {
+      "id": "apple-album-1895130674",
+      "title": "Wu Wei Ziran",
+      "type": "music",
+      "cover": "/works/covers/apple_1895130674.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-24",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/wu-wei-ziran-single/1895130674",
+      "primaryHref": "https://music.apple.com/us/album/wu-wei-ziran-single/1895130674",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/wu-wei-ziran-single/1895130674",
+        "listen": "https://music.apple.com/us/album/wu-wei-ziran-single/1895130674"
+      }
+    },
+    {
+      "id": "apple-album-1894765152",
+      "title": "EARTH DAY",
+      "type": "music",
+      "cover": "/works/covers/apple_1894765152.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-22",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/earth-day-single/1894765152",
+      "primaryHref": "https://music.apple.com/us/album/earth-day-single/1894765152",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/earth-day-single/1894765152",
+        "listen": "https://music.apple.com/us/album/earth-day-single/1894765152"
+      }
+    },
+    {
+      "id": "apple-album-1894584534",
+      "title": "キャンペーン",
+      "type": "music",
+      "cover": "/works/covers/apple_1894584534.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-20",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3-single/1894584534",
+      "primaryHref": "https://music.apple.com/us/album/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3-single/1894584534",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3-single/1894584534",
+        "listen": "https://music.apple.com/us/album/%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%9A%E3%83%BC%E3%83%B3-single/1894584534"
+      }
+    },
+    {
+      "id": "apple-album-1894841637",
+      "title": "Policy vs Plant",
+      "type": "music",
+      "cover": "/works/covers/apple_1894841637.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-20",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/policy-vs-plant-single/1894841637",
+      "primaryHref": "https://music.apple.com/us/album/policy-vs-plant-single/1894841637",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/policy-vs-plant-single/1894841637",
+        "listen": "https://music.apple.com/us/album/policy-vs-plant-single/1894841637"
+      }
+    },
+    {
+      "id": "apple-album-1895125440",
+      "title": "大麻解放の日",
+      "type": "music",
+      "cover": "/works/covers/apple_1895125440.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-20",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%A4%A7%E9%BA%BB%E8%A7%A3%E6%94%BE%E3%81%AE%E6%97%A5-single/1895125440",
+      "primaryHref": "https://music.apple.com/us/album/%E5%A4%A7%E9%BA%BB%E8%A7%A3%E6%94%BE%E3%81%AE%E6%97%A5-single/1895125440",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%A4%A7%E9%BA%BB%E8%A7%A3%E6%94%BE%E3%81%AE%E6%97%A5-single/1895125440",
+        "listen": "https://music.apple.com/us/album/%E5%A4%A7%E9%BA%BB%E8%A7%A3%E6%94%BE%E3%81%AE%E6%97%A5-single/1895125440"
+      }
+    },
+    {
+      "id": "apple-album-1889350516",
+      "title": "君となら",
+      "type": "music",
+      "cover": "/works/covers/apple_1889350516.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-13",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%90%9B%E3%81%A8%E3%81%AA%E3%82%89-single/1889350516",
+      "primaryHref": "https://music.apple.com/us/album/%E5%90%9B%E3%81%A8%E3%81%AA%E3%82%89-single/1889350516",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%90%9B%E3%81%A8%E3%81%AA%E3%82%89-single/1889350516",
+        "listen": "https://music.apple.com/us/album/%E5%90%9B%E3%81%A8%E3%81%AA%E3%82%89-single/1889350516"
+      }
+    },
+    {
+      "id": "apple-album-1889350580",
+      "title": "Roses on the Water",
+      "type": "music",
+      "cover": "/works/covers/apple_1889350580.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-12",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/roses-on-the-water-single/1889350580",
+      "primaryHref": "https://music.apple.com/us/album/roses-on-the-water-single/1889350580",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/roses-on-the-water-single/1889350580",
+        "listen": "https://music.apple.com/us/album/roses-on-the-water-single/1889350580"
+      }
+    },
+    {
+      "id": "apple-album-1889408386",
+      "title": "Kawaii",
+      "type": "music",
+      "cover": "/works/covers/apple_1889408386.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-12",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/kawaii-single/1889408386",
+      "primaryHref": "https://music.apple.com/us/album/kawaii-single/1889408386",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/kawaii-single/1889408386",
+        "listen": "https://music.apple.com/us/album/kawaii-single/1889408386"
+      }
+    },
+    {
+      "id": "apple-album-1889783981",
+      "title": "Deus sive Natura",
+      "type": "music",
+      "cover": "/works/covers/apple_1889783981.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-11",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/deus-sive-natura-single/1889783981",
+      "primaryHref": "https://music.apple.com/us/album/deus-sive-natura-single/1889783981",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/deus-sive-natura-single/1889783981",
+        "listen": "https://music.apple.com/us/album/deus-sive-natura-single/1889783981"
+      }
+    },
+    {
+      "id": "apple-album-1889489753",
+      "title": "Clean Signal",
+      "type": "music",
+      "cover": "/works/covers/apple_1889489753.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-10",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/clean-signal-single/1889489753",
+      "primaryHref": "https://music.apple.com/us/album/clean-signal-single/1889489753",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/clean-signal-single/1889489753",
+        "listen": "https://music.apple.com/us/album/clean-signal-single/1889489753"
+      }
+    },
+    {
+      "id": "apple-album-1889784793",
+      "title": "シンリ",
+      "type": "music",
+      "cover": "/works/covers/apple_1889784793.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-09",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E3%82%B7%E3%83%B3%E3%83%AA-single/1889784793",
+      "primaryHref": "https://music.apple.com/us/album/%E3%82%B7%E3%83%B3%E3%83%AA-single/1889784793",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E3%82%B7%E3%83%B3%E3%83%AA-single/1889784793",
+        "listen": "https://music.apple.com/us/album/%E3%82%B7%E3%83%B3%E3%83%AA-single/1889784793"
+      }
+    },
+    {
+      "id": "apple-album-1889784969",
+      "title": "Sunwheel Festival",
+      "type": "music",
+      "cover": "/works/covers/apple_1889784969.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-09",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/sunwheel-festival-single/1889784969",
+      "primaryHref": "https://music.apple.com/us/album/sunwheel-festival-single/1889784969",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/sunwheel-festival-single/1889784969",
+        "listen": "https://music.apple.com/us/album/sunwheel-festival-single/1889784969"
+      }
+    },
+    {
+      "id": "apple-album-1889296597",
+      "title": "A Town Called Almost Home",
+      "type": "music",
+      "cover": "/works/covers/apple_1889296597.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/a-town-called-almost-home-single/1889296597",
+      "primaryHref": "https://music.apple.com/us/album/a-town-called-almost-home-single/1889296597",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/a-town-called-almost-home-single/1889296597",
+        "listen": "https://music.apple.com/us/album/a-town-called-almost-home-single/1889296597"
+      }
+    },
+    {
+      "id": "apple-album-1889314863",
+      "title": "Letter From the Small Room",
+      "type": "music",
+      "cover": "/works/covers/apple_1889314863.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/letter-from-the-small-room-single/1889314863",
+      "primaryHref": "https://music.apple.com/us/album/letter-from-the-small-room-single/1889314863",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/letter-from-the-small-room-single/1889314863",
+        "listen": "https://music.apple.com/us/album/letter-from-the-small-room-single/1889314863"
+      }
+    },
+    {
+      "id": "apple-album-1889603299",
+      "title": "TENPENCHII",
+      "type": "music",
+      "cover": "/works/covers/apple_1889603299.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/tenpenchii-single/1889603299",
+      "primaryHref": "https://music.apple.com/us/album/tenpenchii-single/1889603299",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/tenpenchii-single/1889603299",
+        "listen": "https://music.apple.com/us/album/tenpenchii-single/1889603299"
+      }
+    },
+    {
+      "id": "apple-album-1889665532",
+      "title": "The Face Before Faith",
+      "type": "music",
+      "cover": "/works/covers/apple_1889665532.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/the-face-before-faith-single/1889665532",
+      "primaryHref": "https://music.apple.com/us/album/the-face-before-faith-single/1889665532",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/the-face-before-faith-single/1889665532",
+        "listen": "https://music.apple.com/us/album/the-face-before-faith-single/1889665532"
+      }
+    },
+    {
+      "id": "apple-album-1889631702",
+      "title": "Infinite Swipe Hell",
+      "type": "music",
+      "cover": "/works/covers/apple_1889631702.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-07",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/infinite-swipe-hell-single/1889631702",
+      "primaryHref": "https://music.apple.com/us/album/infinite-swipe-hell-single/1889631702",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/infinite-swipe-hell-single/1889631702",
+        "listen": "https://music.apple.com/us/album/infinite-swipe-hell-single/1889631702"
+      }
+    },
+    {
+      "id": "apple-album-1889176963",
+      "title": "TRAPPED ION",
+      "type": "music",
+      "cover": "/works/covers/apple_1889176963.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-06",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/trapped-ion-single/1889176963",
+      "primaryHref": "https://music.apple.com/us/album/trapped-ion-single/1889176963",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/trapped-ion-single/1889176963",
+        "listen": "https://music.apple.com/us/album/trapped-ion-single/1889176963"
+      }
+    },
+    {
+      "id": "apple-album-1888966530",
+      "title": "Mariposa",
+      "type": "music",
+      "cover": "/works/covers/apple_1888966530.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-05",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/mariposa-single/1888966530",
+      "primaryHref": "https://music.apple.com/us/album/mariposa-single/1888966530",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/mariposa-single/1888966530",
+        "listen": "https://music.apple.com/us/album/mariposa-single/1888966530"
+      }
+    },
+    {
+      "id": "apple-album-1889305331",
+      "title": "Agni Festivala",
+      "type": "music",
+      "cover": "/works/covers/apple_1889305331.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-05",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/agni-festivala-single/1889305331",
+      "primaryHref": "https://music.apple.com/us/album/agni-festivala-single/1889305331",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/agni-festivala-single/1889305331",
+        "listen": "https://music.apple.com/us/album/agni-festivala-single/1889305331"
+      }
+    },
+    {
+      "id": "apple-album-1889664506",
+      "title": "Madre del Silenzio",
+      "type": "music",
+      "cover": "/works/covers/apple_1889664506.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-03",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/madre-del-silenzio-single/1889664506",
+      "primaryHref": "https://music.apple.com/us/album/madre-del-silenzio-single/1889664506",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/madre-del-silenzio-single/1889664506",
+        "listen": "https://music.apple.com/us/album/madre-del-silenzio-single/1889664506"
+      }
+    },
+    {
+      "id": "apple-album-1889226207",
+      "title": "33 IGNITION",
+      "type": "music",
+      "cover": "/works/covers/apple_1889226207.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-02",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/33-ignition-single/1889226207",
+      "primaryHref": "https://music.apple.com/us/album/33-ignition-single/1889226207",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/33-ignition-single/1889226207",
+        "listen": "https://music.apple.com/us/album/33-ignition-single/1889226207"
+      }
+    },
+    {
+      "id": "apple-album-1889633286",
+      "title": "절도죄",
+      "type": "music",
+      "cover": "/works/covers/apple_1889633286.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-04-01",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%83%E1%85%A9%E1%84%8C%E1%85%AC-single/1889633286",
+      "primaryHref": "https://music.apple.com/us/album/%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%83%E1%85%A9%E1%84%8C%E1%85%AC-single/1889633286",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%83%E1%85%A9%E1%84%8C%E1%85%AC-single/1889633286",
+        "listen": "https://music.apple.com/us/album/%E1%84%8C%E1%85%A5%E1%86%AF%E1%84%83%E1%85%A9%E1%84%8C%E1%85%AC-single/1889633286"
+      }
+    },
+    {
+      "id": "apple-album-1889177203",
+      "title": "MF CLAW",
+      "type": "music",
+      "cover": "/works/covers/apple_1889177203.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-03-31",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/mf-claw-single/1889177203",
+      "primaryHref": "https://music.apple.com/us/album/mf-claw-single/1889177203",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/mf-claw-single/1889177203",
+        "listen": "https://music.apple.com/us/album/mf-claw-single/1889177203"
+      }
+    },
+    {
+      "id": "apple-album-1889349155",
+      "title": "火水同源",
+      "type": "music",
+      "cover": "/works/covers/apple_1889349155.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-03-31",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E7%81%AB%E6%B0%B4%E5%90%8C%E6%BA%90-single/1889349155",
+      "primaryHref": "https://music.apple.com/us/album/%E7%81%AB%E6%B0%B4%E5%90%8C%E6%BA%90-single/1889349155",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E7%81%AB%E6%B0%B4%E5%90%8C%E6%BA%90-single/1889349155",
+        "listen": "https://music.apple.com/us/album/%E7%81%AB%E6%B0%B4%E5%90%8C%E6%BA%90-single/1889349155"
+      }
+    },
+    {
+      "id": "apple-album-1889004187",
+      "title": "SPINOZA",
+      "type": "music",
+      "cover": "/works/covers/apple_1889004187.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-03-30",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/spinoza-single/1889004187",
+      "primaryHref": "https://music.apple.com/us/album/spinoza-single/1889004187",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/spinoza-single/1889004187",
+        "listen": "https://music.apple.com/us/album/spinoza-single/1889004187"
+      }
+    },
+    {
+      "id": "apple-album-1889349933",
+      "title": "Tribal Planet",
+      "type": "music",
+      "cover": "/works/covers/apple_1889349933.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-03-30",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/tribal-planet-single/1889349933",
+      "primaryHref": "https://music.apple.com/us/album/tribal-planet-single/1889349933",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/tribal-planet-single/1889349933",
+        "listen": "https://music.apple.com/us/album/tribal-planet-single/1889349933"
+      }
+    },
+    {
+      "id": "apple-album-1889012601",
+      "title": "LONE RANGER",
+      "type": "music",
+      "cover": "/works/covers/apple_1889012601.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-03-29",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/lone-ranger-single/1889012601",
+      "primaryHref": "https://music.apple.com/us/album/lone-ranger-single/1889012601",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/lone-ranger-single/1889012601",
+        "listen": "https://music.apple.com/us/album/lone-ranger-single/1889012601"
+      }
+    },
+    {
+      "id": "apple-album-1889175082",
+      "title": "2045",
+      "type": "music",
+      "cover": "/works/covers/apple_1889175082.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-03-29",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/2045-single/1889175082",
+      "primaryHref": "https://music.apple.com/us/album/2045-single/1889175082",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/2045-single/1889175082",
+        "listen": "https://music.apple.com/us/album/2045-single/1889175082"
+      }
+    },
+    {
       "id": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
       "title": "ENA",
       "type": "music",

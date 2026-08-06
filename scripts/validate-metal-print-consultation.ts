@@ -129,7 +129,7 @@ assert.ok(form.includes("postReviewDossierAccepted") && form.includes("postRevie
 assert.ok(form.includes("postReviewProofDisclosureAccepted") && form.includes("postReviewMadeToOrderTermsAccepted"), "proof and made-to-order acknowledgements are missing");
 assert.ok(redis.includes("record.proofDisclosureAcceptedAt = ARGV[4]") && redis.includes("record.madeToOrderTermsAcceptedAt = ARGV[4]"), "four-part acceptance is not persisted atomically");
 assert.ok(form.includes("SELECTED WORK DOSSIER"), "post-review acceptance has no actual Dossier terms above it");
-for (const term of ["価格状態", "実物proofは未承認", "配送条件", "変更・取消", "12営業日"]) assert.ok(form.includes(term), `Dossier term missing: ${term}`);
+for (const term of ["価格状態", "金属面への印刷", "配送条件", "変更・取消", "12営業日"]) assert.ok(form.includes(term), `Dossier term missing: ${term}`);
 
 const verificationPayload = { consultationId: "123e4567-e89b-12d3-a456-426614174000", expiresAt: "2099-01-01T00:00:00.000Z" };
 const verificationToken = createMetalPrintContactVerificationToken(verificationPayload);

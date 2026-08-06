@@ -8,7 +8,7 @@ const registryApprovals = new Map(
 );
 
 const catalogApprovalActive = allCatalogApproval.status === "APPROVED_FOR_PUBLIC_SALE"
-  && allCatalogApproval.scope === "ALL_CANONICAL_CATALOG_WORKS"
+  && allCatalogApproval.scope === "ALL_CANONICAL_MUSIC_WORKS"
   && allCatalogApproval.amountJpy === 330_000
   && allCatalogApproval.currency === "jpy"
   && allCatalogApproval.editionSize === 3
