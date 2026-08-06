@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "brand": "ABI伯爵",
+  "observedAt": "2026-07-30T22:51:00+09:00",
+  "evidenceClass": "OWNER_BROWSER_PROFILE_UPDATE_PLUS_PUBLIC_RENDERED_DOM_VERIFICATION",
+  "accounts": [
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/abi_hakusyaku/",
+      "handle": "abi_hakusyaku",
+      "displayName": "ABI伯爵",
+      "state": "CREATED_PROFILE_BIO_APPLIED",
+      "observedMetrics": { "posts": 0, "followers": 0, "following": 1 },
+      "ownerSession": "OWNER_SESSION_VERIFIED_IN_CONNECTED_CHROME",
+      "profileSetup": { "bio": "APPLIED", "website": "MOBILE_APP_REQUIRED" },
+      "screenshot": "/var/folders/mw/ty09l6yx4wldjzb3xmf2mxg80000gn/T/codex-clipboard-1923b649-fdb7-40e2-8308-237b620b5ad7.png"
+    },
+    {
+      "platform": "threads",
+      "url": "https://www.threads.com/@abi_hakusyaku",
+      "handle": "abi_hakusyaku",
+      "displayName": "ABI伯爵",
+      "state": "CREATED_PROFILE_BIO_WITH_GENERAL_CHAT_LINK",
+      "observedMetrics": { "posts": 0, "followers": 0 },
+      "ownerSession": "OWNER_SESSION_VERIFIED_IN_CONNECTED_CHROME",
+      "profileSetup": {
+        "bio": "APPLIED",
+        "website": "APPLIED_AND_PUBLICLY_VISIBLE",
+        "observedPublicTarget": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+        "verifiedAt": "2026-07-30T22:46:00+09:00"
+      },
+      "screenshot": "/var/folders/mw/ty09l6yx4wldjzb3xmf2mxg80000gn/T/codex-clipboard-1638dcc9-99ae-4d80-84fc-c4c43c986b68.png"
+    },
+    {
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@countabi",
+      "handle": "countabi",
+      "displayName": "Count ABI",
+      "state": "EXISTING_ACTIVE_ADOPTED_AS_CANONICAL",
+      "observedMetrics": { "followers": 2, "following": 0, "likes": 6 },
+      "ownerSession": "OWNER_SESSION_VERIFIED_IN_CONNECTED_CHROME",
+      "profileSetup": { "bio": "EXISTING_PROFILE_RETAINED_PENDING_BRAND_BRIDGE", "website": "PENDING_ELIGIBILITY_CHECK" },
+      "screenshot": "/var/folders/mw/ty09l6yx4wldjzb3xmf2mxg80000gn/T/codex-clipboard-4c107e5b-3b83-4493-ada3-bd2c51c18038.png"
+    },
+    {
+      "platform": "x",
+      "url": "https://x.com/ABI_Hakusyaku",
+      "handle": "ABI_Hakusyaku",
+      "displayName": "ABI伯爵",
+      "state": "EXISTING_ACTIVE",
+      "observedMetrics": { "posts": 36, "followers": 0, "following": 0 },
+      "ownerSession": "OWNER_CONTROLS_VISIBLE_IN_CONNECTED_CHROME",
+      "screenshot": "/var/folders/mw/ty09l6yx4wldjzb3xmf2mxg80000gn/T/codex-clipboard-9f2e5fe7-10ab-46ef-bae5-b761cc0e3a11.png"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@ABI%E4%BC%AF%E7%88%B5",
+      "handle": "@ABI伯爵",
+      "displayName": "ABI伯爵",
+      "state": "EXISTING_ACTIVE",
+      "observedMetrics": { "subscribers": 132, "channelVideos": 1 },
+      "ownerSession": "OWNER_CONTROLS_VISIBLE_IN_CONNECTED_CHROME",
+      "profileSetup": {
+        "bio": "APPLIED",
+        "website": "APPLIED_AND_PUBLICLY_VISIBLE",
+        "observedPublicTarget": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+        "verifiedAt": "2026-07-30T22:50:00+09:00"
+      },
+      "screenshot": "/var/folders/mw/ty09l6yx4wldjzb3xmf2mxg80000gn/T/codex-clipboard-dc482bd2-35f8-4708-aa74-182860f26931.png"
+    }
+  ]
+}

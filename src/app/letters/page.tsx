@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getLetters, groupLettersByMonth } from "@/lib/letters";
 import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 import { siteUrl } from "@/lib/site-url";
+import MetalPrintLetterCta from "@/components/letters/MetalPrintLetterCta";
 
 const LIST_TITLE = "伯爵の手紙 | 伯爵 MUSIAM";
 const LIST_DESC =
@@ -67,6 +68,7 @@ export default async function LettersPage() {
       <p style={{ textAlign: "center", color: "var(--color-text-muted)", fontSize: "0.9rem", marginBottom: "1.75rem" }}>
         制作の裏側と、国の日々を綴る年代記。読めば、この国の成り立ちが見えてきます。（全{letters.length}通）
       </p>
+      <MetalPrintLetterCta placement="letters_index" />
       {letters.length === 0 ? (
         <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
           最初の手紙を、いま認めております。

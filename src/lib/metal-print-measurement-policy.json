@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "allocation": {
+    "dossierSessionsPerPlacementMin": 100,
+    "qualifiedPerPlacementMin": 3
+  },
+  "conversionDiagnosis": {
+    "homeViewsMin": 1000,
+    "homeToMetalClickRateMin": 0.01,
+    "dossierSessionsMin": 2000,
+    "dossierToChatRateMin": 0.12,
+    "salonSessionsMin": 500,
+    "salonToFirstMessageRateMin": 0.45,
+    "firstMessagesMin": 200,
+    "firstMessageToDukeRateMin": 0.18,
+    "editionSelectionsMin": 100,
+    "selectionToConsultationRateMin": 0.15
+  },
+  "evidenceBoundary": "Allocation and conversion diagnosis use different sample floors. Reaching 100 Dossier sessions with 3 qualified consultations may justify placement allocation; it does not by itself justify changing the aggregate Landing conversion contract."
+}

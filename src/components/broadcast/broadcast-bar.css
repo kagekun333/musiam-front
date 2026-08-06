@@ -40,7 +40,7 @@
   cursor: pointer;
 }
 
-/* インラインSpotifyプレイヤー（実際に音声が流れるカード。バーの上に重ねて表示） */
+/* インラインSpotifyプレイヤー（バーの上に重ねて表示） */
 .rnv-broadcast__player {
   pointer-events: auto;
   margin-bottom: 8px;
@@ -56,7 +56,7 @@
 }
 .rnv-broadcast__img { object-fit: cover; }
 
-/* イコライザ（放送の鼓動・控えめ） */
+/* 選曲マーク。Spotifyが実再生を通知した間だけ動かす。 */
 .rnv-broadcast__eq {
   position: absolute;
   left: 4px;
@@ -74,10 +74,14 @@
   height: 4px;
   background: var(--rnv-amber-300);
   border-radius: 1px;
+}
+.rnv-broadcast__eq i:nth-child(2) { height: 9px; background: var(--rnv-slate-200); }
+.rnv-broadcast__eq i:nth-child(3) { height: 6px; }
+.rnv-broadcast__eq.is-playing i {
   animation: rnv-eq 900ms var(--rnv-ease) infinite;
 }
-.rnv-broadcast__eq i:nth-child(2) { animation-delay: 160ms; background: var(--rnv-slate-200); }
-.rnv-broadcast__eq i:nth-child(3) { animation-delay: 320ms; }
+.rnv-broadcast__eq.is-playing i:nth-child(2) { animation-delay: 160ms; }
+.rnv-broadcast__eq.is-playing i:nth-child(3) { animation-delay: 320ms; }
 @keyframes rnv-eq {
   0%, 100% { height: 4px; }
   50% { height: 12px; }
@@ -194,7 +198,6 @@
 
 /* モーション削減を尊重 */
 @media (prefers-reduced-motion: reduce) {
-  .rnv-broadcast__eq i,
+  .rnv-broadcast__eq.is-playing i,
   .rnv-broadcast-fab__pulse { animation: none; }
-  .rnv-broadcast__eq i { height: 9px; }
 }

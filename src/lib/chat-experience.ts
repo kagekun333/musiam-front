@@ -106,6 +106,7 @@ export type ChatUiText = {
   linkBuy: string;
   linkOpen: string;
   workDetail: string;
+  recommendationReason: string;
 };
 
 const SALON_TIME_TONE_SET = new Set<string>(SALON_TIME_TONE_VALUES);
@@ -579,6 +580,7 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     linkBuy: "購入",
     linkOpen: "開く",
     workDetail: "作品の頁へ",
+    recommendationReason: "伯爵が選んだ理由",
   },
   en: {
     emptyState: "Opening the door…",
@@ -602,6 +604,7 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     linkBuy: "Buy",
     linkOpen: "Open",
     workDetail: "Open the work page",
+    recommendationReason: "Why the Count chose it",
   },
   fr: {
     emptyState: "Ouverture de la porte…",
@@ -625,6 +628,7 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     linkBuy: "Acheter",
     linkOpen: "Ouvrir",
     workDetail: "Voir la page de l'œuvre",
+    recommendationReason: "Pourquoi le Comte l'a choisie",
   },
   es: {
     emptyState: "Abriendo la puerta…",
@@ -648,6 +652,7 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     linkBuy: "Comprar",
     linkOpen: "Abrir",
     workDetail: "Ver la página de la obra",
+    recommendationReason: "Por qué la eligió el Conde",
   },
   de: {
     emptyState: "Die Tür öffnet sich…",
@@ -671,6 +676,7 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     linkBuy: "Kaufen",
     linkOpen: "Öffnen",
     workDetail: "Zur Werkseite",
+    recommendationReason: "Warum der Graf es gewählt hat",
   },
   ar: {
     emptyState: "يفتح الباب…",
@@ -694,6 +700,7 @@ const CHAT_UI_TEXT: Record<Lang, ChatUiText> = {
     linkBuy: "شراء",
     linkOpen: "افتح",
     workDetail: "صفحة العمل",
+    recommendationReason: "لماذا اختاره الكونت",
   },
 };
 
@@ -728,7 +735,9 @@ export type ProductId =
   | "omikuji-song"      // 占い×一曲 ¥1,500
   | "grimoire"          // 魔導書(プロンプト集) ¥2,980
   | "order-song"        // オーダーメイド一曲 ¥19,800〜（公爵）
-  | "business";         // 法人BGM/制作 ¥30万〜（公爵）
+  | "business"          // 法人BGM/制作 ¥30万〜（公爵）
+  | "office-art"        // 法人向けオフィスアート導入（公爵・税制メリット訴求）
+  | "vip-metal-print";  // 3点限定ジャケット・メタルプリント（公爵）
 
 export type Product = {
   id: ProductId;
@@ -931,6 +940,28 @@ export const PRODUCTS: Product[] = [
     vip: true,
     cueJa: "会社・店舗・配信・ゲーム・CM等の商用案件。最速で現金が入るB2Bの柱。公爵が承る。",
   },
+  {
+    id: "office-art",
+    nameJa: "オフィス・店舗のためのアートプリント導入",
+    nameEn: "Art prints for offices & shops",
+    priceJa: "応相談（スタンダード〜Collector）",
+    ctaHref: "/office-art",
+    ctaLabelJa: "オフィスアート導入の案内を見る",
+    ctaLabelEn: "See office art options",
+    vip: true,
+    cueJa: "オフィス・会議室・応接室・エントランス・待合にアートを飾りたい法人/店舗。経費・減価償却の関心には少額減価償却資産の特例に触れられる（断定せず税理士確認を必ず添える）。公爵が導入相談へ案内する。",
+  },
+  {
+    id: "vip-metal-print",
+    nameJa: "ジャケット・メタルプリントの非公開Dossier",
+    nameEn: "Private jacket metal-print dossier",
+    priceJa: "¥330,000（税込・正式Offer前）",
+    ctaHref: "/vip-metal-print",
+    ctaLabelJa: "限定EditionのDossierを見る",
+    ctaLabelEn: "View the limited-edition dossier",
+    vip: true,
+    cueJa: "壁に飾る一点、限定Edition、メタルプリント、アート収集、室内の象徴を明示的に求める相手。公爵が一つのDossierだけへ案内する。",
+  },
 ];
 
 const PRODUCT_CTA_LABELS: Record<ProductId, Partial<Record<Exclude<Lang, "ja" | "en">, string>>> = {
@@ -987,6 +1018,18 @@ const PRODUCT_CTA_LABELS: Record<ProductId, Partial<Record<Exclude<Lang, "ja" | 
     es: "Abrir la puerta Business",
     de: "Business-Tor öffnen",
     ar: "افتح بوابة الأعمال",
+  },
+  "office-art": {
+    fr: "Voir les options d'art pour bureaux",
+    es: "Ver opciones de arte para oficinas",
+    de: "Kunst fürs Büro ansehen",
+    ar: "عرض خيارات الفن للمكاتب",
+  },
+  "vip-metal-print": {
+    fr: "Voir le dossier de l'édition limitée",
+    es: "Ver el dossier de edición limitada",
+    de: "Dossier der limitierten Edition ansehen",
+    ar: "عرض ملف الإصدار المحدود",
   },
 };
 
@@ -1045,6 +1088,8 @@ function productCueForPrompt(product: Product, lang: Lang): string {
     grimoire: "For a guest interested in making AI music themselves or seeing the craft behind the works.",
     "order-song": "For anniversaries, gifts, weddings, memorials, pets, fandom, or anyone wanting a one-of-a-kind song. The Duke handles it.",
     business: "For companies, shops, streaming, games, ads, and other commercial projects. The Duke handles it.",
+    "office-art": "For companies or shops wanting art for offices, meeting rooms, receptions, or entrances. May mention possible tax treatment only with a 'consult your tax advisor' note. The Duke guides them to the office-art page.",
+    "vip-metal-print": "For an explicit request for a collectible wall piece, a limited edition, a metal print, or a room-defining artwork. The Duke offers one dossier, never a list.",
   };
   return cues[product.id];
 }

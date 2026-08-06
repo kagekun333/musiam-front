@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "approvedAt": "2026-07-30T13:44:59.697Z",
+  "status": "APPROVED_FOR_CONTROLLED_SALE",
+  "fulfillmentModel": "CUSTOMER_PAYMENT_THEN_SINGLE_ITEM_VENDOR_ORDER",
+  "approvedEditionIds": [
+    "VIP-METAL-2026-07-NATURA",
+    "VIP-METAL-2026-07-IGNITION",
+    "VIP-METAL-2026-07-HOME",
+    "VIP-METAL-2026-07-BALIAN"
+  ],
+  "editionApprovals": [
+    {
+      "editionId": "VIP-METAL-2026-07-NATURA",
+      "amountJpy": 330000,
+      "approvalToken": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-NATURA:330000",
+      "approvedAt": "2026-07-24T11:25:41.000Z"
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-IGNITION",
+      "amountJpy": 330000,
+      "approvalToken": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-IGNITION:330000",
+      "approvedAt": "2026-07-30T13:44:59.697Z",
+      "masterSha256": "4051384ba4031594085267f5af17427c6b1fd5598248dc49e64ec55a00f3d67f"
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-HOME",
+      "amountJpy": 330000,
+      "approvalToken": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-HOME:330000",
+      "approvedAt": "2026-07-30T13:44:59.697Z",
+      "masterSha256": "1c2aca43a8ef49a98e48391386de7efa04c1c549b89881e5b1ebe406878f921a"
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-BALIAN",
+      "amountJpy": 330000,
+      "approvalToken": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-BALIAN:330000",
+      "approvedAt": "2026-07-30T13:44:59.697Z",
+      "masterSha256": "2e34aeccb6a73e742397cd29c474914684af76ed55cf8bd272aeb5ed4e22167b"
+    }
+  ],
+  "offer": {
+    "currency": "jpy",
+    "amountJpy": 330000,
+    "editionSize": 3
+  },
+  "vendor": {
+    "id": "whitewall-jp",
+    "product": "ChromaLuxe HD Metal Print",
+    "widthMm": 600,
+    "heightMm": 600,
+    "orderingModel": "self_service_single_item",
+    "contractRequired": false
+  },
+  "controls": [
+    "Stripe payment_status must be paid before vendor ordering",
+    "Shipping address and telephone are collected by Stripe Checkout",
+    "Vendor order is prepared one item at a time",
+    "Final vendor purchase remains an order-specific payment gate",
+    "Buyer is told that production begins after payment",
+    "Payment, refund and fulfillment transitions remain idempotent"
+  ],
+  "evidenceBoundary": "Only Editions with exact Human approval tokens and hash-bound mechanically eligible masters are open for controlled made-to-order sales. This does not approve physical print quality, a vendor payment, fulfillment or revenue."
+}

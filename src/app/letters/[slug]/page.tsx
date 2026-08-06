@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { extractLetterFaq, getAdjacentLetters, getLetter, getLetters, renderMarkdown } from "@/lib/letters";
 import { siteUrl } from "@/lib/site-url";
+import MetalPrintLetterCta from "@/components/letters/MetalPrintLetterCta";
 
 export const dynamicParams = false;
 
@@ -100,6 +101,7 @@ export default async function LetterPage(
         style={{ fontSize: "0.95rem", lineHeight: 2, color: "var(--color-text-secondary)" }}
         dangerouslySetInnerHTML={{ __html: renderMarkdown(letter.body) }}
       />
+      <MetalPrintLetterCta placement="letter_end" />
       {(prev || next) && (
         <nav
           aria-label="前後の手紙"

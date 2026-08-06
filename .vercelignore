@@ -1,0 +1,24 @@
+# Local build and dependency artifacts
+.next/
+node_modules/
+tsconfig.tsbuildinfo
+
+# Repository and local tool state
+.git/
+.musiam/
+.DS_Store
+
+# Large local archives and generated output not used by the Next.js build
+_archive/
+アウトプット/
+アウトプット/
+
+# Operational masters and generated delivery media are not runtime assets.
+ops/metal-print-vip/proof-assets/**/*.tiff
+ops/audience-engine/daily-music-release-media/**/*.mp4
+ops/audience-engine/media-repair-candidates/**/*.mp4
+
+# Local secrets are supplied by Vercel Environment Variables
+.env
+.env.*
+!.env.example

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "profileIngress": {
+    "deferred": true,
+    "reason": "Owner explicitly deferred profile-link completion while acquisition and conversation constraints are improved.",
+    "recordedAt": "2026-08-01"
+  }
+}

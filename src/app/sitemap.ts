@@ -5,6 +5,7 @@ import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { getLetters } from "@/lib/letters";
 import { siteUrl } from "@/lib/site-url";
 import { ATLAS_REGIONS, FRONTIER_REGION } from "@/lib/atlas/regions";
+import { METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteUrl();
@@ -17,12 +18,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/works`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/chat`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/business`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/office-art`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/office-art/tax-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/office-art/size-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // 英語圏クラスタ (2026-08-06): 税制訴求に依存せず育てられるため、国内ベンダー確定を待たずに展開する。
+    { url: `${base}/en/office-art`, lastModified: now, changeFrequency: "weekly", priority: 0.85 },
+    { url: `${base}/en/office-art/size-guide`, lastModified: now, changeFrequency: "monthly", priority: 0.75 },
     { url: `${base}/shop`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/showcase`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/atelier`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/letters`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
     { url: `${base}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/vip-metal-print`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
   ];
+
+  const metalPrintRoutes: MetadataRoute.Sitemap = METAL_PRINT_VIP_EDITIONS.map((edition) => ({
+    url: `${base}/metal-print/${edition.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+  const englishMetalPrintRoutes: MetadataRoute.Sitemap = METAL_PRINT_VIP_EDITIONS.map((edition) => ({
+    url: `${base}/en/metal-print/${edition.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
 
   // 地方ページ（没入ホームの各地方）
   const regionRoutes: MetadataRoute.Sitemap = [...ATLAS_REGIONS, FRONTIER_REGION].map((r) => ({
@@ -60,5 +81,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // works 読み込み失敗時は静的ルートのみ (fail-silent)
   }
 
-  return [...staticRoutes, ...regionRoutes, ...letterRoutes, ...workRoutes];
+  return [...staticRoutes, ...metalPrintRoutes, ...englishMetalPrintRoutes, ...regionRoutes, ...letterRoutes, ...workRoutes];
 }

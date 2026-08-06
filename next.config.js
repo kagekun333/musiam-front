@@ -1,5 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Server Components and API routes read the catalog with fs at runtime.
+  // Vercel serves public assets from the CDN, so the JSON must also be traced
+  // into every server function that can call the shared loaders.
+  outputFileTracingIncludes: {
+    '/*': ['./public/works/*.json'],
+    // Pages Router API functions are traced separately on Vercel. Without the
+    // explicit route key, chat can build successfully but lose its catalog at
+    // runtime and invent a title in plain text instead of returning a card.
+    '/api/chat-experience-v3': ['./public/works/works.json', './public/works/works-ssd.json'],
+    '/api/chat-reco-v2': ['./public/works/works.json', './public/works/works-ssd.json'],
+  },
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'm.media-amazon.com' },

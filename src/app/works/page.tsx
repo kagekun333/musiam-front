@@ -6,6 +6,7 @@ import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { dedupeWorks } from "@/lib/dedupeWorks";
 import { siteUrl } from "@/lib/site-url";
 import WorksCatalog, { type CatalogItem } from "./WorksCatalog";
+import "./works-page.css";
 
 export const metadata: Metadata = {
   title: "展示 — 作品カタログ | 伯爵 MUSIAM",
@@ -71,6 +72,18 @@ export default async function WorksIndexPage() {
           全{items.length}作品。気になる一作から、聴いて・読んでみてください。
         </p>
       </section>
+
+      <aside className="works-collector-preview" aria-label="全作品対応の受注生産メタルプリント相談">
+        <div>
+          <p>THE ENTIRE CATALOG · MADE TO ORDER</p>
+          <h2>全{items.length}作品から、あなたの空間に残す一点を。</h2>
+          <span>すべての作品を受注生産メタルプリントの相談対象として公開。伯爵が仕事場・家・ホテル・ウェルネス空間に合う作品を見立てます。</span>
+        </div>
+        <Link href="/chat?intent=metal-print&utm_source=works_index&utm_medium=owned&utm_campaign=all_catalog_metal&utm_content=all_works">
+          全作品から伯爵に選んでもらう
+        </Link>
+        <small>一問から。購入義務なし。作品ごとの原画解像度・印刷適性・配送条件を確認後、正式Offerを発行します。</small>
+      </aside>
 
       <WorksCatalog items={items} />
     </main>

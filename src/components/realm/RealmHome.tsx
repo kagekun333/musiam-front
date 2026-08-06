@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { track as metric } from "@/lib/metrics";
+import { recordMetalFunnelEvent } from "@/lib/metal-print-funnel-client";
 import { unlockAudio, playEnterSfx } from "@/lib/realm/audio";
 import { setRegionAmbient, setMuted, isMuted } from "@/lib/realm/ambient";
 import "./realm-home.css";
@@ -54,6 +55,7 @@ const FACILITIES: Facility[] = [
 // 近道メニュー（モバイル＆SEO用・常時テキストで提示）。
 const QUICKLINKS: { id: string; ja: string; href: string }[] = [
   { id: "chat", ja: "伯爵と話す", href: "/chat" },
+  { id: "metal-print", ja: "60cm角の限定作品を相談する", href: "/chat?intent=metal-print&utm_source=home&utm_medium=owned&utm_campaign=metal_print_inbound&utm_content=home_quicklink" },
   { id: "works", ja: "展示（全作品）", href: "/works" },
   { id: "letters", ja: "伯爵の手紙〈書簡・年代記〉", href: "/letters" },
   { id: "shop", ja: "交易所〈ショップ〉", href: "/shop" },
@@ -92,6 +94,7 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
       /* no-op */
     }
     setMutedState(isMuted());
+    recordMetalFunnelEvent("metal_home_view", { source: "home", medium: "owned", campaign: "metal_print_inbound", content: "home_page" });
   }, []);
 
   const enter = useCallback(() => {
@@ -171,6 +174,18 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
               </button>
             </div>
             <p className="rlm-gate-note">「話す」は館主・伯爵との対話へ。「巡る」で地図がひらきます。</p>
+            <Link
+              href="/chat?intent=metal-print&utm_source=home&utm_medium=owned&utm_campaign=metal_print_inbound&utm_content=realm_gate"
+              className="rlm-collector-passage"
+              onClick={() => {
+                metric("metal_print_home_entry", { placement: "realm_gate" });
+                recordMetalFunnelEvent("metal_home_cta_click", { source: "home", medium: "owned", campaign: "metal_print_inbound", content: "realm_gate" });
+              }}
+            >
+              <span className="rnv-rune">PRIVATE COLLECTOR EDITION</span>
+              <strong className="rnv-display">正方形のジャケットを、60cm角の限定作品へ。</strong>
+              <small>伯爵が、あなたの壁に合う一枚だけを選びます。</small>
+            </Link>
           </div>
         </div>
       )}
@@ -301,7 +316,10 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
         <ul className="rlm-quicklinks">
           {QUICKLINKS.map((q) => (
             <li key={q.id}>
-              <Link href={q.href} onClick={() => metric("home_quicklink", { id: q.id })}>
+              <Link href={q.href} onClick={() => {
+                metric("home_quicklink", { id: q.id });
+                if (q.id === "metal-print") recordMetalFunnelEvent("metal_home_cta_click", { source: "home", medium: "owned", campaign: "metal_print_inbound", content: "home_quicklink" });
+              }}>
                 {q.ja}
               </Link>
             </li>

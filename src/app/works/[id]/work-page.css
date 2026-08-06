@@ -114,6 +114,13 @@
   flex-wrap: wrap;
   gap: 0.7rem;
 }
+.work-metal-invitation { margin: 0 0 3rem; padding: 1.6rem; border: 1px solid rgba(216,182,92,.34); border-radius: var(--radius-md); background: linear-gradient(135deg, rgba(216,182,92,.09), rgba(8,7,9,.82)); }
+.work-metal-eyebrow { margin: 0 0 .7rem; color: #d8b65c; font-size: .68rem; letter-spacing: .2em; }
+.work-metal-invitation h2 { margin: 0 0 .75rem; color: var(--color-text-primary); font-family: var(--font-serif), serif; font-size: clamp(1.25rem, 3vw, 1.65rem); font-weight: 500; }
+.work-metal-invitation > p:not(.work-metal-eyebrow) { margin: 0 0 1.15rem; color: var(--color-text-secondary); font-size: .9rem; line-height: 1.85; }
+.work-metal-cta { display: inline-block; padding: .8rem 1rem; border: 1px solid rgba(216,182,92,.7); border-radius: 3px; background: rgba(216,182,92,.14); color: #f0ddb0; font-family: var(--font-serif), serif; text-decoration: none; }
+.work-metal-cta:hover { background: rgba(216,182,92,.24); }
+.work-metal-invitation small { display: block; margin-top: .75rem; color: var(--color-text-muted); line-height: 1.6; }
 
 .work-section {
   margin-bottom: 2.8rem;

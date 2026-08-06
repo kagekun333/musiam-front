@@ -26,6 +26,16 @@
 }
 .rlm-gate-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 40px rgba(224,179,94,.55); }
 .rlm-gate-note { color: #8a7858; font-size: .8rem; margin-top: 1rem; letter-spacing: .1em; }
+.rlm-collector-passage {
+  display: grid; gap: .22rem; max-width: 520px; margin: 1.4rem auto 0; padding: .9rem 1.2rem;
+  color: #ead9a8; text-decoration: none; border: 1px solid rgba(224,179,94,.34); border-radius: 8px;
+  background: linear-gradient(135deg, rgba(126,35,48,.18), rgba(224,179,94,.06));
+  transition: border-color var(--rnv-dur-fast) var(--rnv-ease), transform var(--rnv-dur-fast) var(--rnv-ease);
+}
+.rlm-collector-passage:hover { border-color: rgba(244,227,173,.68); transform: translateY(-2px); }
+.rlm-collector-passage span { color: #b89a63; font-size: .62rem; letter-spacing: .24em; }
+.rlm-collector-passage strong { color: #f4e3b6; font-size: clamp(.92rem, 2.6vw, 1.08rem); letter-spacing: .06em; font-weight: 500; }
+.rlm-collector-passage small { color: #a99772; font-size: .74rem; letter-spacing: .04em; }
 
 /* ===== ビューポート / 世界 ===== */
 .rlm-view {
@@ -154,7 +164,8 @@
 .rlm-facility:focus-visible,
 .rlm-throne-label:focus-visible { outline: 2px solid var(--rnv-gold-1); outline-offset: 4px; border-radius: 8px; }
 .rlm-gate-btn:focus-visible,
-.rlm-mute:focus-visible { outline: 2px solid var(--rnv-gold-1); outline-offset: 3px; }
+.rlm-mute:focus-visible,
+.rlm-collector-passage:focus-visible { outline: 2px solid var(--rnv-gold-1); outline-offset: 3px; }
 .rlm-node:focus-visible .rlm-node-ring,
 .rlm-facility:focus-visible .rlm-facility-ring { transform: scale(1.18); box-shadow: 0 0 24px rgba(224,179,94,.6); }
 

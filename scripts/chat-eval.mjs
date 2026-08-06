@@ -11,10 +11,11 @@
  *
  * 各シナリオを /api/chat-experience-v3 に投げ、ヒューリスティックで採点する:
  *   - noWork:           作品カードが出ていないこと
- *   - expectOfferByTurn: 指定ターンまでに作品が提示されること
+ *   - expectCard:       作品カードが提示されること
  *   - maxQuestions:     1メッセージ内の「？/?」が上限以下
  *   - minLen:           返答が短すぎない
  *   - mustNotContainUrl: URL を含まない
+ *   - expectInterestBridge: 低圧の作品関心形成が提示されること
  */
 
 import fs from "node:fs";
@@ -43,9 +44,6 @@ async function runScenario(baseUrl, scenario) {
   const messages = [];
   let lastJson = null;
 
-  // 館を開く（turn 0・伯爵の出迎え）
-  await post(baseUrl, { lang: scenario.lang, messages: [] });
-
   for (let i = 0; i < scenario.turns.length; i++) {
     messages.push({ role: "user", content: scenario.turns[i] });
     lastJson = await post(baseUrl, { lang: scenario.lang, messages });
@@ -56,13 +54,16 @@ async function runScenario(baseUrl, scenario) {
   const card = lastJson?.card ?? null;
   const cta = lastJson?.cta ?? null;
   const persona = lastJson?.persona ?? "count";
+  const interestBridge = lastJson?.interestBridge ?? null;
   const exp = scenario.expect || {};
   const fails = [];
 
   if (exp.noWork && card) fails.push("作品が出てはいけないのに出た");
+  if (exp.expectCard && !card) fails.push("作品カードが期待されたが出ていない");
   if (exp.noCta && cta) fails.push("CTAが出てはいけないのに出た");
   if (exp.expectCta && !cta) fails.push("CTAが期待されたが出ていない");
   if (exp.expectPersona && persona !== exp.expectPersona) fails.push(`persona=${persona}（期待: ${exp.expectPersona}）`);
+  if (exp.expectInterestBridge && interestBridge?.action !== "offer") fails.push("作品関心ブリッジが期待されたが出ていない");
   if (typeof exp.maxQuestions === "number" && countQuestions(text) > exp.maxQuestions) {
     fails.push(`質問数 ${countQuestions(text)} > 上限 ${exp.maxQuestions}`);
   }
@@ -80,7 +81,9 @@ async function post(baseUrl, body) {
     headers: { "content-type": "application/json" },
     body: JSON.stringify(body),
   });
-  return res.json();
+  const json = await res.json();
+  if (!res.ok || json?.ok === false) throw new Error(`HTTP ${res.status}: ${json?.error || "request failed"}`);
+  return json;
 }
 
 async function main() {

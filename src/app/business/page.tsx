@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContactCTA from "@/components/cta/ContactCTA";
+import AttributedCta from "@/components/cta/AttributedCta";
 import ParchmentBackdrop from "@/components/realm/ParchmentBackdrop";
 import "./business.css";
 
@@ -179,6 +180,20 @@ export default function BusinessPage() {
               <li>イベント・展示会の音楽演出</li>
               <li>ブランドのサウンドロゴ</li>
             </ul>
+            <p className="biz-card-desc" style={{ marginTop: "0.6rem" }}>
+              空間にはアートも —{" "}
+              <AttributedCta
+                href="/office-art?utm_source=business&utm_medium=owned&utm_campaign=biz_cross_sell&utm_content=office_art_inline"
+                event="office_art_cross_click"
+                eventProps={{ location: "business_space_card" }}
+                style={{ color: "var(--rnv-text-amber)", textDecoration: "underline" }}
+              >
+                法人向けメタルプリント
+              </AttributedCta>
+              （少額減価償却資産の特例の対象となる場合あり）もご案内中。
+              <br />
+              <small>※ 一般的な情報であり、税務上の取扱いは必ず顧問税理士にご確認ください。</small>
+            </p>
           </div>
           <div className="biz-card">
             <div className="biz-card-title">配信・コンテンツ</div>
