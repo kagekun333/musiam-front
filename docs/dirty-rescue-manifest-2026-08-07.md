@@ -1,6 +1,16 @@
 # Dirty Worktree Rescue Manifest — 2026-08-07
 
-Status: `STATE_LOCKED`
+Status: `RESCUED / LOCAL_COMMITS_COMPLETE`
+
+## Formal commits
+
+- `002fc15` — runtime, metal-print sales, persistent Chat, catalog, public campaign
+  assets, and their validators.
+- `00e5cc4` — audience/operations evidence, operating documents, and terminal
+  publication-state validation.
+
+The working tree was clean after both commits. The branch was two commits ahead of
+`origin/main`; neither commit was pushed or deployed during this rescue.
 
 ## Safety rules
 
@@ -67,3 +77,19 @@ available to the Vercel build until they are deliberately migrated into `src/dat
 The rescue is complete when source and operations lanes are represented by reviewed
 commits, validations pass, protected large assets remain unmodified, and `git status`
 contains only explicitly documented local/media candidates.
+
+## Closure evidence
+
+- `npm run typecheck`: PASS
+- `npm run build`: PASS (1,049 static pages; `/api/chat-history` present)
+- Chat sales validation: PASS
+- Metal-print readiness: PASS (100/100; 91 controls; 68 cases)
+- Metal-print mission capacity: PASS (`¥3,960,000` approved gross capacity)
+- Daily Music: PASS (7 release packs; 28 placements; publication queue invariants)
+- JSON parse: PASS (114 operations/evidence files)
+- Revenue assurance: `HOLD`, correctly preserved. There are no observed paid and
+  fulfilled orders, the production evidence snapshots were 73 hours old, and the
+  qualified pipeline was zero at audit time. Technical readiness is not recorded as
+  achieved revenue.
+- Protected local assets: retained in place and ignored from Git/Vercel payloads;
+  no deletion, move, rename, push, or deployment was performed.
