@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_FOR_PUBLIC_SALE",
+  "approvedAt": "2026-08-06T18:48:11.000Z",
+  "scope": "ALL_CANONICAL_CATALOG_WORKS",
+  "catalogSource": "public/works/works.json",
+  "amountJpy": 330000,
+  "currency": "jpy",
+  "editionSize": 3,
+  "authorizationEvidence": "User explicitly instructed Codex to make every work purchasable and autonomously publish the complete implementation on 2026-08-07 JST.",
+  "fulfillmentModel": "CUSTOMER_PAYMENT_THEN_SINGLE_ITEM_VENDOR_ORDER",
+  "controls": [
+    "Every catalog work receives a deterministic CATALOG-WORK edition ID",
+    "Every edition is limited independently to three Redis-locked serials",
+    "Checkout remains gated by verified consultation and four explicit customer acknowledgements",
+    "Physical proof remains disclosed as unapproved",
+    "No vendor order occurs before a paid Stripe webhook",
+    "Final vendor purchase remains an order-specific operational action"
+  ],
+  "evidenceBoundary": "This approval opens the canonical catalog for controlled made-to-order sale. It does not assert physical proof approval, print-master quality, vendor purchase, shipment, delivery or revenue."
+}

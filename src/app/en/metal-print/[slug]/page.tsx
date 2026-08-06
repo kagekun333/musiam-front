@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { METAL_PRINT_PUBLIC_OFFER_EDITION_ID, METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
+import { METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
+import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import { siteUrl } from "@/lib/site-url";
 import { MetalPrintChatCta, MetalPrintDossierView } from "../../../metal-print/[slug]/MetalPrintFunnel";
 import "../../../metal-print/[slug]/metal-print-edition.css";
@@ -40,6 +41,7 @@ export default async function EnglishMetalPrintEditionPage({ params }: { params:
   const { slug } = await params;
   const edition = getEdition(slug);
   if (!edition) notFound();
+  const isPublicOffer = Boolean(getApprovedMetalPrintOffer(edition.id));
   const chatHref = `/chat?intent=metal-print&work=${encodeURIComponent(edition.title)}`;
   const canonical = `${siteUrl()}/en/metal-print/${edition.slug}`;
   const jsonLd = {
@@ -57,7 +59,7 @@ export default async function EnglishMetalPrintEditionPage({ params }: { params:
     width: { "@type": "QuantitativeValue", value: edition.format.widthMm, unitCode: "MMT" },
     height: { "@type": "QuantitativeValue", value: edition.format.heightMm, unitCode: "MMT" },
   };
-  const productJsonLd = edition.id === METAL_PRINT_PUBLIC_OFFER_EDITION_ID ? {
+  const productJsonLd = isPublicOffer ? {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${edition.title} — 60cm ChromaLuxe Metal Print`,
@@ -97,7 +99,7 @@ export default async function EnglishMetalPrintEditionPage({ params }: { params:
 
       <section className="metal-edition-hero">
         <div className="metal-edition-copy">
-          <p className="metal-edition-eyebrow">600MM SQUARE · EDITION OF 3 · COLLECTOR PREVIEW</p>
+          <p className="metal-edition-eyebrow">600MM SQUARE · EDITION OF 3 · {isPublicOffer ? "FORMAL OFFER" : "COLLECTOR PREVIEW"}</p>
           <h1>{edition.en.searchTitle}</h1>
           <p className="metal-edition-lede">{edition.en.collectorPromise}</p>
           <MetalPrintChatCta editionId={edition.id} slug={`en/${edition.slug}`} workTitle={edition.title} chatHref={chatHref} label="Ask the Count whether this work belongs in your space" />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { METAL_PRINT_PUBLIC_OFFER_EDITION_ID, METAL_PRINT_VIP_EDITIONS, METAL_PRINT_VIP_PRICE_POLICY } from "@/lib/metal-print-vip";
+import { METAL_PRINT_CATALOG_WORK_COUNT, METAL_PRINT_FEATURED_EDITIONS, METAL_PRINT_TOTAL_EDITION_COUNT, METAL_PRINT_VIP_EDITIONS, METAL_PRINT_VIP_PRICE_POLICY } from "@/lib/metal-print-vip";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./vip-metal-print.css";
 
@@ -11,8 +11,7 @@ const SPACE_ENTRIES = [
   { space: "wellness", slug: "balian-retreat-art", work: "BALIAN", label: "スパ・リトリート", copy: "静けさだけでなく、空間の芯となる儀式的な焦点を。" },
 ] as const;
 
-const PUBLIC_OFFER = METAL_PRINT_VIP_EDITIONS.find((edition) => edition.id === METAL_PRINT_PUBLIC_OFFER_EDITION_ID)!;
-const ORDERED_EDITIONS = [PUBLIC_OFFER, ...METAL_PRINT_VIP_EDITIONS.filter((edition) => edition.id !== METAL_PRINT_PUBLIC_OFFER_EDITION_ID)];
+const ORDERED_EDITIONS = METAL_PRINT_FEATURED_EDITIONS;
 
 export const metadata: Metadata = {
   title: "Collector Preview — Jacket Metal Print | 伯爵 MUSIAM",
@@ -32,18 +31,18 @@ export default function VipMetalPrintPage() {
         <p className="vip-metal-eyebrow">PRIVATE COLLECTOR DOSSIER · JULY 2026</p>
         <h1>ジャケットを、<br />壁に残る一点へ。</h1>
         <p className="vip-metal-lede">
-          音楽の入口だった正方形の一枚を、60cm角・3点だけのメタルプリントとして仕立てる初回カプセルです。
+          音楽や本の入口だった一枚を、60cm角・各3点だけのメタルプリントとして仕立てます。
           伯爵があなたの空間に合う一枚を選び、正式Offerへの同意と入金後に1点ずつ制作します。
         </p>
-        <a className="vip-metal-primary" href="#available-editions">販売中の4作品から選ぶ</a>
-        <p className="vip-metal-micro">現在は4作品・各Edition 3点、合計12点を正式Offerとして販売しています。全作品カタログからの受注相談も承ります。</p>
+        <a className="vip-metal-primary" href="/works">全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ</a>
+        <p className="vip-metal-micro">カタログ全{METAL_PRINT_CATALOG_WORK_COUNT}作品とFeatured 4作品、合計{METAL_PRINT_TOTAL_EDITION_COUNT}作品を各3点の正式Offerとして公開しています。</p>
       </section>
 
       <section className="vip-metal-proof" aria-label="価格方針">
         <p>SIGNATURE SQUARE · 600 × 600MM · 税込</p>
         <div>
           <strong>¥{METAL_PRINT_VIP_PRICE_POLICY.anchorYen.toLocaleString()}</strong>
-          <span>承認済み4作品の正式Collector価格</span>
+          <span>全作品共通の正式Collector価格</span>
         </div>
         <small>正方形原画をトリミングせず、白下地ChromaLuxeへ原寸比率で制作します。受注生産のため、Stripe入金確認後に1点ずつ印刷会社へ発注します。実物proofは未承認です。通常は製造開始から約12営業日＋配送期間が目安です。</small>
       </section>
@@ -60,7 +59,7 @@ export default function VipMetalPrintPage() {
         </div>
       </section>
 
-      <section className="vip-metal-grid" id="available-editions" aria-label="販売中のEdition">
+      <section className="vip-metal-grid" id="available-editions" aria-label="Featured Edition">
         {ORDERED_EDITIONS.map((edition) => {
           const isPublicOffer = approvedEditionIds.has(edition.id);
           return (
@@ -79,6 +78,12 @@ export default function VipMetalPrintPage() {
           </article>
           );
         })}
+      </section>
+
+      <section className="vip-metal-trust">
+        <h2>全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ。</h2>
+        <p>音楽267作品・書籍134作品の各作品ページから、その作品専用の60cm角・限定3点のCollector Dossierと正式Offerへ進めます。</p>
+        <a className="vip-metal-primary" href="/works">全作品カタログを開く</a>
       </section>
 
       <section className="vip-metal-trust">

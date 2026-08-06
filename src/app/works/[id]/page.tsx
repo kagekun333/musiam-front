@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/site-url";
 import { isHyperfollowUrl } from "@/lib/work-links";
 import WorkLinks, { type WorkLinkItem } from "./WorkLinks";
 import DonationCTA from "@/components/cta/DonationCTA";
-import { METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
+import { getCatalogMetalPrintEditionId, METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./work-page.css";
 
@@ -208,7 +208,8 @@ export default async function WorkPage(
     typeof work.matchInfo === "object" && work.matchInfo
       ? (work.matchInfo as { summary?: string }).summary
       : undefined;
-  const metalEdition = METAL_PRINT_VIP_EDITIONS.find((edition) => edition.title === work.title);
+  const metalEditionId = getCatalogMetalPrintEditionId(String(work.id));
+  const metalEdition = METAL_PRINT_VIP_EDITIONS.find((edition) => edition.id === metalEditionId);
   const metalOfferApproved = metalEdition ? Boolean(getApprovedMetalPrintOffer(metalEdition.id)) : false;
   const metalConsultationHref = `/chat?intent=metal-print&work=${encodeURIComponent(String(work.title))}&workId=${encodeURIComponent(String(work.id))}&utm_source=work_page&utm_medium=owned&utm_campaign=all_catalog_metal&utm_content=${encodeURIComponent(String(work.id))}`;
 
@@ -279,7 +280,7 @@ export default async function WorkPage(
           <>
           <p className="work-metal-eyebrow">FROM MUSIC TO WALL · 600MM SQUARE</p>
           <h2>このジャケットを、壁に残る一点へ。</h2>
-          <p>{metalEdition.collectorPromise} 60cm角・Edition 3点のCollector Previewとして、あなたの空間との相性を伯爵が見立てます。</p>
+          <p>{metalEdition.collectorPromise} 60cm角・Edition 3点の正式Offerとして、あなたの空間との相性を伯爵が見立てます。</p>
           <Link
             className="work-metal-cta"
             href={`/metal-print/${metalEdition.slug}?utm_source=work_page&utm_medium=owned&utm_campaign=catalog_to_metal&utm_content=${metalEdition.slug}&space=${metalEdition.spaceSegment}`}

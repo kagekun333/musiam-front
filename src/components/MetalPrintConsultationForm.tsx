@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "@/pages/chat.module.css";
 import type { MetalPrintAttribution } from "@/lib/metal-print-consultation";
-import { METAL_PRINT_SIGNATURE_FORMAT, METAL_PRINT_VIP_EDITIONS, METAL_PRINT_VIP_PRICE_POLICY } from "@/lib/metal-print-vip";
+import { METAL_PRINT_SIGNATURE_FORMAT, METAL_PRINT_VIP_PRICE_POLICY } from "@/lib/metal-print-policy";
 
 type Props = { editionId: string; workTitle: string; lang: string; attribution?: MetalPrintAttribution; onQualified: (qualified: boolean) => void };
 
 export default function MetalPrintConsultationForm({ editionId, workTitle, lang, attribution, onQualified }: Props) {
   const ja = lang === "ja";
-  const dossierEdition = METAL_PRINT_VIP_EDITIONS.find((edition) => edition.id === editionId);
   const isCatalogCandidate = editionId.startsWith("CATALOG-WORK:");
   const [email, setEmail] = useState("");
   const [spaceType, setSpaceType] = useState("");
@@ -21,8 +20,8 @@ export default function MetalPrintConsultationForm({ editionId, workTitle, lang,
   const [consultationToken, setConsultationToken] = useState("");
   const [qualified, setQualified] = useState(false);
   const [checkoutAvailable, setCheckoutAvailable] = useState(false);
-  const isApprovedPublicOffer = Boolean(dossierEdition) || checkoutAvailable;
-  const dossierFormat = dossierEdition?.format ?? (checkoutAvailable ? METAL_PRINT_SIGNATURE_FORMAT : null);
+  const isApprovedPublicOffer = true;
+  const dossierFormat = METAL_PRINT_SIGNATURE_FORMAT;
   const [checkoutStatus, setCheckoutStatus] = useState<"idle" | "opening" | "error">("idle");
   const [verificationEmailSent, setVerificationEmailSent] = useState(false);
   const [verificationDeliveryFailed, setVerificationDeliveryFailed] = useState(false);

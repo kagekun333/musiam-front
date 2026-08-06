@@ -160,7 +160,7 @@ assert(chatUi.includes('!musicWorkEntry && !metalPrintEntry && cta?.productId !=
 assert(chatUi.includes("CATALOG-WORK:${campaignWorkId}"), "全作品の指定が相談IDへ保持されません");
 assert(chatUi.includes('sourceIntent: sourceIntent ?? "direct"') && chatUi.includes('sourceIntent === "metal-print"'), "メタルプリント流入計測がありません");
 assert(chatUi.includes('sourceContent === "ABI-LW01-05"') && chatUi.includes("静けさと力強さなら、今は静けさがほしい"), "Launch Wave 05の投稿文脈がChat starterへ継承されません");
-assert(metalPage.includes('href="#available-editions"'), "VIPページの主CTAが販売中Editionへ接続されていません");
+assert(metalPage.includes('href="/works"'), "VIPページの主CTAが全作品カタログへ接続されていません");
 assert(metalPage.includes("getApprovedMetalPrintOffer"), "VIPページの販売表示が承認台帳に接続されていません");
 assert(metalPage.includes("robots: { index: true, follow: true }"), "VIPページが検索流入を拒否しています");
 assert(home.includes('href="/chat?intent=metal-print&'), "ホームにメタルプリント専用Chat入口がありません");

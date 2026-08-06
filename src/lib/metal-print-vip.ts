@@ -1,3 +1,8 @@
+import worksCatalog from "../../public/works/works.json";
+import { METAL_PRINT_SIGNATURE_FORMAT } from "./metal-print-policy";
+
+export { METAL_PRINT_SIGNATURE_FORMAT, METAL_PRINT_VIP_PRICE_POLICY } from "./metal-print-policy";
+
 export type MetalPrintVipEdition = {
   id: string;
   slug: string;
@@ -30,14 +35,6 @@ export type MetalPrintVipEdition = {
   };
 };
 
-export const METAL_PRINT_SIGNATURE_FORMAT = {
-  widthMm: 600,
-  heightMm: 600,
-  medium: "ChromaLuxe aluminum",
-  finish: "gloss white base",
-  editionSize: 3,
-} as const;
-
 export const METAL_PRINT_PUBLIC_OFFER_EDITION_ID = "VIP-METAL-2026-07-NATURA" as const;
 
 /**
@@ -45,7 +42,7 @@ export const METAL_PRINT_PUBLIC_OFFER_EDITION_ID = "VIP-METAL-2026-07-NATURA" as
  * These entries power the local Dossier route only; a checkout must not be added
  * until the offer-lock evidence is complete.
  */
-export const METAL_PRINT_VIP_EDITIONS: MetalPrintVipEdition[] = [
+export const METAL_PRINT_FEATURED_EDITIONS: MetalPrintVipEdition[] = [
   {
     id: "VIP-METAL-2026-07-IGNITION",
     slug: "33-ignition-office-art",
@@ -148,9 +145,59 @@ export const METAL_PRINT_VIP_EDITIONS: MetalPrintVipEdition[] = [
   },
 ];
 
-export const METAL_PRINT_VIP_PRICE_POLICY = {
-  anchorYen: 330000,
-  closeYen: 300000,
-  decisiveCloseYen: 165000,
-  decisiveCloseUnitCap: 4,
-} as const;
+type CatalogSourceWork = {
+  id: string | number;
+  title: string;
+  type?: string;
+  cover: string;
+  tags?: string[];
+  moodTags?: string[];
+};
+
+const catalogItems = (worksCatalog as { items: CatalogSourceWork[] }).items;
+
+export function getCatalogMetalPrintEditionId(workId: string | number) {
+  return `CATALOG-WORK:${String(workId)}`;
+}
+
+function catalogEdition(work: CatalogSourceWork): MetalPrintVipEdition {
+  const isBook = String(work.type).toLowerCase() === "book";
+  const signals = [...(work.moodTags ?? []), ...(work.tags ?? [])].filter(Boolean).slice(0, 4);
+  const signalCopy = signals.length ? ` ${signals.join("、")}の気配を持つ作品です。` : "";
+  return {
+    id: getCatalogMetalPrintEditionId(work.id),
+    slug: `catalog-${String(work.id).toLowerCase()}`,
+    title: work.title,
+    cover: work.cover,
+    collectorPromise: `「${work.title}」への愛情を、音や頁の外でも残すための一点。`,
+    conversationCue: `「${work.title}」のどこを、いちばん長く部屋に残したいですか？`,
+    searchTitle: `${work.title}｜限定3点・60cm角メタルプリント`,
+    searchDescription: `ABI伯爵の${isBook ? "書籍" : "音楽"}作品「${work.title}」を、60cm角・限定3点の受注生産メタルプリントとして販売します。`,
+    spaceLabel: isBook ? "Study / Library / Private room" : "Home / Studio / Listening room",
+    spaceSegment: isBook ? "home" : "office",
+    spaceDescription: `${isBook ? "物語や思想を読み返す書斎、図書室、私室" : "音楽を聴く部屋、制作スタジオ、ラウンジ"}へ。${signalCopy}`,
+    story: `「${work.title}」は、作品を愛する人の記憶とともに完成していく一作です。ジャケット／表紙を、聴く・読む体験から壁面の焦点へ移します。`,
+    keywords: [work.title, "メタルプリント", "限定アート", isBook ? "書籍 表紙 アート" : "アルバムジャケット アート"],
+    en: {
+      searchTitle: `${work.title} Limited Edition Metal Print`,
+      searchDescription: `${work.title} by ABI Hakusyaku, offered as a 60 cm square made-to-order metal print in an edition of three.`,
+      collectorPromise: `A physical focal point for keeping your connection to ${work.title} in the room.`,
+      conversationCue: `What part of ${work.title} would you want this room to hold onto?`,
+      spaceDescription: `Created for a ${isBook ? "study, library or private reading room" : "listening room, studio or private lounge"}.`,
+      story: `${work.title} moves from a ${isBook ? "book cover" : "music cover"} into a spatial object for the people who want to live with the work.`,
+      keywords: [work.title, "limited edition metal print", isBook ? "book cover wall art" : "album cover wall art"],
+    },
+    format: METAL_PRINT_SIGNATURE_FORMAT,
+  };
+}
+
+export const METAL_PRINT_CATALOG_EDITIONS: MetalPrintVipEdition[] = catalogItems.map(catalogEdition);
+
+/** Featured capsules remain intact; every canonical catalog work is also a formal Edition. */
+export const METAL_PRINT_VIP_EDITIONS: MetalPrintVipEdition[] = [
+  ...METAL_PRINT_FEATURED_EDITIONS,
+  ...METAL_PRINT_CATALOG_EDITIONS,
+];
+
+export const METAL_PRINT_CATALOG_WORK_COUNT = METAL_PRINT_CATALOG_EDITIONS.length;
+export const METAL_PRINT_TOTAL_EDITION_COUNT = METAL_PRINT_VIP_EDITIONS.length;

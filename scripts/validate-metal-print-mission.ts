@@ -94,11 +94,13 @@ if (state.phase === "live") {
   assert(state.assetReadiness.status === "verified", "live sales require verified print masters");
 }
 
-assert(METAL_PRINT_VIP_EDITIONS.length === objective.soldOutEditionTarget, "public Dossier must include every monthly Edition");
+assert(METAL_PRINT_VIP_EDITIONS.length >= objective.soldOutEditionTarget, "public Dossier capacity fell below the monthly mission floor");
 for (const edition of METAL_PRINT_VIP_EDITIONS) {
-  assert(distinctEditionIds.has(edition.id), `public Dossier references unknown Edition: ${edition.id}`);
-  assert(edition.cover.startsWith("/"), `${edition.id} preview cover must be a public local path`);
-  assert(fs.existsSync(path.join(root, "public", edition.cover)), `${edition.id} preview cover is missing: ${edition.cover}`);
+  const localCover = edition.cover.startsWith("/");
+  const remoteCover = /^https:\/\/(m\.media-amazon\.com|images-na\.ssl-images-amazon\.com)\//.test(edition.cover);
+  assert(localCover || remoteCover, `${edition.id} preview cover must be an approved local or Amazon source`);
+  if (localCover) assert(fs.existsSync(path.join(root, "public", edition.cover)), `${edition.id} preview cover is missing: ${edition.cover}`);
+  assert(Boolean(getApprovedMetalPrintOffer(edition.id)), `${edition.id} formal Offer is not approved`);
 }
 
 const approvedOfferUnits = METAL_PRINT_VIP_EDITIONS.reduce(

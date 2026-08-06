@@ -9,6 +9,7 @@
     "validate:chat-sales": "tsx scripts/validate-chat-sales.ts",
     "verify:chat-campaign-entry": "tsx scripts/verify-chat-campaign-entry.ts",
     "validate:metal-print-sales-readiness": "node --import tsx scripts/validate-metal-print-sales-readiness.ts",
+    "validate:all-catalog-metal-print": "node --import tsx scripts/validate-all-catalog-metal-print.ts",
     "validate:metal-print-mission": "tsx scripts/validate-metal-print-mission.ts",
     "validate:metal-print-offer-capacity": "tsx scripts/validate-metal-print-offer-capacity.ts",
     "validate:metal-print-economics-actuals": "tsx scripts/validate-metal-print-economics-actuals.ts",
