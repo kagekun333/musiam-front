@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-05T13:57:24.322Z",
+  "waveId": "DMW-20260805-7D",
+  "summary": {
+    "placements": 28,
+    "due": 3,
+    "approvedWaiting": 27,
+    "humanApprovalRequired": 0,
+    "published": 1,
+    "nextScheduledAt": "2026-08-06T03:15:00.000Z"
+  },
+  "duePlacementIds": [
+    "DMR-20260805-4531782f-instagram",
+    "DMR-20260805-4531782f-tiktok",
+    "DMR-20260805-4531782f-youtube"
+  ],
+  "rows": [
+    {
+      "placementId": "DMR-20260805-4531782f-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": true,
+      "reason": "DUE_APPROVED"
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-threads",
+      "platform": "threads",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "PUBLISHED",
+      "due": false,
+      "reason": "ALREADY_PUBLISHED"
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": true,
+      "reason": "DUE_APPROVED"
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": true,
+      "reason": "DUE_APPROVED"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-threads",
+      "platform": "threads",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-threads",
+      "platform": "threads",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-threads",
+      "platform": "threads",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-threads",
+      "platform": "threads",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-threads",
+      "platform": "threads",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-threads",
+      "platform": "threads",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "reason": "WAITING_SCHEDULE"
+    }
+  ],
+  "executionRule": "Only duePlacementIds may proceed to immediate media preflight and external publication; HUMAN_APPROVAL_REQUIRED, future and PUBLISHED rows are forbidden."
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "status": "SUPERSEDED_BY_ABI_HAKUSYAKU_LAUNCH_WAVE_01_NATIVE_JSON",
+  "supersededBy": "ops/audience-engine/abi-hakusyaku-launch-wave-01-native.json",
+  "campaign": "abi_hakusyaku_launch_wave_01",
+  "canonicalTikTok": "https://www.tiktok.com/@countabi",
+  "publicationOrder": [
+    {
+      "slot": 1,
+      "pillar": "manifesto",
+      "asset": "/metal-print-campaign/natura-01.jpg",
+      "caption": "言葉を武器に、世界を遊ぶ。音、本、映像、哲学、空間芸術を一つの世界として開いていく。ABI伯爵、開館。",
+      "cta": "あなたが十年残したい景色を、一言で教えてください。",
+      "destinations": ["instagram", "threads", "x"]
+    },
+    {
+      "slot": 2,
+      "pillar": "music_to_image",
+      "asset": "/metal-print-campaign/ignition-01.jpg",
+      "caption": "音は消える。しかし、始めた日の火は空間に残せる。33 IGNITION。",
+      "cta": "いま、何に火をつけたいですか。",
+      "destinations": ["instagram", "tiktok", "youtube_shorts", "x"]
+    },
+    {
+      "slot": 3,
+      "pillar": "question",
+      "asset": "/metal-print-campaign/natura-02.jpg",
+      "caption": "伯爵の一問。あなたの部屋に、十年残したい景色は何ですか。",
+      "cta": "答えは一語でも構いません。",
+      "destinations": ["instagram", "threads", "x"]
+    },
+    {
+      "slot": 4,
+      "pillar": "belonging",
+      "asset": "/metal-print-campaign/home-01.jpg",
+      "caption": "故郷ではない。それでも、帰ってきたと感じる場所がある。A Town Called Almost Home。",
+      "cta": "あなたにとって『ほとんど我が家』と呼べる場所はどこですか。",
+      "destinations": ["instagram", "tiktok", "youtube_shorts"]
+    },
+    {
+      "slot": 5,
+      "pillar": "ritual",
+      "asset": "/metal-print-campaign/balian-01.jpg",
+      "caption": "静かな部屋と、力のない部屋は違う。BALIANは、静けさの芯をつくる。",
+      "cta": "静けさと力強さ。今のあなたに必要なのはどちらですか。",
+      "destinations": ["instagram", "threads", "x"]
+    },
+    {
+      "slot": 6,
+      "pillar": "philosophy",
+      "asset": "/metal-print-campaign/natura-03.jpg",
+      "caption": "Deus sive Natura——神、すなわち自然。自然を見るのではなく、自分も自然だと思い出すための一点。",
+      "cta": "作品の背景は伯爵Chatで。",
+      "destinations": ["instagram", "tiktok", "youtube_shorts", "x"]
+    },
+    {
+      "slot": 7,
+      "pillar": "restart",
+      "asset": "/metal-print-campaign/ignition-03.jpg",
+      "caption": "人生の再始動には、日付より強い印がいる。",
+      "cta": "あなたの再始動は、いつでしたか。",
+      "destinations": ["instagram", "threads", "x"]
+    },
+    {
+      "slot": 8,
+      "pillar": "worldbuilding",
+      "asset": "/metal-print-campaign/balian-03.jpg",
+      "caption": "作品を量産するのではない。音、物語、映像、空間の判断を重ね、一つの世界にする。",
+      "cta": "制作の舞台裏もここで公開します。",
+      "destinations": ["instagram", "tiktok", "youtube_shorts"]
+    },
+    {
+      "slot": 9,
+      "pillar": "inbound_invitation",
+      "asset": "/metal-print-campaign/home-03.jpg",
+      "caption": "作品を売る前に、あなたの空間を一問で読む。350作品から、残る一点を伯爵が選びます。",
+      "cta": "プロフィールの伯爵Chatへ。購入義務はありません。",
+      "destinations": ["instagram", "threads", "x"]
+    }
+  ],
+  "verifiedAssetSpec": { "width": 1080, "height": 1350, "aspectRatio": "4:5", "count": 9 },
+  "remainingGates": ["visual_human_review", "platform_native_crop_check", "publication_approval"]
+}

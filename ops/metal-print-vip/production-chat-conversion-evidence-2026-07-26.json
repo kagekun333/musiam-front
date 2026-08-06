@@ -1,0 +1,23 @@
+{
+  "capturedAt": "2026-07-26T08:03:00+09:00",
+  "deploymentId": "dpl_EnwZVzkf4TbzDY9nuTd1uTWnuDfH",
+  "deploymentUrl": "https://musiam-front-6pbh1hmik-hakusyakus-projects.vercel.app",
+  "productionAlias": "https://www.hakusyaku.xyz",
+  "readyState": "READY",
+  "verifiedUrl": "https://www.hakusyaku.xyz/chat?intent=metal-print&work=Deus%20sive%20Natura&utm_source=e2e&utm_medium=verification&utm_campaign=verification_chat_conversion_v2&utm_content=entry_guide",
+  "verificationTrafficClass": "ISOLATED_FROM_PRODUCTION_DEMAND",
+  "observed": {
+    "workSpecificHeading": "「Deus sive Natura」が、その部屋に合うか一問で見立てます。",
+    "firstMessageGuide": "部屋の用途・光・残したい感情のうち、一つだけ教えてください。購入義務はなく、合わなければ勧めません。",
+    "workSpecificStarterVisible": true,
+    "inputExample": "例：夕方に西日が入る書斎です",
+    "attributionParametersPreserved": true
+  },
+  "validation": {
+    "metalPrintInbound": "PASS",
+    "metalPrintFunnelContract": "PASS",
+    "metalPrintConsultation": "PASS",
+    "nextBuild": "PASS"
+  },
+  "truthBoundary": "This proves production availability and funnel UX, not user demand, qualified pipeline, payment, or revenue."
+}

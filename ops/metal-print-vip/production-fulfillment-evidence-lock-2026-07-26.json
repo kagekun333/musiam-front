@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T09:40:00+09:00",
+  "status": "DEPLOYED_READY",
+  "deployment": {
+    "id": "dpl_89Kr4n1WDUQVTBuwZV73j1Skvvz4",
+    "target": "production",
+    "readyState": "READY",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "controls": [
+    "POST /api/metal-print/fulfillment remains operator-secret protected",
+    "trackingReferenceHash is a mandatory 64-hex evidence hash; operator preparation uses domain-separated HMAC-SHA-256",
+    "fulfillmentEvidenceSha256 is a mandatory 64-hex SHA-256",
+    "both hashes are persisted atomically with the fulfilled transition",
+    "a future actual-economics bundle can reuse the same evidence references"
+  ],
+  "validation": {
+    "productionAdapter": "PASS",
+    "revenueValidator": "PASS",
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "vercelProductionBuild": "PASS",
+    "unauthenticatedFulfillmentHttpStatus": 401,
+    "vipMetalPrintHttpStatus": 200
+  },
+  "claimBoundary": "This proves the deployed fulfillment transition rejects unauthenticated callers and the deployed source requires both evidence hashes. It does not prove a vendor order, shipment, delivery, paid order, physical proof or observed economics."
+}

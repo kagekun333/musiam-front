@@ -1,0 +1,85 @@
+{
+  "capsuleId": "VIP-METAL-YYYY-MM",
+  "status": "candidate",
+  "editions": [
+    {
+      "editionId": "VIP-METAL-YYYY-MM-A",
+      "sourceWorkId": null,
+      "sourceTitle": null,
+      "rightsOwner": null,
+      "artworkMasterSha256": null,
+      "physicalSpec": {
+        "widthMm": null,
+        "heightMm": null,
+        "material": null,
+        "finish": null,
+        "mounting": null,
+        "weightKg": null
+      },
+      "editionSize": 3,
+      "serials": ["1/3", "2/3", "3/3"],
+      "certificateTemplate": null,
+      "productionVendor": null,
+      "unitCostYen": null,
+      "deliveryWindow": null,
+      "damageAndRefundPolicy": null,
+      "evidence": {
+        "physicalSamplePhoto": null,
+        "colorProof": null,
+        "renderClearlyLabeled": true
+      },
+      "lockStatus": "unselected"
+    },
+    {
+      "editionId": "VIP-METAL-YYYY-MM-B",
+      "sourceWorkId": null,
+      "sourceTitle": null,
+      "rightsOwner": null,
+      "artworkMasterSha256": null,
+      "physicalSpec": { "widthMm": null, "heightMm": null, "material": null, "finish": null, "mounting": null, "weightKg": null },
+      "editionSize": 3,
+      "serials": ["1/3", "2/3", "3/3"],
+      "certificateTemplate": null,
+      "productionVendor": null,
+      "unitCostYen": null,
+      "deliveryWindow": null,
+      "damageAndRefundPolicy": null,
+      "evidence": { "physicalSamplePhoto": null, "colorProof": null, "renderClearlyLabeled": true },
+      "lockStatus": "unselected"
+    },
+    {
+      "editionId": "VIP-METAL-YYYY-MM-C",
+      "sourceWorkId": null,
+      "sourceTitle": null,
+      "rightsOwner": null,
+      "artworkMasterSha256": null,
+      "physicalSpec": { "widthMm": null, "heightMm": null, "material": null, "finish": null, "mounting": null, "weightKg": null },
+      "editionSize": 3,
+      "serials": ["1/3", "2/3", "3/3"],
+      "certificateTemplate": null,
+      "productionVendor": null,
+      "unitCostYen": null,
+      "deliveryWindow": null,
+      "damageAndRefundPolicy": null,
+      "evidence": { "physicalSamplePhoto": null, "colorProof": null, "renderClearlyLabeled": true },
+      "lockStatus": "unselected"
+    },
+    {
+      "editionId": "VIP-METAL-YYYY-MM-D",
+      "sourceWorkId": null,
+      "sourceTitle": null,
+      "rightsOwner": null,
+      "artworkMasterSha256": null,
+      "physicalSpec": { "widthMm": null, "heightMm": null, "material": null, "finish": null, "mounting": null, "weightKg": null },
+      "editionSize": 3,
+      "serials": ["1/3", "2/3", "3/3"],
+      "certificateTemplate": null,
+      "productionVendor": null,
+      "unitCostYen": null,
+      "deliveryWindow": null,
+      "damageAndRefundPolicy": null,
+      "evidence": { "physicalSamplePhoto": null, "colorProof": null, "renderClearlyLabeled": true },
+      "lockStatus": "unselected"
+    }
+  ]
+}

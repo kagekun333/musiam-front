@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-26T00:45:52.496Z",
+  "evidenceClass": "OBSERVED_UNIT_ECONOMICS_PENDING",
+  "thresholds": {
+    "paidFulfilledOrdersMin": 1,
+    "stripeSettlementSamplesMin": 1,
+    "maturedPaidCustomersForMeasuredCacMin": 3,
+    "fulfilledUnitsForReplacementObservationMin": 10
+  },
+  "observed": {
+    "paidFulfilledOrders": 0,
+    "vendorPaidInvoices": 0,
+    "stripeSettlementSamples": 0,
+    "maturedPaidCustomers": 0,
+    "attributedAcquisitionSpendYen": null,
+    "measuredOperatingCostYen": null,
+    "measuredCustomerAcquisitionCostYen": null,
+    "fulfilledUnitsObserved": 0,
+    "replacementUnitsObserved": 0,
+    "measuredReplacementRate": null,
+    "totalGrossPaidYen": 0,
+    "totalObservedVariableCostYen": 0,
+    "totalObservedCostIncludingCacYen": 0,
+    "measuredContributionMarginRate": null
+  },
+  "gates": {
+    "paidInvoiceAndFulfillment": false,
+    "actualStripeFee": false,
+    "measuredCac": false,
+    "replacementObservation": false,
+    "observedContributionMargin60": false
+  },
+  "launchReadinessBoundary": "The enforced JPY 20000 CAC cap and JP/US/EU platform quotes prove a controlled pre-sale margin stress test only.",
+  "strongJudgmentBoundary": "Observed unit economics require Human-reviewed, hash-referenced fulfilled orders and CAC cohorts. Until every gate passes, actual contribution margin is unproven."
+}

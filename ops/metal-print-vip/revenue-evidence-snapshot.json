@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-08-03T14:35:57.710Z",
+  "evidenceClass": "DURABLE_STRIPE_PAYMENT_LEDGER",
+  "month": "2026-08",
+  "paymentCount": 0,
+  "paidNonRefundedOrders": 0,
+  "grossPaidYen": 0,
+  "refundedYen": 0,
+  "netNonRefundedYen": 0,
+  "targetYen": 3000000,
+  "targetProven": false,
+  "byPlacement": {},
+  "unattributedNetNonRefundedYen": 0,
+  "privacy": "Only aggregate payment amounts and counts are included."
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-27T00:10:59+09:00",
+  "finding": "All four canonical Launch Wave MP4 files contain a 1080x1920 H.264 video stream but no audio stream.",
+  "canonicalAssets": [
+    {
+      "postId": "ABI-LW01-02",
+      "path": "public/audience/abi-launch-wave-01/abi-lw01-02.mp4",
+      "publicationState": "already published historical evidence; no retroactive ledger mutation"
+    },
+    {
+      "postId": "ABI-LW01-04",
+      "path": "public/audience/abi-launch-wave-01/abi-lw01-04.mp4",
+      "sha256": "54e4f366a432f3acfaa3585c0da69df1636a1a8adebae61e6acd2b2a4e3f7b91",
+      "durationSeconds": 15,
+      "video": "H.264 1080x1920 30fps",
+      "audio": null,
+      "placementState": "3 REVIEW_PENDING"
+    },
+    {
+      "postId": "ABI-LW01-06",
+      "path": "public/audience/abi-launch-wave-01/abi-lw01-06.mp4",
+      "audio": null,
+      "placementState": "3 REVIEW_PENDING"
+    },
+    {
+      "postId": "ABI-LW01-08",
+      "path": "public/audience/abi-launch-wave-01/abi-lw01-08.mp4",
+      "audio": null,
+      "placementState": "3 REVIEW_PENDING"
+    }
+  ],
+  "safetyTransition": {
+    "approvalTokensRevoked": false,
+    "futureVideoPlacementsMovedToReviewPending": 9,
+    "unsafeApprovedWaitingPlacements": 0,
+    "publishedPlacementsPreserved": 7,
+    "approvedWaitingNonVideoPlacements": 6,
+    "automationPreflightRequired": true,
+    "silentFuturePublicationForbidden": true
+  },
+  "controller": {
+    "decision": "KEEP_EXECUTING",
+    "distributionStatus": "ACTION_DUE",
+    "primaryAction": "Repair and mechanically validate REVIEW_PENDING canonical media before publication"
+  },
+  "validation": {
+    "nativeManifestAndLedger": "PASS, 7 PUBLISHED / 6 APPROVED_WAITING_SCHEDULE / 9 REVIEW_PENDING",
+    "mediaPreflight": "HOLD_REVIEW_PENDING, exit 2 by design",
+    "unsafeEligiblePlacementIds": [],
+    "goalController": "PASS"
+  },
+  "requiredExternalState": "Mount the owner's source-media volume or provide the exact owned audio masters for A Town Called Almost Home, Deus sive Natura and BALIAN. The automation can then produce audio-fixed candidates, verify them and restore the existing approved placements to schedule without new copy approval.",
+  "claimBoundary": "This is a truthful media-quality hold, not publication, reach, demand, pipeline or revenue evidence."
+}

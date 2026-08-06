@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "waveId": "DMW-20260805-7D",
+  "reviewedAt": "2026-08-03T14:38:00.000Z",
+  "reviewType": "HUMAN_VISIBLE_CONTACT_SHEET_REVIEW",
+  "candidate": "ops/audience-engine/DMW-20260805-youtube-longform-approval-candidate.json",
+  "contactSheet": {
+    "path": "ops/audience-engine/DMW-20260805-youtube-longform-contact-sheet.jpg",
+    "sha256": "6a32d7212a10910bb26e70f77b12f86ad0a65f263774aad10b90816ea42a8f70",
+    "bytes": 64084,
+    "width": 1920,
+    "height": 540,
+    "sampleTimeSeconds": 7.5,
+    "layoutOrder": [
+      "ENA",
+      "Mama Afrika",
+      "ウィーアーザアース",
+      "強制アップデート",
+      "れいんぼーくっしゅ",
+      "FORCED UPDATE!",
+      "사인 주세요"
+    ]
+  },
+  "observations": {
+    "reviewedOutputs": 7,
+    "blackFrames": 0,
+    "missingCenterArtwork": 0,
+    "brokenCrops": 0,
+    "blurredBackgroundFailures": 0,
+    "centerVerticalVideoPreservedAtFullHeight": 7,
+    "result": "PASS"
+  },
+  "approvalBoundary": "Visual review supports the hash-bound candidate but does not approve replacement media or authorize external publication."
+}

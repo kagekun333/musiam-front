@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-30T17:11:30+09:00",
+  "status": "PASS",
+  "scope": ["ABI-LW01-04", "ABI-LW01-06", "ABI-LW01-08"],
+  "method": {
+    "video": "Original H.264 video packet stream copied without re-encoding",
+    "audio": "Owner WAV excerpt from 00:00, normalized to -16 LUFS target, 0.35 second fade-in, 0.8 second fade-out, AAC LC 192 kbps, 48 kHz stereo",
+    "durationSeconds": 15,
+    "dimensions": "1080x1920"
+  },
+  "repairs": [
+    {
+      "postId": "ABI-LW01-04",
+      "work": "A Town Called Almost Home",
+      "sourceAudio": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/A Town Called Almost Home/audio/01 A Town Called Almost Home.wav",
+      "sourceAudioSha256": "44ce843052f47ef3333d43c9b38220bb7ff76c1a5d812cf100a33b2ce6a830db",
+      "originalVideoSha256": "54e4f366a432f3acfaa3585c0da69df1636a1a8adebae61e6acd2b2a4e3f7b91",
+      "originalAndRepairedVideoStreamSha256": "0a132fe51b0d8e9e43b036581e5702ac9399791bd3155434c0bf0b7c46362f5e",
+      "repairedCanonicalSha256": "b799c00e7ed9e109e02c3f9e90d5afac7cc30199d720034926298fc9512b7319"
+    },
+    {
+      "postId": "ABI-LW01-06",
+      "work": "Deus sive Natura",
+      "sourceAudio": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/Deus sive Natura/audio/01 Deus sive Natura.wav",
+      "sourceAudioSha256": "dda69c4c4fd45446e2a3029d819175a1967aec500e071c6ba42af9e9c9b578f9",
+      "originalVideoSha256": "c40a06039ab740d94c6272f09e88937e9cb802a7a38a0a98b390f5076197b07b",
+      "originalAndRepairedVideoStreamSha256": "26e2bf399b6cac1f8335ff70f9019f06de18e0bcfc2a47534dc8b3de520c7638",
+      "repairedCanonicalSha256": "1218b646eee1e53a5b27c3eceb59323cdb0774b2f908d274771bba918e799ff7"
+    },
+    {
+      "postId": "ABI-LW01-08",
+      "work": "BALIAN",
+      "track": "01 ATAPA",
+      "selectionReason": "The launch asset represents the BALIAN album rather than a named track; the album-opening owner master is the deterministic default.",
+      "sourceAudio": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/BALIAN/audio/01 ATAPA.wav",
+      "sourceAudioSha256": "5744b460808ec1196fdcddafcb236623872a65d14c857c7cc0e91c35eb1c2357",
+      "originalVideoSha256": "b3805170b7c06a5bf5a964d646c0c116268bf4c7d7f7849d1a7995b40f3b6728",
+      "originalAndRepairedVideoStreamSha256": "d02e8a5c5aaedd418b1964556d5b595a314f466cb0d2a298fba3e251a57171fb",
+      "repairedCanonicalSha256": "2fe3916c6512a0dc4650b250887f468bc420da793c7c107994f540c08e99839b"
+    }
+  ],
+  "publicationState": {
+    "restoredPlacements": 9,
+    "ledgerStatus": "APPROVED_WAITING_SCHEDULE",
+    "nextRecoverySlot": "2026-07-31T12:15:00+09:00",
+    "batchDumpPrevented": true
+  },
+  "claimBoundary": "This evidence proves local media repair and preflight only. It does not prove publication, reach, demand or revenue. ABI-LW01-02 remains a historical published silent asset and is not republished automatically."
+}

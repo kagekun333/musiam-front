@@ -1,0 +1,47 @@
+{
+  "asOf": "2026-07-31",
+  "scope": "production chat adversarial simulation",
+  "productionOrigin": "https://www.hakusyaku.xyz",
+  "result": "PASS",
+  "score": 100,
+  "rounds": [
+    { "round": 1, "score": 18, "result": "FAIL" },
+    { "round": 2, "score": 24, "result": "FAIL" },
+    { "round": 3, "score": 46, "result": "FAIL" },
+    { "round": 4, "score": 63, "result": "PARTIAL" },
+    { "round": 5, "score": 67, "result": "PARTIAL" },
+    {
+      "round": 6,
+      "score": 98,
+      "result": "PASS",
+      "verified": [
+        "WhiteWall direct-order comparison answered without claiming superior print performance",
+        "unverified physical proof, signature and certificate disclosed",
+        "previously supplied budget was not asked again",
+        "work-specific public Dossier CTA returned",
+        "CTA href was /metal-print/deus-sive-natura-wall-art",
+        "purchase and private-consultation refusal produced cta=null and productId=null"
+      ]
+    },
+    {
+      "round": 7,
+      "score": 100,
+      "result": "PASS",
+      "verified": [
+        "evidence-dependent pause preserved the customer's right to reconsider",
+        "no outbound sales follow-up promised",
+        "customer-led restart only",
+        "cta was null",
+        "productId was null",
+        "intent returned to conversation"
+      ]
+    }
+  ],
+  "safety": {
+    "personalInformationSubmitted": false,
+    "consultationSaved": false,
+    "checkoutOpened": false,
+    "paymentAttempted": false
+  },
+  "evidenceBoundary": "This proves deterministic conversation and public-Dossier behavior in a simulated production session. It does not prove real customer demand, revenue, physical print quality, signature, authenticity certificate, or fulfillment readiness."
+}

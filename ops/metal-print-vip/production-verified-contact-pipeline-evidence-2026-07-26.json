@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T10:04:02+09:00",
+  "status": "DEPLOYED_READY",
+  "deployment": {
+    "id": "dpl_3C1htUWoM3WPCaqPPD5KKyE4TLwK",
+    "target": "production",
+    "readyState": "READY",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "pipelineContract": {
+    "unverifiedFormSubmissionCounted": false,
+    "verifiedActiveConsultationRequired": true,
+    "identityDeduplication": "latest consultation per HMAC email identity",
+    "expiry": "30 or 90 days from the selected purchase timing",
+    "verificationTrafficExcluded": true,
+    "maturedCloseRateCohortRequiresVerifiedContact": true,
+    "checkoutBeforeVerification": false
+  },
+  "verificationFlow": [
+    "consented consultation is stored but excluded from every qualified, Dossier, purchase-intent and pipeline aggregate",
+    "a signed expiring ownership link is sent to that email address",
+    "valid link atomically records contactVerifiedAt and admits a qualified record to the maturity cohort",
+    "qualified users recover a short-lived consultation capability through a URL fragment, which is removed immediately in the browser",
+    "tampered or expired links never mutate consultation state"
+  ],
+  "validation": {
+    "consultationContract": "PASS",
+    "productionAdapter": "PASS",
+    "typecheck": "PASS",
+    "localProductionBuild": "PASS",
+    "vercelProductionBuild": "PASS",
+    "invalidTokenHttpStatus": 303,
+    "invalidTokenRedirect": "https://www.hakusyaku.xyz/vip-metal-print?consultation=verification-invalid",
+    "vipMetalPrintHttpStatus": 200
+  },
+  "currentEvidence": {
+    "verifiedQualified": 0,
+    "verifiedDossierAccepted": 0,
+    "verifiedPurchaseIntent": 0,
+    "qualifiedPipelineValueYen": 0
+  },
+  "claimBoundary": "This proves the deployed pipeline contract and invalid-token rejection. It does not prove delivery of a real verification email, a verified prospect, purchase intent, payment or revenue. The first real consented submission and link confirmation remain required evidence."
+}

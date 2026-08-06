@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-03T21:43:07+09:00",
+  "automationId": "musiam-300",
+  "name": "伯爵MUSIAM 全作品メタルプリント完売 自律実行",
+  "status": "ACTIVE",
+  "cadence": "Daily at 12:15 Asia/Tokyo",
+  "notificationPolicy": "failed_runs_only",
+  "executionEnvironment": "local project",
+  "automationTomlSha256": "ccb919979374f0fea9bb5ca388d174258c12cc7881aea6048af8ca34f30e5c42",
+  "maturityAutomationTomlSha256": "3f71ac0113a4c121716b655ad6cb28b0ac7d62054d9da32aa180c7577a377115",
+  "retiredNightAutomation": {
+    "automationId": "abi-launch-wave",
+    "status": "PAUSED",
+    "reason": "Its only scoped target ABI-LW01-06 was already published; leaving it active would create a daily no-op token cost.",
+    "automationTomlSha256": "4e8ef42d03351ae8810548cf9a5aacb7abe95cc20ce7faf66227fcbb651927d9"
+  },
+  "requiredLanes": [
+    "distribution",
+    "measurement",
+    "chat_conversion",
+    "sellable_capacity",
+    "qualified_pipeline",
+    "dossier_and_intent",
+    "proof_and_fulfillment",
+    "observed_economics",
+    "revenue"
+  ],
+  "restartSafeResponsibilities": [
+    "State Lock the dirty worktree before action",
+    "Run the goal controller and assurance audit on every execution",
+    "Publish only due, explicitly approved Launch Wave placements without duplication or early release",
+    "After Launch Wave completion, read the Daily Music Wave readiness snapshot and publish only placements whose media, ingress, date and exact Human approval all pass together",
+    "When owned audio becomes accessible, assemble and validate 1080x1920 H.264/AAC work-specific video without extracting distributed streams",
+    "Measure only matured 24h and 72h placements",
+    "Refresh production funnel, pipeline and revenue snapshots without counting verification traffic",
+    "Refuse campaign concentration before 100 Dossier sessions and 3 qualified consultations per placement",
+    "Count only Human-approved Offers as sellable capacity",
+    "Prepare expansion TIFF candidates when the PortableSSD source mount becomes available without activating Offers",
+    "Rebuild capacity readiness after every mount check and emit exact Offer approval candidates only after all three TIFFs verify",
+    "Separate launch economics stress tests from observed actual economics",
+    "Validate privacy-safe order evidence bundles on every run and require a separate exact Human token before atomic registration",
+    "Prepare a privacy-safe actual-order candidate from real evidence files using domain-separated HMAC only when the dedicated secret exists",
+    "Complete the primary action plus one safe downstream action"
+  ],
+  "humanGates": [
+    "Unapproved external posts or copy",
+    "Direct messages",
+    "Paid advertising",
+    "Physical proof purchase",
+    "Vendor payment",
+    "Refund",
+    "Identity verification",
+    "New terms agreement",
+    "Offer approval"
+  ],
+  "evidenceBoundary": "An active automation prevents routine execution from depending on a live chat session and the stale completed night job is paused. This does not itself prove publication, demand, physical quality, pipeline or revenue."
+}

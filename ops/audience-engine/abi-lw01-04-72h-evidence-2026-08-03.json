@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-08-03T22:10:00+09:00",
+  "cohort": "ABI-LW01-04",
+  "maturity": "72h",
+  "placements": [
+    {
+      "placementId": "ABI-LW01-04:instagram",
+      "source": "logged-in owner post plus signed-out public post",
+      "ledgerMetrics": { "views72h": null, "completionRate72h": null, "saves72h": null, "shares72h": null, "profileVisits72h": null },
+      "outsideLedgerSchema": { "likes": 6, "commentsObserved": 0 },
+      "unavailablePreservedBlank": true
+    },
+    {
+      "placementId": "ABI-LW01-04:tiktok",
+      "source": "logged-in TikTok Studio video analytics",
+      "ledgerMetrics": { "views72h": 117, "completionRate72h": 0, "saves72h": null, "shares72h": null, "profileVisits72h": null },
+      "outsideLedgerSchema": { "averageWatchSeconds": 1.1, "totalPlayTime": "0h:02m:19s" },
+      "unavailablePreservedBlank": true
+    },
+    {
+      "placementId": "ABI-LW01-04:youtube",
+      "source": "logged-in YouTube Studio video TzbHCtd10Xw analytics",
+      "ledgerMetrics": { "views72h": 2, "completionRate72h": null, "saves72h": null, "shares72h": null, "profileVisits72h": null },
+      "outsideLedgerSchema": { "engagedViews": 2, "averageViewDuration": "0:18", "viewedVsSwipedPercent": 12.7 },
+      "invalidatedPriorEvidence": {
+        "field": "views24h",
+        "historicalValue": 96,
+        "action": "cleared_to_blank",
+        "reason": "The same-video since-publish total observed at 72h was 2, so retaining 96 as a 24h cumulative value would be non-monotonic and unsafe."
+      },
+      "unavailablePreservedBlank": true
+    }
+  ],
+  "queueAfterWrite": { "published": 20, "due24h": 0, "due72h": 0, "resolved24h": 17, "resolved72h": 10, "nextMaturityAt": "2026-08-04T03:38:53.000Z" },
+  "claimBoundary": "These are matured audience observations only. They do not prove demand, qualified pipeline, purchase intent, payment, fulfillment or revenue."
+}

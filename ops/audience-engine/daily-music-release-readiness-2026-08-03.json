@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "waveId": "DMW-20260805-7D",
+  "releases": 7,
+  "placements": 28,
+  "uniqueWorks": 7,
+  "readiness": {
+    "mediaReady": 28,
+    "ingressReady": 14,
+    "approvalReady": 28,
+    "publicationEligible": 14,
+    "mediaBlockedPlacementIds": [],
+    "platformStepPlacementIds": [
+      "DMR-20260805-4531782f-instagram",
+      "DMR-20260805-4531782f-tiktok",
+      "DMR-20260806-fbd1b2f2-instagram",
+      "DMR-20260806-fbd1b2f2-tiktok",
+      "DMR-20260807-fa76c46a-instagram",
+      "DMR-20260807-fa76c46a-tiktok",
+      "DMR-20260808-3a28b6af-instagram",
+      "DMR-20260808-3a28b6af-tiktok",
+      "DMR-20260809-2d28da0a-instagram",
+      "DMR-20260809-2d28da0a-tiktok",
+      "DMR-20260810-701bf415-instagram",
+      "DMR-20260810-701bf415-tiktok",
+      "DMR-20260811-223361f3-instagram",
+      "DMR-20260811-223361f3-tiktok"
+    ],
+    "approvalBlockedPlacementIds": []
+  },
+  "externalPublicationPerformed": false,
+  "evidenceBoundary": "Routing validation PASS does not mean publication eligibility. Eligibility requires media, ingress capability and Human approval for the same placement."
+}

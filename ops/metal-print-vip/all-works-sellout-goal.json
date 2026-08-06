@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "goalId": "all-works-metal-print-sellout",
+  "status": "ACTIVE",
+  "catalogSource": "public/works/works.json",
+  "scope": "ALL_CANONICAL_WORKS_DYNAMIC",
+  "offer": {
+    "currency": "JPY",
+    "unitPriceYen": 330000,
+    "editionSizePerWork": 3
+  },
+  "minimumMonthlyQuota": {
+    "netNonRefundedRevenueYen": 3000000,
+    "minimumFullPriceUnits": 10,
+    "rule": "This is a recurring minimum quota, not the terminal goal."
+  },
+  "terminalGoal": {
+    "rule": "Every work in the canonical catalog must become truthfully sellable and all three numbered units per work must be sold, paid, fulfilled and non-refunded.",
+    "dynamicCatalog": true
+  },
+  "acquisition": {
+    "primaryInput": "daily music releases",
+    "conversationPath": [
+      "music discovery",
+      "work-specific emotional resonance",
+      "permission-based free work experience",
+      "work and living-space fit",
+      "work-specific metal-print Dossier",
+      "explicit purchase intent",
+      "paid order",
+      "fulfilled edition"
+    ]
+  },
+  "evidenceRules": [
+    "Never count a work as sellable without its rights, printable master, mechanical preflight and exact Human-approved Offer.",
+    "Never count verification traffic, followers, views or simulations as demand, pipeline or revenue.",
+    "Never invent scarcity, social proof, ownership, signature, certificate, physical proof or another buyer.",
+    "Count terminal progress only from durable paid, fulfilled and non-refunded edition serials."
+  ]
+}

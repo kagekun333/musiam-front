@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-08-02T03:32:40.773Z",
+  "evidenceClass": "EVIDENCE_UNAVAILABLE",
+  "reason": "fetch failed",
+  "qualified": null,
+  "nurture": null,
+  "pipelineValueJpy": null,
+  "maturedQualified": null,
+  "maturedQualifiedPaid": null,
+  "privacy": "No email address, free text, or individual consultation record is included in this snapshot.",
+  "preservation": "The last durable pipeline snapshot was not overwritten."
+}

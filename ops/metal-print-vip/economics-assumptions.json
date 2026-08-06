@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "currency": "JPY",
+  "evidenceAsOf": "2026-07-18",
+  "pricesYen": [330000, 300000, 165000],
+  "publicEvidence": {
+    "panel8x8Yen": 7700,
+    "panel10x10Yen": 11000,
+    "domesticCardFeeRate": 0.036
+  },
+  "sensitivity": {
+    "unitProductionAndFulfillmentYen": [25000, 50000, 80000],
+    "customerAcquisitionCostYen": [30000, 60000, 100000],
+    "replacementReserveRate": [0.03, 0.05, 0.1]
+  },
+  "warning": "Public panel price and Stripe standard domestic-card fee are evidence. Fulfillment, CAC, and replacement values are sensitivity assumptions, not quotes or measured costs."
+}

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+  "createdAt": "2026-08-03T12:27:17.947Z",
+  "releaseDate": "2026-08-05",
+  "work": {
+    "id": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+    "title": "ENA",
+    "type": "music",
+    "cover": "/works/covers/spotify_5bIfjfVK9QwHfu1NzNc94M.jpg",
+    "listenUrl": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
+    "verifiedTags": [
+      "genre:Dance"
+    ]
+  },
+  "campaign": "daily_music_to_metal",
+  "purpose": "daily music discovery to permission-based work-specific Chat; not a direct sales post",
+  "placements": [
+    {
+      "placementId": "DMR-20260805-4531782f-instagram",
+      "platform": "instagram",
+      "scheduledDate": "2026-08-05",
+      "copy": "今日の一曲「ENA」。\n音の入口はDance。\n\n聴き終わった瞬間、どんな色が残りましたか？\nその一語を伯爵Chatへ。正解も購入も必要ありません。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-instagram",
+      "alt": "ENA — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-instagram",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_5bIfjfVK9QwHfu1NzNc94M.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "story_link_sticker_or_copyable_caption_url",
+        "status": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:instagram",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "approvedMediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b"
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-threads",
+      "platform": "threads",
+      "scheduledDate": "2026-08-05",
+      "copy": "「ENA」を15秒。\n音の入口はDance。\n\n説明より先に、いま残った一語だけ教えてください。\n伯爵Chatで、その言葉から作品を一緒に読みます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-threads",
+      "alt": "ENA — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-threads",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_5bIfjfVK9QwHfu1NzNc94M.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "clickable_post_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:threads",
+      "publicationState": "PUBLISHED",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "approvedMediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+      "publishedAt": "2026-08-05T13:50:08.000Z",
+      "publicUrl": "https://www.threads.net/@abi_hakusyaku/post/DbqSRl0AWJi",
+      "publicationEvidence": {
+        "placementId": "DMR-20260805-4531782f-threads",
+        "platform": "threads",
+        "publicUrl": "https://www.threads.net/@abi_hakusyaku/post/DbqSRl0AWJi",
+        "publishedAt": "2026-08-05T13:50:08.000Z",
+        "reviewState": "PUBLIC_VISIBLE",
+        "aiDisclosureState": "UNAVAILABLE",
+        "mediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+        "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-threads"
+      }
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-tiktok",
+      "platform": "tiktok",
+      "scheduledDate": "2026-08-05",
+      "copy": "この15秒、あなたには何色に聴こえる？\n「ENA」｜Dance\n\n浮かんだ一語を伯爵Chatへ。意味はあなたの感覚から始めます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-tiktok",
+      "alt": "ENA — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-tiktok",
+      "media": {
+        "kind": "vertical_video",
+        "path": "ops/audience-engine/daily-music-release-media/DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M.mp4",
+        "status": "READY",
+        "evidence": {
+          "audioSha256": "d79cd617b551dae466e78c9bf406d33f15aeb5e6ee2be2c6d96c5917f84f43e2",
+          "audioBytes": 59774942,
+          "coverSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+          "videoSha256": "611399a2b6e9fe1745894f8508ec19c124b066964e6a14fa3990939474052e99",
+          "videoBytes": 4475220,
+          "durationSeconds": 15,
+          "width": 1080,
+          "height": 1920,
+          "hasAudio": true,
+          "motionTreatment": "cinematic_zoom_1.00_to_1.05",
+          "audioReactiveTreatment": "gold_waveform"
+        }
+      },
+      "ingress": {
+        "mechanism": "supported_link_attachment_or_copyable_caption_url",
+        "status": "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:tiktok",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "approvedMediaSha256": "611399a2b6e9fe1745894f8508ec19c124b066964e6a14fa3990939474052e99"
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-youtube",
+      "platform": "youtube",
+      "scheduledDate": "2026-08-05",
+      "copy": "イヤホン推奨。15秒後に残るものは？\n今日の一曲「ENA」。音の入口はDance。\n\n感情でも、景色でも、一語で大丈夫。伯爵Chatで続きを聞かせてください。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube",
+      "alt": "ENA — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/5bIfjfVK9QwHfu1NzNc94M",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube",
+      "media": {
+        "kind": "long_form_video",
+        "path": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M-youtube-longform-1920x1080.mp4",
+        "status": "READY",
+        "evidence": {
+          "sourceSha256": "611399a2b6e9fe1745894f8508ec19c124b066964e6a14fa3990939474052e99",
+          "videoSha256": "959389ae8d40cfadcb3850671a44eed10aa440482f6c3b6ec17b13601971d79b",
+          "width": 1920,
+          "height": 1080,
+          "durationSeconds": 15.018,
+          "hasAudio": true
+        }
+      },
+      "ingress": {
+        "mechanism": "clickable_long_form_description_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:youtube",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "approvedMediaSha256": "959389ae8d40cfadcb3850671a44eed10aa440482f6c3b6ec17b13601971d79b",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "youtubeLongFormApproval": {
+        "token": "APPROVE_DAILY_MUSIC_YOUTUBE_LONGFORM:DMW-20260805-7D:0e607813c6b9d906",
+        "aggregateSha256": "0e607813c6b9d906d9c7401894abdbd1d1cfe77816567966458e8d91a2c84e6a",
+        "approvedAt": "2026-08-03T14:51:05.073Z"
+      }
+    }
+  ],
+  "gates": {
+    "externalPublication": "APPROVED",
+    "videoAssembly": "PASS",
+    "exactWorkAttribution": "PASS"
+  },
+  "evidenceBoundary": "This candidate proves catalog identity, tracked routing and mechanically verified media only. It does not prove publication, reach, demand, pipeline or revenue.",
+  "externalPublicationPerformed": true,
+  "waveApproval": {
+    "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
+    "scope": [
+      "DMR-20260805-4531782f-instagram",
+      "DMR-20260805-4531782f-threads",
+      "DMR-20260805-4531782f-tiktok",
+      "DMR-20260805-4531782f-youtube",
+      "DMR-20260806-fbd1b2f2-instagram",
+      "DMR-20260806-fbd1b2f2-threads",
+      "DMR-20260806-fbd1b2f2-tiktok",
+      "DMR-20260806-fbd1b2f2-youtube",
+      "DMR-20260807-fa76c46a-instagram",
+      "DMR-20260807-fa76c46a-threads",
+      "DMR-20260807-fa76c46a-tiktok",
+      "DMR-20260807-fa76c46a-youtube",
+      "DMR-20260808-3a28b6af-instagram",
+      "DMR-20260808-3a28b6af-threads",
+      "DMR-20260808-3a28b6af-tiktok",
+      "DMR-20260808-3a28b6af-youtube",
+      "DMR-20260809-2d28da0a-instagram",
+      "DMR-20260809-2d28da0a-threads",
+      "DMR-20260809-2d28da0a-tiktok",
+      "DMR-20260809-2d28da0a-youtube",
+      "DMR-20260810-701bf415-instagram",
+      "DMR-20260810-701bf415-threads",
+      "DMR-20260810-701bf415-tiktok",
+      "DMR-20260810-701bf415-youtube",
+      "DMR-20260811-223361f3-instagram",
+      "DMR-20260811-223361f3-threads",
+      "DMR-20260811-223361f3-tiktok",
+      "DMR-20260811-223361f3-youtube"
+    ],
+    "appliedAt": "2026-08-03T13:53:23.065Z"
+  }
+}

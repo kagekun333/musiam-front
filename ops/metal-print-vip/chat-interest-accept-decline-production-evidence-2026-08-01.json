@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-01T04:24:30+09:00",
+  "deployment": {
+    "id": "dpl_57jKEcbThKo2wVF2QWwRm1fr95GC",
+    "target": "production",
+    "readyState": "READY",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "scenario": {
+    "context": ["なんか疲れた。", "仕事のことばかり考えてしまう。"],
+    "invitation": "無料で見られる一作を、合わなければ雑談へ戻れる条件で提示"
+  },
+  "accept": {
+    "userText": "見てみたいです",
+    "intent": "work",
+    "provider": "none",
+    "cardId": "zenimal-planet-174",
+    "cardTitle": "Zenimal Planet",
+    "publicListenLinks": 3,
+    "cta": null,
+    "result": "PASS"
+  },
+  "decline": {
+    "userText": "作品はいらないです",
+    "intent": "conversation",
+    "provider": "none",
+    "card": null,
+    "cta": null,
+    "interestBridgeAction": "decline",
+    "result": "PASS"
+  },
+  "truthBoundary": "This proves deterministic production behavior for one acceptance and one refusal scenario. It does not prove visitor demand, conversion rate, qualified pipeline, payment, revenue, physical print quality or fulfilment."
+}

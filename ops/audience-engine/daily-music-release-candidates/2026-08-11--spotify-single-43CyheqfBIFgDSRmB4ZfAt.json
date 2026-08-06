@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+  "createdAt": "2026-08-03T12:27:18.156Z",
+  "releaseDate": "2026-08-11",
+  "work": {
+    "id": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+    "title": "사인 주세요",
+    "type": "music",
+    "cover": "/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
+    "listenUrl": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
+    "verifiedTags": [
+      "genre:K-Pop"
+    ]
+  },
+  "campaign": "daily_music_to_metal",
+  "purpose": "daily music discovery to permission-based work-specific Chat; not a direct sales post",
+  "placements": [
+    {
+      "placementId": "DMR-20260811-223361f3-instagram",
+      "platform": "instagram",
+      "scheduledDate": "2026-08-11",
+      "copy": "今日の一曲「사인 주세요」。\n音の入口はK-Pop。\n\n聴き終わった瞬間、どんな色が残りましたか？\nその一語を伯爵Chatへ。正解も購入も必要ありません。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-instagram",
+      "alt": "사인 주세요 — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-instagram",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "story_link_sticker_or_copyable_caption_url",
+        "status": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:instagram",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "approvedMediaSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-threads",
+      "platform": "threads",
+      "scheduledDate": "2026-08-11",
+      "copy": "「사인 주세요」を15秒。\n音の入口はK-Pop。\n\n説明より先に、いま残った一語だけ教えてください。\n伯爵Chatで、その言葉から作品を一緒に読みます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-threads",
+      "alt": "사인 주세요 — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-threads",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "clickable_post_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:threads",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "approvedMediaSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-tiktok",
+      "platform": "tiktok",
+      "scheduledDate": "2026-08-11",
+      "copy": "この15秒、あなたには何色に聴こえる？\n「사인 주세요」｜K-Pop\n\n浮かんだ一語を伯爵Chatへ。意味はあなたの感覚から始めます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-tiktok",
+      "alt": "사인 주세요 — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-tiktok",
+      "media": {
+        "kind": "vertical_video",
+        "path": "ops/audience-engine/daily-music-release-media/DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt.mp4",
+        "status": "READY",
+        "evidence": {
+          "audioSha256": "aa3dfde336c3c40ba142dde241f8d53945b7a90a96e26938ccda2b19fcc4f959",
+          "audioBytes": 34655330,
+          "coverSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438",
+          "videoSha256": "7fb9b128ef1de6e7372d9eb79e2f824fc6aa9de6ede93600839c5f431b9dc349",
+          "videoBytes": 4078949,
+          "durationSeconds": 15,
+          "width": 1080,
+          "height": 1920,
+          "hasAudio": true,
+          "motionTreatment": "cinematic_zoom_1.00_to_1.05",
+          "audioReactiveTreatment": "gold_waveform"
+        }
+      },
+      "ingress": {
+        "mechanism": "supported_link_attachment_or_copyable_caption_url",
+        "status": "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:tiktok",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "approvedMediaSha256": "7fb9b128ef1de6e7372d9eb79e2f824fc6aa9de6ede93600839c5f431b9dc349"
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-youtube",
+      "platform": "youtube",
+      "scheduledDate": "2026-08-11",
+      "copy": "イヤホン推奨。15秒後に残るものは？\n今日の一曲「사인 주세요」。音の入口はK-Pop。\n\n感情でも、景色でも、一語で大丈夫。伯爵Chatで続きを聞かせてください。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-youtube",
+      "alt": "사인 주세요 — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/43CyheqfBIFgDSRmB4ZfAt",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-youtube",
+      "media": {
+        "kind": "long_form_video",
+        "path": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt-youtube-longform-1920x1080.mp4",
+        "status": "READY",
+        "evidence": {
+          "sourceSha256": "7fb9b128ef1de6e7372d9eb79e2f824fc6aa9de6ede93600839c5f431b9dc349",
+          "videoSha256": "600d77364c638c8d66e80c78ef227ab24f437d6d2afc523d521cdd1e3bf84123",
+          "width": 1920,
+          "height": 1080,
+          "durationSeconds": 15.018,
+          "hasAudio": true
+        }
+      },
+      "ingress": {
+        "mechanism": "clickable_long_form_description_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:youtube",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "approvedMediaSha256": "600d77364c638c8d66e80c78ef227ab24f437d6d2afc523d521cdd1e3bf84123",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "youtubeLongFormApproval": {
+        "token": "APPROVE_DAILY_MUSIC_YOUTUBE_LONGFORM:DMW-20260805-7D:0e607813c6b9d906",
+        "aggregateSha256": "0e607813c6b9d906d9c7401894abdbd1d1cfe77816567966458e8d91a2c84e6a",
+        "approvedAt": "2026-08-03T14:51:05.093Z"
+      }
+    }
+  ],
+  "gates": {
+    "externalPublication": "APPROVED",
+    "videoAssembly": "PASS",
+    "exactWorkAttribution": "PASS"
+  },
+  "evidenceBoundary": "This candidate proves catalog identity, tracked routing and mechanically verified media only. It does not prove publication, reach, demand, pipeline or revenue.",
+  "externalPublicationPerformed": false,
+  "waveApproval": {
+    "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
+    "scope": [
+      "DMR-20260805-4531782f-instagram",
+      "DMR-20260805-4531782f-threads",
+      "DMR-20260805-4531782f-tiktok",
+      "DMR-20260805-4531782f-youtube",
+      "DMR-20260806-fbd1b2f2-instagram",
+      "DMR-20260806-fbd1b2f2-threads",
+      "DMR-20260806-fbd1b2f2-tiktok",
+      "DMR-20260806-fbd1b2f2-youtube",
+      "DMR-20260807-fa76c46a-instagram",
+      "DMR-20260807-fa76c46a-threads",
+      "DMR-20260807-fa76c46a-tiktok",
+      "DMR-20260807-fa76c46a-youtube",
+      "DMR-20260808-3a28b6af-instagram",
+      "DMR-20260808-3a28b6af-threads",
+      "DMR-20260808-3a28b6af-tiktok",
+      "DMR-20260808-3a28b6af-youtube",
+      "DMR-20260809-2d28da0a-instagram",
+      "DMR-20260809-2d28da0a-threads",
+      "DMR-20260809-2d28da0a-tiktok",
+      "DMR-20260809-2d28da0a-youtube",
+      "DMR-20260810-701bf415-instagram",
+      "DMR-20260810-701bf415-threads",
+      "DMR-20260810-701bf415-tiktok",
+      "DMR-20260810-701bf415-youtube",
+      "DMR-20260811-223361f3-instagram",
+      "DMR-20260811-223361f3-threads",
+      "DMR-20260811-223361f3-tiktok",
+      "DMR-20260811-223361f3-youtube"
+    ],
+    "appliedAt": "2026-08-03T13:53:23.065Z"
+  }
+}

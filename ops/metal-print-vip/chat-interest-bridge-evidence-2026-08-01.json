@@ -1,0 +1,51 @@
+{
+  "asOf": "2026-08-01",
+  "feature": "casual conversation to voluntary work interest",
+  "deployment": {
+    "id": "dpl_3gRydUDWG8JUfQ1dEnLQ59nbsrbT",
+    "readyState": "READY",
+    "productionOrigin": "https://www.hakusyaku.xyz"
+  },
+  "verifiedFlow": [
+    "two or more casual turns with an aesthetic or emotional signal",
+    "one low-pressure invitation to view a free work",
+    "no work card before consent",
+    "a real catalog work card after affirmative consent",
+    "no card and no CTA after refusal",
+    "no invitation during the first tired utterance",
+    "no sales bridge for explicit purchase, commission, commercial, metal-print or distress routes"
+  ],
+  "productionChecks": {
+    "bridgeOffer": "PASS",
+    "consentToRealWorkCard": "PASS",
+    "refusalStopsRecommendation": "PASS",
+    "boredomRecommendationReason": "PASS",
+    "firstPartyEventOriginGate": "PASS (403 without an allowed Origin; no event stored)",
+    "productionDailyDiagnosisDryRun": "PASS"
+  },
+  "measurement": {
+    "events": [
+      "salon_interest_bridge_show",
+      "salon_interest_bridge_accept",
+      "salon_interest_bridge_decline",
+      "chat_interest_bridge_show",
+      "chat_interest_bridge_accept",
+      "chat_interest_bridge_decline"
+    ],
+    "ratesPrepared": [
+      "interestBridgeAcceptRate",
+      "interestBridgeDeclineRate"
+    ],
+    "firstPartyStorage": "anonymous session id and bounded theme only; no message text, name, email or address",
+    "automationConsumer": "/api/cron/metal-print-ops daily health snapshot",
+    "diagnosisPolicy": {
+      "totalSampleFloor": 50,
+      "themeSampleFloor": 20,
+      "reviseBelowAcceptRate": 0.1,
+      "provenThemeAcceptRate": 0.25,
+      "currentProductionStatus": "NO_SAMPLE",
+      "currentRealShows": 0
+    }
+  },
+  "evidenceBoundary": "This proves production conversation behavior and measurement readiness. It does not prove organic demand, paid conversion, metal-print purchase intent or revenue."
+}

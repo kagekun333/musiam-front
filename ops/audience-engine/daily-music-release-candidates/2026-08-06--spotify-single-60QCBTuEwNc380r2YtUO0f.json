@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f",
+  "createdAt": "2026-08-03T12:27:17.981Z",
+  "releaseDate": "2026-08-06",
+  "work": {
+    "id": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+    "title": "Mama Afrika",
+    "type": "music",
+    "cover": "/works/covers/spotify_60QCBTuEwNc380r2YtUO0f.jpg",
+    "listenUrl": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
+    "verifiedTags": [
+      "genre:Afro-Beat"
+    ]
+  },
+  "campaign": "daily_music_to_metal",
+  "purpose": "daily music discovery to permission-based work-specific Chat; not a direct sales post",
+  "placements": [
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-instagram",
+      "platform": "instagram",
+      "scheduledDate": "2026-08-06",
+      "copy": "今日の一曲「Mama Afrika」。\n音の入口はAfro-Beat。\n\n聴き終わった瞬間、どんな色が残りましたか？\nその一語を伯爵Chatへ。正解も購入も必要ありません。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-instagram",
+      "alt": "Mama Afrika — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-instagram",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_60QCBTuEwNc380r2YtUO0f.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "story_link_sticker_or_copyable_caption_url",
+        "status": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:instagram",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "approvedMediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-threads",
+      "platform": "threads",
+      "scheduledDate": "2026-08-06",
+      "copy": "「Mama Afrika」を15秒。\n音の入口はAfro-Beat。\n\n説明より先に、いま残った一語だけ教えてください。\n伯爵Chatで、その言葉から作品を一緒に読みます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-threads",
+      "alt": "Mama Afrika — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-threads",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_60QCBTuEwNc380r2YtUO0f.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "clickable_post_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:threads",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "approvedMediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-tiktok",
+      "platform": "tiktok",
+      "scheduledDate": "2026-08-06",
+      "copy": "この15秒、あなたには何色に聴こえる？\n「Mama Afrika」｜Afro-Beat\n\n浮かんだ一語を伯爵Chatへ。意味はあなたの感覚から始めます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-tiktok",
+      "alt": "Mama Afrika — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-tiktok",
+      "media": {
+        "kind": "vertical_video",
+        "path": "ops/audience-engine/daily-music-release-media/DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f.mp4",
+        "status": "READY",
+        "evidence": {
+          "audioSha256": "c10f4ccec7f5b2e3ec249e7837e45bfbc4052afc09fb34269cc4bea1dc52ca2d",
+          "audioBytes": 55523692,
+          "coverSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+          "videoSha256": "d45c167fffb09a9cafa579644e4444228151b0cb370609565965a5beb2f13471",
+          "videoBytes": 4119780,
+          "durationSeconds": 15,
+          "width": 1080,
+          "height": 1920,
+          "hasAudio": true,
+          "motionTreatment": "cinematic_zoom_1.00_to_1.05",
+          "audioReactiveTreatment": "gold_waveform"
+        }
+      },
+      "ingress": {
+        "mechanism": "supported_link_attachment_or_copyable_caption_url",
+        "status": "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:tiktok",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "approvedMediaSha256": "d45c167fffb09a9cafa579644e4444228151b0cb370609565965a5beb2f13471"
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-youtube",
+      "platform": "youtube",
+      "scheduledDate": "2026-08-06",
+      "copy": "イヤホン推奨。15秒後に残るものは？\n今日の一曲「Mama Afrika」。音の入口はAfro-Beat。\n\n感情でも、景色でも、一語で大丈夫。伯爵Chatで続きを聞かせてください。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-youtube",
+      "alt": "Mama Afrika — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/60QCBTuEwNc380r2YtUO0f",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-youtube",
+      "media": {
+        "kind": "long_form_video",
+        "path": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f-youtube-longform-1920x1080.mp4",
+        "status": "READY",
+        "evidence": {
+          "sourceSha256": "d45c167fffb09a9cafa579644e4444228151b0cb370609565965a5beb2f13471",
+          "videoSha256": "ae6aa28dd79dddfe324a764d50a9f71a5f9997356efcefebd8d71c57f9343c97",
+          "width": 1920,
+          "height": 1080,
+          "durationSeconds": 15.018,
+          "hasAudio": true
+        }
+      },
+      "ingress": {
+        "mechanism": "clickable_long_form_description_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:youtube",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "approvedMediaSha256": "ae6aa28dd79dddfe324a764d50a9f71a5f9997356efcefebd8d71c57f9343c97",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "youtubeLongFormApproval": {
+        "token": "APPROVE_DAILY_MUSIC_YOUTUBE_LONGFORM:DMW-20260805-7D:0e607813c6b9d906",
+        "aggregateSha256": "0e607813c6b9d906d9c7401894abdbd1d1cfe77816567966458e8d91a2c84e6a",
+        "approvedAt": "2026-08-03T14:51:05.079Z"
+      }
+    }
+  ],
+  "gates": {
+    "externalPublication": "APPROVED",
+    "videoAssembly": "PASS",
+    "exactWorkAttribution": "PASS"
+  },
+  "evidenceBoundary": "This candidate proves catalog identity, tracked routing and mechanically verified media only. It does not prove publication, reach, demand, pipeline or revenue.",
+  "externalPublicationPerformed": false,
+  "waveApproval": {
+    "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
+    "scope": [
+      "DMR-20260805-4531782f-instagram",
+      "DMR-20260805-4531782f-threads",
+      "DMR-20260805-4531782f-tiktok",
+      "DMR-20260805-4531782f-youtube",
+      "DMR-20260806-fbd1b2f2-instagram",
+      "DMR-20260806-fbd1b2f2-threads",
+      "DMR-20260806-fbd1b2f2-tiktok",
+      "DMR-20260806-fbd1b2f2-youtube",
+      "DMR-20260807-fa76c46a-instagram",
+      "DMR-20260807-fa76c46a-threads",
+      "DMR-20260807-fa76c46a-tiktok",
+      "DMR-20260807-fa76c46a-youtube",
+      "DMR-20260808-3a28b6af-instagram",
+      "DMR-20260808-3a28b6af-threads",
+      "DMR-20260808-3a28b6af-tiktok",
+      "DMR-20260808-3a28b6af-youtube",
+      "DMR-20260809-2d28da0a-instagram",
+      "DMR-20260809-2d28da0a-threads",
+      "DMR-20260809-2d28da0a-tiktok",
+      "DMR-20260809-2d28da0a-youtube",
+      "DMR-20260810-701bf415-instagram",
+      "DMR-20260810-701bf415-threads",
+      "DMR-20260810-701bf415-tiktok",
+      "DMR-20260810-701bf415-youtube",
+      "DMR-20260811-223361f3-instagram",
+      "DMR-20260811-223361f3-threads",
+      "DMR-20260811-223361f3-tiktok",
+      "DMR-20260811-223361f3-youtube"
+    ],
+    "appliedAt": "2026-08-03T13:53:23.065Z"
+  }
+}

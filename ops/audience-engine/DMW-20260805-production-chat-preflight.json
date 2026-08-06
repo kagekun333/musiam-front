@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "waveId": "DMW-20260805-7D",
+  "observedAt": "2026-08-03T14:23:33Z",
+  "evidenceClass": "PRODUCTION_READ_ONLY_PREFLIGHT",
+  "firstWork": {
+    "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+    "workTitle": "ENA",
+    "threads": {
+      "url": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-threads",
+      "httpStatus": 200,
+      "redirected": false
+    },
+    "youtube": {
+      "url": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube",
+      "httpStatus": 200,
+      "redirected": false,
+      "clickableFromShort": false,
+      "status": "URL_HEALTHY_BUT_SHORTS_DESCRIPTION_NON_CLICKABLE"
+    }
+  },
+  "productionChatBundle": {
+    "path": "/_next/static/chunks/pages/chat-39695864477b2b69.js",
+    "sha256": "f844ec0d6f0dccd5b22f59cdf34d93a0fe7a8e6e0000f66de486da927473a19f",
+    "observedContracts": [
+      "music-work",
+      "CATALOG-WORK:",
+      "metal_music_affinity_entry",
+      "utm_content"
+    ]
+  },
+  "performed": {
+    "externalPublication": false,
+    "chatMessage": false,
+    "consultation": false,
+    "payment": false,
+    "profileUpdate": false
+  },
+  "evidenceBoundary": "This proves the URLs returned HTTP 200 and the deployed Chat bundle contains work-specific attribution contracts. It does not prove that every platform renders the URL clickable: official YouTube policy makes Shorts description URLs non-clickable. It does not prove a conversation, demand, purchase intent, sale or revenue."
+}

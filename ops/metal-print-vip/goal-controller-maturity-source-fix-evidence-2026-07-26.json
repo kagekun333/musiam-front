@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T23:51:00+09:00",
+  "change": "Goal Controller now consumes the canonical Launch Wave maturity queue instead of treating every placement older than 24h or 72h as perpetually actionable.",
+  "before": {
+    "measurementStatus": "ACTION_DUE",
+    "problem": "Five already-resolved 24h placements were still counted as work due, so the autonomous primary action could repeat completed collection."
+  },
+  "after": {
+    "measurementStatus": "WAITING_FOR_MATURITY",
+    "due24h": 0,
+    "due72h": 0,
+    "resolved24h": 5,
+    "resolved72h": 0,
+    "nextMaturityAt": "2026-07-27T07:31:00+09:00",
+    "primaryActionLane": "chat_conversion"
+  },
+  "validation": {
+    "goalControllerBuild": "PASS",
+    "goalControllerValidator": "PASS",
+    "staleMeasurementPrimaryActionRejectedWhenDueCountsAreZero": true
+  },
+  "claimBoundary": "This proves restart-safe action selection from the current queue. It does not prove a future automation run, publication, profile-link update, consultation, payment or revenue."
+}

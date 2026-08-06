@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "status": "APPROVED_FOR_PUBLICATION",
+  "offerEditionId": "VIP-METAL-2026-07-NATURA",
+  "assetId": "NATURA-01",
+  "visualPath": "/metal-print-campaign/natura-01.jpg",
+  "nativeVideoPath": "/metal-print-campaign/natura-01-vertical.mp4",
+  "nativeVideoSpec": { "width": 1080, "height": 1920, "durationSeconds": 15, "audio": "Deus sive Natura original master excerpt" },
+  "offerPriceJpy": 330000,
+  "editionSize": 3,
+  "spendAuthorizedYen": 0,
+  "truthBoundary": "受注生産の正式Offer。実物proof未承認のため、実物品質を確認済みとは表現しない。",
+  "sharedCopy": {
+    "hook": "書斎には、答えより大きな問いを置く。",
+    "body": "Deus sive Natura — 神すなわち自然。思考が深くなる書斎の焦点として制作した、3点限定・受注生産のメタルプリントです。60×60cm、税込330,000円。空間との相性は伯爵Chatで一問から見立てます。",
+    "alt": "宇宙と人の顔が溶け合うDeus sive Naturaのメタルプリント作品ビジュアル。黒と金を基調に、書斎には答えより大きな問いを置く、と記載。"
+  },
+  "placements": [
+    {
+      "channel": "instagram",
+      "approvalToken": "APPROVE_EXTERNAL_POST:NATURA-01:instagram",
+      "trackedUrl": "https://www.hakusyaku.xyz/metal-print/deus-sive-natura-wall-art?utm_source=instagram&utm_medium=organic_social&utm_campaign=metal_print_natura_launch&utm_content=NATURA-01"
+    },
+    {
+      "channel": "threads",
+      "approvalToken": "APPROVE_EXTERNAL_POST:NATURA-01:threads",
+      "trackedUrl": "https://www.hakusyaku.xyz/metal-print/deus-sive-natura-wall-art?utm_source=threads&utm_medium=organic_social&utm_campaign=metal_print_natura_launch&utm_content=NATURA-01"
+    },
+    {
+      "channel": "tiktok",
+      "approvalToken": "APPROVE_EXTERNAL_POST:NATURA-01:tiktok",
+      "trackedUrl": "https://www.hakusyaku.xyz/metal-print/deus-sive-natura-wall-art?utm_source=tiktok&utm_medium=organic_social&utm_campaign=metal_print_natura_launch&utm_content=NATURA-01"
+    },
+    {
+      "channel": "youtube",
+      "approvalToken": "APPROVE_EXTERNAL_POST:NATURA-01:youtube",
+      "trackedUrl": "https://www.hakusyaku.xyz/metal-print/deus-sive-natura-wall-art?utm_source=youtube&utm_medium=organic_social&utm_campaign=metal_print_natura_launch&utm_content=NATURA-01"
+    }
+  ],
+  "stopConditions": [
+    "有料広告を開始しない",
+    "未承認の実物品質を保証しない",
+    "Stripe決済前にWhiteWallへ発注しない",
+    "公開URLを確認するまでPUBLISHEDと記録しない"
+  ]
+}

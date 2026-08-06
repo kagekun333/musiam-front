@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-24T21:30:41+09:00",
+  "digitalPreflight": {
+    "evidencePath": "ops/metal-print-vip/artwork-preflight-evidence.json",
+    "editionId": "VIP-METAL-2026-07-NATURA",
+    "sourceSha256": "abbef6d7a56c4d2fac8ae2c3326175f37b7a62d857789a4561f214692e6ea2b2",
+    "dimensionsPx": "3000x3000",
+    "targetCm": "60x60",
+    "effectivePpi": 127,
+    "interpolationMultipleTo300Dpi": 2.362,
+    "darkPixelsAtOrBelowLuminance5Percent": 12.3551,
+    "decision": "DIGITALLY_READY_PHYSICAL_PROOF_REQUIRED"
+  },
+  "requiredScoreDimensions": [
+    "colorFidelity",
+    "deepBlackDetail",
+    "highlightControl",
+    "edgeSharpness",
+    "surfaceConsistency",
+    "finishAndMounting",
+    "packagingProtection",
+    "collectorValue"
+  ],
+  "approvalThreshold": 64,
+  "hardFailCodes": [
+    "COLOR_SHIFT_BANDING_OR_CRUSH",
+    "WARP_SCRATCH_PEEL_OR_CORNER_DAMAGE",
+    "UNACCEPTABLE_MOUNT_OR_PACKAGING",
+    "PROOF_AND_PRODUCTION_PROCESS_DIFFER"
+  ],
+  "privacy": "Receipt photos are re-hashed at registration. Durable proof records retain SHA-256, byte size and an evidence URI only; local source paths and customer identity are not stored.",
+  "proofs": [],
+  "status": "AWAITING_COMPLIMENTARY_VENDOR_PROOF_OR_CUSTOMER_FUNDED_FIRST_UNIT"
+}

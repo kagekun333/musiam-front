@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-03T14:36:03.371Z",
+  "evidenceClass": "FIRST_PARTY_PLACEMENT_JOIN",
+  "campaign": "abi_hakusyaku_launch_wave_01",
+  "updated": [],
+  "unchangedPublishedWithoutObservedPlacement": [
+    "ABI-LW01-01:instagram",
+    "ABI-LW01-01:threads",
+    "ABI-LW01-02:instagram",
+    "ABI-LW01-02:tiktok",
+    "ABI-LW01-02:youtube",
+    "ABI-LW01-03:instagram",
+    "ABI-LW01-03:threads",
+    "ABI-LW01-04:instagram",
+    "ABI-LW01-04:tiktok",
+    "ABI-LW01-04:youtube",
+    "ABI-LW01-05:instagram",
+    "ABI-LW01-05:threads",
+    "ABI-LW01-06:instagram",
+    "ABI-LW01-06:tiktok",
+    "ABI-LW01-06:youtube",
+    "ABI-LW01-07:instagram",
+    "ABI-LW01-07:threads",
+    "ABI-LW01-08:instagram",
+    "ABI-LW01-08:tiktok",
+    "ABI-LW01-08:youtube"
+  ],
+  "revenueAttributionAvailable": true,
+  "unattributedNetNonRefundedYen": 0,
+  "safety": "Only exact campaign/source/content joins are written. Aggregate or unattributed revenue is never allocated to a placement. Verification traffic is absent from production snapshots."
+}

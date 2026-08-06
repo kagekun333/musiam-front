@@ -1,0 +1,9 @@
+{
+  "attemptedAt": "2026-07-20",
+  "status": "EVIDENCE_UNAVAILABLE",
+  "httpStatus": 403,
+  "reason": "The locally stored PostHog API key does not have project-query read permission, and POSTHOG_PROJECT_ID is not available locally.",
+  "observedCounts": null,
+  "interpretation": "Do not convert unavailable analytics into zero demand. A personal API key with project query read permission and the project ID are required.",
+  "nextCommand": "POSTHOG_HOST=... POSTHOG_API_KEY=... POSTHOG_PROJECT_ID=... npm run snapshot:metal-print-funnel"
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T23:55:20+09:00",
+  "scheduleSource": "ops/audience-engine/abi-hakusyaku-launch-wave-01-schedule.json",
+  "controls": {
+    "foundationPosts": 9,
+    "approvedPlacements": 22,
+    "dueRequiresScheduledAtPassed": true,
+    "dueRequiresApprovedWaitingLedgerState": true,
+    "publishedNeverDueAgain": true,
+    "sameDayTwoPostSpacing": {
+      "ABI-LW01-05": "2026-07-28T12:15:00+09:00",
+      "ABI-LW01-06": "2026-07-28T20:30:00+09:00"
+    }
+  },
+  "automations": [
+    {
+      "id": "musiam-300",
+      "status": "ACTIVE",
+      "cadence": "daily at 12:15 JST",
+      "updatedInPlace": true,
+      "scheduleSourceRequired": true
+    },
+    {
+      "id": "abi-launch-wave",
+      "status": "ACTIVE",
+      "cadence": "daily at 20:30 JST",
+      "scope": "ABI-LW01-06 approved evening placements only",
+      "earlyPublicationForbidden": true
+    }
+  ],
+  "currentState": {
+    "publishedPlacements": 7,
+    "approvedWaitingPlacements": 15,
+    "duePlacementIds": [],
+    "nextPublicationAt": "2026-07-27T12:15:00+09:00",
+    "nextPostId": "ABI-LW01-04"
+  },
+  "validation": {
+    "goalControllerBuild": "PASS",
+    "goalControllerValidator": "PASS",
+    "nativeManifestValidator": "PASS",
+    "platformCounts": {
+      "instagram": 9,
+      "threads": 5,
+      "tiktok": 4,
+      "youtube": 4
+    }
+  },
+  "claimBoundary": "This proves schedule-aware autonomous controls and active execution cadences. It does not prove a future run, publication, reach, Chat session, demand, pipeline, payment or revenue."
+}

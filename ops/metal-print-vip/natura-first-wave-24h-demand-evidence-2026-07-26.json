@@ -1,0 +1,64 @@
+{
+  "capturedAt": "2026-07-26T07:48:11+09:00",
+  "assetId": "NATURA-01",
+  "campaign": "metal_print_natura_launch",
+  "measurementWindow": "approximately 24 hours after publication",
+  "evidenceClass": "PLATFORM_OBSERVED_PLUS_FIRST_PARTY_REDIS",
+  "platformMetrics": {
+    "instagram": {
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/DbLpEz_j2e5/",
+      "publishedAt": "2026-07-25T07:08:00+09:00",
+      "visibleComments": 0,
+      "insightsStatus": "UNAVAILABLE_AFTER_INSIGHTS_CLICK",
+      "note": "The post and zero visible comments were verified. Instagram Web redirected the owner insights action to an unavailable page, so reach, likes, saves and shares are not asserted."
+    },
+    "threads": {
+      "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbLpVFbAc2A",
+      "publishedAt": "2026-07-25T07:12:00+09:00",
+      "views": 2,
+      "visibleReplies": 0
+    },
+    "tiktok": {
+      "publicUrl": "https://www.tiktok.com/@countabi/video/7666129460336266509",
+      "publishedAt": "2026-07-25T07:17:00+09:00",
+      "views": 95,
+      "likes": 0,
+      "comments": 0
+    },
+    "youtube": {
+      "publicUrl": "https://youtube.com/shorts/RweGEGLwTyI",
+      "publishedAt": "2026-07-25T07:20:00+09:00",
+      "viewsSincePublish": 55,
+      "subscriberChange": null,
+      "trafficSources": {
+        "shortsFeedPercent": 92.7,
+        "browseFeaturesPercent": 3.6,
+        "youtubeSearchPercent": 1.8,
+        "otherYoutubeFeaturesPercent": 1.8
+      }
+    }
+  },
+  "firstPartyFunnel": {
+    "sourceSnapshot": "ops/metal-print-vip/first-party-funnel-snapshot.json",
+    "generatedAt": "2026-07-25T22:42:25.706Z",
+    "dossierSessions": 4,
+    "dossierSessionsBySource": {
+      "instagram": 1,
+      "youtube": 3,
+      "threads": 0,
+      "tiktok": 0
+    },
+    "chatStarts": 0,
+    "firstMessages": 0,
+    "consultations": 0,
+    "qualifiedProspects": 0,
+    "nonRefundedRevenueJpy": 0
+  },
+  "decision": "ITERATE_FUNNEL",
+  "interpretation": {
+    "observed": "Organic discovery and four first-party Dossier sessions occurred without ad spend.",
+    "notProven": "Qualified purchase demand, consultation conversion and revenue are not proven.",
+    "nextAction": "Continue the approved audience-first Launch Wave while strengthening the profile-to-Chat invitation and measuring 24h and 72h conversion by placement."
+  },
+  "truthBoundary": "Platform views are not unique qualified prospects, pipeline or revenue. No sale or quota attainment is claimed."
+}

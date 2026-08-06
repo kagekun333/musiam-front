@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "status": "TEMPLATE_AWAITING_PHYSICAL_UNIT",
+  "candidate": {
+    "id": "proof_REPLACE_AFTER_RECEIPT",
+    "editionId": "VIP-METAL-2026-07-NATURA",
+    "sourceSha256": "abbef6d7a56c4d2fac8ae2c3326175f37b7a62d857789a4561f214692e6ea2b2",
+    "vendorId": "whitewall-jp",
+    "quoteReference": "REPLACE_WITH_VENDOR_QUOTE_OR_INVOICE_REFERENCE",
+    "orderReference": "REPLACE_WITH_VENDOR_ORDER_REFERENCE",
+    "orderedAt": "REPLACE_WITH_ISO_TIMESTAMP",
+    "receivedAt": "REPLACE_WITH_ISO_TIMESTAMP",
+    "productionProcess": "WhiteWall ChromaLuxe HD Metal Print / thermal sublimation / 1mm aluminum / glossy white base / 600x600mm / aluminium rails",
+    "sameProcessAsProduction": true,
+    "receiptPhotoReferences": [
+      { "path": "REPLACE_FRONT_PHOTO_PATH", "sha256": "REPLACE_SHA256", "bytes": 0 },
+      { "path": "REPLACE_ANGLE_PHOTO_PATH", "sha256": "REPLACE_SHA256", "bytes": 0 },
+      { "path": "REPLACE_BACK_PACKAGING_PHOTO_PATH", "sha256": "REPLACE_SHA256", "bytes": 0 }
+    ]
+  },
+  "humanReview": {
+    "scores": {
+      "colorFidelity": null,
+      "deepBlackDetail": null,
+      "highlightControl": null,
+      "edgeSharpness": null,
+      "surfaceConsistency": null,
+      "finishAndMounting": null,
+      "packagingProtection": null,
+      "collectorValue": null
+    },
+    "hardFails": [],
+    "humanDecision": "REPLACE_WITH_ACCEPT_REVISE_OR_REJECT",
+    "humanReviewer": "",
+    "reviewedAt": "",
+    "approvalToken": "APPROVE_PHYSICAL_PROOF:<proof_id>:ACCEPT"
+  },
+  "instructions": [
+    "Use photographs of the delivered physical unit, not a mockup or browser preview.",
+    "Record at least front, reflective angle, and rear/mounting/packaging evidence.",
+    "Compute SHA-256 and byte size for every photo before review.",
+    "Human reviewer scores all eight dimensions from 0 to 10.",
+    "Any hard fail prevents approval regardless of total score.",
+    "Only an explicit matching approval token can set approved=true."
+  ]
+}

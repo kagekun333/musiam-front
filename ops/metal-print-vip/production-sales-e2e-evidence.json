@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-25T23:37:24.835Z",
+  "evidenceClass": "LIVE_ZERO_PAYMENT_CHECKOUT_EXPIRY_SIGNED_WEBHOOK_REDIS",
+  "stripeCheckoutCreated": true,
+  "checkoutExpiredWithoutPayment": true,
+  "customerCreated": false,
+  "signedWebhookReceived": true,
+  "durableRedisReceiptRead": true,
+  "reservationReleaseRanBeforeReceipt": true,
+  "editionId": "VIP-METAL-2026-07-NATURA",
+  "runId": "verify_3bd8fb6f76234cd0a1d243e72335ebfc",
+  "safety": "The Checkout Session was expired immediately. No payment, PaymentIntent, customer or vendor order was created. No secret, address or customer data is serialized.",
+  "claimBoundary": "This proves production Stripe Checkout creation, Stripe-signed webhook delivery, webhook processing and durable Redis persistence. It does not prove a paid sale or vendor fulfillment."
+}

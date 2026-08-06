@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-21T20:10:00+09:00",
+  "currency": "JPY",
+  "targetContributionMarginRate": 0.6,
+  "approvedScenarioId": "WHITEWALL_SIGNATURE_SQUARE_2026-07-21",
+  "quoteScenarioId": "WHITEWALL_SIGNATURE_SQUARE_2026-07-21",
+  "requiredRegions": ["JP", "US", "EU"],
+  "acceptedEvidenceClasses": ["PUBLISHED_FIXED_PRICE", "LIVE_API_QUOTE", "PLATFORM_CHECKOUT_QUOTE", "FORMAL_QUOTE", "PAID_INVOICE", "MEASURED_ACTUAL"],
+  "requirements": {
+    "vendorCost": "SKU-specific production and destination shipping from a current published fixed price, timestamped POD API quote, platform checkout quote, formal quote, paid invoice or measured fulfilled order. A separately negotiated contract is not required.",
+    "indirectTax": "Tax-inclusive selling price must subtract applicable consumption tax, VAT or sales-tax liability",
+    "paymentFee": "Current processor fee for the actual card and currency route",
+    "replacement": "Vendor written rate/terms or measured fulfilled-order rate",
+    "cac": "Attributed acquisition spend divided by matured paid customers; organic is not assumed to be zero without measured operating cost",
+    "fx": "Quote-to-settlement currency exposure or an explicit zero when all amounts are locked in JPY"
+  },
+  "scenarios": [
+    {
+      "id": "WHITEWALL_SIGNATURE_SQUARE_2026-07-21",
+      "approvalStatus": "APPROVED_WITH_ENFORCED_CAC_CAP",
+      "quoteReference": "WhiteWall JP/US/DE live configurator and cart, plus ECB 2026-07-20 reference rates",
+      "quoteIssuedAt": "2026-07-21T20:00:00+09:00",
+      "quoteExpiresAt": "2026-08-20T20:00:00+09:00",
+      "priceYen": 330000,
+      "inputsComplete": true,
+      "unresolvedInputs": [
+        "JP address-level VAT wording and final tax-inclusive proof invoice",
+        "US destination-specific sales tax",
+        "actual Stripe fee and FX settlement statement",
+        "measured replacement rate"
+      ],
+      "controlAssumptions": {
+        "customerAcquisitionCostCapYen": 20000,
+        "enforcement": "STOP_NEW_PAID_ACQUISITION_IF_TRAILING_ATTRIBUTED_CAC_EXCEEDS_CAP",
+        "basis": "The cap is below every region's calculated maximum CAC at 60% contribution margin. It is a pre-spend control, not a claim of measured CAC."
+      },
+      "regions": [
+        {
+          "region": "JP",
+          "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+          "vendor": "WhiteWall",
+          "sku": "ChromaLuxe HD Metal Print 60 x 60cm glossy",
+          "nativeCurrency": "JPY",
+          "nativeProduction": 26400,
+          "nativeShipping": 5100,
+          "fxRateToJpy": 1,
+          "productionYen": 26400,
+          "shippingYen": 5100,
+          "packagingYen": 0,
+          "customsDutyYen": 0,
+          "indirectTaxLiabilityYen": 30000,
+          "paymentFeeRate": 0.036,
+          "paymentFixedFeeYen": 0,
+          "replacementRate": 0.05,
+          "customerAcquisitionCostYen": 20000,
+          "customerAcquisitionCostEvidenceClass": "ENFORCED_CAMPAIGN_CAC_CAP",
+          "fxRiskReserveYen": 0
+        },
+        {
+          "region": "US",
+          "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+          "vendor": "WhiteWall",
+          "sku": "ChromaLuxe HD Metal Print 25 x 25in glossy",
+          "nativeCurrency": "USD",
+          "nativeProduction": 291.95,
+          "nativeShipping": 24.95,
+          "fxRateToJpy": 162.3840364082,
+          "productionYen": 47409,
+          "shippingYen": 4052,
+          "packagingYen": 0,
+          "customsDutyYen": 0,
+          "indirectTaxLiabilityYen": 30000,
+          "paymentFeeRate": 0.036,
+          "paymentFixedFeeYen": 0,
+          "replacementRate": 0.05,
+          "customerAcquisitionCostYen": 20000,
+          "customerAcquisitionCostEvidenceClass": "ENFORCED_CAMPAIGN_CAC_CAP",
+          "fxRiskReserveYen": 2573
+        },
+        {
+          "region": "EU",
+          "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+          "vendor": "WhiteWall Germany",
+          "sku": "ChromaLuxe HD Metal Print 60 x 60cm glossy",
+          "nativeCurrency": "EUR",
+          "nativeProduction": 187.95,
+          "nativeShipping": 9.95,
+          "fxRateToJpy": 185.54,
+          "productionYen": 34873,
+          "shippingYen": 1847,
+          "packagingYen": 0,
+          "customsDutyYen": 0,
+          "indirectTaxLiabilityYen": 55000,
+          "paymentFeeRate": 0.036,
+          "paymentFixedFeeYen": 0,
+          "replacementRate": 0.05,
+          "customerAcquisitionCostYen": 20000,
+          "customerAcquisitionCostEvidenceClass": "ENFORCED_CAMPAIGN_CAC_CAP",
+          "fxRiskReserveYen": 1836
+        }
+      ]
+    }
+  ],
+  "status": "JP_US_EU_SCENARIO_APPROVED_WITH_CAC_20000_HARD_CAP"
+}

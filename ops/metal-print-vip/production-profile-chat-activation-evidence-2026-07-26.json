@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T00:00:58Z",
+  "evidenceClass": "PRODUCTION_DEPLOYMENT_AND_STATIC_ASSET_INSPECTION",
+  "deployment": {
+    "id": "dpl_5NypMdpuN4YXnNNcqCZyBVZN83nA",
+    "readyState": "READY",
+    "target": "production",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "profileEntryProbe": {
+    "url": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+    "buildId": "JRYTVfQwYxBlCaEFXEprB",
+    "chatAsset": "https://www.hakusyaku.xyz/_next/static/chunks/pages/chat-ee994b3c3f231f4f.js"
+  },
+  "assetAssertions": {
+    "conversationActivationMarkerPresent": true,
+    "vipMetalPrintDetectionPresent": true,
+    "metalChatStartRecordingPresent": true,
+    "utmCampaignHandlingPresent": true
+  },
+  "result": "PASS",
+  "claimBoundary": "This proves the production alias serves the conversation-to-metal-funnel activation code. It does not prove a real profile click, consultation, purchase intent, payment, fulfillment, or revenue. No synthetic funnel event was emitted during this inspection."
+}

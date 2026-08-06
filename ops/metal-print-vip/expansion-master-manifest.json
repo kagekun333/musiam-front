@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-30T08:11:16.207Z",
+  "evidenceClass": "SOURCE_HASH_MATCHED_DIGITAL_MASTER_CANDIDATES",
+  "outputs": [
+    {
+      "editionId": "VIP-METAL-2026-07-IGNITION",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/33 IGNITION/cover.jpeg",
+      "sourceSha256": "135e41f01ccf6890cbc4b2bb0e387f62ebcc5155e6897e1c2c060d74bb561720",
+      "outputRelativePath": "ops/metal-print-vip/proof-assets/expansion-candidates/ignition-whitewall-3000x3000.tiff",
+      "outputSha256": "4051384ba4031594085267f5af17427c6b1fd5598248dc49e64ec55a00f3d67f",
+      "bytes": 11193374,
+      "dimensionsPx": "3000x3000",
+      "format": "tiff",
+      "colorSpace": "srgb",
+      "hasAlpha": false,
+      "status": "DIGITAL_MASTER_CANDIDATE_PHYSICAL_PROOF_REQUIRED"
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-HOME",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/A Town Called Almost Home/cover.png",
+      "sourceSha256": "f1a4e43351663a5d8eed7bd51b6c06200ea5c31b202878cbc1e738c9023b0dda",
+      "outputRelativePath": "ops/metal-print-vip/proof-assets/expansion-candidates/home-whitewall-3000x3000.tiff",
+      "outputSha256": "1c2aca43a8ef49a98e48391386de7efa04c1c549b89881e5b1ebe406878f921a",
+      "bytes": 9826202,
+      "dimensionsPx": "3000x3000",
+      "format": "tiff",
+      "colorSpace": "srgb",
+      "hasAlpha": false,
+      "status": "DIGITAL_MASTER_CANDIDATE_PHYSICAL_PROOF_REQUIRED"
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-BALIAN",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/BALIAN/cover.png",
+      "sourceSha256": "1c837797df34ac4b61d2b6e39ab1d2951cff644d3a52295e022e964a755fcbf9",
+      "outputRelativePath": "ops/metal-print-vip/proof-assets/expansion-candidates/balian-whitewall-3000x3000.tiff",
+      "outputSha256": "2e34aeccb6a73e742397cd29c474914684af76ed55cf8bd272aeb5ed4e22167b",
+      "bytes": 14618850,
+      "dimensionsPx": "3000x3000",
+      "format": "tiff",
+      "colorSpace": "srgb",
+      "hasAlpha": false,
+      "status": "DIGITAL_MASTER_CANDIDATE_PHYSICAL_PROOF_REQUIRED"
+    }
+  ],
+  "approvalBoundary": "Candidate TIFF generation does not activate an Offer or approve physical print quality."
+}

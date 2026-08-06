@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-07-21T18:00:00+09:00",
+  "policy": {
+    "comparableQuoteRequires": [
+      "skuSpecification",
+      "unitPrice",
+      "shippingByRegion",
+      "taxDutyHandling",
+      "productionSla",
+      "damageReprintPolicy"
+    ],
+    "acceptedQuoteChannels": [
+      "liveApiQuote",
+      "platformCheckoutQuote",
+      "formalWrittenQuote",
+      "paidInvoice"
+    ],
+    "contractRequired": false,
+    "partnershipRequires": [
+      "singleUnitPod",
+      "whiteLabel",
+      "apiOrAutomatableOrdering",
+      "japanNorthAmericaEuCoverage",
+      "paidProofApproved"
+    ],
+    "followUpAfterBusinessDays": 3
+  },
+  "vendors": [
+    {
+      "id": "gelato",
+      "channel": "email",
+      "lastOutboundAt": "2026-07-20T03:59:45Z",
+      "lastInboundAt": "2026-07-19T14:46:51Z",
+      "followUpNotBefore": "2026-07-23T09:00:00+09:00",
+      "status": "ELIGIBLE_POD_BACKUP_AWAITING_LIVE_PRICE_CAPTURE",
+      "writtenAnswerFields": ["singleUnitPod", "globalNetwork", "apiAvailable", "noSubscriptionRequired"],
+      "comparableQuote": false,
+      "partnershipApproved": false,
+      "approvalMeaning": "eligible self-service POD candidate; destination quote and paid proof still required",
+      "evidenceNote": "Official product material confirms aluminium prints, free use, no minimum order, API/integrations and a production network in 32 countries reaching 200+ countries/territories. No special supplier contract is required for ordinary POD ordering. Exact JP/US/EU destination quotes and a paid proof remain uncaptured."
+    },
+    {
+      "id": "prodigi",
+      "channel": "email",
+      "lastOutboundAt": "2026-07-18T14:43:12Z",
+      "lastInboundAt": null,
+      "followUpNotBefore": "2026-07-22T09:00:00+09:00",
+      "status": "PRIMARY_POD_SELECTED_AWAITING_ACCOUNT_AND_LIVE_QUOTES",
+      "writtenAnswerFields": ["singleUnitPod", "whiteLabel", "apiAvailable", "manualOrdering", "sandboxAvailable", "replacementWorkflow", "productionSla"],
+      "comparableQuote": false,
+      "partnershipApproved": false,
+      "approvalMeaning": "selected self-service POD candidate; account quote and paid proof still required",
+      "evidenceNote": "Selected primary POD route. Official material confirms free signup, no MOQ, manual order form, white-label dropshipping, Sandbox and Live APIs, quote endpoint, ChromaLuxe and Dibond, and 48h/72h stated production times. No negotiated contract is required. Exact JP/US/EU API quotes and a paid proof remain uncaptured."
+    },
+    {
+      "id": "printful",
+      "channel": "selfServicePlatform",
+      "lastOutboundAt": null,
+      "lastInboundAt": null,
+      "followUpNotBefore": null,
+      "status": "US_ONLY_BACKUP",
+      "writtenAnswerFields": ["singleUnitPod", "whiteLabel", "automatedFulfillment", "noMinimum"],
+      "comparableQuote": false,
+      "partnershipApproved": false,
+      "approvalMeaning": "eligible US-only self-service candidate; live quote and paid proof still required",
+      "evidenceNote": "Official material confirms no-minimum metal prints, direct-to-customer delivery and white-label fulfilment, but the current metal-print shipping table limits this product to US destinations. Retain as a US backup, not the global primary route."
+    },
+    {
+      "id": "pictorem",
+      "channel": "official_chat",
+      "lastOutboundAt": "2026-07-18T00:00:00-04:00",
+      "lastInboundAt": "2026-07-18T00:00:00-04:00",
+      "followUpNotBefore": "2026-07-22T09:00:00-04:00",
+      "status": "API_CONTRADICTION_HOLD",
+      "writtenAnswerFields": [],
+      "comparableQuote": false,
+      "partnershipApproved": false,
+      "evidenceNote": "Official public API language conflicts with support response saying no public REST API. Must be resolved in writing."
+    },
+    {
+      "id": "metal-print-japan",
+      "channel": "selfServiceOrderForm",
+      "lastOutboundAt": "2026-07-18T14:43:19Z",
+      "lastInboundAt": null,
+      "followUpNotBefore": "2026-07-22T09:00:00+09:00",
+      "status": "PRIMARY_JAPAN_ROUTE_PUBLISHED_FIXED_PRICE",
+      "writtenAnswerFields": [
+        "skuSpecification",
+        "unitPrice",
+        "shippingByRegion",
+        "taxDutyHandling",
+        "productionSla",
+        "damageReprintPolicy",
+        "singleUnitOrder",
+        "publishedTaxInclusivePrice",
+        "domesticShipping",
+        "separateDeliveryAddress",
+        "chromaluxe",
+        "productionFlow"
+      ],
+      "comparableQuote": true,
+      "quoteEvidenceClass": "PUBLISHED_FIXED_PRICE",
+      "partnershipApproved": false,
+      "approvalMeaning": "eligible Japan rectangular route; paid proof and packaging review still required",
+      "evidenceNote": "Selected for Japanese destinations. Official pricing is tax-inclusive and the order form separates purchaser and delivery details. Commercial baseline: 16x24 Signature panel JPY 37,400 + pedestal JPY 2,915 + standard domestic shipping JPY 1,980 = JPY 42,295. Monument baseline: 24x36 panel JPY 77,550 + two pedestals JPY 5,830 + shipping JPY 4,400 = JPY 87,780. Sizes 10x10 and below are proof-only, not JPY 330,000 sale products. No import duty or FX reserve is needed for ordinary domestic delivery. White-label packaging is not confirmed, so customer-facing delivery copy must identify the production partner if required."
+    },
+    {
+      "id": "whitewall-japan-square",
+      "channel": "platformCheckoutQuote",
+      "lastOutboundAt": "2026-07-21T18:00:00+09:00",
+      "lastInboundAt": "2026-07-21T18:00:00+09:00",
+      "followUpNotBefore": "2026-07-24T18:00:00+09:00",
+      "status": "PRIMARY_JAPAN_SIGNATURE_SQUARE_PLATFORM_QUOTE_CAPTURED",
+      "writtenAnswerFields": [
+        "skuSpecification",
+        "unitPrice",
+        "shippingByRegion",
+        "taxDutyHandling",
+        "productionSla",
+        "damageReprintPolicy",
+        "singleUnitOrder",
+        "customSquareFormat",
+        "includedWallMount"
+      ],
+      "comparableQuote": true,
+      "quoteEvidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "partnershipApproved": false,
+      "approvalMeaning": "eligible self-service 600mm square route; paid proof still required before sale",
+      "evidenceNote": "Live WhiteWall Japan configurator and cart captured 2026-07-21: ChromaLuxe HD Metal Print, glossy, 600 x 600mm, quantity 1, aluminium rails included, product JPY 26,400 plus standard Japan shipping JPY 5,100, cart total JPY 31,500 with VAT not included, approximately 12 working days. Product page supports custom square formats and one-piece ordering. Shipping calculator states customs duties, handling and import sales taxes are included, while the cart separately warns VAT is not included; retain a tax reserve until address-level checkout resolves this wording. Official March 2026 damage and satisfaction policies require prompt photos and provide case review toward replacement/remake or compensation. Sources: https://www.whitewall.com/jp/metal-prints/chromaluxe-hd-metal-print ; https://www.whitewall.com/jp/cart ; https://service.whitewall.com/hc/en-us/articles/213814525-What-happens-if-my-order-arrives-damaged ; https://service.whitewall.com/hc/en-us/articles/360000592057-What-does-the-WhiteWall-Satisfaction-Guarantee-mean"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-25T23:29:27.000Z",
+  "deploymentId": "dpl_5jcY2wJCb9WdtfoWDoyqUQ7uSWAp",
+  "endpoint": "https://www.hakusyaku.xyz/api/cron/metal-print-ops?dryRun=1",
+  "httpStatus": 200,
+  "dryRun": true,
+  "sideEffects": {
+    "notificationAttempted": false,
+    "healthRecordWritten": false
+  },
+  "observed": {
+    "qualified": 0,
+    "pipelineCoverage": 0,
+    "netNonRefundedYen": 0,
+    "funnel": {
+      "metalHomeViewSessions": 2,
+      "metalDossierViewSessions": 4,
+      "metalChatStartSessions": 0,
+      "metalConsultationSubmittedSessions": 0
+    },
+    "offerCapacityGate": {
+      "approvedEditionIds": ["VIP-METAL-2026-07-NATURA"],
+      "approvedOfferUnits": 3,
+      "maximumApprovedOfferGrossYen": 990000,
+      "requiredPaidUnits": 10,
+      "targetGrossYen": 3000000,
+      "passed": false
+    }
+  },
+  "decision": {
+    "status": "BEHIND_QUALIFIED_PACE",
+    "action": "勝ち配置は未証明。承認済み配信を予定どおり継続し、配置ごとに100 Dossierかつ3 qualifiedへ到達するまで集中配信しない。"
+  },
+  "finding": "The production integration is truthful and now refuses campaign concentration until a placement reaches 100 Dossier sessions and 3 qualified consultations.",
+  "evidenceBoundary": "This proves the production Cron integration and current observed state. It does not prove demand, pipeline sufficiency, physical quality or revenue."
+}

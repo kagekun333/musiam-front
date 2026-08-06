@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-26T00:14:44.000Z",
+  "evidenceClass": "CODEX_AUTOMATION_CONFIG_PLUS_LEDGER_DERIVATION",
+  "automation": {
+    "id": "abi-launch-wave-24h-72h-kpi",
+    "name": "ABI Launch Wave 24h/72h成熟KPI回収",
+    "status": "ACTIVE",
+    "schedule": "daily at 23:50 Asia/Tokyo",
+    "configSha256": "0de8b0ac33d9e53ebb2bb72d9b7051db02b64dc038cf1fd9a6702d9a60eeb57f"
+  },
+  "currentQueue": {
+    "publishedPlacements": 7,
+    "due24h": 0,
+    "due72h": 0,
+    "resolved24h": 0,
+    "resolved72h": 0,
+    "nextMaturityAt": "2026-07-26T14:40:00.000Z",
+    "nextMaturityAtJst": "2026-07-26T23:40:00+09:00"
+  },
+  "contracts": {
+    "onlyDuePlacementIds": true,
+    "unavailableMetricsRemainBlank": true,
+    "zeroMeansMeasuredZeroOnly": true,
+    "resolutionMarkers": ["[24h-resolved]", "[72h-resolved]"],
+    "verificationTrafficExcluded": true,
+    "externalMutationAllowed": false
+  },
+  "validation": {
+    "maturityQueue": "PASS",
+    "launchWaveLedger": "PASS"
+  },
+  "claimBoundary": "This proves a scheduled and restart-safe maturity collection workflow exists. It does not prove that tonight's run will obtain owner-only insights, nor does it convert audience metrics into demand, pipeline, or revenue evidence."
+}

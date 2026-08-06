@@ -1,0 +1,30 @@
+{
+  "asOf": "2026-08-01",
+  "deployment": {
+    "id": "dpl_9Ychj7eCTxssjTjECduEUsNQkArP",
+    "readyState": "READY",
+    "productionOrigin": "https://www.hakusyaku.xyz"
+  },
+  "scope": "Every statically generated merged-catalog work page can open a made-to-order metal-print consultation while preserving the real catalog work id and title.",
+  "verified": {
+    "productionWorkPageHttpStatus": 200,
+    "productionCatalogInvitation": "PASS",
+    "productionWorkIdPreservedInEntryUrl": "PASS",
+    "contactVerificationResumeTitlePreservation": "PASS",
+    "contactVerificationResumeWorkIdPreservation": "PASS",
+    "consultationContractValidation": "PASS",
+    "nextBuildStaticWorkPaths": 445,
+    "approvedOfferPipelineBoundary": "PASS",
+    "productionDryRun": {
+      "qualified": 0,
+      "preflightRequested": 0,
+      "pipelineCoverage": 0,
+      "preflightDemandByWork": [],
+      "offerPreflightCandidates": []
+    }
+  },
+  "fixedDefect": "Catalog consultations previously resumed as BALIAN because the verification route used a four-edition hard-coded fallback. Resume now uses the stored workTitle and restores CATALOG-WORK workId and space segment.",
+  "salesBoundary": "Four approved editions have immediate formal Offer eligibility. Other catalog works are purchasable only through a verified made-to-order request followed by source/preflight, regional cost and Offer approval; Checkout remains closed until those gates pass. Verified catalog requests are reported separately as preflightRequested and contribute zero qualified pipeline value until a formal Offer is approved.",
+  "offerExpansionRule": "Rank verified preflight requests by catalog work. Promote a work to OFFER PREFLIGHT only after three active verified requests for that same work; never expose contact identity in the ranking.",
+  "evidenceBoundary": "This proves catalog-wide consultation availability and attribution continuity. It does not prove demand, purchase intent, payment, physical proof or revenue."
+}

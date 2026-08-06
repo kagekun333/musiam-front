@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-03T03:50:47.431Z",
+  "status": "APPROVED",
+  "eligibleEditionCount": 0,
+  "registeredExpansionEditionCount": 3,
+  "plannedApprovedOfferUnits": 12,
+  "plannedMaximumApprovedOfferGrossYen": 3960000,
+  "approvals": [],
+  "humanDecisionRequired": false,
+  "approvalBoundary": "The exact three Human tokens were registered with the candidate master hashes. No further Offer-expansion approval is pending."
+}

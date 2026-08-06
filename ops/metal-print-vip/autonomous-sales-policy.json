@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "updatedAt": "2026-07-24",
+  "monthlyRevenueTargetJpy": 3000000,
+  "operatingMode": "INBOUND_CHAT_LED_WITH_SELECTIVE_OUTBOUND",
+  "demandInterviewRequired": false,
+  "candidateEvidenceRule": "Catalog scoring creates a sales hypothesis, never proof of demand.",
+  "weeklyMission": {
+    "qualifiedVisitors": 5000,
+    "chatOpens": 600,
+    "firstMessages": 270,
+    "dossierViews": 49,
+    "qualifiedConsultations": 7,
+    "paidOrders": 2.5,
+    "outboundMessages": 0,
+    "salesCalls": 0
+  },
+  "externalGates": {
+    "customerOutreach": "AUTHORIZED_BY_OWNER_2026-07-19_SELECTIVE_ONLY",
+    "paidVendorOrder": "HOLD_UNTIL_QUOTE_AND_PROOF_APPROVAL",
+    "contractSignature": "HUMAN_APPROVAL_REQUIRED",
+    "productionDeployment": "HUMAN_APPROVAL_REQUIRED"
+  },
+  "autonomousAllowed": [
+    "catalog-scoring",
+    "account-research-preparation",
+    "dossier-drafting",
+    "landed-cost-modeling",
+    "vendor-response-audit",
+    "mission-prioritization",
+    "inbound-funnel-optimization"
+  ],
+  "quotaControl": {
+    "primaryPriceJpy": 330000,
+    "minimumMonthlyOrdersAtPrimaryPrice": 10,
+    "qualifiedPipelineCoverageMultiple": 10,
+    "stopIfContributionMarginBelow": 0.6,
+    "paidAcquisitionCacCapJpy": 20000,
+    "cacEnforcement": "STOP_NEW_PAID_ACQUISITION_IF_TRAILING_ATTRIBUTED_CAC_EXCEEDS_CAP"
+  }
+}

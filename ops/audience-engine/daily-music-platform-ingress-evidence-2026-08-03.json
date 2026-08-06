@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "waveId": "DMW-20260805-7D",
+  "observedAt": "2026-08-03T14:21:09Z",
+  "scope": "Read-only inspection of authenticated creator surfaces; no upload, publish, profile update, terms acceptance, or payment.",
+  "platforms": {
+    "threads": {
+      "account": "abi_hakusyaku",
+      "authenticated": true,
+      "surface": "Threads authenticated home",
+      "observedControls": [
+        "New thread",
+        "Profile /@abi_hakusyaku",
+        "Insights"
+      ],
+      "status": "AUTHENTICATED_READY_FOR_DUE_PUBLICATION",
+      "reason": "The authenticated account and composer control were observed read-only. Publication still requires the exact approved placement to be due and executable immediately before posting."
+    },
+    "youtube": {
+      "account": "ABI伯爵",
+      "channelId": "UCs-YspqTu7jMusNGHpviAxA",
+      "authenticated": true,
+      "surface": "YouTube Studio channel dashboard",
+      "observedControls": [
+        "Create",
+        "Upload videos",
+        "Content"
+      ],
+      "status": "HOLD_PROFILE_LINK_REQUIRED",
+      "reason": "The ABI伯爵 Studio dashboard and upload control were observed read-only, but official YouTube Help states that URLs in Shorts descriptions and comments are non-clickable. Authentication alone does not create a Chat ingress path.",
+      "officialSupport": "https://support.google.com/youtube/answer/13748639"
+    },
+    "instagram": {
+      "account": "abi_hakusyaku",
+      "authenticated": true,
+      "surface": "Instagram web / New post",
+      "observedControls": [
+        "New post",
+        "Drag photos and videos here",
+        "Select from computer"
+      ],
+      "arbitraryPerPostExternalLinkVerified": false,
+      "webStoryCreationObserved": false,
+      "webLinkStickerControlObserved": false,
+      "connectedAndroidDevices": 0,
+      "status": "HOLD_PROFILE_INGRESS_OR_STORY_LINK_EVIDENCE",
+      "reason": "The authenticated Instagram Web profile and Create dialog were inspected. The dialog exposed only generic photo/video upload for a new post, with no Story format or Link sticker control. No Android execution device is connected. Prepared Story media is not approval-eligible until an authenticated mobile Story surface is connected and preflighted."
+    },
+    "tiktok": {
+      "account": "countabi",
+      "authenticated": true,
+      "checkedAt": "2026-08-03T14:42:00Z",
+      "surface": "TikTok owner profile, Edit profile dialog and TikTok Studio",
+      "observedControls": [
+        "Upload",
+        "TikTok Studio insights",
+        "Edit profile: photo",
+        "Edit profile: username",
+        "Edit profile: name",
+        "Edit profile: bio"
+      ],
+      "websiteFieldObserved": false,
+      "observedProfileMetricsNotDemandEvidence": {
+        "followers": 2,
+        "likes": 9,
+        "profileViewsLast7Days": 3
+      },
+      "arbitraryPerPostExternalLinkVerified": false,
+      "status": "HOLD_PROFILE_INGRESS_ELIGIBILITY",
+      "reason": "The authenticated canonical @countabi owner profile was observed with active posts and Studio access. Its current web Edit profile dialog exposes photo, username, name and bio but no website field. The upload surface does not provide an arbitrary external Chat URL field. TikTok official support documents a website link on the profile for accounts with 1,000 followers or a Registered Business Account; neither eligibility route was proven here.",
+      "officialSupport": "https://support.tiktok.com/en/getting-started/setting-up-your-profile/linking-another-social-media-account"
+    }
+  },
+  "operationalDecision": {
+    "markInstagramIngressReady": false,
+    "markTikTokIngressReady": false,
+    "retainCurrentWaveIngressReadyCount": 7,
+    "eligiblePlatforms": [
+      "threads"
+    ],
+    "nextEvidenceGate": "Verify a clickable work-specific Chat URL on a real Instagram Story/link-sticker placement or approved profile link; verify TikTok profile website-link eligibility or a real clickable post link; and add an approved YouTube channel profile link or another officially clickable external-link mechanism before changing ingress status."
+  }
+}

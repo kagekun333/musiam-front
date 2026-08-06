@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T23:24:36+09:00",
+  "deployment": {
+    "id": "dpl_GBQo8uhRUntyRnAzNiScB2ttbJKM",
+    "url": "https://musiam-front-faylod2u8-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz",
+    "readyState": "READY",
+    "target": "production"
+  },
+  "acceptanceContract": {
+    "requiredBeforeCheckout": [
+      "Dossier reviewed and accepted",
+      "purchase intent explicitly confirmed",
+      "unapproved physical-proof and possible color/gloss difference acknowledged",
+      "made-to-order production and post-start change/cancellation boundary acknowledged"
+    ],
+    "atomicRedisTimestamps": [
+      "dossierAcceptedAt",
+      "purchaseIntentConfirmedAt",
+      "proofDisclosureAcceptedAt",
+      "madeToOrderTermsAcceptedAt"
+    ],
+    "stripeCheckoutMetadataLocked": true,
+    "stripePaymentIntentMetadataLocked": true,
+    "signedPaidWebhookRequiresAllFourTimestamps": true,
+    "durablePaymentLedgerRetainsAllFourTimestamps": true,
+    "expiredAndVerificationSessionsRemainBackwardCompatible": true
+  },
+  "liveSafeChecks": {
+    "twoOfFourAcceptance": {
+      "status": 400,
+      "error": "explicit_acceptance_required"
+    },
+    "fourOfFourWithInvalidCapability": {
+      "status": 403,
+      "error": "verified_consultation_required"
+    },
+    "checkoutWithInvalidCapability": {
+      "status": 403,
+      "error": "qualified_consultation_required"
+    },
+    "unsignedWebhook": {
+      "status": 400,
+      "error": "signature_missing"
+    },
+    "vipMetalPrint": {
+      "status": 200
+    }
+  },
+  "validation": {
+    "consultation": "PASS",
+    "productionAdapter": "PASS",
+    "salesE2E": "PASS",
+    "typecheck": "PASS",
+    "productionBuild": "PASS, 1046 of 1046 static pages"
+  },
+  "currentRealEvidence": {
+    "acceptedFourPartRecords": 0,
+    "paidOrders": 0,
+    "fulfilledOrders": 0,
+    "netNonRefundedRevenueYen": 0
+  },
+  "claimBoundary": "This proves the deployed acceptance and payment-evidence contract plus safe rejection paths. It does not prove a real customer acceptance, Checkout creation, signed paid webhook, payment, physical proof, fulfillment, demand or revenue."
+}

@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T23:46:49+09:00",
+  "evidenceClass": "OWNER_AND_PUBLIC_SURFACE_24H_SNAPSHOT",
+  "maturityBoundaryRespected": true,
+  "queue": {
+    "published": 7,
+    "resolved24h": 5,
+    "due24h": 0,
+    "resolved72h": 0,
+    "due72h": 0,
+    "nextMaturityAt": "2026-07-27T07:31:00+09:00"
+  },
+  "resolvedPlacements": [
+    {
+      "placementId": "ABI-LW01-02:tiktok",
+      "source": "owner TikTok Studio plus public post",
+      "views24h": 100,
+      "saves24h": 0,
+      "meaningfulComments24h": 0,
+      "unavailablePreservedBlank": [
+        "three_second_views_24h",
+        "completion_rate_24h",
+        "shares_24h",
+        "profile_visits_24h"
+      ]
+    },
+    {
+      "placementId": "ABI-LW01-02:youtube",
+      "source": "owner YouTube Studio",
+      "views24h": 30,
+      "unavailablePreservedBlank": [
+        "three_second_views_24h",
+        "completion_rate_24h",
+        "saves_24h",
+        "shares_24h",
+        "meaningful_comments_24h",
+        "profile_visits_24h"
+      ]
+    },
+    {
+      "placementId": "ABI-LW01-01:threads",
+      "source": "owner Threads post",
+      "views24h": 1,
+      "meaningfulComments24h": 0,
+      "unavailablePreservedBlank": [
+        "three_second_views_24h",
+        "completion_rate_24h",
+        "saves_24h",
+        "shares_24h",
+        "profile_visits_24h"
+      ]
+    },
+    {
+      "placementId": "ABI-LW01-01:instagram",
+      "source": "owner Instagram post; insights route unavailable",
+      "meaningfulComments24h": 0,
+      "unavailablePreservedBlank": [
+        "views_24h",
+        "three_second_views_24h",
+        "completion_rate_24h",
+        "saves_24h",
+        "shares_24h",
+        "profile_visits_24h"
+      ]
+    },
+    {
+      "placementId": "ABI-LW01-02:instagram",
+      "source": "owner Instagram Reel",
+      "meaningfulComments24h": 0,
+      "unavailablePreservedBlank": [
+        "views_24h",
+        "three_second_views_24h",
+        "completion_rate_24h",
+        "saves_24h",
+        "shares_24h",
+        "profile_visits_24h"
+      ]
+    }
+  ],
+  "knownViews24hTotal": 131,
+  "businessOutcome": {
+    "chatSessions": 0,
+    "firstMessages": 0,
+    "consultations": 0,
+    "dossierAccepted": 0,
+    "purchaseIntent": 0,
+    "netNonRefundedRevenueYen": 0
+  },
+  "interpretation": "The first measurable cohort generated limited top-of-funnel reach and no attributable Chat or sales progression. Continue the approved Wave, but treat the next content and profile-ingress work as conversion experiments rather than evidence of product demand.",
+  "claimBoundary": "Known views are a partial sum because unavailable metrics remain blank. This snapshot does not prove qualified demand, an accepted Dossier, purchase intent, payment, fulfillment or revenue."
+}

@@ -1,0 +1,17 @@
+{
+  "generatedAt": "2026-07-23T13:17:28.607Z",
+  "evidenceClass": "LOCAL_SECRET_PRESENCE_ONLY",
+  "checks": {
+    "STRIPE_SECRET_KEY": true,
+    "STRIPE_METAL_PRINT_WEBHOOK_SECRET": false,
+    "UPSTASH_REDIS_REST_URL": true,
+    "UPSTASH_REDIS_REST_TOKEN": true,
+    "METAL_PRINT_IDENTITY_SECRET": false,
+    "NEXT_PUBLIC_SITE_URL": true
+  },
+  "stripeMode": "live",
+  "readyForSandboxE2e": false,
+  "readyForLiveSales": false,
+  "reason": "One or more required server-side settings are missing or placeholder values.",
+  "safety": "Secret values are never serialized or printed. Live-sales readiness cannot be granted by this local presence audit."
+}

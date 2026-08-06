@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "orders": [],
+  "cacCohorts": [],
+  "privacy": "No customer name, email, address, Stripe identifier, tracking number, invoice body or free text is stored. Each underlying order, tracking reference and customer cohort membership is represented only by a domain-separated HMAC-SHA-256; invoice, Stripe settlement and fulfillment receipt files are represented by SHA-256."
+}

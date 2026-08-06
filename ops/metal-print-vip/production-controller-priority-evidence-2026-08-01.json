@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-01T04:30:00+09:00",
+  "deploymentId": "dpl_3JAhqYZik7bAsr3ZVA4qHRJKLnpa",
+  "endpoint": "https://www.hakusyaku.xyz/api/cron/metal-print-ops?dryRun=1",
+  "status": "BEHIND_QUALIFIED_PACE",
+  "qualified": 0,
+  "pipelineCoverage": 0,
+  "chatInterest": {
+    "status": "NO_SAMPLE",
+    "shows": 0,
+    "accepts": 0,
+    "declines": 0,
+    "nextFloor": 50
+  },
+  "profileIngress": {
+    "verified": ["threads", "youtube"],
+    "gaps": ["instagram", "tiktok"],
+    "deferred": true
+  },
+  "nextEligiblePublication": {
+    "postId": "ABI-LW01-05",
+    "platforms": ["instagram", "threads"],
+    "scheduledAt": "2026-08-01T12:15:00+09:00",
+    "publicationPerformedEarly": false
+  },
+  "truthBoundary": "This is an authenticated dry-run aggregate. It proves controller state, not demand, qualified pipeline, revenue or publication of ABI-LW01-05."
+}

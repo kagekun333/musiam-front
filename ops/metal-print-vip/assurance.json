@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "status": "evidence_collection",
+  "assertionPolicy": {
+    "requiredDecision": "STRONG_GO",
+    "claimAllowedOnlyWhenAllRequiredGatesPass": true,
+    "prohibitedClaim": "月商300万円を確実に達成できる"
+  },
+  "economics": {
+    "targetGrossPaidYen": 3000000,
+    "primaryUnitPriceYen": 330000,
+    "targetContributionMarginRateMin": 0.6,
+    "unitLandedCostYen": null,
+    "paymentFeeRate": null,
+    "expectedReplacementRate": null,
+    "customerAcquisitionCostYen": null
+  },
+  "demand": {
+    "namedProspects": 0,
+    "qualifiedProspects": 0,
+    "dossierAccepted": 0,
+    "purchaseIntent": 0,
+    "paidNonRefunded": 0,
+    "maturedQualifiedProspects": 0,
+    "maturedQualifiedPaid": 0,
+    "fallbackQualifiedToPaidRate": 0.1,
+    "minimumMaturedCohortForObservedRate": 30,
+    "qualifiedPipelineValueYen": 0,
+    "minimumPipelineCoverage": 4,
+    "requiredPipelineCoverage": 10,
+    "interviewsCompleted": 0,
+    "interviewsRequired": false
+  },
+  "supply": {
+    "vendorQuotesComparable": 2,
+    "proofsApproved": 0,
+    "productionCapacityUnitsConfirmed": 12,
+    "productionCapacityEvidenceClass": "PUBLIC_POD_NETWORK_SCALE_CONSERVATIVE_FLOOR",
+    "replacementPolicyConfirmed": true,
+    "deliverySlaConfirmed": true,
+    "fulfillmentModel": "SELF_SERVICE_POD_NO_NEGOTIATED_CONTRACT"
+  },
+  "salesSystem": {
+    "localCheckoutE2ePassed": true,
+    "localWebhookE2ePassed": true,
+    "localInventoryE2ePassed": true,
+    "localRefundE2ePassed": true,
+    "productionAdapterCodePassed": true,
+    "productionSignatureContractPassed": true,
+    "productionPersistenceAdapterCodePassed": true,
+    "productionCheckoutAdapterPassed": false,
+    "productionWebhookSignaturePassed": false,
+    "productionPersistencePassed": false,
+    "fulfillmentOwnerConfirmed": true
+  },
+  "goThresholds": {
+    "qualifiedProspectsMinFallback": 100,
+    "dossierAcceptedMin": 50,
+    "purchaseIntentMin": 25,
+    "vendorQuotesComparableMin": 2,
+    "proofsApprovedMin": 1,
+    "productionCapacityUnitsMin": 12
+  }
+}

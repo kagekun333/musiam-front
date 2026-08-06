@@ -1,0 +1,4 @@
+scenario,priceYen,unitLandedCostYen,paymentFeeYen,replacementReserveYen,acquisitionCostYen,contributionYen,contributionMarginRate,unitsPaid,grossPaidYen,totalContributionYen,status
+anchor,330000,,,,,,,,,,INPUT_REQUIRED
+close,300000,,,,,,,,,,INPUT_REQUIRED
+decisive_close,165000,,,,,,,,,,INPUT_REQUIRED

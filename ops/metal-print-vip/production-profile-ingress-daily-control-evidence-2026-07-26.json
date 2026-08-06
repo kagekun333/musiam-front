@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T10:41:33+09:00",
+  "deployment": {
+    "id": "dpl_4AViLyQ6z6iZfozzdEvNhUhjvv7p",
+    "url": "https://musiam-front-zse4xsd0j-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz",
+    "readyState": "READY",
+    "target": "production"
+  },
+  "dailyControl": {
+    "newStatus": "FIX_PROFILE_INGRESS",
+    "currentVerifiedGeneralChatLinks": 0,
+    "activeAudiencePlatforms": 4,
+    "gaps": ["instagram", "threads", "tiktok", "youtube"],
+    "launchWaveContinues": true,
+    "profileChangesRequireExactHumanGate": true,
+    "siteActivationAndExternalLinkEvidenceSeparated": true,
+    "dailyHealthPersistsProfileIngress": true,
+    "dailyNotificationShowsHumanGate": true
+  },
+  "liveChecks": {
+    "unauthenticatedCron": {
+      "status": 401,
+      "body": {
+        "ok": false,
+        "error": "unauthorized"
+      }
+    },
+    "vipMetalPrintStatus": 200,
+    "attributedChatStatus": 200
+  },
+  "validation": {
+    "dailyController": "PASS using node --import tsx; package tsx command hit the known sandbox IPC EPERM",
+    "typecheck": "PASS",
+    "productionBuild": "PASS, 1046 of 1046 static pages generated",
+    "diffCheck": "PASS for changed controller files"
+  },
+  "currentBusinessEvidence": {
+    "qualified": 0,
+    "pipelineCoverageMultiple": 0,
+    "dossierAccepted": 0,
+    "purchaseIntent": 0,
+    "netNonRefundedRevenueYen": 0
+  },
+  "claimBoundary": "This proves that daily production operations now detect and report missing attributable profile ingress without stopping the approved Launch Wave. It does not prove a corrected external profile, traffic, demand, pipeline, payment, fulfillment or revenue."
+}

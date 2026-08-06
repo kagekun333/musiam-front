@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "status": "HUMAN_DECISION_REQUIRED",
+  "candidateFor": "ABI-LW01-08",
+  "scheduledAt": "2026-08-03T12:15:00+09:00",
+  "work": "BALIAN",
+  "track": "ATAPA",
+  "verifiedSource": {
+    "audioEvidence": "ops/audience-engine/abi-launch-wave-audio-repair-evidence-2026-07-30.json",
+    "catalogMetadata": "public/works/works-ssd.json",
+    "meaning": "苦行・浄化の炎",
+    "role": "BALIANアルバム冒頭の儀式開幕曲"
+  },
+  "reason": "The canonical video contains the owner master ATAPA, while the approved copy currently describes AI and human selection rather than the music. This candidate aligns the introduction with the audio actually used.",
+  "placements": {
+    "instagram": {
+      "copy": "本日の音楽は、BALIANの幕開けを告げる『ATAPA』。\n\n苦行、そして浄化の炎。静けさの奥で、儀式がゆっくり始まります。\n\nあなたが今、炎で手放したいものは何ですか。"
+    },
+    "tiktok": {
+      "copy": "本日の音楽はBALIAN『ATAPA』。苦行と浄化の炎から始まる、儀式の開幕曲。あなたが今、手放したいものは？ #ABI伯爵 #BALIAN #ATAPA"
+    },
+    "youtube": {
+      "title": "苦行と浄化の炎｜BALIAN『ATAPA』#Shorts",
+      "copy": "本日の音楽は、BALIANの冒頭を飾る『ATAPA』。バリ島の霊的な場所と儀式を巡る物語、その開幕を15秒で紹介します。"
+    }
+  },
+  "publicationGate": "Do not replace canonical copy or publish this candidate until human approval is recorded and the native manifest, approval packet, ledger, and media preflight agree."
+}

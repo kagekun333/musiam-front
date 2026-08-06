@@ -1,0 +1,39 @@
+{
+  "month": "2026-07",
+  "phase": "setup",
+  "editionLocks": [
+    { "editionId": "VIP-METAL-2026-07-IGNITION", "workTitle": "33 IGNITION", "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/33 IGNITION/cover.jpeg", "sourcePixels": "3000x3000", "salePermissionStatus": "confirmed_by_owner_2026-07-18", "unitLimit": 3, "unitsPaid": 0, "lockStatus": "rights_confirmed_awaiting_print_proof" },
+    { "editionId": "VIP-METAL-2026-07-HOME", "workTitle": "A Town Called Almost Home", "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/A Town Called Almost Home/cover.png", "sourcePixels": "3000x3000", "salePermissionStatus": "confirmed_by_owner_2026-07-18", "unitLimit": 3, "unitsPaid": 0, "lockStatus": "rights_confirmed_awaiting_print_proof" },
+    { "editionId": "VIP-METAL-2026-07-BALIAN", "workTitle": "BALIAN", "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/BALIAN/cover.png", "sourcePixels": "3000x3000", "salePermissionStatus": "confirmed_by_owner_2026-07-18", "unitLimit": 3, "unitsPaid": 0, "lockStatus": "rights_confirmed_awaiting_print_proof" },
+    { "editionId": "VIP-METAL-2026-07-NATURA", "workTitle": "Deus sive Natura", "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/Deus sive Natura/cover.png", "sourcePixels": "3000x3000", "salePermissionStatus": "confirmed_by_owner_2026-07-18", "unitLimit": 3, "unitsPaid": 0, "lockStatus": "controlled_sale_open_made_to_order" }
+  ],
+  "assetReadiness": {
+    "status": "awaiting_proof",
+    "sourceMountPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC",
+    "provisionalMinimumLongSidePx": 3000,
+    "shortlistMasterLongSidePx": 3000,
+    "lastAuditedAt": "2026-07-18",
+    "sourceMountAvailable": false,
+    "sourceMountLastCheckedAt": "2026-07-20",
+    "rule": "Source masters, owner sale permission, platform checkout quotes and physical specification are confirmed. NATURA may be offered as a disclosed made-to-order product before Human-approved physical proof; proof remains mandatory before claiming verified physical quality. Vendor ordering begins only after customer payment and an order-specific payment approval."
+  },
+  "controlledSale": {
+    "status": "open",
+    "editionId": "VIP-METAL-2026-07-NATURA",
+    "amountJpy": 330000,
+    "model": "customer_payment_then_single_item_vendor_order",
+    "vendor": "whitewall-jp",
+    "proofState": "unapproved_disclosed",
+    "approvedAt": "2026-07-24T11:25:41.000Z"
+  },
+  "sales": [],
+  "funnel": {
+    "namedProspects": 0,
+    "previewOptIns": 0,
+    "dossierOpened": 0,
+    "purchaseIntent": 0,
+    "checkoutStarted": 0
+  },
+  "decisiveCloseUnitsUsed": 0,
+  "lastAuditAt": null
+}

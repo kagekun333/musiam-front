@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-07-30T22:51:00+09:00",
+  "method": "Exact Human-approved owner-browser profile edits followed by public rendered-DOM target verification; no post, DM, paid promotion or synthetic funnel event.",
+  "profiles": {
+    "instagram": {
+      "url": "https://www.instagram.com/abi_hakusyaku/",
+      "pageTitleObserved": "ABI伯爵(@abi_hakusyaku) • Instagram写真と動画",
+      "hakusyakuLinksObserved": [],
+      "result": "MOBILE_APP_ACTION_REQUIRED",
+      "constraint": "Desktop profile editor explicitly states links can only be edited in the Instagram mobile app."
+    },
+    "threads": {
+      "url": "https://www.threads.com/@abi_hakusyaku",
+      "pageTitleObserved": "ABI伯爵(@abi_hakusyaku) • Threadsでもっと語ろう",
+      "publicTargetObserved": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "result": "DIRECT_CHAT_LINK_VERIFIED",
+      "verifiedAt": "2026-07-30T22:46:00+09:00"
+    },
+    "tiktok": {
+      "url": "https://www.tiktok.com/@countabi",
+      "result": "WEBSITE_FIELD_NOT_AVAILABLE",
+      "constraint": "The logged-in desktop profile editor exposed username, name and bio only; no website field was available."
+    },
+    "youtube": {
+      "url": "https://www.youtube.com/@ABI%E4%BC%AF%E7%88%B5",
+      "publicTargetObserved": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "result": "DIRECT_CHAT_LINK_VERIFIED",
+      "verifiedAt": "2026-07-30T22:50:00+09:00"
+    }
+  },
+  "directGeneralChatLinksVerified": 2,
+  "activeAudiencePlatforms": 4,
+  "claimBoundary": "This audit proves 2/4 direct general 伯爵Chat profile links. Instagram still requires the mobile app and TikTok currently exposes no website field. Profile links do not prove traffic, consultation, demand or revenue."
+}

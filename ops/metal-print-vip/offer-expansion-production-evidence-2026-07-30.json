@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-07-30T23:01:19+09:00",
+  "status": "PRODUCTION_VERIFIED",
+  "approvalTokens": [
+    "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-IGNITION:330000",
+    "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-HOME:330000",
+    "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-BALIAN:330000"
+  ],
+  "approvedCapacity": {
+    "editionCount": 4,
+    "unitCount": 12,
+    "unitPriceJpy": 330000,
+    "grossCapacityJpy": 3960000
+  },
+  "newEditionBindings": [
+    {
+      "editionId": "VIP-METAL-2026-07-IGNITION",
+      "approvalHash": "4051384ba4031594085267f5af17427c6b1fd5598248dc49e64ec55a00f3d67f",
+      "publicPath": "/metal-print/33-ignition-office-art",
+      "httpStatus": 200
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-HOME",
+      "approvalHash": "1c2aca43a8ef49a98e48391386de7efa04c1c549b89881e5b1ebe406878f921a",
+      "publicPath": "/metal-print/almost-home-hotel-art",
+      "httpStatus": 200
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-BALIAN",
+      "approvalHash": "2e34aeccb6a73e742397cd29c474914684af76ed55cf8bd272aeb5ed4e22167b",
+      "publicPath": "/metal-print/balian-retreat-art",
+      "httpStatus": 200
+    }
+  ],
+  "existingEdition": {
+    "editionId": "VIP-METAL-2026-07-NATURA",
+    "publicPath": "/metal-print/deus-sive-natura-wall-art",
+    "httpStatus": 200
+  },
+  "deployment": {
+    "provider": "vercel",
+    "id": "dpl_2BgYg9pFeEXkwfPdG8xY6xxRmJ1C",
+    "target": "production",
+    "readyState": "READY",
+    "deploymentUrl": "https://musiam-front-m8e8sesnj-hakusyakus-projects.vercel.app",
+    "productionAlias": "https://www.hakusyaku.xyz"
+  },
+  "liveVerification": {
+    "vipIndexUrl": "https://www.hakusyaku.xyz/vip-metal-print",
+    "vipIndexHttpStatus": 200,
+    "allFourSlugsPresentInRenderedHtml": true,
+    "allFourProductPagesHttp200": true
+  },
+  "safety": {
+    "stripeCheckoutSessionCreated": false,
+    "paymentCaptured": false,
+    "orderPlaced": false,
+    "newSocialPostPublished": false
+  }
+}

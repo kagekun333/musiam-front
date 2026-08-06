@@ -1,0 +1,1402 @@
+{
+  "generatedAt": "2026-08-03T03:51:12.308Z",
+  "evidenceClass": "DURABLE_DAILY_OPS_RECORDS",
+  "last": {
+    "generatedAt": "2026-08-03T00:31:56.206Z",
+    "date": "2026-08-03",
+    "sprintStartDate": "2026-07-25",
+    "dayOfSprint": 10,
+    "status": "BEHIND_QUALIFIED_PACE",
+    "action": "勝ち配置は未証明。承認済み配信を予定どおり継続し、配置ごとに100 Dossierかつ3 qualifiedへ到達するまで集中配信しない。",
+    "expectedQualifiedToDate": 34,
+    "qualified": 0,
+    "preflightRequested": 0,
+    "preflightDemandByWork": [],
+    "offerPreflightCandidates": [],
+    "pipelineCoverage": 0,
+    "consultationNotificationFailures": 0,
+    "netNonRefundedYen": 0,
+    "funnel": {
+      "metal_home_view": {
+        "sessions": 13
+      },
+      "metal_home_cta_click": {
+        "sessions": 2
+      },
+      "metal_dossier_view": {
+        "sessions": 4
+      },
+      "metal_chat_start": {
+        "sessions": 3
+      },
+      "metal_salon_open": {
+        "sessions": 3
+      },
+      "metal_first_message": {
+        "sessions": 2
+      },
+      "metal_duke": {
+        "sessions": 2
+      },
+      "metal_edition_selected": {
+        "sessions": 0
+      },
+      "metal_consultation_submitted": {
+        "sessions": 0
+      }
+    },
+    "chatInterest": {
+      "days": 30,
+      "metrics": {
+        "chat_interest_bridge_show": {
+          "sessions": 0
+        },
+        "chat_interest_bridge_accept": {
+          "sessions": 0
+        },
+        "chat_interest_bridge_decline": {
+          "sessions": 0
+        }
+      },
+      "byTheme": {},
+      "byPlacement": {},
+      "rates": {
+        "acceptRate": null,
+        "declineRate": null
+      },
+      "privacy": "Anonymous UUID, bounded bridge theme and bounded UTM source/campaign/content only; no email, IP, conversation text, work title or purchase data is stored."
+    },
+    "chatInterestDiagnosis": {
+      "status": "NO_SAMPLE",
+      "action": "承認済み集客を継続し、最初の実訪問者による雑談関心bridge表示を取得する。",
+      "shows": 0,
+      "accepts": 0,
+      "declines": 0,
+      "acceptRate": null,
+      "provenThemes": [],
+      "weakThemes": [],
+      "evidenceBoundary": "Do not optimize before 50 total shows or classify a theme before 20 shows. Acceptance indicates voluntary work interest, not purchase intent, qualification or revenue."
+    },
+    "vendorOrders": {
+      "awaitingVendorOrder": 0,
+      "productionInProgress": 0,
+      "staleOver24h": 0,
+      "dispatchOverdue": 0,
+      "notificationFailures": 0,
+      "candidates": [],
+      "evidenceBoundary": "Awaiting records prove paid orders require action. Production records require a vendor-order evidence hash but do not prove shipment or fulfillment."
+    },
+    "proofReview": {
+      "awaitingReceiptReview": 0,
+      "candidates": [],
+      "evidenceBoundary": "These are fulfilled-order review candidates, not approved proofs. Human receipt review and explicit ACCEPT remain mandatory."
+    },
+    "rates": {
+      "homeToMetalClick": 0.15384615384615385,
+      "dossierToChat": 0.75,
+      "salonToFirstMessage": 0.6666666666666666,
+      "firstMessageToDuke": 1,
+      "selectionToConsultation": null
+    },
+    "placementPerformance": {
+      "observedPlacements": 5,
+      "bestObserved": {
+        "campaign": "metal_print_natura_launch",
+        "locale": "unknown",
+        "source": "youtube",
+        "content": "NATURA-01",
+        "dossier": 3,
+        "consultations": 0,
+        "qualified": 0,
+        "qualifiedPerDossier": 0
+      },
+      "allocationCandidate": null,
+      "stopCandidates": [],
+      "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+    },
+    "profileIngress": {
+      "activePlatforms": [
+        "instagram",
+        "threads",
+        "tiktok",
+        "youtube"
+      ],
+      "verifiedGeneralChatLinks": [
+        "threads",
+        "youtube"
+      ],
+      "gaps": [
+        "instagram",
+        "tiktok"
+      ],
+      "passed": false,
+      "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended.",
+      "deferred": true
+    },
+    "offerCapacityGate": {
+      "approvedEditionIds": [
+        "VIP-METAL-2026-07-IGNITION",
+        "VIP-METAL-2026-07-HOME",
+        "VIP-METAL-2026-07-BALIAN",
+        "VIP-METAL-2026-07-NATURA"
+      ],
+      "approvedOfferUnits": 12,
+      "maximumApprovedOfferGrossYen": 3960000,
+      "requiredPaidUnits": 10,
+      "targetGrossYen": 3000000,
+      "passed": true
+    },
+    "notification": {
+      "attempted": true,
+      "ok": true
+    }
+  },
+  "daily": {
+    "2026-07-29": {
+      "generatedAt": "2026-07-29T00:46:06.853Z",
+      "date": "2026-07-29",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 5,
+      "status": "FIX_PROFILE_INGRESS",
+      "action": "承認済みLaunch Waveは継続しつつ、プロフィール更新Human Gateで伯爵Chat直接リンクを修正する: instagram, threads, tiktok, youtube。未確認リンクを流入実績として数えない。",
+      "expectedQualifiedToDate": 17,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 8
+        },
+        "metal_home_cta_click": {
+          "sessions": 2
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 2
+        },
+        "metal_salon_open": {
+          "sessions": 2
+        },
+        "metal_first_message": {
+          "sessions": 1
+        },
+        "metal_duke": {
+          "sessions": 1
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0.25,
+        "dossierToChat": 0.5,
+        "salonToFirstMessage": 0.5,
+        "firstMessageToDuke": 1,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 4,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [],
+        "gaps": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended."
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 3,
+        "maximumApprovedOfferGrossYen": 990000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": false
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-07-30": {
+      "generatedAt": "2026-07-30T00:46:06.359Z",
+      "date": "2026-07-30",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 6,
+      "status": "FIX_PROFILE_INGRESS",
+      "action": "承認済みLaunch Waveは継続しつつ、プロフィール更新Human Gateで伯爵Chat直接リンクを修正する: instagram, threads, tiktok, youtube。未確認リンクを流入実績として数えない。",
+      "expectedQualifiedToDate": 20,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 8
+        },
+        "metal_home_cta_click": {
+          "sessions": 2
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 2
+        },
+        "metal_salon_open": {
+          "sessions": 2
+        },
+        "metal_first_message": {
+          "sessions": 1
+        },
+        "metal_duke": {
+          "sessions": 1
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0.25,
+        "dossierToChat": 0.5,
+        "salonToFirstMessage": 0.5,
+        "firstMessageToDuke": 1,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 4,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [],
+        "gaps": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended."
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 3,
+        "maximumApprovedOfferGrossYen": 990000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": false
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-07-31": {
+      "generatedAt": "2026-07-31T00:41:01.268Z",
+      "date": "2026-07-31",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 7,
+      "status": "FIX_PROFILE_INGRESS",
+      "action": "承認済みLaunch Waveは継続しつつ、プロフィール更新Human Gateで伯爵Chat直接リンクを修正する: instagram, tiktok。未確認リンクを流入実績として数えない。",
+      "expectedQualifiedToDate": 24,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 12
+        },
+        "metal_home_cta_click": {
+          "sessions": 2
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 3
+        },
+        "metal_salon_open": {
+          "sessions": 3
+        },
+        "metal_first_message": {
+          "sessions": 2
+        },
+        "metal_duke": {
+          "sessions": 2
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0.16666666666666666,
+        "dossierToChat": 0.75,
+        "salonToFirstMessage": 0.6666666666666666,
+        "firstMessageToDuke": 1,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 5,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [
+          "threads",
+          "youtube"
+        ],
+        "gaps": [
+          "instagram",
+          "tiktok"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended."
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-IGNITION",
+          "VIP-METAL-2026-07-HOME",
+          "VIP-METAL-2026-07-BALIAN",
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 12,
+        "maximumApprovedOfferGrossYen": 3960000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": true
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-08-01": {
+      "generatedAt": "2026-08-01T00:31:56.237Z",
+      "date": "2026-08-01",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 8,
+      "status": "BEHIND_QUALIFIED_PACE",
+      "action": "勝ち配置は未証明。承認済み配信を予定どおり継続し、配置ごとに100 Dossierかつ3 qualifiedへ到達するまで集中配信しない。",
+      "expectedQualifiedToDate": 27,
+      "qualified": 0,
+      "preflightRequested": 0,
+      "preflightDemandByWork": [],
+      "offerPreflightCandidates": [],
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 12
+        },
+        "metal_home_cta_click": {
+          "sessions": 2
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 3
+        },
+        "metal_salon_open": {
+          "sessions": 3
+        },
+        "metal_first_message": {
+          "sessions": 2
+        },
+        "metal_duke": {
+          "sessions": 2
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "chatInterest": {
+        "days": 30,
+        "metrics": {
+          "chat_interest_bridge_show": {
+            "sessions": 0
+          },
+          "chat_interest_bridge_accept": {
+            "sessions": 0
+          },
+          "chat_interest_bridge_decline": {
+            "sessions": 0
+          }
+        },
+        "byTheme": {},
+        "byPlacement": {},
+        "rates": {
+          "acceptRate": null,
+          "declineRate": null
+        },
+        "privacy": "Anonymous UUID, bounded bridge theme and bounded UTM source/campaign/content only; no email, IP, conversation text, work title or purchase data is stored."
+      },
+      "chatInterestDiagnosis": {
+        "status": "NO_SAMPLE",
+        "action": "承認済み集客を継続し、最初の実訪問者による雑談関心bridge表示を取得する。",
+        "shows": 0,
+        "accepts": 0,
+        "declines": 0,
+        "acceptRate": null,
+        "provenThemes": [],
+        "weakThemes": [],
+        "evidenceBoundary": "Do not optimize before 50 total shows or classify a theme before 20 shows. Acceptance indicates voluntary work interest, not purchase intent, qualification or revenue."
+      },
+      "vendorOrders": {
+        "awaitingVendorOrder": 0,
+        "productionInProgress": 0,
+        "staleOver24h": 0,
+        "dispatchOverdue": 0,
+        "notificationFailures": 0,
+        "candidates": [],
+        "evidenceBoundary": "Awaiting records prove paid orders require action. Production records require a vendor-order evidence hash but do not prove shipment or fulfillment."
+      },
+      "proofReview": {
+        "awaitingReceiptReview": 0,
+        "candidates": [],
+        "evidenceBoundary": "These are fulfilled-order review candidates, not approved proofs. Human receipt review and explicit ACCEPT remain mandatory."
+      },
+      "rates": {
+        "homeToMetalClick": 0.16666666666666666,
+        "dossierToChat": 0.75,
+        "salonToFirstMessage": 0.6666666666666666,
+        "firstMessageToDuke": 1,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 5,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [
+          "threads",
+          "youtube"
+        ],
+        "gaps": [
+          "instagram",
+          "tiktok"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended.",
+        "deferred": true
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-IGNITION",
+          "VIP-METAL-2026-07-HOME",
+          "VIP-METAL-2026-07-BALIAN",
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 12,
+        "maximumApprovedOfferGrossYen": 3960000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": true
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-07-22": {
+      "generatedAt": "2026-07-22T00:15:25.080Z",
+      "date": "2026-07-22",
+      "sprintStartDate": null,
+      "dayOfSprint": 0,
+      "status": "NO_TRAFFIC",
+      "action": "承認済み配信パックを公開し、最初の実顧客Dossier sessionを獲得する。",
+      "expectedQualifiedToDate": 0,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_dossier_view": {
+          "sessions": 0
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "dossierToChat": null,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      }
+    },
+    "2026-07-23": {
+      "generatedAt": "2026-07-23T12:32:28.905Z",
+      "date": "2026-07-23",
+      "sprintStartDate": null,
+      "dayOfSprint": 0,
+      "status": "NO_TRAFFIC",
+      "action": "承認済み配信パックを公開し、最初の実顧客Dossier sessionを獲得する。",
+      "expectedQualifiedToDate": 0,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_dossier_view": {
+          "sessions": 0
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "dossierToChat": null,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      },
+      "notification": {
+        "attempted": true,
+        "ok": false,
+        "error": "403: {\"statusCode\":403,\"name\":\"validation_error\",\"message\":\"You can only send testing emails to your own email address (abihakusyaku@gmail.com). To send emails to other recipients, please verify a domain a"
+      }
+    },
+    "2026-07-27": {
+      "generatedAt": "2026-07-27T00:46:06.180Z",
+      "date": "2026-07-27",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 3,
+      "status": "FIX_PROFILE_INGRESS",
+      "action": "承認済みLaunch Waveは継続しつつ、プロフィール更新Human Gateで伯爵Chat直接リンクを修正する: instagram, threads, tiktok, youtube。未確認リンクを流入実績として数えない。",
+      "expectedQualifiedToDate": 10,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 5
+        },
+        "metal_home_cta_click": {
+          "sessions": 0
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0,
+        "dossierToChat": 0,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 3,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [],
+        "gaps": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended."
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 3,
+        "maximumApprovedOfferGrossYen": 990000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": false
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-08-03": {
+      "generatedAt": "2026-08-03T00:31:56.206Z",
+      "date": "2026-08-03",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 10,
+      "status": "BEHIND_QUALIFIED_PACE",
+      "action": "勝ち配置は未証明。承認済み配信を予定どおり継続し、配置ごとに100 Dossierかつ3 qualifiedへ到達するまで集中配信しない。",
+      "expectedQualifiedToDate": 34,
+      "qualified": 0,
+      "preflightRequested": 0,
+      "preflightDemandByWork": [],
+      "offerPreflightCandidates": [],
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 13
+        },
+        "metal_home_cta_click": {
+          "sessions": 2
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 3
+        },
+        "metal_salon_open": {
+          "sessions": 3
+        },
+        "metal_first_message": {
+          "sessions": 2
+        },
+        "metal_duke": {
+          "sessions": 2
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "chatInterest": {
+        "days": 30,
+        "metrics": {
+          "chat_interest_bridge_show": {
+            "sessions": 0
+          },
+          "chat_interest_bridge_accept": {
+            "sessions": 0
+          },
+          "chat_interest_bridge_decline": {
+            "sessions": 0
+          }
+        },
+        "byTheme": {},
+        "byPlacement": {},
+        "rates": {
+          "acceptRate": null,
+          "declineRate": null
+        },
+        "privacy": "Anonymous UUID, bounded bridge theme and bounded UTM source/campaign/content only; no email, IP, conversation text, work title or purchase data is stored."
+      },
+      "chatInterestDiagnosis": {
+        "status": "NO_SAMPLE",
+        "action": "承認済み集客を継続し、最初の実訪問者による雑談関心bridge表示を取得する。",
+        "shows": 0,
+        "accepts": 0,
+        "declines": 0,
+        "acceptRate": null,
+        "provenThemes": [],
+        "weakThemes": [],
+        "evidenceBoundary": "Do not optimize before 50 total shows or classify a theme before 20 shows. Acceptance indicates voluntary work interest, not purchase intent, qualification or revenue."
+      },
+      "vendorOrders": {
+        "awaitingVendorOrder": 0,
+        "productionInProgress": 0,
+        "staleOver24h": 0,
+        "dispatchOverdue": 0,
+        "notificationFailures": 0,
+        "candidates": [],
+        "evidenceBoundary": "Awaiting records prove paid orders require action. Production records require a vendor-order evidence hash but do not prove shipment or fulfillment."
+      },
+      "proofReview": {
+        "awaitingReceiptReview": 0,
+        "candidates": [],
+        "evidenceBoundary": "These are fulfilled-order review candidates, not approved proofs. Human receipt review and explicit ACCEPT remain mandatory."
+      },
+      "rates": {
+        "homeToMetalClick": 0.15384615384615385,
+        "dossierToChat": 0.75,
+        "salonToFirstMessage": 0.6666666666666666,
+        "firstMessageToDuke": 1,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 5,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [
+          "threads",
+          "youtube"
+        ],
+        "gaps": [
+          "instagram",
+          "tiktok"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended.",
+        "deferred": true
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-IGNITION",
+          "VIP-METAL-2026-07-HOME",
+          "VIP-METAL-2026-07-BALIAN",
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 12,
+        "maximumApprovedOfferGrossYen": 3960000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": true
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-07-25": {
+      "generatedAt": "2026-07-25T00:08:19.325Z",
+      "date": "2026-07-25",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 1,
+      "status": "BEHIND_QUALIFIED_PACE",
+      "action": "最良campaignへ配信を集中し、日次3.4 qualifiedまで流入量を増やす。",
+      "expectedQualifiedToDate": 4,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 1
+        },
+        "metal_home_cta_click": {
+          "sessions": 0
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0,
+        "dossierToChat": 0,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 3,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-08-02": {
+      "generatedAt": "2026-08-02T00:31:56.370Z",
+      "date": "2026-08-02",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 9,
+      "status": "BEHIND_QUALIFIED_PACE",
+      "action": "勝ち配置は未証明。承認済み配信を予定どおり継続し、配置ごとに100 Dossierかつ3 qualifiedへ到達するまで集中配信しない。",
+      "expectedQualifiedToDate": 30,
+      "qualified": 0,
+      "preflightRequested": 0,
+      "preflightDemandByWork": [],
+      "offerPreflightCandidates": [],
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 13
+        },
+        "metal_home_cta_click": {
+          "sessions": 2
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 3
+        },
+        "metal_salon_open": {
+          "sessions": 3
+        },
+        "metal_first_message": {
+          "sessions": 2
+        },
+        "metal_duke": {
+          "sessions": 2
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "chatInterest": {
+        "days": 30,
+        "metrics": {
+          "chat_interest_bridge_show": {
+            "sessions": 0
+          },
+          "chat_interest_bridge_accept": {
+            "sessions": 0
+          },
+          "chat_interest_bridge_decline": {
+            "sessions": 0
+          }
+        },
+        "byTheme": {},
+        "byPlacement": {},
+        "rates": {
+          "acceptRate": null,
+          "declineRate": null
+        },
+        "privacy": "Anonymous UUID, bounded bridge theme and bounded UTM source/campaign/content only; no email, IP, conversation text, work title or purchase data is stored."
+      },
+      "chatInterestDiagnosis": {
+        "status": "NO_SAMPLE",
+        "action": "承認済み集客を継続し、最初の実訪問者による雑談関心bridge表示を取得する。",
+        "shows": 0,
+        "accepts": 0,
+        "declines": 0,
+        "acceptRate": null,
+        "provenThemes": [],
+        "weakThemes": [],
+        "evidenceBoundary": "Do not optimize before 50 total shows or classify a theme before 20 shows. Acceptance indicates voluntary work interest, not purchase intent, qualification or revenue."
+      },
+      "vendorOrders": {
+        "awaitingVendorOrder": 0,
+        "productionInProgress": 0,
+        "staleOver24h": 0,
+        "dispatchOverdue": 0,
+        "notificationFailures": 0,
+        "candidates": [],
+        "evidenceBoundary": "Awaiting records prove paid orders require action. Production records require a vendor-order evidence hash but do not prove shipment or fulfillment."
+      },
+      "proofReview": {
+        "awaitingReceiptReview": 0,
+        "candidates": [],
+        "evidenceBoundary": "These are fulfilled-order review candidates, not approved proofs. Human receipt review and explicit ACCEPT remain mandatory."
+      },
+      "rates": {
+        "homeToMetalClick": 0.15384615384615385,
+        "dossierToChat": 0.75,
+        "salonToFirstMessage": 0.6666666666666666,
+        "firstMessageToDuke": 1,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 5,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [
+          "threads",
+          "youtube"
+        ],
+        "gaps": [
+          "instagram",
+          "tiktok"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended.",
+        "deferred": true
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-IGNITION",
+          "VIP-METAL-2026-07-HOME",
+          "VIP-METAL-2026-07-BALIAN",
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 12,
+        "maximumApprovedOfferGrossYen": 3960000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": true
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-07-26": {
+      "generatedAt": "2026-07-26T03:26:22.145Z",
+      "date": "2026-07-26",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 2,
+      "status": "FIX_PROFILE_INGRESS",
+      "action": "承認済みLaunch Waveは継続しつつ、プロフィール更新Human Gateで伯爵Chat直接リンクを修正する: instagram, threads, tiktok, youtube。未確認リンクを流入実績として数えない。",
+      "expectedQualifiedToDate": 7,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 2
+        },
+        "metal_home_cta_click": {
+          "sessions": 0
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0,
+        "dossierToChat": 0,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 3,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [],
+        "gaps": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended."
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 3,
+        "maximumApprovedOfferGrossYen": 990000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": false
+      },
+      "notification": {
+        "attempted": false,
+        "ok": false
+      }
+    },
+    "2026-07-28": {
+      "generatedAt": "2026-07-28T00:46:06.560Z",
+      "date": "2026-07-28",
+      "sprintStartDate": "2026-07-25",
+      "dayOfSprint": 4,
+      "status": "FIX_PROFILE_INGRESS",
+      "action": "承認済みLaunch Waveは継続しつつ、プロフィール更新Human Gateで伯爵Chat直接リンクを修正する: instagram, threads, tiktok, youtube。未確認リンクを流入実績として数えない。",
+      "expectedQualifiedToDate": 14,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 5
+        },
+        "metal_home_cta_click": {
+          "sessions": 0
+        },
+        "metal_dossier_view": {
+          "sessions": 4
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": 0,
+        "dossierToChat": 0,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 3,
+        "bestObserved": {
+          "campaign": "metal_print_natura_launch",
+          "locale": "unknown",
+          "source": "youtube",
+          "content": "NATURA-01",
+          "dossier": 3,
+          "consultations": 0,
+          "qualified": 0,
+          "qualifiedPerDossier": 0
+        },
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "profileIngress": {
+        "activePlatforms": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "verifiedGeneralChatLinks": [],
+        "gaps": [
+          "instagram",
+          "threads",
+          "tiktok",
+          "youtube"
+        ],
+        "passed": false,
+        "evidenceBoundary": "A site-side Chat activation PASS is not a social-profile-link PASS. Each active platform requires a publicly verified general 伯爵Chat link; X is excluded while suspended."
+      },
+      "offerCapacityGate": {
+        "approvedEditionIds": [
+          "VIP-METAL-2026-07-NATURA"
+        ],
+        "approvedOfferUnits": 3,
+        "maximumApprovedOfferGrossYen": 990000,
+        "requiredPaidUnits": 10,
+        "targetGrossYen": 3000000,
+        "passed": false
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    },
+    "2026-07-24": {
+      "generatedAt": "2026-07-24T00:14:49.122Z",
+      "date": "2026-07-24",
+      "sprintStartDate": null,
+      "dayOfSprint": 0,
+      "status": "NO_TRAFFIC",
+      "action": "承認済み配信パックを公開し、最初の実顧客Dossier sessionを獲得する。",
+      "expectedQualifiedToDate": 0,
+      "qualified": 0,
+      "pipelineCoverage": 0,
+      "consultationNotificationFailures": 0,
+      "netNonRefundedYen": 0,
+      "funnel": {
+        "metal_home_view": {
+          "sessions": 0
+        },
+        "metal_home_cta_click": {
+          "sessions": 0
+        },
+        "metal_dossier_view": {
+          "sessions": 0
+        },
+        "metal_chat_start": {
+          "sessions": 0
+        },
+        "metal_salon_open": {
+          "sessions": 0
+        },
+        "metal_first_message": {
+          "sessions": 0
+        },
+        "metal_duke": {
+          "sessions": 0
+        },
+        "metal_edition_selected": {
+          "sessions": 0
+        },
+        "metal_consultation_submitted": {
+          "sessions": 0
+        }
+      },
+      "rates": {
+        "homeToMetalClick": null,
+        "dossierToChat": null,
+        "salonToFirstMessage": null,
+        "firstMessageToDuke": null,
+        "selectionToConsultation": null
+      },
+      "placementPerformance": {
+        "observedPlacements": 0,
+        "bestObserved": null,
+        "allocationCandidate": null,
+        "stopCandidates": [],
+        "evidenceBoundary": "Allocation requires at least 100 Dossier sessions and 3 durable qualified consultations per placement; otherwise bestObserved is descriptive only."
+      },
+      "notification": {
+        "attempted": true,
+        "ok": true
+      }
+    }
+  }
+}

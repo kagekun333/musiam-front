@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-05T13:57:24.326Z",
+  "waveId": "DMW-20260805-7D",
+  "summary": {
+    "placements": 28,
+    "due": 3,
+    "executable": 1,
+    "blockedDue": 2,
+    "published": 1
+  },
+  "executablePlacementIds": [
+    "DMR-20260805-4531782f-youtube"
+  ],
+  "rows": [
+    {
+      "placementId": "DMR-20260805-4531782f-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": true,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_5bIfjfVK9QwHfu1NzNc94M.jpg",
+      "mediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+      "approvedMediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-threads",
+      "platform": "threads",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "PUBLISHED",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_5bIfjfVK9QwHfu1NzNc94M.jpg",
+      "mediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+      "approvedMediaSha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "ALREADY_PUBLISHED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": true,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M.mp4",
+      "mediaSha256": "611399a2b6e9fe1745894f8508ec19c124b066964e6a14fa3990939474052e99",
+      "approvedMediaSha256": "611399a2b6e9fe1745894f8508ec19c124b066964e6a14fa3990939474052e99",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260805-4531782f-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "scheduledAt": "2026-08-05T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": true,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "959389ae8d40cfadcb3850671a44eed10aa440482f6c3b6ec17b13601971d79b",
+      "approvedMediaSha256": "959389ae8d40cfadcb3850671a44eed10aa440482f6c3b6ec17b13601971d79b",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": true,
+      "reasons": [
+        "EXECUTABLE_APPROVED_DUE_READY"
+      ]
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_60QCBTuEwNc380r2YtUO0f.jpg",
+      "mediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+      "approvedMediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-threads",
+      "platform": "threads",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_60QCBTuEwNc380r2YtUO0f.jpg",
+      "mediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+      "approvedMediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f.mp4",
+      "mediaSha256": "d45c167fffb09a9cafa579644e4444228151b0cb370609565965a5beb2f13471",
+      "approvedMediaSha256": "d45c167fffb09a9cafa579644e4444228151b0cb370609565965a5beb2f13471",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260806-fbd1b2f2-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "scheduledAt": "2026-08-06T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "ae6aa28dd79dddfe324a764d50a9f71a5f9997356efcefebd8d71c57f9343c97",
+      "approvedMediaSha256": "ae6aa28dd79dddfe324a764d50a9f71a5f9997356efcefebd8d71c57f9343c97",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_0o5od07Lyxu9w9obQuvgm9.jpg",
+      "mediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+      "approvedMediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%B6%E3%82%A2%E3%83%BC%E3%82%B9&workId=spotify-single-0o5od07Lyxu9w9obQuvgm9&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260807-fa76c46a-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-threads",
+      "platform": "threads",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_0o5od07Lyxu9w9obQuvgm9.jpg",
+      "mediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+      "approvedMediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%B6%E3%82%A2%E3%83%BC%E3%82%B9&workId=spotify-single-0o5od07Lyxu9w9obQuvgm9&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260807-fa76c46a-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9.mp4",
+      "mediaSha256": "9a6a3ed72def2be8384e83a42971334c0c5f40ebf91aea90bcfb645e043529d0",
+      "approvedMediaSha256": "9a6a3ed72def2be8384e83a42971334c0c5f40ebf91aea90bcfb645e043529d0",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%B6%E3%82%A2%E3%83%BC%E3%82%B9&workId=spotify-single-0o5od07Lyxu9w9obQuvgm9&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260807-fa76c46a-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260807-fa76c46a-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "scheduledAt": "2026-08-07T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "03fdba2e5cc5a826390c15490260e25c00f6bcd1f8a590e5ce50a735600835d6",
+      "approvedMediaSha256": "03fdba2e5cc5a826390c15490260e25c00f6bcd1f8a590e5ce50a735600835d6",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%B6%E3%82%A2%E3%83%BC%E3%82%B9&workId=spotify-single-0o5od07Lyxu9w9obQuvgm9&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260807-fa76c46a-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%B6%E3%82%A2%E3%83%BC%E3%82%B9&workId=spotify-single-0o5od07Lyxu9w9obQuvgm9&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260807-fa76c46a-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_2ti9uIOu2JPOMMzUf41Snl.jpg",
+      "mediaSha256": "a9cc4533a9683584480fa52765923d983857333512e49f476f6b8d21043ff15f",
+      "approvedMediaSha256": "a9cc4533a9683584480fa52765923d983857333512e49f476f6b8d21043ff15f",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88&workId=spotify-single-2ti9uIOu2JPOMMzUf41Snl&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260808-3a28b6af-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-threads",
+      "platform": "threads",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_2ti9uIOu2JPOMMzUf41Snl.jpg",
+      "mediaSha256": "a9cc4533a9683584480fa52765923d983857333512e49f476f6b8d21043ff15f",
+      "approvedMediaSha256": "a9cc4533a9683584480fa52765923d983857333512e49f476f6b8d21043ff15f",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88&workId=spotify-single-2ti9uIOu2JPOMMzUf41Snl&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260808-3a28b6af-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl.mp4",
+      "mediaSha256": "f61053a727a54931ea4e88fcc31bea961fb5928ee1c974ad3ea2d5595da76fe5",
+      "approvedMediaSha256": "f61053a727a54931ea4e88fcc31bea961fb5928ee1c974ad3ea2d5595da76fe5",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88&workId=spotify-single-2ti9uIOu2JPOMMzUf41Snl&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260808-3a28b6af-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260808-3a28b6af-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "scheduledAt": "2026-08-08T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "6841fa36d87b8b945311e9a66d65574e082b6b9ad0bad8576805182a5448555f",
+      "approvedMediaSha256": "6841fa36d87b8b945311e9a66d65574e082b6b9ad0bad8576805182a5448555f",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88&workId=spotify-single-2ti9uIOu2JPOMMzUf41Snl&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260808-3a28b6af-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E5%BC%B7%E5%88%B6%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88&workId=spotify-single-2ti9uIOu2JPOMMzUf41Snl&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260808-3a28b6af-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_3ILKNWXtZof2e6XS6Zvynr.jpg",
+      "mediaSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f",
+      "approvedMediaSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-threads",
+      "platform": "threads",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_3ILKNWXtZof2e6XS6Zvynr.jpg",
+      "mediaSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f",
+      "approvedMediaSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr.mp4",
+      "mediaSha256": "6aa7feeb02b4e4e3b52a5ac19ea07a99f4fbe726b8b9b8d0197c5f79e1c85051",
+      "approvedMediaSha256": "6aa7feeb02b4e4e3b52a5ac19ea07a99f4fbe726b8b9b8d0197c5f79e1c85051",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "723d7e47d0fa4ef04642a91a932324eb1068823fc9bdcba19f7ff9be28aaccd8",
+      "approvedMediaSha256": "723d7e47d0fa4ef04642a91a932324eb1068823fc9bdcba19f7ff9be28aaccd8",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_7s0xajVHIGgMYdwUuj48Cb.jpg",
+      "mediaSha256": "7eabed339ccdfb9fe874f33119ef753dd04a4ddc638db87e4ab147c69bdf06dc",
+      "approvedMediaSha256": "7eabed339ccdfb9fe874f33119ef753dd04a4ddc638db87e4ab147c69bdf06dc",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=FORCED+UPDATE%21&workId=spotify-single-7s0xajVHIGgMYdwUuj48Cb&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260810-701bf415-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-threads",
+      "platform": "threads",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_7s0xajVHIGgMYdwUuj48Cb.jpg",
+      "mediaSha256": "7eabed339ccdfb9fe874f33119ef753dd04a4ddc638db87e4ab147c69bdf06dc",
+      "approvedMediaSha256": "7eabed339ccdfb9fe874f33119ef753dd04a4ddc638db87e4ab147c69bdf06dc",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=FORCED+UPDATE%21&workId=spotify-single-7s0xajVHIGgMYdwUuj48Cb&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260810-701bf415-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb.mp4",
+      "mediaSha256": "7d33363115103c6fd0da9b8e416dc40c27d56011da3f5285be83756349e1a1b9",
+      "approvedMediaSha256": "7d33363115103c6fd0da9b8e416dc40c27d56011da3f5285be83756349e1a1b9",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=FORCED+UPDATE%21&workId=spotify-single-7s0xajVHIGgMYdwUuj48Cb&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260810-701bf415-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260810-701bf415-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "scheduledAt": "2026-08-10T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "7c32ee6d30d88a41da0b0bb1e4a2f46e7d14bde2e93cac5583d7a15958a801df",
+      "approvedMediaSha256": "7c32ee6d30d88a41da0b0bb1e4a2f46e7d14bde2e93cac5583d7a15958a801df",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=FORCED+UPDATE%21&workId=spotify-single-7s0xajVHIGgMYdwUuj48Cb&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260810-701bf415-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=FORCED+UPDATE%21&workId=spotify-single-7s0xajVHIGgMYdwUuj48Cb&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260810-701bf415-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-instagram",
+      "platform": "instagram",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH",
+      "mediaPath": "/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
+      "mediaSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438",
+      "approvedMediaSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-instagram",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      ]
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-threads",
+      "platform": "threads",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
+      "mediaSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438",
+      "approvedMediaSha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-threads",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-tiktok",
+      "platform": "tiktok",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": false,
+      "ingressStatus": "CLICKABLE_LINK_CAPABILITY_REQUIRED",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt.mp4",
+      "mediaSha256": "7fb9b128ef1de6e7372d9eb79e2f824fc6aa9de6ede93600839c5f431b9dc349",
+      "approvedMediaSha256": "7fb9b128ef1de6e7372d9eb79e2f824fc6aa9de6ede93600839c5f431b9dc349",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-tiktok",
+      "publicationFormat": null,
+      "publicationRequirements": null,
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE",
+        "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      ]
+    },
+    {
+      "placementId": "DMR-20260811-223361f3-youtube",
+      "platform": "youtube",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "scheduledAt": "2026-08-11T03:15:00.000Z",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "due": false,
+      "ingressReady": true,
+      "ingressStatus": "READY",
+      "mediaPath": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt-youtube-longform-1920x1080.mp4",
+      "mediaSha256": "600d77364c638c8d66e80c78ef227ab24f437d6d2afc523d521cdd1e3bf84123",
+      "approvedMediaSha256": "600d77364c638c8d66e80c78ef227ab24f437d6d2afc523d521cdd1e3bf84123",
+      "mediaHashMatches": true,
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-youtube",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%EC%82%AC%EC%9D%B8+%EC%A3%BC%EC%84%B8%EC%9A%94&workId=spotify-single-43CyheqfBIFgDSRmB4ZfAt&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260811-223361f3-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "executable": false,
+      "reasons": [
+        "WAITING_SCHEDULE"
+      ]
+    }
+  ],
+  "executionRule": "Only executablePlacementIds may proceed to external publication. Rebuild immediately before each post, then register exact public evidence before proceeding to another placement."
+}

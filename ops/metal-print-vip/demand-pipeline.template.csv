@@ -1,0 +1,5 @@
+prospectId,segment,source,owner,consentState,interestedWork,desiredSpace,budgetBand,purchaseTiming,decisionMaker,stage,dossierId,quotedPriceYen,priceAuthority,nextAction,nextActionAt,lostReason,paymentState,editionId,serialNumber
+MP-0001,existing_fan,,,unknown,,,,,,named,,,unassigned,research_and_classify,,,,,
+MP-0002,private_collector,,,unknown,,,,,,named,,,unassigned,research_and_classify,,,,,
+MP-0003,space_business,,,unknown,,,,,,named,,,unassigned,research_and_classify,,,,,
+MP-0004,corporate_gift,,,unknown,,,,,,named,,,unassigned,research_and_classify,,,,,

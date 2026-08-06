@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-24T11:25:41.000Z",
+  "status": "AUTHENTICATED_CART_VERIFIED_PURCHASE_NOT_AUTHORIZED",
+  "editionId": "VIP-METAL-2026-07-NATURA",
+  "workTitle": "Deus sive Natura",
+  "vendor": {
+    "id": "whitewall-jp",
+    "orderingModel": "self_service_single_item",
+    "contractRequired": false,
+    "loginUrl": "https://www.whitewall.com/jp/user/login",
+    "productUrl": "https://www.whitewall.com/jp/metal-prints/chromaluxe-hd-metal-print"
+  },
+  "uploadMaster": {
+    "relativePath": "ops/metal-print-vip/proof-assets/deus-sive-natura-whitewall-3000x3000.tiff",
+    "sha256": "abbef6d7a56c4d2fac8ae2c3326175f37b7a62d857789a4561f214692e6ea2b2",
+    "bytes": 27006076,
+    "width": 3000,
+    "height": 3000,
+    "format": "tiff",
+    "colorSpace": "RGB",
+    "hasAlpha": false
+  },
+  "sourceMaster": {
+    "absolutePath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/Deus sive Natura/cover.png",
+    "sha256": "449c2d9ebd4d4a7febed6babc2dd78f9736302067ca47870eca25fea96b40f1a",
+    "width": 3000,
+    "height": 3000,
+    "colorSpace": "RGB",
+    "hasAlpha": false
+  },
+  "configuration": {
+    "product": "ChromaLuxe HD Metal Print",
+    "process": "thermal sublimation on 1mm aluminum",
+    "widthMm": 600,
+    "heightMm": 600,
+    "quantity": 1,
+    "surface": "glossy",
+    "base": "white",
+    "frame": "none",
+    "border": "none",
+    "hangingHardware": "aluminium rails",
+    "panels": 1,
+    "crop": "full_square_1_to_1",
+    "superResolution": true,
+    "ultraHdCandidate": true,
+    "imageOptimizationCandidatePercent": 70
+  },
+  "lastObservedQuote": {
+    "capturedAt": "2026-07-24",
+    "evidenceClass": "CURRENT_PLATFORM_CART_AND_ADDRESS_CHECKOUT_QUOTE",
+    "productJpy": 26400,
+    "shippingJpy": 5100,
+    "displayedTotalJpy": 31500,
+    "taxWording": "VAT not included",
+    "leadTime": "approximately 12 working days"
+  },
+  "currentBrowserEvidence": {
+    "observedAt": "2026-07-24T11:00:00.000Z",
+    "authenticated": true,
+    "visibleCartItems": 1,
+    "uploadedMasterRelativePath": "ops/metal-print-vip/proof-assets/deus-sive-natura-whitewall-3000x3000.tiff",
+    "configurationVerified": true,
+    "addressStepReached": true,
+    "displayedTotalJpy": 31500,
+    "vatWording": "VAT not included",
+    "purchaseCompleted": false,
+    "previousMotifIdIsAuthoritative": false
+  },
+  "paymentControl": {
+    "landedCeilingJpy": 40000,
+    "purchaseAuthorized": false,
+    "stopBeforeFinalPurchase": true,
+    "requiredChecks": [
+      "authenticated WhiteWall account",
+      "exact upload SHA-256 verified before upload",
+      "600x600mm glossy white-base ChromaLuxe",
+      "one piece, no frame, no border, aluminium rails, quantity one",
+      "full 1:1 crop with no important content removed",
+      "SuperResolution enabled and preview visually checked",
+      "address-level landed total at or below JPY 40,000",
+      "delivery estimate recorded"
+    ]
+  },
+  "truthBoundary": "The upload master, current authenticated cart, configuration and displayed address-step total are verified. Purchase was explicitly stopped: no paid vendor order, delivered proof or Human ACCEPT exists. Controlled customer-first made-to-order sales may open independently, but the vendor purchase occurs only after a customer payment and an order-specific payment approval."
+}

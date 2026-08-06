@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-26T10:40:00+09:00",
+  "objective": "Make every active ABI伯爵 audience profile a directly attributed entrance to 伯爵Chat without changing the audience-first content strategy.",
+  "currentEvidence": {
+    "directLinksVerified": [],
+    "directLinksNotVerified": ["instagram", "threads", "tiktok", "youtube"],
+    "x": "SUSPENDED_APPEAL_PENDING_EXCLUDED"
+  },
+  "updates": [
+    {
+      "platform": "instagram",
+      "target": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "currentConstraint": "Website field requires the Instagram mobile app; the bio currently points visitors indirectly to the Threads profile link.",
+      "approvalToken": "APPROVE_PROFILE_UPDATE:ABI-HK:instagram:chat-link"
+    },
+    {
+      "platform": "threads",
+      "target": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "currentConstraint": "A public link exists, but the 2026-07-26 read-only browser check proved it targets the legacy NATURA product page rather than 伯爵Chat.",
+      "approvalToken": "APPROVE_PROFILE_UPDATE:ABI-HK:threads:chat-link"
+    },
+    {
+      "platform": "tiktok",
+      "target": "https://www.hakusyaku.xyz/chat?utm_source=tiktok&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "currentConstraint": "Website eligibility and current public link are not verified.",
+      "approvalToken": "APPROVE_PROFILE_UPDATE:ABI-HK:tiktok:chat-link"
+    },
+    {
+      "platform": "youtube",
+      "target": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "currentConstraint": "Channel description was changed, but a public clickable Chat profile link is not verified.",
+      "approvalToken": "APPROVE_PROFILE_UPDATE:ABI-HK:youtube:chat-link"
+    }
+  ],
+  "executionBoundary": {
+    "authorizedByToken": "Only the exact platform profile-link update in the matching row and live public verification.",
+    "notAuthorized": ["new post", "direct message", "paid promotion", "identity verification", "terms acceptance", "payment"],
+    "instagramOwnerActionMayRemainRequired": "Use the logged-in Instagram mobile app if the website field is unavailable on desktop."
+  },
+  "successEvidence": "Each target URL is publicly clickable, preserves its exact UTM values, returns HTTP 200, and the account registry records the live verification time.",
+  "claimBoundary": "Profile-link completion enables attributable ingress. It does not prove followers, Chat sessions, qualified consultations, payment or revenue."
+}

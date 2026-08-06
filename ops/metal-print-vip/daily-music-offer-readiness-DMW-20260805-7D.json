@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "waveId": "DMW-20260805-7D",
+  "generatedAt": "2026-08-03T14:16:20.515Z",
+  "status": "PRINT_MASTERS_REQUIRED",
+  "offerContract": {
+    "currency": "jpy",
+    "amountJpy": 330000,
+    "editionSize": 3,
+    "vendor": "whitewall-jp",
+    "formatMm": "600x600"
+  },
+  "counts": {
+    "works": 7,
+    "mechanicallyEligible": 0,
+    "missingOrInvalidMasters": 7,
+    "potentialUnitsAfterApproval": 21,
+    "potentialGrossYenAfterApproval": 6930000
+  },
+  "items": [
+    {
+      "releaseDate": "2026-08-05",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "workTitle": "ENA",
+      "editionId": "CATALOG-WORK:spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_5bIfjfVK9QwHfu1NzNc94M.jpg",
+        "exists": true,
+        "sha256": "07f69a6e18fa2d4c51722b23e90495fd4759eef5f6fb10ce05cec3372145170b",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    },
+    {
+      "releaseDate": "2026-08-06",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "workTitle": "Mama Afrika",
+      "editionId": "CATALOG-WORK:spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_60QCBTuEwNc380r2YtUO0f.jpg",
+        "exists": true,
+        "sha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    },
+    {
+      "releaseDate": "2026-08-07",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "workTitle": "ウィーアーザアース",
+      "editionId": "CATALOG-WORK:spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_0o5od07Lyxu9w9obQuvgm9.jpg",
+        "exists": true,
+        "sha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    },
+    {
+      "releaseDate": "2026-08-08",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "workTitle": "強制アップデート",
+      "editionId": "CATALOG-WORK:spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_2ti9uIOu2JPOMMzUf41Snl.jpg",
+        "exists": true,
+        "sha256": "a9cc4533a9683584480fa52765923d983857333512e49f476f6b8d21043ff15f",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    },
+    {
+      "releaseDate": "2026-08-09",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "workTitle": "れいんぼーくっしゅ",
+      "editionId": "CATALOG-WORK:spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_3ILKNWXtZof2e6XS6Zvynr.jpg",
+        "exists": true,
+        "sha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    },
+    {
+      "releaseDate": "2026-08-10",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "workTitle": "FORCED UPDATE!",
+      "editionId": "CATALOG-WORK:spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_7s0xajVHIGgMYdwUuj48Cb.jpg",
+        "exists": true,
+        "sha256": "7eabed339ccdfb9fe874f33119ef753dd04a4ddc638db87e4ab147c69bdf06dc",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    },
+    {
+      "releaseDate": "2026-08-11",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "workTitle": "사인 주세요",
+      "editionId": "CATALOG-WORK:spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "amountJpy": 330000,
+      "editionSize": 3,
+      "sourcePreview": {
+        "relativePath": "public/works/covers/spotify_43CyheqfBIFgDSRmB4ZfAt.jpg",
+        "exists": true,
+        "sha256": "e17272ffa6b225d9647516c28815735baf195198749b9a0a459a3e2e9736e438",
+        "width": 640,
+        "height": 640,
+        "printMasterEligible": false,
+        "boundary": "A 640px streaming cover is a web preview, not a 600mm print master."
+      },
+      "master": null,
+      "mechanicallyEligible": false,
+      "blocker": "PRINT_MASTER_MISSING",
+      "approvalToken": null
+    }
+  ],
+  "nextGate": "Provide exact 3000x3000 non-alpha print masters at ops/metal-print-vip/proof-assets/daily-music-candidates/; do not upscale 640px previews and call them masters.",
+  "evidenceBoundary": "This readiness file does not approve an Offer, physical print quality, vendor payment, demand, sale, fulfillment or revenue."
+}

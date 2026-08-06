@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-30T17:28:00+09:00",
+  "status": "RESOLVED_WITH_UNAVAILABLE_FIELDS",
+  "scope": [
+    "ABI-LW01-01:instagram",
+    "ABI-LW01-01:threads",
+    "ABI-LW01-02:instagram",
+    "ABI-LW01-02:tiktok",
+    "ABI-LW01-02:youtube",
+    "ABI-LW01-03:instagram",
+    "ABI-LW01-03:threads"
+  ],
+  "observations": {
+    "tiktok": {
+      "postId": "ABI-LW01-02",
+      "views72h": 101,
+      "likes": 0,
+      "comments": 0,
+      "saves72h": 0,
+      "source": "Owner TikTok Studio content list"
+    },
+    "youtube": {
+      "postId": "ABI-LW01-02",
+      "views72h": 28,
+      "averagePercentageViewed72h": 0.601,
+      "likes": 0,
+      "comments": 0,
+      "source": "Owner YouTube Studio dashboard at 4 days 17 hours"
+    },
+    "instagram": {
+      "postIds": ["ABI-LW01-01", "ABI-LW01-02", "ABI-LW01-03"],
+      "observedComments": 0,
+      "metricsUnavailableReason": "Owner insight link returned a page-unavailable surface or failed to load; unavailable fields remain blank."
+    },
+    "threads": {
+      "postIds": ["ABI-LW01-01", "ABI-LW01-03"],
+      "observedReplies": 0,
+      "metricsUnavailableReason": "The owner post surface exposed no 72-hour view total; unavailable fields remain blank."
+    }
+  },
+  "decision": {
+    "signal": "WEAK_INITIAL_DISTRIBUTION",
+    "reason": "The only measurable 72-hour video totals were 101 TikTok views and 28 YouTube views with zero recorded engagement and no first-party Chat conversion.",
+    "nextTest": "Continue the already approved recovery schedule with repaired audio, then compare hook retention and Chat starts before scaling publication volume."
+  },
+  "claimBoundary": "This evidence records owner-visible metrics only. Blank means unavailable, never zero. It does not prove demand or revenue."
+}

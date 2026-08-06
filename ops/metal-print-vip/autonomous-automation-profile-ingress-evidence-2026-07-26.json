@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T10:43:56+09:00",
+  "automation": {
+    "id": "musiam-300",
+    "name": "伯爵MUSIAM 月商300万円 自律実行",
+    "status": "ACTIVE",
+    "kind": "cron",
+    "cadence": "daily at 12:15 Asia/Tokyo",
+    "executionEnvironment": "local",
+    "model": "gpt-5.6-sol",
+    "reasoningEffort": "high",
+    "notificationPolicy": "failed_runs_only",
+    "duplicateCreated": false
+  },
+  "newRequiredBehavior": {
+    "readsProfileEvidence": [
+      "ops/audience-engine/abi-hakusyaku-account-registry.json",
+      "ops/audience-engine/abi-hakusyaku-profile-link-live-audit-2026-07-26.json",
+      "ops/audience-engine/abi-hakusyaku-profile-link-completion-gate.json"
+    ],
+    "separatesSiteActivationFromPublicProfileLinks": true,
+    "persistsExactCoverageAndGaps": true,
+    "continuesApprovedLaunchWave": true,
+    "requiresExactProfileUpdateToken": true,
+    "verifiesExactUtmHttp200AndTimestampAfterChange": true,
+    "runsDailyControllerValidatorWithNoIpc": true
+  },
+  "currentMaturityQueue": {
+    "published": 7,
+    "due24h": 0,
+    "due72h": 0,
+    "resolved24h": 0,
+    "resolved72h": 0,
+    "nextMaturityAt": "2026-07-26T14:40:00.000Z"
+  },
+  "validation": {
+    "automationFileStatus": "ACTIVE",
+    "automationPromptContainsProfileGate": true,
+    "automationPromptContainsExactApprovalPattern": true,
+    "automationPromptContainsDailyControllerValidator": true,
+    "ledgerNormalization": "PASS, 22 rows",
+    "maturityQueue": "PASS"
+  },
+  "claimBoundary": "This proves that the existing recurring automation will audit profile ingress and preserve the Human Gate on future runs. It does not prove that a future run occurred, that profiles were changed, or that traffic, demand, pipeline, payment, fulfillment or revenue increased."
+}

@@ -1,0 +1,44 @@
+{
+  "asOf": "2026-08-01",
+  "deployment": {
+    "id": "dpl_4DDZdKxhoKPDhWxxtXW4Ri9ngaCo",
+    "readyState": "READY",
+    "productionOrigin": "https://www.hakusyaku.xyz"
+  },
+  "flow": [
+    "approved Offer and four-part Dossier acceptance",
+    "durable Stripe payment ledger",
+    "atomic PAID_AWAITING_VENDOR_ORDER queue creation",
+    "24-hour vendor-action stall detection",
+    "bearer-protected vendor-order evidence transition to PRODUCTION_IN_PROGRESS",
+    "expected-dispatch breach detection",
+    "idempotent immediate vendor-action notification after first Stripe confirmation",
+    "durable notification-failure reconciliation",
+    "vendor production and delivery evidence",
+    "authorized fulfillment transition",
+    "atomic AWAITING_RECEIPT_REVIEW candidate creation",
+    "Human receipt-photo, same-process and eight-score review",
+    "explicit ACCEPT or REVISE",
+    "approved proof registration only after ACCEPT"
+  ],
+  "verified": {
+    "salesE2E": "PASS",
+    "dailyController": "PASS",
+    "orderEvidenceCandidate": "PASS — vendor invoice, Stripe settlement and fulfillment files are hashed; order and tracking references are domain-separated HMACs",
+    "economicsActuals": "PASS — current real fulfilled orders remain 0; synthetic validator output is not counted as business evidence",
+    "nextBuildStaticPages": "1047/1047 PASS",
+    "productionDryRun": {
+      "awaitingReceiptReview": 0,
+      "awaitingVendorOrder": 0,
+      "productionInProgress": 0,
+      "vendorOrderStaleOver24h": 0,
+      "dispatchOverdue": 0,
+      "vendorNotificationFailures": 0,
+      "unauthorizedVendorTransitionHttp": 401,
+      "candidates": [],
+      "netNonRefundedYen": 0
+    }
+  },
+  "privacy": "The review candidate uses a one-way derived candidate id plus Edition, fulfillment time and evidence hash. No customer name, email, address, tracking number or payment identifier is exposed in daily operations.",
+  "evidenceBoundary": "A fulfilled order creates only a proof-review candidate. It is never counted as a Human-approved physical proof until the received object is reviewed and an explicit ACCEPT token is registered."
+}

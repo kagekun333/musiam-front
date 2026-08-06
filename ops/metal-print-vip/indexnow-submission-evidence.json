@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "submittedAt": "2026-07-24T12:13:24.640Z",
+  "evidenceClass": "INDEXNOW_PROTOCOL_ACCEPTED",
+  "endpoint": "https://api.indexnow.org/indexnow",
+  "host": "www.hakusyaku.xyz",
+  "keyLocation": "https://www.hakusyaku.xyz/dc7d0eb0cdc33a0cb5ca151150e2ea00.txt",
+  "httpStatus": 200,
+  "urlCount": 564,
+  "metalPrintUrlCount": 10,
+  "letterUrlCount": 553,
+  "acceptanceMeaning": "HTTP 200/202 proves receipt or pending key validation, not crawling, indexing, ranking, traffic or demand."
+}

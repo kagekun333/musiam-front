@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T23:34:17+09:00",
+  "deployment": {
+    "id": "dpl_2XXTqD5gp9VQvVRfRvAfzMpMfT8u",
+    "url": "https://musiam-front-eb13wxxbu-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz",
+    "readyState": "READY",
+    "target": "production"
+  },
+  "recoveryContract": {
+    "stripeCancelReturnsTo": "/chat",
+    "cancelReturnPreserves": [
+      "metal-print intent",
+      "selected work",
+      "checkout=cancelled",
+      "exact attribution"
+    ],
+    "consultationCapabilitySources": [
+      "URL fragment after verified-contact return",
+      "same-browser sessionStorage after refresh or Checkout cancellation"
+    ],
+    "fragmentRemovedFromBrowserHistory": true,
+    "storedCapabilityRevalidatedServerSide": true,
+    "invalidStoredCapabilityRemoved": true,
+    "resumeApiReturnsPii": false,
+    "checkoutRequiresCurrentApprovedOfferAndFourPartAcceptance": true
+  },
+  "liveSafeChecks": {
+    "resumeWithoutOrigin": {
+      "status": 403,
+      "error": "invalid_origin"
+    },
+    "resumeWithCorrectOriginAndInvalidToken": {
+      "status": 403,
+      "error": "verified_consultation_required"
+    },
+    "chatCancelReturn": {
+      "status": 200
+    }
+  },
+  "validation": {
+    "consultation": "PASS",
+    "productionAdapter": "PASS",
+    "typecheck": "PASS",
+    "scopedDiffCheck": "PASS",
+    "productionBuild": "PASS, 1046 of 1046 static pages"
+  },
+  "currentRealEvidence": {
+    "resumedRealConsultations": 0,
+    "acceptedFourPartRecords": 0,
+    "paidOrders": 0,
+    "netNonRefundedRevenueYen": 0
+  },
+  "claimBoundary": "This proves the deployed cancellation and same-browser recovery contract plus safe rejection paths. It does not prove a real customer resume, accepted Dossier, Checkout creation, payment, physical proof, fulfillment, demand or revenue."
+}

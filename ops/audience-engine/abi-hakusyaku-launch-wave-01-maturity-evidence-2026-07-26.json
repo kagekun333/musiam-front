@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-07-26T08:52:02+09:00",
+  "publishedPlacements": 7,
+  "matured24hPlacements": 0,
+  "matured72hPlacements": 0,
+  "publicationAgesHours": {
+    "ABI-LW01-01:instagram": 9.15,
+    "ABI-LW01-01:threads": 9.15,
+    "ABI-LW01-02:instagram": 9.15,
+    "ABI-LW01-02:tiktok": 9.2,
+    "ABI-LW01-02:youtube": 9.15,
+    "ABI-LW01-03:instagram": 1.35,
+    "ABI-LW01-03:threads": 1.35
+  },
+  "next24hMaturityAt": "2026-07-26T23:40:00+09:00",
+  "ledgerNormalization": {
+    "clearedPremature24hCells": 132,
+    "clearedPremature72hCells": 88,
+    "clearedUnpublishedDownstreamCells": 90,
+    "unmeasuredRepresentation": "blank",
+    "measuredZeroRepresentation": "0"
+  },
+  "validatorPolicy": "Unpublished social KPI fields must be blank. Published 24h and 72h KPI values are rejected before their respective maturity timestamps.",
+  "claimBoundary": "No Launch Wave 01 audience KPI is mature yet. Blank cells mean unmeasured, not zero performance."
+}

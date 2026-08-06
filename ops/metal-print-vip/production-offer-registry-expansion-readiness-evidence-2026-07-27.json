@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-27T00:08:36+09:00",
+  "deployment": {
+    "id": "dpl_AdfAV13eEr5WjBhqbuh6rtcCx1PB",
+    "url": "https://musiam-front-29gf4h04g-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz",
+    "readyState": "READY",
+    "target": "production",
+    "staticPages": "1046/1046"
+  },
+  "currentApprovalState": {
+    "approvedEditionIds": ["VIP-METAL-2026-07-NATURA"],
+    "approvedOfferUnits": 3,
+    "maximumApprovedOfferGrossYen": 990000,
+    "closedEditionIds": [
+      "VIP-METAL-2026-07-IGNITION",
+      "VIP-METAL-2026-07-HOME",
+      "VIP-METAL-2026-07-BALIAN"
+    ],
+    "stateChangedByRegistrarDryRun": false
+  },
+  "implementedControls": {
+    "singleApprovalRegistryConsumedByRuntime": true,
+    "publicNaturaApprovalFailClosedInvariant": true,
+    "threeExactHumanTokensRequired": true,
+    "threeMechanicallyEligibleMasterHashesRequired": true,
+    "unknownDuplicateMissingAndExtraTokensRejected": true,
+    "atomicPendingRenameRegistration": true,
+    "approvedUnitsAfterValidTransition": 12,
+    "maximumGrossAfterValidTransitionYen": 3960000,
+    "offerActivationPerformed": false
+  },
+  "masterGenerationHardening": {
+    "allSourceHashesValidatedBeforeOutput": true,
+    "isolatedBatchStaging": true,
+    "completeBatchValidatedBeforeFinalExposure": true,
+    "failureStagingCleanup": true,
+    "differentExistingCandidateOverwriteRefused": true,
+    "currentResult": "SOURCE_MOUNT_REQUIRED",
+    "stagingResidue": 0
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "offerApproval": "PASS, 1 approved and 3 closed",
+    "offerCapacity": "PASS, 3/10 units and JPY 990000 gross cap",
+    "offerExpansionRegistration": "PASS, exact 3-token hash-bound 12-unit transition fixtures",
+    "salesE2E": "PASS",
+    "productionAdapter": "PASS",
+    "consultation": "PASS",
+    "vipLiveStatus": 200,
+    "invalidIgnitionCheckoutStatus": 403
+  },
+  "claimBoundary": "This proves the deployed current registry preserves one approved Offer and prepares a token-gated expansion path. It does not approve the three additional Offers, prove physical print quality, create a Checkout, vendor order, fulfillment, demand, pipeline or revenue."
+}

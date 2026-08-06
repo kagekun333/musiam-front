@@ -1,0 +1,80 @@
+{
+  "asOf": "2026-08-03T21:35:20+09:00",
+  "result": "PASS",
+  "constraintAddressed": "Daily music releases had no restart-safe work-specific path to attributed Chat acquisition.",
+  "implementation": [
+    "scripts/build-daily-music-release-pack.mjs",
+    "scripts/validate-daily-music-release-pack.mjs",
+    "scripts/build-daily-music-release-video.mjs",
+    "scripts/validate-daily-music-release-video.mjs",
+    "scripts/validate-daily-music-release-wave.mjs",
+    "src/lib/music-work-affinity.ts",
+    "src/pages/api/chat-experience-v3.ts",
+    "src/pages/chat.tsx",
+    "src/lib/metal-print-funnel-client.ts",
+    "scripts/validate-chat-sales.ts",
+    "package.json",
+    "scripts/build-metal-print-goal-controller.mjs"
+  ],
+  "verifiedFixture": {
+    "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+    "title": "ENA",
+    "outputLocation": "temporary-only",
+    "placements": 4,
+    "exactWorkAttribution": true,
+    "externalPublicationPerformed": false
+  },
+  "productionChatAffinityFlow": {
+    "deploymentId": "dpl_5qHE8UviLpgFNuRPVedEdKuoXL6C",
+    "productionAlias": "https://www.hakusyaku.xyz",
+    "readyState": "READY",
+    "entryIntent": "music-work",
+    "explore": "PASS_WITHOUT_PRODUCT_OR_CTA",
+    "permission": "PASS_WITHOUT_PRODUCT_OR_CTA",
+    "explicitAcceptance": "PASS_WITH_VIP_DOSSIER_CTA",
+    "explicitDecline": "PASS_WITHOUT_PRODUCT_OR_CTA",
+    "intentClassification": "PASS",
+    "syntheticFunnelEventsWritten": false
+  },
+  "generatedContract": [
+    "canonical work identity",
+    "Instagram, Threads, TikTok and YouTube placement IDs",
+    "work-specific 伯爵Chat URL",
+    "exact source, medium, campaign and content UTM",
+    "permission-based copy without direct price pressure",
+    "alt text and public listen URL",
+    "media readiness",
+    "exact per-placement Human approval token"
+  ],
+  "sevenDayWave": {
+    "waveId": "DMW-20260805-7D",
+    "manifest": "ops/audience-engine/daily-music-release-candidates/DMW-20260805-7D--manifest.json",
+    "dates": "2026-08-05 through 2026-08-11",
+    "uniqueCanonicalWorks": 7,
+    "placements": 28,
+    "utmContentMaxLengthContract": 40,
+    "postCopyContainsAttributedChatUrl": true,
+    "historicalWorksCalledNewReleases": false,
+    "publicationState": "HUMAN_APPROVAL_REQUIRED",
+    "externalPublicationPerformed": false
+  },
+  "publicationReadiness": {
+    "snapshot": "ops/audience-engine/daily-music-release-readiness-2026-08-03.json",
+    "placements": 28,
+    "mediaReady": 14,
+    "ingressReady": 14,
+    "humanApprovalReady": 0,
+    "publicationEligible": 0,
+    "videoPlacementsBlockedByOwnedAudio": 14,
+    "instagramPlacementsRequiringPlatformLinkStep": 7,
+    "ownedAudioFoundInRepoMountedVolumesOrSpotlight": false
+  },
+  "mediaPipeline": {
+    "outputContract": "1080x1920, 15-second H.264 video with AAC audio",
+    "hashes": ["owned audio SHA-256", "cover SHA-256", "rendered video SHA-256"],
+    "mechanicalFixture": "PASS",
+    "realWaveMediaGenerated": false,
+    "reason": "No owned source audio for the seven selected works is currently accessible; streaming-service extraction is forbidden."
+  },
+  "evidenceBoundary": "This proves release-pack preparation, attribution consistency, production deployment and safe deterministic Chat behavior only. It does not prove publication, reach, real visitor interest, demand, qualified pipeline, payment, fulfillment or revenue."
+}

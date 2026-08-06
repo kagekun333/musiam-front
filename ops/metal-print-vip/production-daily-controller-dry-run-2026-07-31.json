@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-31T10:37:10.225Z",
+  "evidenceClass": "AUTHENTICATED_PRODUCTION_DRY_RUN",
+  "endpoint": "https://www.hakusyaku.xyz/api/cron/metal-print-ops?dryRun=1",
+  "ok": true,
+  "dryRun": true,
+  "date": "2026-07-31",
+  "status": "FIX_PROFILE_INGRESS",
+  "action": "Continue the approved Launch Wave while preserving the profile-update Human Gate for Instagram and TikTok; do not count unverified profile links as ingress.",
+  "qualified": 0,
+  "pipelineCoverage": 0,
+  "netNonRefundedYen": 0,
+  "profileIngress": {
+    "activePlatforms": ["instagram", "threads", "tiktok", "youtube"],
+    "verifiedGeneralChatLinks": ["threads", "youtube"],
+    "gaps": ["instagram", "tiktok"],
+    "passed": false
+  },
+  "offerCapacityGate": {
+    "approvedEditionIds": [
+      "VIP-METAL-2026-07-IGNITION",
+      "VIP-METAL-2026-07-HOME",
+      "VIP-METAL-2026-07-BALIAN",
+      "VIP-METAL-2026-07-NATURA"
+    ],
+    "approvedOfferUnits": 12,
+    "maximumApprovedOfferGrossYen": 3960000,
+    "requiredPaidUnits": 10,
+    "targetGrossYen": 3000000,
+    "passed": true
+  },
+  "notification": {
+    "attempted": false,
+    "ok": false
+  },
+  "claimBoundary": "Dry-run reads current production Redis but does not persist daily health, send email, create demand, or prove revenue."
+}

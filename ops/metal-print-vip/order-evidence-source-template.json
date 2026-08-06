@@ -1,0 +1,22 @@
+{
+  "evidenceId": "ACTUAL-ORDER-REPLACE",
+  "editionId": "VIP-METAL-2026-07-NATURA",
+  "region": "JP",
+  "paidAt": "REPLACE_ISO_TIMESTAMP",
+  "fulfilledAt": "REPLACE_ISO_TIMESTAMP",
+  "grossPaidYen": 330000,
+  "internalOrderReference": "REPLACE_PRIVATE_INTERNAL_ORDER_REFERENCE",
+  "trackingReference": "REPLACE_PRIVATE_TRACKING_REFERENCE",
+  "vendorInvoicePath": "/private/tmp/REPLACE_VENDOR_INVOICE_FILE",
+  "stripeSettlementPath": "/private/tmp/REPLACE_STRIPE_SETTLEMENT_FILE",
+  "fulfillmentEvidencePath": "/private/tmp/REPLACE_FULFILLMENT_EVIDENCE_FILE",
+  "productionYen": 0,
+  "shippingYen": 0,
+  "packagingYen": 0,
+  "customsDutyYen": 0,
+  "indirectTaxLiabilityYen": 0,
+  "stripeFeeYen": 0,
+  "fxCostYen": 0,
+  "replacementRequired": false,
+  "replacementCostYen": 0
+}

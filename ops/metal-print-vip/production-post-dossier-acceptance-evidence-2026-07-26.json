@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-26T01:19:57Z",
+  "deployment": {
+    "id": "dpl_C5Z7G1Rhb8YpNwtEbG9N5qP4Grrw",
+    "target": "production",
+    "status": "READY",
+    "url": "https://musiam-front-gkc5vor7f-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "evidenceDefinition": {
+    "initialDossierCheckboxMeans": "dossier_requested",
+    "initialIntentCheckboxMeans": "provisional_purchase_intent_indicated",
+    "dossierAcceptedRequires": "email-verified consultation token plus a separate post-review explicit confirmation",
+    "purchaseIntentRequires": "the same separate post-review explicit confirmation",
+    "checkoutRequiresPostReviewConfirmation": true,
+    "summaryCountsTimestampedPostReviewEvidenceOnly": true
+  },
+  "validation": {
+    "consultationValidator": "PASS",
+    "typecheck": "PASS",
+    "vercelBuild": "PASS",
+    "vipPageStatus": 200,
+    "invalidAcceptanceTokenStatus": 403,
+    "invalidAcceptanceTokenBody": {
+      "ok": false,
+      "error": "verified_consultation_required"
+    }
+  },
+  "claimBoundary": {
+    "realConsultationCreated": false,
+    "realAcceptanceCreated": false,
+    "realPurchaseIntentCreated": false,
+    "realCheckoutCreated": false,
+    "paymentCreated": false,
+    "note": "This proves the production evidence contract and rejection path. Demand gates remain zero until a real verified person reviews the Dossier and explicitly confirms both items."
+  }
+}

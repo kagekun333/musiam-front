@@ -29,7 +29,10 @@ for (const placement of pack.placements) {
   assert.ok(placement.placementId.length <= 40, "utm_content exceeds the production event contract");
   assert.match(placement.placementId, /^DMR-\d{8}-[0-9a-f]{8}-(instagram|threads|tiktok|youtube)$/);
   assert.ok(placement.copy.includes(placement.chatUrl), "post copy omits the attributed Chat URL");
-  assert.ok(["HUMAN_APPROVAL_REQUIRED", "APPROVED_WAITING_SCHEDULE"].includes(placement.publicationState));
+  assert.ok(
+    ["HUMAN_APPROVAL_REQUIRED", "APPROVED_WAITING_SCHEDULE", "PUBLISHED"].includes(placement.publicationState),
+    `${placement.placementId}: unsupported publication state`,
+  );
   assert.match(placement.approvalToken, new RegExp(`^APPROVE_DAILY_MUSIC_RELEASE:${pack.releaseId}:${placement.platform}$`));
   assert.doesNotMatch(placement.copy, /(33万円|限定3|購入してください|残り\d)/);
   if (placement.media.kind === "cover_image") {
@@ -45,6 +48,15 @@ assert.equal(pack.gates.exactWorkAttribution, "PASS");
 assert.ok(["HUMAN_APPROVAL_REQUIRED", "APPROVED"].includes(pack.gates.externalPublication));
 if (pack.gates.externalPublication === "APPROVED") {
   assert.equal(pack.waveApproval?.token, `APPROVE_DAILY_MUSIC_WAVE:${pack.waveApproval?.token?.split(":").slice(1).join(":")}`);
-  assert.ok(pack.placements.every((item) => item.publicationState === "APPROVED_WAITING_SCHEDULE"));
+  assert.ok(
+    pack.placements.every((item) => ["APPROVED_WAITING_SCHEDULE", "PUBLISHED"].includes(item.publicationState)),
+    "approved wave contains a placement outside the approved or published states",
+  );
 }
-console.log(JSON.stringify({ status: "PASS", releaseId: pack.releaseId, workId: work.id, placements: pack.placements.length, externalPublicationPerformed: false }, null, 2));
+console.log(JSON.stringify({
+  status: "PASS",
+  releaseId: pack.releaseId,
+  workId: work.id,
+  placements: pack.placements.length,
+  externalPublicationPerformed: pack.placements.some((item) => item.publicationState === "PUBLISHED"),
+}, null, 2));

@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-07-23T14:57:12.205Z",
+  "sourceMountPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC",
+  "sourceMountAvailable": true,
+  "proofReadyCount": 4,
+  "unavailableCount": 0,
+  "items": [
+    {
+      "editionId": "VIP-METAL-2026-07-IGNITION",
+      "workTitle": "33 IGNITION",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/33 IGNITION/cover.jpeg",
+      "sourcePixels": "3000x3000",
+      "salePermissionStatus": "confirmed_by_owner_2026-07-18",
+      "unitLimit": 3,
+      "unitsPaid": 0,
+      "lockStatus": "rights_confirmed_awaiting_print_proof",
+      "status": "CANDIDATE_MASTER_PASS",
+      "bytes": 1985042,
+      "sha256": "135e41f01ccf6890cbc4b2bb0e387f62ebcc5155e6897e1c2c060d74bb561720",
+      "metadata": {
+        "width": 3000,
+        "height": 3000,
+        "format": "jpeg",
+        "colorSpace": "RGB",
+        "dpiWidth": 72,
+        "dpiHeight": 72,
+        "hasAlpha": false
+      },
+      "blockers": []
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-HOME",
+      "workTitle": "A Town Called Almost Home",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/A Town Called Almost Home/cover.png",
+      "sourcePixels": "3000x3000",
+      "salePermissionStatus": "confirmed_by_owner_2026-07-18",
+      "unitLimit": 3,
+      "unitsPaid": 0,
+      "lockStatus": "rights_confirmed_awaiting_print_proof",
+      "status": "CANDIDATE_MASTER_PASS",
+      "bytes": 8737644,
+      "sha256": "f1a4e43351663a5d8eed7bd51b6c06200ea5c31b202878cbc1e738c9023b0dda",
+      "metadata": {
+        "width": 3000,
+        "height": 3000,
+        "format": "png",
+        "colorSpace": "RGB",
+        "dpiWidth": 96,
+        "dpiHeight": 96,
+        "hasAlpha": false
+      },
+      "blockers": []
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-BALIAN",
+      "workTitle": "BALIAN",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/BALIAN/cover.png",
+      "sourcePixels": "3000x3000",
+      "salePermissionStatus": "confirmed_by_owner_2026-07-18",
+      "unitLimit": 3,
+      "unitsPaid": 0,
+      "lockStatus": "rights_confirmed_awaiting_print_proof",
+      "status": "CANDIDATE_MASTER_PASS",
+      "bytes": 11799975,
+      "sha256": "1c837797df34ac4b61d2b6e39ab1d2951cff644d3a52295e022e964a755fcbf9",
+      "metadata": {
+        "width": 3000,
+        "height": 3000,
+        "format": "png",
+        "colorSpace": "RGB",
+        "dpiWidth": 96,
+        "dpiHeight": 96,
+        "hasAlpha": false
+      },
+      "blockers": []
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-NATURA",
+      "workTitle": "Deus sive Natura",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/Deus sive Natura/cover.png",
+      "sourcePixels": "3000x3000",
+      "salePermissionStatus": "confirmed_by_owner_2026-07-18",
+      "unitLimit": 3,
+      "unitsPaid": 0,
+      "lockStatus": "rights_confirmed_awaiting_print_proof",
+      "status": "CANDIDATE_MASTER_PASS",
+      "bytes": 8118412,
+      "sha256": "449c2d9ebd4d4a7febed6babc2dd78f9736302067ca47870eca25fea96b40f1a",
+      "metadata": {
+        "width": 3000,
+        "height": 3000,
+        "format": "png",
+        "colorSpace": "RGB",
+        "dpiWidth": 96,
+        "dpiHeight": 96,
+        "hasAlpha": false
+      },
+      "blockers": []
+    }
+  ],
+  "note": "Candidate-master preflight only. Vendor ICC/file specification and physical proof remain authoritative."
+}

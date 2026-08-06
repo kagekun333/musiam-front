@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T00:11:00Z",
+  "evidenceClass": "PRODUCTION_DEPLOYMENT_PLUS_AUTH_GATE_PROBE",
+  "deployment": {
+    "id": "dpl_9uUHjb2VUAmkuVryovZNUeno42Ed",
+    "readyState": "READY",
+    "target": "production",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "sharedPolicy": {
+    "source": "src/lib/metal-print-measurement-policy.json",
+    "allocationFloor": {
+      "dossierSessionsPerPlacement": 100,
+      "qualifiedPerPlacement": 3
+    },
+    "landingDiagnosisFloor": {
+      "aggregateDossierSessions": 2000,
+      "minimumDossierToChatRate": 0.12
+    }
+  },
+  "validation": {
+    "dailyControllerFixture": "PASS",
+    "goalControllerFixture": "PASS",
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "unauthenticatedCronHttpStatus": 401
+  },
+  "result": "PASS",
+  "claimBoundary": "This proves the production Cron contains the shared measurement-policy build and retains its bearer authorization gate. It does not prove a scheduled Cron execution, real conversion performance, qualified pipeline, or revenue."
+}

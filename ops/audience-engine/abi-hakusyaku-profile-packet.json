@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "status": "CHAT_PROFILE_LINK_COMPLETION_REQUIRED",
+  "displayName": "ABI伯爵｜AI・音楽・哲学・空間芸術",
+  "profiles": {
+    "instagram": {
+      "applicationState": "BIO_APPLIED_WEBSITE_MOBILE_APP_REQUIRED",
+      "bio": "AI・音楽・哲学・空間芸術\n音、本、映像、VR、Droneから世界観をつくる。\n↓ 伯爵Chat",
+      "website": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile"
+    },
+    "threads": {
+      "applicationState": "BIO_APPLIED_LEGACY_METAL_PAGE_LINK_VERIFIED_CHAT_LINK_PENDING",
+      "bio": "AI・音楽・哲学・空間芸術。音、本、映像、VR、Droneから世界観をつくる。",
+      "website": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
+      "observedPublicWebsite": "https://www.hakusyaku.xyz/metal-print/deus-sive-natura-wall-art?utm_source=threads&utm_medium=organic_social&utm_campaign=metal_print_natura_launch&utm_content=NATURA-01"
+    },
+    "tiktok": {
+      "applicationState": "EXISTING_COUNTABI_PROFILE_RETAINED_BRAND_BRIDGE_PENDING",
+      "handle": "countabi",
+      "bio": "Count ABI｜ABI伯爵の音楽・AI映像実験室",
+      "website": "https://www.hakusyaku.xyz/chat?utm_source=tiktok&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile"
+    },
+    "x": {
+      "applicationState": "FORM_FILLED_SAVE_NOT_CONFIRMED",
+      "bio": "AI・音楽・哲学・空間芸術。音、本、映像、VR、Droneから世界観をつくる。言葉を武器に、世界を遊ぶ。",
+      "website": "https://www.hakusyaku.xyz/chat?utm_source=x&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile"
+    },
+    "youtube": {
+      "applicationState": "DESCRIPTION_PUBLISHED_STUDIO_PUBLIC_CHANNEL_CACHE_PENDING",
+      "description": "ABI伯爵。AI・音楽・哲学・空間芸術。音、本、映像、VR、Droneから世界観をつくります。Shortsで入口を、長尺で作品と思想の背景を公開します。あなたに残る一点は伯爵Chatで。",
+      "website": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile"
+    }
+  }
+}

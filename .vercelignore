@@ -15,6 +15,7 @@ _archive/
 
 # Operational masters and generated delivery media are not runtime assets.
 ops/metal-print-vip/proof-assets/**/*.tiff
+ops/metal-print-vip/proof-assets/**/*.jpg
 ops/audience-engine/daily-music-release-media/**/*.mp4
 ops/audience-engine/media-repair-candidates/**/*.mp4
 

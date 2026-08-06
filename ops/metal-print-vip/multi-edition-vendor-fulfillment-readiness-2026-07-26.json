@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-26T00:28:15.000Z",
+  "status": "MECHANICALLY_READY_PENDING_EXPANSION_MASTERS_AND_OFFER_APPROVALS",
+  "evidenceClass": "LOCAL_VENDOR_PACKET_ADAPTER_VALIDATION",
+  "supportedPath": {
+    "paidStripeCheckoutRequired": true,
+    "checkoutTimeOfferApprovalSnapshotRequired": true,
+    "editionBoundPrintMasterManifestRequired": true,
+    "printMasterSha256RecomputedBeforePacket": true,
+    "shippingDataTemporary0600Only": true,
+    "vendorPurchaseStillHumanGate": true
+  },
+  "editionBehavior": {
+    "VIP-METAL-2026-07-NATURA": "existing proof-order packet remains compatible",
+    "VIP-METAL-2026-07-IGNITION": "future approved Checkout accepted only with matching expansion manifest entry",
+    "VIP-METAL-2026-07-HOME": "future approved Checkout accepted only with matching expansion manifest entry",
+    "VIP-METAL-2026-07-BALIAN": "future approved Checkout accepted only with matching expansion manifest entry"
+  },
+  "rejectionCases": [
+    "unpaid Checkout",
+    "invalid or absent Offer approval snapshot",
+    "approval time after Checkout creation",
+    "amount or currency mismatch",
+    "unknown Edition",
+    "missing expansion master manifest",
+    "missing Edition manifest entry",
+    "print-master SHA-256 mismatch",
+    "missing shipping details when actionable packet is requested"
+  ],
+  "validation": {
+    "naturaBackwardCompatibility": "PASS",
+    "futureIgnitionApprovedSnapshotFixture": "PASS",
+    "invalidApprovalRejected": "PASS",
+    "unknownEditionRejected": "PASS",
+    "productionAdapter": "PASS",
+    "typecheck": "PASS"
+  },
+  "claimBoundary": "This proves the local packet generator can safely prepare any future Human-approved Edition after a real paid Checkout and matching TIFF manifest. It does not activate an Offer, generate the missing TIFFs, place a vendor order, pay WhiteWall, ship, deliver or prove physical quality."
+}

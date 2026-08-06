@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-03T03:50:47.431Z",
+  "status": "APPROVED",
+  "objective": {
+    "monthlyPaidUnitMin": 10,
+    "monthlyGrossPaidMinYen": 3000000,
+    "currentApprovedOfferUnits": 12,
+    "currentMaximumApprovedOfferGrossYen": 3960000,
+    "requiredApprovedOfferUnits": 10,
+    "plannedApprovedOfferUnits": 12,
+    "plannedMaximumApprovedOfferGrossYen": 3960000
+  },
+  "sharedOffer": {
+    "amountJpy": 330000,
+    "currency": "jpy",
+    "editionSize": 3,
+    "vendor": "whitewall-jp",
+    "fulfillmentModel": "customer_payment_then_single_item_vendor_order",
+    "physicalProofDisclosureRequired": true
+  },
+  "editions": [
+    {
+      "editionId": "VIP-METAL-2026-07-IGNITION",
+      "title": "33 IGNITION",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/33 IGNITION/cover.jpeg",
+      "sourceMountAvailable": false,
+      "repositoryPreview": {
+        "path": "public/works/covers-ssd/ssd-ed8295c7-01c4-4537-ac2309419d92f405.jpg",
+        "dimensionsPx": "1200x1200",
+        "sha256": "43abdfff6a4ff2732db9448323817611cf717873a888d4e7113777959e95401c",
+        "printMasterEligible": false
+      },
+      "sourceHashLocked": true,
+      "sourceHashEvidence": {
+        "observedAt": "2026-07-23T14:57:12.205Z",
+        "sha256": "135e41f01ccf6890cbc4b2bb0e387f62ebcc5155e6897e1c2c060d74bb561720",
+        "dimensionsPx": "3000x3000",
+        "colorSpace": "RGB",
+        "hasAlpha": false
+      },
+      "digitalSourcePreflightPassed": true,
+      "printMasterCandidateGenerated": true,
+      "economicsCoveredBySharedConfiguration": true,
+      "physicalProofState": "unapproved_disclosed",
+      "approvalTokenAfterAllMechanicalChecksPass": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-IGNITION:330000",
+      "printMasterEvidence": {
+        "relativePath": "ops/metal-print-vip/proof-assets/expansion-candidates/ignition-whitewall-3000x3000.tiff",
+        "sha256": "4051384ba4031594085267f5af17427c6b1fd5598248dc49e64ec55a00f3d67f",
+        "bytes": 11193374,
+        "dimensionsPx": "3000x3000",
+        "format": "tiff",
+        "colorSpace": "srgb",
+        "hasAlpha": false
+      }
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-HOME",
+      "title": "A Town Called Almost Home",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/A Town Called Almost Home/cover.png",
+      "sourceMountAvailable": false,
+      "repositoryPreview": {
+        "path": "public/works/covers-ssd/ssd-47c2c9a9-7793-40a9-8143f4e65713b181.jpg",
+        "dimensionsPx": "1200x1200",
+        "sha256": "f56a74e3fa28c10eddae4f0b641fac2878a21a9c9e59e5a7c00ebb7a06dfaec5",
+        "printMasterEligible": false
+      },
+      "sourceHashLocked": true,
+      "sourceHashEvidence": {
+        "observedAt": "2026-07-23T14:57:12.205Z",
+        "sha256": "f1a4e43351663a5d8eed7bd51b6c06200ea5c31b202878cbc1e738c9023b0dda",
+        "dimensionsPx": "3000x3000",
+        "colorSpace": "RGB",
+        "hasAlpha": false
+      },
+      "digitalSourcePreflightPassed": true,
+      "printMasterCandidateGenerated": true,
+      "economicsCoveredBySharedConfiguration": true,
+      "physicalProofState": "unapproved_disclosed",
+      "approvalTokenAfterAllMechanicalChecksPass": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-HOME:330000",
+      "printMasterEvidence": {
+        "relativePath": "ops/metal-print-vip/proof-assets/expansion-candidates/home-whitewall-3000x3000.tiff",
+        "sha256": "1c2aca43a8ef49a98e48391386de7efa04c1c549b89881e5b1ebe406878f921a",
+        "bytes": 9826202,
+        "dimensionsPx": "3000x3000",
+        "format": "tiff",
+        "colorSpace": "srgb",
+        "hasAlpha": false
+      }
+    },
+    {
+      "editionId": "VIP-METAL-2026-07-BALIAN",
+      "title": "BALIAN",
+      "sourceAssetPath": "/Volumes/PortableSSD/mv-factory-os-data/伯爵MUSIC/releases/BALIAN/cover.png",
+      "sourceMountAvailable": false,
+      "repositoryPreview": {
+        "path": "public/works/covers/spotify_1vLThFMjRi4noudDkGwf5f.jpg",
+        "dimensionsPx": "640x640",
+        "sha256": "16a28dba7e6b12d807b5279cb437c94f20e31d3382eb499f4091002c2946c77d",
+        "printMasterEligible": false
+      },
+      "sourceHashLocked": true,
+      "sourceHashEvidence": {
+        "observedAt": "2026-07-23T14:57:12.205Z",
+        "sha256": "1c837797df34ac4b61d2b6e39ab1d2951cff644d3a52295e022e964a755fcbf9",
+        "dimensionsPx": "3000x3000",
+        "colorSpace": "RGB",
+        "hasAlpha": false
+      },
+      "digitalSourcePreflightPassed": true,
+      "printMasterCandidateGenerated": true,
+      "economicsCoveredBySharedConfiguration": true,
+      "physicalProofState": "unapproved_disclosed",
+      "approvalTokenAfterAllMechanicalChecksPass": "APPROVE_METAL_PRINT_OFFER:VIP-METAL-2026-07-BALIAN:330000",
+      "printMasterEvidence": {
+        "relativePath": "ops/metal-print-vip/proof-assets/expansion-candidates/balian-whitewall-3000x3000.tiff",
+        "sha256": "2e34aeccb6a73e742397cd29c474914684af76ed55cf8bd272aeb5ed4e22167b",
+        "bytes": 14618850,
+        "dimensionsPx": "3000x3000",
+        "format": "tiff",
+        "colorSpace": "srgb",
+        "hasAlpha": false
+      }
+    }
+  ],
+  "mechanicalRequirementsBeforeApprovalRequest": [
+    "Mount the declared source volume without copying the full PortableSSD into the repository",
+    "Re-mount the exact historically hash-locked sources and confirm their hashes have not changed",
+    "Generate and hash-lock a 3000x3000 RGB TIFF print-master candidate with no alpha",
+    "Bind the generated candidate to the same 600x600mm WhiteWall configuration and current regional economics",
+    "Keep the unapproved physical-proof disclosure visible until a Human-approved delivered proof exists"
+  ],
+  "restartSafeExecution": {
+    "command": "npm run prepare:metal-print-expansion-masters",
+    "currentResult": "EXPANSION_APPROVED",
+    "atomicity": "All three sources are path/hash/dimension/alpha validated before any candidate output is written",
+    "overwritePolicy": "Existing candidate TIFFs and manifest are reused only when hashes/evidence match; differing content is never overwritten",
+    "currentWriteResult": "Three hash-locked expansion Offers are registered"
+  },
+  "downstreamFulfillmentReadiness": {
+    "status": "READY_AFTER_MASTER_AND_OFFER_GATES",
+    "evidence": "multi-edition-vendor-fulfillment-readiness-2026-07-26.json",
+    "contract": "A future paid Checkout is accepted for vendor-packet preparation only when its checkout-time Human Offer approval snapshot and edition-bound TIFF manifest both validate. Vendor payment remains a per-order Human Gate."
+  },
+  "humanGate": {
+    "required": true,
+    "action": "Apply each exact per-Edition approval token only after every mechanical requirement passes",
+    "notAuthorizedByThisFile": [
+      "Offer activation",
+      "Stripe product or payment-link changes",
+      "Vendor order or vendor payment",
+      "Physical proof acceptance"
+    ]
+  },
+  "evidenceBoundary": "All three hash-locked expansion Offers are Human-approved and registered. This proves 12-unit / JPY 3,960,000 sellable capacity, not physical print quality, demand, payment or revenue."
+}

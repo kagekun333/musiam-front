@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "missionId": "metal-print-vip-300k",
+  "status": "candidate_not_live",
+  "objective": {
+    "currency": "JPY",
+    "monthlyGrossPaidMinYen": 3000000,
+    "monthlyPaidUnitMin": 10,
+    "soldOutEditionTarget": 4,
+    "unitsPerEdition": 3,
+    "monthlyInventoryCapacity": 12
+  },
+  "pricing": {
+    "anchorYen": 330000,
+    "closeYen": 300000,
+    "decisiveCloseYen": 165000,
+    "decisiveCloseUnitCap": 4
+  },
+  "weeklyTargets": {
+    "namedProspects": 38,
+    "previewOptIns": 15,
+    "dossierOpened": 9,
+    "purchaseIntent": 5,
+    "paidInFull": 3
+  },
+  "authority": {
+    "autonomousPricing": "disabled_pending_live_activation",
+    "externalMessaging": "disabled",
+    "paymentLinkChanges": "disabled",
+    "inventoryPublication": "disabled"
+  },
+  "principles": [
+    "Count paid and non-refunded purchases only.",
+    "Never invent scarcity, a deadline, or another buyer.",
+    "Use decisive-close price only when the price is the explicit final obstacle and budget remains.",
+    "Do not promise an unverified physical specification, delivery date, or edition count."
+  ]
+}

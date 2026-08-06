@@ -1,0 +1,158 @@
+{
+  "generatedAt": "2026-08-03T14:35:56.000Z",
+  "evidenceClass": "FIRST_PARTY_REDIS_OBSERVED",
+  "days": 30,
+  "mode": "production",
+  "metrics": {
+    "metal_home_view": {
+      "sessions": 13
+    },
+    "metal_home_cta_click": {
+      "sessions": 2
+    },
+    "metal_dossier_view": {
+      "sessions": 4
+    },
+    "metal_chat_start": {
+      "sessions": 3
+    },
+    "metal_salon_open": {
+      "sessions": 3
+    },
+    "metal_first_message": {
+      "sessions": 2
+    },
+    "metal_duke": {
+      "sessions": 2
+    },
+    "metal_edition_selected": {
+      "sessions": 0
+    },
+    "metal_consultation_submitted": {
+      "sessions": 0
+    }
+  },
+  "byCampaign": {
+    "metal_print_natura_launch": {
+      "metal_home_view": 0,
+      "metal_home_cta_click": 0,
+      "metal_dossier_view": 4,
+      "metal_chat_start": 0,
+      "metal_salon_open": 0,
+      "metal_first_message": 0,
+      "metal_duke": 0,
+      "metal_edition_selected": 0,
+      "metal_consultation_submitted": 0
+    },
+    "none": {
+      "metal_home_view": 0,
+      "metal_home_cta_click": 0,
+      "metal_dossier_view": 0,
+      "metal_chat_start": 1,
+      "metal_salon_open": 1,
+      "metal_first_message": 1,
+      "metal_duke": 1,
+      "metal_edition_selected": 0,
+      "metal_consultation_submitted": 0
+    },
+    "metal_print_inbound": {
+      "metal_home_view": 13,
+      "metal_home_cta_click": 2,
+      "metal_dossier_view": 0,
+      "metal_chat_start": 2,
+      "metal_salon_open": 2,
+      "metal_first_message": 1,
+      "metal_duke": 1,
+      "metal_edition_selected": 0,
+      "metal_consultation_submitted": 0
+    }
+  },
+  "byPlacement": {
+    "[\"metal_print_natura_launch\",\"youtube\",\"NATURA-01\"]": {
+      "campaign": "metal_print_natura_launch",
+      "locale": "unknown",
+      "source": "youtube",
+      "content": "NATURA-01",
+      "metrics": {
+        "metal_home_view": 0,
+        "metal_home_cta_click": 0,
+        "metal_dossier_view": 3,
+        "metal_chat_start": 0,
+        "metal_salon_open": 0,
+        "metal_first_message": 0,
+        "metal_duke": 0,
+        "metal_edition_selected": 0,
+        "metal_consultation_submitted": 0
+      }
+    },
+    "[\"none\",\"direct\",\"none\"]": {
+      "campaign": "none",
+      "locale": "unknown",
+      "source": "direct",
+      "content": "none",
+      "metrics": {
+        "metal_home_view": 0,
+        "metal_home_cta_click": 0,
+        "metal_dossier_view": 0,
+        "metal_chat_start": 1,
+        "metal_salon_open": 1,
+        "metal_first_message": 1,
+        "metal_duke": 1,
+        "metal_edition_selected": 0,
+        "metal_consultation_submitted": 0
+      }
+    },
+    "[\"metal_print_inbound\",\"home\",\"home_page\"]": {
+      "campaign": "metal_print_inbound",
+      "locale": "ja",
+      "source": "home",
+      "content": "home_page",
+      "metrics": {
+        "metal_home_view": 13,
+        "metal_home_cta_click": 0,
+        "metal_dossier_view": 0,
+        "metal_chat_start": 0,
+        "metal_salon_open": 0,
+        "metal_first_message": 0,
+        "metal_duke": 0,
+        "metal_edition_selected": 0,
+        "metal_consultation_submitted": 0
+      }
+    },
+    "[\"metal_print_inbound\",\"home\",\"realm_gate\"]": {
+      "campaign": "metal_print_inbound",
+      "locale": "ja",
+      "source": "home",
+      "content": "realm_gate",
+      "metrics": {
+        "metal_home_view": 0,
+        "metal_home_cta_click": 2,
+        "metal_dossier_view": 0,
+        "metal_chat_start": 2,
+        "metal_salon_open": 2,
+        "metal_first_message": 1,
+        "metal_duke": 1,
+        "metal_edition_selected": 0,
+        "metal_consultation_submitted": 0
+      }
+    },
+    "[\"metal_print_natura_launch\",\"instagram\",\"NATURA-01\"]": {
+      "campaign": "metal_print_natura_launch",
+      "locale": "unknown",
+      "source": "instagram",
+      "content": "NATURA-01",
+      "metrics": {
+        "metal_home_view": 0,
+        "metal_home_cta_click": 0,
+        "metal_dossier_view": 1,
+        "metal_chat_start": 0,
+        "metal_salon_open": 0,
+        "metal_first_message": 0,
+        "metal_duke": 0,
+        "metal_edition_selected": 0,
+        "metal_consultation_submitted": 0
+      }
+    }
+  },
+  "privacy": "Anonymous UUID and bounded campaign dimensions only; no email, IP, or conversation text is stored."
+}

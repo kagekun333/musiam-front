@@ -119,5 +119,6 @@ tools/
 # Large operational masters/deliverables stay on local/approved asset storage.
 # They are intentionally preserved on disk but must not enter ordinary Git commits.
 /ops/metal-print-vip/proof-assets/**/*.tiff
+/ops/metal-print-vip/proof-assets/**/*.jpg
 /ops/audience-engine/daily-music-release-media/**/*.mp4
 /ops/audience-engine/media-repair-candidates/**/*.mp4

@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-07-24T12:30:41.117010+00:00",
+  "evidenceClass": "DIGITAL_ARTWORK_PREFLIGHT",
+  "source": "ops/metal-print-vip/proof-assets/deus-sive-natura-whitewall-3000x3000.tiff",
+  "sha256": "abbef6d7a56c4d2fac8ae2c3326175f37b7a62d857789a4561f214692e6ea2b2",
+  "fileBytes": 27006076,
+  "format": "TIFF",
+  "mode": "RGB",
+  "iccProfilePresent": true,
+  "dimensionsPx": {
+    "width": 3000,
+    "height": 3000
+  },
+  "aspectRatio": 1.0,
+  "targetCm": {
+    "width": 60,
+    "height": 60
+  },
+  "effectivePpi": 127.0,
+  "whiteWallHdMetalOutputDpi": 300,
+  "pixelsPerSideForNativeOutputDpi": 7087,
+  "linearInterpolationMultiple": 2.362,
+  "viewingDistanceRuleOfThumbMeters": 1.7,
+  "channelMean8Bit": {
+    "red": 40.063,
+    "green": 35.33,
+    "blue": 39.671
+  },
+  "luminance8Bit": {
+    "p01": 3,
+    "p05": 4,
+    "p50": 19,
+    "p95": 145,
+    "p99": 211,
+    "atOrBelow2Percent": 0.7783,
+    "atOrBelow5Percent": 12.3551,
+    "atOrAbove250Percent": 0.0619
+  },
+  "mechanicalChecks": {
+    "square": true,
+    "minimumUploadPixels": true,
+    "noAlpha": true,
+    "targetWithinWhiteWallChromaLuxeSizeRange": true
+  },
+  "decision": "DIGITALLY_READY_PHYSICAL_PROOF_REQUIRED",
+  "risks": [
+    "3000 px at 60 cm is about 127 ppi; WhiteWall's stated HD Metal output is 300 dpi, requiring roughly 2.36x linear interpolation.",
+    "The artwork is dark; physical proof must confirm shadow separation and reflected-light behavior on glossy ChromaLuxe.",
+    "Digital preflight cannot approve color, gloss, edge finish, mounting hardware, shipping damage or perceived sharpness."
+  ]
+}

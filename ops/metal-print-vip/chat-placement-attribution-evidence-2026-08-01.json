@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-01T04:40:00+09:00",
+  "deploymentId": "dpl_6GioKQs9usSdVn1YMpgCVvhzGKEN",
+  "productionAlias": "https://www.hakusyaku.xyz",
+  "capabilities": {
+    "interestEvents": ["show", "accept", "decline"],
+    "boundedAttribution": ["utm_source", "utm_campaign", "utm_content"],
+    "aggregations": ["overall", "theme", "placement"],
+    "campaignContextStarter": "ABI-LW01-05",
+    "campaignContextStarterProductionVerified": true
+  },
+  "privacy": "Anonymous session UUID and bounded bridge/UTM dimensions only. Email, IP, conversation text, work title and purchase data are not stored in this funnel.",
+  "measurementFloor": {
+    "overallShows": 50,
+    "themeShows": 20,
+    "allocationRestriction": "Interest acceptance can guide creative learning but does not prove qualified pipeline or revenue."
+  },
+  "currentObservedProductionSample": {
+    "shows": 0,
+    "accepts": 0,
+    "declines": 0
+  },
+  "truthBoundary": "This proves production measurement and campaign-context rendering readiness. It does not prove real demand, a winning placement, qualified consultation, payment or revenue."
+}

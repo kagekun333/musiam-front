@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-07-30T23:26:51+09:00",
+  "status": "IMPLEMENTATION_SCORE_100_PRODUCTION_VERIFIED",
+  "scope": {
+    "catalogWorks": 401,
+    "approvedFixedOffers": 4,
+    "catalogCandidateMode": "CATALOG-WORK:<workId>",
+    "unapprovedCheckoutPolicy": "DENY_UNTIL_FORMAL_OFFER_APPROVAL"
+  },
+  "salesConversation": {
+    "qualificationSequence": ["space", "desired_effect", "wall_width", "delivery_region", "budget", "timing", "decision_authority"],
+    "objectionHandlers": ["price", "physical_proof", "size", "delivery", "cancellation", "comparison"],
+    "maximumQuestionsPerReply": 1,
+    "deterministicCases": 56,
+    "controlsPassed": 67,
+    "controlsTotal": 67,
+    "implementationScore": 100
+  },
+  "validation": {
+    "salesReadiness": "PASS_100_OF_100",
+    "chatSalesContract": "PASS",
+    "nextBuild": "PASS_1046_OF_1046",
+    "productionApiProgression": "PASS",
+    "productionApiPriceObjection": "PASS",
+    "externalLlmUsedForProductionVerification": false,
+    "checkoutCreated": false,
+    "consultationRecordCreated": false
+  },
+  "deployment": {
+    "id": "dpl_GgfeRPiHwnwGosrcBKEx2JjCXWnf",
+    "readyState": "READY",
+    "target": "production",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "evidenceBoundary": "100 is the score against implemented deterministic controls. Observed market close performance remains unproven until real qualified consultations and non-refunded paid orders exist."
+}

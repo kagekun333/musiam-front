@@ -1,0 +1,48 @@
+{
+  "asOf": "2026-08-01T04:58:21+09:00",
+  "productionOrigin": "https://www.hakusyaku.xyz",
+  "deploymentId": "dpl_5DbJptvtrxBH8JnkcMX8iMqdR1Pk",
+  "result": "PASS",
+  "flow": [
+    {
+      "step": "explore",
+      "input": "仕事のことばかり考えてしまう",
+      "output": "少し力を抜ける余白が必要な夜に見えます。今ほしいのは、静けさと温かさならどちらに近いですか？",
+      "card": null,
+      "cta": null
+    },
+    {
+      "step": "offer",
+      "input": "静かな方がいい",
+      "outputContains": ["三分だけ", "頭を休ませる音の景色", "無料で見られます", "雑談に戻りましょう"],
+      "card": null,
+      "cta": null
+    },
+    {
+      "step": "accept",
+      "input": "見てみたいです",
+      "cardTitle": "Healing Island",
+      "cardType": "music",
+      "moodTags": ["癒しの島", "楽園", "ダウンテンポ", "genre:ダウンテンポ"],
+      "publicLinks": 3,
+      "cta": null,
+      "provider": "none"
+    },
+    {
+      "step": "decline",
+      "input": "作品はいらないです",
+      "outputContains": ["作品の話はこちらから重ねません", "話したいことの続きを聞かせてください"],
+      "card": null,
+      "cta": null,
+      "productId": null
+    }
+  ],
+  "automation": {
+    "id": "musiam-300",
+    "status": "ACTIVE",
+    "dailyRun": "12:15 Asia/Tokyo",
+    "profileIngressDeferred": true,
+    "priority": "approved launch-wave distribution plus measured two-stage chat-interest improvement"
+  },
+  "evidenceBoundary": "This verifies deterministic production conversation behavior and catalog-card relevance. It does not prove real customer interest, qualified pipeline, conversion, revenue, physical proof quality, or fulfillment. Verification requests were not written as production demand events."
+}

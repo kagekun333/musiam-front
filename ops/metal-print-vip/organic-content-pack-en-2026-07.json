@@ -1,0 +1,103 @@
+{
+  "language": "en",
+  "campaign": "metal_print_inbound_en",
+  "defaultCta": "Enter Hakusyaku MUSIAM and ask the Count which work belongs in your space. No purchase decision is required.",
+  "assets": [
+    {
+      "id": "IGNITION-EN-01",
+      "work": "33 IGNITION",
+      "audience": "founder-office",
+      "hook": "Build a wall that remembers the day you began.",
+      "caption": "Office art should do more than fill a surface. 33 IGNITION is a Collector Preview for founders who want one room to hold the instant a venture or body of work caught fire.",
+      "landingPath": "/en/metal-print/33-ignition-office-art"
+    },
+    {
+      "id": "IGNITION-EN-02",
+      "work": "33 IGNITION",
+      "audience": "founder-office",
+      "hook": "A meeting room does not need another explanation.",
+      "caption": "Some decisions should be felt before they are presented. 33 IGNITION turns a music-world emblem into a 60cm-square focal point for a founder office or design studio.",
+      "landingPath": "/en/metal-print/33-ignition-office-art"
+    },
+    {
+      "id": "IGNITION-EN-03",
+      "work": "33 IGNITION",
+      "audience": "founder-office",
+      "hook": "A new chapter deserves a mark stronger than a date.",
+      "caption": "For a company, studio or private room entering its next phase. A formal Offer opens only after the specification, destination and made-to-order terms are confirmed.",
+      "landingPath": "/en/metal-print/33-ignition-office-art"
+    },
+    {
+      "id": "HOME-EN-01",
+      "work": "A Town Called Almost Home",
+      "audience": "boutique-hotel",
+      "hook": "A room where guests somehow feel they have returned.",
+      "caption": "A Town Called Almost Home is conceived for boutique hotels and second homes that want belonging rather than generic decoration—a landscape for the feeling of almost returning.",
+      "landingPath": "/en/metal-print/almost-home-hotel-art"
+    },
+    {
+      "id": "HOME-EN-02",
+      "work": "A Town Called Almost Home",
+      "audience": "second-home",
+      "hook": "Not your birthplace. Still, your breathing changes here.",
+      "caption": "The work begins as a folk record and becomes a quiet visual anchor for a guest suite, residence or lounge. Collector Preview, Edition of three, made to order after payment.",
+      "landingPath": "/en/metal-print/almost-home-hotel-art"
+    },
+    {
+      "id": "HOME-EN-03",
+      "work": "A Town Called Almost Home",
+      "audience": "boutique-hotel",
+      "hook": "A long-stay room needs a story before it needs an address.",
+      "caption": "Hospitality can create recognition before explanation. See whether this imagined town belongs in the room you are shaping; no purchase decision is required.",
+      "landingPath": "/en/metal-print/almost-home-hotel-art"
+    },
+    {
+      "id": "BALIAN-EN-01",
+      "work": "BALIAN",
+      "audience": "retreat-spa",
+      "hook": "A quiet room and a powerless room are not the same.",
+      "caption": "BALIAN brings ritual, purification and equilibrium into a visual center for retreats and spa interiors that need force as well as stillness.",
+      "landingPath": "/en/metal-print/balian-retreat-art"
+    },
+    {
+      "id": "BALIAN-EN-02",
+      "work": "BALIAN",
+      "audience": "retreat-spa",
+      "hook": "Give the eye one place to return, and space becomes ritual.",
+      "caption": "A dense square image drawn from a musical journey through sacred places in Bali. Explore its fit for a contemplative hospitality space before any formal Offer.",
+      "landingPath": "/en/metal-print/balian-retreat-art"
+    },
+    {
+      "id": "BALIAN-EN-03",
+      "work": "BALIAN",
+      "audience": "boutique-hotel",
+      "hook": "A hotel's memory is made after the guest looks away.",
+      "caption": "For a retreat, spa or intimate hotel seeking a world of its own rather than borrowed calm. Edition of three; production begins after confirmed payment.",
+      "landingPath": "/en/metal-print/balian-retreat-art"
+    },
+    {
+      "id": "NATURA-EN-01",
+      "work": "Deus sive Natura",
+      "audience": "private-study",
+      "hook": "Place a question larger than the answer in your study.",
+      "caption": "Deus sive Natura—God, or Nature—translates a Spinozan music world into a focal point for rooms made for deeper thought.",
+      "landingPath": "/en/metal-print/deus-sive-natura-wall-art"
+    },
+    {
+      "id": "NATURA-EN-02",
+      "work": "Deus sive Natura",
+      "audience": "luxury-residence",
+      "hook": "A beautiful room does not need another expensive object.",
+      "caption": "It may need a symbol. This limited Collector Preview is conceived for a private study, wellness room or residence where nature and cosmos remain inseparable.",
+      "landingPath": "/en/metal-print/deus-sive-natura-wall-art"
+    },
+    {
+      "id": "NATURA-EN-03",
+      "work": "Deus sive Natura",
+      "audience": "wellness-residence",
+      "hook": "A room that remembers you are part of nature.",
+      "caption": "Darkness, light and immanent nature meet in a 60cm-square metal print candidate. Ask the Count whether the work belongs in your space before deciding anything.",
+      "landingPath": "/en/metal-print/deus-sive-natura-wall-art"
+    }
+  ]
+}

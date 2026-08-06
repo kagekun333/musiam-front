@@ -1,0 +1,25 @@
+{
+  "capturedAt": "2026-07-26T08:50:00+09:00",
+  "deploymentId": "dpl_HzVRT8AADwTAyYu3CSieLxPKEq6d",
+  "deploymentUrl": "https://musiam-front-cd82hgycm-hakusyakus-projects.vercel.app",
+  "productionAlias": "https://www.hakusyaku.xyz",
+  "readyState": "READY",
+  "evidenceModel": {
+    "dossierAccepted": "Explicit required checkbox on a one-work consultation; stored in the durable consultation record and counted only while active.",
+    "purchaseIntent": "Separate explicit checkbox stating intent to consider purchase within the selected timing if budget, physical quality, and delivery terms fit.",
+    "qualifiedPipeline": "JPY 330,000 only when budget is 330k+, timing is within 90 days, decision authority is confirmed, Dossier is accepted, and purchase intent is explicitly confirmed."
+  },
+  "currentObserved": {
+    "dossierAccepted": 0,
+    "purchaseIntent": 0,
+    "qualifiedProspects": 0,
+    "qualifiedPipelineJpy": 0
+  },
+  "validation": {
+    "consultation": "PASS",
+    "productionAdapter": "PASS",
+    "attribution": "PASS",
+    "nextBuild": "PASS"
+  },
+  "truthBoundary": "Deployment and schema are proven. No customer acceptance, purchase intent, qualified prospect, pipeline, payment or revenue is claimed until a real consented record exists."
+}

@@ -1,0 +1,597 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-06T14:57:35.228Z",
+  "evidenceClass": "LEDGER_MATURITY_DERIVATION",
+  "summary": {
+    "published": 22,
+    "due24h": 0,
+    "due72h": 0,
+    "resolved24h": 22,
+    "resolved72h": 20,
+    "nextMaturityAt": "2026-08-07T03:22:20.000Z"
+  },
+  "duePlacementIds": [],
+  "placements": [
+    {
+      "placementId": "ABI-LW01-01:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/DbOCUmsD6qI/",
+      "publishedAt": "2026-07-25T23:42:57+09:00",
+      "ageHours": 288.24,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-01:threads",
+      "platform": "threads",
+      "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbOChEpgYiK",
+      "publishedAt": "2026-07-25T23:42:57+09:00",
+      "ageHours": 288.24,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-02:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbOCsBvB0eU/",
+      "publishedAt": "2026-07-25T23:42:57+09:00",
+      "ageHours": 288.24,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-02:tiktok",
+      "platform": "tiktok",
+      "publicUrl": "https://www.tiktok.com/@countabi/video/7666475258425216269",
+      "publishedAt": "2026-07-25T23:40:00+09:00",
+      "ageHours": 288.29,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "completion_rate_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-02:youtube",
+      "platform": "youtube",
+      "publicUrl": "https://youtube.com/shorts/71B_q_nQTJg",
+      "publishedAt": "2026-07-25T23:42:57+09:00",
+      "ageHours": 288.24,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "meaningful_comments_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-03:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/p/DbO5HqDE56W/",
+      "publishedAt": "2026-07-26T07:31:00+09:00",
+      "ageHours": 280.44,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-03:threads",
+      "platform": "threads",
+      "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbO46aaEusS",
+      "publishedAt": "2026-07-26T07:31:00+09:00",
+      "ageHours": 280.44,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-04:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbdCnQBNKh5/",
+      "publishedAt": "2026-07-31T19:32:14+09:00",
+      "ageHours": 148.42,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-04:tiktok",
+      "platform": "tiktok",
+      "publicUrl": "https://www.tiktok.com/@countabi/video/7668637213990587662",
+      "publishedAt": "2026-07-31T19:32:14+09:00",
+      "ageHours": 148.42,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-04:youtube",
+      "platform": "youtube",
+      "publicUrl": "https://youtube.com/shorts/TzbHCtd10Xw",
+      "publishedAt": "2026-07-31T19:32:14+09:00",
+      "ageHours": 148.42,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-05:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/Dbhb8VID-5g/",
+      "publishedAt": "2026-08-02T12:21:28+09:00",
+      "ageHours": 107.6,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-05:threads",
+      "platform": "threads",
+      "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbhcKYKAfX7",
+      "publishedAt": "2026-08-02T12:23:21+09:00",
+      "ageHours": 107.57,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-06:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbfvzQLhkd7/",
+      "publishedAt": "2026-08-01T20:37:26+09:00",
+      "ageHours": 123.34,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-06:tiktok",
+      "platform": "tiktok",
+      "publicUrl": "https://www.tiktok.com/@countabi/video/7669026152693976334",
+      "publishedAt": "2026-08-01T20:39:53+09:00",
+      "ageHours": 123.3,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-06:youtube",
+      "platform": "youtube",
+      "publicUrl": "https://youtube.com/shorts/jYNoFK3Zt5I",
+      "publishedAt": "2026-08-01T20:43:09+09:00",
+      "ageHours": 123.24,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-07:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/DbhcUBjD7Z9/",
+      "publishedAt": "2026-08-02T12:24:42+09:00",
+      "ageHours": 107.55,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-07:threads",
+      "platform": "threads",
+      "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbhcajnAWUq",
+      "publishedAt": "2026-08-02T12:25:34+09:00",
+      "ageHours": 107.53,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-08:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbkCiFUxWWB/",
+      "publishedAt": "2026-08-03T12:38:53+09:00",
+      "ageHours": 83.31,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-08:tiktok",
+      "platform": "tiktok",
+      "publicUrl": "https://www.tiktok.com/@countabi/video/7669645373119515917",
+      "publishedAt": "2026-08-03T12:41:50+09:00",
+      "ageHours": 83.26,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-08:youtube",
+      "platform": "youtube",
+      "publicUrl": "https://youtube.com/shorts/soWW85wPUfE",
+      "publishedAt": "2026-08-03T12:46:20+09:00",
+      "ageHours": 83.19,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-09:instagram",
+      "platform": "instagram",
+      "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/Dbmlon0j4GY/",
+      "publishedAt": "2026-08-04T12:22:20+09:00",
+      "ageHours": 59.59,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "views_24h",
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "WAITING",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    },
+    {
+      "placementId": "ABI-LW01-09:threads",
+      "platform": "threads",
+      "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/Dbml3yYAZXd",
+      "publishedAt": "2026-08-04T12:24:24+09:00",
+      "ageHours": 59.55,
+      "measurement24h": {
+        "state": "RESOLVED",
+        "missingFields": [
+          "three_second_views_24h",
+          "completion_rate_24h",
+          "saves_24h",
+          "shares_24h",
+          "profile_visits_24h"
+        ]
+      },
+      "measurement72h": {
+        "state": "WAITING",
+        "missingFields": [
+          "views_72h",
+          "completion_rate_72h",
+          "saves_72h",
+          "shares_72h",
+          "profile_visits_72h"
+        ]
+      }
+    }
+  ],
+  "resolutionContract": "After a mature owner-insights attempt, preserve unavailable metrics as blank and append [24h-resolved] and/or [72h-resolved] to notes with a short unavailable-field explanation. Never use zero to mean unavailable."
+}

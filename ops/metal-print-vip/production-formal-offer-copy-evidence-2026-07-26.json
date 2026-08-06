@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-25T22:26:36Z",
+  "evidenceClass": "LIVE_PRODUCTION_BROWSER_VERIFICATION",
+  "deploymentId": "dpl_CcqfHiy7Pou5Ufb6Wzpom9z7YHfn",
+  "productionUrl": "https://www.hakusyaku.xyz/metal-print/deus-sive-natura-wall-art",
+  "checks": {
+    "deploymentReady": true,
+    "productionAliasesActive": true,
+    "formalOfferLabelVisible": true,
+    "formalCollectorPriceVisible": true,
+    "plannedPriceLabelAbsent": true,
+    "chatConsultationCtaVisible": true
+  },
+  "copyContract": {
+    "offerLabel": "FORMAL OFFER",
+    "priceLabel": "正式Collector価格・税込",
+    "chatCta": "伯爵に、この空間との相性を尋ねる"
+  },
+  "claimBoundary": "This proves the approved NATURA Offer is labeled consistently on the live public page and that its consultation CTA is visible. It does not prove customer demand, a consultation, payment, physical proof or fulfillment."
+}

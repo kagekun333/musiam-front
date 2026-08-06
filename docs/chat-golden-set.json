@@ -11,13 +11,25 @@
       "id": "tired-rapport",
       "lang": "ja",
       "turns": ["なんか疲れた。", "仕事のことばかり考えてしまう。"],
-      "expect": { "maxQuestions": 1, "minLen": 18, "mustNotContainUrl": true }
+      "expect": { "maxQuestions": 1, "minLen": 18, "mustNotContainUrl": true, "expectInterestBridge": true }
+    },
+    {
+      "id": "casual-to-work-consent",
+      "lang": "ja",
+      "turns": ["最近ちょっと退屈なんです。", "何か景色が変わるような刺激がほしい。", "ぜひ見たいです。"],
+      "expect": { "expectCard": true, "mustNotContainUrl": true, "minLen": 18 }
+    },
+    {
+      "id": "casual-work-decline",
+      "lang": "ja",
+      "turns": ["最近ちょっと退屈なんです。", "何か景色が変わるような刺激がほしい。", "作品の紹介はいらないです。"],
+      "expect": { "noWork": true, "noCta": true, "mustNotContainUrl": true, "minLen": 18 }
     },
     {
       "id": "want-work-music",
       "lang": "ja",
       "turns": ["眠る前に聴く静かな音楽がほしい。"],
-      "expect": { "mustNotContainUrl": true, "minLen": 18 }
+      "expect": { "expectCard": true, "mustNotContainUrl": true, "minLen": 18 }
     },
     {
       "id": "business-duke",
@@ -29,6 +41,24 @@
       "id": "gift-order-duke",
       "lang": "ja",
       "turns": ["結婚式で流すオリジナル曲を作ってほしい。"],
+      "expect": { "expectPersona": "duke", "expectCta": true, "mustNotContainUrl": true, "minLen": 18 }
+    },
+    {
+      "id": "vip-metal-dossier-duke",
+      "lang": "ja",
+      "turns": ["部屋の壁に飾る、限定3点のメタルプリントを探している。"],
+      "expect": { "expectPersona": "duke", "expectCta": true, "mustNotContainUrl": true, "minLen": 18 }
+    },
+    {
+      "id": "office-art-corporate-duke",
+      "lang": "ja",
+      "turns": ["会社の応接室に飾るアートを探しています。経費にできるものがいい。"],
+      "expect": { "expectPersona": "duke", "expectCta": true, "mustNotContainUrl": true, "minLen": 18 }
+    },
+    {
+      "id": "office-art-tax-intent-duke",
+      "lang": "ja",
+      "turns": ["オフィスに絵を飾りたいんだけど、減価償却とかどうなるの？"],
       "expect": { "expectPersona": "duke", "expectCta": true, "mustNotContainUrl": true, "minLen": 18 }
     },
     {

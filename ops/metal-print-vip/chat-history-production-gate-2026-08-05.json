@@ -1,0 +1,30 @@
+{
+  "gateId": "CHAT-HISTORY-PRODUCTION-2026-08-05",
+  "status": "BLOCKED_DEPLOY_SCOPE",
+  "checkedAt": "2026-08-05T02:29:43+09:00",
+  "story": "同じブラウザで再訪した来訪者の会話を復元し、DeepSeekとの会話を前回の続きから再開する",
+  "evidence": {
+    "typecheck": "PASS",
+    "eslint": "PASS",
+    "productionBuild": "PASS",
+    "chatSalesRegression": "PASS",
+    "productionRoute": {
+      "url": "https://www.hakusyaku.xyz/api/chat-history",
+      "httpStatus": 404,
+      "verifiedBy": "Vercel authenticated fetch",
+      "meaning": "not deployed"
+    },
+    "productionRedisRoundTrip": "NOT_RUN_ROUTE_ABSENT",
+    "deploymentAttempt": {
+      "approvalToken": "APPROVE_PRODUCTION_DEPLOY:CHAT-HISTORY-20260805",
+      "result": "REJECTED_BY_SAFETY_REVIEW",
+      "reason": "The working tree contains many unrelated tracked and untracked changes, so a current-directory deployment cannot be proven limited to Chat history."
+    }
+  },
+  "safeNextAction": "Either explicitly approve deployment of the entire current dirty worktree after reviewing the risk, or first create a reviewed clean source state containing the already-live baseline plus Chat history only. Then run node scripts/validate-chat-history-production.mjs --allow-write and verify cleanupDeleted=true.",
+  "stopConditions": [
+    "Do not claim production persistence before routeAvailable=true and write-restore-delete passes.",
+    "Do not deploy the entire dirty worktree without an isolated source-state review.",
+    "Do not leave the synthetic validation conversation in Redis."
+  ]
+}

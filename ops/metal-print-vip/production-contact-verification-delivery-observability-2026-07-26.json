@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-26T01:11:49Z",
+  "deployment": {
+    "id": "dpl_7ounJ1VzXWQatYnF12zdF33zgAks",
+    "target": "production",
+    "status": "READY",
+    "url": "https://musiam-front-4erzwbtnn-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "controls": {
+    "deliveryOutcomePersisted": true,
+    "summaryExposesSentAndFailedCounts": true,
+    "controllerEscalatesFailures": true,
+    "controllerWaitsForUnverifiedContacts": true,
+    "uiDisclosesDeliveryFailure": true,
+    "manualPromotionForbidden": true
+  },
+  "validation": {
+    "consultationValidator": "PASS",
+    "goalControllerValidator": "PASS",
+    "typecheck": "PASS",
+    "vercelBuild": "PASS",
+    "postDeployErrorScan": "NO_LOGS_FOUND",
+    "vipPage": {
+      "status": 200,
+      "url": "https://www.hakusyaku.xyz/vip-metal-print"
+    },
+    "invalidVerificationToken": {
+      "status": 303,
+      "redirect": "https://www.hakusyaku.xyz/vip-metal-print?consultation=verification-invalid"
+    }
+  },
+  "claimBoundary": {
+    "realEmailSentByThisVerification": false,
+    "realDeliveryOutcomeProven": false,
+    "syntheticConsultationCreated": false,
+    "demandOrRevenueEvidenceCreated": false,
+    "assuranceDecisionAfterDeploy": "HOLD",
+    "note": "This proves production deployment and safe invalid-token behavior. It does not prove real email delivery, customer demand, purchase intent, payment, fulfillment, or revenue."
+  }
+}

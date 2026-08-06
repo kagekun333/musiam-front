@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+  "createdAt": "2026-08-03T12:27:18.090Z",
+  "releaseDate": "2026-08-09",
+  "work": {
+    "id": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+    "title": "れいんぼーくっしゅ",
+    "type": "music",
+    "cover": "/works/covers/spotify_3ILKNWXtZof2e6XS6Zvynr.jpg",
+    "listenUrl": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
+    "verifiedTags": [
+      "genre:Hip-Hop/Rap"
+    ]
+  },
+  "campaign": "daily_music_to_metal",
+  "purpose": "daily music discovery to permission-based work-specific Chat; not a direct sales post",
+  "placements": [
+    {
+      "placementId": "DMR-20260809-2d28da0a-instagram",
+      "platform": "instagram",
+      "scheduledDate": "2026-08-09",
+      "copy": "今日の一曲「れいんぼーくっしゅ」。\n音の入口はHip-Hop/Rap。\n\n聴き終わった瞬間、どんな色が残りましたか？\nその一語を伯爵Chatへ。正解も購入も必要ありません。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-instagram",
+      "alt": "れいんぼーくっしゅ — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=instagram&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-instagram",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_3ILKNWXtZof2e6XS6Zvynr.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "story_link_sticker_or_copyable_caption_url",
+        "status": "LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:instagram",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "approvedMediaSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-threads",
+      "platform": "threads",
+      "scheduledDate": "2026-08-09",
+      "copy": "「れいんぼーくっしゅ」を15秒。\n音の入口はHip-Hop/Rap。\n\n説明より先に、いま残った一語だけ教えてください。\n伯爵Chatで、その言葉から作品を一緒に読みます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-threads",
+      "alt": "れいんぼーくっしゅ — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-threads",
+      "media": {
+        "kind": "cover_image",
+        "path": "/works/covers/spotify_3ILKNWXtZof2e6XS6Zvynr.jpg",
+        "status": "COVER_READY"
+      },
+      "ingress": {
+        "mechanism": "clickable_post_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:threads",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "approvedMediaSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-tiktok",
+      "platform": "tiktok",
+      "scheduledDate": "2026-08-09",
+      "copy": "この15秒、あなたには何色に聴こえる？\n「れいんぼーくっしゅ」｜Hip-Hop/Rap\n\n浮かんだ一語を伯爵Chatへ。意味はあなたの感覚から始めます。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-tiktok",
+      "alt": "れいんぼーくっしゅ — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=tiktok&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-tiktok",
+      "media": {
+        "kind": "vertical_video",
+        "path": "ops/audience-engine/daily-music-release-media/DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr.mp4",
+        "status": "READY",
+        "evidence": {
+          "audioSha256": "b4b6e819b6cfff094552bd9f644ddeb92159b64bb3afa352b08102e76ab49d0f",
+          "audioBytes": 62413946,
+          "coverSha256": "34b33c30dd84c19ad06dbfdafa172a61f5043581927eb21d09b7feaf1867cb9f",
+          "videoSha256": "6aa7feeb02b4e4e3b52a5ac19ea07a99f4fbe726b8b9b8d0197c5f79e1c85051",
+          "videoBytes": 3460100,
+          "durationSeconds": 15,
+          "width": 1080,
+          "height": 1920,
+          "hasAudio": true,
+          "motionTreatment": "cinematic_zoom_1.00_to_1.05",
+          "audioReactiveTreatment": "gold_waveform"
+        }
+      },
+      "ingress": {
+        "mechanism": "supported_link_attachment_or_copyable_caption_url",
+        "status": "CLICKABLE_LINK_CAPABILITY_REQUIRED"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:tiktok",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "approvedMediaSha256": "6aa7feeb02b4e4e3b52a5ac19ea07a99f4fbe726b8b9b8d0197c5f79e1c85051"
+    },
+    {
+      "placementId": "DMR-20260809-2d28da0a-youtube",
+      "platform": "youtube",
+      "scheduledDate": "2026-08-09",
+      "copy": "イヤホン推奨。15秒後に残るものは？\n今日の一曲「れいんぼーくっしゅ」。音の入口はHip-Hop/Rap。\n\n感情でも、景色でも、一語で大丈夫。伯爵Chatで続きを聞かせてください。\n\n伯爵Chat: https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-youtube",
+      "alt": "れいんぼーくっしゅ — ABI伯爵の音楽作品ジャケット",
+      "listenUrl": "https://open.spotify.com/album/3ILKNWXtZof2e6XS6Zvynr",
+      "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-youtube",
+      "media": {
+        "kind": "long_form_video",
+        "path": "ops/audience-engine/daily-music-release-media/youtube-longform/DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr-youtube-longform-1920x1080.mp4",
+        "status": "READY",
+        "evidence": {
+          "sourceSha256": "6aa7feeb02b4e4e3b52a5ac19ea07a99f4fbe726b8b9b8d0197c5f79e1c85051",
+          "videoSha256": "723d7e47d0fa4ef04642a91a932324eb1068823fc9bdcba19f7ff9be28aaccd8",
+          "width": 1920,
+          "height": 1080,
+          "durationSeconds": 15.018,
+          "hasAudio": true
+        }
+      },
+      "ingress": {
+        "mechanism": "clickable_long_form_description_url",
+        "status": "READY"
+      },
+      "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:youtube",
+      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "scheduledAt": "2026-08-09T03:15:00.000Z",
+      "approvedMediaSha256": "723d7e47d0fa4ef04642a91a932324eb1068823fc9bdcba19f7ff9be28aaccd8",
+      "publicationFormat": "LONG_FORM_16_9",
+      "publicationRequirements": {
+        "exactDescriptionChatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%8C%E3%81%84%E3%82%93%E3%81%BC%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85&workId=spotify-single-3ILKNWXtZof2e6XS6Zvynr&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260809-2d28da0a-youtube",
+        "descriptionLinkClickable": true,
+        "failClosedIfShortsUrl": true
+      },
+      "youtubeLongFormApproval": {
+        "token": "APPROVE_DAILY_MUSIC_YOUTUBE_LONGFORM:DMW-20260805-7D:0e607813c6b9d906",
+        "aggregateSha256": "0e607813c6b9d906d9c7401894abdbd1d1cfe77816567966458e8d91a2c84e6a",
+        "approvedAt": "2026-08-03T14:51:05.086Z"
+      }
+    }
+  ],
+  "gates": {
+    "externalPublication": "APPROVED",
+    "videoAssembly": "PASS",
+    "exactWorkAttribution": "PASS"
+  },
+  "evidenceBoundary": "This candidate proves catalog identity, tracked routing and mechanically verified media only. It does not prove publication, reach, demand, pipeline or revenue.",
+  "externalPublicationPerformed": false,
+  "waveApproval": {
+    "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
+    "scope": [
+      "DMR-20260805-4531782f-instagram",
+      "DMR-20260805-4531782f-threads",
+      "DMR-20260805-4531782f-tiktok",
+      "DMR-20260805-4531782f-youtube",
+      "DMR-20260806-fbd1b2f2-instagram",
+      "DMR-20260806-fbd1b2f2-threads",
+      "DMR-20260806-fbd1b2f2-tiktok",
+      "DMR-20260806-fbd1b2f2-youtube",
+      "DMR-20260807-fa76c46a-instagram",
+      "DMR-20260807-fa76c46a-threads",
+      "DMR-20260807-fa76c46a-tiktok",
+      "DMR-20260807-fa76c46a-youtube",
+      "DMR-20260808-3a28b6af-instagram",
+      "DMR-20260808-3a28b6af-threads",
+      "DMR-20260808-3a28b6af-tiktok",
+      "DMR-20260808-3a28b6af-youtube",
+      "DMR-20260809-2d28da0a-instagram",
+      "DMR-20260809-2d28da0a-threads",
+      "DMR-20260809-2d28da0a-tiktok",
+      "DMR-20260809-2d28da0a-youtube",
+      "DMR-20260810-701bf415-instagram",
+      "DMR-20260810-701bf415-threads",
+      "DMR-20260810-701bf415-tiktok",
+      "DMR-20260810-701bf415-youtube",
+      "DMR-20260811-223361f3-instagram",
+      "DMR-20260811-223361f3-threads",
+      "DMR-20260811-223361f3-tiktok",
+      "DMR-20260811-223361f3-youtube"
+    ],
+    "appliedAt": "2026-08-03T13:53:23.065Z"
+  }
+}

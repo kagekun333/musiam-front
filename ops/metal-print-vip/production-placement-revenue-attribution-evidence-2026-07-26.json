@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-26T00:25:36Z",
+  "evidenceClass": "PRODUCTION_DEPLOYMENT_PLUS_DURABLE_SNAPSHOT_SCHEMA",
+  "deployment": {
+    "id": "dpl_AUDjSvRhtEXWk1RTYVmFYtv3ysgq",
+    "readyState": "READY",
+    "target": "production",
+    "alias": "https://www.hakusyaku.xyz"
+  },
+  "attributionContract": {
+    "consultationUtmCopiedToCheckoutSession": true,
+    "consultationUtmCopiedToPaymentIntent": true,
+    "signedWebhookPersistsUtmWithPayment": true,
+    "refundAwareNetRevenueByPlacement": true,
+    "dossierAcceptanceByPlacement": true,
+    "purchaseIntentByPlacement": true,
+    "exactJoinDimensions": ["campaign", "source", "content"],
+    "aggregateRevenueAllocationForbidden": true
+  },
+  "productionSnapshot": {
+    "qualified": 0,
+    "pipelineValueJpy": 0,
+    "paymentCount": 0,
+    "netNonRefundedYen": 0,
+    "byPlacement": {},
+    "unattributedNetNonRefundedYen": 0
+  },
+  "automation": {
+    "dailyControllerConfigSha256": "35191857ab7dba222fcd2c69e7eaa5109308c7c12ba9f919a0a1ddbf367b6c42",
+    "maturityCollectorConfigSha256": "f2961bd295710e8ff1acf705fb1e36d6a68beb31e6347f379c766dbdab74bdb3",
+    "ledgerSyncInstalledInBoth": true
+  },
+  "validation": {
+    "revenueUnitFixture": "PASS",
+    "productionAdapter": "PASS",
+    "salesE2E": "PASS",
+    "typecheck": "PASS",
+    "firstPartyLedgerSync": "PASS"
+  },
+  "credentialSafety": "Production environment variables were pulled to a fixed temporary file for read-only snapshots and deleted immediately after use.",
+  "claimBoundary": "This proves future consented consultation attribution can survive Checkout, signed webhook, refund and ledger synchronization. Current production demand, pipeline and revenue remain zero; no payment or consultation was created for verification."
+}

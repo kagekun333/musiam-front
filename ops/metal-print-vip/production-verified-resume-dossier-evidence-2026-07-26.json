@@ -1,0 +1,49 @@
+{
+  "verifiedAt": "2026-07-26T10:28:39+09:00",
+  "deployment": {
+    "productionUrl": "https://musiam-front-rjneb7vx8-hakusyakus-projects.vercel.app",
+    "alias": "https://www.hakusyaku.xyz",
+    "status": "READY",
+    "cliEvidence": "vercel deploy reported Production, Aliased and Ready in 3m; a follow-up inspect command timed out without output"
+  },
+  "implementedControls": {
+    "verifiedContactResumeTarget": "/chat",
+    "selectedEditionRestored": true,
+    "attributionRestored": true,
+    "capabilityTokenLocation": "URL fragment only and removed from browser history after consumption",
+    "dossierShownBeforeAcceptance": true,
+    "dossierTerms": [
+      "selected work and Edition",
+      "600x600 metal-print specification",
+      "formal versus candidate price status",
+      "made-to-order production and delivery estimate",
+      "unapproved physical-proof and appearance warning",
+      "destination and import-tax boundary",
+      "made-to-order cancellation and change boundary"
+    ]
+  },
+  "liveReadOnlyChecks": {
+    "chatStatus": 200,
+    "vipMetalPrintStatus": 200,
+    "invalidVerificationToken": {
+      "status": 303,
+      "location": "https://www.hakusyaku.xyz/vip-metal-print?consultation=verification-invalid"
+    },
+    "crossOriginAcceptanceAttempt": {
+      "status": 403,
+      "error": "invalid_origin"
+    }
+  },
+  "validation": {
+    "consultationValidator": "PASS",
+    "typecheck": "PASS"
+  },
+  "currentRealEvidence": {
+    "verifiedConsultations": 0,
+    "dossierAccepted": 0,
+    "purchaseIntentConfirmed": 0,
+    "paidOrders": 0,
+    "nonRefundedRevenueYen": 0
+  },
+  "claimBoundary": "This proves that the production sales path can return a verified contact to the selected-work Chat and show concrete Dossier terms before explicit acceptance. It does not prove a real verification-email delivery, valid-link completion, consultation, Dossier acceptance, purchase intent, payment, fulfillment, demand or revenue."
+}

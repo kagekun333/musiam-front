@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "waveId": "DMW-20260805-7D",
+  "createdAt": "2026-08-03T12:27:18.160Z",
+  "startDate": "2026-08-05",
+  "days": 7,
+  "selection": "newest unused canonical music works with cover and public listen URL; copy never claims a historical work is a new release",
+  "releases": [
+    {
+      "date": "2026-08-05",
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "title": "ENA",
+      "releasedAt": "2026-01-29",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-05--spotify-single-5bIfjfVK9QwHfu1NzNc94M.json",
+      "releaseId": "DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "placementIds": [
+        "DMR-20260805-4531782f-instagram",
+        "DMR-20260805-4531782f-threads",
+        "DMR-20260805-4531782f-tiktok",
+        "DMR-20260805-4531782f-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260805-spotify-single-5bIfjfVK9QwHfu1NzNc94M:youtube"
+      ],
+      "scheduledAt": "2026-08-05T03:15:00.000Z"
+    },
+    {
+      "date": "2026-08-06",
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "title": "Mama Afrika",
+      "releasedAt": "2026-01-29",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-06--spotify-single-60QCBTuEwNc380r2YtUO0f.json",
+      "releaseId": "DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "placementIds": [
+        "DMR-20260806-fbd1b2f2-instagram",
+        "DMR-20260806-fbd1b2f2-threads",
+        "DMR-20260806-fbd1b2f2-tiktok",
+        "DMR-20260806-fbd1b2f2-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:youtube"
+      ],
+      "scheduledAt": "2026-08-06T03:15:00.000Z"
+    },
+    {
+      "date": "2026-08-07",
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "title": "ウィーアーザアース",
+      "releasedAt": "2026-01-28",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-07--spotify-single-0o5od07Lyxu9w9obQuvgm9.json",
+      "releaseId": "DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "placementIds": [
+        "DMR-20260807-fa76c46a-instagram",
+        "DMR-20260807-fa76c46a-threads",
+        "DMR-20260807-fa76c46a-tiktok",
+        "DMR-20260807-fa76c46a-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9:youtube"
+      ],
+      "scheduledAt": "2026-08-07T03:15:00.000Z"
+    },
+    {
+      "date": "2026-08-08",
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "title": "強制アップデート",
+      "releasedAt": "2026-01-28",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-08--spotify-single-2ti9uIOu2JPOMMzUf41Snl.json",
+      "releaseId": "DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "placementIds": [
+        "DMR-20260808-3a28b6af-instagram",
+        "DMR-20260808-3a28b6af-threads",
+        "DMR-20260808-3a28b6af-tiktok",
+        "DMR-20260808-3a28b6af-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260808-spotify-single-2ti9uIOu2JPOMMzUf41Snl:youtube"
+      ],
+      "scheduledAt": "2026-08-08T03:15:00.000Z"
+    },
+    {
+      "date": "2026-08-09",
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "title": "れいんぼーくっしゅ",
+      "releasedAt": "2026-01-28",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-09--spotify-single-3ILKNWXtZof2e6XS6Zvynr.json",
+      "releaseId": "DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "placementIds": [
+        "DMR-20260809-2d28da0a-instagram",
+        "DMR-20260809-2d28da0a-threads",
+        "DMR-20260809-2d28da0a-tiktok",
+        "DMR-20260809-2d28da0a-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260809-spotify-single-3ILKNWXtZof2e6XS6Zvynr:youtube"
+      ],
+      "scheduledAt": "2026-08-09T03:15:00.000Z"
+    },
+    {
+      "date": "2026-08-10",
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "title": "FORCED UPDATE!",
+      "releasedAt": "2026-01-28",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-10--spotify-single-7s0xajVHIGgMYdwUuj48Cb.json",
+      "releaseId": "DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "placementIds": [
+        "DMR-20260810-701bf415-instagram",
+        "DMR-20260810-701bf415-threads",
+        "DMR-20260810-701bf415-tiktok",
+        "DMR-20260810-701bf415-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260810-spotify-single-7s0xajVHIGgMYdwUuj48Cb:youtube"
+      ],
+      "scheduledAt": "2026-08-10T03:15:00.000Z"
+    },
+    {
+      "date": "2026-08-11",
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "title": "사인 주세요",
+      "releasedAt": "2026-01-26",
+      "candidatePath": "ops/audience-engine/daily-music-release-candidates/2026-08-11--spotify-single-43CyheqfBIFgDSRmB4ZfAt.json",
+      "releaseId": "DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "placementIds": [
+        "DMR-20260811-223361f3-instagram",
+        "DMR-20260811-223361f3-threads",
+        "DMR-20260811-223361f3-tiktok",
+        "DMR-20260811-223361f3-youtube"
+      ],
+      "approvalTokens": [
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:instagram",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:threads",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:tiktok",
+        "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260811-spotify-single-43CyheqfBIFgDSRmB4ZfAt:youtube"
+      ],
+      "scheduledAt": "2026-08-11T03:15:00.000Z"
+    }
+  ],
+  "batchApprovalToken": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
+  "publicationState": "APPROVED_WAITING_SCHEDULE",
+  "externalPublicationPerformed": false,
+  "evidenceBoundary": "Candidate preparation only. No publication, reach, demand, pipeline or revenue is asserted.",
+  "schedulePolicy": "One canonical work per day at 12:15 JST; a placement is due only after scheduledAt, exact Human approval and immediate media preflight.",
+  "approval": {
+    "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
+    "placements": [
+      "DMR-20260805-4531782f-instagram",
+      "DMR-20260805-4531782f-threads",
+      "DMR-20260805-4531782f-tiktok",
+      "DMR-20260805-4531782f-youtube",
+      "DMR-20260806-fbd1b2f2-instagram",
+      "DMR-20260806-fbd1b2f2-threads",
+      "DMR-20260806-fbd1b2f2-tiktok",
+      "DMR-20260806-fbd1b2f2-youtube",
+      "DMR-20260807-fa76c46a-instagram",
+      "DMR-20260807-fa76c46a-threads",
+      "DMR-20260807-fa76c46a-tiktok",
+      "DMR-20260807-fa76c46a-youtube",
+      "DMR-20260808-3a28b6af-instagram",
+      "DMR-20260808-3a28b6af-threads",
+      "DMR-20260808-3a28b6af-tiktok",
+      "DMR-20260808-3a28b6af-youtube",
+      "DMR-20260809-2d28da0a-instagram",
+      "DMR-20260809-2d28da0a-threads",
+      "DMR-20260809-2d28da0a-tiktok",
+      "DMR-20260809-2d28da0a-youtube",
+      "DMR-20260810-701bf415-instagram",
+      "DMR-20260810-701bf415-threads",
+      "DMR-20260810-701bf415-tiktok",
+      "DMR-20260810-701bf415-youtube",
+      "DMR-20260811-223361f3-instagram",
+      "DMR-20260811-223361f3-threads",
+      "DMR-20260811-223361f3-tiktok",
+      "DMR-20260811-223361f3-youtube"
+    ],
+    "appliedAt": "2026-08-03T13:53:23.065Z"
+  }
+}

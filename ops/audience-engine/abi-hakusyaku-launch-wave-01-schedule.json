@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Asia/Tokyo",
+  "campaign": "abi_hakusyaku_launch_wave_01",
+  "schedule": [
+    { "postId": "ABI-LW01-01", "scheduledAt": "2026-07-25T12:15:00+09:00", "placements": ["instagram", "threads"] },
+    { "postId": "ABI-LW01-02", "scheduledAt": "2026-07-25T20:30:00+09:00", "placements": ["instagram", "tiktok", "youtube"] },
+    { "postId": "ABI-LW01-03", "scheduledAt": "2026-07-26T12:15:00+09:00", "placements": ["instagram", "threads"] },
+    { "postId": "ABI-LW01-04", "scheduledAt": "2026-07-31T12:15:00+09:00", "placements": ["instagram", "tiktok", "youtube"] },
+    { "postId": "ABI-LW01-05", "scheduledAt": "2026-08-01T12:15:00+09:00", "placements": ["instagram", "threads"] },
+    { "postId": "ABI-LW01-06", "scheduledAt": "2026-08-01T20:30:00+09:00", "placements": ["instagram", "tiktok", "youtube"] },
+    { "postId": "ABI-LW01-07", "scheduledAt": "2026-08-02T12:15:00+09:00", "placements": ["instagram", "threads"] },
+    { "postId": "ABI-LW01-08", "scheduledAt": "2026-08-03T12:15:00+09:00", "placements": ["instagram", "tiktok", "youtube"] },
+    { "postId": "ABI-LW01-09", "scheduledAt": "2026-08-04T12:15:00+09:00", "placements": ["instagram", "threads"] }
+  ],
+  "executionRule": "A placement is due only when its post scheduledAt has passed, its approval token exists in the approved packet, and its ledger status is APPROVED_WAITING_SCHEDULE. Published placements are never due again.",
+  "claimBoundary": "This schedule authorizes no content outside the already approved 22 placements and does not prove publication or reach."
+}

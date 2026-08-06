@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "policyId": "DAILY_MUSIC_STANDING_PUBLICATION_APPROVAL_V1",
+  "grantedAt": "2026-08-04T01:37:06.000Z",
+  "status": "ACTIVE",
+  "userInstruction": "一度Waveを承認するところも省いてくれたら助かる",
+  "scope": {
+    "requiresApprovedWave": false,
+    "allowsAutomaticWaveApproval": true,
+    "platforms": ["instagram", "threads", "tiktok", "youtube"],
+    "allows": [
+      "organic publication at the approved scheduled time",
+      "automatic approval of recurring Daily Music Waves assembled from canonical owned works",
+      "deterministic platform-format adaptation of already approved source media",
+      "crop, pad, resize, transcode, loudness-safe remux and thumbnail extraction",
+      "use of the exact approved work-specific Chat URL and UTM",
+      "mechanical caption length and line-break adaptation without changing claims"
+    ],
+    "invariants": [
+      "same canonical work",
+      "same source media and rights basis",
+      "same factual meaning",
+      "daily 12:15 JST schedule unless a later explicit instruction changes it",
+      "same workId and source/medium/campaign/content attribution",
+      "zero advertising spend"
+    ]
+  },
+  "reapprovalRequiredFor": [
+    "paid advertising or boosted distribution",
+    "direct messages or outbound sales contact",
+    "new factual, medical, financial, scarcity or provenance claims",
+    "different work, campaign purpose, account identity or audience targeting",
+    "terms acceptance, profile changes, payment, refund or vendor order",
+    "media whose source hash or rights basis cannot be verified"
+  ],
+  "executionRule": "Do not request Wave, item, platform or format approval when every scope invariant is mechanically verified. The standing policy itself is the Human Gate. Fail closed and request a new Human Gate only for an enumerated reapproval condition.",
+  "evidenceBoundary": "Standing approval authorizes scoped organic execution; it is not evidence of publication, reach, demand, pipeline or revenue."
+}

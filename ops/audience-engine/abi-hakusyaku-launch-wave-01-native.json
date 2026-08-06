@@ -1,0 +1,273 @@
+{
+  "schemaVersion": 2,
+  "status": "APPROVED_EXECUTION_IN_PROGRESS",
+  "campaign": "abi_hakusyaku_launch_wave_01",
+  "objective": "9投稿でABI伯爵の世界観を理解させ、販売広告ではなく対話と伯爵Chatへの入口を作る。",
+  "contentPolicy": {
+    "foundationPosts": 9,
+    "directSalesPosts": 0,
+    "directSalesShare": 0,
+    "maximumDirectSalesShare": 0.05,
+    "claimBoundary": "フォロワー、再生、保存、validator PASSは売上ではない。売上はdurableな非返金Stripe決済だけで数える。"
+  },
+  "publicationGate": {
+    "state": "APPROVED",
+    "approvedAt": "2026-07-25",
+    "approvalEvidence": "ops/audience-engine/abi-hakusyaku-launch-wave-01-publication-approval.md",
+    "authorizes": "承認された1 placementの外部公開のみ",
+    "doesNotAuthorize": ["広告課金", "DM送信", "proof発注", "支払い", "本人認証", "規約同意"],
+    "tokenPattern": "APPROVE_EXTERNAL_POST:<post_id>:<platform>"
+  },
+  "measurement": {
+    "ledger": "ops/audience-engine/abi-hakusyaku-launch-wave-01-ledger.csv",
+    "windowsHours": [24, 72],
+    "audienceKpis": ["views", "three_second_views", "completion_rate", "saves", "shares", "meaningful_comments", "profile_visits", "followers_gained"],
+    "businessKpis": ["chat_sessions", "first_messages", "consultations", "dossier_accepted", "purchase_intent", "net_non_refunded_yen"]
+  },
+  "videoPolicy": {
+    "format": "1080x1920_h264_15s",
+    "audio": "PLATFORM_NATIVE_AUDIO_HUMAN_GATE",
+    "note": "生成clipは無音。権利確認済み音源または各媒体の公式音源選択は公開時Human Gate。"
+  },
+  "posts": [
+    {
+      "slot": 1,
+      "id": "ABI-LW01-01",
+      "pillar": "manifesto",
+      "hookFamily": "declaration",
+      "image": "/metal-print-campaign/natura-01.jpg",
+      "alt": "暗い宇宙的な空間にDeus sive Naturaの正方形作品を置き、ABI伯爵の開館を告げるビジュアル。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "feed_4x5",
+          "copy": "言葉を武器に、世界を遊ぶ。\n\n音、本、映像、哲学、空間芸術。別々だった制作を、一つの館として開いていく。ABI伯爵、開館。\n\nあなたが十年残したい景色を、一言で教えてください。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-01",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-01:instagram"
+        },
+        "threads": {
+          "format": "image_question",
+          "copy": "言葉を武器に、世界を遊ぶ。ABI伯爵、開館。あなたが十年残したい景色は何ですか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-01",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-01:threads"
+        }
+      }
+    },
+    {
+      "slot": 2,
+      "id": "ABI-LW01-02",
+      "pillar": "music_to_image",
+      "hookFamily": "transformation",
+      "image": "/metal-print-campaign/ignition-01.jpg",
+      "verticalVideo": "/audience/abi-launch-wave-01/abi-lw01-02.mp4",
+      "alt": "仕事場の壁面に、始動の火を象徴する33 IGNITIONを配置した空間イメージ。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "reel_9x16",
+          "copy": "音は消える。けれど、始めた日の火は空間に残せる。\n\n33 IGNITION。\n\nいま、何に火をつけたいですか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-02",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-02:instagram"
+        },
+        "tiktok": {
+          "format": "vertical_video_15s",
+          "copy": "音は消える。始めた日の火は残る。いま、何に火をつけたい？ #ABI伯爵 #音が絵になる瞬間",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=tiktok&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-02",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-02:tiktok"
+        },
+        "youtube": {
+          "format": "short_9x16",
+          "title": "音は消える。始めた日の火は残る｜33 IGNITION #Shorts",
+          "copy": "一曲の熱を、始動の象徴へ。33 IGNITIONの世界観を15秒で。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-02",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-02:youtube"
+        }
+      }
+    },
+    {
+      "slot": 3,
+      "id": "ABI-LW01-03",
+      "pillar": "question",
+      "hookFamily": "one_question",
+      "image": "/metal-print-campaign/natura-02.jpg",
+      "alt": "光と闇が交差する室内で、自然と宇宙を主題にした作品が焦点になっている。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "feed_4x5",
+          "copy": "伯爵の一問。\n\nあなたの部屋に、十年残したい景色は何ですか。\n\n答えは一語でも構いません。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-03",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-03:instagram"
+        },
+        "threads": {
+          "format": "text_question",
+          "copy": "伯爵の一問。あなたの部屋に、十年残したい景色は何ですか。答えは一語でも構いません。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-03",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-03:threads"
+        }
+      }
+    },
+    {
+      "slot": 4,
+      "id": "ABI-LW01-04",
+      "pillar": "belonging",
+      "hookFamily": "paradox",
+      "image": "/metal-print-campaign/home-01.jpg",
+      "verticalVideo": "/audience/abi-launch-wave-01/abi-lw01-04.mp4",
+      "alt": "静かな客室にA Town Called Almost Homeを置き、旅先の帰属感を表現した空間イメージ。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "reel_9x16",
+          "copy": "故郷ではない。\nそれでも、帰ってきたと感じる場所がある。\n\nA Town Called Almost Home。\n\nあなたの『ほとんど我が家』は、どこですか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-04",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-04:instagram"
+        },
+        "tiktok": {
+          "format": "vertical_video_15s",
+          "copy": "故郷ではない。でも、帰ってきたと感じる場所がある。あなたの『ほとんど我が家』はどこ？ #ABI伯爵",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=tiktok&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-04",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-04:tiktok"
+        },
+        "youtube": {
+          "format": "short_9x16",
+          "title": "故郷ではない。でも帰ってきたと感じる場所｜Almost Home #Shorts",
+          "copy": "旅先に生まれる帰属感を、15秒の空間作品へ。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-04",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-04:youtube"
+        }
+      }
+    },
+    {
+      "slot": 5,
+      "id": "ABI-LW01-05",
+      "pillar": "ritual",
+      "hookFamily": "contrast",
+      "image": "/metal-print-campaign/balian-01.jpg",
+      "alt": "リトリート空間の中心にBALIANを置き、静けさと儀式性を表現したビジュアル。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "feed_4x5",
+          "copy": "静かな部屋と、力のない部屋は違う。\n\nBALIANは、静けさの芯をつくる。\n\n今のあなたに必要なのは、静けさですか。力強さですか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-05",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-05:instagram"
+        },
+        "threads": {
+          "format": "text_question",
+          "copy": "静かな部屋と、力のない部屋は違う。今のあなたに必要なのは、静けさですか。力強さですか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-05",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-05:threads"
+        }
+      }
+    },
+    {
+      "slot": 6,
+      "id": "ABI-LW01-06",
+      "pillar": "philosophy",
+      "hookFamily": "concept_reversal",
+      "image": "/metal-print-campaign/natura-03.jpg",
+      "verticalVideo": "/audience/abi-launch-wave-01/abi-lw01-06.mp4",
+      "alt": "Deus sive Naturaを通して、自然と人間が連続するという哲学を表した作品イメージ。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "reel_9x16",
+          "copy": "Deus sive Natura——神、すなわち自然。\n\n自然を見るのではない。自分も自然だと思い出す。\n\nこの一文を、今日は部屋に置いておいてください。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-06",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-06:instagram"
+        },
+        "tiktok": {
+          "format": "vertical_video_15s",
+          "copy": "自然を見るのではない。自分も自然だと思い出す。Deus sive Natura。 #ABI伯爵 #哲学",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=tiktok&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-06",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-06:tiktok"
+        },
+        "youtube": {
+          "format": "short_9x16",
+          "title": "神すなわち自然｜Deus sive Naturaを15秒で #Shorts",
+          "copy": "自然と人間を分けない、スピノザの一文から生まれた空間作品。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-06",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-06:youtube"
+        }
+      }
+    },
+    {
+      "slot": 7,
+      "id": "ABI-LW01-07",
+      "pillar": "restart",
+      "hookFamily": "identity_marker",
+      "image": "/metal-print-campaign/ignition-03.jpg",
+      "alt": "再始動を象徴する33 IGNITIONが暗い壁面を照らす縦長ビジュアル。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "feed_4x5",
+          "copy": "人生の再始動には、日付より強い印がいる。\n\n転職。独立。再出発。\n\nあなたの再始動は、いつでしたか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-07",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-07:instagram"
+        },
+        "threads": {
+          "format": "text_question",
+          "copy": "人生の再始動には、日付より強い印がいる。あなたの再始動は、いつでしたか。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-07",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-07:threads"
+        }
+      }
+    },
+    {
+      "slot": 8,
+      "id": "ABI-LW01-08",
+      "pillar": "worldbuilding",
+      "hookFamily": "behind_the_choice",
+      "image": "/metal-print-campaign/balian-03.jpg",
+      "verticalVideo": "/audience/abi-launch-wave-01/abi-lw01-08.mp4",
+      "alt": "BALIANを中心に音楽、物語、映像、空間が一つの世界へつながる構成。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "reel_9x16",
+          "copy": "作品を量産するのではない。\n\n音、物語、映像、空間。何を残し、何を捨てるか。\n\n制作とは、選択眼を積み重ねることだと思っています。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-08",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-08:instagram"
+        },
+        "tiktok": {
+          "format": "vertical_video_15s",
+          "copy": "AIが作る。人間が選ぶ。最後に残るのは、選択眼。 #ABI伯爵 #AI制作",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=tiktok&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-08",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-08:tiktok"
+        },
+        "youtube": {
+          "format": "short_9x16",
+          "title": "AIが作る。人間が選ぶ。作品に残る選択眼 #Shorts",
+          "copy": "音、物語、映像、空間を一つの世界へ。ABI伯爵の制作思想。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=youtube&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-08",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-08:youtube"
+        }
+      }
+    },
+    {
+      "slot": 9,
+      "id": "ABI-LW01-09",
+      "pillar": "inbound_invitation",
+      "hookFamily": "low_pressure_invitation",
+      "image": "/metal-print-campaign/home-03.jpg",
+      "alt": "長期滞在の部屋にA Town Called Almost Homeを置き、伯爵Chatへの静かな招待を示す。",
+      "directSales": false,
+      "placements": {
+        "instagram": {
+          "format": "feed_4x5_pinned_invitation",
+          "copy": "作品を売る前に、あなたの空間を一問で読む。\n\n350作品から、残る一点を伯爵が選びます。\n\nプロフィールの伯爵Chatへ。購入義務はありません。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-09",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-09:instagram"
+        },
+        "threads": {
+          "format": "text_link_invitation",
+          "copy": "作品を売る前に、あなたの空間を一問で読む。350作品から、残る一点を伯爵が選びます。購入義務はありません。",
+          "trackedUrl": "https://www.hakusyaku.xyz/chat?utm_source=threads&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch_wave_01&utm_content=ABI-LW01-09",
+          "approvalToken": "APPROVE_EXTERNAL_POST:ABI-LW01-09:threads"
+        }
+      }
+    }
+  ]
+}

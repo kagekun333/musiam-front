@@ -1,0 +1,244 @@
+{
+  "decision": "HOLD",
+  "honestClaim": "月商300万円を余裕で達成できるとはまだ断言不可",
+  "failedRequiredGates": [
+    {
+      "id": "observed_unit_economics",
+      "required": true,
+      "pass": false,
+      "evidence": "0/1 paid fulfilled orders; 0/1 Stripe settlements; 0/3 matured paid CAC cohort; 0/10 fulfilled replacement cohort"
+    },
+    {
+      "id": "qualified_pipeline_count",
+      "required": true,
+      "pass": false,
+      "evidence": "0/100 at 10.00% conservative close rate"
+    },
+    {
+      "id": "pipeline_4x_minimum",
+      "required": true,
+      "pass": false,
+      "evidence": "0.00x/4x"
+    },
+    {
+      "id": "pipeline_10x_strong",
+      "required": true,
+      "pass": false,
+      "evidence": "0.00x/10x"
+    },
+    {
+      "id": "dossier_accepted",
+      "required": true,
+      "pass": false,
+      "evidence": "0/50 explicit active consultation records"
+    },
+    {
+      "id": "purchase_intent",
+      "required": true,
+      "pass": false,
+      "evidence": "0/25 explicit active consultation records"
+    },
+    {
+      "id": "physical_proof",
+      "required": true,
+      "pass": false,
+      "evidence": "0/1 Human-approved physical proofs"
+    },
+    {
+      "id": "production_sales_e2e",
+      "required": true,
+      "pass": false,
+      "evidence": "provider checkout, signed webhook, durable production persistence"
+    }
+  ],
+  "contributionMarginRate": 0.6143272727272727,
+  "economicsEvidenceBoundary": {
+    "launchStressTestPassed": true,
+    "observedUnitEconomicsPassed": false,
+    "actuals": {
+      "paidFulfilledOrders": 0,
+      "vendorPaidInvoices": 0,
+      "stripeSettlementSamples": 0,
+      "maturedPaidCustomers": 0,
+      "attributedAcquisitionSpendYen": null,
+      "measuredOperatingCostYen": null,
+      "measuredCustomerAcquisitionCostYen": null,
+      "fulfilledUnitsObserved": 0,
+      "replacementUnitsObserved": 0,
+      "measuredReplacementRate": null,
+      "totalGrossPaidYen": 0,
+      "totalObservedVariableCostYen": 0,
+      "totalObservedCostIncludingCacYen": 0,
+      "measuredContributionMarginRate": null
+    }
+  },
+  "regionEconomics": [
+    {
+      "region": "JP",
+      "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "landedCostYen": 31500,
+      "paymentFeeYen": 11880,
+      "replacementReserveYen": 1575,
+      "totalVariableCostYen": 94955,
+      "contributionYen": 235045,
+      "contributionMarginRate": 0.7122575757575758,
+      "maximumCacAt60MarginYen": 57045,
+      "margin60Pass": true
+    },
+    {
+      "region": "US",
+      "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "landedCostYen": 51461,
+      "paymentFeeYen": 11880,
+      "replacementReserveYen": 2574,
+      "totalVariableCostYen": 118488,
+      "contributionYen": 211512,
+      "contributionMarginRate": 0.6409454545454546,
+      "maximumCacAt60MarginYen": 33512,
+      "margin60Pass": true
+    },
+    {
+      "region": "EU",
+      "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "landedCostYen": 36720,
+      "paymentFeeYen": 11880,
+      "replacementReserveYen": 1836,
+      "totalVariableCostYen": 127272,
+      "contributionYen": 202728,
+      "contributionMarginRate": 0.6143272727272727,
+      "maximumCacAt60MarginYen": 24728,
+      "margin60Pass": true
+    }
+  ],
+  "quotedRegionEconomics": [
+    {
+      "region": "JP",
+      "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "customerAcquisitionCostEvidenceClass": "ENFORCED_CAMPAIGN_CAC_CAP",
+      "landedCostYen": 31500,
+      "paymentFeeYen": 11880,
+      "replacementReserveYen": 1575,
+      "totalVariableCostYen": 94955,
+      "contributionYen": 235045,
+      "contributionMarginRate": 0.7122575757575758,
+      "maximumCacAt60MarginYen": 57045,
+      "margin60Pass": true
+    },
+    {
+      "region": "US",
+      "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "customerAcquisitionCostEvidenceClass": "ENFORCED_CAMPAIGN_CAC_CAP",
+      "landedCostYen": 51461,
+      "paymentFeeYen": 11880,
+      "replacementReserveYen": 2574,
+      "totalVariableCostYen": 118488,
+      "contributionYen": 211512,
+      "contributionMarginRate": 0.6409454545454546,
+      "maximumCacAt60MarginYen": 33512,
+      "margin60Pass": true
+    },
+    {
+      "region": "EU",
+      "evidenceClass": "PLATFORM_CHECKOUT_QUOTE",
+      "customerAcquisitionCostEvidenceClass": "ENFORCED_CAMPAIGN_CAC_CAP",
+      "landedCostYen": 36720,
+      "paymentFeeYen": 11880,
+      "replacementReserveYen": 1836,
+      "totalVariableCostYen": 127272,
+      "contributionYen": 202728,
+      "contributionMarginRate": 0.6143272727272727,
+      "maximumCacAt60MarginYen": 24728,
+      "margin60Pass": true
+    }
+  ],
+  "comparableVendorQuotes": 2,
+  "approvedPhysicalProofs": 0,
+  "approvedOfferCapacity": {
+    "approvedEditionIds": [
+      "VIP-METAL-2026-07-IGNITION",
+      "VIP-METAL-2026-07-HOME",
+      "VIP-METAL-2026-07-BALIAN",
+      "VIP-METAL-2026-07-NATURA"
+    ],
+    "approvedOfferUnits": 12,
+    "requiredPaidUnits": 10,
+    "maximumApprovedOfferGrossYen": 3960000,
+    "targetGrossPaidYen": 3000000
+  },
+  "pipelineCoverage": 0,
+  "pipelineEvidenceClass": "DURABLE_CONSULTATION_RECORDS",
+  "funnelEvidenceClass": "FIRST_PARTY_REDIS_OBSERVED",
+  "funnelMetrics": {
+    "metal_home_view": {
+      "sessions": 13
+    },
+    "metal_home_cta_click": {
+      "sessions": 2
+    },
+    "metal_dossier_view": {
+      "sessions": 4
+    },
+    "metal_chat_start": {
+      "sessions": 3
+    },
+    "metal_salon_open": {
+      "sessions": 3
+    },
+    "metal_first_message": {
+      "sessions": 2
+    },
+    "metal_duke": {
+      "sessions": 2
+    },
+    "metal_edition_selected": {
+      "sessions": 0
+    },
+    "metal_consultation_submitted": {
+      "sessions": 0
+    }
+  },
+  "qualifiedProspects": 0,
+  "qualifiedPipelineValueYen": 0,
+  "dossierAccepted": 0,
+  "purchaseIntent": 0,
+  "revenueEvidenceClass": "DURABLE_STRIPE_PAYMENT_LEDGER",
+  "netNonRefundedYen": 0,
+  "pipelineRequirement": {
+    "source": "conservative fallback",
+    "observedRateEligible": false,
+    "observedCloseRateLowerBound": null,
+    "planningCloseRate": 0.1,
+    "paidOrdersNeeded": 10,
+    "requiredQualifiedProspects": 100,
+    "requiredQualifiedPipelineYen": 33000000,
+    "maturedQualified": 0,
+    "maturedPaid": 0
+  },
+  "closeRateStressTest": [
+    {
+      "qualifiedToPaidRate": 0.25,
+      "qualifiedNeededFor10Paid": 40,
+      "coverageAtPrimaryPrice": 4.4
+    },
+    {
+      "qualifiedToPaidRate": 0.2,
+      "qualifiedNeededFor10Paid": 50,
+      "coverageAtPrimaryPrice": 5.5
+    },
+    {
+      "qualifiedToPaidRate": 0.15,
+      "qualifiedNeededFor10Paid": 67,
+      "coverageAtPrimaryPrice": 7.37
+    },
+    {
+      "qualifiedToPaidRate": 0.1,
+      "qualifiedNeededFor10Paid": 100,
+      "coverageAtPrimaryPrice": 11
+    },
+    {
+      "qualifiedToPaidRate": 0.08,
+      "qualifiedNeededFor10Paid": 125,
+      "coverageAtPrimaryPrice": 13.75
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "status": "DISTRIBUTION_READY_HUMAN_POST_GATE",
+  "campaign": "metal-print-inbound-chat",
+  "safetyRule": "販売対象は仕様・採算・配送条件を承認したEditionに限定する。即納や未検証の品質保証とは表現せず、受注生産条件と空間診断を明示する。",
+  "defaultCta": "プロフィールから伯爵の館へ。あなたの空間に合う一枚を、一問で選びます。",
+  "assets": [
+    {
+      "id": "IGNITION-01",
+      "work": "33 IGNITION",
+      "audience": "founder-office",
+      "hook": "始めた日の決断を、忘れない壁をつくる。",
+      "sequence": ["暗い壁面", "33 IGNITIONが点灯するように出現", "始動・転機・点火", "伯爵に相性を尋ねる"],
+      "caption": "オフィスのアートを、ただの装飾で終わらせない。33 IGNITIONは、新しい事業や制作に火を入れた瞬間を残すCollector Previewです。",
+      "landingPath": "/metal-print/33-ignition-office-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=IGNITION-01"
+    },
+    {
+      "id": "IGNITION-02",
+      "work": "33 IGNITION",
+      "audience": "design-studio",
+      "hook": "会議室に必要なのは、もう一枚の説明資料ではない。",
+      "sequence": ["無機質な会議室", "壁面の空白", "作品を配置", "何に火をつけたい？"],
+      "caption": "話が止まった時、視線を戻す焦点がある。始動を象徴する一枚と、あなたの仕事場の相性を伯爵が見立てます。",
+      "landingPath": "/metal-print/33-ignition-office-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=IGNITION-02"
+    },
+    {
+      "id": "IGNITION-03",
+      "work": "33 IGNITION",
+      "audience": "career-transition",
+      "hook": "人生の再始動には、日付より強い印がいる。",
+      "sequence": ["閉じた扉", "点火する光", "作品の接写", "一問診断CTA"],
+      "caption": "転職、独立、再出発。始めたことを空間に残したい人へ。購入ではなく、まず一問から。",
+      "landingPath": "/metal-print/33-ignition-office-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=IGNITION-03"
+    },
+    {
+      "id": "HOME-01",
+      "work": "A Town Called Almost Home",
+      "audience": "boutique-hotel",
+      "hook": "宿泊客が、なぜか帰ってきたと感じる部屋。",
+      "sequence": ["旅の荷物", "静かな客室", "作品を壁に配置", "ほとんど我が家と呼べる町"],
+      "caption": "土地を説明する絵ではなく、帰属感をつくる一枚。ブティックホテルと旅人のためのCollector Previewです。",
+      "landingPath": "/metal-print/almost-home-hotel-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=HOME-01"
+    },
+    {
+      "id": "HOME-02",
+      "work": "A Town Called Almost Home",
+      "audience": "second-home",
+      "hook": "故郷ではない。でも、ここへ戻ると呼吸がほどける。",
+      "sequence": ["窓辺の夕方", "空の壁", "作品", "帰りたい場所はどこ？"],
+      "caption": "第二の家、移住先、旅の途中で見つけた町。帰る場所の感覚を壁へ移す試みです。",
+      "landingPath": "/metal-print/almost-home-hotel-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=HOME-02"
+    },
+    {
+      "id": "HOME-03",
+      "work": "A Town Called Almost Home",
+      "audience": "serviced-residence",
+      "hook": "長く滞在する部屋には、住所より先に物語がいる。",
+      "sequence": ["鍵を置く", "旅の時間", "壁面作品", "伯爵の空間診断"],
+      "caption": "サービスレジデンスや長期滞在の空間に、借り物ではない帰属感を。相性は伯爵が一問で見立てます。",
+      "landingPath": "/metal-print/almost-home-hotel-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=HOME-03"
+    },
+    {
+      "id": "BALIAN-01",
+      "work": "BALIAN",
+      "audience": "retreat",
+      "hook": "静かな部屋と、力のない部屋は違う。",
+      "sequence": ["静寂", "炎の反射", "BALIAN", "静けさか、力強さか"],
+      "caption": "リトリート空間に必要な、静けさの芯。バリの儀式と浄化を背景に持つCollector Previewです。",
+      "landingPath": "/metal-print/balian-retreat-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=BALIAN-01"
+    },
+    {
+      "id": "BALIAN-02",
+      "work": "BALIAN",
+      "audience": "spa",
+      "hook": "視線が戻る場所をつくると、空間は儀式になる。",
+      "sequence": ["水面", "呼吸", "壁面の中心", "伯爵に尋ねる"],
+      "caption": "スパや静養室の中心に、説明ではなく感覚で戻れる一点を。まずは購入義務のない空間診断から承ります。",
+      "landingPath": "/metal-print/balian-retreat-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=BALIAN-02"
+    },
+    {
+      "id": "BALIAN-03",
+      "work": "BALIAN",
+      "audience": "ritual-hospitality",
+      "hook": "ホテルの記憶は、チェックアウト後の一場面で決まる。",
+      "sequence": ["廊下", "作品の前で止まる", "儀式の余韻", "空間診断CTA"],
+      "caption": "客室数ではなく、一つの記憶を残すホスピタリティへ。BALIANと空間の相性を一問で。",
+      "landingPath": "/metal-print/balian-retreat-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=BALIAN-03"
+    },
+    {
+      "id": "NATURA-01",
+      "work": "Deus sive Natura",
+      "audience": "private-study",
+      "hook": "書斎には、答えより大きな問いを置く。",
+      "sequence": ["本を閉じる", "光と闇", "Deus sive Natura", "宇宙を感じる一問"],
+      "caption": "神すなわち自然。思考が深くなる書斎の焦点として、哲学を壁面へ移すCollector Previewです。",
+      "landingPath": "/metal-print/deus-sive-natura-wall-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=NATURA-01"
+    },
+    {
+      "id": "NATURA-02",
+      "work": "Deus sive Natura",
+      "audience": "luxury-residence",
+      "hook": "高級な部屋に、もう一つ高価な物はいらない。象徴がいる。",
+      "sequence": ["整った室内", "空白の壁", "作品", "光か、闇か"],
+      "caption": "価格ではなく、その家の思想を示す一点。Deus sive Naturaと空間の相性を伯爵が見立てます。",
+      "landingPath": "/metal-print/deus-sive-natura-wall-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=NATURA-02"
+    },
+    {
+      "id": "NATURA-03",
+      "work": "Deus sive Natura",
+      "audience": "wellness",
+      "hook": "自然を見るのではなく、自分も自然だと思い出す部屋。",
+      "sequence": ["木漏れ日", "呼吸", "宇宙的な作品", "伯爵の一問診断"],
+      "caption": "ウェルネス空間に、借り物の癒やしではなく世界観を。受注生産条件を確認したうえで正式Offerへ進みます。",
+      "landingPath": "/metal-print/deus-sive-natura-wall-art?utm_source=short_video&utm_medium=organic&utm_campaign=metal_print_inbound&utm_content=NATURA-03"
+    }
+  ]
+}

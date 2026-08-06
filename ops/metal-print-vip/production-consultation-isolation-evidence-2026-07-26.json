@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-25T23:48:16.553Z",
+  "deploymentId": "dpl_52xzMZNcCdr7PNGJjXHfoAMEs3xG",
+  "evidenceClass": "LIVE_REJECTED_VERIFICATION_CONSULTATION_AND_DURABLE_PIPELINE_RECOUNT",
+  "probe": {
+    "endpoint": "https://www.hakusyaku.xyz/api/metal-print/consultation",
+    "attribution": {
+      "source": "e2e",
+      "medium": "verification",
+      "campaign": "verification_pipeline_e2e",
+      "content": "isolation_probe"
+    },
+    "qualificationShape": "Would otherwise meet budget, 30-day timing, decision-maker, Dossier acceptance and purchase-intent requirements",
+    "httpStatus": 400,
+    "responseError": "verification_traffic_not_accepted"
+  },
+  "durablePipelineAfterProbe": {
+    "qualified": 0,
+    "nurture": 0,
+    "total": 0,
+    "pipelineValueJpy": 0,
+    "dossierAccepted": 0,
+    "purchaseIntent": 0,
+    "byCampaign": {},
+    "notificationFailures": 0
+  },
+  "sideEffects": {
+    "consultationSaved": false,
+    "notificationSent": false,
+    "qualifiedPipelineChanged": false
+  },
+  "privacy": "The probe used a non-routable example.invalid address. No customer identity, message or personal data was used or stored.",
+  "claimBoundary": "This proves production verification traffic cannot inflate demand or pipeline. It does not prove real customer demand."
+}

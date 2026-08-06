@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-07-21T10:22:30.998Z",
+  "evidenceClass": "LIVE_PROVIDER_READ_AND_EPHEMERAL_REDIS_CANARY",
+  "stripeMode": "live",
+  "stripeApiReachable": true,
+  "webhookPath": "/api/metal-print/webhook",
+  "matchingWebhookEndpointCount": 1,
+  "matchingEnabledEndpoint": true,
+  "requiredWebhookEvents": [
+    "checkout.session.completed",
+    "checkout.session.expired",
+    "charge.refunded"
+  ],
+  "redisRoundTripPassed": true,
+  "canaryDeleted": true,
+  "siteOriginConfigured": "https://www.hakusyaku.xyz",
+  "safety": "No secret values, account IDs, endpoint IDs, customer data or payment data are serialized. The Redis canary had a 60-second TTL and was explicitly deleted.",
+  "claimBoundary": "This proves live provider connectivity and endpoint registration. It does not prove a Stripe-delivered signed event, a paid Checkout Session or a production inventory transition."
+}
