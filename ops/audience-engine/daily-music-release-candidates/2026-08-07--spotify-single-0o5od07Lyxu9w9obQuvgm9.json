@@ -56,9 +56,21 @@
         "status": "READY"
       },
       "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260807-spotify-single-0o5od07Lyxu9w9obQuvgm9:threads",
-      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "publicationState": "PUBLISHED",
       "scheduledAt": "2026-08-07T03:15:00.000Z",
-      "approvedMediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482"
+      "approvedMediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+      "publishedAt": "2026-08-07T15:39:57.000Z",
+      "publicUrl": "https://www.threads.net/@abi_hakusyaku/post/DbvobsOgVn0",
+      "publicationEvidence": {
+        "placementId": "DMR-20260807-fa76c46a-threads",
+        "platform": "threads",
+        "publicUrl": "https://www.threads.net/@abi_hakusyaku/post/DbvobsOgVn0",
+        "publishedAt": "2026-08-07T15:39:57.000Z",
+        "reviewState": "PUBLIC_VISIBLE",
+        "aiDisclosureState": "UNAVAILABLE",
+        "mediaSha256": "2c75ef63a2d3465a87633cf3c65a09a7745fd176e4fb15126369d412c3946482",
+        "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%A2%E3%83%BC%E3%82%B6%E3%82%A2%E3%83%BC%E3%82%B9&workId=spotify-single-0o5od07Lyxu9w9obQuvgm9&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260807-fa76c46a-threads"
+      }
     },
     {
       "placementId": "DMR-20260807-fa76c46a-tiktok",
@@ -143,7 +155,7 @@
     "exactWorkAttribution": "PASS"
   },
   "evidenceBoundary": "This candidate proves catalog identity, tracked routing and mechanically verified media only. It does not prove publication, reach, demand, pipeline or revenue.",
-  "externalPublicationPerformed": false,
+  "externalPublicationPerformed": true,
   "waveApproval": {
     "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
     "scope": [
