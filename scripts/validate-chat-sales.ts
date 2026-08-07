@@ -156,6 +156,7 @@ assert(chatApi.includes("skipped_for_vip_dossier"), "VIP Dossierが外部LLM呼�
 assert(chatUi.includes('params.get("intent") === "metal-print"'), "メタルプリント流入専用starterがありません");
 assert(chatUi.includes('params.get("intent") === "music-work"') && chatUi.includes("entryContext: musicWorkEntry"), "音楽作品流入文脈がChat APIへ保持されません");
 assert(chatUi.includes('"metal_music_affinity_entry"') && chatUi.includes('"metal_music_affinity_dossier_accept"'), "音楽流入からDossier承諾までを計測できません");
+assert(redisServer.includes('"metal_music_affinity_entry"') && redisServer.includes('"metal_music_affinity_dossier_accept"'), "音楽流入の成果が日次ファネル集計に含まれていません");
 assert(chatUi.includes('!musicWorkEntry && !metalPrintEntry && cta?.productId !== "vip-metal-print"'), "作品別Dossier相談中に一般メール登録が競合します");
 assert(chatUi.includes("CATALOG-WORK:${campaignWorkId}"), "全作品の指定が相談IDへ保持されません");
 assert(chatUi.includes('sourceIntent: sourceIntent ?? "direct"') && chatUi.includes('sourceIntent === "metal-print"'), "メタルプリント流入計測がありません");

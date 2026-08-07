@@ -649,7 +649,19 @@ export async function summarizeMetalPrintConsultations() {
   };
 }
 
-const FUNNEL_EVENTS: MetalFunnelEvent[] = ["metal_home_view", "metal_home_cta_click", "metal_dossier_view", "metal_chat_start", "metal_salon_open", "metal_first_message", "metal_duke", "metal_edition_selected", "metal_consultation_submitted"];
+const FUNNEL_EVENTS: MetalFunnelEvent[] = [
+  "metal_home_view",
+  "metal_home_cta_click",
+  "metal_dossier_view",
+  "metal_chat_start",
+  "metal_salon_open",
+  "metal_first_message",
+  "metal_music_affinity_entry",
+  "metal_music_affinity_dossier_accept",
+  "metal_duke",
+  "metal_edition_selected",
+  "metal_consultation_submitted",
+];
 
 type PlacementDimension = { campaign: string; locale: "ja" | "en" | "unknown"; source: string; content: string };
 
