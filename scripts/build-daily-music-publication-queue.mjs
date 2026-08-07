@@ -10,6 +10,10 @@ const args = Object.fromEntries(process.argv.slice(2).map((arg) => {
 if (!args.input) throw new Error("usage: node scripts/build-daily-music-publication-queue.mjs --input=<manifest.json> [--now=<ISO>] [--output=<json>]");
 
 const manifest = JSON.parse(fs.readFileSync(path.resolve(args.input), "utf8"));
+const capabilityPath = path.resolve(args.capabilities || "ops/audience-engine/youtube-channel-capabilities.json");
+const channelCapabilities = fs.existsSync(capabilityPath)
+  ? JSON.parse(fs.readFileSync(capabilityPath, "utf8"))
+  : { externalLinksClickable: null, status: "CHANNEL_CAPABILITY_UNVERIFIED" };
 const now = args.now ? new Date(args.now) : new Date();
 assert.ok(Number.isFinite(now.getTime()), "invalid --now timestamp");
 const rows = [];
@@ -22,6 +26,7 @@ for (const release of manifest.releases) {
     const published = placement.publicationState === "PUBLISHED";
     const due = approved && Date.parse(placement.scheduledAt) <= now.getTime();
     const ingressReady = placement.ingress?.status === "READY";
+    const channelCapabilityReady = placement.platform !== "youtube" || channelCapabilities.externalLinksClickable === true;
     let mediaPath = null;
     if (["vertical_video", "long_form_video"].includes(placement.media?.kind)) mediaPath = path.resolve(placement.media.path || "");
     if (placement.media?.kind === "cover_image") mediaPath = path.join(process.cwd(), "public", String(placement.media.path || "").replace(/^\/+/, ""));
@@ -29,12 +34,13 @@ for (const release of manifest.releases) {
     const mediaSha256 = mediaExists ? crypto.createHash("sha256").update(fs.readFileSync(mediaPath)).digest("hex") : null;
     const approvedSha256 = placement.approvedMediaSha256 ?? null;
     const mediaHashMatches = mediaExists && mediaSha256 === approvedSha256;
-    const executable = due && ingressReady && mediaHashMatches && !published;
+    const executable = due && ingressReady && channelCapabilityReady && mediaHashMatches && !published;
     const reasons = [];
     if (published) reasons.push("ALREADY_PUBLISHED");
     else if (!approved) reasons.push("HUMAN_APPROVAL_REQUIRED");
     else if (!due) reasons.push("WAITING_SCHEDULE");
     if (!ingressReady) reasons.push(placement.ingress?.status || "INGRESS_NOT_READY");
+    if (!channelCapabilityReady) reasons.push(channelCapabilities.status || "CHANNEL_CAPABILITY_UNVERIFIED");
     if (!mediaExists) reasons.push("MEDIA_MISSING");
     else if (!mediaHashMatches) reasons.push("MEDIA_HASH_MISMATCH");
     if (executable) reasons.push("EXECUTABLE_APPROVED_DUE_READY");
@@ -47,6 +53,8 @@ for (const release of manifest.releases) {
       due,
       ingressReady,
       ingressStatus: placement.ingress?.status ?? "MISSING",
+      channelCapabilityReady,
+      channelCapabilityStatus: placement.platform === "youtube" ? channelCapabilities.status : "NOT_APPLICABLE",
       mediaPath: placement.media?.path ?? null,
       mediaSha256,
       approvedMediaSha256: approvedSha256,

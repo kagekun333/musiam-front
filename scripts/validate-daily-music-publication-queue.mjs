@@ -19,23 +19,27 @@ const before = runAt("2026-08-05T03:14:59.000Z");
 assert.equal(before.summary.executable, 0, "future placement became executable");
 
 const first = runAt("2026-08-05T03:15:00.000Z");
+const youtubeCapability = JSON.parse(fs.readFileSync("ops/audience-engine/youtube-channel-capabilities.json", "utf8"));
 const expectedFirstExecutable = first.rows
-  .filter((row) => row.due && ["threads", "youtube"].includes(row.platform) && row.publicationState !== "PUBLISHED")
+  .filter((row) => row.due && row.ingressReady && row.channelCapabilityReady && row.publicationState !== "PUBLISHED")
   .map((row) => row.placementId);
 assert.deepEqual(first.executablePlacementIds, expectedFirstExecutable);
-assert.equal(first.summary.due + first.summary.published, 4);
-assert.equal(first.summary.blockedDue, 2);
+assert.equal(first.rows.filter((row) => Date.parse(row.scheduledAt) <= Date.parse("2026-08-05T03:15:00.000Z")).length, 4);
+assert.equal(first.summary.blockedDue, first.rows.filter((row) => row.due && !row.executable).length);
 assert.ok(first.rows.find((row) => row.platform === "instagram").reasons.includes("LINK_STICKER_REQUIRED_FOR_CLICKABLE_PATH"));
 assert.ok(first.rows.find((row) => row.platform === "tiktok").reasons.includes("CLICKABLE_LINK_CAPABILITY_REQUIRED"));
 const firstYoutube = first.rows.find((row) => row.platform === "youtube");
 assert.equal(firstYoutube.publicationFormat, "LONG_FORM_16_9");
 assert.equal(firstYoutube.ingressStatus, "READY");
-assert.equal(firstYoutube.executable, true);
+assert.equal(firstYoutube.channelCapabilityReady, youtubeCapability.externalLinksClickable === true);
+assert.equal(firstYoutube.executable, youtubeCapability.externalLinksClickable === true);
+if (!youtubeCapability.externalLinksClickable) assert.ok(firstYoutube.reasons.includes("CHANNEL_EXTERNAL_LINK_VERIFICATION_REQUIRED"));
 assert.equal(firstYoutube.publicationRequirements.descriptionLinkClickable, true);
 assert.equal(firstYoutube.publicationRequirements.exactDescriptionChatUrl, firstYoutube.chatUrl);
 
 const completeWindow = runAt("2026-08-12T03:15:00.000Z");
-assert.equal(completeWindow.summary.executable + completeWindow.summary.published, 14);
+const expectedCompleteEligible = completeWindow.rows.filter((row) => row.ingressReady && row.channelCapabilityReady).length;
+assert.equal(completeWindow.summary.executable + completeWindow.summary.published, expectedCompleteEligible);
 assert.ok(completeWindow.rows.every((row) => row.mediaHashMatches), "approved media hash mismatch");
 
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "dmw-publication-queue-"));

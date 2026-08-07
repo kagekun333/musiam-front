@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-08-07T15:41:00.000Z",
+  "channelId": "UCs-YspqTu7jMusNGHpviAxA",
+  "externalLinksClickable": false,
+  "status": "CHANNEL_EXTERNAL_LINK_VERIFICATION_REQUIRED",
+  "evidence": {
+    "videoId": "AwI-U5PXsHw",
+    "exactDescriptionChatUrlPresent": true,
+    "studioMessage": "外部リンクをクリック可能にするには、まず 1 回限りの確認を完了してください。"
+  },
+  "humanGate": "YouTubeが要求する本人側の1回限りの確認を完了し、公開動画上で外部リンクがクリック可能であることを再確認する"
+}
