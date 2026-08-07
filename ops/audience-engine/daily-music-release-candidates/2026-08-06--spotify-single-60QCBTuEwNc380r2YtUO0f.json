@@ -56,9 +56,21 @@
         "status": "READY"
       },
       "approvalToken": "APPROVE_DAILY_MUSIC_RELEASE:DMR-20260806-spotify-single-60QCBTuEwNc380r2YtUO0f:threads",
-      "publicationState": "APPROVED_WAITING_SCHEDULE",
+      "publicationState": "PUBLISHED",
       "scheduledAt": "2026-08-06T03:15:00.000Z",
-      "approvedMediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7"
+      "approvedMediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+      "publishedAt": "2026-08-07T15:37:41.000Z",
+      "publicUrl": "https://www.threads.net/@abi_hakusyaku/post/DbvoLDzgRBn",
+      "publicationEvidence": {
+        "placementId": "DMR-20260806-fbd1b2f2-threads",
+        "platform": "threads",
+        "publicUrl": "https://www.threads.net/@abi_hakusyaku/post/DbvoLDzgRBn",
+        "publishedAt": "2026-08-07T15:37:41.000Z",
+        "reviewState": "PUBLIC_VISIBLE",
+        "aiDisclosureState": "UNAVAILABLE",
+        "mediaSha256": "e03747d1d72c1d6233ccac8fb76595212e55c312b0d94e9581ece940b893efb7",
+        "chatUrl": "https://www.hakusyaku.xyz/chat?intent=music-work&work=Mama+Afrika&workId=spotify-single-60QCBTuEwNc380r2YtUO0f&utm_source=threads&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260806-fbd1b2f2-threads"
+      }
     },
     {
       "placementId": "DMR-20260806-fbd1b2f2-tiktok",
@@ -143,7 +155,7 @@
     "exactWorkAttribution": "PASS"
   },
   "evidenceBoundary": "This candidate proves catalog identity, tracked routing and mechanically verified media only. It does not prove publication, reach, demand, pipeline or revenue.",
-  "externalPublicationPerformed": false,
+  "externalPublicationPerformed": true,
   "waveApproval": {
     "token": "APPROVE_DAILY_MUSIC_WAVE:DMW-20260805-7D",
     "scope": [
