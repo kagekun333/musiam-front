@@ -1,0 +1,27 @@
+name: Stripe webhook diagnostic
+
+on:
+  push:
+    branches:
+      - diag/stripe-webhook-20260914
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Probe webhook with unsigned no-op payload
+        shell: bash
+        run: |
+          set -u
+          url='https://www.hakusyaku.xyz/api/metal-print/webhook'
+          body='{"id":"evt_diagnostic_noop","object":"event","type":"diagnostic.noop","data":{"object":{}}}'
+          status=$(curl -sS --max-time 20 -o /tmp/body.txt -w '%{http_code}' \
+            -X POST "$url" \
+            -H 'Content-Type: application/json' \
+            --data "$body" || true)
+          echo "HTTP_STATUS=$status"
+          echo '--- RESPONSE BODY ---'
+          cat /tmp/body.txt 2>/dev/null || true
+          echo
+          echo '--- END RESPONSE ---'
