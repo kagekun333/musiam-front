@@ -9,19 +9,27 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 2
+    env:
+      WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
     steps:
-      - name: Probe webhook with invalid Stripe signature
+      - name: Probe webhook with a valid signature when repository secret is available
         shell: bash
         run: |
           set -u
+          if [ -z "${WEBHOOK_SECRET:-}" ]; then
+            echo 'STRIPE_WEBHOOK_SECRET_PRESENT=false'
+            exit 0
+          fi
+          echo 'STRIPE_WEBHOOK_SECRET_PRESENT=true'
           url='https://www.hakusyaku.xyz/api/metal-print/webhook'
           body='{"id":"evt_diagnostic_noop","object":"event","type":"diagnostic.noop","data":{"object":{}}}'
           ts=$(date +%s)
-          fake_sig="t=${ts},v1=0000000000000000000000000000000000000000000000000000000000000000"
+          digest=$(printf '%s.%s' "$ts" "$body" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" -hex | awk '{print $2}')
+          sig="t=${ts},v1=${digest}"
           status=$(curl -sS --max-time 20 -o /tmp/body.txt -w '%{http_code}' \
             -X POST "$url" \
             -H 'Content-Type: application/json' \
-            -H "Stripe-Signature: $fake_sig" \
+            -H "Stripe-Signature: $sig" \
             --data "$body" || true)
           echo "HTTP_STATUS=$status"
           echo '--- RESPONSE BODY ---'
