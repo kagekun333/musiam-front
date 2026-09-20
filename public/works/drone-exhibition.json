@@ -1,0 +1,404 @@
+{
+  "generatedAt": "2026-08-09T15:57:24.964Z",
+  "source": "existing-manifest-selection-lock",
+  "status": "CANDIDATE",
+  "policy": "S-rankからscene別上位を抽出。公開販売・approved/final化はHuman Gate。",
+  "stats": {
+    "strongCandidates": 12,
+    "sourceAvailable": 12,
+    "sourceUnavailable": 0,
+    "selected": 12,
+    "scenes": [
+      "ocean_coast",
+      "city_dense",
+      "fine_art_shape",
+      "mountain_green"
+    ]
+  },
+  "items": [
+    {
+      "id": "drone-2025-01-0566",
+      "title": "Aerial Study 01",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2025-01-0566.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:ocean_coast"
+      ],
+      "moodTags": [
+        "空撮",
+        "ocean_coast"
+      ],
+      "releasedAt": "2025-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 93.75"
+      },
+      "drone": {
+        "score": 93.75,
+        "scene": "ocean_coast",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "265446fe6ab854"
+      }
+    },
+    {
+      "id": "drone-2026-02-0221",
+      "title": "Aerial Study 02",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2026-02-0221.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:city_dense"
+      ],
+      "moodTags": [
+        "空撮",
+        "city_dense"
+      ],
+      "releasedAt": "2026-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 93.6"
+      },
+      "drone": {
+        "score": 93.6,
+        "scene": "city_dense",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "9f0e422fc982fc"
+      }
+    },
+    {
+      "id": "drone-2025-03-0890",
+      "title": "Aerial Study 03",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2025-03-0890.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:city_dense"
+      ],
+      "moodTags": [
+        "空撮",
+        "city_dense"
+      ],
+      "releasedAt": "2025-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 93.3"
+      },
+      "drone": {
+        "score": 93.3,
+        "scene": "city_dense",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "a34f2009713263"
+      }
+    },
+    {
+      "id": "drone-2026-04-0219",
+      "title": "Aerial Study 04",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2026-04-0219.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:city_dense"
+      ],
+      "moodTags": [
+        "空撮",
+        "city_dense"
+      ],
+      "releasedAt": "2026-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 93.17"
+      },
+      "drone": {
+        "score": 93.17,
+        "scene": "city_dense",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "94a6a1a09ca721"
+      }
+    },
+    {
+      "id": "drone-2024-05-0167",
+      "title": "Aerial Study 05",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2024-05-0167.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:ocean_coast"
+      ],
+      "moodTags": [
+        "空撮",
+        "ocean_coast"
+      ],
+      "releasedAt": "2024-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 92.83"
+      },
+      "drone": {
+        "score": 92.83,
+        "scene": "ocean_coast",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "11192113f2f16b"
+      }
+    },
+    {
+      "id": "drone-2025-06-1332",
+      "title": "Aerial Study 06",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2025-06-1332.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:ocean_coast"
+      ],
+      "moodTags": [
+        "空撮",
+        "ocean_coast"
+      ],
+      "releasedAt": "2025-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 91.81"
+      },
+      "drone": {
+        "score": 91.81,
+        "scene": "ocean_coast",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "46420e02308649"
+      }
+    },
+    {
+      "id": "drone-2024-07-0290",
+      "title": "Aerial Study 07",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2024-07-0290.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:fine_art_shape"
+      ],
+      "moodTags": [
+        "空撮",
+        "fine_art_shape"
+      ],
+      "releasedAt": "2024-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 82.8"
+      },
+      "drone": {
+        "score": 82.8,
+        "scene": "fine_art_shape",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "c7333805a36212"
+      }
+    },
+    {
+      "id": "drone-2024-08-1285",
+      "title": "Aerial Study 08",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2024-08-1285.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:mountain_green"
+      ],
+      "moodTags": [
+        "空撮",
+        "mountain_green"
+      ],
+      "releasedAt": "2024-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 82.74"
+      },
+      "drone": {
+        "score": 82.74,
+        "scene": "mountain_green",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "737176626c46de"
+      }
+    },
+    {
+      "id": "drone-2025-09-0192",
+      "title": "Aerial Study 09",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2025-09-0192.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:fine_art_shape"
+      ],
+      "moodTags": [
+        "空撮",
+        "fine_art_shape"
+      ],
+      "releasedAt": "2025-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 82.3"
+      },
+      "drone": {
+        "score": 82.3,
+        "scene": "fine_art_shape",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "051fc9214dfa0b"
+      }
+    },
+    {
+      "id": "drone-2025-10-0115",
+      "title": "Aerial Study 10",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2025-10-0115.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:fine_art_shape"
+      ],
+      "moodTags": [
+        "空撮",
+        "fine_art_shape"
+      ],
+      "releasedAt": "2025-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 82.22"
+      },
+      "drone": {
+        "score": 82.22,
+        "scene": "fine_art_shape",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "ec0e1df2ed1645"
+      }
+    },
+    {
+      "id": "drone-2023-11-0366",
+      "title": "Aerial Study 11",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2023-11-0366.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:mountain_green"
+      ],
+      "moodTags": [
+        "空撮",
+        "mountain_green"
+      ],
+      "releasedAt": "2023-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 81.94"
+      },
+      "drone": {
+        "score": 81.94,
+        "scene": "mountain_green",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "a89fdaaeeaa292"
+      }
+    },
+    {
+      "id": "drone-2022-12-0121",
+      "title": "Aerial Study 12",
+      "type": "image",
+      "cover": "/works/drone-exhibition/drone-2022-12-0121.jpg",
+      "tags": [
+        "drone",
+        "aerial",
+        "exhibition-candidate",
+        "scene:mountain_green"
+      ],
+      "moodTags": [
+        "空撮",
+        "mountain_green"
+      ],
+      "releasedAt": "2022-01-01",
+      "href": "",
+      "primaryHref": "",
+      "salesHref": "",
+      "matchInfo": {
+        "summary": "SSDの機械選別済みSランク群から抽出した空撮展示candidate。販売・最終採用は未承認。",
+        "reason": "S Strong Art Candidate score 81.87"
+      },
+      "drone": {
+        "score": 81.87,
+        "scene": "mountain_green",
+        "profile": "audited-selection-lock",
+        "reason": "Previously audited S-rank selection",
+        "status": "CANDIDATE",
+        "catalogId": "e9e523aafe6986"
+      }
+    }
+  ]
+}

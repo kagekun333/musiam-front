@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "source": "existing-musiam-master-registration",
+  "items": [
+    {
+      "id": "apple-album-6797782728",
+      "title": "宵曲がり",
+      "type": "music",
+      "cover": "/works/covers/apple_6797782728.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-14",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%AE%B5%E6%9B%B2%E3%81%8C%E3%82%8A-single/6797782728",
+      "primaryHref": "https://music.apple.com/us/album/%E5%AE%B5%E6%9B%B2%E3%81%8C%E3%82%8A-single/6797782728",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%AE%B5%E6%9B%B2%E3%81%8C%E3%82%8A-single/6797782728",
+        "listen": "https://music.apple.com/us/album/%E5%AE%B5%E6%9B%B2%E3%81%8C%E3%82%8A-single/6797782728"
+      }
+    },
+    {
+      "id": "apple-album-6797788166",
+      "title": "夜桜マダム",
+      "type": "music",
+      "cover": "/works/covers/apple_6797788166.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-14",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%A4%9C%E6%A1%9C%E3%83%9E%E3%83%80%E3%83%A0-single/6797788166",
+      "primaryHref": "https://music.apple.com/us/album/%E5%A4%9C%E6%A1%9C%E3%83%9E%E3%83%80%E3%83%A0-single/6797788166",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%A4%9C%E6%A1%9C%E3%83%9E%E3%83%80%E3%83%A0-single/6797788166",
+        "listen": "https://music.apple.com/us/album/%E5%A4%9C%E6%A1%9C%E3%83%9E%E3%83%80%E3%83%A0-single/6797788166"
+      }
+    },
+    {
+      "id": "apple-album-6797797846",
+      "title": "こころ、まだ途中",
+      "type": "music",
+      "cover": "/works/covers/apple_6797797846.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-14",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E3%81%93%E3%81%93%E3%82%8D-%E3%81%BE%E3%81%A0%E9%80%94%E4%B8%AD-single/6797797846",
+      "primaryHref": "https://music.apple.com/us/album/%E3%81%93%E3%81%93%E3%82%8D-%E3%81%BE%E3%81%A0%E9%80%94%E4%B8%AD-single/6797797846",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E3%81%93%E3%81%93%E3%82%8D-%E3%81%BE%E3%81%A0%E9%80%94%E4%B8%AD-single/6797797846",
+        "listen": "https://music.apple.com/us/album/%E3%81%93%E3%81%93%E3%82%8D-%E3%81%BE%E3%81%A0%E9%80%94%E4%B8%AD-single/6797797846"
+      }
+    },
+    {
+      "id": "apple-album-6797678754",
+      "title": "Sevenfold Ignition",
+      "type": "music",
+      "cover": "/works/covers/apple_6797678754.jpg",
+      "tags": [
+        "apple-music",
+        "album"
+      ],
+      "releasedAt": "2026-08-13",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/sevenfold-ignition-single/6797678754",
+      "primaryHref": "https://music.apple.com/us/album/sevenfold-ignition-single/6797678754",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/sevenfold-ignition-single/6797678754",
+        "listen": "https://music.apple.com/us/album/sevenfold-ignition-single/6797678754"
+      }
+    },
+    {
+      "id": "apple-album-6797680244",
+      "title": "Moto na Maji",
+      "type": "music",
+      "cover": "/works/covers/apple_6797680244.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-13",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/moto-na-maji-single/6797680244",
+      "primaryHref": "https://music.apple.com/us/album/moto-na-maji-single/6797680244",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/moto-na-maji-single/6797680244",
+        "listen": "https://music.apple.com/us/album/moto-na-maji-single/6797680244"
+      }
+    },
+    {
+      "id": "apple-album-6801016338",
+      "title": "古宇利オーシャンロード",
+      "type": "music",
+      "cover": "/works/covers/apple_6801016338.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-13",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E5%8F%A4%E5%AE%87%E5%88%A9%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-single/6801016338",
+      "primaryHref": "https://music.apple.com/us/album/%E5%8F%A4%E5%AE%87%E5%88%A9%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-single/6801016338",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E5%8F%A4%E5%AE%87%E5%88%A9%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-single/6801016338",
+        "listen": "https://music.apple.com/us/album/%E5%8F%A4%E5%AE%87%E5%88%A9%E3%82%AA%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-single/6801016338"
+      }
+    },
+    {
+      "id": "apple-album-6797655718",
+      "title": "SPINOZA'S WITNESS",
+      "type": "music",
+      "cover": "/works/covers/apple_6797655718.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-12",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/spinozas-witness-single/6797655718",
+      "primaryHref": "https://music.apple.com/us/album/spinozas-witness-single/6797655718",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/spinozas-witness-single/6797655718",
+        "listen": "https://music.apple.com/us/album/spinozas-witness-single/6797655718"
+      }
+    },
+    {
+      "id": "apple-album-6797913275",
+      "title": "Big Bang in My Chest",
+      "type": "music",
+      "cover": "/works/covers/apple_6797913275.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-12",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/big-bang-in-my-chest-single/6797913275",
+      "primaryHref": "https://music.apple.com/us/album/big-bang-in-my-chest-single/6797913275",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/big-bang-in-my-chest-single/6797913275",
+        "listen": "https://music.apple.com/us/album/big-bang-in-my-chest-single/6797913275"
+      }
+    },
+    {
+      "id": "apple-album-6797653546",
+      "title": "Midnight Grooves",
+      "type": "music",
+      "cover": "/works/covers/apple_6797653546.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-11",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/midnight-grooves-single/6797653546",
+      "primaryHref": "https://music.apple.com/us/album/midnight-grooves-single/6797653546",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/midnight-grooves-single/6797653546",
+        "listen": "https://music.apple.com/us/album/midnight-grooves-single/6797653546"
+      }
+    },
+    {
+      "id": "apple-album-6797654792",
+      "title": "Night Drive in My Room",
+      "type": "music",
+      "cover": "/works/covers/apple_6797654792.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-11",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/night-drive-in-my-room-single/6797654792",
+      "primaryHref": "https://music.apple.com/us/album/night-drive-in-my-room-single/6797654792",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/night-drive-in-my-room-single/6797654792",
+        "listen": "https://music.apple.com/us/album/night-drive-in-my-room-single/6797654792"
+      }
+    },
+    {
+      "id": "apple-album-6797658631",
+      "title": "Moonrise on My Mind",
+      "type": "music",
+      "cover": "/works/covers/apple_6797658631.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-11",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/moonrise-on-my-mind-single/6797658631",
+      "primaryHref": "https://music.apple.com/us/album/moonrise-on-my-mind-single/6797658631",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/moonrise-on-my-mind-single/6797658631",
+        "listen": "https://music.apple.com/us/album/moonrise-on-my-mind-single/6797658631"
+      }
+    },
+    {
+      "id": "apple-album-6797822757",
+      "title": "Sunset on Repeat",
+      "type": "music",
+      "cover": "/works/covers/apple_6797822757.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-11",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/sunset-on-repeat-single/6797822757",
+      "primaryHref": "https://music.apple.com/us/album/sunset-on-repeat-single/6797822757",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/sunset-on-repeat-single/6797822757",
+        "listen": "https://music.apple.com/us/album/sunset-on-repeat-single/6797822757"
+      }
+    },
+    {
+      "id": "apple-album-6800129451",
+      "title": "Sesoko Island",
+      "type": "music",
+      "cover": "/works/covers/apple_6800129451.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-11",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/sesoko-island-single/6800129451",
+      "primaryHref": "https://music.apple.com/us/album/sesoko-island-single/6800129451",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/sesoko-island-single/6800129451",
+        "listen": "https://music.apple.com/us/album/sesoko-island-single/6800129451"
+      }
+    },
+    {
+      "id": "apple-album-6797652007",
+      "title": "Dragon Dive",
+      "type": "music",
+      "cover": "/works/covers/apple_6797652007.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-10",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/dragon-dive-single/6797652007",
+      "primaryHref": "https://music.apple.com/us/album/dragon-dive-single/6797652007",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/dragon-dive-single/6797652007",
+        "listen": "https://music.apple.com/us/album/dragon-dive-single/6797652007"
+      }
+    },
+    {
+      "id": "apple-album-6797649155",
+      "title": "Skyline of Romance",
+      "type": "music",
+      "cover": "/works/covers/apple_6797649155.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-09",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/skyline-of-romance-single/6797649155",
+      "primaryHref": "https://music.apple.com/us/album/skyline-of-romance-single/6797649155",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/skyline-of-romance-single/6797649155",
+        "listen": "https://music.apple.com/us/album/skyline-of-romance-single/6797649155"
+      }
+    },
+    {
+      "id": "apple-album-6797651098",
+      "title": "The Secret",
+      "type": "music",
+      "cover": "/works/covers/apple_6797651098.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-09",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/the-secret-single/6797651098",
+      "primaryHref": "https://music.apple.com/us/album/the-secret-single/6797651098",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/the-secret-single/6797651098",
+        "listen": "https://music.apple.com/us/album/the-secret-single/6797651098"
+      }
+    },
+    {
+      "id": "apple-album-6797640677",
+      "title": "Carry Me Home Tommorow",
+      "type": "music",
+      "cover": "/works/covers/apple_6797640677.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/carry-me-home-tommorow-single/6797640677",
+      "primaryHref": "https://music.apple.com/us/album/carry-me-home-tommorow-single/6797640677",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/carry-me-home-tommorow-single/6797640677",
+        "listen": "https://music.apple.com/us/album/carry-me-home-tommorow-single/6797640677"
+      }
+    },
+    {
+      "id": "apple-album-6797643517",
+      "title": "For Twenty Sun",
+      "type": "music",
+      "cover": "/works/covers/apple_6797643517.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/for-twenty-sun-single/6797643517",
+      "primaryHref": "https://music.apple.com/us/album/for-twenty-sun-single/6797643517",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/for-twenty-sun-single/6797643517",
+        "listen": "https://music.apple.com/us/album/for-twenty-sun-single/6797643517"
+      }
+    },
+    {
+      "id": "apple-album-6798894050",
+      "title": "緑の再審査",
+      "type": "music",
+      "cover": "/works/covers/apple_6798894050.jpg",
+      "tags": [
+        "apple-music",
+        "album"
+      ],
+      "releasedAt": "2026-08-08",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E7%B7%91%E3%81%AE%E5%86%8D%E5%AF%A9%E6%9F%BB/6798894050",
+      "primaryHref": "https://music.apple.com/us/album/%E7%B7%91%E3%81%AE%E5%86%8D%E5%AF%A9%E6%9F%BB/6798894050",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E7%B7%91%E3%81%AE%E5%86%8D%E5%AF%A9%E6%9F%BB/6798894050",
+        "listen": "https://music.apple.com/us/album/%E7%B7%91%E3%81%AE%E5%86%8D%E5%AF%A9%E6%9F%BB/6798894050"
+      }
+    },
+    {
+      "id": "apple-album-6797256260",
+      "title": "いちゃりばちょーでー",
+      "type": "music",
+      "cover": "/works/covers/apple_6797256260.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-07",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E3%81%84%E3%81%A1%E3%82%83%E3%82%8A%E3%81%B0%E3%81%A1%E3%82%87%E3%83%BC%E3%81%A7%E3%83%BC-single/6797256260",
+      "primaryHref": "https://music.apple.com/us/album/%E3%81%84%E3%81%A1%E3%82%83%E3%82%8A%E3%81%B0%E3%81%A1%E3%82%87%E3%83%BC%E3%81%A7%E3%83%BC-single/6797256260",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E3%81%84%E3%81%A1%E3%82%83%E3%82%8A%E3%81%B0%E3%81%A1%E3%82%87%E3%83%BC%E3%81%A7%E3%83%BC-single/6797256260",
+        "listen": "https://music.apple.com/us/album/%E3%81%84%E3%81%A1%E3%82%83%E3%82%8A%E3%81%B0%E3%81%A1%E3%82%87%E3%83%BC%E3%81%A7%E3%83%BC-single/6797256260"
+      }
+    },
+    {
+      "id": "apple-album-6797258757",
+      "title": "おにー自慢のマスターくっしゅ",
+      "type": "music",
+      "cover": "/works/covers/apple_6797258757.jpg",
+      "tags": [
+        "apple-music",
+        "single"
+      ],
+      "releasedAt": "2026-08-07",
+      "previewUrl": "",
+      "href": "https://music.apple.com/us/album/%E3%81%8A%E3%81%AB%E3%83%BC%E8%87%AA%E6%85%A2%E3%81%AE%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85-single/6797258757",
+      "primaryHref": "https://music.apple.com/us/album/%E3%81%8A%E3%81%AB%E3%83%BC%E8%87%AA%E6%85%A2%E3%81%AE%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85-single/6797258757",
+      "links": {
+        "appleMusic": "https://music.apple.com/us/album/%E3%81%8A%E3%81%AB%E3%83%BC%E8%87%AA%E6%85%A2%E3%81%AE%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85-single/6797258757",
+        "listen": "https://music.apple.com/us/album/%E3%81%8A%E3%81%AB%E3%83%BC%E8%87%AA%E6%85%A2%E3%81%AE%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%8F%E3%81%A3%E3%81%97%E3%82%85-single/6797258757"
+      }
+    }
+  ]
+}

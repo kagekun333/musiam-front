@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "drone-2025-01-0566",
+      "contentEvidence": {
+        "description": "広い川といくつもの橋、両岸に続く街並みと緑",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "fea87a0f327b46aad1f54e76f050ef623edc29e97f10edfa1a2c695b81b6db30"
+      }
+    },
+    {
+      "id": "drone-2026-02-0221",
+      "contentEvidence": {
+        "description": "木々に囲まれた透明な流れと、水草の上を渡る小さな橋",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "ee4b4c221789e6d9a1ff8096203b5e6891f06d750e4797e88d29b43de9b6a5a2"
+      }
+    },
+    {
+      "id": "drone-2025-03-0890",
+      "contentEvidence": {
+        "description": "水路に沿う赤い屋根と中庭、まっすぐに伸びる道路",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "ec5ae30c06f8ac4c4c34ba9330ea3e0a4907ab77bd6c6de566ef5150c6d7d3ad"
+      }
+    },
+    {
+      "id": "drone-2026-04-0219",
+      "contentEvidence": {
+        "description": "水草の緑が続く曲がりくねった川と、岸辺の白いドーム",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "37a38d20acd13e17efe050fdb438308cdfdaba046d3b2bba0accb3cb5ecd8baa"
+      }
+    },
+    {
+      "id": "drone-2024-05-0167",
+      "contentEvidence": {
+        "description": "街の中に広がる寺院の大きな瓦屋根と、庭の池や小道",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "33eb42c7a95886ab104d5379286c39a9025c3f7826d8619ebf5ac12c7436d35a"
+      }
+    },
+    {
+      "id": "drone-2025-06-1332",
+      "contentEvidence": {
+        "description": "白い船が並ぶマリーナと、隣り合う淡い砂浜",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "d4849a45b2eb8ea83e9c1072b18ab950d135fcd5d1101db1b3dadffa9a54a075"
+      }
+    },
+    {
+      "id": "drone-2024-07-0290",
+      "contentEvidence": {
+        "description": "庭園と花の咲く木々の上に立つ大きな仏像",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "8a9bb3c79c3d13231f3ec284f440fc9ed4776cee428c12929543c77a27c1c153"
+      }
+    },
+    {
+      "id": "drone-2024-08-1285",
+      "contentEvidence": {
+        "description": "山のふもとのゴルフ場と、遠くに見える水面や島影",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "c2f244ac9ca8b859b62ea0a2cd295877580ea9458694ad446b0438d16b267a96"
+      }
+    },
+    {
+      "id": "drone-2025-09-0192",
+      "contentEvidence": {
+        "description": "広い川に停泊する船と桟橋、その向こうに続く街並み",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "25f087585a9673116763b736f41a5804d776830fee6adf9dcc110d7e4c782885"
+      }
+    },
+    {
+      "id": "drone-2025-10-0115",
+      "contentEvidence": {
+        "description": "連なる街の屋根と交差点、曲がる線路の上に広がる空",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "93c97252948403f9cccc43063b3762a628ff64d9dfdddec9b4bd3021d46d6b63"
+      }
+    },
+    {
+      "id": "drone-2023-11-0366",
+      "contentEvidence": {
+        "description": "青い水面と緑の島々を結ぶ長い吊り橋",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "9174eedc216e5dbd26838fbacca5b76b8c20e243ef51fd441a20c01b2230fc11"
+      }
+    },
+    {
+      "id": "drone-2022-12-0121",
+      "contentEvidence": {
+        "description": "山のあいだに広がる緑の田畑と家々、大きな白い雲",
+        "source": "discovery-image-review-2026-09-06",
+        "reviewedAt": "2026-09-06",
+        "assetSha256": "3bb3830d38aff6554a53930f18753d6a76784215c5788e858d46091023bebadc"
+      }
+    }
+  ]
+}

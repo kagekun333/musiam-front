@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "evidenceKind": "official_editorial_not_full_text",
+  "items": [
+    {
+      "workId": "2025-abi-21",
+      "title": "五輪書2025: 宮本武蔵 著 / ABI伯爵 訳",
+      "summaryJa": "レターは、宮本武蔵『五輪書』をAI時代に訳し直す試みとして、Kindle版を紹介している。",
+      "facets": [
+        "古典",
+        "宮本武蔵",
+        "五輪書",
+        "戦略"
+      ],
+      "sourceFileHash": "a00d3037e95f58c93d219cf7b83cd136f4b7c2432c507a200196bc28cd294c32",
+      "sourceHref": "/letters/five-rings-for-the-ai-age"
+    },
+    {
+      "workId": "das-buch-der-f-nf-ringe-2025-german-edition-15",
+      "title": "Das Buch der Fünf Ringe 2025 (German Edition)",
+      "summaryJa": "レターは、五輪書の独語版を、多言語で古典を展開する文脈で紹介している。",
+      "facets": [
+        "古典",
+        "ドイツ語",
+        "五輪書",
+        "翻訳"
+      ],
+      "sourceFileHash": "9006aadd6ba5029fbc96f8bc5de9720ba79636798198d539981dfdd1f2dff25d",
+      "sourceHref": "/letters/five-rings-in-german"
+    },
+    {
+      "workId": "ai-27",
+      "title": "吾輩はAIである",
+      "summaryJa": "レターは、『吾輩はAIである』を漱石へのオマージュ群の一冊として挙げ、AIの観察者という設定を述べている。",
+      "facets": [
+        "古典の翻案",
+        "AI",
+        "風刺"
+      ],
+      "sourceFileHash": "72fb09ac184bcf489a64007006accb7ee36f6b9fe27798582bfc1704af993c21",
+      "sourceHref": "/letters/i-am-an-ai"
+    },
+    {
+      "workId": "2045-28",
+      "title": "吾輩は猫である2045",
+      "summaryJa": "レターは、本作を漱石へのオマージュとして紹介し、猫の視点をAIに置き換えた風刺作品だと記している。",
+      "facets": [
+        "古典の翻案",
+        "AI",
+        "風刺"
+      ],
+      "sourceFileHash": "72fb09ac184bcf489a64007006accb7ee36f6b9fe27798582bfc1704af993c21",
+      "sourceHref": "/letters/i-am-an-ai"
+    },
+    {
+      "workId": "why-don-t-we-let-ai-do-all-the-work-and-have-ourselves-a-renaissance-english-edi-30",
+      "title": "Why Don’t We Let AI Do All the Work and Have Ourselves a Renaissance? (English Edition)",
+      "summaryJa": "レターは、この英語題の書籍を、AIに労働を任せ人間が創造に向かう未来像を皮肉も交えて扱う一冊として紹介している。",
+      "facets": [
+        "英語",
+        "AI",
+        "労働",
+        "未来",
+        "風刺"
+      ],
+      "sourceFileHash": "b75ff4460a4eb32ecb6a9126110395394488a532545bfaa537a95d39ffb8d70c",
+      "sourceHref": "/letters/let-ai-do-the-work"
+    },
+    {
+      "workId": "2033-re-starter-42",
+      "title": "2033 Re:Starter",
+      "summaryJa": "レターは、本作を八年後の世界で人生を再起動する者たちの物語として紹介している。",
+      "facets": [
+        "近未来",
+        "再起動"
+      ],
+      "sourceFileHash": "c403700720e523789a42f7bbe960004665f87583cd7620ee8df2d71236de7622",
+      "sourceHref": "/letters/restarter-2033"
+    },
+    {
+      "workId": "abi-45",
+      "title": "ABIシミュレーション",
+      "summaryJa": "レターは、本作を、AIが作り手をシミュレートした場合を扱う実験的な書物として紹介している。",
+      "facets": [
+        "自己言及",
+        "AI",
+        "実験"
+      ],
+      "sourceFileHash": "560a1e566dd4dd37970c08271bd9be0eef5ade4131d243b8547de3092f01e61c",
+      "sourceHref": "/letters/abi-simulation"
+    },
+    {
+      "workId": "vr-79",
+      "title": "VRバベル",
+      "summaryJa": "レターは、本作を現代の寓話として置き、VRとAI翻訳で再建されるバベルの塔という問いを示している。",
+      "facets": [
+        "VR",
+        "AI翻訳",
+        "寓話"
+      ],
+      "sourceFileHash": "b5a1004b3b06fef271bcbb6859f56a4970344ef2002a2a05bee36be7238a3af0",
+      "sourceHref": "/letters/vr-babel"
+    },
+    {
+      "workId": "item-86",
+      "title": "歯車が廻る江戸の夜明け",
+      "summaryJa": "レターは、本作を和風スチームパンクと紹介し、江戸と機械を結ぶ題材として置いている。",
+      "facets": [
+        "和風スチームパンク",
+        "江戸",
+        "機械"
+      ],
+      "sourceFileHash": "74bd82b7c31a82dda8ef4d2340dc8446c0930ab46b3238f5c431b0fef8130b49",
+      "sourceHref": "/letters/gears-of-edo"
+    },
+    {
+      "workId": "item-108",
+      "title": "たこ焼き王と銀河レシピ大戦",
+      "summaryJa": "レターは、本作を荒唐無稽な「たこ焼きの銀河戦争」として紹介し、笑いの価値に触れている。",
+      "facets": [
+        "ユーモア",
+        "銀河"
+      ],
+      "sourceFileHash": "4e405fc916848198cefb10790f6c34725967fb1fc31abb11aff95ed8079d46b4",
+      "sourceHref": "/letters/takoyaki-king"
+    },
+    {
+      "workId": "item-124",
+      "title": "デジタル・ガーデンの迷い子たち",
+      "summaryJa": "レターは、本作を情報の庭で迷う現代人を扱う一冊として紹介している。",
+      "facets": [
+        "情報過多",
+        "現代人"
+      ],
+      "sourceFileHash": "41812d025a9efae9dfac4b4c8bf413fadea21772c76ab4dcb29deee08754d743",
+      "sourceHref": "/letters/lost-children-of-the-digital-garden"
+    },
+    {
+      "workId": "item-172",
+      "title": "魂のサンドボックス",
+      "summaryJa": "レターは、本作を、何を作っても壊しても許される自由な実験場という比喩で紹介し、英語版にも触れている。",
+      "facets": [
+        "実験",
+        "世界観"
+      ],
+      "sourceFileHash": "5b421f887b01d9319fde99e3d84c632015fecf752644c544b709e1b47b82fc5a",
+      "sourceHref": "/letters/the-souls-sandbox"
+    }
+  ]
+}

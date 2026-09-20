@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "primaryMaster": {
+    "path": "public/works/works.json",
+    "sha256": "182a8d603fcf76b720968761f6097da73fa93b9c19e5c4343ac68873f4d0f040",
+    "itemCount": 450
+  },
+  "runtimeSidecars": [
+    {
+      "path": "public/works/catalog-imports.json",
+      "role": "PRIMARY_ADJACENT_IMPORT",
+      "sha256": "788179bfcbf208cb4b2a6a8f5d1ac1c8055a9e9dc01601c8698ec83703126032",
+      "itemCount": 21
+    },
+    {
+      "path": "public/works/works-ssd.json",
+      "role": "ENRICHMENT_SIDECAR",
+      "sha256": "85ed27882e9615a757f3c625ec9ab6b3dca137553689af8fcbf93694a92e1a06",
+      "itemCount": 216
+    },
+    {
+      "path": "public/works/catalog-readiness.json",
+      "role": "READINESS",
+      "sha256": "5ac9b043e5eca809c94870c4c1de3f487214fd3f49bada02791112917ade5b3c",
+      "itemCount": 530
+    }
+  ],
+  "knowledgeSidecars": [
+    {
+      "path": "public/works/content-evidence.json",
+      "role": "EVIDENCE",
+      "sha256": "db0f6927d712dc6d33cc013c81cf6eb295f68388cd751c56f18924b45fd046fd",
+      "itemCount": 12
+    },
+    {
+      "path": "public/works/editorial-knowledge.json",
+      "role": "EDITORIAL",
+      "sha256": "13cf0e6ab8932b80a444ef396f563ee5a058abaf5b4aa50744636e23f9fd0ddd",
+      "itemCount": 12
+    },
+    {
+      "path": "public/works/drone-exhibition.json",
+      "role": "CANDIDATE_SOURCE",
+      "sha256": "58c69759e2dc28092e151da8b6fdf0eabf282900a21ee020ffb88082916b8200",
+      "itemCount": 12
+    }
+  ],
+  "r4ClaimsMatrix": "ops/simulation-refinement/phase5-generalization-20260913/music/batch-r3/claims-matrix.json",
+  "importCoverBundle": {
+    "itemCount": 21,
+    "totalBytes": 13796505,
+    "sha256": "ecebdc59e134453038e492a780014b926e5a75f7fd358ce54c5bc2429732cb4c"
+  },
+  "productionParity": "UNVERIFIED"
+}
