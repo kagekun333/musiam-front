@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-13T02:52:12Z",
+  "configPath": "ops/simulation-refinement/phase5-generalization-20260913/music/music-factory-config-batch-r3.json",
+  "batchSize": 10,
+  "ownerPriorityCount": 4,
+  "ownerPriorityRows": [
+    {
+      "workId": "apple-album-1889783981",
+      "title": "Deus sive Natura",
+      "priority": "OWNER_SELECTED_REPRESENTATIVE",
+      "sourceAvailable": true,
+      "missingReason": null
+    },
+    {
+      "workId": "spotify-single-01SX5jNiRBCTY02dtGz3iM",
+      "title": "雨上がりの国でカナリアは歌う",
+      "priority": "CURRENT_OWNER_FAVORITE",
+      "sourceAvailable": true,
+      "missingReason": null
+    },
+    {
+      "workId": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ",
+      "title": "PRIMAL SURGE",
+      "priority": "CURRENT_OWNER_FAVORITE",
+      "sourceAvailable": true,
+      "missingReason": null
+    },
+    {
+      "workId": "apple-album-6797260614",
+      "title": "LOW TRICKSTER",
+      "priority": "CURRENT_OWNER_FAVORITE",
+      "sourceAvailable": true,
+      "missingReason": null
+    }
+  ],
+  "sourceRecords": [
+    {
+      "workId": "apple-album-1889783981",
+      "title": "Deus sive Natura",
+      "priority": "OWNER_SELECTED_REPRESENTATIVE",
+      "appleCollectionId": "1889783981",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/phase4-deus-sive-natura-apple-preview.m4a",
+        "sha256": "d9fd0b953d3a55676e31dd9866b0e73af6a1497b573a5d9d222eb29048b26c30",
+        "scope": "One downloaded approximately 30-second public track preview, tied by the lookup response to track 1889783982 in collection 1889783981. It is not an album review or a whole-master assertion.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "1889783981",
+          "trackId": "1889783982",
+          "trackName": "Deus sive Natura"
+        },
+        "bindingEvidence": "Existing packet: public Apple lookup identity and one downloaded preview.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 143.55,
+        "energy": {
+          "meanRms": 0.230059,
+          "rmsDynamicRangeDbP95P05": 9.361
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 4542.04,
+          "spectralRolloffHzMean": 9750.95,
+          "zeroCrossingRateMean": 0.08606
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      },
+      "sourceReuse": "REUSED_IDENTICAL_RUNTIME_WORK_AND_SOURCE_SHA256",
+      "machineObservationReuse": "REUSED_IDENTICAL_SOURCE_SHA256"
+    },
+    {
+      "workId": "spotify-single-01SX5jNiRBCTY02dtGz3iM",
+      "title": "雨上がりの国でカナリアは歌う",
+      "priority": "CURRENT_OWNER_FAVORITE",
+      "appleCollectionId": "1854962457",
+      "appleTrackId": "1854962459",
+      "appleCountry": "jp",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/spotify-single-01SX5jNiRBCTY02dtGz3iM.m4a",
+        "sha256": "7572d932ec22fc5a6c5531e6f1726c890444aaae9b6bb762e8c5549bbc5ea73e",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "1854962457",
+          "collectionName": "雨上がりの国でカナリアは歌う - Single",
+          "trackId": "1854962459",
+          "trackName": "雨上がりの国でカナリアは歌う",
+          "trackDurationMillis": 189788,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/41/4b/e5/414be5a6-4c27-be07-5c96-0e1df8a7973c/mzaf_11729817565158772292.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 120.19,
+        "energy": {
+          "meanRms": 0.191804,
+          "rmsDynamicRangeDbP95P05": 10.325
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 4162.79,
+          "spectralRolloffHzMean": 9037.93,
+          "zeroCrossingRateMean": 0.087791
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      }
+    },
+    {
+      "workId": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ",
+      "title": "PRIMAL SURGE",
+      "priority": "CURRENT_OWNER_FAVORITE",
+      "appleCollectionId": "1837535907",
+      "appleTrackId": "1837535908",
+      "appleCountry": "jp",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/spotify-single-7LIlsNpzXZBZH2edcK4RQQ.m4a",
+        "sha256": "dbcb79f146ee76623524cd033c145eb29d91ebb5123a4f471feff631465fab98",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "1837535907",
+          "collectionName": "PRIMAL SURGE - Single",
+          "trackId": "1837535908",
+          "trackName": "PRIMAL SURGE",
+          "trackDurationMillis": 236210,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ff/47/d7/ff47d7d7-2aa9-e536-edf9-a4fba85b7903/mzaf_1715322485620409075.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 112.35,
+        "energy": {
+          "meanRms": 0.258684,
+          "rmsDynamicRangeDbP95P05": 5.931
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 3122.27,
+          "spectralRolloffHzMean": 6972.92,
+          "zeroCrossingRateMean": 0.047109
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      }
+    },
+    {
+      "workId": "apple-album-6797260614",
+      "title": "LOW TRICKSTER",
+      "priority": "CURRENT_OWNER_FAVORITE",
+      "appleCollectionId": "6797260614",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/phase4-low-trickster-apple-preview.m4a",
+        "sha256": "0be2d85701aeef5113bdb02be719823c413f3441ba3ad5151ada9cda12ad1a36",
+        "scope": "One downloaded approximately 30-second public track preview, tied by the lookup response to track 6797260615 in collection 6797260614. It is not an album review or a whole-master assertion.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "6797260614",
+          "trackId": "6797260615",
+          "trackName": "LOW TRICKSTER"
+        },
+        "bindingEvidence": "Existing packet: public Apple lookup identity and one downloaded preview.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 126.05,
+        "energy": {
+          "meanRms": 0.314912,
+          "rmsDynamicRangeDbP95P05": 7.554
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 2642.98,
+          "spectralRolloffHzMean": 5799.77,
+          "zeroCrossingRateMean": 0.035625
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      },
+      "sourceReuse": "REUSED_IDENTICAL_RUNTIME_WORK_AND_SOURCE_SHA256",
+      "machineObservationReuse": "REUSED_IDENTICAL_SOURCE_SHA256"
+    },
+    {
+      "workId": "distro-d9aacae4dec04661b92ed7f700fa4bd8",
+      "title": "Latin Exorcism Club",
+      "priority": "EXISTING_MACHINE_SCOPED",
+      "source": {
+        "kind": "LOCAL_FULL_FILE_CANDIDATE",
+        "path": "/Users/kagekun/Downloads/Latin Exorcism Club.wav",
+        "sha256": "b59e5052fd6b592ee86e811928f375fb10eae7e725ae63f3d510dd2ba5f005fd",
+        "scope": "Full local file: 233.800000 seconds",
+        "stableBinding": {
+          "catalogWorkId": "distro-d9aacae4dec04661b92ed7f700fa4bd8",
+          "distroAlbumUuid": "d9aacae4dec04661b92ed7f700fa4bd8",
+          "upc": "701486666048",
+          "isrc": "qt6hx2657827",
+          "spotifyAlbumId": "5AsNNjQGa9npbj0sEYBPwp",
+          "appleCollectionId": "6806959457",
+          "appleTrackId": "6806959458"
+        },
+        "bindingEvidence": "Existing packet: stable identity plus limited preview correspondence where recorded.",
+        "capabilities": [
+          "local-file hash and decode",
+          "machine features across this local file"
+        ],
+        "prohibited": [
+          "whole public master equivalence",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 233.8,
+        "sampleRateHz": 48000,
+        "tempoBpmEstimate": 152.03,
+        "energy": {
+          "meanRms": 0.141879,
+          "rmsDynamicRangeDbP95P05": 12.315
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 3799.47,
+          "spectralRolloffHzMean": 8141.69,
+          "zeroCrossingRateMean": 0.066255
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      },
+      "sourceReuse": "REUSED_IDENTICAL_RUNTIME_WORK_AND_SOURCE_SHA256",
+      "machineObservationReuse": "REUSED_IDENTICAL_SOURCE_SHA256"
+    },
+    {
+      "workId": "apple-album-6797260493",
+      "title": "Fractal Hands",
+      "priority": "EXISTING_MEASURED_RUNTIME",
+      "appleCollectionId": "6797260493",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/apple-album-6797260493.m4a",
+        "sha256": "e3531dfd24a74a152f7066bacef3f6fd2038355d1542f2d47ee1c5191d75e8a1",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "6797260493",
+          "collectionName": "Fractal Hands - Single",
+          "trackId": "6797260872",
+          "trackName": "Fractal Hands",
+          "trackDurationMillis": 213702,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/be/3d/2f/be3d2fdc-26ca-f85f-9a3d-867c1a11e130/mzaf_14915915939294926577.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 136.0,
+        "energy": {
+          "meanRms": 0.341696,
+          "rmsDynamicRangeDbP95P05": 12.983
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 3623.93,
+          "spectralRolloffHzMean": 8172.91,
+          "zeroCrossingRateMean": 0.06182
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      },
+      "sourceReuse": "REUSED_IDENTICAL_RUNTIME_WORK_AND_SOURCE_SHA256",
+      "machineObservationReuse": "REUSED_IDENTICAL_SOURCE_SHA256"
+    },
+    {
+      "workId": "apple-album-6797806860",
+      "title": "NEKOGAMI",
+      "priority": "RUNTIME_APPLE_PRIORITY",
+      "appleCollectionId": "6797806860",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/apple-album-6797806860.m4a",
+        "sha256": "2aef9f5d5e731ca6da4b65e9ef91b7a0dcab80a1b4a7370ec0a59547f6c85634",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "6797806860",
+          "collectionName": "NEKOGAMI - Single",
+          "trackId": "6797806861",
+          "trackName": "NEKOGAMI",
+          "trackDurationMillis": 198001,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/70/fa/ab/70faab20-5cbb-51cc-5055-c9aa416b9d71/mzaf_16366075731840064261.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 139.67,
+        "energy": {
+          "meanRms": 0.376199,
+          "rmsDynamicRangeDbP95P05": 5.143
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 3049.79,
+          "spectralRolloffHzMean": 7259.59,
+          "zeroCrossingRateMean": 0.042835
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      }
+    },
+    {
+      "workId": "apple-album-6797256001",
+      "title": "FINAL WARNING TO EARTH",
+      "priority": "RUNTIME_APPLE_PRIORITY",
+      "appleCollectionId": "6797256001",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/apple-album-6797256001.m4a",
+        "sha256": "78a12ea5fd17a4db2b7a900ed933606683e64e8a5d9bd4d4b8ae1dce9fe78a32",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "6797256001",
+          "collectionName": "FINAL WARNING TO EARTH - Single",
+          "trackId": "6797256002",
+          "trackName": "FINAL WARNING TO EARTH",
+          "trackDurationMillis": 236925,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/98/c8/d4/98c8d4b1-2abe-cd3d-1211-d1c7375d3b58/mzaf_2408096539440639712.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 129.2,
+        "energy": {
+          "meanRms": 0.258546,
+          "rmsDynamicRangeDbP95P05": 11.655
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 3800.81,
+          "spectralRolloffHzMean": 8368.08,
+          "zeroCrossingRateMean": 0.072764
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      }
+    },
+    {
+      "workId": "apple-album-6797258577",
+      "title": "地球レビュー星1.8",
+      "priority": "RUNTIME_APPLE_PRIORITY",
+      "appleCollectionId": "6797258577",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/apple-album-6797258577.m4a",
+        "sha256": "4be12b2b031db3b5bc53157cc91cf410a0ae5a5bb45f4635cc804d18532b03db",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "6797258577",
+          "collectionName": "地球レビュー星1.8 - Single",
+          "trackId": "6797258578",
+          "trackName": "地球レビュー星1.8",
+          "trackDurationMillis": 150226,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ba/a4/5c/baa45c38-e067-a990-3af6-109cc934f8ec/mzaf_1909697644194400468.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 129.2,
+        "energy": {
+          "meanRms": 0.288101,
+          "rmsDynamicRangeDbP95P05": 6.616
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 4807.18,
+          "spectralRolloffHzMean": 10538.44,
+          "zeroCrossingRateMean": 0.080397
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      }
+    },
+    {
+      "workId": "apple-album-6797260277",
+      "title": "電脳神楽",
+      "priority": "RUNTIME_APPLE_PRIORITY",
+      "appleCollectionId": "6797260277",
+      "appleCountry": "us",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "path": "/private/tmp/musiam-music-evidence-factory-20260913/apple-album-6797260277.m4a",
+        "sha256": "6efd464e4462add3866cd92e582c09a7ad1fdceca333032123e6dca6dcb6cbff",
+        "scope": "One Apple public preview only; not full track or album.",
+        "stableBinding": {
+          "artistName": "ABI伯爵",
+          "collectionId": "6797260277",
+          "collectionName": "電脳神楽 - Single",
+          "trackId": "6797260278",
+          "trackName": "電脳神楽",
+          "trackDurationMillis": 319527,
+          "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/3c/12/e6/3c12e686-5372-3069-7e7a-61dc1b7e3855/mzaf_6042655794103774335.plus.aac.p.m4a"
+        },
+        "bindingEvidence": "Fresh Apple public lookup: collection and artist match, then returned track preview URL.",
+        "capabilities": [
+          "hash and machine features of this preview"
+        ],
+        "prohibited": [
+          "album/full-track claim",
+          "rights",
+          "lyrics",
+          "mood",
+          "no-vocals"
+        ]
+      },
+      "machineObservation": {
+        "analysisEngine": "librosa local decode and feature extraction",
+        "analyzedDurationSeconds": 30.0005,
+        "sampleRateHz": 44100,
+        "tempoBpmEstimate": 147.66,
+        "energy": {
+          "meanRms": 0.329649,
+          "rmsDynamicRangeDbP95P05": 4.764
+        },
+        "textureSignals": {
+          "spectralCentroidHzMean": 3476.39,
+          "spectralRolloffHzMean": 7663.23,
+          "zeroCrossingRateMean": 0.06189
+        },
+        "capability": "Machine-measured segment-level signal features; not genre, mood, lyric, vocal-absence, quality, or listener-fit evidence.",
+        "confidence": "MEASURED_MACHINE_FEATURES_SCOPED_TO_ANALYZED_SOURCE"
+      }
+    }
+  ],
+  "coverageBaseline": {
+    "musicWorks": 288,
+    "content": 0,
+    "machineScoped": 1,
+    "metadata": 254,
+    "inferred": 17,
+    "unknown": 16,
+    "contentIncreaseJustified": false,
+    "reason": "Only Latin Exorcism Club has a recorded local-audio machine-scoped claim; no additional source has passed the content-eligibility and review gates."
+  },
+  "boundary": "No catalog/runtime/public mutation. Stable identity, source, scope, capability, confidence, and source SHA-256 stay attached to every usable record."
+}

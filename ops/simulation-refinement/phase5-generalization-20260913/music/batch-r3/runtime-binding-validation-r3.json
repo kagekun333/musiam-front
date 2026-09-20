@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "runtimeSource": "actual-runtime-catalog-r1.json (434 merged/deduplicated runtime works)",
+  "batchSource": "music-evidence-manifest.json",
+  "result": "TEN_UNIQUELY_RUNTIME_BOUND_MEASURED_SOURCES",
+  "records": [
+    { "workId": "apple-album-1889783981", "binding": "runtime Apple collection 1889783981; existing preview SHA reused" },
+    { "workId": "spotify-single-01SX5jNiRBCTY02dtGz3iM", "binding": "runtime JP Apple link collection 1854962457 / track 1854962459; returned preview measured" },
+    { "workId": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ", "binding": "runtime JP Apple link collection 1837535907 / track 1837535908; returned preview measured" },
+    { "workId": "apple-album-6797260614", "binding": "runtime Apple collection 6797260614; existing preview SHA reused" },
+    { "workId": "distro-d9aacae4dec04661b92ed7f700fa4bd8", "binding": "runtime continuous-release ID; existing full local source SHA reused" },
+    { "workId": "apple-album-6797260493", "binding": "runtime Apple collection 6797260493; existing preview SHA reused" },
+    { "workId": "apple-album-6797806860", "binding": "runtime Apple collection 6797806860; returned preview measured" },
+    { "workId": "apple-album-6797256001", "binding": "runtime Apple collection 6797256001; returned preview measured" },
+    { "workId": "apple-album-6797258577", "binding": "runtime Apple collection 6797258577; returned preview measured" },
+    { "workId": "apple-album-6797260277", "binding": "runtime Apple collection 6797260277; returned preview measured" }
+  ],
+  "scope": "Nine records are single public previews and one is a local full-file candidate. Every observation remains source-scoped; no whole-track/album, mood, lyric, no-vocals, quality, rights, or promotion claim follows.",
+  "excluded": ["Rava remains unassigned.", "Beautiful Anyway and Veda Bass Mantra remain pending exact runtime binding.", "ルーツ・オブ・トゥルース is runtime-bound but has no verified preview/audio source in this batch."]
+}

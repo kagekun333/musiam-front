@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-13T02:41:16Z",
+  "factory": "scripts/build-musiam-music-evidence-factory.py",
+  "files": [
+    { "path": "scripts/build-musiam-music-evidence-factory.py", "sha256": "df4efb5f16de6f23aac1f7062bf95ddc22e770e2d8ef15c8788d95408e35cab6" },
+    { "path": "ops/simulation-refinement/phase5-generalization-20260913/music/music-evidence-manifest.json", "sha256": "f97b67dcdaaf7f11b28fed7f6098587542fd3329a7c18fe9e389b444b83700e0" },
+    { "path": "ops/simulation-refinement/phase5-generalization-20260913/music/music-machine-observations.json", "sha256": "80ca2efd1ad1c9bb578ef943379b6416b342a3892579650a904650e6e55dd880" }
+  ],
+  "validation": { "batchSize": 10, "uniqueBoundWorkIds": 9, "explicitlyUnresolved": 1, "eligibleActualSoundRecords": 6, "missingOrUnbound": 4, "contentCoverageIncreaseJustified": false }
+}

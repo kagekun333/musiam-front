@@ -1,0 +1,75 @@
+{
+  "auditDate": "2026-09-13",
+  "lane": "C",
+  "scope": "new local source evidence for priority batch and separate Rava identity",
+  "baseline": {
+    "batch": "ops/simulation-refinement/phase5-generalization-20260913/music/next-optimal-batch-current.json",
+    "coverage": "ops/simulation-refinement/phase5-generalization-20260913/music/coverage-r4.json",
+    "frozenReadOnly": "/private/tmp/musiam-quality-phase5-r8-20260913",
+    "priorityWorks": 10,
+    "priorPreviewWorks": 9,
+    "priorFullVerified": 0
+  },
+  "availability": {
+    "mountedVolumes": ["/Volumes/Macintosh HD -> /"],
+    "portableOrOwnerVolumeObserved": false,
+    "networkOrProviderUsed": false,
+    "paidModelOrApiUsed": false
+  },
+  "newEvidence": [
+    {
+      "title": "地球レビュー星1.8",
+      "stableId": "apple-album-6797258577",
+      "sourcePath": "/Users/kagekun/Downloads/Earth Review 1.8.wav",
+      "sourceKind": "local_full_audio_candidate",
+      "fact": {
+        "sha256": "2945e579abdf9091d20ac2d0a8a82df0aed113d1c092fed17eb2cfe42c30e783",
+        "bytes": 36797678,
+        "codec": "pcm_s16le",
+        "sampleRate": 48000,
+        "channels": 2,
+        "durationSeconds": 191.28,
+        "readableAndDecodable": true
+      },
+      "catalogFact": {
+        "title": "地球レビュー星1.8",
+        "appleId": "6797258577",
+        "upc": "882436908514",
+        "isrc": "QT6FZ2620000",
+        "catalogDurationSeconds": 150,
+        "publicHref": "https://music.apple.com/us/album/%E5%9C%B0%E7%90%83%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E6%98%9F1-8-single/6797258577"
+      },
+      "machineObservation": "A readable local WAV exists whose filename/title is plausible, but its 191.28-second duration conflicts with the catalog track metadata of 150 seconds.",
+      "aiInterpretation": "Do not bind this file as the catalog master or promote full-content evidence. It may be an alternate render, extended source, or wrong recording; provenance is unresolved.",
+      "bindingStatus": "UNRESOLVED_DURATION_CONFLICT",
+      "fullAudio": "available locally, identity binding unknown",
+      "publicPreview": "catalog/public link exists; preview segment not newly fetched",
+      "lyrics": "unknown",
+      "vocalLanguageStructure": "not analyzed; no repeat ASR",
+      "ownerContext": "priority-10 batch item; source discovery only"
+    }
+  ],
+  "noNewFullSourceFound": [
+    {"title":"Deus sive Natura","stableId":"apple-album-1889783981","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"ルーツ・オブ・トゥルース","stableId":"spotify-album-6acsBbFbxxCTKQpSdlkxpx","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"雨上がりの国でカナリアは歌う","stableId":"spotify-single-01SX5jNiRBCTY02dtGz3iM","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"PRIMAL SURGE","stableId":"primal-surge-222","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"LOW TRICKSTER","stableId":"apple-album-6797260614","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"Fractal Hands","stableId":"apple-album-6797260493","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"NEKOGAMI","stableId":"apple-album-6797806860","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"FINAL WARNING TO EARTH","stableId":"apple-album-6797256001","result":"no exact local source path found in targeted Downloads scan"},
+    {"title":"電脳神楽","stableId":"apple-album-6797260277","result":"no exact local source path found in targeted Downloads scan"}
+  ],
+  "rava": {
+    "exactCatalogMatch": false,
+    "localExactTitleSource": false,
+    "status": "UNKNOWN_UNBOUND",
+    "action": "retain unresolved; do not assign plausible candidates"
+  },
+  "decision": {
+    "newUsableFullEvidence": 0,
+    "newCandidateSources": 1,
+    "promotion": "none",
+    "nextOptimalStep": "Obtain owner provenance or a source export for priority works, then reconcile duration/hash and stable ID before any semantic review. For 地球レビュー星1.8, first resolve the 191.28s versus 150s conflict; do not repeat ASR."
+  }
+}

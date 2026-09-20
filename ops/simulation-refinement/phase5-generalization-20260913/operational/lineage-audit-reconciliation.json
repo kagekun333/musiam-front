@@ -1,0 +1,17 @@
+{
+  "at": "2026-09-13T04:26:49.382953+00:00",
+  "earlierProposal": "r2-to-r3-catalog-alias-proposal.json",
+  "earlierCount44": "Superseded; extracted evidence rows omitted public-link identity, counted mostly same IDs",
+  "correctedSource": "strict-aliases.json plus lineage-second-audit.json",
+  "verifiedOneToOneSpotifyAlbumResources": 77,
+  "metadataOnlyRestore": 76,
+  "excludedIdentityEvidence": "Search URLs do not prove identity; integration explicitly requires exact Spotify album resource",
+  "artifactRelocation": "Agent-generated evidence relocated under phase5 operational; source/candidate runtime unchanged",
+  "relocatedFiles": [
+    "r2-catalog-evidence-rows.json",
+    "r3-catalog-evidence-rows.json",
+    "r2-to-r3-catalog-alias-proposal.json",
+    "catalog-evidence-lineage-r3.json",
+    "catalog-evidence-lineage-r3.md"
+  ]
+}

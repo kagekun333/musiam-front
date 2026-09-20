@@ -10,7 +10,7 @@
 |R1|Metal Print webhook: main、stripe-fix、6df2|`RECOVERED` / local validation PASS|識別guardのみを限定救出。fixture validator・typecheck・最終diff確認済み。local commitを作成。|
 |R2|Phase 5 r8: `ops/simulation-refinement/phase5-generalization-20260913/`|`RECOVERED_PRESERVED_HOLD` / 凍結候補|`freeze-r8.json`、preservation record、26-file source archive/patch、compact evaluation summaryを限定復元。HOLDのまま、R3はこのfreezeを比較baselineとして参照する。|
 |R3|Phase 6: `ops/simulation-refinement/phase6-three-lanes-20260913/`|`RECOVERED_PRESERVED_EXPERIMENT` / 未適用|R2凍結baselineへ binding 済み。Lane A は provider failure を含む部分的 diagnostic、Lane B は未実行、Lane C c1 は `PRESERVED_CANDIDATE`。application には未適用。|
-|R4|Music Evidence Factory: scriptとPhase 5/6 music records|`PRESERVE_HOLD` / 限定測定記録|R2/R3の記録に依存。対象音源・generator・hash manifestを対応付け、販売/全曲理解へ昇格しない。|
+|R4|Music Evidence Factory: scriptとPhase 5/6 music records|`RECOVERED_EVIDENCE_BOUNDARY` / source-scoped historical evidence|canonicalは`batch-r3`の10 uniquely runtime-bound measured sources。9 historical public metadata rows、local full candidates 2、full-track verified 0。`docs/AI/R4_MUSIC_EVIDENCE_RECOVERY.md` とclaims matrixを参照し、販売/全曲理解/推薦可否へ昇格しない。|
 |R5|Shaman 999: `SHA_collection_999_unique/`（1,000 untracked）|`PRESERVE_HOLD` / 別案件候補|アプリ基盤と分離。source/provenance/採用意図が揃うまで移動・公開・再生成しない。|
 |R6|営業・公開・継続運用台帳: untracked `ops/` 1,338件、`operational/`等|`UNKNOWN` / 作業中|R0に依存。G0観測/G1実注文・納品の根拠を、local/synthetic/provider/productionで分離して分類。|
 |R7|カタログ・UI・Chat・scripts: tracked dirtyとuntracked `src/`、`public/`、`scripts/`|`UNKNOWN` / 作業中|`works.json`、`globals.css`、`chat-reco.ts`はSHARED保護面。機能別に限定diffを読み、移植・formatはしない。|

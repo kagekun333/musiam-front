@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "status": "RECOVERED_AFTER_OUTPUT_NONCOMPLETION",
+  "boundary": "These two private files were created only after the factory's exact configured Apple lookup/collection/track/title validation branch reached download. The transient lookup response was not persisted because the first R3 run did not complete its output write. This records file existence and hash, not a replayed lookup or a new external request.",
+  "sourceRecords": [
+    {
+      "workId": "spotify-single-01SX5jNiRBCTY02dtGz3iM",
+      "source": { "kind": "PUBLIC_PREVIEW", "path": "/private/tmp/musiam-music-evidence-factory-20260913/spotify-single-01SX5jNiRBCTY02dtGz3iM.m4a", "sha256": "7572d932ec22fc5a6c5531e6f1726c890444aaae9b6bb762e8c5549bbc5ea73e", "scope": "One public preview for runtime Apple collection 1854962457, configured track 1854962459, JP store; not full track or album.", "stableBinding": { "collectionId": "1854962457", "trackId": "1854962459", "trackName": "雨上がりの国でカナリアは歌う", "storeCountry": "jp" }, "bindingEvidence": "actual-runtime-catalog-r1 direct Apple link plus completed post-validation download branch", "capabilities": ["local preview hash", "local preview feature analysis"], "prohibited": ["full track or album", "mood", "lyrics", "no-vocals", "quality", "rights"] }
+    },
+    {
+      "workId": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ",
+      "source": { "kind": "PUBLIC_PREVIEW", "path": "/private/tmp/musiam-music-evidence-factory-20260913/spotify-single-7LIlsNpzXZBZH2edcK4RQQ.m4a", "sha256": "dbcb79f146ee76623524cd033c145eb29d91ebb5123a4f471feff631465fab98", "scope": "One public preview for runtime Apple collection 1837535907, configured track 1837535908, JP store; not full track or album.", "stableBinding": { "collectionId": "1837535907", "trackId": "1837535908", "trackName": "PRIMAL SURGE", "storeCountry": "jp" }, "bindingEvidence": "actual-runtime-catalog-r1 direct Apple link plus completed post-validation download branch", "capabilities": ["local preview hash", "local preview feature analysis"], "prohibited": ["full track or album", "mood", "lyrics", "no-vocals", "quality", "rights"] }
+    }
+  ]
+}

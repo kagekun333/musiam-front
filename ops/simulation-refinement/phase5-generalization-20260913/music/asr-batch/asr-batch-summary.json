@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-13T03:31:37Z",
+  "inputManifest": "ops/simulation-refinement/phase5-generalization-20260913/music/batch-r3/music-evidence-manifest.json",
+  "model": {
+    "engine": "openai-whisper-pytorch",
+    "model": "small.pt",
+    "offlineOnly": true,
+    "downloadedDuringRun": false
+  },
+  "hashCachePolicy": "No prior ASR result was found for the nine preview SHA-256 values; each was transcribed once. The existing Latin SHA-256 result was reused without rerun.",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:21:02Z",
+      "workId": "apple-album-1889783981",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "d9fd0b953d3a55676e31dd9866b0e73af6a1497b573a5d9d222eb29048b26c30",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 5,
+        "nonEmptySegmentCount": 5,
+        "transcribedCharacterCount": 51,
+        "meanAvgLogprob": -1.0214,
+        "meanNoSpeechProbability": 0.5318,
+        "maxCompressionRatio": 1.0566,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:21:59Z",
+      "workId": "spotify-single-01SX5jNiRBCTY02dtGz3iM",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "7572d932ec22fc5a6c5531e6f1726c890444aaae9b6bb762e8c5549bbc5ea73e",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 5,
+        "nonEmptySegmentCount": 5,
+        "transcribedCharacterCount": 43,
+        "meanAvgLogprob": -0.3801,
+        "meanNoSpeechProbability": 0.4092,
+        "maxCompressionRatio": 1.1316,
+        "machineTextActivity": "DETECTED_WITHIN_ASR_GUARDRAILS",
+        "language": "ja",
+        "languageConfidence": "MODEL_AUTODETECTED_UNCALIBRATED_FOR_MUSIC_PREVIEW"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:23:11Z",
+      "workId": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "dbcb79f146ee76623524cd033c145eb29d91ebb5123a4f471feff631465fab98",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 1,
+        "nonEmptySegmentCount": 1,
+        "transcribedCharacterCount": 222,
+        "meanAvgLogprob": -0.1022,
+        "meanNoSpeechProbability": 0.9395,
+        "maxCompressionRatio": 14.8485,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:24:38Z",
+      "workId": "apple-album-6797260614",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "0be2d85701aeef5113bdb02be719823c413f3441ba3ad5151ada9cda12ad1a36",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 8,
+        "nonEmptySegmentCount": 8,
+        "transcribedCharacterCount": 321,
+        "meanAvgLogprob": -0.5424,
+        "meanNoSpeechProbability": 0.6896,
+        "maxCompressionRatio": 1.5148,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:26:26Z",
+      "workId": "apple-album-6797260493",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "e3531dfd24a74a152f7066bacef3f6fd2038355d1542f2d47ee1c5191d75e8a1",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 7,
+        "nonEmptySegmentCount": 7,
+        "transcribedCharacterCount": 573,
+        "meanAvgLogprob": -0.297,
+        "meanNoSpeechProbability": 0.4919,
+        "maxCompressionRatio": 22.3333,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:27:45Z",
+      "workId": "apple-album-6797806860",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "2aef9f5d5e731ca6da4b65e9ef91b7a0dcab80a1b4a7370ec0a59547f6c85634",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 1,
+        "nonEmptySegmentCount": 1,
+        "transcribedCharacterCount": 334,
+        "meanAvgLogprob": -0.0879,
+        "meanNoSpeechProbability": 0.7999,
+        "maxCompressionRatio": 16.0,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:29:09Z",
+      "workId": "apple-album-6797256001",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "78a12ea5fd17a4db2b7a900ed933606683e64e8a5d9bd4d4b8ae1dce9fe78a32",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 6,
+        "nonEmptySegmentCount": 6,
+        "transcribedCharacterCount": 192,
+        "meanAvgLogprob": -0.3787,
+        "meanNoSpeechProbability": 0.6329,
+        "maxCompressionRatio": 1.6053,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:30:13Z",
+      "workId": "apple-album-6797258577",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "4be12b2b031db3b5bc53157cc91cf410a0ae5a5bb45f4635cc804d18532b03db",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 11,
+        "nonEmptySegmentCount": 11,
+        "transcribedCharacterCount": 107,
+        "meanAvgLogprob": -0.5113,
+        "meanNoSpeechProbability": 0.3746,
+        "maxCompressionRatio": 1.226,
+        "machineTextActivity": "DETECTED_WITHIN_ASR_GUARDRAILS",
+        "language": "ja",
+        "languageConfidence": "MODEL_AUTODETECTED_UNCALIBRATED_FOR_MUSIC_PREVIEW"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-13T03:31:37Z",
+      "workId": "apple-album-6797260277",
+      "source": {
+        "kind": "PUBLIC_PREVIEW",
+        "sha256": "6efd464e4462add3866cd92e582c09a7ad1fdceca333032123e6dca6dcb6cbff",
+        "analyzedDurationSeconds": 29.9755,
+        "scope": "One public preview segment only; no full-track or album conclusion."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "autodetect"
+      },
+      "asr": {
+        "segmentCount": 5,
+        "nonEmptySegmentCount": 5,
+        "transcribedCharacterCount": 86,
+        "meanAvgLogprob": -0.2617,
+        "meanNoSpeechProbability": 0.6322,
+        "maxCompressionRatio": 1.2762,
+        "machineTextActivity": "UNKNOWN_LOW_CONFIDENCE_OR_NO_TEXT",
+        "language": "UNKNOWN",
+        "languageConfidence": "UNKNOWN"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Whisper ASR text activity is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Any model language label is limited to this approximately 30-second preview and is uncalibrated for music.",
+        "ASR text activity does not establish lyric accuracy, vocal presence/absence, genre, mood, quality, rights, or full-track content."
+      ]
+    },
+    {
+      "schemaVersion": 1,
+      "observedAt": "2026-09-10T12:23:27.403Z",
+      "workId": "distro-d9aacae4dec04661b92ed7f700fa4bd8",
+      "source": {
+        "kind": "LOCAL_FULL_FILE_CANDIDATE",
+        "sha256": "b59e5052fd6b592ee86e811928f375fb10eae7e725ae63f3d510dd2ba5f005fd",
+        "analyzedDurationSeconds": 233.8,
+        "scope": "Existing full local-file ASR cache reused; no ASR rerun."
+      },
+      "method": {
+        "engine": "openai-whisper-pytorch",
+        "model": "small.pt",
+        "offlineOnly": true,
+        "languageMode": "reused_existing_autodetection"
+      },
+      "asr": {
+        "segmentCount": null,
+        "nonEmptySegmentCount": 35,
+        "transcribedCharacterCount": null,
+        "meanAvgLogprob": -0.3327,
+        "meanNoSpeechProbability": 0.2128,
+        "maxCompressionRatio": 1.6323,
+        "machineTextActivity": "REUSED_EXISTING_PRIVATE_ASR_CACHE",
+        "language": "en",
+        "languageConfidence": "REUSED_MODEL_AUTODETECTION_UNCALIBRATED_FOR_MUSIC"
+      },
+      "voiceLikeness": {
+        "value": "UNKNOWN",
+        "confidence": "UNKNOWN",
+        "basis": "Existing ASR is not a vocal-presence or vocal-absence classifier."
+      },
+      "lyricsStored": false,
+      "boundaries": [
+        "No transcript or lyric text is retained in this artifact.",
+        "Existing cache was reused by SHA-256; no ASR rerun."
+      ]
+    }
+  ],
+  "summary": {
+    "records": 10,
+    "newPreviewAsrRuns": 9,
+    "reusedExistingAsrRecords": 1,
+    "allSourcesHashBound": true,
+    "storedTranscriptOrLyrics": false,
+    "scope": "Nine approximately 30-second public previews plus one existing 233.8-second local-file cache.",
+    "limitations": "Machine ASR outputs are not verified lyrics or full-track understanding. Low-confidence/no-text results remain UNKNOWN; no vocal-presence/absence, genre, mood, quality, rights, or recommendation conclusion."
+  }
+}

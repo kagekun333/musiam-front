@@ -1,0 +1,19 @@
+{
+  "kind": "APPEND_ONLY_INTERPRETATION_NOT_LEDGER_REWRITE",
+  "historicalEventId": "e607d7fb-ad20-4bc6-96ee-3d1e012b68da",
+  "originalState": "MODEL_MISMATCH",
+  "adjudicatedProviderState": "SUCCESS_AFTER_CALLER_TIMEOUT",
+  "consumerState": "FAILED_TIMEOUT",
+  "reason": "Returned model equaled event.modelRequested. Old guard compared against mutable activeModel restored to Luna after customer timeout. Provider response arrived at 25.655s after caller 20s timeout.",
+  "knownCostUsd": 0.0003308,
+  "repairs": [
+    "Compare returned model to event.modelRequested",
+    "Set actual customer LLM timeout to 30s and restore app timeout",
+    "Await pending dispatch settlement before releasing ledger lock",
+    "Record semantic-only vs app handler path explicitly",
+    "Stop duplicate customer utterance loop; do not count postdeparture repeats"
+  ],
+  "paidRetryOfCensoredCustomer": false,
+  "providerModelSwitchForNewPersonas": "DeepSeek V4 Flash; fixed Count Luna unchanged",
+  "syntheticConversionIsNotRealConversion": true
+}

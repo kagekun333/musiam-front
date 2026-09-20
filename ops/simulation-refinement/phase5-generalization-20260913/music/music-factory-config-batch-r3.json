@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 3,
+  "sourceRuntimeCatalog": "ops/simulation-refinement/phase5-generalization-20260913/music/actual-runtime-catalog-r1.json",
+  "purpose": "Ten uniquely runtime-bound music records. Existing source hashes reuse prior features; missing records use one fresh public Apple lookup and one returned-preview download at most.",
+  "priority": [
+    { "workId": "apple-album-1889783981", "title": "Deus sive Natura", "priority": "OWNER_SELECTED_REPRESENTATIVE", "appleCollectionId": "1889783981", "appleCountry": "us" },
+    { "workId": "spotify-single-01SX5jNiRBCTY02dtGz3iM", "title": "雨上がりの国でカナリアは歌う", "priority": "CURRENT_OWNER_FAVORITE", "appleCollectionId": "1854962457", "appleTrackId": "1854962459", "appleCountry": "jp" },
+    { "workId": "spotify-single-7LIlsNpzXZBZH2edcK4RQQ", "title": "PRIMAL SURGE", "priority": "CURRENT_OWNER_FAVORITE", "appleCollectionId": "1837535907", "appleTrackId": "1837535908", "appleCountry": "jp" },
+    { "workId": "apple-album-6797260614", "title": "LOW TRICKSTER", "priority": "CURRENT_OWNER_FAVORITE", "appleCollectionId": "6797260614", "appleCountry": "us" },
+    { "workId": "distro-d9aacae4dec04661b92ed7f700fa4bd8", "title": "Latin Exorcism Club", "priority": "EXISTING_MACHINE_SCOPED" },
+    { "workId": "apple-album-6797260493", "title": "Fractal Hands", "priority": "EXISTING_MEASURED_RUNTIME" , "appleCollectionId": "6797260493", "appleCountry": "us"},
+    { "workId": "apple-album-6797806860", "title": "NEKOGAMI", "priority": "RUNTIME_APPLE_PRIORITY", "appleCollectionId": "6797806860", "appleCountry": "us" },
+    { "workId": "apple-album-6797256001", "title": "FINAL WARNING TO EARTH", "priority": "RUNTIME_APPLE_PRIORITY", "appleCollectionId": "6797256001", "appleCountry": "us" },
+    { "workId": "apple-album-6797258577", "title": "地球レビュー星1.8", "priority": "RUNTIME_APPLE_PRIORITY", "appleCollectionId": "6797258577", "appleCountry": "us" },
+    { "workId": "apple-album-6797260277", "title": "電脳神楽", "priority": "RUNTIME_APPLE_PRIORITY", "appleCollectionId": "6797260277", "appleCountry": "us" }
+  ],
+  "reusePolicy": "Reuse observations only when source SHA-256 matches. New public preview paths are never assumed from title alone; the Apple lookup must return the configured collection, artist-consistent track, and configured track ID when supplied."
+}
