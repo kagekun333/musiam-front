@@ -1,0 +1,13 @@
+{
+  "at": "2026-09-13T08:21:26.840778+00:00",
+  "reason": "Fireworks returned HTTP429 on first diagnostic request, zero model content. No retry on Fireworks. The failed deployment configuration remains FAILED and unknown-cost reserve retained.",
+  "oldConfiguration": "a-v41",
+  "fixedNewConfigurations": [
+    "a-v41-morph",
+    "b-v41-morph"
+  ],
+  "providerChange": "Fireworks -> Morph fp8, deliberately configured before fresh A/B/long answers; not silent fallback",
+  "rankedData": "Fresh cases have not been executed on prior provider; all candidates still use same sealed inputs. Known K01 re-evaluated only as new-provider diagnostic, prior failed event retained and not quality-scored.",
+  "modelUnchanged": true,
+  "noProductionChanges": true
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PARTIAL_DIAGNOSTIC_ONLY",
+  "source": "historical Phase 6 Lane A compact extraction; raw response records were not recovered",
+  "plannedConfigurations": [
+    {"id": "a-luna", "model": "openai/gpt-5.6-luna", "provider": "OpenAI", "reasoning": "low"},
+    {"id": "a-v41", "model": "deepseek/deepseek-v4.1-flash", "provider": "Fireworks then Morph/fp8", "reasoning": "low"},
+    {"id": "a-glmflash", "model": "z-ai/glm-5.3-flash", "provider": "Morph/fp8", "reasoning": "low"}
+  ],
+  "execution": [
+    {"configurationId": "a-luna", "completed": ["known preflight: 6 scenarios", "fresh A: 12 scenarios"], "notRun": ["fresh B", "long"], "grader": "no recovered grader or final comparison record", "status": "PARTIAL"},
+    {"configurationId": "a-v41", "completed": [], "providerBlocked": ["Fireworks K01 HTTP 429", "Morph K01 HTTP 429", "Morph continuation transport error after six HTTP 200 requests"], "status": "PROVIDER_BLOCKED"},
+    {"configurationId": "a-glmflash", "completed": ["known continuation: K03-K06"], "providerBlocked": ["initial known run stopped after K02 HTTP 429"], "notRun": ["fresh A", "fresh B", "long"], "status": "PARTIAL"}
+  ],
+  "winner": null,
+  "finalComparisonStatus": "NOT_RECORDED",
+  "truthBoundary": "HTTP 429 and transport failure are provider failures, not model-quality failures. Unequal completion means no ranking or winner can be inferred."
+}

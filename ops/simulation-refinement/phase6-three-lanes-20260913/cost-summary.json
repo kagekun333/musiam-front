@@ -1,0 +1,7 @@
+{
+  "source": "historical operational/cost-ledger-before.json; raw ledger excluded because it contains response bodies",
+  "authorization": "OWNER_APPROVED (historical only; no new execution permission)",
+  "cumulative": {"attempted": 1625, "successful": 1617, "failed": 8, "spentUsd": 3.754453326988001, "reservedUsd": 0, "unknownCostRequests": 7, "unknownCostUpperBoundUsd": 0.075614705},
+  "phase6UnlabeledPartition": {"requests": 245, "successful": 245, "spentUsd": 0.36206759999999993, "reservationUsd": 3.569151606000001},
+  "scopeNote": "The source ledger also includes 1,380 Phase 5 records. The unlabeled 245-request partition is preserved as a ledger partition, not asserted as a fully attributable Phase 6 comparison cost."
+}

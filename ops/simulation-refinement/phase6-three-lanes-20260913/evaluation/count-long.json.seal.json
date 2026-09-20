@@ -1,0 +1,9 @@
+{
+  "file": "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/count-long.json",
+  "sha256": "4fe3104a2c075492d9fa6a8f4804f65d28e0704e7d56f17e22db208e39312fc2",
+  "sealedAt": "2026-09-13T08:11:58.727Z",
+  "set": "SEALED_LONG",
+  "scenarios": 1,
+  "turns": 20,
+  "beforeAnyTournamentResponses": true
+}

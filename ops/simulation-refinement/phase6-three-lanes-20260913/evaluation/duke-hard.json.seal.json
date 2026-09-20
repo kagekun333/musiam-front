@@ -1,0 +1,9 @@
+{
+  "file": "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/duke-hard.json",
+  "sha256": "0dbdf2cbc52950bddcc0bb8868a0c1cba2ff5160138e51edfd73603b86385435",
+  "sealedAt": "2026-09-13T08:12:50.542545+00:00",
+  "set": "sealed-duke-hard",
+  "scenarios": 8,
+  "turns": 8,
+  "beforeAnyTournamentResponses": true
+}

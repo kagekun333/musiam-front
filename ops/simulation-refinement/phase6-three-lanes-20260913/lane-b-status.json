@@ -1,0 +1,11 @@
+{
+  "status": "NOT_RUN",
+  "source": "historical Phase 6 Lane B directory was empty; status is reconstructed from the sealed protocol/configuration manifest",
+  "plannedConfigurations": ["b-glm", "b-qwen", "b-v41"],
+  "sealedInputs": {"hardCases": 8, "longUserTurns": 20, "reasoning": "strongest configured setting"},
+  "completedCases": 0,
+  "providerFailures": [],
+  "grader": "NOT_RUN",
+  "winner": null,
+  "truthBoundary": "Lane A results are not Lane B results and cannot supply a Lane B winner."
+}

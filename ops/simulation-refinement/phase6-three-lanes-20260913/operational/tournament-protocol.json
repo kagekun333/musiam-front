@@ -1,0 +1,58 @@
+{
+  "sealedAt": "2026-09-13T08:12:50.544500+00:00",
+  "fixedR8": "/private/tmp/musiam-quality-phase5-r8-20260913",
+  "separateC": "/private/tmp/musiam-quality-phase6-c1-20260913",
+  "A": {
+    "configs": [
+      "a-luna",
+      "a-v41",
+      "a-glmflash"
+    ],
+    "known": 6,
+    "freshA": 12,
+    "freshB": 12,
+    "longUserTurns": 20,
+    "reasoningCommon": "low",
+    "totalMaxOutputPerProviderRequest": 8192,
+    "sameNativeSchemas": true,
+    "provisionalUsd": 1.7
+  },
+  "B": {
+    "configs": [
+      "b-glm",
+      "b-qwen",
+      "b-v41"
+    ],
+    "hardCases": 8,
+    "longUserTurns": 20,
+    "maxOutputPerProviderRequestIncludingReasoning": 12288,
+    "sameNativeSchemas": true,
+    "provisionalUsd": 2.8
+  },
+  "C": {
+    "provisionalUsd": 1.65,
+    "architectureOnlyBeforeKnowledge": true,
+    "freshIntegrationSetsAfterFreeze": true
+  },
+  "samplingTemperature": "omitted all; provider defaults cannot be made equal because Luna does not support temperature",
+  "provider": "pin order+only exact endpoint tag; allow_fallbacks false; identity mismatch rejected; winners apply to deployment configuration incl quantization",
+  "longHistory": "same fixed user sequence; own prior responses retained; divergence is an outcome, not identical-history claim. Semantic path isolated quota tests needed.",
+  "timeoutMs": 60000,
+  "latency": "total user-turn latency includes all subcalls; common generous harness limit, NOT production latency proof",
+  "ranking": [
+    "critical failure minimum, zero for release",
+    "fresh full pass",
+    "request completion",
+    "Japanese/naturalness",
+    "recommendation",
+    "sales",
+    "long state",
+    "latency",
+    "cost"
+  ],
+  "smallSample": "No statistical equivalence or population conversion claim; known vs fresh distinct; all-started denominator and censored counts; report intervals when useful",
+  "judge": "independent Codex model not evaluated provider; deterministic identity/card/price/history signals + manual blind response review; no self-only evaluation",
+  "stopping": "provider failure stops batch, no retry of dispatched failed case; missing stays missing; hard budget reserves all UTF8 request bytes/schema plus total max output including reasoning",
+  "integration": "winner configs only into separate candidate; two brand-new sealed fresh sets >=90% each and critical0 plus long/browser/history/latency; no automatic deploy",
+  "oldUnexecutedPrompts": "cancelled, never run"
+}

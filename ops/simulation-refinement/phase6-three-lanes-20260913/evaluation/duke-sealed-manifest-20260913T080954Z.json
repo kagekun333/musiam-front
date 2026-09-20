@@ -1,0 +1,21 @@
+{
+  "id": "phase6-duke-sealed-manifest-20260913T080954Z",
+  "set": "sealed-duke",
+  "author": "phase6_model_capabilities",
+  "sealedAt": "2026-09-13T08:09:54Z",
+  "boundary": "Authored from the parent-supplied public fixture truths only. No old Phase5 packet, candidate response, candidate source, or paid model call was read or used.",
+  "files": [
+    {
+      "path": "ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/duke-hard.json",
+      "sha256": "0dbdf2cbc52950bddcc0bb8868a0c1cba2ff5160138e51edfd73603b86385435",
+      "scenarioCount": 8,
+      "userTurnCount": 8
+    },
+    {
+      "path": "ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/duke-long.json",
+      "sha256": "8f3564998c06d418f8fd525651d59ea4e5d42ce9be23f2edf123de7873686847",
+      "scenarioCount": 1,
+      "userTurnCount": 20
+    }
+  ]
+}

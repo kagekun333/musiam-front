@@ -1,0 +1,9 @@
+{
+  "protocol": "operational/tournament-protocol.json",
+  "protocolControls": ["fixed r8", "sealed inputs before responses", "same native schemas", "exact provider pin with fallback disabled", "stop without retry on provider failure"],
+  "executedResultClassification": {"FAIR_COMPARISON": 0, "DIAGNOSTIC_ONLY": 8, "INVALID_FOR_RANKING": 0},
+  "classification": "DIAGNOSTIC_ONLY",
+  "reason": "The preserved Lane A executions use the fixed r8 and sealed inputs, but configurations did not complete the same planned sets; Lane B was not run and no grader/final comparison artifact exists.",
+  "checkpointNote": "checkpoint.json is a preparation-stage RUNNING_HOLD record with paidRequests=0. Later Lane A result records exist, so the checkpoint is preserved as stale/non-final rather than treated as final execution state.",
+  "ranking": "No historical or new winner is asserted."
+}

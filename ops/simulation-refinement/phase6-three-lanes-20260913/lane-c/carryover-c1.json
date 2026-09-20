@@ -1,0 +1,336 @@
+{
+  "offline": true,
+  "actualProviderSends": 0,
+  "passed": 82,
+  "total": 82,
+  "checks": [
+    {
+      "name": "public projection has exact allowed fields, no private source path or internal record",
+      "pass": true
+    },
+    {
+      "name": "future internal fields cannot escape via object spreading",
+      "pass": true
+    },
+    {
+      "name": "unknown categories do not become public automatically",
+      "pass": true
+    },
+    {
+      "name": "default self context omits explicit name and contextual sensitive interests",
+      "pass": true
+    },
+    {
+      "name": "current explicit identity query permits alias relationship",
+      "pass": true
+    },
+    {
+      "name": "a previous name query cannot contaminate the next ordinary overview",
+      "pass": true
+    },
+    {
+      "name": "representatives and favorites are different assertions, not rankings",
+      "pass": true
+    },
+    {
+      "name": "Rava remains owner-confirmed name without invented catalog identity",
+      "pass": true
+    },
+    {
+      "name": "no plan is projected as a running or released service",
+      "pass": true
+    },
+    {
+      "name": "ambition is not the existing song count",
+      "pass": true
+    },
+    {
+      "name": "owner belief carries personal attribution and no medical proof",
+      "pass": true
+    },
+    {
+      "name": "a valid metadata ID does not entail perceptual quality",
+      "pass": true
+    },
+    {
+      "name": "technical measurements do not entail comparative superiority",
+      "pass": true
+    },
+    {
+      "name": "registered metadata may be reported as metadata",
+      "pass": true
+    },
+    {
+      "name": "source type change invalidates a previously registered claim",
+      "pass": true
+    },
+    {
+      "name": "AI future premise cannot supply creator-philosophy relation",
+      "pass": true
+    },
+    {
+      "name": "owner selection does not supply content or quality",
+      "pass": true
+    },
+    {
+      "name": "unknown and inferred-only descriptions produce no usable claims",
+      "pass": true
+    },
+    {
+      "name": "current required relation survives retrieval: creator_belief_relation作者本人の哲学を説明",
+      "pass": true
+    },
+    {
+      "name": "current required relation survives retrieval: creator_belief_relationA book exp",
+      "pass": true
+    },
+    {
+      "name": "current required relation survives retrieval: comparative_qualityWhich reco",
+      "pass": true
+    },
+    {
+      "name": "old book-relation request does not survive a new image request",
+      "pass": true
+    },
+    {
+      "name": "a current content condition expires even if a restored lifecycle is forged",
+      "pass": true
+    },
+    {
+      "name": "explicit persistent preference survives and current preference expires",
+      "pass": true
+    },
+    {
+      "name": "provenance correction can identify the other actual speaker",
+      "pass": true
+    },
+    {
+      "name": "malicious unsupported narration is never rendered despite a valid claim ID",
+      "pass": true
+    },
+    {
+      "name": "prior answer explains external source without inventing user memory",
+      "pass": true
+    },
+    {
+      "name": "discovery requires user interest and source detail; title alone cannot match",
+      "pass": true
+    },
+    {
+      "name": "integrated self path uses canonical data and cannot render model-invented biography",
+      "pass": true
+    },
+    {
+      "name": "integrated required relation blocks unsupported candidates before selection, with a separate expression review",
+      "pass": true
+    },
+    {
+      "name": "integrated work path renders evidence instead of source-ID-laundered prose",
+      "pass": true
+    },
+    {
+      "name": "real catalog discovery has a sourced specific work for an AI-human interest",
+      "pass": true
+    },
+    {
+      "name": "new discovery cannot bypass an existing sales opt-out",
+      "pass": true
+    },
+    {
+      "name": "a chat interpretation can still connect an explicit cold interest to one sourced work",
+      "pass": true
+    },
+    {
+      "name": "discovery is suppressed after opt-out or departure even with explicit interest",
+      "pass": true
+    },
+    {
+      "name": "creative interpretation remains sourced and tentative",
+      "pass": true
+    },
+    {
+      "name": "an owner belief cannot be promoted to an external fact",
+      "pass": true
+    },
+    {
+      "name": "claim capability is checked beyond source existence",
+      "pass": true
+    },
+    {
+      "name": "a mislabeled metadata claim cannot assert superior sound",
+      "pass": true
+    },
+    {
+      "name": "a disclaimer does not license a later comparative claim",
+      "pass": true
+    },
+    {
+      "name": "a source-backed quality limitation is allowed",
+      "pass": true
+    },
+    {
+      "name": "expression labels cannot bypass the protected quality claim",
+      "pass": true
+    },
+    {
+      "name": "unknown legal name is not volunteered in expression",
+      "pass": true
+    },
+    {
+      "name": "identity relation preserves direction even when generated text reverses it",
+      "pass": true
+    },
+    {
+      "name": "uncited reversed identity cannot hide in expressive prose",
+      "pass": true
+    },
+    {
+      "name": "identity source is not added to an ordinary overview",
+      "pass": true
+    },
+    {
+      "name": "unexpected script in narration requires repair",
+      "pass": true
+    },
+    {
+      "name": "partially verified premise is discussable but cannot pass as a match",
+      "pass": true
+    },
+    {
+      "name": "partial discussion still requires real own-work evidence",
+      "pass": true
+    },
+    {
+      "name": "configured legacy checkout cannot become release approval",
+      "pass": true
+    },
+    {
+      "name": "purchase intent cannot bypass an unapproved release",
+      "pass": true
+    },
+    {
+      "name": "explicit name-kind questions reach the permitted identity facts",
+      "pass": true
+    },
+    {
+      "name": "machine evidence reaches claims with its exact identity, extent and confidence",
+      "pass": true
+    },
+    {
+      "name": "one schema repair preserves a current explicit stop instead of discarding it",
+      "pass": true
+    },
+    {
+      "name": "answer-format instruction is not turned into a required property of the work",
+      "pass": true
+    },
+    {
+      "name": "bound output grammar excludes a made-up source and a fact using owner belief",
+      "pass": true
+    },
+    {
+      "name": "memory source grammar uses actual IDs and renders the selected actual user quote",
+      "pass": true
+    },
+    {
+      "name": "current correction is not replaced by an unrelated historical attribution verdict",
+      "pass": true
+    },
+    {
+      "name": "implicit source lookup cannot skip the latest unrelated answer",
+      "pass": true
+    },
+    {
+      "name": "guide-role fact cannot become an unknown real aristocratic title",
+      "pass": true
+    },
+    {
+      "name": "unbound audio retains source scope without acquiring selectable catalog identity",
+      "pass": true
+    },
+    {
+      "name": "whole catalog title wins over a model split at a conjunction",
+      "pass": true
+    },
+    {
+      "name": "metadata identity bridge refuses a same title without its exact public resource",
+      "pass": true
+    },
+    {
+      "name": "external source guidance never cites unrelated audio or claims a completed lookup",
+      "pass": true
+    },
+    {
+      "name": "catalog inventory cannot be narrowed by type and search text",
+      "pass": true
+    },
+    {
+      "name": "inventory counts use all current works independently of recommendation rows",
+      "pass": true
+    },
+    {
+      "name": "a cited inventory cannot reverse a total into a music denominator",
+      "pass": true
+    },
+    {
+      "name": "methodology question is not rerouted to the previous visual medium",
+      "pass": true
+    },
+    {
+      "name": "pacing does not discard a requested ordinary reply when a model repeats an appeal angle",
+      "pass": true
+    },
+    {
+      "name": "open discovery grammar cannot invent a hard match condition from an answer caveat",
+      "pass": true
+    },
+    {
+      "name": "a current language request expires while an explicit preference persists",
+      "pass": true
+    },
+    {
+      "name": "catalog discovery intent retrieves works while interface intent retains interface sources",
+      "pass": true
+    },
+    {
+      "name": "ordinary-turn title grammar does not carry the entire catalog",
+      "pass": true
+    },
+    {
+      "name": "named title grammar still carries the exact compound catalog title",
+      "pass": true
+    },
+    {
+      "name": "exploratory support means sourced example, not guaranteed subjective fit",
+      "pass": true
+    },
+    {
+      "name": "current message grammar cannot be selected as a historical quote",
+      "pass": true
+    },
+    {
+      "name": "current correction reaches an acknowledgement review instead of historical quotation",
+      "pass": true
+    },
+    {
+      "name": "memory capability separates configured retention and deletion request from verified result",
+      "pass": true
+    },
+    {
+      "name": "content overview transports recorded visual detail without metadata-only inference",
+      "pass": true
+    },
+    {
+      "name": "independent current task resolves retrieval even when the first decision only acknowledges a correction",
+      "pass": true
+    },
+    {
+      "name": "a task proposal cannot invent a work reference outside the recent canonical records",
+      "pass": true
+    },
+    {
+      "name": "catalog identity source survives sparse content and retains canonical naming boundary",
+      "pass": true
+    }
+  ]
+}

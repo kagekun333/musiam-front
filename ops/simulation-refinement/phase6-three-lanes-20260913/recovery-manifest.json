@@ -1,0 +1,14 @@
+{
+  "recoveryUnit": "R3",
+  "status": "RECOVERED_PRESERVED_EXPERIMENT",
+  "source": "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913",
+  "sourceInventory": {"files": 62, "bytes": 9621504},
+  "r8Baseline": {"status": "R8_BASELINE_BOUND", "path": "../phase5-generalization-20260913/freeze-r8.json", "sha256": "8653f823c8ee8f8a5f57bc8b2e2c09faa84eb048d30ee0ba5d134cd2cde08b01", "candidate": "/private/tmp/musiam-quality-phase5-r8-20260913"},
+  "laneC": {"candidateId": "phase6-lane-c-implementation-c1", "status": "PRESERVED_CANDIDATE", "changedFileCount": 2, "appliedToRoot": false, "archiveOrPatch": "none recorded", "reconstruction": "reconstructable from copied manifest and two candidate source files; clean applicability is unverified because its base was a protected dirty root"},
+  "r4Pointer": [
+    {"path": "music/source-audit.json", "sha256": "e56767b651ac35b27bac21ce4ebcc030962df05297a25326d927c134564287f5"},
+    {"path": "music/public-preview-actions.json", "sha256": "df79a48f1405c724731a2dee5f7e873cc867ae1018bf5ef82af5fe45a5754df8"}
+  ],
+  "excluded": ["raw model responses", "full grader transcripts", "provider dumps", "raw cost ledger", "execution logs", "music evidence body", "temporary files", "regeneratable intermediates"],
+  "productionParity": "UNVERIFIED"
+}

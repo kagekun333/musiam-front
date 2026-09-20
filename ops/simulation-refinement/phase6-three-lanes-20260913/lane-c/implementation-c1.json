@@ -1,0 +1,46 @@
+{
+  "artifact": "phase6-lane-c-implementation-c1",
+  "status": "IMPLEMENTED_OFFLINE_ONLY",
+  "candidate": "/private/tmp/musiam-quality-phase6-c1-20260913",
+  "scope": {
+    "rootRuntimeModified": false,
+    "phase5R8Modified": false,
+    "providerCalls": 0,
+    "networkCalls": 0,
+    "catalogKnowledgeChanged": false,
+    "paymentAuthorityQuotaChanged": false
+  },
+  "changedPaths": [
+    "src/lib/count-action-completion.ts",
+    "src/lib/count-semantic-turn.ts"
+  ],
+  "structuralRepair": {
+    "salesBoundary": "Classifies explicit commercial opt-out separately from browsing/non-purchase language. A model stop remains available for unlisted-language opt-outs, but a current browsing-only signal such as 見るだけ or 今日は買わない cannot itself create persistent salesStopped. Explicit 商品を勧めないで remains an opt-out.",
+    "requestActionCompletion": "For a current positive, referential listen/read/open request, attach a card only for the latest eligible previously recommended work of the same medium with an existing public link. It refuses link/card declines, action retractions, changed references, active stop, rejected works, missing links, and absent specific references.",
+    "sampleScope": "The repair labels a link as a public link. It does not claim a particular sample/preview was delivered or establish its contents.",
+    "priorOptOutRevocation": "A persisted explicit opt-out can be set aside only when the current user text contains a product, price, purchase, delivery, refund, rights, or gift inquiry. This is a narrow factual scope and not general sales reopening."
+  },
+  "trace": {
+    "field": "actionCompletion",
+    "states": [
+      "NOT_ACTION_REQUEST",
+      "ACTIONABLE_COMPLETED",
+      "ACTIONABLE_BUT_NOT_COMPLETED"
+    ],
+    "purpose": "Make an otherwise actionable direct experience omission inspectable without inventing a recommendation."
+  },
+  "knownEvidenceRead": [
+    "ops/simulation-refinement/phase5-generalization-20260913/evaluation/fresh-p-r8-review.json",
+    "ops/simulation-refinement/phase5-generalization-20260913/evaluation/cold-h-r8-parent-adjudication.json"
+  ],
+  "validation": {
+    "helperAssertions": "PASS: explicit opt-out versus browsing; action link completion; no-link decline; retracted action; rejected prior work; actual p-long turn 16 classified as a music action request; commerce inquiry scope.",
+    "command": "node --import tsx /tmp/phase6-c1-action-check.ts",
+    "typecheck": "Candidate-wide tsc reports pre-existing unrelated missing generated files/window.posthog errors. Filtering its output found no count-action-completion or count-semantic-turn diagnostic."
+  },
+  "remaining": [
+    "No provider run or customer outcome was performed.",
+    "A public streaming/store link is not proof of a specific preview, playback success, availability, or listener satisfaction.",
+    "The parent owns prompt/architecture integration decisions and final judgment."
+  ]
+}

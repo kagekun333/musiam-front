@@ -1,0 +1,110 @@
+{
+  "status": "OWNER_APPROVED",
+  "directive": "ops/simulation-refinement/phase6-three-lanes-20260913/CURRENT_MASTER_DIRECTIVE.txt",
+  "directiveSha256": "ba156bbbfa1454f8b2af4aa01aa2fb2f7302d5d53a990109b09580c65538aad3",
+  "cumulativeCostCeilingUsd": 10,
+  "models": [
+    "deepseek/deepseek-v4.1-flash",
+    "openai/gpt-5.6-luna",
+    "qwen/qwen3.8-27b",
+    "z-ai/glm-5.3",
+    "z-ai/glm-5.3-flash"
+  ],
+  "solAuthorized": false,
+  "oldUnexecutedPromptsCancelled": true,
+  "destination": "https://openrouter.ai/api/v1/chat/completions",
+  "payload": "Fixed r8 public catalog and public creator evidence, application prompts/schema, NEW synthetic scenarios and generated synthetic histories; no private owner source files or real customer data.",
+  "paidExecution": "current interactive task only; scheduled heartbeat market reads only",
+  "budgetPlanUsd": {
+    "A": 1.7,
+    "B": 2.8,
+    "C_and_integration": 1.65
+  },
+  "maxRetries": 0,
+  "r8FreezePath": "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase5-generalization-20260913/freeze-r8.json",
+  "r8FreezeSha256": "8653f823c8ee8f8a5f57bc8b2e2c09faa84eb048d30ee0ba5d134cd2cde08b01",
+  "rankedSuites": {
+    "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/count-known.json": {
+      "sha256": "7df424040644c54d922eef3e5af2bb5ad1f045e65f5f1ffb2aadd7cc1caf2953",
+      "lane": "A",
+      "scenarioIds": [
+        "K01",
+        "K02",
+        "K03",
+        "K04",
+        "K05",
+        "K06"
+      ],
+      "turns": 6
+    },
+    "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/count-fresh-a.json": {
+      "sha256": "a35b11dc967228324a55ba14a615e077f9888d94196f0537d41bda35ce39c727",
+      "lane": "A",
+      "scenarioIds": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08",
+        "A09",
+        "A10",
+        "A11",
+        "A12"
+      ],
+      "turns": 12
+    },
+    "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/count-fresh-b.json": {
+      "sha256": "3ecbb01d63dd43a5e399ce37cadfb74e6e6b89b60a912eb7da39d28f4bea8450",
+      "lane": "A",
+      "scenarioIds": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08",
+        "B09",
+        "B10",
+        "B11",
+        "B12"
+      ],
+      "turns": 12
+    },
+    "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/count-long.json": {
+      "sha256": "4fe3104a2c075492d9fa6a8f4804f65d28e0704e7d56f17e22db208e39312fc2",
+      "lane": "A",
+      "scenarioIds": [
+        "LONG-A"
+      ],
+      "turns": 20
+    },
+    "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/duke-hard.json": {
+      "sha256": "0dbdf2cbc52950bddcc0bb8868a0c1cba2ff5160138e51edfd73603b86385435",
+      "lane": "B",
+      "scenarioIds": [
+        "DH-01-music-constraint-recommendation",
+        "DH-02-multiwork-comparison-holds",
+        "DH-03-source-entailment-book",
+        "DH-04-creator-identity-ai-value",
+        "DH-05-photo-evidence-and-ownership-imagination",
+        "DH-06-price-objection-and-unknown-offer",
+        "DH-07-explicit-optout-limited-reentry",
+        "DH-08-memory-correction-current-request"
+      ],
+      "turns": 8
+    },
+    "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/duke-long.json": {
+      "sha256": "8f3564998c06d418f8fd525651d59ea4e5d42ce9be23f2edf123de7873686847",
+      "lane": "B",
+      "scenarioIds": [
+        "DL-01-20-turn-curatorial-conversation"
+      ],
+      "turns": 20
+    }
+  }
+}

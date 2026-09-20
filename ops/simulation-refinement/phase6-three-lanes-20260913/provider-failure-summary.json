@@ -1,0 +1,11 @@
+{
+  "classification": "PROVIDER_FAILURE_NOT_MODEL_QUALITY_FAILURE",
+  "events": [
+    {"configurationId": "a-v41", "provider": "Fireworks", "case": "K01", "httpStatus": 429, "result": "stopped without retry"},
+    {"configurationId": "a-v41-morph", "provider": "Morph/fp8", "case": "K01", "httpStatus": 429, "result": "stopped without retry"},
+    {"configurationId": "a-glmflash", "provider": "Morph/fp8", "case": "K02", "httpStatus": 429, "result": "initial known run stopped"},
+    {"configurationId": "a-v41-morph", "provider": "Morph/fp8", "case": "K05 continuation", "failure": "transport/CURL_ERROR after six HTTP 200 requests", "result": "stopped"}
+  ],
+  "nonEvents": ["No Lane B provider request was recorded.", "No provider request was made for Lane C."],
+  "sourceRecordPolicy": "Full Lane A result files and the raw cost ledger are retained only in the read-only historical source/preservation and were not copied."
+}

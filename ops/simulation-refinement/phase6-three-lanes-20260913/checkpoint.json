@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-13T08:08:32.156262+00:00",
+  "status": "RUNNING_HOLD",
+  "stage": "SEALED_TOURNAMENT_PREPARATION",
+  "r8Frozen": true,
+  "laneC": "/private/tmp/musiam-quality-phase6-c1-20260913",
+  "paidRequests": 0,
+  "solExecuted": false,
+  "automation": "market_readonly",
+  "next": "Validate harness, seal sets, run models on fixed r8"
+}

@@ -1,0 +1,9 @@
+{
+  "file": "/Users/kagekun/Desktop/musiam-front/ops/simulation-refinement/phase6-three-lanes-20260913/evaluation/count-fresh-a.json",
+  "sha256": "a35b11dc967228324a55ba14a615e077f9888d94196f0537d41bda35ce39c727",
+  "sealedAt": "2026-09-13T08:11:58.725Z",
+  "set": "SEALED_FRESH_A",
+  "scenarios": 12,
+  "turns": 12,
+  "beforeAnyTournamentResponses": true
+}
