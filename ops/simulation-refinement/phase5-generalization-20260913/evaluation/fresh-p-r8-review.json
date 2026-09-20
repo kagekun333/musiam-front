@@ -1,0 +1,60 @@
+{
+  "review": "phase5-fresh-p-r8-independent",
+  "candidate": "/private/tmp/musiam-quality-phase5-r8-20260913",
+  "status": "COMPLETE",
+  "scope": { "turns": 32, "reports": ["fresh-p-r8-singles.json", "fresh-p-r8-long-authorized.json"], "excluded": ["fresh-p-r8-long.json credential-preflight STOP with zero requests"], "synthetic": true, "releaseProof": false, "freshness": "native P; O excluded" },
+  "summary": { "pass": 27, "partial": 4, "fail": 1, "critical": 0, "fullPassRate": 0.84375, "fullPassThresholdMet": false },
+  "turnGrades": [
+    { "id": "p-s01", "grade": "PASS", "reason": "Practical music browse route and bounded external/local-setting scope." },
+    { "id": "p-s02", "grade": "PARTIAL", "reason": "Image filtering is correct but suggested river/bridge/island tags are absent from current public image records." },
+    { "id": "p-s03", "grade": "PASS", "reason": "English workflow/exhibition explanation retains verification limits." },
+    { "id": "p-s04", "grade": "PASS", "reason": "Non-music image option distinguishes unsupported vending-machine premise." },
+    { "id": "p-s05", "grade": "PASS", "reason": "Bounded absurd-book direction with lunch-fit caveat." },
+    { "id": "p-s06", "grade": "PASS", "reason": "Appropriate no-vocal/instrumental and subjective-fit unknown." },
+    { "id": "p-s07", "grade": "PASS", "reason": "Online catalog separated from unverified physical display." },
+    { "id": "p-s08", "grade": "PASS", "reason": "No invented broken-furniture series." },
+    { "id": "p-s09", "grade": "PASS", "reason": "No verified rain-on-tin-roof sound claim or forced recommendation." },
+    { "id": "p-s10", "grade": "PASS", "reason": "Useful low-pressure multi-medium browse overview." },
+    { "id": "p-s11", "grade": "PASS", "reason": "Relevant funny/odd book with introduction scope." },
+    { "id": "p-s12", "grade": "PASS", "reason": "Landscape image selection with subjective casualness caveat and no sales pressure." },
+    { "id": "p-long", "turn": 1, "grade": "PASS", "reason": "Tentative metadata recommendation for current relaxation request." },
+    { "id": "p-long", "turn": 2, "grade": "PASS", "reason": "Soft music option is source-bounded and no jazz/photo match is overstated." },
+    { "id": "p-long", "turn": 3, "grade": "PASS", "reason": "Low-pressure discovery recommendation with metadata scope." },
+    { "id": "p-long", "turn": 4, "grade": "PASS", "reason": "Exact available style metadata and scope caveat." },
+    { "id": "p-long", "turn": 5, "grade": "PARTIAL", "reason": "Kerama Blue is offered despite no verified experimental/ambient match; it is framed as closest but does not fulfill that specific request." },
+    { "id": "p-long", "turn": 6, "grade": "PASS", "reason": "Documented nature image and no purchase inference." },
+    { "id": "p-long", "turn": 7, "grade": "PASS", "reason": "Provides mountain landscape and correctly declines thematic-collection claim." },
+    { "id": "p-long", "turn": 8, "grade": "PASS", "reason": "Honors request not to state price and does not invent one." },
+    { "id": "p-long", "turn": 9, "grade": "PASS", "reason": "Public creator origin/travel scope stated without name-only inference." },
+    { "id": "p-long", "turn": 10, "grade": "PASS", "reason": "Ordinary culture conversation without personal-targeting or sales." },
+    { "id": "p-long", "turn": 11, "grade": "PASS", "reason": "General Japanese-aesthetics comment is qualified and not falsely sourced to MUSIAM." },
+    { "id": "p-long", "turn": 12, "grade": "PASS", "reason": "Relevant culture/mythology book with editorial/full-text scope." },
+    { "id": "p-long", "turn": 13, "grade": "PASS", "reason": "Appropriate mismatch unknown for light personal essays." },
+    { "id": "p-long", "turn": 14, "grade": "PARTIAL", "reason": "Correctly rejects bilingual/learning claim, but an irrelevant English-edition card is still attached to the no-match answer." },
+    { "id": "p-long", "turn": 15, "grade": "PASS", "reason": "Appropriate no-furigana/beginner-fit unknown." },
+    { "id": "p-long", "turn": 16, "grade": "FAIL", "reason": "Visitor asks to listen to a sample; response only says 30-second samples exist and asks which one, without naming a sample, providing a card/link, or playing one." },
+    { "id": "p-long", "turn": 17, "grade": "PARTIAL", "reason": "No-purchase boundary is fine, but it accepts thanks for a sample without clarifying that no specific sample was actually delivered in turn 16." },
+    { "id": "p-long", "turn": 18, "grade": "PASS", "reason": "Permitted conversational expression about rain; no creator-biography or factual source claim." },
+    { "id": "p-long", "turn": 19, "grade": "PASS", "reason": "Natural departure without sales continuation." },
+    { "id": "p-long", "turn": 20, "grade": "PASS", "reason": "Goodbye without re-engagement." }
+  ],
+  "unknowns": {
+    "goodUnknown": ["p-s01 computer settings", "p-s04 vending-machine series", "p-s06 no-vocal/full fit", "p-s07 physical display", "p-s08 broken-furniture series", "p-s09 rain sound", "p-long-7 thematic collection", "p-long-13 essays/lightness", "p-long-15 furigana/beginner fit"],
+    "badUnknown": ["p-s02 absent scene tags", "p-long-5 experimental ambient match replaced by closest", "p-long-16 sample request left unserved"],
+    "catalogGap": ["full-track vocal/fit evidence", "bilingual/furigana/learner format", "specific verified 30-second sample matching ambient request", "physical display/imagined photo series"]
+  },
+  "recommendation": {
+    "good": ["p-s04 Aerial Study 10", "p-s05/p-s11 たこ焼き王と銀河レシピ大戦", "p-s12 Aerial Study 12", "p-long-1 Coffee Love", "p-long-3 Healing Island", "p-long-6 Aerial Study 02", "p-long-7 Aerial Study 12", "p-long-12 虚空の剣"],
+    "partial": ["p-s02 scene-tag browsing", "p-long-5 Kerama Blue for experimental ambient", "p-long-14 irrelevant English-edition card"],
+    "bad": ["p-long-16 no actual sample delivery"]
+  },
+  "longConversation": {
+    "turns": 20,
+    "stateFailures": ["turn 16 sample request not concretely fulfilled", "turn 17 does not correct false implication sample was delivered"],
+    "falseMemory": [],
+    "optout": "Turn 8 price-stop and turn 17 non-purchase preference are honored; neither is treated as sales opportunity.",
+    "sourceScope": "Metadata, visual inspection, book-introduction, language-format, and playback limits are generally separated." 
+  },
+  "abiFiveAxis": [],
+  "note": "Original singles-only audit is preserved. No ABI-character query appears in the actual P turns."
+}

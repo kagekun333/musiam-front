@@ -1,0 +1,148 @@
+{
+  "createdAt": "2026-09-13T06:21:59.452081+00:00",
+  "candidate": "/private/tmp/musiam-quality-phase5-r8-20260913",
+  "status": "HOLD",
+  "base": "current dirty root protected by per-file SHA, not bareHEAD",
+  "fileCount": 26,
+  "files": [
+    {
+      "path": "public/works/audio-source-claims.json",
+      "baseSha256": null,
+      "candidateSha256": "1697cf75246fe706d392ef726ac799d700bcf69896c875012770f2dd778d5fe3"
+    },
+    {
+      "path": "public/works/editorial-knowledge.json",
+      "baseSha256": "13cf0e6ab8932b80a444ef396f563ee5a058abaf5b4aa50744636e23f9fd0ddd",
+      "candidateSha256": "a4daf55b596a09b5a84f2901582346c17d64728bc56a7ff4e4e7c598bfc68aeb"
+    },
+    {
+      "path": "src/data/abi-public-canonical.json",
+      "baseSha256": null,
+      "candidateSha256": "27b696771e2e0ae22e9f84285699bdabb51aea19468d6b619023ea1f1c935d2d"
+    },
+    {
+      "path": "src/data/abi-work-id-bindings.json",
+      "baseSha256": null,
+      "candidateSha256": "b641ca32084f3982b6033906483b8f5ab8cac774872a4dc2ce0707ff68bad178"
+    },
+    {
+      "path": "src/data/catalog-metadata-lineage.json",
+      "baseSha256": null,
+      "candidateSha256": "c01a4ef7bd2fe93b82111f84f7140b09d4c7ab3d18da6f05ef3a6865c664a1d9"
+    },
+    {
+      "path": "src/data/music-machine-observations.json",
+      "baseSha256": null,
+      "candidateSha256": "5a938f26f4c8441c26a132cb990314ab0c632ca1f757e7c5d811e8975b0822a9"
+    },
+    {
+      "path": "src/lib/abi-public-knowledge.ts",
+      "baseSha256": "3852df63c662dba04dae362e9d808d39dd4c55ddbd85d5df6249854ac4946136",
+      "candidateSha256": "afb17cf8c06d98fc24ad5baaf0903e9b59ad19b660cadab9b0f24df3ab12b8ad"
+    },
+    {
+      "path": "src/lib/chat-history.server.ts",
+      "baseSha256": "72411ac6717f1d38e727f762ed7fbe2d7a1c2f7de4ba09499d6382f01d2e5418",
+      "candidateSha256": "8ec901e5c1777512ce6c333d642a3ea4ea495fb2ab71fe9805e3cb9362768b7a"
+    },
+    {
+      "path": "src/lib/count-audio-evidence.ts",
+      "baseSha256": null,
+      "candidateSha256": "6ccc044e70b550a575c5cd66fe6ccf761847c563b116039ed9ee25731c0ac8fa"
+    },
+    {
+      "path": "src/lib/count-catalog-conversation.ts",
+      "baseSha256": "f3325162e3ce3a3b1161efcae420be64414859d0e711d9ab130070f92806da33",
+      "candidateSha256": "f6dd16a4961d5c3532620c8acdede44b8549580a39e0e58f26abff02bd37f599"
+    },
+    {
+      "path": "src/lib/count-catalog-inventory.ts",
+      "baseSha256": null,
+      "candidateSha256": "7d3ab08c6c5965241cef1ddbc93cf30c2582b66992ff85f56d97ee2fda2eb6a8"
+    },
+    {
+      "path": "src/lib/count-catalog-lineage.ts",
+      "baseSha256": null,
+      "candidateSha256": "4ad5bdc30135a805f3d132060bbc0405de97e6e9d6e91f1d2e401b228fea24c9"
+    },
+    {
+      "path": "src/lib/count-conversation-provenance.ts",
+      "baseSha256": null,
+      "candidateSha256": "839c9df026c799e86510f54f35c1ffac9b4a8b534c584e7f17589c12975553bf"
+    },
+    {
+      "path": "src/lib/count-current-task.ts",
+      "baseSha256": null,
+      "candidateSha256": "2c1d3008070a1bcf76c0a62d083d7f897aa15d96a01745e5c7fccf882846c875"
+    },
+    {
+      "path": "src/lib/count-evidence-conclusions.ts",
+      "baseSha256": null,
+      "candidateSha256": "68440d535db451d25eb23ef59c295c8fcf79580931333112615a6b9fecbeb489"
+    },
+    {
+      "path": "src/lib/count-evidence-registry.ts",
+      "baseSha256": null,
+      "candidateSha256": "05a8c3160458acdb80661c3528891fbf05c85e9354b0d9dae99129ce720424cd"
+    },
+    {
+      "path": "src/lib/count-fixed-facts.ts",
+      "baseSha256": null,
+      "candidateSha256": "53a19502fa9fe673acb1bfb25d956e09c77c6b21c82573892a8d5c53b3f6e324"
+    },
+    {
+      "path": "src/lib/count-grounded-expression.ts",
+      "baseSha256": null,
+      "candidateSha256": "6c26b7957a4b96309d3934144ed89d86806fb7dcad5b24bc836fd649bb38c148"
+    },
+    {
+      "path": "src/lib/count-memory-capabilities.ts",
+      "baseSha256": null,
+      "candidateSha256": "f9e0ac48dc62ceee01ad9d4245a60c50823bd5e7c1a34c30909f8c1abfb990e8"
+    },
+    {
+      "path": "src/lib/count-refinement-turn.ts",
+      "baseSha256": "19180455d5663fde30538c12f17eae45dbf62f7d54bee50a360258265ecc6722",
+      "candidateSha256": "dca8b32357f7723063d5162ba8219ea68610aacf9aa2cef7eb01f8a75edb5bc5"
+    },
+    {
+      "path": "src/lib/count-semantic-turn.ts",
+      "baseSha256": null,
+      "candidateSha256": "6d24273f9969146c8a640d6060be73354287bdafd1934ce4b2162c9f155649f9"
+    },
+    {
+      "path": "src/lib/count-source-scope.ts",
+      "baseSha256": null,
+      "candidateSha256": "ef12428255310e88439a3861aea4b6c6baacaeaf207bf961c4acb5c176441685"
+    },
+    {
+      "path": "src/lib/llm-router.ts",
+      "baseSha256": "1f68b4e93deb3ffed841a58cf0ec8294390b26e6873ecb3d294e8748c239be27",
+      "candidateSha256": "3531b2559dfa89ad8d6ff8064926a89d90b38cc235cba18767dfe532a5ccff1f"
+    },
+    {
+      "path": "src/pages/api/chat-experience-v3.ts",
+      "baseSha256": "3ad646f66740e6c302eac5ca83fe6bcae236a495e29880260370088d65b690c5",
+      "candidateSha256": "30075cbfb082d0e23386b8cb74517d24aa933ae134b7c89fe547b3d365c3a123"
+    },
+    {
+      "path": "src/pages/api/chat-history.ts",
+      "baseSha256": "0cba036501ca7687fce4c2a98982431770fee21283009a6955b4dbc59805e032",
+      "candidateSha256": "928961ef8efb44577c8813850b5b0c895022cbb7d6d1ea47e74f30ecd2df6181"
+    },
+    {
+      "path": "src/pages/chat.tsx",
+      "baseSha256": "e9d25e1fcbc5686e90c0e4689c3e2429b25dbc279fd9477787436c4300837426",
+      "candidateSha256": "2b8b2dbe33a80a898ae30f087ba551388235fd19bcada0d975c6d5bb66bff295"
+    }
+  ],
+  "tests": "82offlinePASS/buildPASS; currenttaskclassifier separatelytested; history/authprotectedfiles unchanged vsr7/r3",
+  "freshGate": "HOLD: independent naturalP27/32 andQ9/12, Critical0 both; Onear-known excluded; local architecture plateau",
+  "rootRuntimeEdits": 0,
+  "rootSourceFilesVerified": 2941,
+  "commitPushDeploy": false,
+  "patchSha256": "08e8453fdc084072adcef8e5f5512165c17f36aec4426ffd316705831a3d5406",
+  "archiveSha256": "cb0a7fdfcb9f32f05b3b946e96ee753256de57cab0d402eceebddc25da955261",
+  "applicationRule": "Do not apply blindly. Every old file must still match its baseSha256; null means expected absent. No application or approval-state promotion was performed.",
+  "reviewCompletedAt": "2026-09-13T07:10:29.545988+00:00"
+}

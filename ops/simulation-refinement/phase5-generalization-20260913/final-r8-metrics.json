@@ -1,0 +1,258 @@
+{
+  "generatedAt": "2026-09-13T07:04:09.579684+00:00",
+  "candidate": "r8",
+  "status": "HOLD_LOCAL_ARCHITECTURE_PLATEAU",
+  "freshSets": {
+    "P": {
+      "pass": 27,
+      "partial": 4,
+      "fail": 1,
+      "critical": 0,
+      "n": 32,
+      "rate": 0.84375
+    },
+    "Q": {
+      "pass": 9,
+      "partial": 2,
+      "fail": 1,
+      "critical": 0,
+      "n": 12,
+      "rate": 0.75,
+      "notGeneratedLongTurns": 20
+    }
+  },
+  "pooledDescriptiveOnly": {
+    "pass": 36,
+    "partial": 6,
+    "fail": 2,
+    "critical": 0,
+    "n": 44,
+    "rate": 0.8181818181818182
+  },
+  "excludedO": {
+    "reason": "near-known diagnostic, not independent fresh",
+    "pass": 31,
+    "n": 32
+  },
+  "abi": {
+    "n": 7,
+    "accuracy": 5.0,
+    "interestingness": 4.286,
+    "distinctiveness": 4.143,
+    "naturalness": 4.0,
+    "trust": 5.0
+  },
+  "abiFailureCounts": {
+    "unexpectedSelfQueryFailures": 1,
+    "repetitiveBiography": 2,
+    "unsupportedPhilosophy": 0,
+    "cannabisLimitViolations": 0
+  },
+  "music": {
+    "currentCandidateCatalog": 435,
+    "music": 289,
+    "confirmedFullContent": 0,
+    "limitedMachinePreview": 9,
+    "limitedMachinePercent": 3.1141868512110724,
+    "metadataOnly": 262,
+    "unknown": 18,
+    "booksPublicIntroduction": 38,
+    "booksUnknown": 96,
+    "imagesContentDerived": 12,
+    "newSourceBatch": "9 current-bound previews plus one unbound Latin source; not9 whole songs"
+  },
+  "recommendationPAndQ": {
+    "unit": "25 recommendation/action-demand cases:13 fromP plus12Q",
+    "correct": 19,
+    "wrongAttachedCard": 1,
+    "partialFit": 2,
+    "actionOmittedOrFallback": 2,
+    "catalogGapNoOffer": 1,
+    "wrongCase": "p-long14 English-edition card attached to bilingual no-match answer",
+    "notPurchaseOrHumanPreferenceMetric": true
+  },
+  "unknownTaxonomyAuditEntries": {
+    "unit": "enumerated review entries/categories, overlapping; not disjoint case-level accuracy",
+    "P": {
+      "good": 9,
+      "bad": 0,
+      "catalogGap": 6,
+      "reference": "evaluation/p-r8-taxonomy-clarification.json"
+    },
+    "Q": {
+      "good": 7,
+      "bad": 1,
+      "catalogGap": 2,
+      "reference": "evaluation/fresh-q-r8-review.json"
+    }
+  },
+  "cold": {
+    "confirmedSpecificWorkCuriosity": {
+      "count": 1,
+      "completedDenominator": 5,
+      "startedDenominator": 6,
+      "unobservedCustomerReactions": 1,
+      "completedRate": 0.2,
+      "startedConfirmedLowerBound": 0.16666666666666666
+    },
+    "reachedTransitionsParentCoded": {
+      "0to1": {
+        "count": 5,
+        "denominator": 5
+      },
+      "1to2": {
+        "count": 4,
+        "denominator": 5
+      },
+      "2to3": {
+        "count": 1,
+        "denominator": 4
+      },
+      "3to4": {
+        "count": 0,
+        "denominator": 1
+      },
+      "4to5": {
+        "count": 0,
+        "denominator": 0,
+        "rate": null
+      }
+    },
+    "finalOwnership": {
+      "count": 0,
+      "denominator": 5,
+      "unknown": 1
+    },
+    "finalPurchase": {
+      "count": 0,
+      "denominator": 5,
+      "unknown": 1
+    },
+    "oversell": {
+      "count": 0,
+      "observedCountTurns": 14
+    },
+    "undersellOrInterruptedConcreteContinuation": {
+      "count": 1,
+      "case": "cold-h-02 turn5",
+      "specificCuriosityOpportunities": 1
+    },
+    "separateValueDemonstrationOmission": [
+      "cold-h-01: passive-browse request receives no actual image example"
+    ],
+    "explicitCommercialOptOutCases": [
+      "cold-h-03",
+      "cold-h-05"
+    ],
+    "optOutViolations": {
+      "count": 0,
+      "opportunities": 2
+    },
+    "falsePositivePersistentSalesStop": {
+      "count": 1,
+      "case": "cold-h-06 turn1",
+      "evidence": "Question about browsing without account/purchase results in salesStopped=true; no explicit do-not-sell instruction."
+    }
+  },
+  "coldStarted": 6,
+  "coldCompleted": 5,
+  "coldCensored": 1,
+  "coldCountTurns": 14,
+  "coldCriticalObserved": 0,
+  "long": {
+    "finalFreshScenarios": 1,
+    "finalFreshTurns": 20,
+    "currentTaskOrFlowFailures": 2,
+    "cases": [
+      16,
+      17
+    ],
+    "separateCardConstraintMismatch": 1,
+    "constraintCase": 14,
+    "falseUserMemoryObserved": 0,
+    "salesStateErrorsObserved": 0,
+    "explicitCommercialOptOutOpportunities": 0,
+    "allRevisionFresh20PlusScenarios": 13,
+    "allRevisionFresh20PlusTurns": 272,
+    "notAcrossCandidateReleaseProof": true
+  },
+  "latency": {
+    "freshAll": {
+      "n": 44,
+      "p50Ms": 13621,
+      "p95Ms": 16330,
+      "maxMs": 19877
+    },
+    "freshApp24": {
+      "n": 24,
+      "p50Ms": 14449,
+      "p95Ms": 16330,
+      "maxMs": 19877
+    },
+    "fallbackReplies": 1,
+    "evaluationPerProviderTimeoutMs": 20000,
+    "actualProductionEquivalent": "UNVERIFIED",
+    "appPath": "actual handler with NODE_ENV=test as verified inrunner",
+    "longPath": "semantic only, production free15 boundary unchanged"
+  },
+  "cost": {
+    "observedAt": "2026-09-13T07:02:17.823Z",
+    "synthetic": true,
+    "models": [
+      "openai/gpt-5.6-luna",
+      "deepseek/deepseek-v4.1-flash",
+      "deepseek/deepseek-v4-flash"
+    ],
+    "requests": 1380,
+    "successful": 1372,
+    "failed": 8,
+    "inputTokens": 12696618,
+    "outputTokens": 365103,
+    "costThisPhaseUsd": 3.392385726988001,
+    "cumulativeCostUsd": 3.754453326988001,
+    "reservedUsd": 0,
+    "unknownCostUpperBoundUsd": 0.075614705,
+    "remainingAuthorizedUsd": 6.1699319680119995,
+    "historicalDispatchesUnchanged": true
+  },
+  "totalQualityRequestsIncludingPhase4": 1625,
+  "market": {
+    "observedAt": "2026-09-13T06:41:01.729Z",
+    "evidence": "market-r8-final-evaluation.json",
+    "period": {
+      "start": "2026-09-09T09:00:00.000Z",
+      "end": "2026-09-13T06:40:00.000Z"
+    },
+    "verifiedHumans": null,
+    "recordedBrowserVisits": 14,
+    "chatPageVisits": 13,
+    "externalChatStarts": 0,
+    "externalThreePlus": 0,
+    "externalFivePlus": 0,
+    "externalRecommendations": 0,
+    "productInterest": 0,
+    "repeat": 0,
+    "rawChatStarts": 1,
+    "rawRecommendations": 3,
+    "reason": "Raw starts1/3+1/5+1/recommendations3 unchanged from earlier OWNER-confirmed QA. Direct4, YouTube9, Threads1. No new external conversation; browser identity is not a verified human."
+  },
+  "stripe": {
+    "endExclusive": "2026-09-13T06:40:00.000Z",
+    "paidOrders": 0,
+    "grossPaidJpy": 0,
+    "netNonRefundedJpy": 0,
+    "outsideStripeRoyalties": "UNKNOWN"
+  },
+  "validation": {
+    "offlinePass": 82,
+    "offlineTotal": 82,
+    "build": "PASS",
+    "historyMock": "PASS; r7 unchanged files",
+    "realRedis": "UNVERIFIED",
+    "browserE2E": "NOT_ENTERED_QUALITY_GATE_FAILED",
+    "paymentLive": "NOT_EXECUTED",
+    "rootRuntimeEdits": 0,
+    "sourceFrozen": true
+  },
+  "premium": "PROPOSAL_ONLY; known12 andfresh32sealed; no premium authorization/execution"
+}

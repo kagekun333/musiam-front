@@ -8,7 +8,7 @@
 |---|---|---|---|
 |R0|原本snapshot（tracked、untracked、ignored、Git metadata）|`PRESERVE_HOLD` / 作業中|他の全Unitの基点。archive hash、個別展開、Git object欠損の切り分け。|
 |R1|Metal Print webhook: main、stripe-fix、6df2|`RECOVERED` / local validation PASS|識別guardのみを限定救出。fixture validator・typecheck・最終diff確認済み。local commitを作成。|
-|R2|Phase 5 r8: `ops/simulation-refinement/phase5-generalization-20260913/`|`PRESERVE_HOLD` / 凍結候補|`freeze-r8.json`とpreservation record。HOLDのまま、候補source/patch/hashの対応を再確認。|
+|R2|Phase 5 r8: `ops/simulation-refinement/phase5-generalization-20260913/`|`RECOVERED_PRESERVED_HOLD` / 凍結候補|`freeze-r8.json`、preservation record、26-file source archive/patch、compact evaluation summaryを限定復元。HOLDのまま、R3はこのfreezeを比較baselineとして参照する。|
 |R3|Phase 6: `ops/simulation-refinement/phase6-three-lanes-20260913/`|`PRESERVE_HOLD` / 未確認|R2とは別。lane A/B比較とlane C本体候補を混同せず、authorization/checkpointと各laneの入力・出力を照合。|
 |R4|Music Evidence Factory: scriptとPhase 5/6 music records|`PRESERVE_HOLD` / 限定測定記録|R2/R3の記録に依存。対象音源・generator・hash manifestを対応付け、販売/全曲理解へ昇格しない。|
 |R5|Shaman 999: `SHA_collection_999_unique/`（1,000 untracked）|`PRESERVE_HOLD` / 別案件候補|アプリ基盤と分離。source/provenance/採用意図が揃うまで移動・公開・再生成しない。|

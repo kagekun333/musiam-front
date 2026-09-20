@@ -1,0 +1,15 @@
+{
+  "verifiedAt": "2026-09-13T07:10:29.545988+00:00",
+  "rootSourceFilesChecked": 2941,
+  "rootSourceChanges": [],
+  "candidateSourceFilesChecked": 2973,
+  "candidateFrozenSourceChanges": [],
+  "patchHashVerified": true,
+  "archiveHashVerified": true,
+  "rootRuntimeEdits": 0,
+  "commitPushDeploy": false,
+  "candidateStatus": "HOLD",
+  "finalReportLinksVerified": true,
+  "comparisonPacketsValidated": true,
+  "costLedgerNoInFlight": true
+}

@@ -1,0 +1,21 @@
+{
+  "suite":"phase8-generation-q-natural-observed-r8-review",
+  "status":"COMPLETE_OBSERVED_12_ONLY",
+  "source":"fresh-q-r8-singles.json",
+  "long":{"requestedTurns":20,"generatedTurns":0,"status":"NOT_GENERATED_PROVIDER_FAILURE"},
+  "turns":[
+    {"scenario":"q-s01","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Offers Kerama Blue as a genre-open starting point with registered metadata."},
+    {"scenario":"q-s02","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Points to Kerama Blue for a themed evening while limiting mood-fit inference."},
+    {"scenario":"q-s03","verdict":"PASS","failureClass":null,"evidenceClass":"real","rawEvidence":"Offers Aerial Study 02 with recorded visual evidence and marks subjective calm fit."},
+    {"scenario":"q-s04","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Offers a tentative music fit and explicitly leaves instrumental, ambient and vocal status unverified."},
+    {"scenario":"q-s05","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Provides a shared-evening music starting point and limits suitability claims."},
+    {"scenario":"q-s06","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Provides a beauty-oriented music/image recommendation with subjective-fit limits."},
+    {"scenario":"q-s07","verdict":"PARTIAL","failureClass":"recommendation_unfulfilled_catalog_gap","evidenceClass":"CATALOG_GAP","rawEvidence":"Explains that no catalog evidence verifies traditional Japanese music suitable for calm listening, but gives no actual alternative suggestion."},
+    {"scenario":"q-s08","verdict":"PASS","failureClass":null,"evidenceClass":"real","rawEvidence":"Provides catalog scope and a landscape photo starting point for travel inspiration."},
+    {"scenario":"q-s09","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Offers a documented music/book direction while qualifying softness and full-content limits."},
+    {"scenario":"q-s10","verdict":"PASS","failureClass":null,"evidenceClass":"GOOD_UNKNOWN","rawEvidence":"Recommends a cooking-listen candidate with metadata-based fit caveat."},
+    {"scenario":"q-s11","verdict":"FAIL","failureClass":"CATALOG_EVIDENCE_REJECTED","evidenceClass":"BAD_UNKNOWN","rawEvidence":"Désolé, je n’ai pas réussi à interpréter cela correctement. Pouvez-vous reformuler le point principal ?","note":"Provider requests succeeded but replySource was fallback and gives no book/photo suggestion."},
+    {"scenario":"q-s12","verdict":"PARTIAL","failureClass":"request_fit_mismatch","evidenceClass":"CATALOG_GAP","rawEvidence":"Offers Aerial Study 10 with roofs, intersections and rail lines, but does not identify a clear-sky or wide-sea image matching the request."}
+  ],
+  "counts":{"actualTurns":12,"pass":9,"partial":2,"fail":1,"critical":0,"fullPassRate":0.75}
+}

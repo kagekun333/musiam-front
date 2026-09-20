@@ -4,3 +4,8 @@
 *.webp binary
 *.woff2 binary
 *.mp4 binary
+
+# r8 preservation artifacts are byte-identical historical records. Their
+# embedded trailing whitespace is part of the retained patch/review evidence.
+ops/simulation-refinement/phase5-generalization-20260913/candidate-r8.patch -whitespace
+ops/simulation-refinement/phase5-generalization-20260913/evaluation/fresh-p-r8-review.json -whitespace
