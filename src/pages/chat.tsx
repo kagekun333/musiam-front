@@ -5,6 +5,15 @@ import type { MetalPrintAttribution } from "@/lib/metal-print-consultation";
 import { recordMetalFunnelEvent } from "@/lib/metal-print-funnel-client";
 import { recordChatInterestEvent } from "@/lib/chat-interest-funnel-client";
 import {
+  appendAssistantReply,
+  isChatConversationId,
+  normalizeChatHistory,
+  normalizeChatUiReply,
+  type ChatCta,
+  type ChatHistoryMessage,
+  type ChatWorkCard,
+} from "@/lib/chat-ui-contract";
+import {
   SUPPORTED_LANG_VALUES,
   getChatUiText,
   getLanguageProfile,
@@ -18,18 +27,17 @@ import {
   type SalonTimeTone,
 } from "@/lib/chat-experience";
 
-type ChatRole = "user" | "assistant";
-type ChatMsg = { role: ChatRole; content: string; persona?: ChatPersonaId };
-type RecoLink = { kind: string; url: string };
-type RecoCard = { id: string; title: string; cover: string; links: RecoLink[]; moodTags?: string[]; type?: string; reason?: string };
-type Cta = { href: string; label: string; productId?: string };
+type ChatMsg = ChatHistoryMessage;
+type RecoCard = ChatWorkCard;
+type Cta = ChatCta;
 type SalesIntent = "care" | "business" | "order" | "product" | "work" | "conversation";
 type ReplyPhase = "idle" | "awaitingRead" | "typing";
 type MemoryStatus = "idle" | "saving" | "saved" | "unavailable";
 type AssistantReply = {
   assistantText: string;
   persona: ChatPersonaId;
-  nextCard: RecoCard | null;
+  nextCards: RecoCard[];
+  choices: string[];
   nextCta: Cta | null;
   intent: SalesIntent;
   productId: string | null;
@@ -183,7 +191,8 @@ async function shareLine(text: string, ui: ChatUiText, onDone: (m: string) => vo
 export default function ChatPage() {
   const [lang, setLang] = useState<Lang>("ja");
   const [messages, setMessages] = useState<ChatMsg[]>([]);
-  const [card, setCard] = useState<RecoCard | null>(null);
+  const [cards, setCards] = useState<RecoCard[]>([]);
+  const [choices, setChoices] = useState<string[]>([]);
   const [cta, setCta] = useState<Cta | null>(null);
   const [sending, setSending] = useState(false);
   const [replyPhase, setReplyPhase] = useState<ReplyPhase>("idle");
@@ -209,6 +218,11 @@ export default function ChatPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
   const replyRequestIdRef = useRef(0);
+  const sendInFlightRef = useRef(false);
+  const entryGenerationRef = useRef(0);
+  const historyRevisionRef = useRef(0);
+  const historyQueueRef = useRef(Promise.resolve());
+  const lastFailedRequestRef = useRef<{ messages: ChatMsg[]; userMessageIndex: number; userTurn: number } | null>(null);
   const metalFunnelActivatedRef = useRef(false);
   const interestBridgePendingRef = useRef<string | null>(null);
   const conversationIdRef = useRef("");
@@ -279,6 +293,7 @@ export default function ChatPage() {
   }
 
   useEffect(() => {
+    const generation = ++entryGenerationRef.current;
     const tone = getSalonTimeTone();
     const params = new URLSearchParams(window.location.search);
     // 言語の決定順: URL の ?lang= > 保存済みの選択 > ブラウザ設定。
@@ -319,6 +334,13 @@ export default function ChatPage() {
     if (isMetalPrintEntry) recordMetalFunnelEvent("metal_chat_start", initialMetalAttribution);
     setTimeTone(tone);
     void restoreOrBegin(initial, tone);
+    return () => {
+      if (entryGenerationRef.current === generation) {
+        ++entryGenerationRef.current;
+        ++replyRequestIdRef.current;
+        sendInFlightRef.current = false;
+      }
+    };
   }, []);
 
   useEffect(() => { if (!sending) inputRef.current?.focus(); }, [sending]);
@@ -329,7 +351,7 @@ export default function ChatPage() {
     if (conversationIdRef.current) return conversationIdRef.current;
     let id = "";
     try { id = localStorage.getItem(CHAT_CONVERSATION_ID_KEY) ?? ""; } catch { /* ignore */ }
-    if (!/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(id)) id = newConversationId();
+    if (!isChatConversationId(id)) id = newConversationId();
     conversationIdRef.current = id;
     try { localStorage.setItem(CHAT_CONVERSATION_ID_KEY, id); } catch { /* ignore */ }
     return id;
@@ -337,19 +359,29 @@ export default function ChatPage() {
 
   async function persistConversation(nextMessages: ChatMsg[], nextLang: Lang = lang) {
     if (!rememberConversationRef.current || !nextMessages.length) return;
+    const revision = ++historyRevisionRef.current;
+    const conversationId = ensureConversationId();
+    const serializedMessages = normalizeChatHistory(nextMessages);
+    if (!serializedMessages.length) return;
     setMemoryStatus("saving");
-    try {
-      const res = await fetch("/api/chat-history", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ conversationId: ensureConversationId(), lang: nextLang, messages: nextMessages }),
-        keepalive: true,
-      });
-      setMemoryStatus(res.ok ? "saved" : "unavailable");
-    } catch { setMemoryStatus("unavailable"); }
+    historyQueueRef.current = historyQueueRef.current.catch(() => undefined).then(async () => {
+      try {
+        const res = await fetch("/api/chat-history", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ conversationId, lang: nextLang, messages: serializedMessages }),
+          keepalive: true,
+        });
+        if (revision === historyRevisionRef.current) setMemoryStatus(res.ok ? "saved" : "unavailable");
+      } catch {
+        if (revision === historyRevisionRef.current) setMemoryStatus("unavailable");
+      }
+    });
+    await historyQueueRef.current;
   }
 
   async function restoreOrBegin(l: Lang, tone: SalonTimeTone) {
+    const generation = entryGenerationRef.current;
     let enabled = true;
     try { enabled = localStorage.getItem(CHAT_MEMORY_ENABLED_KEY) !== "off"; } catch { /* ignore */ }
     rememberConversationRef.current = enabled;
@@ -358,9 +390,11 @@ export default function ChatPage() {
       try {
         const res = await fetch(`/api/chat-history?conversationId=${encodeURIComponent(ensureConversationId())}`, { cache: "no-store" });
         const json = await res.json();
-        const restored = Array.isArray(json?.history?.messages) ? json.history.messages as ChatMsg[] : [];
+        if (generation !== entryGenerationRef.current) return;
+        const restored = normalizeChatHistory(json?.history?.messages);
         if (res.ok && restored.length) {
           setMessages(restored);
+          setCards([]); setChoices([]); setCta(null);
           setLang(normalizeLang(json?.history?.lang ?? l));
           setStarted(true);
           setHistoryRestored(true);
@@ -370,14 +404,21 @@ export default function ChatPage() {
         }
       } catch { /* 新しい会話へフォールバック */ }
     }
-    await begin(l, tone);
+    if (generation === entryGenerationRef.current) await begin(l, tone);
+  }
+
+  async function queueHistoryDeletion(id: string) {
+    if (!id) return;
+    ++historyRevisionRef.current;
+    historyQueueRef.current = historyQueueRef.current.catch(() => undefined).then(async () => {
+      try { await fetch(`/api/chat-history?conversationId=${encodeURIComponent(id)}`, { method: "DELETE" }); } catch { /* optional deletion */ }
+    });
+    await historyQueueRef.current;
   }
 
   async function forgetConversation() {
     const id = conversationIdRef.current;
-    if (id) {
-      try { await fetch(`/api/chat-history?conversationId=${encodeURIComponent(id)}`, { method: "DELETE" }); } catch { /* ignore */ }
-    }
+    await queueHistoryDeletion(id);
     conversationIdRef.current = "";
     try { localStorage.removeItem(CHAT_CONVERSATION_ID_KEY); } catch { /* ignore */ }
     setHistoryRestored(false);
@@ -397,18 +438,18 @@ export default function ChatPage() {
     }
     setMemoryStatus("idle");
     const id = conversationIdRef.current;
-    if (id) {
-      try { await fetch(`/api/chat-history?conversationId=${encodeURIComponent(id)}`, { method: "DELETE" }); } catch { /* ignore */ }
-    }
+    await queueHistoryDeletion(id);
     setToast(lang === "ja" ? "会話の記憶を停止しました" : "Conversation memory turned off");
   }
 
   async function begin(l: Lang = lang, tone: SalonTimeTone = timeTone) {
-    replyRequestIdRef.current += 1;
+    const requestId = ++replyRequestIdRef.current;
+    sendInFlightRef.current = false;
+    setStarted(false);
     setSending(false);
     setReplyPhase("idle");
     setReadReceiptMessageIndex(null);
-    setError(null); setCard(null); setCta(null); setMessages([]);
+    setError(null); setCards([]); setChoices([]); setCta(null); setMessages([]);
     try {
       const params = new URLSearchParams(window.location.search);
       const res = await fetch("/api/chat-experience-v3", {
@@ -423,10 +464,14 @@ export default function ChatPage() {
         }),
       });
       const json = await res.json();
-      const text = String(json?.assistantText || "").trim();
+      if (requestId !== replyRequestIdRef.current) return;
+      if (!res.ok || json?.ok === false) throw new Error(String(json?.error || timeCopy.error));
+      const reply = normalizeChatUiReply(json);
+      const text = reply.assistantText;
       startTransition(() => {
-        const opening: ChatMsg[] = text ? [{ role: "assistant", content: text, persona: "count" }] : [];
+        const opening: ChatMsg[] = text ? [{ role: "assistant", content: text, persona: reply.persona }] : [];
         setMessages(opening);
+        setCards(reply.cards); setChoices(reply.choices); setCta(reply.cta);
         void persistConversation(opening, l);
         setStarted(true);
       });
@@ -438,6 +483,7 @@ export default function ChatPage() {
       capture("salon_open", { timeTone: tone, lang: l, sourceIntent: sourceIntent ?? "direct", source: params.get("utm_source") ?? "direct", medium: params.get("utm_medium") ?? "none", campaign: params.get("utm_campaign") ?? "none", content: params.get("utm_content") ?? "none", via: params.get("via") ?? "none", inboundContent: params.get("inbound_content") ?? "none", spaceSegment: params.get("space") ?? "none" });
       if (sourceIntent === "metal-print") recordMetalFunnelEvent("metal_salon_open", { source: params.get("utm_source") ?? "direct", medium: params.get("utm_medium") ?? "none", campaign: params.get("utm_campaign") ?? "none", content: params.get("utm_content") ?? "none", spaceSegment: params.get("space") ?? "none" });
     } catch (e: any) {
+      if (requestId !== replyRequestIdRef.current) return;
       setError(e?.message || timeCopy.error);
       setStarted(true);
     }
@@ -459,20 +505,22 @@ export default function ChatPage() {
     if (!res.ok || json?.ok === false) {
       throw new Error(String(json?.error || timeCopy.error));
     }
+    const normalized = normalizeChatUiReply(json);
     return {
-      assistantText: String(json?.assistantText || "").trim(),
-      persona: json?.persona === "duke" ? "duke" : "count",
-      nextCard: json?.card ?? null,
-      nextCta: json?.cta ?? null,
-      intent: json?.intent ?? "conversation",
-      productId: typeof json?.productId === "string" ? json.productId : null,
-      interestBridge: json?.interestBridge ?? null,
+      assistantText: normalized.assistantText,
+      persona: normalized.persona,
+      nextCards: normalized.cards,
+      choices: normalized.choices,
+      nextCta: normalized.cta,
+      intent: normalized.intent as SalesIntent,
+      productId: normalized.productId,
+      interestBridge: normalized.interestBridge,
     };
   }
 
   function sendText(text: string) {
     const content = text.trim();
-    if (!content || sending) return;
+    if (!content || sending || sendInFlightRef.current || !started) return;
     const next: ChatMsg[] = [...messages, { role: "user", content }];
     const userTurn = next.filter((message) => message.role === "user").length;
     if (musicWorkEntry && userTurn === 1) recordMetalFunnelEvent("metal_music_affinity_entry", metalAttribution);
@@ -480,10 +528,12 @@ export default function ChatPage() {
     const userMessageIndex = next.length - 1;
     const requestId = replyRequestIdRef.current + 1;
     replyRequestIdRef.current = requestId;
+    lastFailedRequestRef.current = null;
     setMessages(next);
     void persistConversation(next);
     setError(null);
     setSending(true);
+    sendInFlightRef.current = true;
     setReplyPhase("awaitingRead");
     setReadReceiptMessageIndex(null);
     const pending = requestAssistantReply(next)
@@ -512,14 +562,17 @@ export default function ChatPage() {
       setError(e?.message || timeCopy.error);
       setReplyPhase("idle");
       setSending(false);
+      sendInFlightRef.current = false;
+      lastFailedRequestRef.current = { messages: requestMessages, userMessageIndex, userTurn };
       return;
     }
 
-    const { assistantText, persona, nextCard, nextCta, intent, productId, interestBridge } = result.reply;
-    const completedMessages: ChatMsg[] = assistantText ? [...requestMessages, { role: "assistant", content: assistantText, persona }] : requestMessages;
+    const { assistantText, persona, nextCards, choices: nextChoices, nextCta, intent, productId, interestBridge } = result.reply;
+    const completedMessages = appendAssistantReply(requestMessages, { assistantText, persona });
+    const nextCard = nextCards[0] ?? null;
     startTransition(() => {
       setMessages(completedMessages);
-      setCard(nextCard);
+      setCards(nextCards); setChoices(nextChoices);
       setCta(nextCta);
     });
     void persistConversation(completedMessages);
@@ -553,7 +606,7 @@ export default function ChatPage() {
       capture("salon_duke", { lang, userTurn, intent, productId });
       if (productId === "vip-metal-print") recordMetalFunnelEvent("metal_duke", metalAttribution);
     }
-    if (nextCard) capture("salon_work_show", { workId: nextCard.id, workType: nextCard.type, lang, userTurn, intent });
+    if (nextCard) capture("salon_work_show", { workId: nextCard.workId, workType: nextCard.type, lang, userTurn, intent });
     if (interestBridge?.action === "offer") {
       interestBridgePendingRef.current = interestBridge.id;
       capture("salon_interest_bridge_show", { bridgeId: interestBridge.id, lang, userTurn });
@@ -565,7 +618,7 @@ export default function ChatPage() {
       interestBridgePendingRef.current = null;
     }
     if (nextCard && interestBridgePendingRef.current) {
-      capture("salon_interest_bridge_accept", { bridgeId: interestBridgePendingRef.current, workId: nextCard.id, workType: nextCard.type, lang, userTurn });
+      capture("salon_interest_bridge_accept", { bridgeId: interestBridgePendingRef.current, workId: nextCard.workId, workType: nextCard.type, lang, userTurn });
       recordChatInterestEvent("chat_interest_bridge_accept", interestBridgePendingRef.current);
       interestBridgePendingRef.current = null;
     }
@@ -573,6 +626,23 @@ export default function ChatPage() {
 
     setReplyPhase("idle");
     setSending(false);
+    sendInFlightRef.current = false;
+  }
+
+  function retryLastReply() {
+    const failed = lastFailedRequestRef.current;
+    if (!failed || sending || sendInFlightRef.current) return;
+    const requestId = replyRequestIdRef.current + 1;
+    replyRequestIdRef.current = requestId;
+    sendInFlightRef.current = true;
+    setError(null);
+    setSending(true);
+    setReplyPhase("awaitingRead");
+    setReadReceiptMessageIndex(null);
+    const pending = requestAssistantReply(failed.messages)
+      .then((reply): PendingReplyResult => ({ ok: true, reply }))
+      .catch((error): PendingReplyResult => ({ ok: false, error }));
+    void runReplyFlow(requestId, failed.userMessageIndex, failed.userTurn, failed.messages, pending);
   }
 
   function onSubmit() {
@@ -728,6 +798,60 @@ export default function ChatPage() {
           )}
         </div>
 
+        {cards.length > 0 && (
+          <section className={styles.giftShell} aria-label={lang === "ja" ? "伯爵からの作品カード" : "Work cards from the Count"}>
+            <div className={styles.giftHeader}>
+              <p className={styles.giftWorkType}>{lang === "ja" ? "CATALOG RECOMMENDATION" : "CATALOG RECOMMENDATION"}</p>
+              <h2 className={styles.giftTitle}>{lang === "ja" ? "いま、お渡しする作品" : "A work for this moment"}</h2>
+            </div>
+            {cards.map((work) => (
+              <article className={styles.giftCard} key={work.workId} data-work-id={work.workId}>
+                <img className={styles.giftCover} src={work.cover} alt={work.title} />
+                <div className={styles.giftBody}>
+                  {work.type && <p className={styles.giftWorkType}>{work.type}</p>}
+                  <h3 className={styles.giftWorkTitle}>{work.title}</h3>
+                  {work.reason && (
+                    <p className={styles.giftReason}>
+                      <span className={styles.giftReasonLabel}>{lang === "ja" ? "RECOMMENDATION REASON" : "RECOMMENDATION REASON"}</span>
+                      {work.reason}
+                    </p>
+                  )}
+                  {work.links.length > 0 && (
+                    <div className={styles.linkRow}>
+                      {work.links.map((link) => {
+                        const colors = linkBg(link.kind, link.url);
+                        return (
+                          <a
+                            key={`${work.workId}-${link.kind}-${link.url}`}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.linkButton}
+                            style={{ background: colors.bg, color: colors.fg }}
+                            onClick={() => capture("salon_work_action_click", { workId: work.workId, kind: link.kind, lang })}
+                          >
+                            {linkLabel(link.kind, ui, lang, link.url)}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </article>
+            ))}
+          </section>
+        )}
+
+        {choices.length > 0 && (
+          <div className={styles.linkRow} aria-label={lang === "ja" ? "会話の選択肢" : "Conversation choices"}>
+            {choices.map((choice) => (
+              <button key={choice} type="button" className={styles.linkButton} disabled={sending || !started} onClick={() => sendText(choice)}>
+                {choice}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* 商材の案内ボタン（伯爵/公爵が処方したとき） */}
         {cta && (
           <a
@@ -796,9 +920,14 @@ export default function ChatPage() {
         </div>
 
         {error && (
-          <p className={styles.error}>
-            {timeCopy.error}
-          </p>
+          <div className={styles.error} role="alert">
+            <p>{timeCopy.error}</p>
+            {lastFailedRequestRef.current && (
+              <button type="button" onClick={retryLastReply} disabled={sending}>
+                {lang === "ja" ? "もう一度送る" : "Try again"}
+              </button>
+            )}
+          </div>
         )}
 
         {messages.length >= 3 && !emailDone && !musicWorkEntry && !metalPrintEntry && cta?.productId !== "vip-metal-print" && (
@@ -847,62 +976,6 @@ export default function ChatPage() {
             ))}
           </div>
           <small>{lang === "ja" ? "選択後、その場で非公開相談へ進めます。購入義務はありません。" : "Your selection opens the private consultation here. No purchase obligation."}</small>
-        </section>
-      )}
-
-      {card && (
-        <section className={styles.giftShell}>
-          <div className={styles.giftHeader}>
-            <p className={styles.kicker}>{timeCopy.giftKicker}</p>
-            <h3 className={styles.giftTitle}>{timeCopy.workTitle}</h3>
-          </div>
-          <div className={styles.giftCard}>
-            {card.cover ? <img src={card.cover} alt={card.title} className={styles.giftCover} /> : null}
-            <div className={styles.giftBody}>
-              <p className={styles.giftWorkType}>{card.type ?? "work"}</p>
-              <h4 className={styles.giftWorkTitle}>{card.title}</h4>
-              {card.reason ? (
-                <p className={styles.giftReason}>
-                  <span className={styles.giftReasonLabel}>{ui.recommendationReason}</span>
-                  {card.reason}
-                </p>
-              ) : null}
-              {card.moodTags?.length ? (
-                <div className={styles.tagRow}>
-                  {card.moodTags.slice(0, 4).map((t) => <span key={t} className={styles.tag}>{t}</span>)}
-                </div>
-              ) : null}
-              <div className={styles.linkRow}>
-                {card.links.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={() => capture("salon_work_click", {
-                      workId: card.id,
-                      workType: card.type,
-                      linkKind: link.kind,
-                      lang,
-                      userTurn: messages.filter((message) => message.role === "user").length,
-                    })}
-                    className={styles.linkButton}
-                    style={{ background: linkBg(link.kind, link.url).bg, color: linkBg(link.kind, link.url).fg }}
-                  >
-                    {linkLabel(link.kind, ui, lang, link.url)}
-                  </a>
-                ))}
-                <a
-                  href={`/works/${encodeURIComponent(String(card.id))}`}
-                  onClick={() => capture("salon_work_detail", { id: card.id })}
-                  className={styles.linkButton}
-                  style={{ background: "rgba(216,182,92,0.16)", color: "#e7d6a6" }}
-                >
-                  {ui.workDetail}
-                </a>
-              </div>
-            </div>
-          </div>
         </section>
       )}
 
