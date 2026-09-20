@@ -16,7 +16,7 @@
 |R7-A|Catalog / Knowledge Foundation|`RECOVERED` / local validator PASS|`works.json`を一次masterとして保持し、ID/explicit mapping/UUIDのみでruntime mergeする。`docs/AI/R7A_CATALOG_KNOWLEDGE_RECOVERY.md`を参照。|
 |R7-B|Chat / Recommendation Core|`RECOVERED`|current request優先、session-scoped opt-out、one-work catalog recommendation、recorded public action guardをlocal fixture/typecheckで確認。provider/network 0、`PRODUCTION_PARITY=UNVERIFIED`。|
 |R7-C1|Chat UI / History / Card Wiring|`RECOVERED`|active v3 response、anonymous history、stable workId card/action、stale/retry guardをlocal fixture/typecheckで確認。`docs/AI/R7C1_CHAT_UI_HISTORY_RECOVERY.md`を参照。15-turn/payment/accessは含まない。|
-|R7-C2|15-turn / paid continuation|`NOT_STARTED`|product definition、price source、atomic access enforcement、payment verification、entitlement、resume、deliveryをhistoryから分離して別Gateで扱う。|
+|R7-C2|15-turn / paid continuation|`BLOCKED_PRODUCT_CONTRACT` / `PAID_CONTINUATION_NOT_ACTIVATED`|旧dirtyの15-turn/Redis候補は確認したが、Chat継続用のcanonical product、price、Stripe binding、delivery/entitlement意味が成立しない。active routeは20-turn abuse/cost guardのまま。`docs/AI/R7C2_PAID_CONTINUATION_RECOVERY.md`を参照。|
 |R7-D|Exhibition / Oracle / TodaysPick / secondary UI|`NOT_STARTED`|R7-Aでは未変更。別Gateで扱う。|
 
 SHARED/高リスク: `public/works/works.json`、`src/app/globals.css`、`src/pages/api/chat-reco.ts`、Metal PrintのStripe/Redis/offer関連、承認・evidence台帳。いずれも本Recoveryでは編集禁止。
