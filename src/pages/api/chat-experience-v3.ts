@@ -12,8 +12,8 @@ import { z } from "zod";
 import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
-import { getPublicLinksForCard } from "@/lib/work-links";
-import { rankSalesWorks, recommendationReason } from "@/lib/chat-sales";
+import { deriveChatCoreTurn, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
+import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { buildChatInterestBridge, chatInterestRecommendationSeed, isChatInterestDecline, isChatInterestInvitation } from "@/lib/chat-interest-bridge";
 import { buildMetalPrintSalesTurn } from "@/lib/metal-print-sales-conversation";
 import { buildMusicWorkAffinityTurn } from "@/lib/music-work-affinity";
@@ -56,17 +56,7 @@ type RecoCard = {
 };
 type Cta = { href: string; label: string; productId: string };
 
-type Work = {
-  id?: string | number;
-  title?: string;
-  type?: string;
-  cover?: string;
-  tags?: string[];
-  moodTags?: string[];
-  moodSeeds?: string[];
-  matchInfo?: { summary?: string; reason?: string } | string;
-  ssd?: { tracks?: { notes?: string }[] };
-};
+type Work = CatalogWork;
 
 const BodySchema = z.object({
   entryId: z.string().optional(), // 互換のため受けるが未使用（門は一つ）
@@ -195,12 +185,14 @@ function normType(t?: string): "book" | "music" | "other" {
   if (x.includes("music") || x.includes("album") || x.includes("track") || x.includes("song") || x.includes("audio")) return "music";
   return "other";
 }
-function workToCard(w: Work, reasons: string[], lang: Lang): RecoCard | null {
+function workToCard(recommendation: ReturnType<typeof selectOneRecommendation>): RecoCard | null {
+  if (!recommendation) return null;
+  const { work: w, links: publicLinks, reason } = recommendation;
   const id = String(w.id ?? w.title ?? "");
   const title = String(w.title || "").trim();
   const cover = String(w.cover || "");
   if (!id || !title || !cover) return null;
-  const links = getPublicLinksForCard(w as any).map((it: { kind: string; url: string }) => ({
+  const links = publicLinks.map((it: { kind: string; url: string }) => ({
     kind: (it.kind === "spotify" || it.kind === "appleMusic" || it.kind === "amazonMusic" ? "listen" : it.kind) as RecoLinkKind,
     url: it.url,
   }));
@@ -212,31 +204,34 @@ function workToCard(w: Work, reasons: string[], lang: Lang): RecoCard | null {
     links,
     moodTags: (w.moodTags ?? w.tags ?? []).slice(0, 4),
     type: w.type,
-    reason: recommendationReason(reasons, lang),
+    reason,
   };
 }
-async function prescribeWork(queryText: string, lang: Lang, type?: "book" | "music"): Promise<{ card: RecoCard | null; work: Work | null }> {
+async function prescribeWork(input: {
+  queryText: string;
+  lang: Lang;
+  type?: "book" | "music";
+  sales: ReturnType<typeof deriveChatCoreTurn>["sales"];
+  preferWorkId?: string | null;
+}): Promise<{ card: RecoCard | null; work: Work | null }> {
   let works: Work[] = [];
   try { works = (await loadMergedWorksServer()) as Work[]; } catch { works = []; }
   let pool = works.filter((w) => !!String(w.cover || ""));
-  if (type) pool = pool.filter((w) => normType(w.type) === type);
-  const ranked = rankSalesWorks(pool, queryText);
-  for (const item of ranked) {
-    const card = workToCard(item.work, item.reasons, lang);
-    if (card) return { card, work: item.work };
-  }
-  return { card: null, work: null };
+  if (input.type) pool = pool.filter((w) => normType(w.type) === input.type);
+  const recommendation = selectOneRecommendation({
+    works: pool,
+    query: input.queryText,
+    language: input.lang,
+    sales: input.sales,
+    preferWorkId: input.preferWorkId,
+  });
+  return recommendation ? { card: workToCard(recommendation), work: recommendation.work } : { card: null, work: null };
 }
 function workNote(w: Work | null): string {
-  if (!w) return "";
-  const ssd = w.ssd?.tracks?.[0]?.notes;
-  if (typeof ssd === "string" && ssd.trim()) {
-    const c = ssd.split("MV映像イメージ:")[0].trim();
-    return c.length > 150 ? c.slice(0, 150) + "…" : c;
-  }
-  const mi = w.matchInfo;
-  const sum = typeof mi === "string" ? mi : mi?.summary || mi?.reason || "";
-  return sum ? (sum.length > 120 ? sum.slice(0, 120) + "…" : sum) : "";
+  // R7-B never turns SSD notes or R4-derived records into music assertions.
+  // The deterministic card reason is built from the current request instead.
+  void w;
+  return "";
 }
 
 function cardActionText(card: RecoCard, lang: Lang) {
@@ -259,7 +254,7 @@ function workRecommendationText(plan: Plan, lang: Lang): string | null {
   if (!card) return null;
   const title = card.title;
   const action = cardActionText(card, lang);
-  const reason = card.reason ?? recommendationReason([], lang);
+  const reason = card.reason ?? (lang === "ja" ? "catalog の記録を手がかりに選びました。" : "I selected it from the catalog record.");
   const byLang: Record<Lang, string> = {
     ja: `${reason}いまお渡しするのは「${title}」。下のカードから${action}。`,
     en: `${reason} I will offer "${title}" now. The card below lets you ${action}.`,
@@ -570,9 +565,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const parsed = BodySchema.safeParse(req.body ?? {});
     if (!parsed.success) return res.status(400).json({ ok: false, v: 3, error: "invalid_body", trace });
 
-    const { lang, messages, entryContext } = parsed.data;
+    const { messages, entryContext } = parsed.data;
+    let lang = parsed.data.lang;
     const timeTone = normalizeSalonTimeTone(parsed.data.timeTone ?? getSalonTimeTone());
-    const timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
+    let timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
     const userTurns = countUserTurns(messages);
 
     // 開幕（伯爵の出迎え）
@@ -594,6 +590,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const query = lastUserText(messages);
+    let coreWorks: Work[] = [];
+    try { coreWorks = (await loadMergedWorksServer()) as Work[]; } catch { coreWorks = []; }
+    const coreTurn = deriveChatCoreTurn({ messages, language: lang as CoreLanguage, works: coreWorks });
+    // An explicit current language instruction outranks the UI default.
+    lang = coreTurn.language as Lang;
+    timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
     const convo = conversationText(messages);
     const fullConvo = fullConversationText(messages);
     const summary = summarize(messages, lang);
@@ -606,12 +608,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // 状態を読む
     const distress = isDistress(convo);
-    const commercial = distress ? null : commercialIntent(query) || commercialIntent(convo);
+    const commercial = distress ? null : commercialIntent(query);
     const hintProduct = distress ? undefined : productHint(query);
-    const officeArt = distress ? false : (wantsOfficeArt(query) || wantsOfficeArt(convo));
-    const vipMetalPrint = distress ? false : wantsVipMetalPrint(fullConvo || query);
-    const metalSalesTurn = vipMetalPrint ? buildMetalPrintSalesTurn(fullConvo || convo || query, lang) : null;
-    const selectedEdition = vipMetalPrint ? selectedMetalEdition(fullConvo || convo || query) : null;
+    const officeArt = distress ? false : wantsOfficeArt(query);
+    const vipMetalPrint = distress ? false : wantsVipMetalPrint(query);
+    const metalSalesTurn = vipMetalPrint ? buildMetalPrintSalesTurn(query, lang) : null;
+    const selectedEdition = vipMetalPrint ? selectedMetalEdition(query) : null;
     const nonSellingMetalTurn = metalSalesTurn?.stage === "stop" || metalSalesTurn?.stage.startsWith("nurture_") === true;
     const rawInterestBridge = distress ? null : buildChatInterestBridge({
       conversation: convo,
@@ -630,6 +632,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let plan: Plan;
     if (distress) {
       plan = { persona: COUNT_PERSONA, mode: "care" };
+    } else if (coreTurn.sales.suppressRecommendations) {
+      // A persistent explicit stop is session-scoped until a current purchase
+      // request reopens it; temporary no-buy only suppresses the CTA below.
+      plan = { persona: COUNT_PERSONA, mode: "salon" };
     } else if (musicAffinityTurn?.action === "dossier") {
       plan = { persona: DUKE_PERSONA, mode: "salon", product: PRODUCTS.find((p) => p.id === "vip-metal-print") };
     } else if (musicAffinityTurn) {
@@ -644,7 +650,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // A voluntary yes to our free-work invitation must deterministically
       // produce a real catalog card; never hand this turn back to the LLM.
       const bridgeSeed = chatInterestRecommendationSeed(previousAssistantText(messages), lang);
-      const { card, work } = await prescribeWork(bridgeSeed || fullConvo || convo || query, lang, desiredType(fullConvo));
+      const { card, work } = await prescribeWork({
+        queryText: bridgeSeed || query,
+        lang,
+        type: desiredType(bridgeSeed || query),
+        sales: coreTurn.sales,
+        preferWorkId: coreTurn.actionTargetId,
+      });
       plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work),
         product: card ? PRODUCTS.find((p) => p.id === "tonight-work") : undefined };
     } else if (vipMetalPrint) {
@@ -661,18 +673,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       plan = { persona: COUNT_PERSONA, mode: "salon" };
     } else if (hintProduct) {
       plan = { persona: COUNT_PERSONA, mode: "salon", product: hintProduct };
-    } else if (wantsWork(query) || wantsWork(convo) || followsWorkOffer) {
-      const workQuery = fullConvo || convo || query;
-      const { card, work } = await prescribeWork(workQuery, lang, desiredType(query) || desiredType(convo) || desiredType(fullConvo));
+    } else if (wantsWork(query) || followsWorkOffer) {
+      const workQuery = query;
+      const { card, work } = await prescribeWork({
+        queryText: workQuery,
+        lang,
+        type: desiredType(query),
+        sales: coreTurn.sales,
+        preferWorkId: coreTurn.actionTargetId,
+      });
       plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work),
-        product: PRODUCTS.find((p) => p.id === "tonight-work") };
+        product: card ? PRODUCTS.find((p) => p.id === "tonight-work") : undefined };
     } else {
       plan = { persona: COUNT_PERSONA, mode: "salon" };
     }
 
     const deterministicWorkText = workRecommendationText(plan, lang);
     const vipDossierText = vipMetalDossierText(plan, lang, fullConvo || convo || query);
-    const directText = musicAffinityTurn?.text || (nonSellingMetalTurn ? metalSalesTurn?.text ?? null : creativeText || deterministicWorkText || vipDossierText || interestBridge?.text || null);
+    const deterministicCoreText = coreTurn.sales.persistentStop
+      ? salesSuppressionText(lang as CoreLanguage)
+      : (wantsWork(query) || followsWorkOffer) && !plan.card
+        ? unavailableRecommendationText(lang as CoreLanguage, coreTurn.actionStatus)
+        : null;
+    const directText = deterministicCoreText || musicAffinityTurn?.text || (nonSellingMetalTurn ? metalSalesTurn?.text ?? null : creativeText || deterministicWorkText || vipDossierText || interestBridge?.text || null);
     let llm: LlmMeta = { ok: false, text: "", provider: "none", model: "", error: directText ? (creativeText ? "skipped_for_creative_text" : vipDossierText ? "skipped_for_vip_dossier" : "skipped_for_catalog_card") : "not_called", tried: [] };
     let assistantText: string;
     if (directText) {
@@ -687,14 +710,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // 提示する CTA（商材ボタン）。care時は出さない。
     let cta: Cta | null = null;
-    if (plan.mode !== "care" && plan.product && plan.product.ctaHref) {
+    if (plan.mode !== "care" && !coreTurn.sales.suppressSales && plan.product && plan.product.ctaHref) {
       cta = {
         href: plan.product.ctaHref,
         label: productCtaLabelForLang(plan.product, lang),
         productId: plan.product.id,
       };
     }
-    if (plan.mode !== "care" && plan.product?.id === "vip-metal-print" && selectedEdition) {
+    if (plan.mode !== "care" && !coreTurn.sales.suppressSales && plan.product?.id === "vip-metal-print" && selectedEdition) {
       cta = {
         href: `/metal-print/${selectedEdition.slug}`,
         label: lang === "ja" ? `${selectedEdition.title}の公開Dossierを見る` : `View the ${selectedEdition.title} public Dossier`,

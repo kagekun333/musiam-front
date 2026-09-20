@@ -14,8 +14,8 @@
 |R5|Shaman 999: `SHA_collection_999_unique/`（1,000 untracked）|`PRESERVE_HOLD` / 別案件候補|アプリ基盤と分離。source/provenance/採用意図が揃うまで移動・公開・再生成しない。|
 |R6|営業・公開・継続運用台帳: untracked `ops/` 1,338件、`operational/`等|`UNKNOWN` / 作業中|R0に依存。G0観測/G1実注文・納品の根拠を、local/synthetic/provider/productionで分離して分類。|
 |R7-A|Catalog / Knowledge Foundation|`RECOVERED` / local validator PASS|`works.json`を一次masterとして保持し、ID/explicit mapping/UUIDのみでruntime mergeする。`docs/AI/R7A_CATALOG_KNOWLEDGE_RECOVERY.md`を参照。|
-|R7-B|Chat / Recommendation Core|`NOT_STARTED`|R7-A canonical projectionとidentity/evidence boundaryを前提に、Chat・推薦挙動を別Gateで扱う。|
-|R7-C|Chat UI / History / Sales flow|`NOT_STARTED`|R7-Bの明示的なcontract確定後に扱う。|
+|R7-B|Chat / Recommendation Core|`RECOVERED`|current request優先、session-scoped opt-out、one-work catalog recommendation、recorded public action guardをlocal fixture/typecheckで確認。provider/network 0、`PRODUCTION_PARITY=UNVERIFIED`。|
+|R7-C|Chat UI / History / Sales flow|`NOT_STARTED`|R7-B contract確定後に、UI/history/persistent profile/15-turn purchaseを別Gateで扱う。|
 |R7-D|Exhibition / Oracle / TodaysPick / secondary UI|`NOT_STARTED`|R7-Aでは未変更。別Gateで扱う。|
 
 SHARED/高リスク: `public/works/works.json`、`src/app/globals.css`、`src/pages/api/chat-reco.ts`、Metal PrintのStripe/Redis/offer関連、承認・evidence台帳。いずれも本Recoveryでは編集禁止。
