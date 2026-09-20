@@ -1,0 +1,15 @@
+{
+  "at": "2026-09-20T07:56:13.166382+00:00",
+  "stateBeforeSha256": "266fbbc503caf4a98573c2f8e5bb5e6c0d5b9b98c90943ed37bb2705437da895",
+  "experimentsBeforeSha256": "249b17ec29d7fbde9a73f65e7039cb59fb9e3c52a62859f0daa860a821a81413",
+  "stateAfterSha256": "13f7afe8e943de1d43c04ae565bd7b5bafa210dffcf6c5246962fedf8210b0c9",
+  "experimentsAfterSha256": "bfe4295c4534c71dcc40e3eea5b854092889ed31d1bc11995f3218b998f4e902",
+  "sourceHashesUnchanged": true,
+  "sourceHashCount": 9,
+  "historicalMarketMetricsPreserved": true,
+  "experimentConclusionsUnchanged": true,
+  "qualityStateUnchanged": true,
+  "externalWrites": 0,
+  "notification": "NOTIFY",
+  "reason": "AUTH_EXPIRED_OBSERVATION_UNAVAILABLE"
+}

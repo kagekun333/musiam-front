@@ -1,0 +1,58 @@
+{
+  "observedAt": "2026-09-09T06:23:12.310Z",
+  "mode": "READ_ONLY_PRODUCTION",
+  "externalWrites": 0,
+  "secretValuesPersisted": false,
+  "period": {
+    "start": "2026-08-31T15:00:00.000Z",
+    "end": "2026-09-09T06:22:57.447Z"
+  },
+  "aggregate": {
+    "ok": true,
+    "period": {
+      "startInclusive": "2026-08-31T15:00:00.000Z",
+      "endExclusive": "2026-09-09T06:22:57.447Z"
+    },
+    "activatedAt": "2026-09-06T15:47:34.385Z",
+    "complete": true,
+    "coverageStartsAfterPeriod": true,
+    "metrics": {
+      "recordedEvents": 0,
+      "excludedQaEvents": 15,
+      "excludedBotEvents": 0,
+      "visits": 0,
+      "uniqueBrowserVisitors": 0,
+      "chatPageVisits": 0,
+      "chatStarts": 0,
+      "oneTurnConversations": 0,
+      "threePlusTurnConversations": 0,
+      "fivePlusTurnConversations": 0,
+      "engagedConversationProxy": 0,
+      "meaningfulConversations": null,
+      "recommendationsShown": 0,
+      "productPageVisits": 0,
+      "productInterestSessions": 0,
+      "checkoutClickSessions": 0,
+      "checkoutStarts": null,
+      "payments": null,
+      "revenue": null,
+      "returnVisits": 0,
+      "bySource": {},
+      "boundary": "Observed anonymous browser events after activation; excludes declared QA and recognized bots. Distinct browsers are not verified humans. 3/5 turns count messages sent in this visit, not restored history. Meaningfulness needs human review. Clicks are not created Checkouts or payments; those must come from Stripe."
+    }
+  },
+  "audit": [
+    {
+      "label": "vercel.envMetadata",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.CRON_SECRET",
+      "status": 200
+    },
+    {
+      "label": "public.funnel.aggregate",
+      "status": 200
+    }
+  ]
+}

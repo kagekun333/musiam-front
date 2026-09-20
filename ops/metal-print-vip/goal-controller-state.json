@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T14:57:36.295Z",
-  "objective": "Phase 1: acquire 10 real paid and fulfilled ¥330,000 metal-print orders with at least ¥3,000,000 net non-refunded revenue and observed economics. Permanent mission: sell out three units for every canonical work.",
+  "generatedAt": "2026-08-27T13:40:57.727Z",
+  "objective": "Phase 1: acquire 10 real paid and fulfilled ¥330,000 music-jacket metal-print orders with at least ¥3,000,000 net non-refunded revenue and observed economics. Permanent mission: sell out three units for every canonical music work; books are excluded.",
   "activeGoal": {
     "phase": 1,
     "paidFulfilledOrderTarget": 10,
@@ -16,19 +16,24 @@
   },
   "goalScale": {
     "catalogSource": "public/works/works.json",
-    "canonicalWorks": 401,
+    "canonicalWorks": 337,
     "editionSizePerWork": 3,
-    "terminalEditionUnits": 1203,
+    "terminalEditionUnits": 1011,
     "unitPriceYen": 330000,
-    "terminalGrossYen": 396990000,
+    "terminalGrossYen": 333630000,
     "approvedOfferWorks": 4,
-    "approvedCatalogCoverage": 0.00997506234413965,
+    "approvedCatalogCoverage": 0.011869436201780416,
     "recurringMonthlyQuotaYen": 3000000,
-    "terminalCompletionEvidence": "durable paid, fulfilled and non-refunded edition serials for every canonical work"
+    "catalogFilter": {
+      "field": "type",
+      "equals": "music"
+    },
+    "excludedCatalogWorks": 134,
+    "terminalCompletionEvidence": "durable paid, fulfilled and non-refunded edition serials for every canonical music work"
   },
   "decision": "KEEP_EXECUTING",
   "waveDay": 7,
-  "primaryAction": "Ingest the next real canonical music release with build:daily-music-release-pack, preserve its workId and exact platform UTM, and move only Human-approved placements to publication. Continue until a placement reaches 100 Dossier sessions and 3 qualified consultations (current best 3/100 Dossier, 0/3 qualified). Direct profile-link gaps remain on instagram, tiktok and require the exact profile-update Human Gate; keep profile ingress deferred. Do not change Landing conversion before the 2000-Dossier diagnosis floor.",
+  "primaryAction": "Ingest the next real canonical music release with build:daily-music-release-pack, preserve its workId and exact platform UTM, and move only Human-approved placements to publication. Continue until a placement reaches 100 Dossier sessions and 3 qualified consultations (current best 3/100 Dossier, 0/3 qualified). Direct profile-link gaps remain on tiktok and require the exact profile-update Human Gate; keep profile ingress deferred. Do not change Landing conversion before the 2000-Dossier diagnosis floor.",
   "nextHumanGate": null,
   "mandatoryRule": "Every run evaluates all nine lanes and completes the primary action plus one non-blocked downstream action when safe.",
   "lanes": [
@@ -42,21 +47,21 @@
     {
       "id": "measurement",
       "status": "WAITING_FOR_MATURITY",
-      "evidence": "0 due at 24h; 0 due at 72h; 22 resolved at 24h; 20 resolved at 72h; next maturity 2026-08-07T03:22:20.000Z",
+      "evidence": "0 due at 24h; 0 due at 72h; 22 resolved at 24h; 22 resolved at 72h; next maturity none",
       "nextAction": "Capture only matured 24h/72h audience metrics and first-party Chat events; never write premature zeroes.",
       "humanGate": false
     },
     {
       "id": "chat_conversion",
       "status": "ACQUIRING_MINIMUM_SAMPLE_WITH_PROFILE_GAP",
-      "evidence": "0 verified durable consultations; 0 qualified; 0 awaiting contact verification; 0 verification delivery failures; site conversation activation verified; direct social profile links 2/4 verified (threads, youtube); 4/100 Dossier sessions before conversion diagnosis",
-      "nextAction": "Ingest the next real canonical music release with build:daily-music-release-pack, preserve its workId and exact platform UTM, and move only Human-approved placements to publication. Continue until a placement reaches 100 Dossier sessions and 3 qualified consultations (current best 3/100 Dossier, 0/3 qualified). Direct profile-link gaps remain on instagram, tiktok and require the exact profile-update Human Gate; keep profile ingress deferred. Do not change Landing conversion before the 2000-Dossier diagnosis floor.",
+      "evidence": "0 verified durable consultations; 0 qualified; 0 awaiting contact verification; 0 verification delivery failures; site conversation activation verified; direct social profile links 3/4 verified (instagram, threads, youtube); 4/100 Dossier sessions before conversion diagnosis",
+      "nextAction": "Ingest the next real canonical music release with build:daily-music-release-pack, preserve its workId and exact platform UTM, and move only Human-approved placements to publication. Continue until a placement reaches 100 Dossier sessions and 3 qualified consultations (current best 3/100 Dossier, 0/3 qualified). Direct profile-link gaps remain on tiktok and require the exact profile-update Human Gate; keep profile ingress deferred. Do not change Landing conversion before the 2000-Dossier diagnosis floor.",
       "humanGate": false
     },
     {
       "id": "sellable_capacity",
       "status": "MONTHLY_QUOTA_READY_CATALOG_EXPANSION_REQUIRED",
-      "evidence": "4/401 canonical works have approved Offers (1.00%); 12/10 units cover the recurring monthly quota; approved gross ¥3,960,000; terminal scope 1,203 units / ¥396,990,000",
+      "evidence": "4/337 canonical works have approved Offers (1.19%); 12/10 units cover the recurring monthly quota; approved gross ¥3,960,000; terminal scope 1,011 units / ¥333,630,000",
       "nextAction": "Preserve the live monthly quota capacity while promoting catalog works in measured batches: require work-level demand, printable-master preflight and exact Human Offer approval before each work becomes directly sellable.",
       "humanGate": true
     },
@@ -112,11 +117,11 @@
   "evidenceInputs": {
     "profileChatActivation": "PRODUCTION_VERIFIED",
     "directProfileLinksVerified": [
+      "instagram",
       "threads",
       "youtube"
     ],
     "profileLinkGaps": [
-      "instagram",
       "tiktok"
     ],
     "profileLinkCoverageComplete": false,
@@ -139,8 +144,8 @@
     "maturityDue24h": 0,
     "maturityDue72h": 0,
     "maturityResolved24h": 22,
-    "maturityResolved72h": 20,
-    "nextMaturityAt": "2026-08-07T03:22:20.000Z",
+    "maturityResolved72h": 22,
+    "nextMaturityAt": null,
     "duePublicationPlacementIds": [],
     "nextPublicationAt": null,
     "reviewPendingPlacementIds": [],

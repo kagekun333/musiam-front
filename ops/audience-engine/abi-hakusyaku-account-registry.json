@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "brand": "ABI伯爵",
-  "observedAt": "2026-07-30T22:51:00+09:00",
+  "observedAt": "2026-08-09T13:59:32+09:00",
   "evidenceClass": "OWNER_BROWSER_PROFILE_UPDATE_PLUS_PUBLIC_RENDERED_DOM_VERIFICATION",
   "accounts": [
     {
@@ -9,10 +9,16 @@
       "url": "https://www.instagram.com/abi_hakusyaku/",
       "handle": "abi_hakusyaku",
       "displayName": "ABI伯爵",
-      "state": "CREATED_PROFILE_BIO_APPLIED",
+      "state": "CREATED_PROFILE_BIO_WITH_GENERAL_CHAT_LINK",
       "observedMetrics": { "posts": 0, "followers": 0, "following": 1 },
       "ownerSession": "OWNER_SESSION_VERIFIED_IN_CONNECTED_CHROME",
-      "profileSetup": { "bio": "APPLIED", "website": "MOBILE_APP_REQUIRED" },
+      "profileSetup": {
+        "bio": "APPLIED",
+        "website": "APPLIED_AND_PUBLICLY_VISIBLE",
+        "observedPublicTarget": "https://www.hakusyaku.xyz/chat?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+        "verifiedAt": "2026-08-09T13:59:32+09:00",
+        "httpStatus": 200
+      },
       "screenshot": "/var/folders/mw/ty09l6yx4wldjzb3xmf2mxg80000gn/T/codex-clipboard-1923b649-fdb7-40e2-8308-237b620b5ad7.png"
     },
     {

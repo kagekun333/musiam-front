@@ -1,0 +1,283 @@
+{
+  "observedAt": "2026-09-13T07:33:59.799Z",
+  "period": {
+    "start": "2026-09-09T09:00:00.000Z",
+    "end": "2026-09-13T07:30:00.000Z"
+  },
+  "mode": "READ_ONLY_PRODUCTION_AGGREGATES",
+  "secretValuesPersisted": false,
+  "externalWrites": 0,
+  "audit": [
+    {
+      "label": "vercel.envMetadata",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.CRON_SECRET",
+      "status": 200
+    }
+  ],
+  "funnel": {
+    "ok": true,
+    "period": {
+      "startInclusive": "2026-09-09T09:00:00.000Z",
+      "endExclusive": "2026-09-13T07:30:00.000Z"
+    },
+    "activatedAt": "2026-09-06T15:47:34.385Z",
+    "complete": true,
+    "coverageStartsAfterPeriod": false,
+    "metrics": {
+      "recordedEvents": 52,
+      "excludedQaEvents": 26,
+      "excludedBotEvents": 6,
+      "visits": 14,
+      "uniqueBrowserVisitors": 14,
+      "chatPageVisits": 13,
+      "chatStarts": 1,
+      "oneTurnConversations": 0,
+      "threePlusTurnConversations": 1,
+      "fivePlusTurnConversations": 1,
+      "engagedConversationProxy": 0,
+      "meaningfulConversations": null,
+      "recommendationsShown": 3,
+      "recommendationRequests": 3,
+      "recommendationRequestSessions": 1,
+      "recommendationRequestMeasurement": {
+        "version": "recommendation-request-v1",
+        "coverage": "OBSERVED_VERSIONED_COVERAGE",
+        "historicalBeforeVersion": "UNKNOWN",
+        "versionedObservedRequests": 3,
+        "versionedObservedRequestSessions": 1,
+        "legacyChatEventsWithoutVersion": 0,
+        "legacyChatSessionsWithoutVersion": 0,
+        "explicitActivation": null
+      },
+      "productPageVisits": 0,
+      "productInterestSessions": 0,
+      "checkoutClickSessions": 0,
+      "checkoutStarts": null,
+      "payments": null,
+      "revenue": null,
+      "returnVisits": 0,
+      "bySource": {
+        "threads": {
+          "visits": 1,
+          "chatStarts": 0,
+          "checkoutClicks": 0
+        },
+        "direct": {
+          "visits": 4,
+          "chatStarts": 1,
+          "checkoutClicks": 0
+        },
+        "youtube": {
+          "visits": 9,
+          "chatStarts": 0,
+          "checkoutClicks": 0
+        }
+      },
+      "byWork": {
+        "spotify-single-1OZ2YPhTCoARTJhDvNMGFR": {
+          "recommendationShown": 1,
+          "recommendationShownSessions": 1,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "usefulFeedback": 0,
+          "usefulFeedbackSessions": 0,
+          "notForMeFeedback": 0,
+          "notForMeFeedbackSessions": 0
+        },
+        "spotify-single-4GtdD71vSh1NCycz68o3Qq": {
+          "recommendationShown": 1,
+          "recommendationShownSessions": 1,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "usefulFeedback": 0,
+          "usefulFeedbackSessions": 0,
+          "notForMeFeedback": 0,
+          "notForMeFeedbackSessions": 0
+        },
+        "spotify-single-5Upi5xvmOJeJy5Asmdvimp": {
+          "recommendationShown": 1,
+          "recommendationShownSessions": 1,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "usefulFeedback": 0,
+          "usefulFeedbackSessions": 0,
+          "notForMeFeedback": 0,
+          "notForMeFeedbackSessions": 0
+        }
+      },
+      "byCampaignContent": {
+        "musiam_funnel_e1|rain_story|threads|organic_social": {
+          "campaign": "musiam_funnel_e1",
+          "content": "rain_story",
+          "source": "threads",
+          "medium": "organic_social",
+          "visits": 1,
+          "chatStarts": 0,
+          "threePlusTurnConversations": 0,
+          "fivePlusTurnConversations": 0,
+          "recommendationRequests": null,
+          "recommendationRequestSessions": null,
+          "observedVersionedRecommendationRequests": 0,
+          "recommendationsShown": 0,
+          "recommendationShownSessions": 0,
+          "productInterestSessions": 0,
+          "checkoutClickSessions": 0,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "returnVisits": 0
+        },
+        "none|none|direct|none": {
+          "campaign": "none",
+          "content": "none",
+          "source": "direct",
+          "medium": "none",
+          "visits": 4,
+          "chatStarts": 1,
+          "threePlusTurnConversations": 1,
+          "fivePlusTurnConversations": 1,
+          "recommendationRequests": 3,
+          "recommendationRequestSessions": 1,
+          "observedVersionedRecommendationRequests": 3,
+          "recommendationsShown": 3,
+          "recommendationShownSessions": 1,
+          "productInterestSessions": 0,
+          "checkoutClickSessions": 0,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "returnVisits": 0
+        },
+        "musiam_funnel_e2|quiet_music|youtube|organic_social": {
+          "campaign": "musiam_funnel_e2",
+          "content": "quiet_music",
+          "source": "youtube",
+          "medium": "organic_social",
+          "visits": 5,
+          "chatStarts": 0,
+          "threePlusTurnConversations": 0,
+          "fivePlusTurnConversations": 0,
+          "recommendationRequests": 0,
+          "recommendationRequestSessions": 0,
+          "observedVersionedRecommendationRequests": 0,
+          "recommendationsShown": 0,
+          "recommendationShownSessions": 0,
+          "productInterestSessions": 0,
+          "checkoutClickSessions": 0,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "returnVisits": 0
+        },
+        "musiam_funnel_e4|quiet_music|youtube|organic_social": {
+          "campaign": "musiam_funnel_e4",
+          "content": "quiet_music",
+          "source": "youtube",
+          "medium": "organic_social",
+          "visits": 4,
+          "chatStarts": 0,
+          "threePlusTurnConversations": 0,
+          "fivePlusTurnConversations": 0,
+          "recommendationRequests": 0,
+          "recommendationRequestSessions": 0,
+          "observedVersionedRecommendationRequests": 0,
+          "recommendationsShown": 0,
+          "recommendationShownSessions": 0,
+          "productInterestSessions": 0,
+          "checkoutClickSessions": 0,
+          "workClicks": 0,
+          "workClickSessions": 0,
+          "returnVisits": 0
+        }
+      },
+      "experimentExposureSessions": 1,
+      "conversationFeedback": {
+        "revisit": 0,
+        "revisitSessions": 0,
+        "neutral": 0,
+        "neutralSessions": 0
+      },
+      "boundary": "Observed anonymous browser events after activation; excludes declared QA and recognized bots. Distinct browsers and unique sessions are not verified humans or independent people. Feedback is optional, self-selected, and sparse; aggregate work counts are descriptive only and must not change ranking without a separately approved, adequately sampled evaluation. 3/5 turns count messages sent in this visit, not restored history. Meaningfulness needs human review. Clicks are not created Checkouts or payments; those must come from Stripe."
+    }
+  },
+  "go": {
+    "ok": true,
+    "measurementVersion": "go-v1",
+    "resolutionSeconds": 60,
+    "retentionDays": 35,
+    "activationMetadataRetention": "measurement-version lifetime; four timestamps only",
+    "period": {
+      "startInclusive": "2026-09-09T09:00:00.000Z",
+      "endExclusive": "2026-09-13T07:30:00.000Z"
+    },
+    "complete": true,
+    "experiments": {
+      "e1": {
+        "source": "threads",
+        "campaign": "musiam_funnel_e1",
+        "content": "rain_story",
+        "activatedAt": "2026-09-10T12:48:36.460Z",
+        "coverageStartsAfterPeriod": true,
+        "measuredCtaActivations": 0,
+        "counts": {
+          "activated_navigation": 0,
+          "navigation": 0,
+          "unclassified": 0,
+          "bot": 0,
+          "prefetch": 0,
+          "qa": 2
+        }
+      },
+      "e2": {
+        "source": "youtube",
+        "campaign": "musiam_funnel_e2",
+        "content": "quiet_music",
+        "activatedAt": "2026-09-10T12:48:40.975Z",
+        "coverageStartsAfterPeriod": true,
+        "measuredCtaActivations": 2,
+        "counts": {
+          "activated_navigation": 2,
+          "navigation": 0,
+          "unclassified": 0,
+          "bot": 1,
+          "prefetch": 0,
+          "qa": 1
+        }
+      },
+      "e3": {
+        "source": "threads",
+        "campaign": "musiam_funnel_e3",
+        "content": "quiet_music",
+        "activatedAt": "2026-09-10T12:48:45.937Z",
+        "coverageStartsAfterPeriod": true,
+        "measuredCtaActivations": 0,
+        "counts": {
+          "activated_navigation": 0,
+          "navigation": 0,
+          "unclassified": 0,
+          "bot": 0,
+          "prefetch": 0,
+          "qa": 1
+        }
+      },
+      "e4": {
+        "source": "youtube",
+        "campaign": "musiam_funnel_e4",
+        "content": "quiet_music",
+        "activatedAt": "2026-09-10T12:48:54.973Z",
+        "coverageStartsAfterPeriod": true,
+        "measuredCtaActivations": 2,
+        "counts": {
+          "activated_navigation": 2,
+          "navigation": 0,
+          "unclassified": 1,
+          "bot": 1,
+          "prefetch": 0,
+          "qa": 3
+        }
+      }
+    },
+    "boundary": "Counts are requests to /go links only, after activation; never backfilled to older direct links. Measured CTA activations require navigation/document and Sec-Fetch-User:?1. Other navigations, unclassified requests, known bots, prefetch and QA remain separate. Repeated requests are not deduplicated into people. Raw IP, UA, referrer, cookies, query text and visitor identifiers are not stored. Missing or spoofed headers, unrecognized bots and storage failures limit coverage; these are not exact platform clicks or verified humans."
+  },
+  "status": "PASS"
+}

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-06T14:57:35.228Z",
+  "generatedAt": "2026-08-14T03:19:32.009Z",
   "evidenceClass": "LEDGER_MATURITY_DERIVATION",
   "summary": {
     "published": 22,
     "due24h": 0,
     "due72h": 0,
     "resolved24h": 22,
-    "resolved72h": 20,
-    "nextMaturityAt": "2026-08-07T03:22:20.000Z"
+    "resolved72h": 22,
+    "nextMaturityAt": null
   },
   "duePlacementIds": [],
   "placements": [
@@ -17,7 +17,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/DbOCUmsD6qI/",
       "publishedAt": "2026-07-25T23:42:57+09:00",
-      "ageHours": 288.24,
+      "ageHours": 468.61,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -45,7 +45,7 @@
       "platform": "threads",
       "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbOChEpgYiK",
       "publishedAt": "2026-07-25T23:42:57+09:00",
-      "ageHours": 288.24,
+      "ageHours": 468.61,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -72,7 +72,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbOCsBvB0eU/",
       "publishedAt": "2026-07-25T23:42:57+09:00",
-      "ageHours": 288.24,
+      "ageHours": 468.61,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -100,7 +100,7 @@
       "platform": "tiktok",
       "publicUrl": "https://www.tiktok.com/@countabi/video/7666475258425216269",
       "publishedAt": "2026-07-25T23:40:00+09:00",
-      "ageHours": 288.29,
+      "ageHours": 468.66,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -124,7 +124,7 @@
       "platform": "youtube",
       "publicUrl": "https://youtube.com/shorts/71B_q_nQTJg",
       "publishedAt": "2026-07-25T23:42:57+09:00",
-      "ageHours": 288.24,
+      "ageHours": 468.61,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -150,7 +150,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/p/DbO5HqDE56W/",
       "publishedAt": "2026-07-26T07:31:00+09:00",
-      "ageHours": 280.44,
+      "ageHours": 460.81,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -178,7 +178,7 @@
       "platform": "threads",
       "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbO46aaEusS",
       "publishedAt": "2026-07-26T07:31:00+09:00",
-      "ageHours": 280.44,
+      "ageHours": 460.81,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -206,7 +206,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbdCnQBNKh5/",
       "publishedAt": "2026-07-31T19:32:14+09:00",
-      "ageHours": 148.42,
+      "ageHours": 328.79,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -234,7 +234,7 @@
       "platform": "tiktok",
       "publicUrl": "https://www.tiktok.com/@countabi/video/7668637213990587662",
       "publishedAt": "2026-07-31T19:32:14+09:00",
-      "ageHours": 148.42,
+      "ageHours": 328.79,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -257,7 +257,7 @@
       "platform": "youtube",
       "publicUrl": "https://youtube.com/shorts/TzbHCtd10Xw",
       "publishedAt": "2026-07-31T19:32:14+09:00",
-      "ageHours": 148.42,
+      "ageHours": 328.79,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -284,7 +284,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/Dbhb8VID-5g/",
       "publishedAt": "2026-08-02T12:21:28+09:00",
-      "ageHours": 107.6,
+      "ageHours": 287.97,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -312,7 +312,7 @@
       "platform": "threads",
       "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbhcKYKAfX7",
       "publishedAt": "2026-08-02T12:23:21+09:00",
-      "ageHours": 107.57,
+      "ageHours": 287.94,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -338,7 +338,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbfvzQLhkd7/",
       "publishedAt": "2026-08-01T20:37:26+09:00",
-      "ageHours": 123.34,
+      "ageHours": 303.7,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -366,7 +366,7 @@
       "platform": "tiktok",
       "publicUrl": "https://www.tiktok.com/@countabi/video/7669026152693976334",
       "publishedAt": "2026-08-01T20:39:53+09:00",
-      "ageHours": 123.3,
+      "ageHours": 303.66,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -386,7 +386,7 @@
       "platform": "youtube",
       "publicUrl": "https://youtube.com/shorts/jYNoFK3Zt5I",
       "publishedAt": "2026-08-01T20:43:09+09:00",
-      "ageHours": 123.24,
+      "ageHours": 303.61,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -412,7 +412,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/DbhcUBjD7Z9/",
       "publishedAt": "2026-08-02T12:24:42+09:00",
-      "ageHours": 107.55,
+      "ageHours": 287.91,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -440,7 +440,7 @@
       "platform": "threads",
       "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/DbhcajnAWUq",
       "publishedAt": "2026-08-02T12:25:34+09:00",
-      "ageHours": 107.53,
+      "ageHours": 287.9,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -466,7 +466,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/reel/DbkCiFUxWWB/",
       "publishedAt": "2026-08-03T12:38:53+09:00",
-      "ageHours": 83.31,
+      "ageHours": 263.68,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -494,7 +494,7 @@
       "platform": "tiktok",
       "publicUrl": "https://www.tiktok.com/@countabi/video/7669645373119515917",
       "publishedAt": "2026-08-03T12:41:50+09:00",
-      "ageHours": 83.26,
+      "ageHours": 263.63,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -516,7 +516,7 @@
       "platform": "youtube",
       "publicUrl": "https://youtube.com/shorts/soWW85wPUfE",
       "publishedAt": "2026-08-03T12:46:20+09:00",
-      "ageHours": 83.19,
+      "ageHours": 263.55,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -542,7 +542,7 @@
       "platform": "instagram",
       "publicUrl": "https://www.instagram.com/abi_hakusyaku/p/Dbmlon0j4GY/",
       "publishedAt": "2026-08-04T12:22:20+09:00",
-      "ageHours": 59.59,
+      "ageHours": 239.95,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -555,7 +555,7 @@
         ]
       },
       "measurement72h": {
-        "state": "WAITING",
+        "state": "RESOLVED",
         "missingFields": [
           "views_72h",
           "completion_rate_72h",
@@ -570,7 +570,7 @@
       "platform": "threads",
       "publicUrl": "https://www.threads.com/@abi_hakusyaku/post/Dbml3yYAZXd",
       "publishedAt": "2026-08-04T12:24:24+09:00",
-      "ageHours": 59.55,
+      "ageHours": 239.92,
       "measurement24h": {
         "state": "RESOLVED",
         "missingFields": [
@@ -582,9 +582,8 @@
         ]
       },
       "measurement72h": {
-        "state": "WAITING",
+        "state": "RESOLVED",
         "missingFields": [
-          "views_72h",
           "completion_rate_72h",
           "saves_72h",
           "shares_72h",

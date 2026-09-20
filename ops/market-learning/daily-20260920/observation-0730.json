@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-09-20T07:39:24.452933+00:00",
+  "automationId": "musiam",
+  "triggerAt": "2026-09-20T07:30:37.080Z",
+  "periodRequested": {
+    "start": "2026-09-09T09:00:00.000Z",
+    "end": "2026-09-20T07:30:00.000Z"
+  },
+  "status": "OBSERVATION_BLOCKED_AUTH_EXPIRED",
+  "marketEvidence": "ops/market-learning/daily-20260920/market-0730.json",
+  "stripeEvidence": "ops/market-learning/daily-20260920/stripe-0730.json",
+  "metrics": {
+    "visits": null,
+    "externalChatStarts": null,
+    "externalThreePlus": null,
+    "externalFivePlus": null,
+    "externalRecommendations": null,
+    "productInterest": null,
+    "payments": null,
+    "repeat": null,
+    "netNonRefundedJpy": null,
+    "verifiedIndependentHumans": null
+  },
+  "lastSuccessfulObservation": {
+    "periodEnd": "2026-09-13T07:30:00.000Z",
+    "marketEvidence": "ops/market-learning/daily-20260913/market-0730.json",
+    "stripeEvidence": "ops/market-learning/daily-20260913/stripe-0730.json",
+    "ageAtRequestedEndSeconds": 604800
+  },
+  "observationCoverage": "No fresh authenticated aggregate or payment read succeeded. No daily snapshot for September 14-19 was found in the repository; this does not establish whether a run occurred elsewhere.",
+  "qaHandling": "Prior OWNER-confirmed QA remains excluded in its historical snapshot. Historical raw chat counts were not copied into current metrics. No new external conversation can be inferred.",
+  "synthetic": "Not executed or merged into market metrics.",
+  "externalPlatforms": {
+    "status": "NOT_OBSERVED_THIS_RUN",
+    "scope": "Threads, YouTube, DistroKid dashboards and external-store royalties were not refreshed."
+  },
+  "marketChange": "UNKNOWN",
+  "paymentChange": "UNKNOWN",
+  "credentials": {
+    "status": "EXPIRED",
+    "expiresAt": "2026-09-18T02:54:30.000Z",
+    "refreshOrLoginAttempted": false
+  },
+  "ownerAction": "Refresh the existing Vercel CLI authentication for this account. No secret should be sent in chat.",
+  "quality": {
+    "actionsThisRun": 0,
+    "releaseOrHoldChanged": false,
+    "candidateLedgerLockWrites": 0
+  },
+  "externalWrites": 0,
+  "networkRequests": 0,
+  "rootRuntimeEdits": 0,
+  "notificationDecision": "NOTIFY",
+  "reason": "Fresh market and payment observation is blocked by expired authentication and requires owner action."
+}

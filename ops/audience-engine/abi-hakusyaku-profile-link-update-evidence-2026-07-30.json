@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-30T22:51:00+09:00",
-  "status": "PARTIAL_2_OF_4_VERIFIED",
+  "generatedAt": "2026-08-09T13:59:32+09:00",
+  "status": "PARTIAL_3_OF_4_VERIFIED",
   "authorizationTokens": [
     "APPROVE_PROFILE_UPDATE:ABI-HK:instagram:chat-link",
     "APPROVE_PROFILE_UPDATE:ABI-HK:threads:chat-link",
@@ -25,9 +25,11 @@
     },
     {
       "platform": "instagram",
-      "status": "OWNER_MOBILE_APP_ACTION_REQUIRED",
-      "target": "https://www.hakusyaku.xyz/chat?utm_source=instagram&utm_medium=organic_social&utm_campaign=abi_hakusyaku_launch&utm_content=profile",
-      "constraint": "Instagram desktop explicitly limits link editing to the mobile app."
+      "status": "APPLIED_AND_PUBLICLY_VISIBLE",
+      "target": "https://www.hakusyaku.xyz/chat?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+      "verifiedAt": "2026-08-09T13:59:32+09:00",
+      "chatPageRendered": true,
+      "httpStatus": 200
     },
     {
       "platform": "tiktok",
@@ -36,5 +38,5 @@
       "constraint": "The current account's desktop editor exposes no website field; no account-type or identity change was authorized or attempted."
     }
   ],
-  "claimBoundary": "Two verified profile links enable attributable ingress. They do not prove traffic, consultation, demand, payment or revenue."
+  "claimBoundary": "Three verified profile links enable attributable ingress. They do not prove traffic, consultation, demand, payment or revenue."
 }

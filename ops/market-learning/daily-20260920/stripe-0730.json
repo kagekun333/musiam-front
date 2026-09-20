@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-20T07:31:56.501Z",
+  "mode": "READ_ONLY_PRODUCTION",
+  "period": {
+    "startInclusive": "2026-09-09T09:00:00.000Z",
+    "endExclusive": "2026-09-20T07:30:00.000Z",
+    "reportingTimezone": "Asia/Tokyo"
+  },
+  "authorization": "Current owner revenue-first instruction and existing approved read-only production observation",
+  "externalWrites": 0,
+  "secretValuesPersisted": false,
+  "audit": [],
+  "vercel": {
+    "status": "UNAVAILABLE",
+    "reason": "Vercel CLI session unavailable or expired; refresh through official CLI whoami",
+    "values": null
+  },
+  "completedAt": "2026-09-20T07:31:56.501Z"
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-13T07:32:57.874Z",
+  "mode": "READ_ONLY_PRODUCTION",
+  "period": {
+    "startInclusive": "2026-09-09T09:00:00.000Z",
+    "endExclusive": "2026-09-13T07:30:00.000Z",
+    "reportingTimezone": "Asia/Tokyo"
+  },
+  "authorization": "Current owner revenue-first instruction and existing approved read-only production observation",
+  "externalWrites": 0,
+  "secretValuesPersisted": false,
+  "audit": [
+    {
+      "label": "vercel.productionEnvironmentRead",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.STRIPE_SECRET_KEY",
+      "status": 200
+    },
+    {
+      "label": "stripe.account",
+      "status": 200
+    },
+    {
+      "label": "stripe.checkout/sessions.page1",
+      "status": 200
+    },
+    {
+      "label": "stripe.charges.page1",
+      "status": 200
+    },
+    {
+      "label": "stripe.refunds.page1",
+      "status": 200
+    }
+  ],
+  "vercel": {
+    "status": "OBSERVED",
+    "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+    "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+    "cliUserId": "Qk9WttWVSeMQMhegus5WUqfO",
+    "cliAccessExpiresAt": "2026-09-13T09:06:05.000Z",
+    "selectedKeyPresence": {
+      "STRIPE_SECRET_KEY": true
+    }
+  },
+  "stripe": {
+    "status": "OBSERVED",
+    "account": {
+      "id": "acct_1TiAHcPBQWHkgXgQ",
+      "country": "JP",
+      "defaultCurrency": "jpy",
+      "chargesEnabled": true,
+      "payoutsEnabled": true,
+      "businessName": "伯爵MUSIAM",
+      "website": "hakusyaku.xyz"
+    },
+    "scope": "Entire connected Stripe live account. Product mapping is required if any non-MUSIAM payments are present. External store royalties and transfers are outside this source.",
+    "completeness": {
+      "charges": true,
+      "checkoutSessions": true,
+      "refunds": true
+    },
+    "failures": [],
+    "paymentCount": 0,
+    "paymentIntents": [],
+    "currencyCounts": {},
+    "grossPaidJpy": 0,
+    "refundedOnPeriodPaymentsJpy": 0,
+    "netNonRefundedJpy": 0,
+    "successfulRefundsCreatedInPeriod": 0,
+    "refundAmountCreatedInPeriodJpy": 0,
+    "stripeFeesOnPeriodChargesJpy": 0,
+    "checkoutSessionsCreated": 0,
+    "paidCheckoutSessions": 0,
+    "checkoutStateCounts": {
+      "open": 0,
+      "complete": 0,
+      "expired": 0
+    },
+    "orderReferences": [],
+    "grossProfitJpy": null,
+    "customerSatisfaction": null,
+    "fulfillmentCount": null
+  },
+  "completedAt": "2026-09-13T07:33:02.736Z"
+}

@@ -1,0 +1,26 @@
+{
+  "observedAt": "2026-09-20T07:39:24.452933+00:00",
+  "period": {
+    "start": "2026-09-09T09:00:00.000Z",
+    "end": "2026-09-20T07:30:00.000Z"
+  },
+  "mode": "READ_ONLY_PRODUCTION_AGGREGATES",
+  "status": "UNAVAILABLE",
+  "failureStage": "LOCAL_AUTH_PREFLIGHT",
+  "reason": "CLI_SESSION_EXPIRED",
+  "credentialExpiredAt": "2026-09-18T02:54:30.000Z",
+  "funnel": {
+    "status": "UNKNOWN",
+    "metrics": null
+  },
+  "go": {
+    "status": "UNKNOWN",
+    "experiments": null
+  },
+  "audit": [],
+  "providerCalls": 0,
+  "externalWrites": 0,
+  "secretValuesPersisted": false,
+  "commandExitCode": 1,
+  "note": "Wrapper records a preflight failure; no production aggregate request was sent."
+}

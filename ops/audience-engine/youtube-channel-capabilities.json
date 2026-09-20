@@ -1,13 +1,15 @@
 {
   "schemaVersion": 1,
-  "observedAt": "2026-08-07T15:41:00.000Z",
+  "observedAt": "2026-08-09T04:59:32.000Z",
   "channelId": "UCs-YspqTu7jMusNGHpviAxA",
-  "externalLinksClickable": false,
-  "status": "CHANNEL_EXTERNAL_LINK_VERIFICATION_REQUIRED",
+  "externalLinksClickable": true,
+  "status": "CHANNEL_EXTERNAL_LINKS_CLICKABLE_VERIFIED",
   "evidence": {
     "videoId": "AwI-U5PXsHw",
     "exactDescriptionChatUrlPresent": true,
-    "studioMessage": "外部リンクをクリック可能にするには、まず 1 回限りの確認を完了してください。"
+    "studioMessage": "機能が有効になりました",
+    "publicDescriptionAnchorVerified": true,
+    "publicDescriptionAnchorTarget": "https://www.hakusyaku.xyz/chat?intent=music-work&work=ENA&workId=spotify-single-5bIfjfVK9QwHfu1NzNc94M&utm_source=youtube&utm_medium=organic_social&utm_campaign=daily_music_to_metal&utm_content=DMR-20260805-4531782f-youtube"
   },
-  "humanGate": "YouTubeが要求する本人側の1回限りの確認を完了し、公開動画上で外部リンクがクリック可能であることを再確認する"
+  "humanGate": null
 }

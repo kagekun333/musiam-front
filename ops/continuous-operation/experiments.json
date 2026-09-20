@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-20T07:39:24.452933+00:00",
+  "principle": "LIVE_OBSERVATION means public measurement is available from Day 0, not verified human exposure. Human, purchase, revenue and repeat-visit metrics remain null until independently observed.",
+  "operatingSummary": {
+    "active": 6,
+    "completed": 0,
+    "keep": 0,
+    "iterate": 0,
+    "killed": 0,
+    "inconclusive": 6,
+    "prepared": 0,
+    "scope": "Market experiments only. A separate prepublication channel-path feasibility test was rejected.",
+    "prepublicationPathsKilled": 1,
+    "marketExperimentConclusion": "Recorded visits14: Direct4/YouTube9/Threads1; measured go activations4 unchanged; external Chat0 after OWNER-QA exclusion. All channel/creative conclusions remain inconclusive.",
+    "operationalDecisions": {
+      "keep": "Traceable organic placements and go measurement",
+      "iterate": "E4 first starter carrying the post request is live",
+      "kill": "No additional live experiment killed"
+    }
+  },
+  "experiments": [
+    {
+      "id": "EXP-2026-09-FREE-CONVERSATION-LEARNING",
+      "status": "LIVE_OBSERVATION",
+      "purpose": "Make the 伯爵 conversation a return-worthy free experience before asking for commerce.",
+      "hypothesis": "An optional feedback prompt after five turns can provide a revisit-intent signal without turning a refusal into a sales prompt.",
+      "target": "Visitors who voluntarily reach five chat turns; no traffic or human sample has yet been observed.",
+      "change": "Use the implemented optional post-five-turn feedback surface; keep free conversation separate from verified commerce facts.",
+      "primaryMetric": "Optional post-five-turn feedback: revisit or neutral",
+      "safetyMetric": "Explicit sales opt-out stops commercial CTA. No-current-purchase intent permits paced contextual value after conversation, not compulsory or repeated pitches. Honor no-link/no-button and no-search instructions; never invent product facts.",
+      "startAt": "2026-09-09T09:00:00.000Z",
+      "result": "Raw Day0 has one 5+ turn conversation and three recommendations, explicitly confirmed by owner as self-QA. Eligible external observed Chat starts/3+/5+/recommendations remain0; independent-human sample unknown.",
+      "n": 0,
+      "conclusion": null,
+      "next": "Observe only after voluntary external use; use the lightweight blinded review separately for naturalness, trust and understanding."
+    },
+    {
+      "id": "EXP-2026-09-E1-RAIN-STORY-CHAT-ENTRY",
+      "status": "EXPOSED_OBSERVING",
+      "purpose": "Attract people who want a small story experience to start a voluntary 伯爵 conversation.",
+      "hypothesis": "A short rain-story invitation with one Chat CTA can produce an attributed voluntary Chat start among people who want a short story.",
+      "target": "Organic Threads readers; independent human exposure is still unknown.",
+      "change": "One existing-artistic-world text invitation was published; actual UTM destination was clicked and reached. No first-turn Chat content was changed.",
+      "primaryMetric": "Attributed visits and chat starts from the actual published E1 UTM link; impressions and clicks only when the social surface provides observable counts.",
+      "safetyMetric": "No paid promotion, no false product promise, no inferred impressions or clicks, and self-QA traffic excluded.",
+      "startAt": "2026-09-09T16:50:01.312916+00:00",
+      "result": "24h-window observation at 21:43:10Z: Threads views74/replies0; one attributed visit remains owner-possible, attributed Chat0. No causal content verdict or verified human acquisition.",
+      "n": null,
+      "conclusion": null,
+      "next": "Continue to the first scheduled observation after the 72h deadline; preserve exact lag and unknown direct-link click counts. Other experiments continue independently.",
+      "publicationUrl": "https://www.threads.com/@abi_hakusyaku/post/DdEutRBkh8s",
+      "publicationEvidence": "ops/market-learning/e1-threads-2026-09-09.json",
+      "reviewWindows": [
+        {
+          "dueAt": "2026-09-10T16:50:01.312916Z",
+          "label": "24h",
+          "status": "OBSERVED_INCONCLUSIVE",
+          "observedAt": "2026-09-10T21:43:10+00:00",
+          "observationLagSeconds": 17588.687084,
+          "evidence": "ops/simulation-refinement/e1-mature-platform-observation-20260910.json"
+        },
+        {
+          "dueAt": "2026-09-12T16:50:01.312916Z",
+          "label": "72h",
+          "status": "PARTIAL_SITE_OBSERVED_PLATFORM_UNKNOWN",
+          "observedAt": "2026-09-13T07:33:59.799Z",
+          "observationLagSeconds": 53038.486084,
+          "evidence": "ops/market-learning/daily-20260913/observation-0730.json",
+          "siteEvidence": "ops/market-learning/daily-20260913/market-0730.json",
+          "siteObservedThrough": "2026-09-13T07:30:00.000Z",
+          "platformStatus": "UNKNOWN: native Mac locked and browser dashboard navigation timed out; platform not refreshed",
+          "conclusion": "INCONCLUSIVE; no causal or human acquisition inference"
+        }
+      ],
+      "ownerQaCaveat": "Known owner clicked the post link once; do not treat the one anonymous visit as independent human acquisition. No raw event is deleted or relabeled without provenance.",
+      "latestDistributionEvidence": "ops/market-learning/market-distribution-next-20260910.json",
+      "ctaMeasurement": "HISTORICAL_AND_CURRENT_DIRECT_LINK_CLICKS_UNKNOWN"
+    },
+    {
+      "id": "EXP-2026-09-THREE-SCENES-RETURN",
+      "status": "LIVE_OBSERVATION",
+      "purpose": "Test a small reason to revisit using the existing three-scenes bookmark, without building a membership system.",
+      "hypothesis": "Visitors who voluntarily retain a three-scenes selection will have a measurable later return signal or continuation intent.",
+      "target": "Visitors who complete the existing three-scenes experience; human sample is currently null.",
+      "change": "Use the existing optional local bookmark and compare only observed return or continuation signals after a future Day 0 baseline exists.",
+      "primaryMetric": "Optional post-five-turn feedback: revisit or neutral; recommendation feedback: useful or not_for_me",
+      "safetyMetric": "No claim of new daily photos, no personal-data requirement, and local memory/deletion controls remain visible.",
+      "startAt": "2026-09-09T09:00:00.000Z",
+      "result": "Raw Day0 has one 5+ turn conversation and three recommendations, explicitly confirmed by owner as self-QA. Eligible external observed Chat starts/3+/5+/recommendations remain0; independent-human sample unknown.",
+      "n": 0,
+      "conclusion": null,
+      "next": "Observe only after voluntary external use; do not infer retention from the zero-exposure baseline."
+    },
+    {
+      "id": "EXP-2026-09-E3-THREADS-QUIET-MUSIC-CHAT-ENTRY",
+      "status": "EXPOSED_OBSERVING",
+      "purpose": "Compare quiet-music invitation creative with E1 rain-story invitation within Threads",
+      "hypothesis": "A concrete no-vocals evening music request can bring voluntary Chat starts",
+      "target": "Organic Threads readers; independent human exposure unknown",
+      "change": "One text post, one Chat UTM CTA. Deterministic no-vocals/refusal false-positive was fixed before publication. No market quality conclusion from preflight.",
+      "primaryMetric": "E3-attributed visits, Chat starts and 3+ turns; platform views separately",
+      "safetyMetric": "No paid promotion, no false product promise, QA excluded, explicit refusal remains respected",
+      "startAt": "2026-09-10T07:46:26Z",
+      "startAtMeaning": "First verified public observation; exact platform publication timestamp not exposed",
+      "result": "24h observation: views7/replies0; no attributed site visits through10:22Z. Independent human exposure and creative effect unknown.",
+      "n": null,
+      "conclusion": null,
+      "next": "Compare with published same-creative YouTube E2 as a non-randomized channel test; observe24h/72h",
+      "publicationUrl": "https://www.threads.com/@abi_hakusyaku/post/DdGVJPZkj_J",
+      "publicationEvidence": "ops/market-learning/e3-threads-20260910.json",
+      "reviewWindows": [
+        {
+          "label": "24h",
+          "dueAt": "2026-09-11T07:46:26+00:00",
+          "basis": "first verified public timestamp",
+          "status": "OBSERVED_INCONCLUSIVE",
+          "observedAt": "2026-09-11T10:23:17.284Z",
+          "observationLagSeconds": 9411.284,
+          "evidence": "ops/market-learning/daily-20260911/platform-observations.json",
+          "siteEvidence": "ops/market-learning/daily-20260911/market-measurements.json",
+          "siteObservedThrough": "2026-09-11T10:22:00.000Z"
+        },
+        {
+          "label": "72h",
+          "dueAt": "2026-09-13T07:46:26+00:00",
+          "basis": "first verified public timestamp"
+        }
+      ],
+      "ctaMeasurement": "DIRECT_LINK_CLICKS_UNKNOWN",
+      "latestSiteEvidence": "ops/market-learning/daily-20260911/market-measurements.json"
+    },
+    {
+      "id": "EXP-2026-09-E2-YOUTUBE-QUIET-MUSIC-CHAT-ENTRY",
+      "status": "EXPOSED_OBSERVING",
+      "purpose": "Learn channel distribution using the same quiet-music creative as Threads E3",
+      "hypothesis": "An existing YouTube native text post with a currently clickable Chat link may reach voluntary Chat visitors better than the Threads placement",
+      "testAxis": "distribution_channel",
+      "creativeControl": "Exact E3 text excluding UTM channel/campaign; SHA256 equality recorded",
+      "comparisonCaveat": "Different readers and publication times; non-randomized directional comparison",
+      "primaryMetric": "Attributed site visits, Chat starts and 3+ turns; platform reach only when exposed",
+      "safetyMetric": "One CTA, zero ad spend, no private-data upload, no DM, owner QA excluded",
+      "startAt": "2026-09-10T08:50:04.122560+00:00",
+      "startAtMeaning": "First recorded UTC following public detail UI verification; exact server publication timestamp not exposed",
+      "publicationUrl": "https://www.youtube.com/post/UgkxsqcfIvjn49tbE15ogVBnkiepUsd6xi3I",
+      "publicationEvidence": "ops/market-learning/e2-youtube-20260910.json",
+      "result": "24h observation: comments0; platform reach/views unknown. Attributed visits5, measured CTA activations2, external Chat0 through10:22Z; no new attributed events. Inconclusive.",
+      "n": null,
+      "conclusion": null,
+      "next": "Observe E2 against E4 entry within the same channel/creative; preserve nonrandomized/time/audience caveat; use first daily run after24h/72h",
+      "reviewWindows": [
+        {
+          "label": "24h",
+          "dueAt": "2026-09-11T08:50:04.122560+00:00",
+          "basis": "first verified public timestamp",
+          "status": "OBSERVED_INCONCLUSIVE",
+          "observedAt": "2026-09-11T10:25:24.551Z",
+          "observationLagSeconds": 5720.42844,
+          "evidence": "ops/market-learning/daily-20260911/platform-observations.json",
+          "siteEvidence": "ops/market-learning/daily-20260911/market-measurements.json",
+          "siteObservedThrough": "2026-09-11T10:22:00.000Z"
+        },
+        {
+          "label": "72h",
+          "dueAt": "2026-09-13T08:50:04.122560+00:00",
+          "basis": "first verified public timestamp"
+        }
+      ],
+      "observedBrowserVisits": 5,
+      "observedChatStarts": 0,
+      "latestSiteEvidence": "ops/market-learning/daily-20260911/market-measurements.json",
+      "measuredCtaActivations": 2,
+      "measurementCutover": {
+        "serverTime": null,
+        "operationStartedAt": "2026-09-10T13:03:54.621784Z",
+        "successObservedAt": "2026-09-10T13:04:07.673900Z",
+        "evidence": "ops/market-learning/e2-go-cutover-20260910.json",
+        "boundary": "Overlapping minute is not allocated wholly after cutover; older direct clicks remain unknown"
+      }
+    },
+    {
+      "id": "EXP-2026-09-E4-YOUTUBE-QUIET-MUSIC-GO-ENTRY",
+      "status": "EXPOSED_OBSERVING",
+      "purpose": "Reduce the burden of composing the first message while preserving quiet-music creative and channel",
+      "hypothesis": "A first starter carrying the post request will help visitors start a voluntary Chat",
+      "testAxis": "chat_entry",
+      "creativeControl": "E2 same text excluding CTA destination",
+      "comparisonCaveat": "Sequential publication with different delivery/time/readers; no causal lift claim",
+      "change": "First optional starter on fresh ja E4 entry; no automatic user message or replacement of restored conversation",
+      "startAt": "2026-09-10T13:01:57.477490+00:00",
+      "startAtMeaning": "First actual success observation, server publication time bounded by13:01:36.686278Z and13:01:57.477490Z",
+      "publicationUrl": "https://www.youtube.com/post/Ugkx-4f2pSe40nOGpi6FMsNopvbvs1CJZ0Cf",
+      "publicationEvidence": "ops/market-learning/e4-youtube-entry-20260910.json",
+      "primaryMetric": "Attributed Chat starts and3+ turns, with request clicks and visits as separate descriptive metrics",
+      "safetyMetric": "QA excluded, no PII persisted, no autosend, no false vocal or eligibility claim",
+      "result": "Visits4, go activated requests2, Chat0 through13:07Z. Unknown actors and publication-minute overlap. No effect conclusion.",
+      "observedBrowserVisits": 4,
+      "observedChatStarts": 0,
+      "measuredCtaActivations": 2,
+      "n": null,
+      "conclusion": null,
+      "reviewWindows": [
+        {
+          "label": "24h",
+          "dueAt": "2026-09-11T13:01:57.477490+00:00",
+          "basis": "first success observation",
+          "status": "PARTIAL_SITE_OBSERVED_PLATFORM_UNKNOWN",
+          "observedAt": "2026-09-13T07:33:59.799Z",
+          "observationLagSeconds": 153122.32151,
+          "evidence": "ops/market-learning/daily-20260913/observation-0730.json",
+          "siteEvidence": "ops/market-learning/daily-20260913/market-0730.json",
+          "siteObservedThrough": "2026-09-13T07:30:00.000Z",
+          "platformStatus": "UNKNOWN: native Mac locked and browser dashboard navigation timed out; platform not refreshed",
+          "conclusion": "INCONCLUSIVE; no causal or human acquisition inference"
+        },
+        {
+          "label": "72h",
+          "dueAt": "2026-09-13T13:01:57.477490+00:00",
+          "basis": "first success observation"
+        }
+      ],
+      "latestSiteEvidence": "ops/market-learning/golden-market-after-publication-20260910.json",
+      "freshEntryQa": "ops/market-learning/e4-clean-entry-20260910.json",
+      "next": "Observe real external starts; address concrete friction without waiting for significance; do not publish a duplicate only to get evidence"
+    }
+  ],
+  "latestObservationFile": "ops/market-learning/golden-market-after-publication-20260910.json",
+  "futureSocial": {
+    "E2": "PUBLISHED_VERIFIED_YOUTUBE_NATIVE_TEXT_POST_SAME_E3_CREATIVE",
+    "E3": "PUBLISHED_VERIFIED",
+    "guardrail": "Do not wait for E1 windows to run independent bounded tests; isolate channel versus creative changes.",
+    "E4": "PUBLISHED_VERIFIED_ENTRY_COMPARISON"
+  },
+  "latestObservationNote": "Through13:07Z raw13 visits: E2=5,E4=4,E1=1,direct=3. Known owner QA accounts for sole Chat/3+/5+ and3 recommendations. go counts4 anonymous activated requests, not verified people or exact platform clicks.",
+  "latestSiteObservation": "ops/market-learning/daily-20260913/market-0730.json",
+  "latestDailyObservation": "ops/market-learning/daily-20260913/observation-0730.json",
+  "latestMeasurementAttempt": {
+    "at": "2026-09-20T07:39:24.452933+00:00",
+    "status": "OBSERVATION_BLOCKED_AUTH_EXPIRED",
+    "evidence": "ops/market-learning/daily-20260920/observation-0730.json",
+    "periodRequested": {
+      "start": "2026-09-09T09:00:00.000Z",
+      "end": "2026-09-20T07:30:00.000Z"
+    },
+    "latestMetrics": {
+      "visits": null,
+      "externalChatStarts": null,
+      "externalThreePlus": null,
+      "externalFivePlus": null,
+      "externalRecommendations": null,
+      "productInterest": null,
+      "payments": null,
+      "repeat": null,
+      "netNonRefundedJpy": null,
+      "verifiedIndependentHumans": null
+    },
+    "lastSuccessfulObservedThrough": "2026-09-13T07:30:00.000Z",
+    "ownerAction": "Refresh the existing Vercel CLI authentication for this account. No secret should be sent in chat."
+  }
+}

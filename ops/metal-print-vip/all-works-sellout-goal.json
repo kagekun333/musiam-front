@@ -3,7 +3,11 @@
   "goalId": "all-works-metal-print-sellout",
   "status": "ACTIVE",
   "catalogSource": "public/works/works.json",
-  "scope": "ALL_CANONICAL_WORKS_DYNAMIC",
+  "scope": "ALL_CANONICAL_MUSIC_WORKS_DYNAMIC",
+  "catalogFilter": {
+    "field": "type",
+    "equals": "music"
+  },
   "offer": {
     "currency": "JPY",
     "unitPriceYen": 330000,
@@ -15,7 +19,7 @@
     "rule": "This is a recurring minimum quota, not the terminal goal."
   },
   "terminalGoal": {
-    "rule": "Every work in the canonical catalog must become truthfully sellable and all three numbered units per work must be sold, paid, fulfilled and non-refunded.",
+    "rule": "Every music work in the canonical catalog must become truthfully sellable and all three numbered units per work must be sold, paid, fulfilled and non-refunded. Books are excluded.",
     "dynamicCatalog": true
   },
   "acquisition": {

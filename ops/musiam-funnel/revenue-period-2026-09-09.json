@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-09T06:23:08.202Z",
+  "mode": "READ_ONLY_PRODUCTION",
+  "period": {
+    "startInclusive": "2026-08-31T15:00:00.000Z",
+    "endExclusive": "2026-09-09T06:22:57.447Z",
+    "reportingTimezone": "Asia/Tokyo"
+  },
+  "authorization": "Current owner revenue-first instruction and existing approved read-only production observation",
+  "externalWrites": 0,
+  "secretValuesPersisted": false,
+  "audit": [
+    {
+      "label": "vercel.productionEnvironmentRead",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.KV_REST_API_TOKEN",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.KV_REST_API_READ_ONLY_TOKEN",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.KV_REST_API_URL",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.STRIPE_SECRET_KEY",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.NEXT_PUBLIC_POSTHOG_KEY",
+      "status": 200
+    },
+    {
+      "label": "vercel.decrypt.NEXT_PUBLIC_POSTHOG_HOST",
+      "status": 200
+    },
+    {
+      "label": "stripe.account",
+      "status": 200
+    },
+    {
+      "label": "stripe.refunds.page1",
+      "status": 200
+    },
+    {
+      "label": "redis.HLEN.metal-print:payments",
+      "status": 200
+    },
+    {
+      "label": "stripe.charges.page1",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "stripe.checkout/sessions.page1",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZCOUNT.chat-sales:funnel",
+      "status": 200
+    },
+    {
+      "label": "redis.ZRANGE.metal-print:consultations",
+      "status": 200
+    },
+    {
+      "label": "redis.ZRANGE.metal-print:consultations",
+      "status": 200
+    }
+  ],
+  "vercel": {
+    "status": "OBSERVED",
+    "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+    "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+    "cliUserId": "Qk9WttWVSeMQMhegus5WUqfO",
+    "cliAccessExpiresAt": "2026-09-09T13:49:50.000Z",
+    "selectedKeyPresence": {
+      "STRIPE_SECRET_KEY": true,
+      "KV_REST_API_URL": true,
+      "KV_REST_API_READ_ONLY_TOKEN": true,
+      "KV_REST_API_TOKEN": true,
+      "UPSTASH_REDIS_REST_URL": false,
+      "UPSTASH_REDIS_REST_TOKEN": false,
+      "NEXT_PUBLIC_POSTHOG_HOST": true,
+      "NEXT_PUBLIC_POSTHOG_KEY": true
+    }
+  },
+  "stripe": {
+    "status": "OBSERVED",
+    "account": {
+      "id": "acct_1TiAHcPBQWHkgXgQ",
+      "country": "JP",
+      "defaultCurrency": "jpy",
+      "chargesEnabled": true,
+      "payoutsEnabled": true,
+      "businessName": "伯爵MUSIAM",
+      "website": "hakusyaku.xyz"
+    },
+    "scope": "Entire connected Stripe live account. Product mapping is required if any non-MUSIAM payments are present. External store royalties and transfers are outside this source.",
+    "completeness": {
+      "charges": true,
+      "checkoutSessions": true,
+      "refunds": true
+    },
+    "failures": [],
+    "paymentCount": 0,
+    "paymentIntents": [],
+    "currencyCounts": {},
+    "grossPaidJpy": 0,
+    "refundedOnPeriodPaymentsJpy": 0,
+    "netNonRefundedJpy": 0,
+    "successfulRefundsCreatedInPeriod": 0,
+    "refundAmountCreatedInPeriodJpy": 0,
+    "stripeFeesOnPeriodChargesJpy": 0,
+    "checkoutSessionsCreated": 5,
+    "paidCheckoutSessions": 0,
+    "checkoutStateCounts": {
+      "open": 1,
+      "complete": 0,
+      "expired": 4
+    },
+    "orderReferences": [],
+    "grossProfitJpy": null,
+    "customerSatisfaction": null,
+    "fulfillmentCount": null
+  },
+  "posthog": {
+    "status": "UNAVAILABLE",
+    "reason": "Prior projects and identity reads returned 403 permission_denied; no identical retry without changed credentials or permissions",
+    "values": null
+  },
+  "redis": {
+    "status": "OBSERVED",
+    "readOnlyCredentialUsed": true,
+    "durableMetalPaymentRecordsInPeriod": 0,
+    "metalGrossPaidJpy": 0,
+    "fulfilledMetalOrdersFromPeriodPayments": 0,
+    "salesSessionsByLastEventTime": {
+      "sales_session_opened": 0,
+      "sales_first_message": 0,
+      "sales_qualification_progressed": 0,
+      "sales_offer_presented": 0,
+      "sales_quote_presented": 0,
+      "sales_quote_clicked": 0,
+      "sales_quote_submitted": 0,
+      "sales_quote_contact_verified": 0,
+      "sales_checkout_presented": 0,
+      "sales_checkout_clicked": 0
+    },
+    "metalConsultationsCreatedInPeriod": 0,
+    "verifiedQualifiedMetalCustomers": 0,
+    "explicitMetalPurchaseIntent": 0,
+    "boundary": "Metal-only durable ledger and available consultation records. Expired records may no longer exist. Sorted-set counts use the last event timestamp per session. Empty namespaces can also mean undeployed instrumentation; they do not establish whole-business zero."
+  },
+  "completedAt": "2026-09-09T06:23:22.002Z"
+}
