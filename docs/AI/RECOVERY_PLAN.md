@@ -51,3 +51,9 @@ R0履歴回復後の判定: `HISTORY_RECOVERY=VERIFIED_COPY`。対象HEADの自�
 `RECOVERY_FINAL_INTEGRATION = LOCAL_RECOVERY_INTEGRATED_WITH_KNOWN_BLOCKER`。R0、R1、R2、R3、R4、R6、R7-A、R7-B、R7-C1、R7-C2、R7-D1、R7-D2、HISTORY-DELTAのローカル状態と回帰validatorを統合確認した。R5は`PRESERVE_HOLD / SEPARATE_BUSINESS_SCOPE`のまま別案件である。既存`next/font`のGoogle Fonts DNS取得によりlocal buildはBLOCKEDであり、workaroundやretryは行わない。
 
 Final Integrationはローカル復旧の完了記録であり、production parity、deploy readiness、payment activation、Oracle activation、R2 HOLD解除、R3 candidate採用、R5統合を意味しない。`PRODUCTION_PARITY=UNVERIFIED`を維持する。詳細、validation matrix、root typecheck裁定、known blocker/解消、次Gateは`docs/AI/RECOVERY_FINAL_INTEGRATION.md`をcanonicalとする。
+
+## PRODUCTION-PARITY Gate（2026-09-21 CEST）
+
+`PRODUCTION_PARITY = PARTIAL`、`PRODUCTION_PARITY_STATUS = RC_SOURCE_PROVENANCE_INCOMPLETE`。現行alias `www.hakusyaku.xyz` は Vercel deployment `dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX`（READY）へ向くことをread-onlyで確認した。しかしそのmetadataにGit provider/repository/branch/SHAがなく、`DIRECT_DEPLOY_SOURCE`である。従ってRecovery `3f34aac`とのexact tree diff、production-only変更の採否、migration要否は確定していない。env name contractは`COMPATIBLE_NAMES_ONLY`、local buildは既知の`next/font` DNSにより`BLOCKED_BY_FONT_DNS`、public GET smokeは`PASS_READ_ONLY`である。
+
+このGateはRecovery Final Integrationを再開せず、deploy/push/promote/rollback/merge/source copy/config変更/provider/payment/data操作を行っていない。次の最小Human Gateはreproducibleな現行production source（verified Git SHA又は承認済みimmutable artifact）を確立し、その後に別Unitでexact diffとmerge planだけをレビューすること。詳細は`docs/AI/PRODUCTION_PARITY_RELEASE_CANDIDATE.md`、機械可読recordは`ops/recovery/production-parity-20260921.json`を参照する。

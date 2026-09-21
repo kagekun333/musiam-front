@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-21T20:02:27+02:00",
+  "recovery": {
+    "branch": "recovery/musiam-clean-20260920",
+    "head": "3f34aac3cae09ca0fd46d2d29d99728d77bba167",
+    "state": "RECOVERY_FINAL_INTEGRATION = LOCAL_RECOVERY_INTEGRATED_WITH_KNOWN_BLOCKER_COMMITTED"
+  },
+  "production": {
+    "account": "kagekun333",
+    "team": "hakusyakus-projects",
+    "project": "musiam-front",
+    "deploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+    "deploymentUrl": "https://musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+    "productionAlias": "https://www.hakusyaku.xyz",
+    "aliases": [
+      "www.hakusyaku.xyz",
+      "hakusyaku.xyz",
+      "musiam-front.vercel.app",
+      "musiam-front-hakusyakus-projects.vercel.app"
+    ],
+    "createdAtEpochMs": 1790012656242,
+    "state": "READY",
+    "framework": "nextjs",
+    "nodeRuntime": "22.x",
+    "buildUse": "@vercel/vc-build",
+    "buildEvidence": "READY; build duration 3m16s",
+    "sourceProvenance": {
+      "classification": "DIRECT_DEPLOY_SOURCE",
+      "gitProvider": "UNAVAILABLE",
+      "repository": "UNAVAILABLE",
+      "branch": "UNAVAILABLE",
+      "commitSha": null,
+      "commitMessage": "UNAVAILABLE",
+      "evidence": "Current deployment metadata contained no gitSource or Git meta fields. It must not be reconstructed from the current remote main ref or historical deployments."
+    },
+    "rollbackReference": {
+      "currentDeploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "previousReadyProductionDeploymentId": "dpl_6UMKrWmTLWhf8kVHausj7MXDjEsB",
+      "previousReadyProductionUrl": "https://musiam-front-5lzdt4jqu-hakusyakus-projects.vercel.app",
+      "rollbackPerformed": false,
+      "eligibility": "Vercel retains a prior READY production deployment, but rollback eligibility and effect were not exercised."
+    }
+  },
+  "sourceParity": "PARTIAL",
+  "diff": {
+    "available": false,
+    "reason": "No exact production Git SHA or materializable production source tree is available for the current direct deployment.",
+    "changedFileCount": null,
+    "added": null,
+    "modified": null,
+    "deleted": null,
+    "classificationCounts": {
+      "RECOVERY_ONLY_EXPECTED": "UNAVAILABLE_NO_EXACT_PRODUCTION_SOURCE",
+      "PRODUCTION_ONLY_VALID": "UNAVAILABLE_NO_EXACT_PRODUCTION_SOURCE",
+      "SUPERSEDED_BY_RECOVERY": "UNAVAILABLE_NO_EXACT_PRODUCTION_SOURCE",
+      "CONFLICT": "UNAVAILABLE_NO_EXACT_PRODUCTION_SOURCE",
+      "UNKNOWN": "UNAVAILABLE_NO_EXACT_PRODUCTION_SOURCE"
+    }
+  },
+  "highRiskReview": {
+    "status": "ARTIFACT_AND_RUNTIME_FINGERPRINT_ONLY",
+    "productionBuildOutputObserved": [
+      "api/chat-experience-v3",
+      "api/chat-history",
+      "api/chat-reco",
+      "api/metal-print/checkout",
+      "api/metal-print/consultation",
+      "api/metal-print/webhook",
+      "api/todays-pick",
+      "api/cron/daily-oracle",
+      "oracle"
+    ],
+    "recoveryInvariantsConfirmedLocally": [
+      "works.json primary master and stable identity merge",
+      "active /api/chat-experience-v3 with stable workId cards",
+      "history != entitlement",
+      "R7-C2 remains BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+      "Oracle remains ORACLE_INACTIVE_BY_DESIGN",
+      "R2 HOLD, R3 preserved candidate, and R5 separate scope"
+    ],
+    "sourceLevelClassifications": "UNKNOWN: direct deployment artifacts and public fingerprints do not prove file content or adoption priority."
+  },
+  "environmentContract": {
+    "classification": "ENV_CONTRACT_COMPATIBLE_NAMES_ONLY",
+    "productionObservedNameCount": 18,
+    "requiredActivePathGroups": [
+      {
+        "name": "site-url",
+        "requiredNames": ["NEXT_PUBLIC_SITE_URL"],
+        "status": "PRESENT"
+      },
+      {
+        "name": "llm-provider",
+        "requiredNames": ["OPENROUTER_API_KEY", "GROQ_API_KEY"],
+        "status": "PRESENT_BOTH_FALLBACKS"
+      },
+      {
+        "name": "chat-history-and-operations-redis",
+        "requiredNames": ["KV_REST_API_URL", "KV_REST_API_TOKEN"],
+        "alternateNames": ["UPSTASH_REDIS_REST_URL", "UPSTASH_REDIS_REST_TOKEN"],
+        "status": "PRESENT_VIA_KV_ALIASES"
+      },
+      {
+        "name": "scheduled-metal-print-ops",
+        "requiredNames": ["CRON_SECRET"],
+        "status": "PRESENT"
+      }
+    ],
+    "requiredNameCount": 6,
+    "missingRequiredGroupCount": 0,
+    "requiredForOptionalFeaturePresent": [
+      "EMAIL_FROM",
+      "RESEND_API_KEY",
+      "METAL_PRINT_OPS_ALERT_EMAIL",
+      "METAL_PRINT_IDENTITY_SECRET",
+      "STRIPE_SECRET_KEY",
+      "STRIPE_METAL_PRINT_WEBHOOK_SECRET",
+      "NEXT_PUBLIC_POSTHOG_KEY",
+      "NEXT_PUBLIC_POSTHOG_HOST"
+    ],
+    "notRequiredForActivePath": [
+      "UPSTASH_REDIS_REST_URL",
+      "UPSTASH_REDIS_REST_TOKEN",
+      "STRIPE_ORACLE_PRICE_ID",
+      "NEXT_PUBLIC_VAPID_PUBLIC_KEY",
+      "VAPID_PRIVATE_KEY",
+      "VAPID_PUBLIC_KEY",
+      "VAPID_SUBJECT",
+      "ANTHROPIC_API_KEY",
+      "ANTHROPIC_MODEL",
+      "METAL_PRINT_EVIDENCE_HMAC_SECRET"
+    ],
+    "valueVerification": "NOT_PERFORMED: names and production targets only; no environment value was read, decrypted, or compared."
+  },
+  "dependencyRuntimeComparison": {
+    "recovery": {
+      "next": "15.5.12",
+      "react": "19.2.0",
+      "packageManager": "pnpm lockfile v9; package.json does not declare packageManager",
+      "nodeExpectation": "not declared"
+    },
+    "production": {
+      "framework": "nextjs",
+      "nodeRuntime": "22.x",
+      "packageDependencyTree": "UNKNOWN_DIRECT_DEPLOY_SOURCE"
+    },
+    "classification": "PARTIAL_RUNTIME_COMPATIBILITY_ONLY"
+  },
+  "buildCompatibility": {
+    "classification": "BLOCKED_BY_FONT_DNS",
+    "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+    "attempts": 1,
+    "result": "next/font could not resolve fonts.googleapis.com for Cinzel, EB Garamond, Inter, and Noto Serif JP; no workaround or rerun was made."
+  },
+  "runtimeSmoke": {
+    "classification": "PASS_READ_ONLY",
+    "routes": [
+      { "requested": "/", "status": 200, "finalPath": "/" },
+      { "requested": "/exhibition", "status": 200, "finalPath": "/works" },
+      { "requested": "/chat", "status": 200, "finalPath": "/chat" },
+      { "requested": "/letters", "status": 200, "finalPath": "/letters" },
+      { "requested": "/classic", "status": 200, "finalPath": "/classic" }
+    ],
+    "limitations": "HTTP status, redirect, and public title only. No Chat/API message, provider, payment, Redis, database, or customer-flow action was invoked."
+  },
+  "migration": {
+    "classification": "UNKNOWN",
+    "reason": "Current production source cannot be inspected as an exact tree; no migration was run."
+  },
+  "releaseCandidateDecision": "RC_SOURCE_PROVENANCE_INCOMPLETE",
+  "productionParity": "PARTIAL",
+  "operations": {
+    "deployPerformed": false,
+    "pushPerformed": false,
+    "productionMutations": 0,
+    "providerPaymentDataOperations": 0,
+    "networkCalls": [
+      "Vercel account and deployment inspection",
+      "Vercel production environment name/target listing",
+      "Git remote main reference listing",
+      "public HTTPS HEAD/GET smoke for five pages",
+      "one permitted local next/font Google Fonts build attempt"
+    ]
+  },
+  "truthBoundary": [
+    "production alias != source proof",
+    "deployment READY != Recovery compatibility",
+    "env name present != env value correct",
+    "historical deploy != current deployment",
+    "runtime fingerprint != exact source",
+    "source match != data parity",
+    "local build != production build",
+    "production build != current Recovery build",
+    "public HTTP 200 != business correctness",
+    "test != customer",
+    "payment path exists != payment verified",
+    "recovered != deployed"
+  ]
+}
