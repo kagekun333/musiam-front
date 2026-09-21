@@ -115,3 +115,25 @@ analytics availabilityを意味しない。production Chat/Metal Print flowだ�
 `SUPERSEDED_BY_RECOVERY`へ裁定し、remaining conflictは9件。Vercel CLI 59.23.2 internal collectorは
 保存production manifestを3150/3150 tupleで再現した固定snapshot用としてACCEPTし、internal APIゆえ
 version-boundであることを記録する。次GateはM1/M2と**9 conflicts**のRC Assembly reviewのみ。
+
+### RC-ASSEMBLY-REVIEW（2026-09-22 CEST）
+
+`RC_ASSEMBLY_REVIEW = READY_WITH_OWNER_DECISIONS`。Recovery
+`86356c80c84efb7f1650465f8b1ea35c6d064e86` をRC baseとして維持し、M1の13
+Digital Commerce / Delivery pathsは全件 `DEFER_SEPARATE_PRODUCT_GATE`、M2の13
+Privacy / Analytics / Funnel pathsは全件 `ADOPT_WITH_MODIFICATION` と裁定した。
+9 conflictsも全件裁定済みで、catalog-counts、LLM router、shop configはRecoveryを維持する。
+
+M2はDNT/GPC/local opt-out、bounded schema、aggregate storage、provider/storage
+fail-closedを保つ統合候補だが、privacy owner decisionなしには採用しない。M1は全releaseの
+`approvedAt: null`を含むfail-closed sourceであり、Payment Linkの存在はpayment、delivery、
+customer useの証拠ではない。M1/D1/D2はR7-C2を有効化せず、`history != entitlement` と
+`PAID_CONTINUATION_NOT_ACTIVATED` を維持する。
+
+このsub-Gateではapplication code変更、production source copy、merge、RC assembly、deploy、
+push、provider/payment/data operation、secret access、migrationをいずれも行っていない。
+exact decisions、adoption units、dependency graph、env-name dependencies、migration
+requirements、owner choicesは `ops/recovery/rc-assembly-plan-20260921.json`、human reviewは
+`docs/AI/RC_ASSEMBLY_REVIEW.md` をcanonicalとする。次の最小Gateはownerが選ぶA1-A3
+Privacy adoption、D1/D2 Digital Product Gate、又はRecovery-only RC assemblyのいずれかであり、
+このreview自身はRCをassembledとは記録しない。

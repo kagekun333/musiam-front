@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "rc-assembly-review/v1",
+  "reviewedAt": "2026-09-22T00:00:00+02:00",
+  "baseHead": "86356c80c84efb7f1650465f8b1ea35c6d064e86",
+  "baseBranch": "recovery/musiam-clean-20260920",
+  "productionDeployment": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+  "sourceAuthority": "preserved deployment input manifest sha256 1a4ee637d55be29b4f7307daa10e9d9fc0ac7b36348337300ed34aa0c126af0b",
+  "status": "READY_WITH_OWNER_DECISIONS",
+  "assemblyReady": false,
+  "applicationChangesPerformed": false,
+  "sourceCopiedIntoRecovery": false,
+  "mergePerformed": false,
+  "deployPerformed": false,
+  "pushPerformed": false,
+  "providerPaymentDataOperations": 0,
+  "secretsAccessed": 0,
+  "invariants": [
+    "R7-A stable-ID canonical catalog projection remains authoritative",
+    "R7-B active Chat v3 core remains authoritative",
+    "R7-C1 history is not entitlement",
+    "R7-C2 is BLOCKED_PRODUCT_CONTRACT and PAID_CONTINUATION_NOT_ACTIVATED",
+    "R1 Metal Print webhook identity boundary remains authoritative",
+    "R7-D1/R7-D2 remain authoritative and Oracle is inactive by design"
+  ],
+  "m1": {
+    "name": "Digital Commerce / Delivery Preservation",
+    "reviewedCount": 13,
+    "decisionCounts": {"ADOPT_IN_RC": 0, "ADOPT_WITH_MODIFICATION": 0, "KEEP_RECOVERY": 0, "DEFER_SEPARATE_PRODUCT_GATE": 13, "REJECT_PRODUCTION_VERSION": 0, "NEEDS_OWNER_DECISION": 0, "NEEDS_ASTRA_REVIEW": 0},
+    "productTruth": {"productDefinitionExists": true, "checkoutRouteExists": true, "hostedPaymentLinksExist": true, "orderSchemaExists": true, "deliveryReleaseExists": true, "approvalGateExists": true, "paymentVerified": "UNKNOWN", "deliveryCompleted": "UNKNOWN", "customerUsed": "UNKNOWN"},
+    "paths": [
+      {"path":"src/app/api/shop/checkout/route.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Same-site, rate-limited checkout creation calls Stripe and depends on an approved release, Redis and payment metadata."},
+      {"path":"src/app/api/shop/download/route.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Payment-gated redirect exposes delivery only after order-state verification; delivery target and entitlement semantics need review."},
+      {"path":"src/app/api/shop/order/route.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Order status is browser-nonce scoped and backed by Redis/Stripe; no deployed-state assertion is available."},
+      {"path":"src/app/shop/[productId]/page.tsx","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Presentation makes receipt and Drive-delivery assertions that require product, terms and fulfillment approval."},
+      {"path":"src/app/shop/digital-shop.css","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Styles are coupled exclusively to deferred digital shop routes."},
+      {"path":"src/app/shop/DigitalCheckoutButton.tsx","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Starts route checkout or follows legacy hosted links; no legacy link is evidence of payment or delivery."},
+      {"path":"src/app/shop/order/OrderReceipt.tsx","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Claims payment confirmation and delivery access, requiring end-to-end product acceptance."},
+      {"path":"src/app/shop/order/page.tsx","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Receipt route is inseparable from the deferred order contract."},
+      {"path":"src/lib/digital-delivery-releases.server.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"All releases have approvedAt null; source is intentionally fail-closed, not active delivery authority."},
+      {"path":"src/lib/digital-order.server.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Uses Stripe secret and Redis plus live payment-link/price verification; values and provider health were not inspected."},
+      {"path":"src/lib/digital-order.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Defines payment/order validation and delivery approval contract for the deferred flow."},
+      {"path":"src/lib/digital-products.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Defines products, legacy hosted links and delivery hold; cannot establish active products or terms from source bytes."},
+      {"path":"src/lib/same-site-request.server.ts","decision":"DEFER_SEPARATE_PRODUCT_GATE","reason":"Origin allowlist is security-critical shared checkout infrastructure and must be adopted with its callers."}
+    ]
+  },
+  "m2": {
+    "name": "Privacy / Analytics / Funnel Preservation",
+    "reviewedCount": 13,
+    "decisionCounts": {"ADOPT_IN_RC": 0, "ADOPT_WITH_MODIFICATION": 13, "KEEP_RECOVERY": 0, "DEFER_SEPARATE_PRODUCT_GATE": 0, "REJECT_PRODUCTION_VERSION": 0, "NEEDS_OWNER_DECISION": 0, "NEEDS_ASTRA_REVIEW": 0},
+    "privacyTruth": {"analyticsCodeExists": true, "browserInitExists": true, "consentRespectedInSource": true, "dntAndGpcRespectedInSource": true, "eventSchemaBounded": true, "aggregateStorageExists": true, "providerConfigured": "UNKNOWN", "providerAvailable": "UNKNOWN", "eventsReceived": "UNKNOWN"},
+    "paths": [
+      {"path":"src/app/api/musiam-funnel/event/route.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Bounded anonymous event route needs current rate/origin compatibility verification."},
+      {"path":"src/app/api/musiam-funnel/report/route.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"CRON_SECRET-protected reporting must remain unavailable without configured authorization."},
+      {"path":"src/app/api/musiam-go/report/route.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Minute aggregate report has Redis and CRON dependency."},
+      {"path":"src/app/go/[experimentId]/route.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Fixed-destination redirect and best-effort aggregate measurement require approved experiment policy."},
+      {"path":"src/app/privacy/page.tsx","decision":"ADOPT_WITH_MODIFICATION","reason":"User notice must be checked against the finally approved collection and retention behavior."},
+      {"path":"src/app/privacy/PrivacyControls.tsx","decision":"ADOPT_WITH_MODIFICATION","reason":"Local opt-out and PostHog opt-out must be mounted with the selected global initializer."},
+      {"path":"src/components/MusiamAnalytics.tsx","decision":"ADOPT_WITH_MODIFICATION","reason":"Single route event bridge is safe only after duplicate Pages/App Router initialization is removed."},
+      {"path":"src/lib/musiam-analytics-client.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Preserves DNT/GPC/local opt-out boundary; event allowlist must be reconciled with active callers."},
+      {"path":"src/lib/musiam-funnel-client.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Anonymous visitor/session storage and batching require consent-surface alignment."},
+      {"path":"src/lib/musiam-funnel.server.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Redis aggregate retention and capacity behavior require storage key/retention assessment."},
+      {"path":"src/lib/musiam-funnel.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Bounded event schema is a privacy boundary and must remain source-owned, not widened by callers."},
+      {"path":"src/lib/musiam-go.server.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Uses aggregate Redis counts with 35-day retention; provider availability is unverified."},
+      {"path":"src/lib/musiam-go.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Fixed experiments and destinations need owner confirmation before public use."}
+    ]
+  },
+  "conflicts": [
+    {"path":"src/app/layout.tsx","decision":"KEEP_RECOVERY","reason":"Recovery footer preserves privacy discoverability; production metadata has historical fixed 350 count and no technical gain."},
+    {"path":"src/app/shop/BuyButton.tsx","decision":"KEEP_RECOVERY","reason":"Recovery checkoutHold prevents unverified purchase guidance; digital buttons await deferred M1."},
+    {"path":"src/app/shop/page.tsx","decision":"KEEP_RECOVERY","reason":"Recovery copy avoids unsupported exclusivity, sales-use and allocation claims."},
+    {"path":"src/components/AnalyticsInit.tsx","decision":"ADOPT_WITH_MODIFICATION","reason":"Replace raw PostHog initializer only as part of approved M2 so DNT/GPC/local opt-out and exactly-once router mounts hold."},
+    {"path":"src/lib/catalog-counts.ts","decision":"KEEP_RECOVERY","reason":"Recovery derives from R7-A canonical projection and returns UNKNOWN; production fixed 359/225/134 fallback is rejected."},
+    {"path":"src/lib/llm-router.ts","decision":"KEEP_RECOVERY","reason":"Recovery fixes ByteString-safe title and retains current provider/model/timeout policy; no provider availability or routing policy is inferred."},
+    {"path":"src/lib/metrics.ts","decision":"ADOPT_WITH_MODIFICATION","reason":"Route events through privacy-safe M2 boundary only; do not make collection a condition of user functionality."},
+    {"path":"src/lib/shop-config.ts","decision":"KEEP_RECOVERY","reason":"Retains checkout holds and avoids production delivery/availability/license promises; does not invent a Chat product."},
+    {"path":"src/pages/_app.tsx","decision":"ADOPT_WITH_MODIFICATION","reason":"Use M2 shared bridge rather than raw dynamic PostHog init; eliminate App/Pages duplication."}
+  ],
+  "adoptionUnits": [
+    {"id":"A1","name":"Privacy-safe analytics foundation","status":"CONDITIONAL_OWNER_GATE","files":["src/lib/musiam-analytics-client.ts","src/lib/musiam-funnel.ts","src/lib/musiam-funnel-client.ts","src/lib/musiam-funnel.server.ts","src/app/api/musiam-funnel/event/route.ts","src/app/api/musiam-funnel/report/route.ts","src/components/MusiamAnalytics.tsx","src/components/AnalyticsInit.tsx","src/lib/metrics.ts"],"activeRoutes":["App Router global layout","Pages Router _app","/api/musiam-funnel/event","/api/musiam-funnel/report"],"envNames":["NEXT_PUBLIC_POSTHOG_KEY","NEXT_PUBLIC_POSTHOG_HOST","KV_REST_API_URL","KV_REST_API_TOKEN","UPSTASH_REDIS_REST_URL","UPSTASH_REDIS_REST_TOKEN","CRON_SECRET"],"redis":"aggregate/retained event storage","payment":"none","validation":"offline unit fixtures for DNT/GPC/opt-out/schema/origin plus typecheck and targeted lint","rollback":"remove whole unit; no data migration","migrationRisk":"REQUIRED_BEFORE_DEPLOY"},
+    {"id":"A2","name":"Privacy notice and router mount integration","status":"CONDITIONAL_OWNER_GATE","files":["src/app/privacy/page.tsx","src/app/privacy/PrivacyControls.tsx","src/app/layout.tsx","src/pages/_app.tsx"],"activeRoutes":["/privacy","all App Router routes","all Pages Router routes"],"envNames":["NEXT_PUBLIC_POSTHOG_KEY","NEXT_PUBLIC_POSTHOG_HOST"],"redis":"none","payment":"none","validation":"manual local router-mount and opt-out contract review; no provider call","rollback":"revert this unit with A1","migrationRisk":"NONE"},
+    {"id":"A3","name":"Bounded go-funnel redirects","status":"CONDITIONAL_OWNER_GATE","files":["src/lib/musiam-go.ts","src/lib/musiam-go.server.ts","src/app/go/[experimentId]/route.ts","src/app/api/musiam-go/report/route.ts"],"activeRoutes":["/go/[experimentId]","/api/musiam-go/report"],"envNames":["KV_REST_API_URL","KV_REST_API_TOKEN","UPSTASH_REDIS_REST_URL","UPSTASH_REDIS_REST_TOKEN","CRON_SECRET"],"redis":"minute aggregate counters, 35-day TTL","payment":"none","validation":"route classification/destination fixtures and report authorization tests","rollback":"remove whole unit; no source migration","migrationRisk":"REQUIRED_BEFORE_DEPLOY"},
+    {"id":"D1","name":"Digital product and delivery contract","status":"DEFERRED_SEPARATE_PRODUCT_GATE","files":["src/lib/digital-products.ts","src/lib/digital-order.ts","src/lib/digital-delivery-releases.server.ts","src/lib/digital-order.server.ts","src/lib/same-site-request.server.ts"],"activeRoutes":[],"envNames":["STRIPE_SECRET_KEY","KV_REST_API_URL","KV_REST_API_TOKEN","UPSTASH_REDIS_REST_URL","UPSTASH_REDIS_REST_TOKEN","VERCEL_PROJECT_PRODUCTION_URL","VERCEL_URL"],"redis":"orders","payment":"Stripe prices/payment links/sessions","validation":"offline fixtures then explicit sandbox payment-to-delivery audit","rollback":"not applicable before adoption","migrationRisk":"REQUIRED_BEFORE_ADOPTION"},
+    {"id":"D2","name":"Digital shop routes and presentation","status":"DEFERRED_SEPARATE_PRODUCT_GATE","files":["src/app/api/shop/checkout/route.ts","src/app/api/shop/order/route.ts","src/app/api/shop/download/route.ts","src/app/shop/[productId]/page.tsx","src/app/shop/DigitalCheckoutButton.tsx","src/app/shop/order/OrderReceipt.tsx","src/app/shop/order/page.tsx","src/app/shop/digital-shop.css","src/app/shop/BuyButton.tsx","src/app/shop/page.tsx","src/lib/shop-config.ts"],"activeRoutes":["/shop/[productId]","/shop/order","/api/shop/checkout","/api/shop/order","/api/shop/download"],"envNames":[],"redis":"depends on D1","payment":"depends on D1","validation":"only after D1 product/terms/fulfillment gate","rollback":"not applicable before adoption","migrationRisk":"REQUIRED_BEFORE_ADOPTION"}
+  ],
+  "rejectedProductionPaths": ["src/lib/catalog-counts.ts","src/lib/llm-router.ts","src/lib/shop-config.ts"],
+  "deferredPaths": ["all 13 M1 production-only paths","src/app/shop/BuyButton.tsx","src/app/shop/page.tsx"],
+  "ownerDecisions": [
+    {"id":"OD1","question":"Adopt M2 first-party privacy/analytics stack for this RC?","choices":["Adopt A1-A3 after privacy notice/legal review","Keep Recovery analytics only and defer A1-A3","Reject analytics/funnel preservation for this RC"],"requiredFor":["A1","A2","A3"]},
+    {"id":"OD2","question":"Adopt digital shop/delivery into this RC?","choices":["Keep D1-D2 deferred","Authorize a separate product gate with canonical products, terms, Stripe sandbox verification and fulfillment proof","Reject the production digital flow"],"requiredFor":["D1","D2"]},
+    {"id":"OD3","question":"What is the RC provider-routing policy?","choices":["Keep Recovery router unchanged","Approve a separately reviewed provider policy","Disable optional remote providers"],"requiredFor":["future llm-router change"]}
+  ],
+  "migrationRequirements": {"database":"UNKNOWN","redis":"REQUIRED_BEFORE_ADOPTION for D1/D2; REQUIRED_BEFORE_DEPLOY for A1/A3","environment":"REQUIRED_BEFORE_DEPLOY presence-only audit","route":"POSSIBLE; collision review before each adoption","catalog":"NONE for this review; R7-A remains authoritative","paymentMetadata":"REQUIRED_BEFORE_ADOPTION for D1/D2","privacyNotice":"REQUIRED_BEFORE_ADOPTION for A1/A2"},
+  "validationPlan": ["validate-rc-assembly-review", "validate-production-vs-recovery-diff", "validate-production-source-provenance", "validate-production-parity-report", "validate-recovery-final-integration", "root typecheck", "targeted lint", "git diff --check"],
+  "truthBoundary": ["source exists != product active","product active != paid","paid != fulfilled","analytics code != analytics receiving data","provider configured != provider healthy","route exists != route publicly used","Payment Link exists != customer payment","production code != owner intent","Recovery authority != deploy approval","assembly plan != assembled RC","assembled RC != production deploy"]
+}
