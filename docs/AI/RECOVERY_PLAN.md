@@ -57,3 +57,19 @@ Final Integrationはローカル復旧の完了記録であり、production pari
 `PRODUCTION_PARITY = PARTIAL`、`PRODUCTION_PARITY_STATUS = RC_SOURCE_PROVENANCE_INCOMPLETE`。現行alias `www.hakusyaku.xyz` は Vercel deployment `dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX`（READY）へ向くことをread-onlyで確認した。しかしそのmetadataにGit provider/repository/branch/SHAがなく、`DIRECT_DEPLOY_SOURCE`である。従ってRecovery `3f34aac`とのexact tree diff、production-only変更の採否、migration要否は確定していない。env name contractは`COMPATIBLE_NAMES_ONLY`、local buildは既知の`next/font` DNSにより`BLOCKED_BY_FONT_DNS`、public GET smokeは`PASS_READ_ONLY`である。
 
 このGateはRecovery Final Integrationを再開せず、deploy/push/promote/rollback/merge/source copy/config変更/provider/payment/data操作を行っていない。次の最小Human Gateはreproducibleな現行production source（verified Git SHA又は承認済みimmutable artifact）を確立し、その後に別Unitでexact diffとmerge planだけをレビューすること。詳細は`docs/AI/PRODUCTION_PARITY_RELEASE_CANDIDATE.md`、機械可読recordは`ops/recovery/production-parity-20260921.json`を参照する。
+
+### Production Source Provenance sub-Gate（2026-09-21 CEST）
+
+`PRODUCTION_SOURCE_PROVENANCE = EXACT_REPRODUCIBLE_SOURCE`。current deployment
+`dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX` のVercel input manifestと、isolated local
+candidateのnon-mutating dry-runが3,150件のrelative path、mode、content IDで
+完全一致した。candidateはoriginal deploy cwdとしては未証明であり、Git SHAも
+ないが、complete included source treeのreproducible identityは確立した。
+
+`PRODUCTION_PARITY = PARTIAL`、`RC_SOURCE_PROVENANCE_INCOMPLETE`、env/value、data、
+provider、payment、production-vs-Recovery diff、merge classification、RC assemblyは
+未実施のままである。historical small webhook-hotfix leadはfull prior-to-current
+deltaの証明ではない。次Gateは **Exact Production vs Recovery Diff / Merge Plan**
+だけであり、本sub-Gateでは開始していない。詳細は
+`docs/AI/PRODUCTION_SOURCE_PROVENANCE.md` と
+`ops/recovery/production-source-provenance-20260921.json` を参照する。

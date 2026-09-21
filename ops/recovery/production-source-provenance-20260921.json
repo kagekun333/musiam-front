@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-21T21:58:09+02:00",
+  "recoveryHead": "9b710384cbcb321bb0dd462c7c104bc18f93f54c",
+  "productionDeploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+  "productionAlias": "https://www.hakusyaku.xyz",
+  "deploymentCreatedAt": "2026-09-21T19:44:16+02:00",
+  "provenanceStatus": "EXACT_REPRODUCIBLE_SOURCE",
+  "originalDeployDirectory": null,
+  "deployDirectoryExists": false,
+  "deploymentCommandEvidence": {
+    "classification": "COMMAND_FOUND_CWD_UNAVAILABLE",
+    "safeCommand": "npx vercel --prod",
+    "exactTimestamp": null,
+    "exactWorkingDirectory": null,
+    "evidence": "Targeted shell history retained the command form but not its cwd or timestamp. It is not used as the exact-source proof."
+  },
+  "workingDirectoryEvidence": "NOT_PROVEN",
+  "baseSourceType": "VERCEL_CURRENT_DEPLOYMENT_INPUT_MANIFEST_MATCHED_LOCAL_TREE",
+  "baseSourcePath": "/private/tmp/musiam-production-hotfix-20260921",
+  "baseGitSha": null,
+  "candidate": {
+    "classification": "EXACT_SOURCE_ARTIFACT_NOT_PROVEN_ORIGINAL_CWD",
+    "exists": true,
+    "gitDirectoryPresent": false,
+    "envFilePresent": false,
+    "linkedVercelProjectName": "musiam-production-hotfix-20260921",
+    "completeness": "The local dry-run reported 3,150 included files and 3 ignored paths. The linked-project name differs from the current deployment project, so this metadata alone cannot prove the cwd."
+  },
+  "candidateManifest": {
+    "isolatedArtifact": "/private/tmp/musiam-production-hotfix-20260921-dry.json",
+    "fileCount": 3150,
+    "totalSize": 236743709,
+    "ignoredCount": 3,
+    "ignoredPaths": [".gitignore", ".vercel", "node_modules"],
+    "sha256": "1a4ee637d55be29b4f7307daa10e9d9fc0ac7b36348337300ed34aa0c126af0b",
+    "hashTuple": "relative path, mode, Vercel dry-run content SHA; sorted and SHA-256 hashed",
+    "sourceCopiedIntoRecovery": false
+  },
+  "currentDeploymentInputManifest": {
+    "isolatedArtifact": "/private/tmp/musiam-current-deployment-files-20260921.json",
+    "sourcePrefix": "src/",
+    "fileCount": 3150,
+    "sha256": "1a4ee637d55be29b4f7307daa10e9d9fc0ac7b36348337300ed34aa0c126af0b",
+    "match": {
+      "pathMatches": 3150,
+      "modeAndContentIdMatches": 3150,
+      "missingCandidatePaths": 0,
+      "mismatchedCandidatePaths": 0
+    },
+    "evidence": "Vercel deployment file metadata has exactly 3,150 source entries below src/. Each content UID and mode equals the candidate dry-run SHA and mode for the same relative path."
+  },
+  "dryRun": {
+    "supported": true,
+    "framework": "nextjs",
+    "includedFileCount": 3150,
+    "contentHashesAvailable": true,
+    "deploymentCreated": false
+  },
+  "buildFingerprint": {
+    "match": true,
+    "evidence": [
+      "build log downloaded 3,150 deployment files",
+      "Next.js 15.5.12",
+      "pnpm lockfile v9 detected; pnpm 10.28.0 used",
+      "1,808 static pages generated",
+      "build completed at 2026-09-21T17:47:19.963Z"
+    ],
+    "limitation": "Fingerprint corroborates the manifest match; the complete source proof is the path/mode/content-ID equality."
+  },
+  "hotfixDelta": {
+    "classification": "FULL_CURRENT_VS_PRIOR_HOTFIX_DELTA_NOT_ESTABLISHED",
+    "historicalLead": "A local recovery helper recorded a prior-deployment patch of the webhook route, webhook identity module, and an offline validator.",
+    "priorDeploymentId": "dpl_6UMKrWmTLWhf8kVHausj7MXDjEsB",
+    "priorToCurrentMetadataComparison": {
+      "added": 1,
+      "modified": 2984,
+      "deleted": 0,
+      "interpretation": "The current source metadata does not support reducing the complete prior-to-current source transition to a two-file claim. No production-vs-Recovery diff was performed."
+    },
+    "runtimeFilesWithEstablishedBytes": [
+      {
+        "path": "src/app/api/metal-print/webhook/route.ts",
+        "preHotfixSha256": "a31737daccf8119b0b7adb664e4ce0d357665b11ef3d1c98ab9d368a532ecce5",
+        "deployedSha256": "058735310546ed7d33afa6be39c99a5d90b7e18975670e3d95c21a2d36d0eef8",
+        "recoveryHeadSha256": "058735310546ed7d33afa6be39c99a5d90b7e18975670e3d95c21a2d36d0eef8"
+      },
+      {
+        "path": "src/lib/metal-print-webhook-identity.ts",
+        "preHotfixSha256": null,
+        "deployedSha256": "5c7418b4defa2c9297a83f20948e615bf1b1151cbc20b03a4103fc7cda730a3c",
+        "recoveryHeadSha256": "5c7418b4defa2c9297a83f20948e615bf1b1151cbc20b03a4103fc7cda730a3c"
+      }
+    ],
+    "offlineValidatorPath": "scripts/validate-metal-print-webhook-routing.ts",
+    "offlineValidatorDeployed": "NOT_PRESENT_IN_CURRENT_CANDIDATE",
+    "exactFullHotfixFileListEstablished": false
+  },
+  "unknownInputs": [],
+  "exactnessCriteria": {
+    "actualDeploymentCwdCommandProven": false,
+    "immutableCurrentProviderInputManifest": true,
+    "completeLocalTreeMatchesProviderManifest": true,
+    "inclusionRulesCapturedByDryRun": true,
+    "noUnknownIncludedSourceInputs": true,
+    "buildFingerprintCorroborates": true,
+    "result": "The current Vercel input manifest is immutable deployment evidence. Its full path/mode/content-ID identity equals the surviving local tree, which is sufficient to reproduce the current production source even though the original cwd and exact command timestamp are unavailable."
+  },
+  "sourceReadyForExactDiff": true,
+  "envRotationReviewRequired": true,
+  "envFilesInspected": false,
+  "secretValuesAccessed": 0,
+  "productionMutationPerformed": false,
+  "deployPerformed": false,
+  "pushPerformed": false,
+  "mergePerformed": false,
+  "providerPaymentDataOperations": 0,
+  "truthBoundary": [
+    "direct deployment metadata without Git SHA is not Git provenance",
+    "the local candidate is exact source artifact, not proven original deploy cwd",
+    "path/mode/content-ID equality proves source equality, not data parity or business correctness",
+    "the historical small-hotfix statement is not a complete current-vs-prior delta proof",
+    "no production-vs-Recovery diff, merge plan, RC assembly, or deployment was started",
+    "no environment value, token, encrypted environment representation, or source file content was recorded"
+  ],
+  "nextGate": "Exact Production vs Recovery Diff / Merge Plan (separate Unit; not started)"
+}
