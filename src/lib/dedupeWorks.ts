@@ -4,7 +4,8 @@
 // で重複登録されており（94件）、SSDマージでさらに増える。データ本体は変更せず、
 // 一覧・件数の表示時にユニーク化することで、全ページの作品数(350=楽曲216+書籍134、2026-05時点)と整合させる。
 //
-// 重複キー: Spotifyアルバム/トラックID があればそれを優先。無ければ「種別::正規化タイトル」。
+// 重複キー: 記録済みのSpotifyアルバム/トラックIDだけを使用する。表示タイトルは
+// 人が見つけるための情報であり、identity proof ではないため重複判定に使わない。
 // 残す代表: slug系ID（spotify-single- / ssd- で始まらないID）を優先し、無ければ既存を維持。
 
 type AnyWork = {
@@ -28,28 +29,18 @@ function extractSpotifyId(w: AnyWork): string | null {
   return m ? m[1] : null;
 }
 
-function normalizeTitle(s?: string): string {
-  return String(s ?? "")
-    .normalize("NFKC")
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .replace(/[「」『』"'""'']/g, "")
-    .replace(/[—–―]/g, "-")
-    .trim();
-}
-
 function dedupeKey(w: AnyWork): string {
   const sid = extractSpotifyId(w);
-  if (sid) return `sp:${sid}`;
-  const t = String(w.type || "").toLowerCase().includes("book") ? "book" : "music-or-other";
-  return `t:${t}::${normalizeTitle(w.title)}`;
+  // A work with no recorded provider identity keeps its canonical work ID.
+  // This preserves distinct same-title records instead of inferring a merge.
+  return sid ? `sp:${sid}` : `id:${String(w.id ?? "")}`;
 }
 
 function isSlugId(id: string): boolean {
   return !!id && !id.startsWith("spotify-single-") && !id.startsWith("ssd-");
 }
 
-/** 同一作品（同一Spotify ID or 同一種別・タイトル）の重複を畳んで1件にする。表示順は維持。 */
+/** 同一作品（同一の記録済みSpotify ID）のみを畳んで1件にする。表示順は維持。 */
 export function dedupeWorks<T extends AnyWork>(works: T[]): T[] {
   const byKey = new Map<string, T>();
   const order: string[] = [];

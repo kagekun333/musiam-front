@@ -18,7 +18,8 @@
 |R7-C1|Chat UI / History / Card Wiring|`RECOVERED`|active v3 response、anonymous history、stable workId card/action、stale/retry guardをlocal fixture/typecheckで確認。`docs/AI/R7C1_CHAT_UI_HISTORY_RECOVERY.md`を参照。15-turn/payment/accessは含まない。|
 |R7-C2|15-turn / paid continuation|`BLOCKED_PRODUCT_CONTRACT` / `PAID_CONTINUATION_NOT_ACTIVATED`|旧dirtyの15-turn/Redis候補は確認したが、Chat継続用のcanonical product、price、Stripe binding、delivery/entitlement意味が成立しない。active routeは20-turn abuse/cost guardのまま。`docs/AI/R7C2_PAID_CONTINUATION_RECOVERY.md`を参照。|
 |R7-D1|Exhibition / Oracle / Omikuji Alignment|`RECOVERED` / local validator PASS|Exhibition は R7-A canonical server projection へ最小 adapter で接続し、全514件の explicit released work を表示対象としてcoverage確認。Oracle / Omikuji は current intentional redirect を維持（`ORACLE_INACTIVE_BY_DESIGN`）。`docs/AI/R7D1_EXHIBITION_ORACLE_RECOVERY.md`を参照。|
-|R7-D2|Realm / Letters / Broadcast / secondary revisit surfaces|`NOT_STARTED`|R7-D1から分離。Home / Realm、Letters、Broadcast、Now Playing等はこのUnitで変更しない。|
+|R7-D2|Realm / Letters / Broadcast / secondary revisit surfaces|`RECOVERED` / local validator PASS|Home / Realm、Letters、Broadcast、Now Playingをinventoryし、title-only display identity fallbackだけをstable work-ID fallbackへ最小修正。historical Letters/Broadcast hunksはcurrent cleanに既存のため非採用。`docs/AI/R7D2_SECONDARY_SURFACES_RECOVERY.md`を参照。|
+|R7-D|Secondary discovery / revisit surfaces|`RECOVERED` / Final Integration pending|R7-D1とR7-D2のlocal gateは完了。次の名前付きGateは`Recovery Final Integration`であり、本Unitでは開始しない。|
 |HISTORY-DELTA|R7-D前のCodex History V2差分監査|`AUDITED_R7D_HANDOFF_REQUIRED`|`docs/AI/HISTORY_DELTA_AUDIT.md`を参照。R7-Dは開始していない。R6 plan rowの旧`UNKNOWN / 作業中`表記はFinal IntegrationでR6 Operational Truthと正規化するhandoffであり、live/provider/current productionの証拠ではない。|
 
 SHARED/高リスク: `public/works/works.json`、`src/app/globals.css`、`src/pages/api/chat-reco.ts`、Metal PrintのStripe/Redis/offer関連、承認・evidence台帳。いずれも本Recoveryでは編集禁止。
