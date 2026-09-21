@@ -73,3 +73,45 @@ deltaの証明ではない。次Gateは **Exact Production vs Recovery Diff / Me
 だけであり、本sub-Gateでは開始していない。詳細は
 `docs/AI/PRODUCTION_SOURCE_PROVENANCE.md` と
 `ops/recovery/production-source-provenance-20260921.json` を参照する。
+
+### Exact Production vs Recovery Diff / Merge Plan（2026-09-21 CEST）
+
+`DIFF_STATUS = RC_BASE_READY_WITH_MERGE_UNITS`。Recovery
+`c76c138f7258096e1a606235e89107782eb1ebc0` をRC baseとして維持し、production
+sourceの一括採用・source copy・merge・RC assembly・deploy・pushは行わない。
+
+保存済みproduction deploy input 3,150件とRecovery deploy input 3,199件を、path・mode・
+content ID単位で比較した。結果は identical 2,987、modified 40、mode-only 1、
+production-only 122、recovery-only 171、total differing paths 334。requested
+`vercel deploy --dry --format=json` はRecoveryがproject-linkedでないため
+`BLOCKED_PROJECT_NOT_LINKED`だが、Vercel CLI 59.23.2のoffline collectorを保存済み
+production dry manifestで校正し、production側3,150件の完全一致を確認した。
+provider mutationは0件である。
+
+全334パスのhash・mode・分類・subsystem・runtime relevance・review status・decision・
+evidenceは `ops/recovery/production-vs-recovery-diff-20260921.json` に保存した。
+application/configurationの156パスは全件review済み。production-onlyの候補は
+M1 Digital Commerce / Delivery PreservationとM2 Privacy / Analytics / Funnel
+Preservationの2 merge unitsに限定し、9 conflictsと8 UNKNOWN operational pathsは
+owner decisionがない限り採用しない。
+
+R7-A、R7-B、R7-C1、R7-D1、R7-D2、R1、ORACLE inactive、およびR7-C2 blocked contractは
+Recovery側canonicalのまま維持する。`R7-C2 = BLOCKED_PRODUCT_CONTRACT`、
+`PAID_CONTINUATION_NOT_ACTIVATED`、`history != entitlement`、
+`chat-analysis = PRESENT_IN_PRESERVATION_ONLY`を継続する。
+
+次の最小Gateは、M1/M2と9 conflictsのRC Assembly reviewだけである。database/env/provider/
+payment/data/customer stateはこの比較からは確定せず、migration assessmentも
+database UNKNOWN、Redis/route/catalog/paymentMetadata POSSIBLEのまま保持する。
+詳細とtruth boundaryは `docs/AI/PRODUCTION_VS_RECOVERY_DIFF_MERGE_PLAN.md`、機械可読
+recordは上記JSON、validatorは `scripts/validate-production-vs-recovery-diff.ts` を参照する。
+
+Terra semantic decision auditは `TERRA_DECISION_AUDIT = REVISED`。334-path computationを
+再実行せず、26 `PRODUCTION_ONLY_VALID`、original 12 conflicts、8 UNKNOWNをsource semanticsで
+独立reviewした。M1のnew order/delivery pathは`approvedAt: null`によりfail-closedであり、
+legacy hosted Checkout linkの存在は決済成功・納品・customer usageの証拠ではない。M2は
+DNT/GPC/local opt-out、bounded event schema、fail-closed provider/storage behaviorを持つが、
+analytics availabilityを意味しない。production Chat/Metal Print flowだけに従属する3 helperは
+`SUPERSEDED_BY_RECOVERY`へ裁定し、remaining conflictは9件。Vercel CLI 59.23.2 internal collectorは
+保存production manifestを3150/3150 tupleで再現した固定snapshot用としてACCEPTし、internal APIゆえ
+version-boundであることを記録する。次GateはM1/M2と**9 conflicts**のRC Assembly reviewのみ。
