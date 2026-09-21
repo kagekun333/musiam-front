@@ -1,26 +1,26 @@
-# 伯爵MUSIAM — Recovery Map（Phase 1終了時点）
+# 伯爵MUSIAM — Recovery Map（Final Integration）
 
-この文書は救出順の地図であり、Phase 2の実装、diff編集、HOLD解除、テスト再実行、commit、外部操作を許可しない。
+この文書はRecoveryの経緯と、2026-09-21のローカル正本を併記する地図である。過去のPhase 1記録は下記に保存し、最終状態は本節と末尾のFinal Integrationをcanonicalとする。これはdeploy、production設定、provider操作、HOLD解除、又はhistorical candidateの採用を許可しない。
 
 ## Recovery Units
 
 |ID|Unit / 所在|方針・採用状態|依存 / 次の最小検証|
 |---|---|---|---|
-|R0|原本snapshot（tracked、untracked、ignored、Git metadata）|`PRESERVE_HOLD` / 作業中|他の全Unitの基点。archive hash、個別展開、Git object欠損の切り分け。|
+|R0|原本snapshot（tracked、untracked、ignored、Git metadata）|`VERIFIED_PRESERVATION` / `VERIFIED_HISTORY_COPY`|fixed private recovery copy、readable HEAD tree、verified self-contained HEAD history/bundleを確認。`HISTORY_RECOVERY=VERIFIED_COPY`、`PHASE2_GATE=READY_HISTORY_BASED`。`OTHER_REFS=INCOMPLETE`は維持。|
 |R1|Metal Print webhook: main、stripe-fix、6df2|`RECOVERED` / local validation PASS|識別guardのみを限定救出。fixture validator・typecheck・最終diff確認済み。local commitを作成。|
 |R2|Phase 5 r8: `ops/simulation-refinement/phase5-generalization-20260913/`|`RECOVERED_PRESERVED_HOLD` / 凍結候補|`freeze-r8.json`、preservation record、26-file source archive/patch、compact evaluation summaryを限定復元。HOLDのまま、R3はこのfreezeを比較baselineとして参照する。|
 |R3|Phase 6: `ops/simulation-refinement/phase6-three-lanes-20260913/`|`RECOVERED_PRESERVED_EXPERIMENT` / 未適用|R2凍結baselineへ binding 済み。Lane A は provider failure を含む部分的 diagnostic、Lane B は未実行、Lane C c1 は `PRESERVED_CANDIDATE`。application には未適用。|
 |R4|Music Evidence Factory: scriptとPhase 5/6 music records|`RECOVERED_EVIDENCE_BOUNDARY` / source-scoped historical evidence|canonicalは`batch-r3`の10 uniquely runtime-bound measured sources。9 historical public metadata rows、local full candidates 2、full-track verified 0。`docs/AI/R4_MUSIC_EVIDENCE_RECOVERY.md` とclaims matrixを参照し、販売/全曲理解/推薦可否へ昇格しない。|
-|R5|Shaman 999: `SHA_collection_999_unique/`（1,000 untracked）|`PRESERVE_HOLD` / 別案件候補|アプリ基盤と分離。source/provenance/採用意図が揃うまで移動・公開・再生成しない。|
-|R6|営業・公開・継続運用台帳: untracked `ops/` 1,338件、`operational/`等|`UNKNOWN` / 作業中|R0に依存。G0観測/G1実注文・納品の根拠を、local/synthetic/provider/productionで分離して分類。|
+|R5|Shaman 999: `SHA_collection_999_unique/`（1,000 untracked）|`PRESERVE_HOLD` / `SEPARATE_BUSINESS_SCOPE`|アプリ基盤と分離。source/provenance/採用意図が揃うまで移動・公開・再生成しない。|
+|R6|営業・公開・継続運用台帳: untracked `ops/` 1,338件、`operational/`等|`RECOVERED` / canonical truth in `R6_OPERATIONAL_TRUTH.md`|G0観測/G1実注文・納品の根拠をlocal/synthetic/provider/productionで分離。production current observationの保証ではなく、old zeroをcurrent zeroとして扱わない。|
 |R7-A|Catalog / Knowledge Foundation|`RECOVERED` / local validator PASS|`works.json`を一次masterとして保持し、ID/explicit mapping/UUIDのみでruntime mergeする。`docs/AI/R7A_CATALOG_KNOWLEDGE_RECOVERY.md`を参照。|
 |R7-B|Chat / Recommendation Core|`RECOVERED`|current request優先、session-scoped opt-out、one-work catalog recommendation、recorded public action guardをlocal fixture/typecheckで確認。provider/network 0、`PRODUCTION_PARITY=UNVERIFIED`。|
 |R7-C1|Chat UI / History / Card Wiring|`RECOVERED`|active v3 response、anonymous history、stable workId card/action、stale/retry guardをlocal fixture/typecheckで確認。`docs/AI/R7C1_CHAT_UI_HISTORY_RECOVERY.md`を参照。15-turn/payment/accessは含まない。|
 |R7-C2|15-turn / paid continuation|`BLOCKED_PRODUCT_CONTRACT` / `PAID_CONTINUATION_NOT_ACTIVATED`|旧dirtyの15-turn/Redis候補は確認したが、Chat継続用のcanonical product、price、Stripe binding、delivery/entitlement意味が成立しない。active routeは20-turn abuse/cost guardのまま。`docs/AI/R7C2_PAID_CONTINUATION_RECOVERY.md`を参照。|
 |R7-D1|Exhibition / Oracle / Omikuji Alignment|`RECOVERED` / local validator PASS|Exhibition は R7-A canonical server projection へ最小 adapter で接続し、全514件の explicit released work を表示対象としてcoverage確認。Oracle / Omikuji は current intentional redirect を維持（`ORACLE_INACTIVE_BY_DESIGN`）。`docs/AI/R7D1_EXHIBITION_ORACLE_RECOVERY.md`を参照。|
 |R7-D2|Realm / Letters / Broadcast / secondary revisit surfaces|`RECOVERED` / local validator PASS|Home / Realm、Letters、Broadcast、Now Playingをinventoryし、title-only display identity fallbackだけをstable work-ID fallbackへ最小修正。historical Letters/Broadcast hunksはcurrent cleanに既存のため非採用。`docs/AI/R7D2_SECONDARY_SURFACES_RECOVERY.md`を参照。|
-|R7-D|Secondary discovery / revisit surfaces|`RECOVERED` / Final Integration pending|R7-D1とR7-D2のlocal gateは完了。次の名前付きGateは`Recovery Final Integration`であり、本Unitでは開始しない。|
-|HISTORY-DELTA|R7-D前のCodex History V2差分監査|`AUDITED_R7D_HANDOFF_REQUIRED`|`docs/AI/HISTORY_DELTA_AUDIT.md`を参照。R7-Dは開始していない。R6 plan rowの旧`UNKNOWN / 作業中`表記はFinal IntegrationでR6 Operational Truthと正規化するhandoffであり、live/provider/current productionの証拠ではない。|
+|R7-D|Secondary discovery / revisit surfaces|`RECOVERED`|R7-D1とR7-D2のlocal gateを完了。Exhibitionはcanonical server projection adapter、Oracleは`ORACLE_INACTIVE_BY_DESIGN`、secondary surfacesはstable work-ID/canonical server projectionを維持。|
+|HISTORY-DELTA|R7-D前のCodex History V2差分監査|`AUDITED_HANDOFF_CONSUMED`|監査記録は`docs/AI/HISTORY_DELTA_AUDIT.md`に保存。R7-D1/D2とFinal Integrationでhandoffを消化した。`chat-analysis`は`PRESENT_IN_PRESERVATION_ONLY`であり、current cleanへは復活しない。|
 
 SHARED/高リスク: `public/works/works.json`、`src/app/globals.css`、`src/pages/api/chat-reco.ts`、Metal PrintのStripe/Redis/offer関連、承認・evidence台帳。いずれも本Recoveryでは編集禁止。
 
@@ -45,3 +45,9 @@ R0履歴回復後の判定: `HISTORY_RECOVERY=VERIFIED_COPY`。対象HEADの自�
 検証済みの自己完結bundleから独立repositoryを作成し、`recovery/musiam-clean-20260920` を指定HEAD `117379b6c61ab3fc072b6cd4b80ce1d406b0e175` から開始した。`COMMITTED_BASELINE` はこの指定HEADであり、application codeは変更していない。AI Recovery docsのみを原本の現行版から引き継ぐ。
 
 `HISTORY_RECOVERY=VERIFIED_COPY`、`PHASE2_GATE=READY_HISTORY_BASED`。`WORKING_SNAPSHOT` は未移植であり、OTHER_REFSに残る古い欠損blobは指定HEADの自己完結履歴・Phase 2基点を阻害しない。`PRODUCTION_PARITY=UNVERIFIED` は継続する。Recovery Unitの実行順はこの記録で確定しない。
+
+## Recovery Final Integration（2026-09-21 UTC）
+
+`RECOVERY_FINAL_INTEGRATION = LOCAL_RECOVERY_INTEGRATED_WITH_KNOWN_BLOCKER`。R0、R1、R2、R3、R4、R6、R7-A、R7-B、R7-C1、R7-C2、R7-D1、R7-D2、HISTORY-DELTAのローカル状態と回帰validatorを統合確認した。R5は`PRESERVE_HOLD / SEPARATE_BUSINESS_SCOPE`のまま別案件である。既存`next/font`のGoogle Fonts DNS取得によりlocal buildはBLOCKEDであり、workaroundやretryは行わない。
+
+Final Integrationはローカル復旧の完了記録であり、production parity、deploy readiness、payment activation、Oracle activation、R2 HOLD解除、R3 candidate採用、R5統合を意味しない。`PRODUCTION_PARITY=UNVERIFIED`を維持する。詳細、validation matrix、root typecheck裁定、known blocker/解消、次Gateは`docs/AI/RECOVERY_FINAL_INTEGRATION.md`をcanonicalとする。
