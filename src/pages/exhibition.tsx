@@ -32,16 +32,6 @@ function sanitizeUrl(u?: string): string | undefined {
   return s;
 }
 
-function parseTags(tags?: string[] | string) {
-  const out: Record<string, string> = {};
-  const arr = Array.isArray(tags) ? tags : tags ? String(tags).split(/[;,]\s*/) : [];
-  for (const t of arr) {
-    const m = String(t).match(/^([^:]+):\s*(.+)$/);
-    if (m) out[m[1].trim()] = m[2].trim();
-  }
-  return out;
-}
-
 function isVisibleTag(tag?: string) {
   const value = String(tag || "").trim();
   if (!value) return false;
@@ -58,27 +48,10 @@ function hiResIfAmazon(url?: string) {
   return m ? `https://m.media-amazon.com/images/I/${m[1]}._SL1600_.jpg` : url;
 }
 
-function inferSpotifyUrl(w: Work): string | undefined {
-  if (w.links?.listen && /(?:open\.spotify\.com|^spotify:)/i.test(w.links.listen)) {
-    return w.links.listen;
-  }
-  const id = (w.cover || "").match(/spotify_([A-Za-z0-9]+)\.jpg$/)?.[1];
-  const lower = (w.tags || []).map((t) => t.toLowerCase());
-  let kind: "track" | "album" | "playlist" = "track";
-  if (lower.some((t) => /playlist/.test(t))) kind = "playlist";
-  else if (lower.some((t) => /\b(ep|lp|album)\b/.test(t))) kind = "album";
-  else if (lower.some((t) => /\b(single|track)\b/.test(t))) kind = "track";
-  if (!id) return undefined;
-  return `https://open.spotify.com/${kind}/${id}`;
-}
-
-/** Amazon短縮URL（ASINから） */
+/** Recorded Amazon link only. Do not manufacture a URL from metadata. */
 function buildAmazonUrl(w: Work): string | undefined {
   if (w.href && /amazon/i.test(w.href)) return w.href;
-  const meta = parseTags(w.tags);
-  const asin = meta?.ASIN || meta?.asin;
-  if (asin) return `https://www.amazon.co.jp/dp/${asin}`;
-  return undefined;
+  return w.links?.read && /amazon/i.test(w.links.read) ? w.links.read : undefined;
 }
 
 /* ================================================================
@@ -203,7 +176,6 @@ function getPrimaryCta(w: Work): CTA | null {
       primaryHref: w.primaryHref,
       links: {
         ...w.links,
-        spotify: w.links?.spotify || inferSpotifyUrl(w),
       },
     });
     const primary = musicLinks[0];
@@ -245,7 +217,7 @@ function getSecondaryLinks(w: Work): { label: string; url: string; icon: string 
     links.push({ label, url, icon });
   };
 
-  const spotify = w.links?.spotify || inferSpotifyUrl(w) || (w.links?.listen && /spotify/i.test(w.links.listen || "") ? w.links.listen : undefined);
+  const spotify = w.links?.spotify || (w.links?.listen && /spotify/i.test(w.links.listen || "") ? w.links.listen : undefined);
   const amazon = buildAmazonUrl(w);
 
   if (w.type === "music" && !(w.releasedAt && isFutureRelease(w.releasedAt))) {
