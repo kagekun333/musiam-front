@@ -3,7 +3,8 @@ import type Stripe from "stripe";
 import { sendEmail } from "@/lib/email";
 import { getMetalPrintOfferFromApprovalSnapshot } from "@/lib/metal-print-offers.server";
 import { applyMetalPrintRefund, confirmMetalPrintPayment, recordMetalPrintProductionVerification, releaseMetalPrintReservation, saveMetalPrintVendorOrderNotification } from "@/lib/metal-print-redis.server";
-import { verifyMetalPrintStripeEvent } from "@/lib/metal-print-stripe.server";
+import { getMetalPrintStripe, verifyMetalPrintStripeEvent } from "@/lib/metal-print-stripe.server";
+import { isMetalPrintRefundMetadata, routeMetalPrintCheckoutWebhook } from "@/lib/metal-print-webhook-identity";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export const runtime = "nodejs";
@@ -26,6 +27,10 @@ function sessionMetadata(session: Stripe.Checkout.Session) {
   return { editionId, orderId, consultationId, offerApprovalToken, offerApprovedAt, source, medium, campaign, content, dossierAcceptedAt, purchaseIntentConfirmedAt, proofDisclosureAcceptedAt, madeToOrderTermsAcceptedAt };
 }
 
+function ignoredNonMetalPrintEvent() {
+  return NextResponse.json({ ok: true, ignored: true, reason: "non_metal_print_event" });
+}
+
 export async function POST(request: Request) {
   const signature = request.headers.get("stripe-signature");
   if (!signature) return NextResponse.json({ ok: false, error: "signature_missing" }, { status: 400 });
@@ -38,6 +43,13 @@ export async function POST(request: Request) {
   }
 
   try {
+    const checkoutRouting = event.type === "checkout.session.completed" || event.type === "checkout.session.expired"
+      ? routeMetalPrintCheckoutWebhook(event.type, event.data.object.metadata)
+      : null;
+    if (checkoutRouting === "ignore_non_metal_print") {
+      return ignoredNonMetalPrintEvent();
+    }
+
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
       const { editionId, orderId, consultationId, offerApprovalToken, offerApprovedAt, source, medium, campaign, content, dossierAcceptedAt, purchaseIntentConfirmedAt, proofDisclosureAcceptedAt, madeToOrderTermsAcceptedAt } = sessionMetadata(session);
@@ -81,7 +93,10 @@ export async function POST(request: Request) {
     if (event.type === "charge.refunded") {
       const charge = event.data.object;
       const paymentIntentId = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
-      if (!paymentIntentId) throw new Error("payment intent missing on refund");
+      if (!paymentIntentId) return ignoredNonMetalPrintEvent();
+      // Lookup failures intentionally propagate to the outer catch so Stripe retries the event.
+      const paymentIntent = await getMetalPrintStripe().paymentIntents.retrieve(paymentIntentId);
+      if (!isMetalPrintRefundMetadata(paymentIntent.metadata)) return ignoredNonMetalPrintEvent();
       await applyMetalPrintRefund({
         eventId: event.id,
         paymentIntentId,
