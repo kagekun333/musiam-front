@@ -239,3 +239,17 @@ Cleanup、Final Integration、R7-D1、R7-Aの各validator、root typecheck、tar
 削除・移動・archive作成などのdestructive operationは0件。
 詳細は `docs/AI/CLEANUP_AUDIT.md` と
 `ops/recovery/cleanup-audit-20260922.json` をcanonicalとする。
+
+### CLEANUP-C1（2026-09-22 CEST）
+
+`CLEANUP-C1 = C1_REGENERABLE_CACHE_CLEANUP_COMPLETE`。Human Gate
+`APPROVE_C1_SAFE_TO_DELETE_CLEANUP`を受領し、Cleanup Auditで確定した7 exact paths
+(77,707 regular files)だけを削除した。canonicalとoriginal dirty repoのtracked、staged、
+untracked状態は実行前後で不変。保護されたsource、R0/R2/R3/R4/R5、ARCHIVE、
+EVIDENCE_HOLD、UNKNOWN、production provenanceは変更していない。
+
+`DEPENDENCY_RESTORE_REQUIRED_BEFORE_APP_DEVELOPMENT = true`を維持する。
+canonical `node_modules`削除後のapplication validatorsは依存関係を再導入せず、
+`POST_DELETE_APP_VALIDATORS = NOT_RUN_DEPENDENCIES_REMOVED_BY_AUTHORIZED_C1`として記録した。
+execution evidenceは`docs/AI/CLEANUP_C1_EXECUTION.md`と
+`ops/recovery/cleanup-c1-20260922.json`を参照する。Git commitは別Gateであり未承認。
