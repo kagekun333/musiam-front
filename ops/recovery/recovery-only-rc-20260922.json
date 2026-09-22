@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "recovery-only-rc/v1",
+  "rcId": "MUSIAM-RECOVERY-ONLY-RC-20260922",
+  "assembledAt": "2026-09-22T00:00:00+02:00",
+  "baseHead": "a918b05fba988884d27efd5509e2a3eee6df1127",
+  "baseBranch": "recovery/musiam-clean-20260920",
+  "rcPath": "RECOVERY_ONLY",
+  "ownerDecisions": {
+    "OD1": "KEEP_RECOVERY_FOR_THIS_RC",
+    "OD2": "KEEP_DIGITAL_SHOP_DEFERRED",
+    "OD3": "KEEP_CURRENT_LLM_ROUTER"
+  },
+  "applicationChanges": 0,
+  "deployInput": {
+    "capturedAt": "base HEAD before RC record files were written",
+    "collector": "Vercel CLI 59.23.2 inspectDeploymentFiles (offline only; calibrated against the preserved production dry-run)",
+    "framework": "nextjs",
+    "includedFileCount": 3205,
+    "totalBytes": 214340721,
+    "ignoredEntryCount": 46,
+    "manifestSha256": "75db759db2d18348a53e56c90f0222f638ab675f88d3001875d12db7996ad260",
+    "hashAlgorithm": "SHA-256(JSON.stringify(sorted [path, mode, contentId]))",
+    "providerMutation": false
+  },
+  "criticalInvariants": {
+    "catalog": "CANONICAL_STABLE_ID_RUNTIME_514_NO_TITLE_ONLY_IDENTITY",
+    "chatRoute": "/api/chat-experience-v3",
+    "chat": "R7-B_AND_R7-C1_RECOVERY_RETAINED; HISTORY_NOT_ENTITLEMENT",
+    "r7c2": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+    "exhibition": "CANONICAL_PROJECTION; displayed=514; missingReleasedWorks=0",
+    "oracle": "ORACLE_INACTIVE_BY_DESIGN",
+    "secondarySurfaces": "HOME_REALM_LETTERS_BROADCAST_NOW_PLAYING_TODAYS_PICK_RECOVERY_RETAINED",
+    "r2": "RECOVERED_PRESERVED_HOLD",
+    "r3": "RECOVERED_PRESERVED_EXPERIMENT",
+    "r5": "PRESERVE_HOLD / SEPARATE_BUSINESS_SCOPE"
+  },
+  "deferredEnhancements": [
+    {"id": "E1", "name": "A1-A3 Privacy / Analytics / Funnel", "status": "POST_RC_DEFERRED"},
+    {"id": "E2", "name": "D1-D2 Digital Commerce / Delivery", "status": "POST_RC_DEFERRED"},
+    {"id": "E3", "name": "LLM provider policy redesign", "status": "POST_RC_DEFERRED"}
+  ],
+  "buildStatus": "BLOCKED_BY_FONT_DNS (carried forward; no build was run in this assembly)",
+  "productionParity": "PARTIAL / RC_SOURCE_PROVENANCE_INCOMPLETE; runtime, configuration, data, provider, payment, and customer parity remain UNVERIFIED",
+  "assembledLocally": true,
+  "deployed": false,
+  "pushed": false,
+  "productionSourceCopied": false,
+  "productionProviderPaymentDataOperations": 0,
+  "truthBoundary": [
+    "Recovery application source is frozen; the RC record is not a production deployment.",
+    "The offline deploy-input manifest is an input inventory, not production environment, data, provider, payment, or customer-state evidence.",
+    "Catalog stable ID does not establish content, rights, listener fit, availability, recommendation eligibility, or sales readiness.",
+    "History is not entitlement; the active 20-turn guard is not a paid-continuation product gate.",
+    "Oracle inactivity is intentional; route presence does not activate a service.",
+    "Local validation and an assembled local candidate do not establish production parity or deploy approval.",
+    "A deferred enhancement is preserved for a separately authorized post-RC gate, not rejected or adopted here."
+  ]
+}

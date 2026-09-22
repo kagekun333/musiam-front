@@ -137,3 +137,26 @@ requirements、owner choicesは `ops/recovery/rc-assembly-plan-20260921.json`、
 `docs/AI/RC_ASSEMBLY_REVIEW.md` をcanonicalとする。次の最小Gateはownerが選ぶA1-A3
 Privacy adoption、D1/D2 Digital Product Gate、又はRecovery-only RC assemblyのいずれかであり、
 このreview自身はRCをassembledとは記録しない。
+
+### RECOVERY-ONLY-RC（2026-09-22 CEST）
+
+`RECOVERY_ONLY_RC = ASSEMBLED_LOCAL_CANDIDATE`。Owner Decisions は
+`OD1 = KEEP_RECOVERY_FOR_THIS_RC`、`OD2 = KEEP_DIGITAL_SHOP_DEFERRED`、
+`OD3 = KEEP_CURRENT_LLM_ROUTER` として確定した。従って `RC_PATH = RECOVERY_ONLY`。
+Recovery application tree を `a918b05` で freeze し、application source変更は `0` である。
+
+base HEADのdeploy-inputは校正済みの offline Vercel CLI 59.23.2 collectorで記録した。
+Next.js、3,205 entries、214,340,721 bytes、46 ignored entries、SHA-256
+`75db759db2d18348a53e56c90f0222f638ab675f88d3001875d12db7996ad260` である。これは
+deploy-input inventoryであり、production env/data/provider/payment/customer stateの証明ではない。
+
+A1-A3 Privacy / Analytics / Funnel、D1-D2 Digital Commerce / Delivery、LLM provider policy
+redesignは post-RC enhancementとして保全し、今回採用しない。R7-C2は
+`BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED`、Oracleは
+`ORACLE_INACTIVE_BY_DESIGN`、R2 HOLD、R3 preserved、R5 separate scopeを維持する。
+Catalog runtime 514、Exhibition 514 / missing 0、active Chat v3、`history != entitlement`も維持する。
+
+local build statusは既知の `BLOCKED_BY_FONT_DNS` をcarry forwardし、production parityは
+`PARTIAL / RC_SOURCE_PROVENANCE_INCOMPLETE`（runtime/configuration/data等はUNVERIFIED）のまま。
+deploy、push、production source copy、provider/payment/data operationは `0`。
+次Gateは **Preview / RC Validation**（not started、別scope/Human Gate必須）である。
