@@ -217,3 +217,25 @@ Preview PASSはproduction parity、公開、payment/provider/customer-dataの正
 `src/pages/exhibition.tsx` に復元されている。Preview再検証では
 `/exhibition` が200/redirect 0、GET-only `/api/exhibition` が514 itemsを返した。
 `PRODUCTION_MUTATION = 0` を維持する。
+
+### CLEANUP-AUDIT（2026-09-22 CEST）
+
+`CLEANUP_AUDIT = AUDITED_PARTIAL_READY_FOR_C1_HUMAN_GATE`。Canonical cleanup State Lock は
+`9b0f265b764eec4373842ae1676cbe734286784f` / clean で通過した。R0 completion と
+R0 history preservation は現存し、R2 HOLD、R3 preserved experiment、R4
+source-scoped evidence、R5 separate business scope はすべて `EVIDENCE_HOLD` のまま
+である。SAFE candidate は canonical/original の `node_modules`、`.next`、canonical
+TypeScript cache のみ（77,707 files / 2,293,411,840 bytes）で、削除は0件である。
+
+一方で、production provenance/diff records が参照する exact source tree と三つの
+manifest は既知 `/private/tmp` path に現存しなかった。これは deletion の証拠でも
+zero-size reclaimable でもなく `UNKNOWN_REFERENCE_ONLY` であり、代替取得・provider操作・archive作成は
+行っていない。production provenance report、normalized manifest hash、3150/3150 identity result、
+production-vs-Recovery diff manifest は現存Recovery evidenceとして保持する。したがって original dirty repo は
+`NOT_READY`。次Gateは **C1 SAFE_TO_DELETE Cleanup** のHuman Gateであり、今回C1は開始していない。
+Historical fixed-HEAD RC validatorsは `NOT_APPLICABLE_TO_CURRENT_GOVERNANCE_HEAD` として扱う。
+Cleanup、Final Integration、R7-D1、R7-Aの各validator、root typecheck、targeted lint、diff checkを通過し、
+`src/**`、`public/**`、runtime/config/package/lockfileのapplication changesは0である。
+削除・移動・archive作成などのdestructive operationは0件。
+詳細は `docs/AI/CLEANUP_AUDIT.md` と
+`ops/recovery/cleanup-audit-20260922.json` をcanonicalとする。
