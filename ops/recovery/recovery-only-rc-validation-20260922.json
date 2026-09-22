@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "recovery-only-rc-validation/v1",
+  "validatedAt": "2026-09-22",
+  "governanceHead": "a5a374def2ad5b11a6878518cd9ec5f71344c832",
+  "applicationBaseHead": "a918b05fba988884d27efd5509e2a3eee6df1127",
+  "branch": "recovery/musiam-clean-20260920",
+  "applicationDrift": {
+    "count": 0,
+    "classification": "ZERO",
+    "checkedPaths": ["src/**", "public/**", "package.json", "lockfiles", "next.config.*", "vercel.json", "tsconfig.json", "runtime/build application config"]
+  },
+  "governanceOnlyChangedFiles": [
+    "docs/AI/RECOVERY_ONLY_RC.md",
+    "docs/AI/RECOVERY_PLAN.md",
+    "ops/recovery/recovery-only-rc-20260922.json",
+    "scripts/validate-recovery-only-rc.ts"
+  ],
+  "ownerDecisions": {
+    "OD1": "KEEP_RECOVERY_FOR_THIS_RC",
+    "OD2": "KEEP_DIGITAL_SHOP_DEFERRED",
+    "OD3": "KEEP_CURRENT_LLM_ROUTER",
+    "rcPath": "RECOVERY_ONLY"
+  },
+  "criticalInvariants": {
+    "catalog": "CANONICAL_LOAD_MERGED_WORKS_SERVER; runtime=514; stable-ID only; title-only identity prohibited",
+    "chat": "/api/chat-experience-v3; R7-B active; R7-C1 active; history != entitlement",
+    "r7c2": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+    "exhibition": "displayed=514; missingReleasedWorks=0",
+    "oracle": "ORACLE_INACTIVE_BY_DESIGN",
+    "secondarySurfaces": "HOME_REALM_LETTERS_BROADCAST_NOW_PLAYING_TODAYS_PICK retained",
+    "r1": "METAL_PRINT_WEBHOOK_IDENTITY_BOUNDARY_RETAINED"
+  },
+  "validatorMatrix": [
+    {"name": "validate-recovery-only-rc", "script": "scripts/validate-recovery-only-rc.ts", "status": "PASS_AT_APPLICATION_BASE", "checks": 26, "currentGovernanceHeadInvocation": "NOT_APPLICABLE_EXPECTED_BASE_HEAD_ASSERTION"},
+    {"name": "validate-rc-assembly-review", "script": "scripts/validate-rc-assembly-review.ts", "status": "PASS", "checks": 29},
+    {"name": "validate-production-vs-recovery-diff", "script": "scripts/validate-production-vs-recovery-diff.ts", "status": "PASS", "checks": 1822},
+    {"name": "validate-production-source-provenance", "script": "scripts/validate-production-source-provenance.ts", "status": "PASS", "checks": 27},
+    {"name": "validate-production-parity-report", "script": "scripts/validate-production-parity-report.ts", "status": "PASS", "checks": 21},
+    {"name": "validate-recovery-final-integration", "script": "scripts/validate-recovery-final-integration.ts", "status": "PASS", "checks": 45},
+    {"name": "R7-A catalog", "script": "scripts/validate-r7a-catalog-foundation.ts", "status": "PASS", "runtimeWorks": 514},
+    {"name": "R7-B Chat Core", "script": "scripts/validate-r7b-chat-recommendation-core.ts", "status": "PASS", "fixtures": 15},
+    {"name": "R7-C1 Chat UI/history", "script": "scripts/validate-r7c1-chat-ui-history.ts", "status": "PASS", "fixtures": 22},
+    {"name": "R7-C2 blocked continuation", "script": "scripts/validate-r7c2-paid-continuation.ts", "status": "PASS", "fixtures": 20},
+    {"name": "R7-D1 Exhibition/Oracle", "script": "scripts/validate-r7d1-exhibition-oracle.ts", "status": "PASS", "displayed": 514, "missing": 0},
+    {"name": "R7-D2 secondary surfaces", "script": "scripts/validate-r7d2-secondary-surfaces.ts", "status": "PASS", "checks": 40},
+    {"name": "R1 Metal Print webhook", "script": "scripts/validate-metal-print-webhook-routing.ts", "status": "PASS"}
+  ],
+  "typecheck": "PASS: npm run typecheck",
+  "lint": "PASS: critical runtime paths and RC validator, --max-warnings=0",
+  "diffCheck": "PASS",
+  "secretScan": {
+    "status": "PASS",
+    "committedEnvFiles": [".env.example"],
+    "secretValueExposure": false,
+    "authorizationValueMatches": 0,
+    "privateKeyBlockMatches": 0,
+    "knownFalsePositiveFiles": [".env.example", "scripts/validate-metal-print-production-adapter.ts", "scripts/validate-metal-print-webhook-routing.ts"],
+    "note": "Matches are documented example or test fixtures; no values are recorded here."
+  },
+  "build": {
+    "status": "BLOCKED_BY_FONT_DNS",
+    "classification": "KNOWN_NON_APPLICATION_BLOCKER",
+    "host": "fonts.googleapis.com",
+    "families": ["Cinzel", "EB Garamond", "Inter", "Noto Serif JP"],
+    "applicationFailure": false
+  },
+  "deployInput": {
+    "capturedForGovernanceHead": "a5a374def2ad5b11a6878518cd9ec5f71344c832",
+    "collector": "Vercel CLI 59.24.0 inspectDeploymentFiles, offline internal collector",
+    "fileCount": 3208,
+    "totalBytes": 214358158,
+    "ignoredEntryCount": 46,
+    "manifestSha256": "27027cd4fa82597b2d8b4d87b79a26b5a26f2c207b87df7aff8cddae6f0994ee",
+    "providerMutation": false,
+    "oldManifest": {"fileCount": 3205, "manifestSha256": "75db759db2d18348a53e56c90f0222f638ab675f88d3001875d12db7996ad260"},
+    "driftClassification": "NON_RUNTIME_GOVERNANCE_MANIFEST_DRIFT",
+    "applicationDrift": 0
+  },
+  "routeContract": {
+    "status": "SOURCE_INSPECTION_PASS",
+    "routes": ["/", "/chat", "/exhibition", "/letters", "/classic", "/works/[id]", "/api/chat-experience-v3", "/api/chat-history", "/api/exhibition", "/api/todays-pick", "/api/now-playing"],
+    "oracleRedirectRetained": true,
+    "externalProviderCallsPerformed": 0
+  },
+  "previewSmokePlan": {
+    "exists": true,
+    "publicPages": ["/", "/chat", "/exhibition", "/letters", "/classic", "/works/<stable-id>"],
+    "checks": ["HTTP", "render", "navigation", "console/server fatal errors"],
+    "chat": ["page load", "input", "history UI initialization", "card layout", "no provider message"],
+    "exhibition": ["work count/render sanity", "stable detail links"],
+    "letters": ["list/detail", "back/scroll behavior"],
+    "broadcast": "no forced external playback",
+    "payment": "no purchase execution",
+    "oracle": "inactive redirect"
+  },
+  "previewAuthorized": false,
+  "productionMutation": false,
+  "deploy": false,
+  "push": false,
+  "providerPaymentDataOperations": 0,
+  "localValidationState": "LOCAL_VALIDATION_PASS_PREVIEW_GATE_REQUIRED",
+  "truthBoundary": [
+    "The application identity remains a918b05; a5a374d adds governance records only.",
+    "The current deploy-input manifest is an offline input inventory, not proof of production environment, runtime, data, provider, payment, or customer state.",
+    "Local validation and the font DNS classification do not establish a Preview or production build outcome.",
+    "Stable IDs do not establish content, rights, availability, recommendation eligibility, or sales readiness.",
+    "History is not entitlement; the Chat guard is not a paid-continuation product.",
+    "Preview deployment remains unauthorized; no deployment, push, provider, payment, or data operation occurred."
+  ]
+}

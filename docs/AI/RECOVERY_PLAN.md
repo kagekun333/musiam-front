@@ -160,3 +160,25 @@ local build statusは既知の `BLOCKED_BY_FONT_DNS` をcarry forwardし、produ
 `PARTIAL / RC_SOURCE_PROVENANCE_INCOMPLETE`（runtime/configuration/data等はUNVERIFIED）のまま。
 deploy、push、production source copy、provider/payment/data operationは `0`。
 次Gateは **Preview / RC Validation**（not started、別scope/Human Gate必須）である。
+
+### RECOVERY-ONLY-RC-VALIDATION（2026-09-22 CEST）
+
+`RECOVERY_ONLY_RC_VALIDATION = LOCAL_VALIDATION_PASS_PREVIEW_GATE_REQUIRED`。
+governance HEAD `a5a374d` と application base `a918b05` の間にruntime/application
+driftはなく、RC governance recordの4ファイルだけが追加・更新された。
+`APPLICATION_DRIFT = 0`、owner decisionsと `RC_PATH = RECOVERY_ONLY` は不変である。
+
+Root typecheck、targeted lint、`git diff --check`、current Recovery validators、R7-A/B/C1/C2/D1/D2、
+R1 webhook validatorはPASS。base-state-only RC validatorはそのrequired base stateのPASSを
+governance-only deltaで継続確認した。Catalog 514、Exhibition 514/missing 0、Chat v3、R7-C2
+blocked、Oracle inactive、secondary surfacesとR1 boundaryを維持する。
+
+local buildはCinzel/EB Garamond/Inter/Noto Serif JPの `fonts.googleapis.com` DNSだけで
+`BLOCKED_BY_FONT_DNS`。application failureではなく、修正は行わない。offline deploy-inputは
+3,208 entries、SHA-256 `27027cd4fa82597b2d8b4d87b79a26b5a26f2c207b87df7aff8cddae6f0994ee`。
+旧manifestとの差は `NON_RUNTIME_GOVERNANCE_MANIFEST_DRIFT` でありapplication driftではない。
+
+Preview deploymentは作成していない。production domain/env/alias、provider/payment/data、deploy、pushは
+すべて未変更。次Gateは **Preview-only smoke / Human Gate** であり、Preview作成・promotion・payment
+実行を含めない。詳細は `docs/AI/RECOVERY_ONLY_RC_VALIDATION.md` と
+`ops/recovery/recovery-only-rc-validation-20260922.json` を参照する。
