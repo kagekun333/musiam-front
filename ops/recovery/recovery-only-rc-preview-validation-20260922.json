@@ -1,17 +1,17 @@
 {
-  "schemaVersion": "recovery-only-rc-preview-validation/v1",
-  "governanceHead": "a6bf8791b21559aaafa31e98c1c2ce022d2e26e3",
-  "applicationBaseHead": "a918b05fba988884d27efd5509e2a3eee6df1127",
+  "schemaVersion": "recovery-only-rc-preview-validation/v2",
+  "startingHead": "cad8c6c473612d12286868e541e4624545d1250b",
   "branch": "recovery/musiam-clean-20260920",
-  "applicationDrift": 0,
-  "authorization": { "previewDeployAuthorized": true, "productionDeployAuthorized": false, "maxPreviewDeployCount": 1, "deployCount": 1, "productionDeployCount": 0 },
-  "environmentMaterialization": { "envLocalAbsentBeforeDeploy": true, "envLocalAbsentAfterDeploy": true, "envValuesRead": false, "envRotationReviewRequired": true, "secretDisclosureConfirmed": false },
+  "routeAuthority": { "path": "src/pages/exhibition.tsx", "legacyRedirect": "/exhibition -> /works", "legacyRedirectRemoved": true },
+  "applicationFilesChangedDuringValidation": 0,
+  "authorization": { "previewDeployAuthorized": true, "productionDeployAuthorized": false, "maxPreviewDeployCount": 1, "deployCount": 1, "productionDeployCount": 0, "gitCommitAuthorized": false },
+  "environmentMaterialization": { "envLocalAbsentBeforeDeploy": true, "envLocalAbsentAfterDeploy": true, "envValuesRead": false },
   "linkage": { "existingProjectMetadataOnly": true, "team": "hakusyakus-projects", "project": "musiam-front", "relinkPerformed": false, "envPullPerformed": false },
-  "preview": { "deploymentId": "dpl_3HzCvSatWj4X3GpgNMiQjRbNHPJ1", "url": "https://musiam-front-3p5e8c8xx-hakusyakus-projects.vercel.app", "createdAt": "2026-09-22T11:01:39Z", "target": "preview", "state": "READY", "buildResult": "PASS", "buildDuration": "2m 37s", "framework": "Next.js 15.5.12", "nodeRuntime": "project setting 22.x" },
+  "preview": { "deploymentId": "dpl_9eB9h2AgwwyUZ5k7nmLEBkfZNKaT", "url": "https://musiam-front-i505jvayn-hakusyakus-projects.vercel.app", "target": "preview", "state": "READY", "buildResult": "PASS", "buildDuration": "2m 51s", "framework": "Next.js 15.5.12", "nodeRuntime": "22.x", "productionAliases": [] },
   "routes": {
     "/": { "httpStatus": 200, "redirects": 0, "finalPath": "/", "fatalErrorPage": false },
     "/chat": { "httpStatus": 200, "redirects": 0, "finalPath": "/chat", "fatalErrorPage": false, "textareaRenderedHtml": true, "clientInteraction": "NOT_EXECUTED" },
-    "/exhibition": { "httpStatus": 200, "redirects": 1, "finalPath": "/works", "fatalErrorPage": false, "status": "UNEXPECTED_REDIRECT_TO_WORKS" },
+    "/exhibition": { "httpStatus": 200, "redirects": 0, "finalPath": "/exhibition", "fatalErrorPage": false, "status": "DIRECT_RENDER_PASS" },
     "/letters": { "httpStatus": 200, "redirects": 0, "finalPath": "/letters", "fatalErrorPage": false },
     "/letters/2026-06-30-junes-final-whistle": { "httpStatus": 200, "redirects": 0, "finalPath": "/letters/2026-06-30-junes-final-whistle", "fatalErrorPage": false },
     "/classic": { "httpStatus": 200, "redirects": 0, "finalPath": "/classic", "fatalErrorPage": false },
@@ -19,19 +19,17 @@
     "/oracle": { "httpStatus": 200, "redirects": 1, "finalPath": "/", "status": "ORACLE_INACTIVE_BY_DESIGN" },
     "/oracle/omikuji": { "httpStatus": 200, "redirects": 1, "finalPath": "/", "status": "ORACLE_INACTIVE_BY_DESIGN" }
   },
-  "exhibition": { "apiMethod": "GET", "sourceSideEffectFree": true, "previewApiHttpStatus": 200, "previewApiItems": 514, "previewApiUniqueStableIds": 514, "localCanonicalDisplayedWorks": 514, "localCanonicalMissingReleasedWorks": 0, "uiRouteStatus": "UNEXPECTED_REDIRECT_TO_WORKS" },
-  "boundaries": { "chatProviderCalls": 0, "paymentOperations": 0, "dataWrites": 0, "forcedPlayback": 0, "r7c2": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED", "oracle": "ORACLE_INACTIVE_BY_DESIGN" },
-  "runtimeLogs": { "scope": "current Preview deployment, last 30 minutes", "errorFatalResult": "NO_ERROR_OR_500_LOGS_RETURNED", "http500Result": "NO_ERROR_OR_500_LOGS_RETURNED" },
+  "exhibition": { "apiMethod": "GET", "sourceSideEffectFree": true, "previewApiHttpStatus": 200, "previewApiItems": 514, "previewApiUniqueStableIds": 514, "localCanonicalDisplayedWorks": 514, "localCanonicalMissingReleasedWorks": 0, "uiRouteStatus": "DIRECT_RENDER_PASS" },
+  "boundaries": { "chatProviderCalls": 0, "paymentOperations": 0, "dataWrites": 0, "forcedPlayback": 0, "oracle": "ORACLE_INACTIVE_BY_DESIGN" },
+  "runtimeLogs": { "scope": "current Preview deployment, validation window", "errorFatalResult": "NO_ERROR_OR_500_LOGS_RETURNED", "http500Result": "NO_ERROR_OR_500_LOGS_RETURNED" },
   "production": { "deploymentBefore": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX", "deploymentAfter": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX", "alias": "www.hakusyaku.xyz", "aliasUnchanged": true, "previewHasProductionAlias": false, "mutation": 0 },
-  "result": "BLOCKED_BY_RUNTIME",
-  "blocker": "Preview /exhibition made an unexpected redirect to /works; no correction is authorized in this unit.",
-  "nextGate": "SEPARATE_AUTHORIZED_EXHIBITION_PREVIEW_ROUTE_DIAGNOSIS",
+  "result": "PASS_READY_FOR_CLEANUP",
+  "nextGate": "SEPARATELY_AUTHORIZED_CLEANUP",
   "truthBoundary": [
-    "Preview build PASS does not establish production readiness or production parity.",
-    "The Preview API stable IDs do not make the redirected Exhibition UI a pass.",
+    "Preview validation does not establish production readiness or production parity.",
     "No message, payment, provider, customer-data, or player action was exercised.",
-    "No environment value was read or materialized locally during this continuation.",
+    "No environment value was read or materialized locally during this validation.",
     "No production deployment, alias, environment, promotion, rollback, or source mutation occurred.",
-    "Cleanup and application correction require a separate authorization."
+    "Cleanup and Git commit require separate authorization."
   ]
 }

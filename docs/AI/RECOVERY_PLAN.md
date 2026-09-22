@@ -185,36 +185,35 @@ Preview deploymentは作成していない。production domain/env/alias、provi
 +
 ### RECOVERY-ONLY-RC-PREVIEW（2026-09-22 CEST）
 
-RC_PREVIEW_VALIDATION = BLOCKED_BY_RUNTIME. Existing musiam-front linkage metadata
-only was used to create Preview deployment dpl_3HzCvSatWj4X3GpgNMiQjRbNHPJ1 once.
-The Next.js 15.5.12 server-side build passed, state is READY, and build duration
-is 2m 37s. .env.local was absent before and after; local env read/materialization
-was 0.
+`RC_PREVIEW_VALIDATION = PASS_READY_FOR_CLEANUP`。明示承認された2回目の
+Preview deployment `dpl_9eB9h2AgwwyUZ5k7nmLEBkfZNKaT` を既存
+`hakusyakus-projects/musiam-front` linkageだけで1回作成し、READYを確認した。
+Next.js 15.5.12 / Node 22.x、build durationは2m 51s。開始HEADと検証HEADは
+`cad8c6c473612d12286868e541e4624545d1250b`、`.env.local` はdeploy前後とも
+不在で値の読取りは0である。
 
-Preview-only GET smoke was 200 without fatal error pages for /, /chat, /letters,
-one Letter detail, /classic, and a stable work detail. Oracle and Omikuji
-redirected to / as designed. The GET-only /api/exhibition returned 514 items and
-514 unique stable IDs; the local canonical projection remains displayed 514 and
-missing released 0. However, required UI route /exhibition redirected once to
-/works, so Exhibition UI validation is not a pass. No application or
-configuration correction was made.
+Preview-only GET/HEAD smoke は `/`, `/chat`, `/exhibition`, `/letters`, Letter
+detail, `/classic`, stable work detail がいずれも200/redirect 0/fatalなし。
+`/exhibition` は最終path `/exhibition` で直接renderし、legacy
+`/exhibition -> /works` redirectは再発しなかった。GET-only
+`/api/exhibition` は514 items / 514 unique stable IDs、local canonical
+projectionは displayed 514 / missing released 0 を維持した。Oracle/Omikujiの
+`/` へのredirectは設計どおり維持される。
 
-Preview error/fatal/500 runtime-log queries returned no matching entries. Chat
-provider, payment, data write, and forced playback counts are all 0. Production
-dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX and www.hakusyaku.xyz were read-only checked
-before and after and are unchanged; Preview has no production alias and
-PRODUCTION_MUTATION = 0. ENV_ROTATION_REVIEW_REQUIRED = true remains, while
-SECRET_DISCLOSURE_CONFIRMED = false.
+Chat provider、payment、data write、forced playback はすべて0。今回のPreview
+と検証時間帯に限定したerror/fatal/500 log query は該当logなし。
+Production `dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX` と
+`www.hakusyaku.xyz` はread-onlyでbefore/after一致、Previewにproduction aliasはなく
+`PRODUCTION_MUTATION = 0`。application files changed during validation = 0。
 
-Cleanup does not start. The next Gate is separately authorized read-first
-diagnosis of Preview /exhibition to /works behavior only; this does not establish
-production readiness, production parity, payment, provider, or customer-data
-validation.
+Cleanupは開始しない。次Gateは `SEPARATELY_AUTHORIZED_CLEANUP` であり、この
+Preview PASSはproduction parity、公開、payment/provider/customer-dataの正しさ、
+またはGit commitを承認しない。
 
 ### EXHIBITION-ROUTING-FIX（2026-09-22 CEST）
 
-`EXHIBITION-ROUTING-FIX = LOCAL_FIX_VALIDATED_PREVIEW_REQUIRED`。historical
-`/exhibition -> /works` redirect は `SUPERSEDED_ROUTING_ARTIFACT` として
-`next.config.js` から最小削除し、route authority を
-`src/pages/exhibition.tsx` に復元する。Preview redeploy での最終routing確認が必要であり、
-このlocal fixではproduction mutation、provider/payment/data operation、deploy、pushは0である。
+`EXHIBITION-ROUTING-FIX = PREVIEW_VALIDATED_COMPLETE`。legacy
+`/exhibition -> /works` redirect は削除済みで、route authority は
+`src/pages/exhibition.tsx` に復元されている。Preview再検証では
+`/exhibition` が200/redirect 0、GET-only `/api/exhibition` が514 itemsを返した。
+`PRODUCTION_MUTATION = 0` を維持する。
