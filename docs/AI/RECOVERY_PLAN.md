@@ -182,3 +182,31 @@ Preview deploymentは作成していない。production domain/env/alias、provi
 すべて未変更。次Gateは **Preview-only smoke / Human Gate** であり、Preview作成・promotion・payment
 実行を含めない。詳細は `docs/AI/RECOVERY_ONLY_RC_VALIDATION.md` と
 `ops/recovery/recovery-only-rc-validation-20260922.json` を参照する。
++
+### RECOVERY-ONLY-RC-PREVIEW（2026-09-22 CEST）
+
+RC_PREVIEW_VALIDATION = BLOCKED_BY_RUNTIME. Existing musiam-front linkage metadata
+only was used to create Preview deployment dpl_3HzCvSatWj4X3GpgNMiQjRbNHPJ1 once.
+The Next.js 15.5.12 server-side build passed, state is READY, and build duration
+is 2m 37s. .env.local was absent before and after; local env read/materialization
+was 0.
+
+Preview-only GET smoke was 200 without fatal error pages for /, /chat, /letters,
+one Letter detail, /classic, and a stable work detail. Oracle and Omikuji
+redirected to / as designed. The GET-only /api/exhibition returned 514 items and
+514 unique stable IDs; the local canonical projection remains displayed 514 and
+missing released 0. However, required UI route /exhibition redirected once to
+/works, so Exhibition UI validation is not a pass. No application or
+configuration correction was made.
+
+Preview error/fatal/500 runtime-log queries returned no matching entries. Chat
+provider, payment, data write, and forced playback counts are all 0. Production
+dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX and www.hakusyaku.xyz were read-only checked
+before and after and are unchanged; Preview has no production alias and
+PRODUCTION_MUTATION = 0. ENV_ROTATION_REVIEW_REQUIRED = true remains, while
+SECRET_DISCLOSURE_CONFIRMED = false.
+
+Cleanup does not start. The next Gate is separately authorized read-first
+diagnosis of Preview /exhibition to /works behavior only; this does not establish
+production readiness, production parity, payment, provider, or customer-data
+validation.
