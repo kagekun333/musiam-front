@@ -210,3 +210,11 @@ Cleanup does not start. The next Gate is separately authorized read-first
 diagnosis of Preview /exhibition to /works behavior only; this does not establish
 production readiness, production parity, payment, provider, or customer-data
 validation.
+
+### EXHIBITION-ROUTING-FIX（2026-09-22 CEST）
+
+`EXHIBITION-ROUTING-FIX = LOCAL_FIX_VALIDATED_PREVIEW_REQUIRED`。historical
+`/exhibition -> /works` redirect は `SUPERSEDED_ROUTING_ARTIFACT` として
+`next.config.js` から最小削除し、route authority を
+`src/pages/exhibition.tsx` に復元する。Preview redeploy での最終routing確認が必要であり、
+このlocal fixではproduction mutation、provider/payment/data operation、deploy、pushは0である。
