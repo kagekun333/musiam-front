@@ -253,3 +253,17 @@ canonical `node_modules`削除後のapplication validatorsは依存関係を再�
 `POST_DELETE_APP_VALIDATORS = NOT_RUN_DEPENDENCIES_REMOVED_BY_AUTHORIZED_C1`として記録した。
 execution evidenceは`docs/AI/CLEANUP_C1_EXECUTION.md`と
 `ops/recovery/cleanup-c1-20260922.json`を参照する。Git commitは別Gateであり未承認。
+
+### CLEANUP-C2（2026-09-23 CEST）
+
+`C2_ARCHIVE = VERIFIED_ARCHIVES_CREATED_SOURCE_REMOVAL_NOT_AUTHORIZED`。Cleanup Auditの4
+`ARCHIVE` source group / 3,054 filesを指定archive rootへ複製した。展開後のsize/SHA-256は
+3,054/3,054一致し、NFC pathsも3,054/3,054一致。source/extracted normalization collisionsは0、
+mappingはone-to-one。raw exact pathsは2,954/3,054で、tar member listingは
+`NORMALIZED_EQUIVALENT`。source raw path spellingをsidecarに保存し、そのSHA-256を記録した。
+
+全sourceは再manifestで不変、original sourcesは現存し、元dirty repoのGit状態は102 modified /
+0 staged / 433 untrackedのまま。collisions・one-to-one・content identity検証後に`.verify`を削除した。
+application changes/provider/deploy/pushは0。C2記録とvalidatorを更新し、条件を満たした場合は
+指定の4 recordsだけをlocal commitする。次Gateは`C2_SOURCE_REMOVAL_HUMAN_GATE`。
+source removalは許可されていない。

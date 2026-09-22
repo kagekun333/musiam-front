@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "cleanup-c2/v1",
+  "createdAt": "2026-09-23T00:37:59+02:00",
+  "canonicalHead": "2eb3a6379feb3e2a76db5ee472ddedd9e023ae24",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "archiveRoot": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/",
+  "status": "VERIFIED_ARCHIVES_CREATED_SOURCE_REMOVAL_NOT_AUTHORIZED",
+  "archiveCreated": true,
+  "archiveClassification": "ARCHIVE",
+  "sourceGroups": [
+    {
+      "id": "canonical-output",
+      "sourcePath": "/Users/kagekun/Desktop/musiam-front-clean/アウトプット",
+      "archiveFile": "canonical-output.tar.gz",
+      "sourceFileCount": 1126,
+      "sourceContentBytes": 468794580,
+      "sourceManifestSha256": "2519b446cf69fd53439c22b01d1be582374aa36f97f8ba87506cb085481b586c",
+      "archiveSize": 450843681,
+      "archiveSha256": "48726e6500c8b2a440415572726abdf5da1f2d6934cd7c6a0869182a5bb0828c",
+      "extractedFileCount": 1126,
+      "exactRelativePathMatches": 1079,
+      "unicodeCanonicalPathMatches": 1126,
+      "contentMatches": 1126,
+      "archiveMemberExactPaths": 1079,
+      "archiveMemberCanonicalPaths": 1126,
+      "normalizationCollisions": 0,
+      "normalizedMapping": "ONE_TO_ONE",
+      "verification": "PASS"
+    },
+    {
+      "id": "dirty-output",
+      "sourcePath": "/Users/kagekun/Desktop/musiam-front/アウトプット",
+      "archiveFile": "dirty-output.tar.gz",
+      "sourceFileCount": 1134,
+      "sourceContentBytes": 1489014934,
+      "sourceManifestSha256": "557f6c79dd12bf3e28bb95e29bec7a5d4f473e8ba9d8e40e41780ee6400976c5",
+      "archiveSize": 1433855247,
+      "archiveSha256": "ef023575e19726fe9246cfe67244e5ef0cca57814eaf42d31e34f03a3c6220bd",
+      "extractedFileCount": 1134,
+      "exactRelativePathMatches": 1084,
+      "unicodeCanonicalPathMatches": 1134,
+      "contentMatches": 1134,
+      "archiveMemberExactPaths": 1084,
+      "archiveMemberCanonicalPaths": 1134,
+      "normalizationCollisions": 0,
+      "normalizedMapping": "ONE_TO_ONE",
+      "verification": "PASS"
+    },
+    {
+      "id": "dirty-archive",
+      "sourcePath": "/Users/kagekun/Desktop/musiam-front/_archive",
+      "archiveFile": "dirty-archive.tar.gz",
+      "sourceFileCount": 791,
+      "sourceContentBytes": 110150890,
+      "sourceManifestSha256": "fec4704f28e8ad5760e36496e4f51cf845aa280d63ab4ae85f343ba86c4ab99a",
+      "archiveSize": 95906787,
+      "archiveSha256": "4adbf1d86aa475b2369c505873b9eeb9323af14b84f64030cf46321f919fa292",
+      "extractedFileCount": 791,
+      "exactRelativePathMatches": 788,
+      "unicodeCanonicalPathMatches": 791,
+      "contentMatches": 791,
+      "archiveMemberExactPaths": 788,
+      "archiveMemberCanonicalPaths": 791,
+      "normalizationCollisions": 0,
+      "normalizedMapping": "ONE_TO_ONE",
+      "verification": "PASS"
+    },
+    {
+      "id": "dirty-outputs",
+      "sourcePath": "/Users/kagekun/Desktop/musiam-front/outputs",
+      "archiveFile": "dirty-outputs.tar.gz",
+      "sourceFileCount": 3,
+      "sourceContentBytes": 8871572,
+      "sourceManifestSha256": "cde1e15b29c1e8a5d5552a41f144a1acf24b185be7a16cced070fe8180292dac",
+      "archiveSize": 254304,
+      "archiveSha256": "943283326200153d7079155431639d7ae1810fce3e20e911ebb20db711eb1b00",
+      "extractedFileCount": 3,
+      "exactRelativePathMatches": 3,
+      "unicodeCanonicalPathMatches": 3,
+      "contentMatches": 3,
+      "archiveMemberExactPaths": 3,
+      "archiveMemberCanonicalPaths": 3,
+      "normalizationCollisions": 0,
+      "normalizedMapping": "ONE_TO_ONE",
+      "verification": "PASS"
+    }
+  ],
+  "sourceCounts": {
+    "totalFiles": 3054,
+    "contentBytes": 2076831976,
+    "auditAllocatedBytes": 2083004416
+  },
+  "sourceBytes": 2076831976,
+  "archiveFiles": [
+    "canonical-output.tar.gz",
+    "dirty-output.tar.gz",
+    "dirty-archive.tar.gz",
+    "dirty-outputs.tar.gz"
+  ],
+  "archiveSizes": {
+    "canonical-output.tar.gz": 450843681,
+    "dirty-output.tar.gz": 1433855247,
+    "dirty-archive.tar.gz": 95906787,
+    "dirty-outputs.tar.gz": 254304,
+    "total": 1980860019
+  },
+  "archiveHashes": {
+    "canonical-output.tar.gz": "48726e6500c8b2a440415572726abdf5da1f2d6934cd7c6a0869182a5bb0828c",
+    "dirty-output.tar.gz": "ef023575e19726fe9246cfe67244e5ef0cca57814eaf42d31e34f03a3c6220bd",
+    "dirty-archive.tar.gz": "4adbf1d86aa475b2369c505873b9eeb9323af14b84f64030cf46321f919fa292",
+    "dirty-outputs.tar.gz": "943283326200153d7079155431639d7ae1810fce3e20e911ebb20db711eb1b00"
+  },
+  "archiveMemberRawPathClassification": "NORMALIZED_EQUIVALENT",
+  "pathPolicy": "raw exact OR NFC canonical-equivalent with zero collisions, one-to-one mapping, exact content identity, and preserved raw source paths",
+  "rawSourcePathManifest": {
+    "file": "SOURCE_PATH_MANIFEST.json",
+    "sha256": "4d4185fba3a1995576ae9dbef8ebf5e93e3e5c17a7cae983e88de1105cbf09f0",
+    "bytes": 794401,
+    "encoding": "UTF-8",
+    "rawSpellingPreserved": true
+  },
+  "verification": {
+    "status": "PASS",
+    "allContentHashesMatch": true,
+    "allFileSizesMatch": true,
+    "allUnicodeNfcPathsMatch": true,
+    "sourceNormalizationCollisions": 0,
+    "extractedNormalizationCollisions": 0,
+    "normalizedPathMapping": "ONE_TO_ONE",
+    "allExactRelativePathsMatch": false,
+    "exactRelativePathMatches": 2954,
+    "archiveMemberListingReadWithoutExtraction": true,
+    "verifyTempRemoved": true
+  },
+  "sourceMutation": false,
+  "originalSourceDeleted": false,
+  "duplicateGroups": [
+    {
+      "id": "output-subtree-20260922",
+      "matchingFileCount": 1126,
+      "matchingContentBytes": 468794580,
+      "deduplicated": false
+    }
+  ],
+  "dirtyRepoBefore": {
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "trackedModified": 102,
+    "staged": 0,
+    "untracked": 433
+  },
+  "dirtyRepoAfter": {
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "trackedModified": 102,
+    "staged": 0,
+    "untracked": 433
+  },
+  "r0ThroughR5Touched": false,
+  "evidenceHoldTouched": false,
+  "unknownTouched": false,
+  "applicationChanges": 0,
+  "providerOperations": 0,
+  "deployOperations": 0,
+  "pushOperations": 0,
+  "nextGate": "C2_SOURCE_REMOVAL_HUMAN_GATE",
+  "truthBoundary": "Canonical equivalence is not raw codepoint equality. macOS/APFS restore usability is not cross-platform raw-name identity. File content equality is not metadata equality. The raw source path manifest preserves original spelling evidence. Archive verified does not authorize source deletion or establish product rights or production state."
+}
