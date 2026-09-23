@@ -302,3 +302,10 @@ Sol handoff contains 300 grouped items covering 2381 files; `C4_READINESS = NOT_
 Final targets: 383 `PRESERVE_REQUIRED_BEFORE_C4`, 702 `ALREADY_PRESERVED_NO_EXTRA_ACTION`, 5 `RECOVERY_SUPERSEDES_CONFIRMED`, 1 `REGENERABLE_NO_PRESERVATION_REQUIRED`, and 0 historical-only/future-product-as-decision/owner-decision. Future-product relevance is recorded separately. The verified R0 HEAD bundle suffices for 700 tracked-clean Omikuji cards and 2 tracked-clean tools. For the 383 changed or Original-only sources/assets, broad R0 preservation does not establish exact current-file sufficiency for C4. See `docs/AI/CLEANUP_C3B_SEMANTIC_REVIEW.md` and `ops/recovery/cleanup-c3b-semantic-review-20260923.json` for file-level decisions and evidence.
 
 `C4_READINESS = NOT_READY_PRESERVATION_REQUIRED`; next Gate is **C3-C PRESERVATION EXECUTION**. C3-B did not copy, archive, delete, move, change application/runtime source, write to Original, inspect Original `.git` internals, read sensitive/private content, call providers, deploy, push, or start C4. This does not authorize C3-C execution or Original decommission in the current Gate.
+
+
+## C3-C PRESERVATION EXECUTION — current governance
+
+`C3C_PRESERVATION = VERIFIED_COMPLETE` at canonical starting HEAD / C3-B commit `370d2525862ae6232be2eba0189282ba150daf14`. Exactly 383 `PRESERVE_REQUIRED_BEFORE_C4` files (17,010,688 allocated bytes) were preserved to the independent archive and verified 383/383 by SHA-256, size, and NFC path identity. Sensitive/local-config and Original `.git` overlaps, special files, normalization collisions, missing files, source writes, and application changes were 0. Original HEAD, branch, and status counts remain unchanged. Details and artifact hashes are in `docs/AI/CLEANUP_C3C_PRESERVATION_EXECUTION.md` and `ops/recovery/cleanup-c3c-preservation-20260923.json`.
+
+`C4_READINESS = READY_FOR_C4_REVIEW`. This starts no C4 work and authorizes no source deletion, repo decommission, archive deletion, source adoption, deployment, or push. The next Gate is the separate C4 decommission review.

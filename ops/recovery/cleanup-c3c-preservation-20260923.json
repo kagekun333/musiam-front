@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "status": "C3C_PRESERVATION=VERIFIED_COMPLETE",
+  "createdAt": "2026-09-23",
+  "startingHead": "370d2525862ae6232be2eba0189282ba150daf14",
+  "c3bCommit": "370d2525862ae6232be2eba0189282ba150daf14",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "sourceRepo": "/Users/kagekun/Desktop/musiam-front",
+  "sourceHeadBefore": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+  "sourceBranchBefore": "codex/fix/stripe-metal-print-webhook-20260914",
+  "preservationRoot": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923",
+  "expectedTargetFiles": 383,
+  "actualTargetFiles": 383,
+  "expectedAllocatedBytes": 17010688,
+  "actualAllocatedBytes": 17010688,
+  "actualLogicalBytes": 16229042,
+  "sourceManifest": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/SOURCE_MANIFEST.json",
+  "sourceManifestSha256": "916e532b629edc491952ce058f2418807160dba2c6f7b3072ed63c0370c9758e",
+  "rawPathManifest": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/RAW_PATH_MANIFEST.json",
+  "rawPathManifestSha256": "32c3252a3d55a14883385d26c6e4548e7f1596bd7e76da26f2d521e6194d9baa",
+  "archiveFile": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/preserved-source.tar",
+  "archiveSha256": "38312634a65edd12e54a3ba7493dfe285971147878db1bfe19041ec2631fd167",
+  "regularFileCount": 383,
+  "specialFileCount": 0,
+  "sensitiveOverlapCount": 0,
+  "gitMetadataOverlapCount": 0,
+  "normalizationCollisions": 0,
+  "archiveMemberNormalizationCollisions": 0,
+  "rawPathMappingOneToOne": true,
+  "extractedFileCount": 383,
+  "contentMatchCount": 383,
+  "sizeMatchCount": 383,
+  "nfcPathMatchCount": 383,
+  "missingCount": 0,
+  "sourceDriftCount": 0,
+  "priorHashAuthorityCount": 0,
+  "sourceDriftBasis": "C3-A/C3-B contained no per-file content hash authority; current source SHA-256 values establish this preservation snapshot and were rechecked after archive creation.",
+  "originalStateBefore": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "staged": 0,
+    "untracked": 433
+  },
+  "originalStateAfter": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "staged": 0,
+    "untracked": 433
+  },
+  "sourceFilesStillPresent": 383,
+  "originalWrites": 0,
+  "applicationChanges": 0,
+  "destructiveSourceOperations": 0,
+  "sourceDeletion": 0,
+  "sourceMove": 0,
+  "temporaryVerificationDeleted": true,
+  "providerOperations": 0,
+  "deployOperations": 0,
+  "pushOperations": 0,
+  "c4Started": false,
+  "c4Readiness": "READY_FOR_C4_REVIEW",
+  "preservationGroupAccounting": [
+    {
+      "groupId": "UNTRACKED_DOC",
+      "requiredTargets": 21,
+      "preservedTargets": 21,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_DRONE_CONFIG",
+      "requiredTargets": 1,
+      "preservedTargets": 1,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_PRIVATE_IGNORE",
+      "requiredTargets": 1,
+      "preservedTargets": 1,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_PACKAGE",
+      "requiredTargets": 1,
+      "preservedTargets": 1,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "UNTRACKED_SRC",
+      "requiredTargets": 72,
+      "preservedTargets": 72,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_ANALYTICS",
+      "requiredTargets": 3,
+      "preservedTargets": 3,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "UNTRACKED_FUSE",
+      "requiredTargets": 15,
+      "preservedTargets": 15,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_METAL",
+      "requiredTargets": 29,
+      "preservedTargets": 29,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_OTHER",
+      "requiredTargets": 7,
+      "preservedTargets": 7,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_CATALOG_UI",
+      "requiredTargets": 13,
+      "preservedTargets": 13,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_CHAT",
+      "requiredTargets": 2,
+      "preservedTargets": 2,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_DAILY",
+      "requiredTargets": 7,
+      "preservedTargets": 7,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "UNTRACKED_SCRIPT",
+      "requiredTargets": 139,
+      "preservedTargets": 139,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "DELTA_SSD",
+      "requiredTargets": 1,
+      "preservedTargets": 1,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "UNTRACKED_CATALOG_DATA",
+      "requiredTargets": 1,
+      "preservedTargets": 1,
+      "missingTargets": 0
+    },
+    {
+      "groupId": "UNTRACKED_ART",
+      "requiredTargets": 70,
+      "preservedTargets": 70,
+      "missingTargets": 0
+    }
+  ],
+  "truthBoundary": "PRESERVED means only that the 383 C3-B files were archived and verified. It does not authorize canonical adoption, runtime activation, product adoption, deployment, source deletion, or dirty-repository decommission. C4 is a separate review gate."
+}
