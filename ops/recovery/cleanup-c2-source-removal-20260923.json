@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "cleanup-c2-source-removal-finalization/v1",
+  "createdAt": "2026-09-23",
+  "finalStatus": "C2_SOURCE_REMOVAL = PARTIAL_COMPLETE_TRACKED_SOURCES_RETAINED",
+  "canonicalIntegrity": "RESTORED",
+  "furtherSourceDeletion": "NOT_REQUIRED",
+  "canonicalHead": "e29b6e4db3bf0ce546926d2046d0d6884b391882",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "incidentOccurred": true,
+  "accidentalTrackedDeletionCount": 1126,
+  "restoreMethod": "git NUL-safe pathspec from HEAD",
+  "restorePathList": "/private/tmp/c2-canonical-deleted-paths.zlist",
+  "restorePathListBytes": 85711,
+  "restorePathListSha256": "125869551d85e443910c514134201cf0aa2b60dcec4d86300a60e18eb1e5635f",
+  "restoredFileCount": 1126,
+  "restoredContentBytes": 468794580,
+  "restoredManifestSha256": "2519b446cf69fd53439c22b01d1be582374aa36f97f8ba87506cb085481b586c",
+  "restoredManifestMatch": true,
+  "normalizationCollisions": 0,
+  "canonicalTrackedDeletionAfter": 0,
+  "canonicalTrackedModificationAfter": 0,
+  "canonicalStagedAfter": 0,
+  "canonicalUntrackedAfter": 0,
+  "canonicalSource": {
+    "id": "canonical-output",
+    "path": "/Users/kagekun/Desktop/musiam-front-clean/アウトプット",
+    "status": "RETAIN_TRACKED_ARCHIVE_SOURCE",
+    "trackedFiles": 1126,
+    "contentBytes": 468794580,
+    "sourceManifestSha256": "2519b446cf69fd53439c22b01d1be582374aa36f97f8ba87506cb085481b586c"
+  },
+  "retainedRoots": [
+    {
+      "id": "canonical-output",
+      "path": "/Users/kagekun/Desktop/musiam-front-clean/アウトプット",
+      "status": "RETAIN_TRACKED_ARCHIVE_SOURCE",
+      "trackedFiles": 1126
+    },
+    {
+      "id": "dirty-output",
+      "path": "/Users/kagekun/Desktop/musiam-front/アウトプット",
+      "status": "RETAIN_TRACKED_ARCHIVE_SOURCE",
+      "trackedFiles": 1126
+    },
+    {
+      "id": "dirty-outputs",
+      "path": "/Users/kagekun/Desktop/musiam-front/outputs",
+      "status": "RETAIN_UNTRACKED_ARCHIVE_SOURCE",
+      "untrackedFiles": 1
+    }
+  ],
+  "removedRoots": [
+    {
+      "id": "dirty-archive",
+      "path": "/Users/kagekun/Desktop/musiam-front/_archive",
+      "status": "REMOVED_AFTER_VERIFIED_ARCHIVE",
+      "fileCount": 791,
+      "contentBytes": 110150890,
+      "allocatedBytes": 111738880
+    }
+  ],
+  "finalRemovedFileCount": 791,
+  "finalActualReclaimedBytes": 111738880,
+  "dirtyRepoAllocatedBytesBeforeRemoval": 7469510656,
+  "dirtyRepoAllocatedBytesAfterRemoval": 7357771776,
+  "dirtyRepoCurrentAllocatedBytes": 7357771776,
+  "archiveRoot": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/",
+  "archiveIntegrity": true,
+  "archiveHashes": {
+    "canonical-output.tar.gz": "48726e6500c8b2a440415572726abdf5da1f2d6934cd7c6a0869182a5bb0828c",
+    "dirty-output.tar.gz": "ef023575e19726fe9246cfe67244e5ef0cca57814eaf42d31e34f03a3c6220bd",
+    "dirty-archive.tar.gz": "4adbf1d86aa475b2369c505873b9eeb9323af14b84f64030cf46321f919fa292",
+    "dirty-outputs.tar.gz": "943283326200153d7079155431639d7ae1810fce3e20e911ebb20db711eb1b00"
+  },
+  "rawPathManifestIntegrity": true,
+  "rawPathManifestSha256": "4d4185fba3a1995576ae9dbef8ebf5e93e3e5c17a7cae983e88de1105cbf09f0",
+  "dirtyRepoHead": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+  "dirtyRepoBranch": "codex/fix/stripe-metal-print-webhook-20260914",
+  "dirtyTrackedModified": 102,
+  "dirtyStaged": 0,
+  "dirtyUntracked": 433,
+  "r0ToR5Touched": false,
+  "evidenceHoldTouched": false,
+  "unknownTouched": false,
+  "applicationFilesChanged": 0,
+  "providerOperations": 0,
+  "deployOperations": 0,
+  "pushOperations": 0,
+  "c3Started": false,
+  "gitCommitAuthorized": true,
+  "truthBoundary": "Local Git, filesystem, source manifest, and archive evidence only. Archive verification and restoration do not establish production state, product rights, or broader raw Unicode identity.",
+  "nextGate": "C4 dirty repository decommission"
+}

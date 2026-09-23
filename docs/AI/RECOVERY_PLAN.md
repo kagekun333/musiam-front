@@ -267,3 +267,23 @@ mappingはone-to-one。raw exact pathsは2,954/3,054で、tar member listingは
 application changes/provider/deploy/pushは0。C2記録とvalidatorを更新し、条件を満たした場合は
 指定の4 recordsだけをlocal commitする。次Gateは`C2_SOURCE_REMOVAL_HUMAN_GATE`。
 source removalは許可されていない。
+
+### CLEANUP-C2 SOURCE REMOVAL FINALIZATION（2026-09-23 CEST）
+
+`C2_SOURCE_REMOVAL = PARTIAL_COMPLETE_TRACKED_SOURCES_RETAINED`。
+初回削除で誤って発生したcanonical `アウトプット`内のtracked deletion 1,126件は、
+Gitが返したNUL区切りpath listだけをHEADからrestoreし、`CANONICAL_INTEGRITY = RESTORED`。
+canonical sourceは1,126 files、468,794,580 bytes、C2 source manifest SHA-256一致、
+content/NFC path 1,126/1,126、normalization collision 0。canonical HEADとworking treeは
+復旧済みでclean。
+
+Final retained roots: canonical `アウトプット`とdirty `アウトプット`はtracked sourceとして保持、
+dirty `outputs`はuntracked baseline 433維持のため保持。唯一のremoved rootはdirty `_archive`
+(791 files)。最終actual reclaimはdirty repository allocation差分111,738,880 bytes。
+4 archivesとraw path manifestのhashは維持。dirty repoはHEAD/branch不変、102 modified / 0 staged /
+433 untracked。R0-R5、EVIDENCE_HOLD、UNKNOWN、application/runtime、provider、deploy、pushに変更なし。
+C3は未開始、`C2_FURTHER_SOURCE_DELETION = NOT_REQUIRED`。
+
+Incident evidence、validator、final recordを含む指定4記録ファイルだけを更新し、local commitで閉じる。
+次GateはC4 dirty repository decommission。詳細は`docs/AI/CLEANUP_C2_SOURCE_REMOVAL.md`と
+`ops/recovery/cleanup-c2-source-removal-20260923.json`を参照。
