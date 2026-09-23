@@ -317,3 +317,35 @@ Final targets: 383 `PRESERVE_REQUIRED_BEFORE_C4`, 702 `ALREADY_PRESERVED_NO_EXTR
 R5's 1,000 current files match R0's verified manifest. C2 and C3-C archives remain independently preserved; C3-C resolves all 383 targets. However, current `ops` contains 21 meaningful unpreserved operational files (105,417 bytes) after cross-path duplicate reconciliation. The unchanged 433 status entries did not prove unchanged directory contents. Inventory-unclassified modified/untracked entries are 0/0, but restoration-unaccounted entries are 1/3. Thirty-five private/local-config holds require an owner retention decision. Canonical runtime/build has no Original dependency; three surviving linked worktrees still share Original `.git` and would break if it were removed. Historical live-source cleanup validators remain pre-decommission evidence.
 
 Details, the 14-category survivability matrix, exact entry mappings, unique-loss list and validator are in `docs/AI/CLEANUP_C4_DECOMMISSION_REVIEW.md`, `ops/recovery/cleanup-c4-decommission-review-20260923.json`, and `scripts/validate-cleanup-c4-decommission-review.mjs`. Next action is a separately scoped preservation/retention/dependency-resolution Gate, followed by C4 re-review. This review does not execute that work. Original writes, destructive operations, application changes, provider/payment/deploy/push and archive mutation are 0. Validator PASS certifies review accounting, not deletion readiness. The Human deletion Gate remains closed; `APPROVE_C4_ORIGINAL_REPOSITORY_DELETION` has not been granted.
+
+## CLEANUP-C4A BLOCKER REMEDIATION — current governance
+
+`C4A_UNIQUE_SOURCE_PRESERVATION = VERIFIED_21_OF_21` from canonical starting HEAD
+`b53a49d52498c7f56f57d737bdcdb613bc6d2798`. Exactly 21 C4 meaningful unique files
+(105,417 logical bytes) were preserved outside Original/canonical in the designated
+C4-A archive. Independent extraction verified SHA-256, size and NFC paths 21/21;
+missing/extra/collisions/sensitive overlap are 0. `UNPRESERVED_UNIQUE_SOURCE = 0`
+for that exact set; archive authority is in the C4-A machine record.
+
+All 35 private/local files remained content zero-read, zero explicit hash and zero
+archive copy: 0 independently verified current-private preservation, 19 local-tool
+recreatable roles, 4 required-current-config preservation unresolved and 12 owner
+retention decisions. `.env.example` belongs to that private set, not the 21 source
+targets, and retains an owner decision. R0 path membership is historical evidence,
+not proof of current private equality.
+
+Three live worktrees still depend on Original `.git`: 2 require current working-state
+preservation, 1 needs a semantic/usage decision; 0 are declared disposable or
+confirmed must-remain-active. Six additional missing/prunable registrations were
+observed separately and left unchanged. Exact Git states, conditional standalone /
+decommission plans and proposed independent destinations are recorded per worktree.
+No migration, removal, pruning, detach or pointer rewrite was executed.
+
+`C4_READINESS = NOT_READY_PRIVATE_RETENTION_DECISION`; next Gate is
+**C4-B PRIVATE RETENTION DECISION**, followed by separately scoped worktree
+preservation/dependency remediation. Original writes/deletion, destructive source
+operations, application changes and provider/payment/data/deploy/push are 0.
+The Human deletion Gate remains closed. C4-A validator PASS certifies preservation
+and review accounting only. See `docs/AI/CLEANUP_C4A_BLOCKER_REMEDIATION.md`,
+`ops/recovery/cleanup-c4a-blocker-remediation-20260923.json` and
+`scripts/validate-cleanup-c4a-blocker-remediation.mjs`.

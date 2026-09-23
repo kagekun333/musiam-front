@@ -1,0 +1,2377 @@
+{
+  "schemaVersion": 1,
+  "status": "C4A_BLOCKER_REMEDIATION=COMPLETE",
+  "completionBoundary": "COMPLETE_COMMITTED only after the authorized four-file local commit and clean working tree are observed.",
+  "observedAt": "2026-09-23T20:54:13.662058+00:00",
+  "startingCanonicalHead": "b53a49d52498c7f56f57d737bdcdb613bc6d2798",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "canonicalInitiallyClean": true,
+  "allowedCanonicalPaths": [
+    "docs/AI/CLEANUP_C4A_BLOCKER_REMEDIATION.md",
+    "ops/recovery/cleanup-c4a-blocker-remediation-20260923.json",
+    "scripts/validate-cleanup-c4a-blocker-remediation.mjs",
+    "docs/AI/RECOVERY_PLAN.md"
+  ],
+  "authoritiesRead": [
+    "docs/AI/CLEANUP_C4_DECOMMISSION_REVIEW.md",
+    "ops/recovery/cleanup-c4-decommission-review-20260923.json",
+    "docs/AI/CLEANUP_C3B_SEMANTIC_REVIEW.md",
+    "ops/recovery/cleanup-c3b-semantic-review-20260923.json",
+    "docs/AI/CLEANUP_C3C_PRESERVATION_EXECUTION.md",
+    "ops/recovery/cleanup-c3c-preservation-20260923.json",
+    "docs/AI/RECOVERY_PLAN.md"
+  ],
+  "originalAuthority": {
+    "path": "/Users/kagekun/Desktop/musiam-front",
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "staged": 0,
+    "untrackedStatusEntries": 433,
+    "untrackedExpandedFiles": 2919,
+    "ignoredFiles": 796,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89",
+    "allocatedBytes": 7357771776,
+    "allocatedMeasurement": "du -sk =7185324 KiB; permission explicitly allows whole-repo allocation only, no Git-object filesystem enumeration"
+  },
+  "originalBefore": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "dirtyTracked": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89"
+  },
+  "uniquePreservation": {
+    "status": "VERIFIED_21_OF_21",
+    "preservationRoot": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923",
+    "sourceCount": 21,
+    "extractedCount": 21,
+    "contentMatchCount": 21,
+    "sizeMatchCount": 21,
+    "nfcPathMatchCount": 21,
+    "missingCount": 0,
+    "extraCount": 0,
+    "sourceDriftCount": 0,
+    "sensitiveIntersection": 0,
+    "normalizationCollisions": 0,
+    "rawPathMappingOneToOne": true,
+    "logicalBytes": 105417,
+    "files": [
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260921/market-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260921/market-0731.json",
+        "logicalBytes": 755,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "1aabd3c4ee69156fb7c5e7637643be55a6cdd6aafed0b3bbe82c0bdf4a547857",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1789976032108654680
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260921/reconciliation-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260921/reconciliation-0731.json",
+        "logicalBytes": 634,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "a254f826d87ce4547ba3daabea015c940d0654bb205573b200db7d09ea3cba48",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1789976032122208426
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260921/stripe-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260921/stripe-0731.json",
+        "logicalBytes": 745,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "a5cef0aa27d4c232becb39da8f39ea2091dfb343ef7eebd55042ced7652fa66a",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1789976032108832388
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260921/state-lock.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260921/state-lock.json",
+        "logicalBytes": 1397,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "aaea5a9350e78e300cacc14a0cce3fcb89533c9bf79dff4636c5a9453ccffbee",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1789976032108240930
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260921/observation-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260921/observation-0731.json",
+        "logicalBytes": 2542,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "bdf1b6bf28c043d04607eedc1dd83ea0e83e580e9f5f5478cec390b23bba6482",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1789976032108975138
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/market-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/market-0731.json",
+        "logicalBytes": 755,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "64105d0ee0782bfed83df8e886a5b41625e4e4ddf8d0c4f94f6e716b2c8cad9d",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387273271875
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/reconciliation-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/reconciliation-0731.json",
+        "logicalBytes": 634,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "06a796d7b3d092a5f2a22c2dc8d106303bee3a592f2ca1ea9e4076751883da0c",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387285434535
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/stripe-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/stripe-0731.json",
+        "logicalBytes": 745,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "0d3f7b2911098e33ad2a6317c06c6d4cde065dea42eb23bf39ab2363a8c61831",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387273354834
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/state-before.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/state-before.json",
+        "logicalBytes": 12683,
+        "allocatedBytes": 16384,
+        "fileType": "regular",
+        "sha256": "f402113db872991a958a3fbd93291d03b95aa88010f0b4e7ec5a96bc4134f442",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387273067916
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/state-lock.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/state-lock.json",
+        "logicalBytes": 1397,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "fd67a095968d37f2e29c07f09282e3343de14506ed5cb7703efb571b0d60f368",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387272869623
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/experiments-before.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/experiments-before.json",
+        "logicalBytes": 16425,
+        "allocatedBytes": 20480,
+        "fileType": "regular",
+        "sha256": "430307cc66468b3f5380440ab47fef7688d54ee4d6e7a3edc5e7e4d45cbd74fc",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387273178416
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260922/observation-0731.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260922/observation-0731.json",
+        "logicalBytes": 2532,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "1d82fa01b22509cc3ff00b69f130849941642f70e8efb4e1340146d2c663cee3",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790062387273440126
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/observation-0732.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/observation-0732.json",
+        "logicalBytes": 2503,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "352f7cac7161c2dc8c271442cb7b6af6a55c325acb677310dda87fade18f9d21",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866047890462
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/state-before.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/state-before.json",
+        "logicalBytes": 12683,
+        "allocatedBytes": 16384,
+        "fileType": "regular",
+        "sha256": "07e57a3bac8a07ac6554cfb098f0987fa8be8b9d7177f9f7fb62f5a8570353a1",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866046935881
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/state-lock.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/state-lock.json",
+        "logicalBytes": 1346,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "59fdea7d3a8d0a1a38343b23e1a680aeeea1289e66afc588f77f96641844f6b6",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866046787007
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/experiments-before.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/experiments-before.json",
+        "logicalBytes": 16425,
+        "allocatedBytes": 20480,
+        "fileType": "regular",
+        "sha256": "c6daea3dd9d0b87ed7e74d0e656105651e8d1362c42439d688c4f0a7ddd5cdf3",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866047039423
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/reconciliation-0732.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/reconciliation-0732.json",
+        "logicalBytes": 658,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "4d230227bdd2cbb1941a8e48c62eda93cb0551b189994664556581260f03141a",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866060052808
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/stripe-0732.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/stripe-0732.json",
+        "logicalBytes": 736,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "14ff4cf95d4d6031d411c715e0f963d29b3790609df1037dd2fd7947fa53b44b",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866047363005
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/market-learning/daily-20260923/market-0732.json",
+        "originalRepoRelativePath": "ops/market-learning/daily-20260923/market-0732.json",
+        "logicalBytes": 746,
+        "allocatedBytes": 4096,
+        "fileType": "regular",
+        "sha256": "06f9241a8d767a61da65f7f48a90ad7549fe420c302d1a5b4cf7a28be0a4a628",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "market-learning",
+        "existingEvidenceRelation": {
+          "existingPreservation": null,
+          "recoverability": "NOT_IN_R0",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866047215131
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/continuous-operation/state.json",
+        "originalRepoRelativePath": "ops/continuous-operation/state.json",
+        "logicalBytes": 12667,
+        "allocatedBytes": 16384,
+        "fileType": "regular",
+        "sha256": "f82d389f20533fe0601b557c60ad95e53815595571b95fa48a31d2058a39ded0",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "continuous-operation",
+        "existingEvidenceRelation": {
+          "existingPreservation": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+          "recoverability": "R0_CHANGED",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866048290045
+      },
+      {
+        "exactSourcePath": "/Users/kagekun/Desktop/musiam-front/ops/continuous-operation/experiments.json",
+        "originalRepoRelativePath": "ops/continuous-operation/experiments.json",
+        "logicalBytes": 16409,
+        "allocatedBytes": 20480,
+        "fileType": "regular",
+        "sha256": "7cf93923923116cbcde5638309d8a8ffa1132d52544ccbbd7408f5565ce3297c",
+        "c4LossCategory": "R6_OPERATIONAL_EVIDENCE",
+        "c4Rationale": "Current content has no matching same-path R0/C3-C/canonical copy or cross-path R0/canonical-ops manifest match. C2 covers other roots.",
+        "subsystem": "continuous-operation",
+        "existingEvidenceRelation": {
+          "existingPreservation": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+          "recoverability": "R0_CHANGED",
+          "description": "Historical operational observation, reconciliation, state or experiment ledger; evidence value retained without promoting observations to current production truth."
+        },
+        "sourceMtimeNs": 1790148866048791919
+      }
+    ],
+    "artifacts": {
+      "preserved-source.tar": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/preserved-source.tar",
+        "sha256": "8cda606e7a74211ab8dbfe95fb027953ee66adb6a5baccef52babe7cc86f358d",
+        "logicalBytes": 122880
+      },
+      "SOURCE_MANIFEST.json": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/SOURCE_MANIFEST.json",
+        "sha256": "8f842e77a82022390859a5091cfc87249467e1ead344f79a4a0121ad8daae647",
+        "logicalBytes": 21362
+      },
+      "RAW_PATH_MANIFEST.json": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/RAW_PATH_MANIFEST.json",
+        "sha256": "df4ffc4f8d4f1f433c13aa027f8bca6b904331f6645e2bf092565ccc2d568806",
+        "logicalBytes": 8253
+      }
+    },
+    "temporaryVerificationDeleted": true
+  },
+  "privateRetention": {
+    "files": [
+      {
+        "path": ".env.stripe-sandbox.local",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".env.stripe-sandbox.local",
+        "extension": ".local",
+        "filesystemType": "regular",
+        "logicalBytes": 314,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "REQUIRED_PRIVATE_CONFIG_NOT_PRESERVED",
+        "knownRoleFromPath": "Environment/provider configuration by path",
+        "rationale": "Current operating configuration may be needed after decommission; R0 membership does not establish current sufficiency.",
+        "decisionQuestion": "この設定の現在有効な独立保管先はありますか。それとも廃止対象ですか。未保全なら、別Gateでの秘密保全を承認しますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".env.local.example",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".env.local.example",
+        "extension": ".example",
+        "filesystemType": "regular",
+        "logicalBytes": 0,
+        "allocatedBytes": 0,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Environment template",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".env.local",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".env.local",
+        "extension": ".local",
+        "filesystemType": "regular",
+        "logicalBytes": 2870,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "REQUIRED_PRIVATE_CONFIG_NOT_PRESERVED",
+        "knownRoleFromPath": "Environment/provider configuration by path",
+        "rationale": "Current operating configuration may be needed after decommission; R0 membership does not establish current sufficiency.",
+        "decisionQuestion": "この設定の現在有効な独立保管先はありますか。それとも廃止対象ですか。未保全なら、別Gateでの秘密保全を承認しますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".env",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".env",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 2806,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "REQUIRED_PRIVATE_CONFIG_NOT_PRESERVED",
+        "knownRoleFromPath": "Environment/provider configuration by path",
+        "rationale": "Current operating configuration may be needed after decommission; R0 membership does not establish current sufficiency.",
+        "decisionQuestion": "この設定の現在有効な独立保管先はありますか。それとも廃止対象ですか。未保全なら、別Gateでの秘密保全を承認しますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".env.example",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".env.example",
+        "extension": ".example",
+        "filesystemType": "regular",
+        "logicalBytes": 1528,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": " M",
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Environment template",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": "src/lib/metal-print-consultation-token.server.ts",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "metal-print-consultation-token.server.ts",
+        "extension": ".ts",
+        "filesystemType": "regular",
+        "logicalBytes": 1026,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Conservative sensitive-path source hold",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": "src/lib/design/tokens.ts",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "tokens.ts",
+        "extension": ".ts",
+        "filesystemType": "regular",
+        "logicalBytes": 2413,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Conservative sensitive-path source hold",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": "src/styles/renovation-tokens.css",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "renovation-tokens.css",
+        "extension": ".css",
+        "filesystemType": "regular",
+        "logicalBytes": 8774,
+        "allocatedBytes": 12288,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Conservative sensitive-path source hold",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".vscode/settings.json",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "settings.json",
+        "extension": ".json",
+        "filesystemType": "regular",
+        "logicalBytes": 223,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Editor/agent/custom hook configuration",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".vscode/tasks.json",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "tasks.json",
+        "extension": ".json",
+        "filesystemType": "regular",
+        "logicalBytes": 518,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Editor/agent/custom hook configuration",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": "scripts/audit-secret-hygiene.mjs",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "untracked.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "audit-secret-hygiene.mjs",
+        "extension": ".mjs",
+        "filesystemType": "regular",
+        "logicalBytes": 2716,
+        "allocatedBytes": 4096,
+        "gitStatus": "untracked",
+        "statusXY": "??",
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Conservative sensitive-path source hold",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": "public/nft/token-template.json",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "token-template.json",
+        "extension": ".json",
+        "filesystemType": "regular",
+        "logicalBytes": 929,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Conservative sensitive-path source hold",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".claude/settings.local.json",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "settings.local.json",
+        "extension": ".json",
+        "filesystemType": "regular",
+        "logicalBytes": 633,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Editor/agent/custom hook configuration",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".local/abi-knowledge/abi-canonical.json",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "abi-canonical.json",
+        "extension": ".json",
+        "filesystemType": "regular",
+        "logicalBytes": 28984,
+        "allocatedBytes": 32768,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Local knowledge authority",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".vercel/project.json",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "project.json",
+        "extension": ".json",
+        "filesystemType": "regular",
+        "logicalBytes": 402,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Vercel CLI machine project linkage",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".vercel/.env.preview.local",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".env.preview.local",
+        "extension": ".local",
+        "filesystemType": "regular",
+        "logicalBytes": 1910,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "REQUIRED_PRIVATE_CONFIG_NOT_PRESERVED",
+        "knownRoleFromPath": "Environment/provider configuration by path",
+        "rationale": "Current operating configuration may be needed after decommission; R0 membership does not establish current sufficiency.",
+        "decisionQuestion": "この設定の現在有効な独立保管先はありますか。それとも廃止対象ですか。未保全なら、別Gateでの秘密保全を承認しますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".vercel/README.txt",
+        "role": "SECRET_OR_ENV_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "README.txt",
+        "extension": ".txt",
+        "filesystemType": "regular",
+        "logicalBytes": 520,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Vercel CLI generated README",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/commit-msg",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "tracked-working-tree.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "commit-msg",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 86,
+        "allocatedBytes": 4096,
+        "gitStatus": "tracked",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "knownRoleFromPath": "Editor/agent/custom hook configuration",
+        "rationale": "Path alone does not establish whether local customization/current content is disposable. Historical R0 member evidence is retained but not promoted to current restoration sufficiency.",
+        "decisionQuestion": "このパスは既存R0コピーを保持すれば十分ですか。それとも現行版を別Gateで保全する必要がありますか。",
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/pre-rebase",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "pre-rebase",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/pre-applypatch",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "pre-applypatch",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/husky.sh",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "husky.sh",
+        "extension": ".sh",
+        "filesystemType": "regular",
+        "logicalBytes": 160,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/pre-auto-gc",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "pre-auto-gc",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/pre-merge-commit",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "pre-merge-commit",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/post-commit",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "post-commit",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/applypatch-msg",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "applypatch-msg",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/prepare-commit-msg",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "prepare-commit-msg",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/h",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "h",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 551,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/post-checkout",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "post-checkout",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/post-applypatch",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "post-applypatch",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/.gitignore",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": ".gitignore",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 1,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/post-rewrite",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "post-rewrite",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/commit-msg",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "commit-msg",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/pre-push",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "pre-push",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/post-merge",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "post-merge",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      },
+      {
+        "path": ".husky/_/pre-commit",
+        "role": "LOCAL_CONFIG_HOLD",
+        "independentPreservation": "ignored-preserved.pax",
+        "verification": "R0_PATH_METADATA_ONLY_CURRENT_CONTENT_NOT_READ_OR_HASHED",
+        "recoverability": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+        "filename": "pre-commit",
+        "extension": "",
+        "filesystemType": "regular",
+        "logicalBytes": 39,
+        "allocatedBytes": 4096,
+        "gitStatus": "ignored",
+        "statusXY": null,
+        "currentContentEquality": "UNKNOWN_NOT_READ_OR_HASHED",
+        "classification": "LOCAL_MACHINE_ONLY_RECREATABLE",
+        "knownRoleFromPath": "Generated Husky wrapper",
+        "rationale": "Path identifies generated tool scaffolding or local machine binding. Regenerate from retained package tooling / re-link the existing project in a separately authorized setup; no current-content equivalence claim.",
+        "decisionQuestion": null,
+        "retentionEffect": "Planning classification only; no deletion or secret-copy authorization.",
+        "existingPreservationPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "existingArchiveMetadataContinuous": true
+      }
+    ],
+    "counts": {
+      "INDEPENDENTLY_PRESERVED_PRIVATE": 0,
+      "LOCAL_MACHINE_ONLY_RECREATABLE": 19,
+      "REQUIRED_PRIVATE_CONFIG_NOT_PRESERVED": 4,
+      "OWNER_SECRET_RETENTION_DECISION_REQUIRED": 12
+    },
+    "currentContentEqualityVerified": false,
+    "metadataOnly": true
+  },
+  "envExampleRelationship": {
+    "path": ".env.example",
+    "inPrivateSet": true,
+    "inUniquePreservationSet": false,
+    "c4Category": "SECRET_OR_ENV_HOLD",
+    "classification": "OWNER_SECRET_RETENTION_DECISION_REQUIRED",
+    "trackedModified": true
+  },
+  "worktreeInventory": [
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914",
+      "exists": true
+    },
+    {
+      "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+      "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-deploy-aa9c540",
+      "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-main-check",
+      "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+      "branch": "refs/heads/codex/main-release-check",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-release-candidate",
+      "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+      "branch": "refs/heads/codex/sandbox-base",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+      "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+      "branch": "refs/heads/codex/sandbox-luxury-home",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-shaman-999",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/feature/shaman-999",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "detached": true,
+      "exists": true
+    },
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front-astra",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/astra-local-clean",
+      "exists": true
+    },
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/fix/stripe-metal-print-webhook-20260914",
+      "exists": true
+    }
+  ],
+  "worktrees": [
+    {
+      "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "",
+      "modified": 62,
+      "dirtyTracked": 62,
+      "staged": 0,
+      "untracked": 143,
+      "statusSha256": "6fe2d379fdc5ca720746df334cc7d6b744aca5929de2ade59dc7485d60aebd6e",
+      "entries": [
+        {
+          "xy": " M",
+          "path": "docs/analytics-events.md"
+        },
+        {
+          "xy": " M",
+          "path": "next.config.js"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/abi-hakusyaku-account-registry.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/abi-hakusyaku-launch-wave-01-ledger.csv"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/abi-hakusyaku-launch-wave-01-maturity-queue.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/abi-hakusyaku-profile-link-update-evidence-2026-07-30.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-publication-queue.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-05--spotify-single-5bIfjfVK9QwHfu1NzNc94M.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-06--spotify-single-60QCBTuEwNc380r2YtUO0f.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-08--spotify-single-2ti9uIOu2JPOMMzUf41Snl.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-09--spotify-single-3ILKNWXtZof2e6XS6Zvynr.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-10--spotify-single-7s0xajVHIGgMYdwUuj48Cb.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-11--spotify-single-43CyheqfBIFgDSRmB4ZfAt.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/daily-music-release-due-queue.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/audience-engine/youtube-channel-capabilities.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/metal-print-vip/all-works-sellout-goal.json"
+        },
+        {
+          "xy": " M",
+          "path": "ops/metal-print-vip/campaign-distribution-plan-2026-07.csv"
+        },
+        {
+          "xy": " M",
+          "path": "ops/metal-print-vip/goal-controller-state.json"
+        },
+        {
+          "xy": " M",
+          "path": "package.json"
+        },
+        {
+          "xy": " M",
+          "path": "public/works/works-ssd.json"
+        },
+        {
+          "xy": " M",
+          "path": "public/works/works.json"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/build-daily-music-release-pack.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/build-daily-music-release-video.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/build-metal-print-goal-controller.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/gen-works-ssd.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/submit-metal-print-indexnow.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-all-catalog-metal-print.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-chat-sales.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-daily-music-publication-queue.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-daily-music-release-pack.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-daily-music-release-video.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-attribution.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-global-seo.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-goal-controller.mjs"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-inbound.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-indexing.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-natura-release.ts"
+        },
+        {
+          "xy": " M",
+          "path": "scripts/validate-metal-print-offer-approval.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/en/metal-print/[slug]/page.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/en/office-art/page.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/faq/page.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/metal-print/[slug]/metal-print-edition.css"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/metal-print/[slug]/page.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/realm/[region]/RegionGallery.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/realm/[region]/page.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/realm/[region]/realm-region.css"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/shop/BuyButton.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/sitemap.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/app/works/[id]/page.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/components/Nav.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/components/broadcast/BroadcastBar.tsx"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/atlas/regions.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/chat-experience.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/chat-history.server.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/llm-router.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/loadMergedWorksServer.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/metal-print-offers.server.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/lib/metal-print-vip.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/pages/api/chat-experience-v3.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/pages/api/chat-history.ts"
+        },
+        {
+          "xy": " M",
+          "path": "src/pages/chat.module.css"
+        },
+        {
+          "xy": " M",
+          "path": "src/pages/chat.tsx"
+        },
+        {
+          "xy": "??",
+          "path": "docs/aerial-sales-simulation-audit-2026-08-17.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/chat-analysis.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/daily-reports/2026-08-07-claude.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/daily-reports/2026-08-09-claude.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/daily-reports/2026-08-10-claude.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/drone-exhibition-metal-print-roadmap-2026-08-09.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/drone-r2-upload-runbook-2026-08-09.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/metal-print-catalog-indexation-policy.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/musiam-revenue-os-sprint-2-restart-packet-2026-08-22.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/musiam-revenue-os-sprint-4-restart-packet-2026-08-22.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/musiam-revenue-os-sprint-5-restart-packet-2026-08-24.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/musiam-revenue-os-sprint-6-restart-packet-2026-08-25.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/musiam-revenue-os-sprint-7-restart-packet-2026-08-25.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/musiam-revenue-os-terra-handoff-2026-08-22.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/sales-conversation-architecture-v1.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/sales-os-production-gate.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/sales-os-restart-packet-2026-08-22.md"
+        },
+        {
+          "xy": "??",
+          "path": "docs/sales-os-v1.md"
+        },
+        {
+          "xy": "??",
+          "path": "ops/audience-engine/DMR-20260805-4531782f-youtube-publication-evidence.json"
+        },
+        {
+          "xy": "??",
+          "path": "ops/audience-engine/DMR-20260806-fbd1b2f2-youtube-publication-evidence.json"
+        },
+        {
+          "xy": "??",
+          "path": "ops/audience-engine/DMR-20260809-2d28da0a-threads-publication-evidence.json"
+        },
+        {
+          "xy": "??",
+          "path": "ops/audience-engine/daily-music-release-candidates/2026-08-12--apple-album-6797260493.json"
+        },
+        {
+          "xy": "??",
+          "path": "ops/audience-engine/daily-music-release-candidates/repair-candidates/"
+        },
+        {
+          "xy": "??",
+          "path": "ops/drone-exhibition/"
+        },
+        {
+          "xy": "??",
+          "path": "ops/metal-print-vip/campaign-distribution-plan-extra-channels-2026-07.csv"
+        },
+        {
+          "xy": "??",
+          "path": "ops/metal-print-vip/production-daily-music-short-link-evidence-2026-08-08.json"
+        },
+        {
+          "xy": "??",
+          "path": "ops/sales-os/"
+        },
+        {
+          "xy": "??",
+          "path": "outputs/"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-027c4cc8-5aea-4daa-9cc7a0fececfac4d.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-032cd18d-2746-4b9f-a29dade68e3dbfc1.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-09a553a2-94ce-4583-a26b5d8c8478395a.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-0ce9827c-d76c-422e-ad263c581862f627.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-0dce80f4-1f71-49ff-aad838d636c7fe90.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-0f0550ad-8595-4b75-b88e81a8c7c15eea.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-23934e83-b9a4-4220-8d1d63062ff23ab3.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-27339a57-d218-476c-8b31583f02f97a6d.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-2b4c2632-f613-43ee-b3653535d1831725.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-2d9ca636-dfd6-4b92-98293b999b5bb1b9.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-351fe9c9-5fb8-4390-94b8817aa86355e9.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-385683c1-5656-4769-bdc545acbababee6.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-39224298-3149-4b95-9766079295a18d04.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-41552b0e-1a80-4db1-95eab599f519105b.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-41a52226-3c5b-4b6d-ac4995667eafeea8.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-4489afa9-4573-4f5e-be2c82d9df9687c2.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-4acea7e4-d667-4346-ac745f508f6b2a26.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-4f4af40e-85a1-4e42-abac782fd6f01e3e.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-512499b2-ee75-4344-8b8cf84baaeb7f95.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-63f20408-1882-414e-8b7a8c2af068d6df.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-6588d9c6-35e0-41d1-b196a0f6fc6abddc.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-69ddc259-3a92-4e9e-a7239b4008d9c713.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-6bed980f-0808-4511-a6c5028c6db70347.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-74a83a64-e93a-47dd-b98b3fa08b7ea7ba.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-7a4dd99d-e85d-4495-963ae579bbf36cc8.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-7d11383a-8802-4d6d-9843b126404a861d.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-7e1ee4dd-0dd4-49e4-b77d605cec2a1e22.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-7e4e8c51-9f0e-4317-a4424ac86ed39a54.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-96ef6aba-fc75-4905-94c98326e030ce4f.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-996ef816-130e-4f27-a60f43e78932cc28.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-a65bb593-119e-42c8-9906533191c46708.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-a9cf8107-2002-42f6-b80aff47be0427ab.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-b4088cc1-24a7-4e91-a622c5a415c5112a.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-c2d73daf-d874-4ae8-9b2af608b72578cc.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-cde0297c-69c7-475f-8df20ae4d392ccc5.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-ebb7cb67-7d88-448f-81b0775125197be6.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers-ssd/ssd-fd4413eb-d0a9-4c8c-a787508eec66826b.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797256260.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797258757.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797640677.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797643517.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797649155.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797651098.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6797652007.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/covers/apple_6798894050.jpg"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-exhibition.json"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-exhibition/"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-metal-print-selection.json"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-metal-print/"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-print-product-preparation.json"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-publication-catalog.json"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-water-safe-proof/"
+        },
+        {
+          "xy": "??",
+          "path": "public/works/drone-water-treatment-v03/"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/apply-daily-music-tiktok-short-link-repair-batch.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/apply-daily-music-tiktok-short-link-repair.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/audit-realm-content-integrity.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-aerial-print-product-preparation.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-daily-music-tiktok-short-link-repair-batch.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-drone-metal-print-selection.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-drone-publication-catalog.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-drone-visual-duplicate-candidates.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-drone-water-safe-proof.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-drone-water-treatment-v03.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/build-musiam-revenue-matrix.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/evaluate-aerial-sales-live-provider.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/evaluate-sales-os-independent.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/evaluate-sales-os-quality.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/prepare-drone-publication-assets.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/prune-drone-visual-duplicate-candidates.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/red-team-sales-os.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/repair-daily-music-tiktok-short-link-video.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/simulate-aerial-hybrid-sales-quality.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/simulate-aerial-sales-conversations.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/simulate-sales-os-multi-product.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/sync-drone-exhibition.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/upload-drone-publication-r2.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-chat-api-hybrid.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-chat-api-live-negotiation.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-chat-api-live.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-chat-api-negotiation.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-chat-sales.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-final-preview.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-launch-pricing.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-aerial-print-product-preparation.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-chat-analysis.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-chat-conversation-quality.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-drone-metal-print-exhibition.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-drone-publication-readiness.mjs"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-metal-print-index-policy.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-metal-print-space-segment.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-musiam-revenue-matrix.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-musiam-revenue-preview.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-sales-conversation-quality.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-sales-os-conversation-state.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-sales-os-independent-evaluation.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-sales-os.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-sales-review-console.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/aerial/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/api/aerial-final-preview/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/api/drone-duplicates/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/api/drone-preview/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/c/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/en/office-art/lead-time-guide/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/revenue-preview/"
+        },
+        {
+          "xy": "??",
+          "path": "src/app/sales-review/"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/aerial-metal-print-pricing.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/aerial-metal-print-sales-ai.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/aerial-metal-print-sales-conversation.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/drone-chronology.server.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/metal-print-attributed-link.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/metal-print-space-segment.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/revenue-os/"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/sales-conversation-quality.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/sales-os/"
+        },
+        {
+          "xy": "??",
+          "path": "src/pages/api/chat-analysis.ts"
+        }
+      ],
+      "path": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+      "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git",
+      "dependsOnOriginal": true,
+      "locked": false,
+      "prunable": false,
+      "detached": true,
+      "historyEvidence": "C4 verified all persistent refs and Original HEAD in independent R0 repair copy; this is not preservation of current dirty/untracked/ignored content.",
+      "currentWorkingContentPreservation": "NOT_ESTABLISHED_BY_METADATA",
+      "ignoredContentCoverage": "UNKNOWN_NOT_IN_STATUS",
+      "activeUse": "OWNER_DECISION_REQUIRED",
+      "classification": "WORKTREE_REQUIRES_PRESERVATION",
+      "rationale": "Dirty/untracked state exists and current independent restoration coverage is unverified; preserve conservatively before any dependency removal. No claim that every entry is unique.",
+      "plan": {
+        "executionAuthorized": false,
+        "proposedPreservationRoot": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/codex-6df2/preservation",
+        "proposedStandaloneRepository": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/codex-6df2/repository",
+        "destinationStatus": "PROPOSED_NOT_CREATED_RECHECK_ABSENCE_AT_EXECUTION",
+        "decisionQuestion": "今後も作業用として維持するか、必要な状態を保全後に廃止するかを決めてください。",
+        "steps": [
+          "Freeze and recheck exact worktree /Users/kagekun/.codex/worktrees/6df2/musiam-front, HEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175, branch/detached state and NUL status digest 6fe2d379fdc5ca720746df334cc7d6b744aca5929de2ade59dc7485d60aebd6e; stop on drift or active writers.",
+          "Inventory tracked dirty, staged, expanded untracked and ignored paths using metadata. Separate secret/local holds; obtain the private retention decision before any protected bytes are copied. Current status entries in this record are scope evidence, not a complete ignored-file inventory.",
+          "In a separately authorized preservation Gate, preserve exact approved working state to /Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/codex-6df2/preservation; independently extract and compare non-sensitive files, modes and paths. Account for index/unstaged layers, ignored value and detached HEAD; do not substitute Original snapshots for current worktree proof.",
+          "If continued use is chosen, create standalone Git authority at /Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/codex-6df2/repository from the verified independent R0 history authority, supplement any missing current worktree history only under explicit authority. Require a full local object copy, no shared alternates, no Original dependency; validate HEAD and branch (or detached state) against this record.",
+          "Restore approved dirty/untracked state and index layer to the standalone repository; compare the exact preserved content/status and metadata. Handle approved secrets separately without displaying values.",
+          "Verify standalone git rev-parse --git-common-dir resolves inside the new repository, object alternates and references do not point at Original, and all required objects are available. Verify project-specific regression checks under separate scope; no provider/deploy calls by inference.",
+          "Only after preservation and standalone checks pass and owner scope explicitly allows it, remove the old linked-worktree dependency/registration in a separate execution Gate. Re-enumerate Original worktrees and prove no live dependency remains before any deletion review.",
+          "If disposal is chosen instead, prove remaining unique value is zero with independent preservation, explicitly resolve ignored/private and future-use decisions, obtain scoped owner decommission authority, then remove only this worktree and its registration in a separate Gate. No branch/ref deletion is implied."
+        ],
+        "stopConditions": [
+          "State drift",
+          "Unresolved secret/private retention",
+          "Incomplete content/history preservation",
+          "Original Git dependency persists",
+          "Owner active/disposable decision missing"
+        ]
+      },
+      "postReviewStateUnchanged": true
+    },
+    {
+      "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "astra-local-clean",
+      "modified": 0,
+      "dirtyTracked": 0,
+      "staged": 0,
+      "untracked": 0,
+      "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "entries": [],
+      "path": "/Users/kagekun/Desktop/musiam-front-astra",
+      "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git",
+      "dependsOnOriginal": true,
+      "locked": false,
+      "prunable": false,
+      "detached": false,
+      "historyEvidence": "C4 verified all persistent refs and Original HEAD in independent R0 repair copy; this is not preservation of current dirty/untracked/ignored content.",
+      "currentWorkingContentPreservation": "NOT_ESTABLISHED_BY_METADATA",
+      "ignoredContentCoverage": "UNKNOWN_NOT_IN_STATUS",
+      "activeUse": "OWNER_DECISION_REQUIRED",
+      "classification": "WORKTREE_SEMANTIC_DECISION_REQUIRED",
+      "rationale": "Tracked/untracked status is clean, but future use and ignored-file value are unknown; clean status alone does not justify disposal.",
+      "plan": {
+        "executionAuthorized": false,
+        "proposedPreservationRoot": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/astra-local-clean/preservation",
+        "proposedStandaloneRepository": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/astra-local-clean/repository",
+        "destinationStatus": "PROPOSED_NOT_CREATED_RECHECK_ABSENCE_AT_EXECUTION",
+        "decisionQuestion": "今後も作業用として維持するか、必要な状態を保全後に廃止するかを決めてください。",
+        "steps": [
+          "Freeze and recheck exact worktree /Users/kagekun/Desktop/musiam-front-astra, HEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175, branch/detached state and NUL status digest e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855; stop on drift or active writers.",
+          "Inventory tracked dirty, staged, expanded untracked and ignored paths using metadata. Separate secret/local holds; obtain the private retention decision before any protected bytes are copied. Current status entries in this record are scope evidence, not a complete ignored-file inventory.",
+          "In a separately authorized preservation Gate, preserve exact approved working state to /Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/astra-local-clean/preservation; independently extract and compare non-sensitive files, modes and paths. Account for index/unstaged layers, ignored value and detached HEAD; do not substitute Original snapshots for current worktree proof.",
+          "If continued use is chosen, create standalone Git authority at /Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/astra-local-clean/repository from the verified independent R0 history authority, supplement any missing current worktree history only under explicit authority. Require a full local object copy, no shared alternates, no Original dependency; validate HEAD and branch (or detached state) against this record.",
+          "Restore approved dirty/untracked state and index layer to the standalone repository; compare the exact preserved content/status and metadata. Handle approved secrets separately without displaying values.",
+          "Verify standalone git rev-parse --git-common-dir resolves inside the new repository, object alternates and references do not point at Original, and all required objects are available. Verify project-specific regression checks under separate scope; no provider/deploy calls by inference.",
+          "Only after preservation and standalone checks pass and owner scope explicitly allows it, remove the old linked-worktree dependency/registration in a separate execution Gate. Re-enumerate Original worktrees and prove no live dependency remains before any deletion review.",
+          "If disposal is chosen instead, prove remaining unique value is zero with independent preservation, explicitly resolve ignored/private and future-use decisions, obtain scoped owner decommission authority, then remove only this worktree and its registration in a separate Gate. No branch/ref deletion is implied."
+        ],
+        "stopConditions": [
+          "State drift",
+          "Unresolved secret/private retention",
+          "Incomplete content/history preservation",
+          "Original Git dependency persists",
+          "Owner active/disposable decision missing"
+        ]
+      },
+      "postReviewStateUnchanged": true
+    },
+    {
+      "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "fix/stripe-metal-print-webhook-20260914",
+      "modified": 1,
+      "dirtyTracked": 1,
+      "staged": 0,
+      "untracked": 2,
+      "statusSha256": "e1830c9d9cd43ccebd985573647643a40874b2719d59c3b25856da3743ec1973",
+      "entries": [
+        {
+          "xy": " M",
+          "path": "src/app/api/metal-print/webhook/route.ts"
+        },
+        {
+          "xy": "??",
+          "path": "scripts/validate-metal-print-webhook-routing.ts"
+        },
+        {
+          "xy": "??",
+          "path": "src/lib/metal-print-webhook-identity.ts"
+        }
+      ],
+      "path": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+      "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git",
+      "dependsOnOriginal": true,
+      "locked": false,
+      "prunable": false,
+      "detached": false,
+      "historyEvidence": "C4 verified all persistent refs and Original HEAD in independent R0 repair copy; this is not preservation of current dirty/untracked/ignored content.",
+      "currentWorkingContentPreservation": "NOT_ESTABLISHED_BY_METADATA",
+      "ignoredContentCoverage": "UNKNOWN_NOT_IN_STATUS",
+      "activeUse": "OWNER_DECISION_REQUIRED",
+      "classification": "WORKTREE_REQUIRES_PRESERVATION",
+      "rationale": "Dirty/untracked state exists and current independent restoration coverage is unverified; preserve conservatively before any dependency removal. No claim that every entry is unique.",
+      "plan": {
+        "executionAuthorized": false,
+        "proposedPreservationRoot": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/stripe-fix/preservation",
+        "proposedStandaloneRepository": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/stripe-fix/repository",
+        "destinationStatus": "PROPOSED_NOT_CREATED_RECHECK_ABSENCE_AT_EXECUTION",
+        "decisionQuestion": "今後も作業用として維持するか、必要な状態を保全後に廃止するかを決めてください。",
+        "steps": [
+          "Freeze and recheck exact worktree /Users/kagekun/Desktop/musiam-front-stripe-fix, HEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175, branch/detached state and NUL status digest e1830c9d9cd43ccebd985573647643a40874b2719d59c3b25856da3743ec1973; stop on drift or active writers.",
+          "Inventory tracked dirty, staged, expanded untracked and ignored paths using metadata. Separate secret/local holds; obtain the private retention decision before any protected bytes are copied. Current status entries in this record are scope evidence, not a complete ignored-file inventory.",
+          "In a separately authorized preservation Gate, preserve exact approved working state to /Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/stripe-fix/preservation; independently extract and compare non-sensitive files, modes and paths. Account for index/unstaged layers, ignored value and detached HEAD; do not substitute Original snapshots for current worktree proof.",
+          "If continued use is chosen, create standalone Git authority at /Users/kagekun/Library/Application Support/MUSIAM/recovery/c4b-worktree-remediation/stripe-fix/repository from the verified independent R0 history authority, supplement any missing current worktree history only under explicit authority. Require a full local object copy, no shared alternates, no Original dependency; validate HEAD and branch (or detached state) against this record.",
+          "Restore approved dirty/untracked state and index layer to the standalone repository; compare the exact preserved content/status and metadata. Handle approved secrets separately without displaying values.",
+          "Verify standalone git rev-parse --git-common-dir resolves inside the new repository, object alternates and references do not point at Original, and all required objects are available. Verify project-specific regression checks under separate scope; no provider/deploy calls by inference.",
+          "Only after preservation and standalone checks pass and owner scope explicitly allows it, remove the old linked-worktree dependency/registration in a separate execution Gate. Re-enumerate Original worktrees and prove no live dependency remains before any deletion review.",
+          "If disposal is chosen instead, prove remaining unique value is zero with independent preservation, explicitly resolve ignored/private and future-use decisions, obtain scoped owner decommission authority, then remove only this worktree and its registration in a separate Gate. No branch/ref deletion is implied."
+        ],
+        "stopConditions": [
+          "State drift",
+          "Unresolved secret/private retention",
+          "Incomplete content/history preservation",
+          "Original Git dependency persists",
+          "Owner active/disposable decision missing"
+        ]
+      },
+      "postReviewStateUnchanged": true
+    }
+  ],
+  "worktreeCounts": {
+    "WORKTREE_DISPOSABLE_AFTER_PRESERVATION": 0,
+    "WORKTREE_REQUIRES_PRESERVATION": 2,
+    "WORKTREE_MUST_REMAIN_ACTIVE": 0,
+    "WORKTREE_SEMANTIC_DECISION_REQUIRED": 1
+  },
+  "staleMissingRegistrations": [
+    {
+      "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+      "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-deploy-aa9c540",
+      "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-main-check",
+      "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+      "branch": "refs/heads/codex/main-release-check",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-release-candidate",
+      "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+      "branch": "refs/heads/codex/sandbox-base",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+      "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+      "branch": "refs/heads/codex/sandbox-luxury-home",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-shaman-999",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/feature/shaman-999",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    }
+  ],
+  "blockers": {
+    "unpreservedUniqueSource": 0,
+    "privateUnresolved": 16,
+    "worktreePreservationRequired": 2,
+    "worktreeSemanticDecisionRequired": 1,
+    "worktreeOriginalDependencies": 3
+  },
+  "c4Readiness": "NOT_READY_PRIVATE_RETENTION_DECISION",
+  "nextGate": "C4-B PRIVATE RETENTION DECISION",
+  "subsequentGate": "C4-B WORKTREE DEPENDENCY REMEDIATION (requires current worktree preservation and usage decisions before any migration/removal)",
+  "operations": {
+    "originalWrites": 0,
+    "originalGitMutations": 0,
+    "originalDeletion": 0,
+    "sourceDeletion": 0,
+    "sourceMove": 0,
+    "privateContentReads": 0,
+    "privateHashesProduced": 0,
+    "privateArchiveCopies": 0,
+    "worktreeMutations": 0,
+    "destructiveOperations": 0,
+    "archiveDeletion": 0,
+    "applicationChanges": 0,
+    "providerOperations": 0,
+    "paymentOperations": 0,
+    "dataOperations": 0,
+    "deployOperations": 0,
+    "pushOperations": 0,
+    "dependencyInstalls": 0,
+    "uniqueFilesCopied": 21,
+    "archivesCreated": 1,
+    "verificationDirectoriesRemoved": 1
+  },
+  "operationEvidenceBoundary": "Zero-operation fields attest the scoped executed commands and artifacts; they are not an OS-wide syscall audit. Git status may internally inspect files; private zero-read means no explicit private payload read/hash/copy was performed by this Unit. Git commands were expressly authorized and used no optional locks / fsmonitor.",
+  "truthBoundary": "Preservation PASS proves only the exact 21-file archive and review accounting. It does not authorize deletion, migration, private preservation, adoption, production/provider/payment/data actions, deploy or push. It does not establish production parity, paid/fulfilled/non-refunded revenue, demand or rights. Historical R0 path membership is not current private-content equality; worktree status is not content equality. Unknown remains unknown.",
+  "humanDeletionGateOpened": false,
+  "recommendedNextModel": "Current parent model for private retention, Git dependency and final integration; no automatic model/config/provider change.",
+  "validation": {
+    "status": "PASS",
+    "command": "node scripts/validate-cleanup-c4a-blocker-remediation.mjs",
+    "diffCheck": "PASS",
+    "checks": 541,
+    "parentReview": "Exact authority sets, zero-read boundary, archive paths and manifests, worktree states/plans and readiness reviewed."
+  },
+  "originalAfter": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "dirtyTracked": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89"
+  }
+}
