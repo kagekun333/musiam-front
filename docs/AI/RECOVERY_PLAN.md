@@ -294,3 +294,11 @@ Incident evidence、validator、final recordを含む指定4記録ファイル�
 `C3A_UNKNOWN_TRIAGE = COMPLETE_COMMITTED` at starting HEAD `4e1f8c491acfa9ffaf8fa3f7f6a40518839d071c`. UNKNOWN reconciles to 22,238 files / 3,463,835,648 allocated bytes; `.git` remains opaque, with 17,801 files derived and 3,136,348,160 allocated bytes reused from Cleanup Audit authority. Non-Git UNKNOWN is 4,437 files / 327,487,488 allocated bytes.
 
 Sol handoff contains 300 grouped items covering 2381 files; `C4_READINESS = NOT_READY_SOL_REVIEW_REQUIRED`. Next Gate is C3-B Sol semantic review. This is the current governance order; historical C2 next-Gate text remains unchanged. C3-B/C4, deletion, archive cleanup, Original writes, provider operations, deploy, and push were not started.
+
+## C3-B SEMANTIC REVIEW — current governance
+
+`C3B_SEMANTIC_REVIEW = COMPLETE_COMMITTED` from starting HEAD `ce25a6f80d552f9689e7c1b2707d3bcd3d501152`. The 300 handoff groups / 2,381 unique paths split into 1,091 UNKNOWN decision targets (69 dirty deltas + 1,022 semantic-review entries) and 1,290 context-only `ops/` paths already under Cleanup Audit `EVIDENCE_HOLD`; duplicate paths and target/context overlap are 0.
+
+Final targets: 383 `PRESERVE_REQUIRED_BEFORE_C4`, 702 `ALREADY_PRESERVED_NO_EXTRA_ACTION`, 5 `RECOVERY_SUPERSEDES_CONFIRMED`, 1 `REGENERABLE_NO_PRESERVATION_REQUIRED`, and 0 historical-only/future-product-as-decision/owner-decision. Future-product relevance is recorded separately. The verified R0 HEAD bundle suffices for 700 tracked-clean Omikuji cards and 2 tracked-clean tools. For the 383 changed or Original-only sources/assets, broad R0 preservation does not establish exact current-file sufficiency for C4. See `docs/AI/CLEANUP_C3B_SEMANTIC_REVIEW.md` and `ops/recovery/cleanup-c3b-semantic-review-20260923.json` for file-level decisions and evidence.
+
+`C4_READINESS = NOT_READY_PRESERVATION_REQUIRED`; next Gate is **C3-C PRESERVATION EXECUTION**. C3-B did not copy, archive, delete, move, change application/runtime source, write to Original, inspect Original `.git` internals, read sensitive/private content, call providers, deploy, push, or start C4. This does not authorize C3-C execution or Original decommission in the current Gate.
