@@ -287,3 +287,10 @@ C3は未開始、`C2_FURTHER_SOURCE_DELETION = NOT_REQUIRED`。
 Incident evidence、validator、final recordを含む指定4記録ファイルだけを更新し、local commitで閉じる。
 次GateはC4 dirty repository decommission。詳細は`docs/AI/CLEANUP_C2_SOURCE_REMOVAL.md`と
 `ops/recovery/cleanup-c2-source-removal-20260923.json`を参照。
+
+
+## C3-A UNKNOWN TRIAGE — current governance
+
+`C3A_UNKNOWN_TRIAGE = COMPLETE_COMMITTED` at starting HEAD `4e1f8c491acfa9ffaf8fa3f7f6a40518839d071c`. UNKNOWN reconciles to 22,238 files / 3,463,835,648 allocated bytes; `.git` remains opaque, with 17,801 files derived and 3,136,348,160 allocated bytes reused from Cleanup Audit authority. Non-Git UNKNOWN is 4,437 files / 327,487,488 allocated bytes.
+
+Sol handoff contains 300 grouped items covering 2381 files; `C4_READINESS = NOT_READY_SOL_REVIEW_REQUIRED`. Next Gate is C3-B Sol semantic review. This is the current governance order; historical C2 next-Gate text remains unchanged. C3-B/C4, deletion, archive cleanup, Original writes, provider operations, deploy, and push were not started.
