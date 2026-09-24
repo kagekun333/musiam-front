@@ -449,3 +449,36 @@ Both dirty worktrees are `WORKTREE_STATE_INDEPENDENTLY_PRESERVED`. Astra is clea
 `WORKTREE_STATE_PRESERVATION = COMPLETE`; `WORKTREE_DECOMMISSION_READY = true`; `ORIGINAL_GIT_DEPENDENCY_COUNT = 3`; `C4_READINESS = NOT_READY_WORKTREE_DECOMMISSION_REQUIRED`. Successful authorized four-record local commit closes `C4D_WORKTREE_REMEDIATION = COMPLETE_COMMITTED`. Source/worktree state and permissions, Original/private preservation and all branch/refs remain unchanged. Destructive source operations, application changes, provider/deploy/push are 0.
 
 Next Gate: **C4-E WORKTREE DECOMMISSION EXECUTION**, not started. Re-lock exact targets and preservation before separately authorized removal; review stale registrations without broad prune; prove live external dependencies zero; retain Original and return to its final deletion review. Details, evidence and validator are in the three C4-D record files. Earlier blocked entries above are retained as history and superseded by this completed preservation result.
+
+
+## CLEANUP-C4E WORKTREE DECOMMISSION — current governance
+
+Owner approval `APPROVE_C4E_WORKTREE_DECOMMISSION`; starting HEAD
+`7de25dd7fc9b9d9730073ef374214e641ed96b6e`, canonical initially clean.
+C4-D live validator passed 2,906 checks before removal. Exact machine-authority
+worktrees Astra, stripe-fix and 6df2 were removed sequentially by Git (normal,
+force, force). All final live states matched C4-D; drift/partial failure=0.
+Six dry-run registrations matched only recorded absent/prunable C4-A/C4-D paths;
+exact-set prune succeeded, unexpected registrations=0. Live linked worktrees and
+external Original Git dependencies are now 0; only Original main registration remains.
+
+Both required branch tips and all persistent refs remain unchanged. Original HEAD
+`117379b6c61ab3fc072b6cd4b80ce1d406b0e175`, branch
+`codex/fix/stripe-metal-print-webhook-20260914`, and 102 / 0 / 433 status entries
+plus exact status digest are unchanged. C4-D/C4-C/C4-A/C3-C/C2/R0 preservation
+remains present with recorded authority and before/after metadata continuity;
+private payloads were not explicitly read/hashed. Prior private/unique-source
+blocker resolutions carry forward; no new Original deletion review was conducted.
+
+`WORKTREE_DECOMMISSION_RECLAIM_BYTES = 3433353216`, the sum of removed worktree
+pre-removal allocated sizes, not Original reclaim or guaranteed free-space growth.
+`C4E_WORKTREE_DECOMMISSION = COMPLETE`; the authorized exact four-record local
+commit closes `COMPLETE_COMMITTED`, derived by the C4-E validator.
+`WORKTREE_DEPENDENCY_BLOCKER = RESOLVED`.
+`C4_READINESS = READY_FOR_ORIGINAL_REPOSITORY_DELETION_REVIEW`.
+Next Gate: **C4-F ORIGINAL REPOSITORY FINAL DELETION REVIEW**, not started.
+Original main repository and all preservation/history remain retained. Original
+repository deletion, branch deletion, application changes, provider/deploy/push=0.
+This readiness does not authorize deletion. See the C4-E report, machine record
+and `scripts/validate-cleanup-c4e-worktree-decommission.mjs`. C4-D live-source
+validator PASS remains historical pre-removal evidence after decommission.

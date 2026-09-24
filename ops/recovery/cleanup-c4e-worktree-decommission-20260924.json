@@ -1,0 +1,1741 @@
+{
+  "schemaVersion": 1,
+  "startingHead": "7de25dd7fc9b9d9730073ef374214e641ed96b6e",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "canonicalInitiallyClean": true,
+  "approval": "APPROVE_C4E_WORKTREE_DECOMMISSION",
+  "originalRepo": "/Users/kagekun/Desktop/musiam-front",
+  "status": "COMPLETE",
+  "createdAt": "2026-09-24T18:18:11.244469+00:00",
+  "originalStateBefore": {
+    "path": "/Users/kagekun/Desktop/musiam-front",
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89",
+    "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+  },
+  "worktreesBefore": [
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914"
+    },
+    {
+      "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+      "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location"
+    },
+    {
+      "worktree": "/private/tmp/musiam-deploy-aa9c540",
+      "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location"
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-main-check",
+      "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+      "branch": "refs/heads/codex/main-release-check",
+      "prunable": "gitdir file points to non-existent location"
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-release-candidate",
+      "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+      "branch": "refs/heads/codex/sandbox-base",
+      "prunable": "gitdir file points to non-existent location"
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+      "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+      "branch": "refs/heads/codex/sandbox-luxury-home",
+      "prunable": "gitdir file points to non-existent location"
+    },
+    {
+      "worktree": "/private/tmp/musiam-shaman-999",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/feature/shaman-999",
+      "prunable": "gitdir file points to non-existent location"
+    },
+    {
+      "worktree": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "detached": true
+    },
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front-astra",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/astra-local-clean"
+    },
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/fix/stripe-metal-print-webhook-20260914"
+    }
+  ],
+  "worktreeListPorcelainBefore": "worktree /Users/kagekun/Desktop/musiam-front\nHEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nbranch refs/heads/codex/fix/stripe-metal-print-webhook-20260914\n\nworktree /private/tmp/musiam-chat-analysis-deploy.LauZ5j\nHEAD 569e907cbc2c103226bc2a43137f258a2556f600\ndetached\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/musiam-deploy-aa9c540\nHEAD aa9c540d2b7568c8dfdd53877f90fd91679fb809\ndetached\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/musiam-front-main-check\nHEAD 5b853ea4f5bba0f6fd1930515032dacbd663104f\nbranch refs/heads/codex/main-release-check\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/musiam-front-release-candidate\nHEAD 5dc077efb4230f4d39aa5960dd59f389b110be8b\nbranch refs/heads/codex/sandbox-base\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/musiam-front-sandbox-luxury\nHEAD 28ca474ca171368e60218f68a5dfe56c7057e437\nbranch refs/heads/codex/sandbox-luxury-home\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/musiam-shaman-999\nHEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nbranch refs/heads/feature/shaman-999\nprunable gitdir file points to non-existent location\n\nworktree /Users/kagekun/.codex/worktrees/6df2/musiam-front\nHEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\ndetached\n\nworktree /Users/kagekun/Desktop/musiam-front-astra\nHEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nbranch refs/heads/astra-local-clean\n\nworktree /Users/kagekun/Desktop/musiam-front-stripe-fix\nHEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nbranch refs/heads/fix/stripe-metal-print-webhook-20260914\n\n",
+  "removalOrder": [
+    "/Users/kagekun/Desktop/musiam-front-astra",
+    "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+    "/Users/kagekun/.codex/worktrees/6df2/musiam-front"
+  ],
+  "eachWorktree": [
+    {
+      "path": "/Users/kagekun/Desktop/musiam-front-astra",
+      "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "astra-local-clean",
+      "stateBefore": {
+        "path": "/Users/kagekun/Desktop/musiam-front-astra",
+        "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "astra-local-clean",
+        "modified": 0,
+        "staged": 0,
+        "untracked": 0,
+        "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+      },
+      "c4dDisposition": "WORKTREE_DISPOSABLE_AFTER_PRESERVATION",
+      "allocatedBytesBefore": 687087616,
+      "preservationVerified": true,
+      "removalMethod": "git worktree remove",
+      "removalSuccess": true,
+      "pathAbsentAfter": true,
+      "registrationAbsentAfter": true,
+      "preservedSourceMetadataMatchedBeforeRemoval": true,
+      "finalLiveStateBeforeRemoval": {
+        "path": "/Users/kagekun/Desktop/musiam-front-astra",
+        "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "astra-local-clean",
+        "modified": 0,
+        "staged": 0,
+        "untracked": 0,
+        "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+      },
+      "finalLiveStateMatched": true,
+      "removalStartedAt": "2026-09-24T18:18:42.816600+00:00",
+      "removalExitCode": 0,
+      "removalOutput": "",
+      "removalFinishedAt": "2026-09-24T18:18:43.128577+00:00",
+      "registrationsAfterRemoval": [
+        {
+          "worktree": "/Users/kagekun/Desktop/musiam-front",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914"
+        },
+        {
+          "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+          "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+          "detached": true,
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-deploy-aa9c540",
+          "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+          "detached": true,
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-main-check",
+          "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+          "branch": "refs/heads/codex/main-release-check",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-release-candidate",
+          "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+          "branch": "refs/heads/codex/sandbox-base",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+          "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+          "branch": "refs/heads/codex/sandbox-luxury-home",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-shaman-999",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/feature/shaman-999",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "detached": true
+        },
+        {
+          "worktree": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/fix/stripe-metal-print-webhook-20260914"
+        }
+      ],
+      "branchRefsAndPreservationIntactAfter": true
+    },
+    {
+      "path": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+      "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "fix/stripe-metal-print-webhook-20260914",
+      "stateBefore": {
+        "path": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+        "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "fix/stripe-metal-print-webhook-20260914",
+        "modified": 1,
+        "staged": 0,
+        "untracked": 2,
+        "statusSha256": "e1830c9d9cd43ccebd985573647643a40874b2719d59c3b25856da3743ec1973",
+        "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+      },
+      "c4dDisposition": "WORKTREE_STATE_INDEPENDENTLY_PRESERVED",
+      "allocatedBytesBefore": 687095808,
+      "preservationVerified": true,
+      "removalMethod": "git worktree remove --force",
+      "removalSuccess": true,
+      "pathAbsentAfter": true,
+      "registrationAbsentAfter": true,
+      "preservedSourceMetadataMatchedBeforeRemoval": true,
+      "finalLiveStateBeforeRemoval": {
+        "path": "/Users/kagekun/Desktop/musiam-front-stripe-fix",
+        "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "fix/stripe-metal-print-webhook-20260914",
+        "modified": 1,
+        "staged": 0,
+        "untracked": 2,
+        "statusSha256": "e1830c9d9cd43ccebd985573647643a40874b2719d59c3b25856da3743ec1973",
+        "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+      },
+      "finalLiveStateMatched": true,
+      "removalStartedAt": "2026-09-24T18:18:59.019581+00:00",
+      "removalExitCode": 0,
+      "removalOutput": "",
+      "removalFinishedAt": "2026-09-24T18:18:59.480737+00:00",
+      "registrationsAfterRemoval": [
+        {
+          "worktree": "/Users/kagekun/Desktop/musiam-front",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914"
+        },
+        {
+          "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+          "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+          "detached": true,
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-deploy-aa9c540",
+          "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+          "detached": true,
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-main-check",
+          "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+          "branch": "refs/heads/codex/main-release-check",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-release-candidate",
+          "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+          "branch": "refs/heads/codex/sandbox-base",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+          "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+          "branch": "refs/heads/codex/sandbox-luxury-home",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-shaman-999",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/feature/shaman-999",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "detached": true
+        }
+      ],
+      "branchRefsAndPreservationIntactAfter": true
+    },
+    {
+      "path": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+      "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "",
+      "stateBefore": {
+        "path": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+        "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "",
+        "modified": 62,
+        "staged": 0,
+        "untracked": 143,
+        "statusSha256": "6fe2d379fdc5ca720746df334cc7d6b744aca5929de2ade59dc7485d60aebd6e",
+        "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+      },
+      "c4dDisposition": "WORKTREE_STATE_INDEPENDENTLY_PRESERVED",
+      "allocatedBytesBefore": 2059169792,
+      "preservationVerified": true,
+      "removalMethod": "git worktree remove --force",
+      "removalSuccess": true,
+      "pathAbsentAfter": true,
+      "registrationAbsentAfter": true,
+      "preservedSourceMetadataMatchedBeforeRemoval": true,
+      "finalLiveStateBeforeRemoval": {
+        "path": "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+        "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "",
+        "modified": 62,
+        "staged": 0,
+        "untracked": 143,
+        "statusSha256": "6fe2d379fdc5ca720746df334cc7d6b744aca5929de2ade59dc7485d60aebd6e",
+        "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+      },
+      "finalLiveStateMatched": true,
+      "removalStartedAt": "2026-09-24T18:19:12.599121+00:00",
+      "removalExitCode": 0,
+      "removalOutput": "",
+      "removalFinishedAt": "2026-09-24T18:19:16.253539+00:00",
+      "registrationsAfterRemoval": [
+        {
+          "worktree": "/Users/kagekun/Desktop/musiam-front",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914"
+        },
+        {
+          "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+          "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+          "detached": true,
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-deploy-aa9c540",
+          "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+          "detached": true,
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-main-check",
+          "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+          "branch": "refs/heads/codex/main-release-check",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-release-candidate",
+          "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+          "branch": "refs/heads/codex/sandbox-base",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+          "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+          "branch": "refs/heads/codex/sandbox-luxury-home",
+          "prunable": "gitdir file points to non-existent location"
+        },
+        {
+          "worktree": "/private/tmp/musiam-shaman-999",
+          "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+          "branch": "refs/heads/feature/shaman-999",
+          "prunable": "gitdir file points to non-existent location"
+        }
+      ],
+      "branchRefsAndPreservationIntactAfter": true
+    }
+  ],
+  "preservedBranchRefs": [
+    {
+      "ref": "refs/heads/astra-local-clean",
+      "tipBefore": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "independentTipBefore": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "independentRepository": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/repair-candidate",
+      "tipAfter": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "independentTipAfter": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "preserved": true
+    },
+    {
+      "ref": "refs/heads/fix/stripe-metal-print-webhook-20260914",
+      "tipBefore": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "independentTipBefore": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "independentRepository": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/repair-candidate",
+      "tipAfter": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "independentTipAfter": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "preserved": true
+    }
+  ],
+  "allPersistentRefsBefore": "refs/codex/turn-diffs/checkpoints/126cf5114c1ae30b073203cb9dbb6c6bf7cbd99c5df44a7d366ce956186c230c/9690df459b36804f9d55cce61926a93519ed06f5e79133acd4e7a47eed34bf45/1789381450932/441c8519-7749-4a9d-808c-d890b48a238f 9ef56d7649ff1a3b40fff35ee4416d84bf3f96a3\nrefs/codex/turn-diffs/checkpoints/2e043f452cade544ef640687fbd5011bbf85db7663f27ec900970f998149604c/21cb5429773178866f6cb2aca45d49387a452d790c76856a98e92db3d7d213d8/1789285218866/f1c6cd98-82f3-4ade-941b-bfb3da404a1d 51e6a77a3d4ef59bde7e0ce1982593b31edfff9a\nrefs/codex/turn-diffs/checkpoints/6e881d8c3534c1ab1cbe4606656fefa07abf0bcef9b222cc1242b2f92ceae257/e35d89b4802669063bab45b173d1559ca9a26e0a4231fd9d5a1d8ea92a241c50/1789383737266/1fff806a-6373-4513-bb03-2f83f4a96cc2 151ff4779c9aaf77f20ae432fb4d2686ffc9dd14\nrefs/codex/turn-diffs/checkpoints/8683c5616a74d5ff37e611cc4953e5d512e5a9b67a3396b32f3d1ef121979d89/6d7a53cf234c5a82fac0df90f34ab87d6b640dfe4dc55d64a1ff66469e77f733/1789288005006/b4c7aa55-f351-4262-8d23-f84c03307157 5d664366e6a19226253bbf5e85b50e61debb1a50\nrefs/codex/turn-diffs/checkpoints/e0c15874a97ea31e368338a1194f06fa013cbd1dc97722942633ce4af7b6be4f/c7216d1c867168506c5a3450b40d9172186f0a7a8b8d1cbdab1b770f949a08a2/1789019613498/8a330023-d3bb-40d9-b71d-4d4e20f8cbfe 60959c2cb880ee72e6c9e8d639e755cda2e51dba\nrefs/heads/astra-local-01 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/astra-local-clean 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/codex/add-mood-tags-generator-script 420fa63ffc154b1ed4ddb50693005ec0bfdb2eb5\nrefs/heads/codex/chat-analysis-production 569e907cbc2c103226bc2a43137f258a2556f600\nrefs/heads/codex/fix/stripe-metal-print-webhook-20260914 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/codex/main-release-check 5b853ea4f5bba0f6fd1930515032dacbd663104f\nrefs/heads/codex/release-candidate 5dc077efb4230f4d39aa5960dd59f389b110be8b\nrefs/heads/codex/sandbox-base 5dc077efb4230f4d39aa5960dd59f389b110be8b\nrefs/heads/codex/sandbox-luxury-home 28ca474ca171368e60218f68a5dfe56c7057e437\nrefs/heads/feat/chat-reco-v1 b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/heads/feat/growth-2026-06 134736e7e06bdc470b4c4c6959dcf6915bbcf65a\nrefs/heads/feat/omikuji-json-v1 222fac0236b5febe652adb1cbd439600e864f664\nrefs/heads/feat/oracle-p0-reading-flip b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/heads/feat/oracle-tarot1 b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/heads/feature/shaman-999 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/fix/stripe-metal-print-webhook-20260914 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/letters-and-site-fixes-2026-07 66d987c1e6afd7f47248ac64ef95ca6e13fce879\nrefs/heads/main 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/release-please--branches--main--components--musiam-front 65fa35d4f0a941eb7ed03885c2464c7bd777b70b\nrefs/heads/rescue-2025-09-19 c10e063d590cd592b2ea80456edd6162ab6e1f04\nrefs/remotes/origin/HEAD 5459425ca1251ef641f2a796eb266b37802c1fa7\nrefs/remotes/origin/chore/cro-ui-cleanup 820944c328eb3b7e328bcfaa33cc5161f3154270\nrefs/remotes/origin/chore/diag-env-route 694fbc486826e026a5abcaba47dfc4e0f33efe73\nrefs/remotes/origin/codex/add-mood-tags-generator-script 420fa63ffc154b1ed4ddb50693005ec0bfdb2eb5\nrefs/remotes/origin/feat/chat-reco-v1 b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/remotes/origin/feat/growth-2026-06 134736e7e06bdc470b4c4c6959dcf6915bbcf65a\nrefs/remotes/origin/letters-and-site-fixes-2026-07 66d987c1e6afd7f47248ac64ef95ca6e13fce879\nrefs/remotes/origin/main 5459425ca1251ef641f2a796eb266b37802c1fa7\nrefs/remotes/origin/release-please--branches--main ef831ca57df4af83366e2eb1aa2b87b757d48ed4\nrefs/remotes/origin/release-please--branches--main--components--musiam-front 8610a2f8eaa0fe6e6f5cb554a89a969b73e13252\nrefs/remotes/origin/rescue-2025-09-19 c10e063d590cd592b2ea80456edd6162ab6e1f04\nrefs/remotes/origin/stg/1155-api 4ffb762519141b94c20b250e86c1bc3a7189b61f\nrefs/stash 132ab853391ede7831988eee6db0f21097846c0a\nrefs/tags/exhibition-complete-20250920-130212 5f151aa3f17b04a0868dedced9015c92e96148d2\nrefs/tags/pre-renovation f5eeac3f25f328967f1bccb8932377d78b3cb872\nrefs/tags/snapshot/20251006_020843 60a6ab51b2d9537dbf22ec7d2bd85fcc048e5c52",
+  "preservationBefore": [
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/PRESERVATION_RESULT.json",
+        "type": "regular",
+        "size": 471377,
+        "mtimeNs": "1790272515283420233",
+        "ctimeNs": "1790272515283420233",
+        "inode": 43143175,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "6eec6cbb17c4e855ff8d2ae9100d36aa706092ad2d2e6059d80fa41a7a6142cd"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 110590,
+        "mtimeNs": "1790258243558100085",
+        "ctimeNs": "1790258243558100085",
+        "inode": 43029267,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "c111da01f03ddb99d6fdc52a1d7d5866b04bb91eb6cc2263b90a7973711cfeec"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 400964,
+        "mtimeNs": "1790272500588914303",
+        "ctimeNs": "1790272500588914303",
+        "inode": 43138095,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "2d783f8b5719f1fe3aecea3ec647e0aeeba83f5dc3f7dde28bdaefea501c25ee"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/ignored-artifacts/outputs/metal-print-cost-simulation/metal-print-global-cost-simulation.xlsx",
+        "type": "regular",
+        "size": 12058,
+        "mtimeNs": "1790258243558433256",
+        "ctimeNs": "1790258243558433256",
+        "inode": 43029271,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "cc54d6425c9e39047f338453d2582b10a11c326ad92caf159cfe4defad799687"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/tracked-delta.patch",
+        "type": "regular",
+        "size": 1820837,
+        "mtimeNs": "1790258243366666733",
+        "ctimeNs": "1790258243366666733",
+        "inode": 43029263,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "267af60ce6ad5e1464f0031c10c990307526401b026a1ec7278de83d934086f3"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/untracked.tar",
+        "type": "regular",
+        "size": 98365440,
+        "mtimeNs": "1790258243552114513",
+        "ctimeNs": "1790258243552114513",
+        "inode": 43029264,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "37d4d469fed7f735418254a0c9a6c49a5724934474f0ce02b7f7acdcf4a9a293"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 913,
+        "mtimeNs": "1790272500933390067",
+        "ctimeNs": "1790272500933390067",
+        "inode": 43138103,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "21db186ffabdecb34e711a50bfb9e6bf04116b5fd51646ebafc3a2f1df032d02"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 6618,
+        "mtimeNs": "1790272512439357059",
+        "ctimeNs": "1790272512439357059",
+        "inode": 43143152,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "1129dde70dabe4e48dde9fc98c0777389fc2fcb094c24ad5994f7e5d4d5a84b9"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/tracked-delta.patch",
+        "type": "regular",
+        "size": 3507,
+        "mtimeNs": "1790272500917560749",
+        "ctimeNs": "1790272500917560749",
+        "inode": 43138101,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "c64e7544ea89a5103f8d0825def230874f8544d76c8ba0592d91c0cde4f63b00"
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/untracked.tar",
+        "type": "regular",
+        "size": 10240,
+        "mtimeNs": "1790272500932994106",
+        "ctimeNs": "1790272500932994106",
+        "inode": 43138102,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "181dfa90c016bd48da341937a4d35024bcb909e9c04b4e39f676d92966b5485e"
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 122880,
+        "mtimeNs": "1790196756073948665",
+        "ctimeNs": "1790196756073948665",
+        "inode": 42828459,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "8cda606e7a74211ab8dbfe95fb027953ee66adb6a5baccef52babe7cc86f358d"
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 21362,
+        "mtimeNs": "1790196756068677601",
+        "ctimeNs": "1790196756068677601",
+        "inode": 42828458,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "8f842e77a82022390859a5091cfc87249467e1ead344f79a4a0121ad8daae647"
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 8253,
+        "mtimeNs": "1790196756079585060",
+        "ctimeNs": "1790196756079585060",
+        "inode": 42828460,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "SHA256_SIZE",
+      "expectedSha256": "df4ffc4f8d4f1f433c13aa027f8bca6b904331f6645e2bf092565ccc2d568806"
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 16527360,
+        "mtimeNs": "1790179562932453499",
+        "ctimeNs": "1790179562932453499",
+        "inode": 42779048,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "38312634a65edd12e54a3ba7493dfe285971147878db1bfe19041ec2631fd167"
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 386479,
+        "mtimeNs": "1790179562898273366",
+        "ctimeNs": "1790179562898273366",
+        "inode": 42779046,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "916e532b629edc491952ce058f2418807160dba2c6f7b3072ed63c0370c9758e"
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 101342,
+        "mtimeNs": "1790179562898434032",
+        "ctimeNs": "1790179562898434032",
+        "inode": 42779047,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "32c3252a3d55a14883385d26c6e4548e7f1596bd7e76da26f2d521e6194d9baa"
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/canonical-output.tar.gz",
+        "type": "regular",
+        "size": 450843681,
+        "mtimeNs": "1790116371876180305",
+        "ctimeNs": "1790116371876180305",
+        "inode": 42319470,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "48726e6500c8b2a440415572726abdf5da1f2d6934cd7c6a0869182a5bb0828c"
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-output.tar.gz",
+        "type": "regular",
+        "size": 1433855247,
+        "mtimeNs": "1790116401234877564",
+        "ctimeNs": "1790116401234877564",
+        "inode": 42319551,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "ef023575e19726fe9246cfe67244e5ef0cca57814eaf42d31e34f03a3c6220bd"
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-archive.tar.gz",
+        "type": "regular",
+        "size": 95906787,
+        "mtimeNs": "1790116406358452474",
+        "ctimeNs": "1790116406358452474",
+        "inode": 42319905,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "4adbf1d86aa475b2369c505873b9eeb9323af14b84f64030cf46321f919fa292"
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-outputs.tar.gz",
+        "type": "regular",
+        "size": 254304,
+        "mtimeNs": "1790116406459914860",
+        "ctimeNs": "1790116406459914860",
+        "inode": 42320687,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "943283326200153d7079155431639d7ae1810fce3e20e911ebb20db711eb1b00"
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/SOURCE_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 794401,
+        "mtimeNs": "1790120754266916973",
+        "ctimeNs": "1790120754266916973",
+        "inode": 42340991,
+        "device": 16777227,
+        "mode": 420
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "4d4185fba3a1995576ae9dbef8ebf5e93e3e5c17a7cae983e88de1105cbf09f0"
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/verification/head-117379b6.bundle",
+        "type": "regular",
+        "size": 640344677,
+        "mtimeNs": "1789912201592822651",
+        "ctimeNs": "1789912210918748619",
+        "inode": 41142277,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": "40e1c86b7cc580e82882318b1dfa4b52ab6b58c89e51f671eb79573de21b20b5"
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "regular",
+        "size": 681815040,
+        "mtimeNs": "1789907384171632881",
+        "ctimeNs": "1789908937497089640",
+        "inode": 41043407,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+        "type": "regular",
+        "size": 2314388480,
+        "mtimeNs": "1789907082373654130",
+        "ctimeNs": "1789908936780833667",
+        "inode": 41043402,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "type": "regular",
+        "size": 1328117760,
+        "mtimeNs": "1789907123280792078",
+        "ctimeNs": "1789908931559985007",
+        "inode": 41043393,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/git-dir.raw.tar",
+        "type": "regular",
+        "size": 3111556096,
+        "mtimeNs": "1789907048786566901",
+        "ctimeNs": "1789908942552486057",
+        "inode": 41043413,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+        "type": "regular",
+        "size": 761171,
+        "mtimeNs": "1789907235817627715",
+        "ctimeNs": "1789908931566460038",
+        "inode": 41043399,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "type": "regular",
+        "size": 654122,
+        "mtimeNs": "1789907617844323419",
+        "ctimeNs": "1789908936784020829",
+        "inode": 41043405,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/archive-sha256.txt",
+        "type": "regular",
+        "size": 1538,
+        "mtimeNs": "1789907617856402160",
+        "ctimeNs": "1789908936785244243",
+        "inode": 41043406,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_VERIFICATION_SIZE_MTIME",
+      "expectedSha256": null
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env",
+        "type": "regular",
+        "size": 2806,
+        "mtimeNs": "1790246873335990873",
+        "ctimeNs": "1790246873336025665",
+        "inode": 42999357,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.local",
+        "type": "regular",
+        "size": 2870,
+        "mtimeNs": "1790246873343919883",
+        "ctimeNs": "1790246873343948134",
+        "inode": 42999358,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.stripe-sandbox.local",
+        "type": "regular",
+        "size": 314,
+        "mtimeNs": "1790246873351068010",
+        "ctimeNs": "1790246873351105385",
+        "inode": 42999359,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel/.env.preview.local",
+        "type": "regular",
+        "size": 1910,
+        "mtimeNs": "1790246873357300251",
+        "ctimeNs": "1790246873357336459",
+        "inode": 42999360,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/settings.json",
+        "type": "regular",
+        "size": 223,
+        "mtimeNs": "1790246873362462770",
+        "ctimeNs": "1790246873362512521",
+        "inode": 42999361,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/tasks.json",
+        "type": "regular",
+        "size": 518,
+        "mtimeNs": "1790246873367793958",
+        "ctimeNs": "1790246873367821042",
+        "inode": 42999362,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude/settings.local.json",
+        "type": "regular",
+        "size": 633,
+        "mtimeNs": "1790246873373438150",
+        "ctimeNs": "1790246873373470942",
+        "inode": 42999363,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge/abi-canonical.json",
+        "type": "regular",
+        "size": 28984,
+        "mtimeNs": "1790246873378968049",
+        "ctimeNs": "1790246873379043550",
+        "inode": 42999364,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "RECORDED_BYTE_EQUAL_SIZE_MODE_NO_PAYLOAD_READ"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1790246873651159570",
+        "ctimeNs": "1790246873651159570",
+        "inode": 42999349,
+        "device": 16777227,
+        "mode": 448
+      },
+      "authorityMethod": "EXISTENCE_METADATA"
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/PRESERVATION_STATUS.json",
+        "type": "regular",
+        "size": 2114,
+        "mtimeNs": "1790246873651245779",
+        "ctimeNs": "1790246873651290947",
+        "inode": 42999365,
+        "device": 16777227,
+        "mode": 384
+      },
+      "authorityMethod": "EXISTENCE_METADATA"
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/repair-candidate",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1789911965149992805",
+        "ctimeNs": "1789911965149992805",
+        "inode": 41118252,
+        "device": 16777227,
+        "mode": 448
+      },
+      "authorityMethod": "EXISTENCE_METADATA"
+    }
+  ],
+  "c4dPreflightValidation": {
+    "status": "PASS",
+    "checks": 2906,
+    "closure": "COMPLETE_COMMITTED"
+  },
+  "staleRegistrationsAuthority": [
+    {
+      "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+      "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-deploy-aa9c540",
+      "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+      "detached": true,
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-main-check",
+      "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+      "branch": "refs/heads/codex/main-release-check",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-release-candidate",
+      "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+      "branch": "refs/heads/codex/sandbox-base",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+      "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+      "branch": "refs/heads/codex/sandbox-luxury-home",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    },
+    {
+      "worktree": "/private/tmp/musiam-shaman-999",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/feature/shaman-999",
+      "prunable": "gitdir file points to non-existent location",
+      "exists": false
+    }
+  ],
+  "staleRegistrationsDryRun": {
+    "output": "Removing worktrees/musiam-front-main-check: gitdir file points to non-existent location\nRemoving worktrees/musiam-front-release-candidate: gitdir file points to non-existent location\nRemoving worktrees/musiam-shaman-999: gitdir file points to non-existent location\nRemoving worktrees/musiam-front-sandbox-luxury: gitdir file points to non-existent location\nRemoving worktrees/musiam-deploy-aa9c540: gitdir file points to non-existent location\nRemoving worktrees/musiam-chat-analysis-deploy.LauZ5j: gitdir file points to non-existent location\n",
+    "mapped": [
+      {
+        "registration": "musiam-front-main-check",
+        "path": "/private/tmp/musiam-front-main-check",
+        "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-front-main-check/gitdir",
+        "dryRunLine": "Removing worktrees/musiam-front-main-check: gitdir file points to non-existent location"
+      },
+      {
+        "registration": "musiam-front-release-candidate",
+        "path": "/private/tmp/musiam-front-release-candidate",
+        "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-front-release-candidate/gitdir",
+        "dryRunLine": "Removing worktrees/musiam-front-release-candidate: gitdir file points to non-existent location"
+      },
+      {
+        "registration": "musiam-shaman-999",
+        "path": "/private/tmp/musiam-shaman-999",
+        "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-shaman-999/gitdir",
+        "dryRunLine": "Removing worktrees/musiam-shaman-999: gitdir file points to non-existent location"
+      },
+      {
+        "registration": "musiam-front-sandbox-luxury",
+        "path": "/private/tmp/musiam-front-sandbox-luxury",
+        "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-front-sandbox-luxury/gitdir",
+        "dryRunLine": "Removing worktrees/musiam-front-sandbox-luxury: gitdir file points to non-existent location"
+      },
+      {
+        "registration": "musiam-deploy-aa9c540",
+        "path": "/private/tmp/musiam-deploy-aa9c540",
+        "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-deploy-aa9c540/gitdir",
+        "dryRunLine": "Removing worktrees/musiam-deploy-aa9c540: gitdir file points to non-existent location"
+      },
+      {
+        "registration": "musiam-chat-analysis-deploy.LauZ5j",
+        "path": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+        "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-chat-analysis-deploy.LauZ5j/gitdir",
+        "dryRunLine": "Removing worktrees/musiam-chat-analysis-deploy.LauZ5j: gitdir file points to non-existent location"
+      }
+    ],
+    "exactKnownMissingSet": true,
+    "worktreesBeforePrune": [
+      {
+        "worktree": "/Users/kagekun/Desktop/musiam-front",
+        "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914"
+      },
+      {
+        "worktree": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+        "HEAD": "569e907cbc2c103226bc2a43137f258a2556f600",
+        "detached": true,
+        "prunable": "gitdir file points to non-existent location"
+      },
+      {
+        "worktree": "/private/tmp/musiam-deploy-aa9c540",
+        "HEAD": "aa9c540d2b7568c8dfdd53877f90fd91679fb809",
+        "detached": true,
+        "prunable": "gitdir file points to non-existent location"
+      },
+      {
+        "worktree": "/private/tmp/musiam-front-main-check",
+        "HEAD": "5b853ea4f5bba0f6fd1930515032dacbd663104f",
+        "branch": "refs/heads/codex/main-release-check",
+        "prunable": "gitdir file points to non-existent location"
+      },
+      {
+        "worktree": "/private/tmp/musiam-front-release-candidate",
+        "HEAD": "5dc077efb4230f4d39aa5960dd59f389b110be8b",
+        "branch": "refs/heads/codex/sandbox-base",
+        "prunable": "gitdir file points to non-existent location"
+      },
+      {
+        "worktree": "/private/tmp/musiam-front-sandbox-luxury",
+        "HEAD": "28ca474ca171368e60218f68a5dfe56c7057e437",
+        "branch": "refs/heads/codex/sandbox-luxury-home",
+        "prunable": "gitdir file points to non-existent location"
+      },
+      {
+        "worktree": "/private/tmp/musiam-shaman-999",
+        "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+        "branch": "refs/heads/feature/shaman-999",
+        "prunable": "gitdir file points to non-existent location"
+      }
+    ],
+    "observedAt": "2026-09-24T18:19:20.977745+00:00"
+  },
+  "prunePerformed": true,
+  "prunedRegistrations": [
+    {
+      "registration": "musiam-front-main-check",
+      "path": "/private/tmp/musiam-front-main-check",
+      "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-front-main-check/gitdir",
+      "dryRunLine": "Removing worktrees/musiam-front-main-check: gitdir file points to non-existent location"
+    },
+    {
+      "registration": "musiam-front-release-candidate",
+      "path": "/private/tmp/musiam-front-release-candidate",
+      "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-front-release-candidate/gitdir",
+      "dryRunLine": "Removing worktrees/musiam-front-release-candidate: gitdir file points to non-existent location"
+    },
+    {
+      "registration": "musiam-shaman-999",
+      "path": "/private/tmp/musiam-shaman-999",
+      "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-shaman-999/gitdir",
+      "dryRunLine": "Removing worktrees/musiam-shaman-999: gitdir file points to non-existent location"
+    },
+    {
+      "registration": "musiam-front-sandbox-luxury",
+      "path": "/private/tmp/musiam-front-sandbox-luxury",
+      "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-front-sandbox-luxury/gitdir",
+      "dryRunLine": "Removing worktrees/musiam-front-sandbox-luxury: gitdir file points to non-existent location"
+    },
+    {
+      "registration": "musiam-deploy-aa9c540",
+      "path": "/private/tmp/musiam-deploy-aa9c540",
+      "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-deploy-aa9c540/gitdir",
+      "dryRunLine": "Removing worktrees/musiam-deploy-aa9c540: gitdir file points to non-existent location"
+    },
+    {
+      "registration": "musiam-chat-analysis-deploy.LauZ5j",
+      "path": "/private/tmp/musiam-chat-analysis-deploy.LauZ5j",
+      "gitdirMetadataPath": "/Users/kagekun/Desktop/musiam-front/.git/worktrees/musiam-chat-analysis-deploy.LauZ5j/gitdir",
+      "dryRunLine": "Removing worktrees/musiam-chat-analysis-deploy.LauZ5j: gitdir file points to non-existent location"
+    }
+  ],
+  "unexpectedRegistrations": [],
+  "partialFailure": false,
+  "originalRepositoryDeleted": false,
+  "branchDeleted": false,
+  "applicationChanges": 0,
+  "providerOperations": 0,
+  "deployOperations": 0,
+  "pushOperations": 0,
+  "ssdConclusionCarryForward": {
+    "ssdRequired": false,
+    "symlinkCount": 1,
+    "externalVolumeSymlinkCount": 0,
+    "externalTargetContentVerificationRequiredCount": 0
+  },
+  "parentFilesystemBefore": {
+    "blocks": 120699413,
+    "freeBlocks": 3547590,
+    "availableBlocks": 3547590,
+    "fragmentSize": 4096
+  },
+  "pruneExitCode": 0,
+  "pruneOutput": "Removing worktrees/musiam-front-main-check: gitdir file points to non-existent location\nRemoving worktrees/musiam-front-release-candidate: gitdir file points to non-existent location\nRemoving worktrees/musiam-shaman-999: gitdir file points to non-existent location\nRemoving worktrees/musiam-front-sandbox-luxury: gitdir file points to non-existent location\nRemoving worktrees/musiam-deploy-aa9c540: gitdir file points to non-existent location\nRemoving worktrees/musiam-chat-analysis-deploy.LauZ5j: gitdir file points to non-existent location\n",
+  "worktreesAfter": [
+    {
+      "worktree": "/Users/kagekun/Desktop/musiam-front",
+      "HEAD": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+      "branch": "refs/heads/codex/fix/stripe-metal-print-webhook-20260914"
+    }
+  ],
+  "worktreeListPorcelainAfter": "worktree /Users/kagekun/Desktop/musiam-front\nHEAD 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nbranch refs/heads/codex/fix/stripe-metal-print-webhook-20260914\n\n",
+  "externalWorktreeDependencyCountAfter": 0,
+  "originalStateAfter": {
+    "path": "/Users/kagekun/Desktop/musiam-front",
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89",
+    "gitCommonDir": "/Users/kagekun/Desktop/musiam-front/.git"
+  },
+  "allPersistentRefsAfter": "refs/codex/turn-diffs/checkpoints/126cf5114c1ae30b073203cb9dbb6c6bf7cbd99c5df44a7d366ce956186c230c/9690df459b36804f9d55cce61926a93519ed06f5e79133acd4e7a47eed34bf45/1789381450932/441c8519-7749-4a9d-808c-d890b48a238f 9ef56d7649ff1a3b40fff35ee4416d84bf3f96a3\nrefs/codex/turn-diffs/checkpoints/2e043f452cade544ef640687fbd5011bbf85db7663f27ec900970f998149604c/21cb5429773178866f6cb2aca45d49387a452d790c76856a98e92db3d7d213d8/1789285218866/f1c6cd98-82f3-4ade-941b-bfb3da404a1d 51e6a77a3d4ef59bde7e0ce1982593b31edfff9a\nrefs/codex/turn-diffs/checkpoints/6e881d8c3534c1ab1cbe4606656fefa07abf0bcef9b222cc1242b2f92ceae257/e35d89b4802669063bab45b173d1559ca9a26e0a4231fd9d5a1d8ea92a241c50/1789383737266/1fff806a-6373-4513-bb03-2f83f4a96cc2 151ff4779c9aaf77f20ae432fb4d2686ffc9dd14\nrefs/codex/turn-diffs/checkpoints/8683c5616a74d5ff37e611cc4953e5d512e5a9b67a3396b32f3d1ef121979d89/6d7a53cf234c5a82fac0df90f34ab87d6b640dfe4dc55d64a1ff66469e77f733/1789288005006/b4c7aa55-f351-4262-8d23-f84c03307157 5d664366e6a19226253bbf5e85b50e61debb1a50\nrefs/codex/turn-diffs/checkpoints/e0c15874a97ea31e368338a1194f06fa013cbd1dc97722942633ce4af7b6be4f/c7216d1c867168506c5a3450b40d9172186f0a7a8b8d1cbdab1b770f949a08a2/1789019613498/8a330023-d3bb-40d9-b71d-4d4e20f8cbfe 60959c2cb880ee72e6c9e8d639e755cda2e51dba\nrefs/heads/astra-local-01 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/astra-local-clean 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/codex/add-mood-tags-generator-script 420fa63ffc154b1ed4ddb50693005ec0bfdb2eb5\nrefs/heads/codex/chat-analysis-production 569e907cbc2c103226bc2a43137f258a2556f600\nrefs/heads/codex/fix/stripe-metal-print-webhook-20260914 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/codex/main-release-check 5b853ea4f5bba0f6fd1930515032dacbd663104f\nrefs/heads/codex/release-candidate 5dc077efb4230f4d39aa5960dd59f389b110be8b\nrefs/heads/codex/sandbox-base 5dc077efb4230f4d39aa5960dd59f389b110be8b\nrefs/heads/codex/sandbox-luxury-home 28ca474ca171368e60218f68a5dfe56c7057e437\nrefs/heads/feat/chat-reco-v1 b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/heads/feat/growth-2026-06 134736e7e06bdc470b4c4c6959dcf6915bbcf65a\nrefs/heads/feat/omikuji-json-v1 222fac0236b5febe652adb1cbd439600e864f664\nrefs/heads/feat/oracle-p0-reading-flip b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/heads/feat/oracle-tarot1 b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/heads/feature/shaman-999 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/fix/stripe-metal-print-webhook-20260914 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/letters-and-site-fixes-2026-07 66d987c1e6afd7f47248ac64ef95ca6e13fce879\nrefs/heads/main 117379b6c61ab3fc072b6cd4b80ce1d406b0e175\nrefs/heads/release-please--branches--main--components--musiam-front 65fa35d4f0a941eb7ed03885c2464c7bd777b70b\nrefs/heads/rescue-2025-09-19 c10e063d590cd592b2ea80456edd6162ab6e1f04\nrefs/remotes/origin/HEAD 5459425ca1251ef641f2a796eb266b37802c1fa7\nrefs/remotes/origin/chore/cro-ui-cleanup 820944c328eb3b7e328bcfaa33cc5161f3154270\nrefs/remotes/origin/chore/diag-env-route 694fbc486826e026a5abcaba47dfc4e0f33efe73\nrefs/remotes/origin/codex/add-mood-tags-generator-script 420fa63ffc154b1ed4ddb50693005ec0bfdb2eb5\nrefs/remotes/origin/feat/chat-reco-v1 b597e1f9252a7e9653c49e463277b92a2a7335aa\nrefs/remotes/origin/feat/growth-2026-06 134736e7e06bdc470b4c4c6959dcf6915bbcf65a\nrefs/remotes/origin/letters-and-site-fixes-2026-07 66d987c1e6afd7f47248ac64ef95ca6e13fce879\nrefs/remotes/origin/main 5459425ca1251ef641f2a796eb266b37802c1fa7\nrefs/remotes/origin/release-please--branches--main ef831ca57df4af83366e2eb1aa2b87b757d48ed4\nrefs/remotes/origin/release-please--branches--main--components--musiam-front 8610a2f8eaa0fe6e6f5cb554a89a969b73e13252\nrefs/remotes/origin/rescue-2025-09-19 c10e063d590cd592b2ea80456edd6162ab6e1f04\nrefs/remotes/origin/stg/1155-api 4ffb762519141b94c20b250e86c1bc3a7189b61f\nrefs/stash 132ab853391ede7831988eee6db0f21097846c0a\nrefs/tags/exhibition-complete-20250920-130212 5f151aa3f17b04a0868dedced9015c92e96148d2\nrefs/tags/pre-renovation f5eeac3f25f328967f1bccb8932377d78b3cb872\nrefs/tags/snapshot/20251006_020843 60a6ab51b2d9537dbf22ec7d2bd85fcc048e5c52",
+  "preservationAfter": [
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/PRESERVATION_RESULT.json",
+        "type": "regular",
+        "size": 471377,
+        "mtimeNs": "1790272515283420233",
+        "ctimeNs": "1790272515283420233",
+        "inode": 43143175,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 110590,
+        "mtimeNs": "1790258243558100085",
+        "ctimeNs": "1790258243558100085",
+        "inode": 43029267,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 400964,
+        "mtimeNs": "1790272500588914303",
+        "ctimeNs": "1790272500588914303",
+        "inode": 43138095,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/ignored-artifacts/outputs/metal-print-cost-simulation/metal-print-global-cost-simulation.xlsx",
+        "type": "regular",
+        "size": 12058,
+        "mtimeNs": "1790258243558433256",
+        "ctimeNs": "1790258243558433256",
+        "inode": 43029271,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/tracked-delta.patch",
+        "type": "regular",
+        "size": 1820837,
+        "mtimeNs": "1790258243366666733",
+        "ctimeNs": "1790258243366666733",
+        "inode": 43029263,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/untracked.tar",
+        "type": "regular",
+        "size": 98365440,
+        "mtimeNs": "1790258243552114513",
+        "ctimeNs": "1790258243552114513",
+        "inode": 43029264,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 913,
+        "mtimeNs": "1790272500933390067",
+        "ctimeNs": "1790272500933390067",
+        "inode": 43138103,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 6618,
+        "mtimeNs": "1790272512439357059",
+        "ctimeNs": "1790272512439357059",
+        "inode": 43143152,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/tracked-delta.patch",
+        "type": "regular",
+        "size": 3507,
+        "mtimeNs": "1790272500917560749",
+        "ctimeNs": "1790272500917560749",
+        "inode": 43138101,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/untracked.tar",
+        "type": "regular",
+        "size": 10240,
+        "mtimeNs": "1790272500932994106",
+        "ctimeNs": "1790272500932994106",
+        "inode": 43138102,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 122880,
+        "mtimeNs": "1790196756073948665",
+        "ctimeNs": "1790196756073948665",
+        "inode": 42828459,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 21362,
+        "mtimeNs": "1790196756068677601",
+        "ctimeNs": "1790196756068677601",
+        "inode": 42828458,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 8253,
+        "mtimeNs": "1790196756079585060",
+        "ctimeNs": "1790196756079585060",
+        "inode": 42828460,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 16527360,
+        "mtimeNs": "1790179562932453499",
+        "ctimeNs": "1790179562932453499",
+        "inode": 42779048,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 386479,
+        "mtimeNs": "1790179562898273366",
+        "ctimeNs": "1790179562898273366",
+        "inode": 42779046,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 101342,
+        "mtimeNs": "1790179562898434032",
+        "ctimeNs": "1790179562898434032",
+        "inode": 42779047,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/canonical-output.tar.gz",
+        "type": "regular",
+        "size": 450843681,
+        "mtimeNs": "1790116371876180305",
+        "ctimeNs": "1790116371876180305",
+        "inode": 42319470,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-output.tar.gz",
+        "type": "regular",
+        "size": 1433855247,
+        "mtimeNs": "1790116401234877564",
+        "ctimeNs": "1790116401234877564",
+        "inode": 42319551,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-archive.tar.gz",
+        "type": "regular",
+        "size": 95906787,
+        "mtimeNs": "1790116406358452474",
+        "ctimeNs": "1790116406358452474",
+        "inode": 42319905,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-outputs.tar.gz",
+        "type": "regular",
+        "size": 254304,
+        "mtimeNs": "1790116406459914860",
+        "ctimeNs": "1790116406459914860",
+        "inode": 42320687,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/SOURCE_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 794401,
+        "mtimeNs": "1790120754266916973",
+        "ctimeNs": "1790120754266916973",
+        "inode": 42340991,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/verification/head-117379b6.bundle",
+        "type": "regular",
+        "size": 640344677,
+        "mtimeNs": "1789912201592822651",
+        "ctimeNs": "1789912210918748619",
+        "inode": 41142277,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "regular",
+        "size": 681815040,
+        "mtimeNs": "1789907384171632881",
+        "ctimeNs": "1789908937497089640",
+        "inode": 41043407,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+        "type": "regular",
+        "size": 2314388480,
+        "mtimeNs": "1789907082373654130",
+        "ctimeNs": "1789908936780833667",
+        "inode": 41043402,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "type": "regular",
+        "size": 1328117760,
+        "mtimeNs": "1789907123280792078",
+        "ctimeNs": "1789908931559985007",
+        "inode": 41043393,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/git-dir.raw.tar",
+        "type": "regular",
+        "size": 3111556096,
+        "mtimeNs": "1789907048786566901",
+        "ctimeNs": "1789908942552486057",
+        "inode": 41043413,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+        "type": "regular",
+        "size": 761171,
+        "mtimeNs": "1789907235817627715",
+        "ctimeNs": "1789908931566460038",
+        "inode": 41043399,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "type": "regular",
+        "size": 654122,
+        "mtimeNs": "1789907617844323419",
+        "ctimeNs": "1789908936784020829",
+        "inode": 41043405,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/archive-sha256.txt",
+        "type": "regular",
+        "size": 1538,
+        "mtimeNs": "1789907617856402160",
+        "ctimeNs": "1789908936785244243",
+        "inode": 41043406,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env",
+        "type": "regular",
+        "size": 2806,
+        "mtimeNs": "1790246873335990873",
+        "ctimeNs": "1790246873336025665",
+        "inode": 42999357,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.local",
+        "type": "regular",
+        "size": 2870,
+        "mtimeNs": "1790246873343919883",
+        "ctimeNs": "1790246873343948134",
+        "inode": 42999358,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.stripe-sandbox.local",
+        "type": "regular",
+        "size": 314,
+        "mtimeNs": "1790246873351068010",
+        "ctimeNs": "1790246873351105385",
+        "inode": 42999359,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel/.env.preview.local",
+        "type": "regular",
+        "size": 1910,
+        "mtimeNs": "1790246873357300251",
+        "ctimeNs": "1790246873357336459",
+        "inode": 42999360,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/settings.json",
+        "type": "regular",
+        "size": 223,
+        "mtimeNs": "1790246873362462770",
+        "ctimeNs": "1790246873362512521",
+        "inode": 42999361,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/tasks.json",
+        "type": "regular",
+        "size": 518,
+        "mtimeNs": "1790246873367793958",
+        "ctimeNs": "1790246873367821042",
+        "inode": 42999362,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude/settings.local.json",
+        "type": "regular",
+        "size": 633,
+        "mtimeNs": "1790246873373438150",
+        "ctimeNs": "1790246873373470942",
+        "inode": 42999363,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge/abi-canonical.json",
+        "type": "regular",
+        "size": 28984,
+        "mtimeNs": "1790246873378968049",
+        "ctimeNs": "1790246873379043550",
+        "inode": 42999364,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1790246873651159570",
+        "ctimeNs": "1790246873651159570",
+        "inode": 42999349,
+        "device": 16777227,
+        "mode": 448
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/PRESERVATION_STATUS.json",
+        "type": "regular",
+        "size": 2114,
+        "mtimeNs": "1790246873651245779",
+        "ctimeNs": "1790246873651290947",
+        "inode": 42999365,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/repair-candidate",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1789911965149992805",
+        "ctimeNs": "1789911965149992805",
+        "inode": 41118252,
+        "device": 16777227,
+        "mode": 448
+      }
+    }
+  ],
+  "worktreeDecommissionReclaimBytes": 3433353216,
+  "preservationAuthoritiesIntact": true,
+  "originalMainStillExists": true,
+  "stateDriftBeforeRemoval": false,
+  "worktreeDependencyBlocker": "RESOLVED",
+  "c4Readiness": "READY_FOR_ORIGINAL_REPOSITORY_DELETION_REVIEW",
+  "nextGate": "C4-F ORIGINAL REPOSITORY FINAL DELETION REVIEW",
+  "c4fStarted": false,
+  "c4eWorktreeDecommission": "COMPLETE",
+  "postCommitStatus": "COMPLETE_COMMITTED",
+  "completedAt": "2026-09-24T18:19:42.563736+00:00",
+  "privateRetentionBlocker": "RESOLVED_C4C_CARRIED_FORWARD",
+  "uniqueSourceBlocker": "RESOLVED_C4A_C4B_CARRIED_FORWARD",
+  "parentFilesystemAfter": {
+    "blocks": 120699413,
+    "freeBlocks": 3547510,
+    "availableBlocks": 3547510,
+    "fragmentSize": 4096
+  },
+  "allowedCanonicalPaths": [
+    "docs/AI/CLEANUP_C4E_WORKTREE_DECOMMISSION_EXECUTION.md",
+    "ops/recovery/cleanup-c4e-worktree-decommission-20260924.json",
+    "scripts/validate-cleanup-c4e-worktree-decommission.mjs",
+    "docs/AI/RECOVERY_PLAN.md"
+  ],
+  "c4dAuthoritySha256": "0eea3ea576777d21e162bf6e933c657c72239062085a07535204f8e42fd20d6d",
+  "commitMessage": "recovery: decommission linked worktrees",
+  "commitClosure": "Derived after commit by validator: direct child of startingHead, exact four-file scope, required message and clean canonical tree.",
+  "reclaimBasis": "SUM_REMOVED_WORKTREE_BEFORE_DU_SK_BYTES_NOT_ORIGINAL_RECLAIM",
+  "privatePayloadReads": 0,
+  "privatePayloadHashes": 0,
+  "archiveDeletions": 0,
+  "branchDeletionCount": 0,
+  "truthBoundary": "Exact three authority-derived linked worktrees were removed by Git; the six audited absent registrations were pruned. Original main repository and all persistent branch/ref tips remain intact. This does not authorize Original deletion or begin C4-F. C4D fresh reconstruction and C4E live state/metadata checks establish the declared preserved state; historical archive verification plus metadata continuity is reused. Private payloads were not explicitly read or hashed; Git status may internally inspect tracked files. No external SSD or symlink-referent investigation was performed. Reclaim is the sum of removed paths pre-removal allocated sizes, not Original repository reclaim or guaranteed filesystem free-space growth. Counters attest scoped task actions, not OS-wide syscall auditing; this is not production parity, application, demand, payment, fulfillment or rights proof.",
+  "recommendedNextModel": "Current parent GPT-6 Astra / High for C4-F final deletion review; no model/config/provider change performed.",
+  "validation": {
+    "command": "node scripts/validate-cleanup-c4e-worktree-decommission.mjs",
+    "status": "PASS",
+    "diffCheck": "PASS",
+    "scope": "Node built-ins; execution evidence plus live post-removal Git/ref/preservation metadata; no private payload read; no historical live-worktree validator rerun after removal.",
+    "preCommitChecks": 227,
+    "scopeCheck": "EXACT_FOUR_ALLOWED_RECORDS",
+    "commitClosureValidation": "Rerun after authorized local commit; validate parent/message/exact scope and clean canonical tree."
+  }
+}
