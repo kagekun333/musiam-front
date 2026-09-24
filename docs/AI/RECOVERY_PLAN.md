@@ -528,3 +528,43 @@ blocked review's accounting, not deletion readiness or production truth.
 See `docs/AI/CLEANUP_C4F_FINAL_DELETION_REVIEW.md`,
 `ops/recovery/cleanup-c4f-final-deletion-review-20260924.json`, and
 `scripts/validate-cleanup-c4f-final-deletion-review.mjs`.
+
+## CLEANUP-C4F FINAL BLOCKER REMEDIATION — current governance
+
+Starting HEAD `d4259ba8b131aebf77766303b95740a9dae026b2`, canonical branch
+`recovery/musiam-clean-20260920`, initially clean. The old C4-F BLOCKED review
+remains unchanged historical authority. Its exact seven current operational
+files / **35,049 bytes** were independently preserved beneath
+`/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/`.
+Sensitive overlap=0; independent extraction content/size/NFC=7/7; missing/extra=0;
+source drift=0. The new root contains only the tar and two manifests.
+
+`C4F_FINAL_UNIQUE_PRESERVATION = VERIFIED_7_OF_7`.
+`C4F_FINAL_BLOCKER_REMEDIATION = VERIFIED_COMPLETE` (local commit closure derived).
+`C4F_FINAL_DELETION_REVIEW = READY_FOR_HUMAN_DELETION_GATE`.
+
+Continuous-operation 37/37 and market-learning 190/190 are re-accounted from
+current meaningful contents; 227 hashes refreshed, new files/updates=0.
+Old C4-A cross-path bindings remain. Modified tracked unaccounted=0;
+untracked entries unaccounted=0; meaningful ignored unresolved=0;
+`MEANINGFUL_UNIQUE_LOSS_COUNT = 0`. R0/C2/C3-C/C4-A/C4-C/C4-D continuity,
+R5 and all seven future-product source areas remain supported. Private payloads
+were not read or hashed. All 41 refs, 24 reflog-only commits and readable history
+survive independently; known missing blob B remains a pre-existing limitation.
+Canonical runtime/Git and external worktree dependencies=0.
+
+Original HEAD/branch/status digest and 102 / 0 / 433 remain unchanged. Current
+allocated size=7,353,495,552 bytes, an estimate rather than achieved reclaim.
+Original deletion/writes, branch/ref deletion, application changes and
+provider/payment/deploy/push=0. Exact future deletion scope remains only
+`/Users/kagekun/Desktop/musiam-front`.
+
+Next Human Gate: **C4-G ORIGINAL REPOSITORY DELETION EXECUTION**. It remains
+closed and unstarted; explicit **`APPROVE_C4G_ORIGINAL_REPOSITORY_DELETION`**
+is required after a fresh State Lock. Review READY and validator PASS do not
+supply that approval or establish production truth. Source-presence validators
+remain historical pre-deletion checks, not post-deletion validation.
+
+See `docs/AI/CLEANUP_C4F_FINAL_BLOCKER_REMEDIATION.md`,
+`ops/recovery/cleanup-c4f-final-blocker-remediation-20260924.json`, and
+`scripts/validate-cleanup-c4f-final-blocker-remediation.mjs`.
