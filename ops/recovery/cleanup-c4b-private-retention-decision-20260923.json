@@ -1,0 +1,614 @@
+{
+  "canonicalBefore": {
+    "head": "eabf76a5cb35b7b3c973c3b4b7a9dc75eb9e932c",
+    "branch": "recovery/musiam-clean-20260920",
+    "modified": 0,
+    "dirtyTracked": 0,
+    "staged": 0,
+    "untracked": 0,
+    "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "originalBefore": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "dirtyTracked": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89"
+  },
+  "originalAfter": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "dirtyTracked": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89"
+  },
+  "privateFiles": [
+    {
+      "path": ".env",
+      "group": "A",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 2806,
+      "gitStatus": "ignored",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".env.local",
+      "group": "A",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 2870,
+      "gitStatus": "ignored",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".env.stripe-sandbox.local",
+      "group": "A",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 314,
+      "gitStatus": "ignored",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".vercel/.env.preview.local",
+      "group": "A",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 1910,
+      "gitStatus": "ignored",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".vscode/settings.json",
+      "group": "B",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 223,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "group": "B",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 518,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "group": "B",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 633,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": null
+    },
+    {
+      "path": ".local/abi-knowledge/abi-canonical.json",
+      "group": "B",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 28984,
+      "gitStatus": "ignored",
+      "statusXY": null,
+      "decision": "RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4",
+      "contentRead": false,
+      "hashProduced": false,
+      "copied": false,
+      "knowledgeStatus": "PRIVATE_KNOWLEDGE_PRESERVE_REQUIRED"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": ".env.local.example",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 0,
+      "gitStatus": "ignored",
+      "statusXY": null,
+      "currentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalSha256": null,
+      "originalHeadBlob": null,
+      "canonicalHeadBlob": null,
+      "currentMatchesOriginalHead": false,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "type": "Regular File",
+        "logicalBytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "preservedBy": [
+        "R0_VERIFIED_SNAPSHOT"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": ".env.example",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 1528,
+      "gitStatus": "tracked",
+      "statusXY": " M",
+      "currentSha256": "4cd186344d9ad6cd517b938ab07fec308e3d2956c8cfbab71b3cd94d2c4fd582",
+      "canonicalSha256": "35b2124903b0682a10403a75c5de84692ec69fe6554bdcffee69dec58849fbd0",
+      "originalHeadBlob": {
+        "oid": "8170bda227c422d562782f1cdd36630b40c11259",
+        "sha256": "35b2124903b0682a10403a75c5de84692ec69fe6554bdcffee69dec58849fbd0"
+      },
+      "canonicalHeadBlob": {
+        "oid": "8170bda227c422d562782f1cdd36630b40c11259",
+        "sha256": "35b2124903b0682a10403a75c5de84692ec69fe6554bdcffee69dec58849fbd0"
+      },
+      "currentMatchesOriginalHead": false,
+      "modifiedTracked": true,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "Regular File",
+        "logicalBytes": 1528,
+        "sha256": "4cd186344d9ad6cd517b938ab07fec308e3d2956c8cfbab71b3cd94d2c4fd582"
+      },
+      "preservedBy": [
+        "R0_VERIFIED_SNAPSHOT"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": "src/lib/metal-print-consultation-token.server.ts",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 1026,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "currentSha256": "987a0d93b580d094330f4b31ec1a11815da74b311bd701f65d66f660d7d69f80",
+      "canonicalSha256": "987a0d93b580d094330f4b31ec1a11815da74b311bd701f65d66f660d7d69f80",
+      "originalHeadBlob": {
+        "oid": "2a7b9bfff717b64771f90dde29ddcfe42360083a",
+        "sha256": "987a0d93b580d094330f4b31ec1a11815da74b311bd701f65d66f660d7d69f80"
+      },
+      "canonicalHeadBlob": {
+        "oid": "2a7b9bfff717b64771f90dde29ddcfe42360083a",
+        "sha256": "987a0d93b580d094330f4b31ec1a11815da74b311bd701f65d66f660d7d69f80"
+      },
+      "currentMatchesOriginalHead": true,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "Regular File",
+        "logicalBytes": 1026,
+        "sha256": "987a0d93b580d094330f4b31ec1a11815da74b311bd701f65d66f660d7d69f80"
+      },
+      "preservedBy": [
+        "CANONICAL_CURRENT",
+        "R0_VERIFIED_SNAPSHOT",
+        "CANONICAL_HEAD"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": "src/lib/design/tokens.ts",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 2413,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "currentSha256": "184b28811d180612fe7c35b98ccb37a26f315209c526a73c135d589385024df0",
+      "canonicalSha256": "184b28811d180612fe7c35b98ccb37a26f315209c526a73c135d589385024df0",
+      "originalHeadBlob": {
+        "oid": "d4266140748767cd8e85b1b5717ae7e3c8eb0ddf",
+        "sha256": "184b28811d180612fe7c35b98ccb37a26f315209c526a73c135d589385024df0"
+      },
+      "canonicalHeadBlob": {
+        "oid": "d4266140748767cd8e85b1b5717ae7e3c8eb0ddf",
+        "sha256": "184b28811d180612fe7c35b98ccb37a26f315209c526a73c135d589385024df0"
+      },
+      "currentMatchesOriginalHead": true,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "Regular File",
+        "logicalBytes": 2413,
+        "sha256": "184b28811d180612fe7c35b98ccb37a26f315209c526a73c135d589385024df0"
+      },
+      "preservedBy": [
+        "CANONICAL_CURRENT",
+        "R0_VERIFIED_SNAPSHOT",
+        "CANONICAL_HEAD"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": "src/styles/renovation-tokens.css",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 8774,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "currentSha256": "78cadacafa9f314c6fed130c1512626b7ed3fc8d85ca112b913fcbb8ffff09f6",
+      "canonicalSha256": "78cadacafa9f314c6fed130c1512626b7ed3fc8d85ca112b913fcbb8ffff09f6",
+      "originalHeadBlob": {
+        "oid": "fea94ab6cc3a7be9ca6333090e3feb12c41cac5c",
+        "sha256": "78cadacafa9f314c6fed130c1512626b7ed3fc8d85ca112b913fcbb8ffff09f6"
+      },
+      "canonicalHeadBlob": {
+        "oid": "fea94ab6cc3a7be9ca6333090e3feb12c41cac5c",
+        "sha256": "78cadacafa9f314c6fed130c1512626b7ed3fc8d85ca112b913fcbb8ffff09f6"
+      },
+      "currentMatchesOriginalHead": true,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "Regular File",
+        "logicalBytes": 8774,
+        "sha256": "78cadacafa9f314c6fed130c1512626b7ed3fc8d85ca112b913fcbb8ffff09f6"
+      },
+      "preservedBy": [
+        "CANONICAL_CURRENT",
+        "R0_VERIFIED_SNAPSHOT",
+        "CANONICAL_HEAD"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": "scripts/audit-secret-hygiene.mjs",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 2716,
+      "gitStatus": "untracked",
+      "statusXY": "??",
+      "currentSha256": "5c35f2796044c43d34d64101a7c1b8a5ba582b5257bf2397f625547157bbe45c",
+      "canonicalSha256": null,
+      "originalHeadBlob": null,
+      "canonicalHeadBlob": null,
+      "currentMatchesOriginalHead": false,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+        "type": "Regular File",
+        "logicalBytes": 2716,
+        "sha256": "5c35f2796044c43d34d64101a7c1b8a5ba582b5257bf2397f625547157bbe45c"
+      },
+      "preservedBy": [
+        "R0_VERIFIED_SNAPSHOT"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": "public/nft/token-template.json",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 929,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "currentSha256": "9d3d21cd9caa073a78f419147545d581e40c25bd6b8d2d96598bba85103afd67",
+      "canonicalSha256": "9d3d21cd9caa073a78f419147545d581e40c25bd6b8d2d96598bba85103afd67",
+      "originalHeadBlob": {
+        "oid": "6b32173650bbfdb6227e7ed7ea3c65339fbd22af",
+        "sha256": "9d3d21cd9caa073a78f419147545d581e40c25bd6b8d2d96598bba85103afd67"
+      },
+      "canonicalHeadBlob": {
+        "oid": "6b32173650bbfdb6227e7ed7ea3c65339fbd22af",
+        "sha256": "9d3d21cd9caa073a78f419147545d581e40c25bd6b8d2d96598bba85103afd67"
+      },
+      "currentMatchesOriginalHead": true,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "Regular File",
+        "logicalBytes": 929,
+        "sha256": "9d3d21cd9caa073a78f419147545d581e40c25bd6b8d2d96598bba85103afd67"
+      },
+      "preservedBy": [
+        "CANONICAL_CURRENT",
+        "R0_VERIFIED_SNAPSHOT",
+        "CANONICAL_HEAD"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    },
+    {
+      "path": ".husky/commit-msg",
+      "group": "C",
+      "ownerClassification": "NON_SECRET_SOURCE",
+      "ownerDecision": "VERIFY_CURRENT_SOURCE_PRESERVATION",
+      "exists": true,
+      "type": "regular",
+      "logicalBytes": 86,
+      "gitStatus": "tracked",
+      "statusXY": null,
+      "currentSha256": "3ddb78c15ac160cd925fe1dfa2d21bae4ae6ba62cc1d06d9c0b6e81ca7be2f31",
+      "canonicalSha256": "3ddb78c15ac160cd925fe1dfa2d21bae4ae6ba62cc1d06d9c0b6e81ca7be2f31",
+      "originalHeadBlob": {
+        "oid": "45348d3a55ed643d53a71d1ed9fa1380a75318f9",
+        "sha256": "3ddb78c15ac160cd925fe1dfa2d21bae4ae6ba62cc1d06d9c0b6e81ca7be2f31"
+      },
+      "canonicalHeadBlob": {
+        "oid": "45348d3a55ed643d53a71d1ed9fa1380a75318f9",
+        "sha256": "3ddb78c15ac160cd925fe1dfa2d21bae4ae6ba62cc1d06d9c0b6e81ca7be2f31"
+      },
+      "currentMatchesOriginalHead": true,
+      "modifiedTracked": false,
+      "r0": {
+        "manifestPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "archivePath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "Regular File",
+        "logicalBytes": 86,
+        "sha256": "3ddb78c15ac160cd925fe1dfa2d21bae4ae6ba62cc1d06d9c0b6e81ca7be2f31"
+      },
+      "preservedBy": [
+        "CANONICAL_CURRENT",
+        "R0_VERIFIED_SNAPSHOT",
+        "CANONICAL_HEAD"
+      ],
+      "decision": "CURRENT_VERSION_ALREADY_PRESERVED",
+      "reviewed": true
+    }
+  ],
+  "r0Artifacts": [
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+      "logicalBytes": 1328117760,
+      "mtimeNs": "1789907123280792078",
+      "realPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+      "c4MetadataContinuous": true
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+      "logicalBytes": 761171,
+      "mtimeNs": "1789907235817627715",
+      "realPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+      "c4MetadataContinuous": true
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+      "logicalBytes": 654122,
+      "mtimeNs": "1789907617844323419",
+      "realPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+      "c4MetadataContinuous": true
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+      "logicalBytes": 681815040,
+      "mtimeNs": "1789907384171632881",
+      "realPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+      "c4MetadataContinuous": true
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+      "logicalBytes": 2314388480,
+      "mtimeNs": "1789907082373654130",
+      "realPath": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+      "c4MetadataContinuous": true
+    }
+  ],
+  "schemaVersion": 1,
+  "status": "COMPLETE",
+  "completionBoundary": "COMPLETE_COMMITTED is reported only after the authorized four-file local commit succeeds; no push.",
+  "observedAt": "2026-09-24T07:24:11.237024+00:00",
+  "startingCanonicalHead": "eabf76a5cb35b7b3c973c3b4b7a9dc75eb9e932c",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "canonicalInitiallyClean": true,
+  "allowedCanonicalPaths": [
+    "docs/AI/CLEANUP_C4B_PRIVATE_RETENTION_DECISION.md",
+    "ops/recovery/cleanup-c4b-private-retention-decision-20260923.json",
+    "scripts/validate-cleanup-c4b-private-retention-decision.mjs",
+    "docs/AI/RECOVERY_PLAN.md"
+  ],
+  "authoritiesRead": [
+    "docs/AI/CLEANUP_C4_DECOMMISSION_REVIEW.md",
+    "ops/recovery/cleanup-c4-decommission-review-20260923.json",
+    "docs/AI/CLEANUP_C4A_BLOCKER_REMEDIATION.md",
+    "ops/recovery/cleanup-c4a-blocker-remediation-20260923.json",
+    "docs/AI/CLEANUP_C3B_SEMANTIC_REVIEW.md",
+    "docs/AI/CLEANUP_C3C_PRESERVATION_EXECUTION.md",
+    "docs/AI/STATE_LOCK.md",
+    "docs/AI/RECOVERY_PLAN.md",
+    "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/R0_COMPLETION.txt",
+    "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+    "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+    "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v2/archive-verification.tsv",
+    "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v3-mode/mode-verification-summary.txt"
+  ],
+  "ownerDecisionAuthority": "Current user C4-B request: fixed Group A/B retention and explicit Group C non-secret/hash authorization. This supersedes the C4A conservative filename-based holds only for these 8 Group C paths.",
+  "counts": {
+    "unresolvedTargets": 16,
+    "groupA": 4,
+    "groupB": 4,
+    "groupC": 8,
+    "overlap": 0,
+    "missing": 0,
+    "privatePreservationRequired": 8,
+    "sourceAlreadyPreserved": 8,
+    "sourcePreservationRequired": 0
+  },
+  "sourcePreservationRequiredPaths": [],
+  "sourcePreservationRequired": false,
+  "envExampleResult": "CURRENT_VERSION_ALREADY_PRESERVED",
+  "r0Evidence": {
+    "verificationLevel": "RECORDED_FULL_EXTRACTION_PLUS_LIVE_METADATA_CONTINUITY",
+    "scope": "All eight current Group C SHA-256 and sizes match exact-path R0 manifest rows. Mixed archives were not opened, hashed or extracted in C4B. C4 archive/manifest sizes and mtimes remain continuous. Historical full extraction verifies payload identity; fresh archive media integrity is not newly tested.",
+    "historicalExpectedFiles": {
+      "tracked": 4442,
+      "untracked": 2896,
+      "ignored-preserved": 1585
+    },
+    "historicalModeOnlyIssues": 8091,
+    "modePreservingExtractionIssues": 0,
+    "reports": [
+      "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v2/archive-verification-summary.txt",
+      "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v2/archive-verification.tsv",
+      "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v3-mode/mode-verification-summary.txt",
+      "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v3-mode/mode-verification.tsv"
+    ]
+  },
+  "worktreeBlocker": {
+    "status": "WORKTREE_DEPENDENCY_REMEDIATION_REQUIRED",
+    "count": 3,
+    "paths": [
+      "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+      "/Users/kagekun/Desktop/musiam-front-astra",
+      "/Users/kagekun/Desktop/musiam-front-stripe-fix"
+    ],
+    "evidence": "C4A_CARRIED_FORWARD_NOT_REAUDITED",
+    "preservationRequired": 2,
+    "semanticDecisionRequired": 1,
+    "staleMissingRegistrationsCarriedForward": 6
+  },
+  "c4Readiness": "NOT_READY_PRIVATE_PRESERVATION_REQUIRED",
+  "nextGate": "C4-C PRIVATE PRESERVATION EXECUTION",
+  "subsequentGate": "C4-D WORKTREE DEPENDENCY REMEDIATION",
+  "privatePreservationPlan": {
+    "executionAuthorizedThisGate": false,
+    "executed": false,
+    "paths": [
+      ".env",
+      ".env.local",
+      ".env.stripe-sandbox.local",
+      ".vercel/.env.preview.local",
+      ".vscode/settings.json",
+      ".vscode/tasks.json",
+      ".claude/settings.local.json",
+      ".local/abi-knowledge/abi-canonical.json"
+    ],
+    "proposedRoot": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+    "destinationStatus": "PROPOSED_ONLY_NOT_CREATED_OR_RESERVED; recheck absence and exact owner-approved destination at C4-C",
+    "requirements": {
+      "restrictedStorage": true,
+      "noModelOrLogContent": true,
+      "noRawFilesInGit": true,
+      "verifyBeforeOriginalDeletion": true,
+      "separateFromSourceArtifacts": true,
+      "noSecretValuesInReports": true
+    },
+    "steps": [
+      "At separately authorized C4-C, re-lock Canonical/Original HEAD, branch and status. Re-derive exactly the eight Group A/B paths. Confirm regular files, no symlink escapes and no concurrent edits. Current C4-B metadata does not prove bytes unchanged.",
+      "Use the proposed private root only after destination/scope recheck. It must be outside Original and Canonical, apart from C2/C3/C4A generic archives. Stop on a pre-existing destination; do not overwrite. Use owner-only directory permissions (0700) and file permissions (0600), with umask 077 and ACL checks.",
+      "Copy only the exact approved private allowlist through an opaque local process. Do not emit payloads, diffs, secret scans, hashes or values to model, terminal, logs or Git. Do not use external storage/provider transfer under inferred authority.",
+      "Under explicit C4-C verification authority, verify current source/destination byte identity in-process and report only per-path equality booleans and metadata. Recheck source stability around the copy; stop on mismatch. No digest/value output and no raw private files in canonical Git.",
+      "Before any later Original deletion review, confirm all eight private copies exist, permissions and path mapping are intact, and current-version equality evidence is valid. Record path/count/size/type and success metadata only, with no secret values.",
+      "Keep private preservation distinct from any ordinary-source artifact. Carry worktree remediation forward to C4-D; successful private preservation still does not authorize migration or deletion."
+    ],
+    "stopConditions": [
+      "Source or destination state drift",
+      "Missing/unsafe path or non-restricted storage",
+      "Partial copy, failed byte equality, or unstable source",
+      "Unexpected payload or secret output",
+      "Any operation exceeds separately authorized C4-C scope"
+    ]
+  },
+  "extraSourcePlan": {
+    "required": false,
+    "paths": [],
+    "separateArtifact": true,
+    "executed": false,
+    "instruction": "If a future C4-C recheck finds Group C preservation-required files, preserve only those sources to a separate ordinary-source artifact, never the private 8-file artifact. This Gate finds zero, so no extra source copy is scheduled."
+  },
+  "operations": {
+    "groupAContentReads": 0,
+    "groupAHashes": 0,
+    "groupBContentReads": 0,
+    "groupBHashes": 0,
+    "privateFilesCopied": 0,
+    "originalWrites": 0,
+    "originalGitMutations": 0,
+    "destructiveOperations": 0,
+    "worktreeMutations": 0,
+    "applicationChanges": 0,
+    "providerOperations": 0,
+    "deployOperations": 0,
+    "pushOperations": 0,
+    "c4Deletion": 0,
+    "sourceCopies": 0,
+    "archivesCreated": 0,
+    "archiveDeletion": 0,
+    "paymentOperations": 0,
+    "dependencyInstalls": 0
+  },
+  "operationEvidenceBoundary": "Zero-operation fields attest scoped executed commands and artifacts, not an OS-wide syscall audit. Authorized Git status may inspect tracked files internally. A/B zero-read/hash means no explicit private payload read, parse, grep, preview, diff, scan, hash or copy by this Gate. Reading previously recorded R0 manifest metadata is not a private payload read. Group C payloads were hashed in memory only, never printed.",
+  "truthBoundary": "Local decision/identity validation is not deletion readiness and does not authorize C4-C execution, Original deletion, worktree migration/removal, source adoption, archive deletion, production/provider/payment/deploy/push actions. It does not prove production parity, demand, payment, fulfillment or rights. R0 recorded full extraction and live metadata continuity support the declared snapshot scope; metadata continuity alone is not a new full archive integrity test. A/B current identity remains UNKNOWN until separately authorized private preservation. Worktree evidence is carried forward from C4A, not freshly re-audited. Unknown remains unknown.",
+  "humanDeletionGateOpened": false,
+  "recommendedNextModel": "Current parent gpt-6-astra for private preservation, permissions, Git dependency and final integration; no model/config/provider change.",
+  "validation": {
+    "status": "PASS",
+    "command": "node scripts/validate-cleanup-c4b-private-retention-decision.mjs",
+    "preCommitChecks": 633,
+    "diffCheck": "PASS",
+    "scopeReview": "Exactly four authorized records/validator paths; no Group C payload text or A/B payload/hash fields; live source and Original status revalidated."
+  }
+}

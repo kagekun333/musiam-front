@@ -349,3 +349,39 @@ The Human deletion Gate remains closed. C4-A validator PASS certifies preservati
 and review accounting only. See `docs/AI/CLEANUP_C4A_BLOCKER_REMEDIATION.md`,
 `ops/recovery/cleanup-c4a-blocker-remediation-20260923.json` and
 `scripts/validate-cleanup-c4a-blocker-remediation.mjs`.
+
+
+## CLEANUP-C4B PRIVATE RETENTION DECISION — current governance
+
+Starting HEAD `eabf76a5cb35b7b3c973c3b4b7a9dc75eb9e932c`, branch
+`recovery/musiam-clean-20260920`, initially clean. C4-A's 16 unresolved paths are
+partitioned exactly once: Group A private env 4, Group B private/local knowledge 4,
+Group C ordinary non-secret source 8; overlap/missing = 0.
+
+Owner fixes A/B to `RETAIN_CURRENT_PRIVATE_COPY_BEFORE_C4`; ABI canonical knowledge
+is `PRIVATE_KNOWLEDGE_PRESERVE_REQUIRED`. Private content reads, hashes and copies
+are 0. `PRIVATE_PRESERVATION_REQUIRED = 8`; current private equality remains unknown.
+Group C current SHA-256/size matches all eight exact R0 manifest rows; five also
+match canonical current/HEAD bytes. `.env.example` remains modified tracked but its
+exact current version is R0-preserved. `CURRENT_VERSION_ALREADY_PRESERVED = 8`,
+`CURRENT_VERSION_PRESERVATION_REQUIRED = 0`, required paths `[]`, and
+`SOURCE_PRESERVATION_REQUIRED = false`. R0 prior full extraction plus live artifact
+metadata continuity is reused; mixed archives were not reopened or rehashed.
+
+`C4_READINESS = NOT_READY_PRIVATE_PRESERVATION_REQUIRED`. Next Gate:
+**C4-C PRIVATE PRESERVATION EXECUTION**. The plan uses restricted private storage
+outside Original/canonical and separate from generic/source archives, emits no
+values and puts no raw private files in Git. This Gate executes no copy.
+Subsequent Gate: **C4-D WORKTREE DEPENDENCY REMEDIATION**. The C4-A three linked
+worktrees and `WORKTREE_DEPENDENCY_REMEDIATION_REQUIRED` remain carried forward,
+without mutation or new worktree audit. This order supersedes earlier proposed
+C4-B worktree-remediation labels, while historical records remain intact.
+
+Original HEAD/branch and 102 / 0 / 433 status entries/digest remain unchanged.
+Original writes, destructive operations, worktree mutations, application changes,
+provider/deploy/push and C4 deletion are 0. Validator PASS is decision/identity
+accounting, not deletion readiness, production parity or execution authorization.
+The Human deletion Gate remains closed. See
+`docs/AI/CLEANUP_C4B_PRIVATE_RETENTION_DECISION.md`,
+`ops/recovery/cleanup-c4b-private-retention-decision-20260923.json` and
+`scripts/validate-cleanup-c4b-private-retention-decision.mjs`.
