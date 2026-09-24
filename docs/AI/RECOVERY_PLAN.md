@@ -417,3 +417,35 @@ not reopen private payloads or grant deletion/production authority.
 See `docs/AI/CLEANUP_C4C_PRIVATE_PRESERVATION_EXECUTION.md`,
 `ops/recovery/cleanup-c4c-private-preservation-20260924.json`, and
 `scripts/validate-cleanup-c4c-private-preservation.mjs`.
+
+## CLEANUP-C4D WORKTREE REMEDIATION — blocked at ignored-state preflight
+
+Starting HEAD `723f14f73e00cf0b793a8dd89b7d38125eb4ac30`; canonical initially clean. Original `102 / 0 / 433` and all three worktree HEAD/branch/NUL status digests match C4-A. The C4-C private root remains present, without payload access or mutation.
+
+`WORKTREE_IGNORED_STATE_REVIEW_REQUIRED`: 6df2 has ignored `outputs/metal-print-cost-simulation/metal-print-global-cost-simulation.xlsx` (regular, 12,058 bytes). Metadata cannot establish regenerability/current independent preservation. Owner Step 4 requires stopping before preservation. No content read/hash/copy, patch/archive or reconstruction was performed; Step 5 sensitive overlap is UNKNOWN. Astra is clean but its final semantic decision is deferred; C4 historical ref preservation evidence is not a fresh C4-D closure check.
+
+`C4D_WORKTREE_REMEDIATION = BLOCKED`; `WORKTREE_STATE_PRESERVATION = NOT_STARTED`; `WORKTREE_DECOMMISSION_READY = false`; Original Git dependencies = 3; `C4_READINESS = NOT_READY_WORKTREE_MIGRATION_REQUIRED`. C4-C private resolution is carried forward. Next is **C4-D IGNORED STATE REVIEW / RESUME PRESERVATION** for the exact XLSX. C4-E is deferred until C4-D completes and execution is authorized. All source/worktree/private-preservation writes, destructive operations and provider/deploy/push remain zero. No commit while preservation completion is blocked.
+
+See `docs/AI/CLEANUP_C4D_WORKTREE_DEPENDENCY_REMEDIATION.md`, `ops/recovery/cleanup-c4d-worktree-remediation-20260924.json`, and `scripts/validate-cleanup-c4d-worktree-remediation.mjs`. Validator record consistency does not establish preservation or deletion readiness.
+
+## CLEANUP-C4D RESUME — ignored XLSX resolved; reconstruction blocked
+
+Owner-directed opaque preservation resolved the ignored XLSX blocker: the exact 12,058-byte file was copied under `cleanup-c4d-worktrees-20260924/codex-6df2/ignored-artifacts/`; source/preserved/reconstructed SHA-256 and sizes match, content semantics were not reviewed. Metadata-sensitive screening covered all 324 dirty/untracked/ignored targets across both worktrees: candidates 0, NFC collisions 0. One untracked external `node_modules` symlink was archived/restored as link metadata only, without dereferencing its runtime dependency.
+
+R0 bundle SHA/standalone verification passed; 6df2 patch, untracked archive and raw mapping were created and independently restored. At Step 12 the executor's `umask 077` caused an added exact-mode check to fail: tracked 62 files were `0600` versus source `0644`, and one symlink was `0700` versus source `0755`. Source metadata remained unchanged. The executor had not restored source modes. This is an implementation defect in the temporary reconstruction, not source drift. Full byte/path/NFC verification did not complete. The explicit mismatch stop rule prevented repair/retry, stripe-fix preservation, cleanup and commit.
+
+Partial artifacts and `/private/tmp/musiam-c4d-verify-9fvsrzul` remain retained; final state manifests are incomplete. Astra independently met the owner's clean/ref-preserved criterion before the failure (ignored 0, 7,549 reachable objects, missing 0), so its disposition is `WORKTREE_DISPOSABLE_AFTER_PRESERVATION`. Preserved dirty worktrees 0, disposable 1, live dependencies 3.
+
+`C4D_WORKTREE_REMEDIATION = BLOCKED_WORKTREE_RECONSTRUCTION_FAILURE`; `WORKTREE_STATE_PRESERVATION = PARTIAL_BLOCKED_RECONSTRUCTION`; `WORKTREE_DECOMMISSION_READY = false`; `C4_READINESS = NOT_READY_WORKTREE_MIGRATION_REQUIRED`. Next: **C4-D RECONSTRUCTION MODE REMEDIATION / RESUME**, with explicit handling of retained partial destinations under the no-overwrite boundary. C4-E remains deferred. Source/worktree/private-preservation mutations, destructive operations and provider/deploy/push are zero. The four allowed governance files remain unstaged, without commit. Record validator PASS (1,866 checks) and XLSX identity PASS do not establish completed reconstruction.
+
+## CLEANUP-C4D FINAL — worktree preservation complete
+
+C4-D completed from canonical starting HEAD `723f14f73e00cf0b793a8dd89b7d38125eb4ac30`. The prior reconstruction mismatch was an executor umask/mode-policy defect. Under owner-authorized resume, unchanged 6df2 partial artifacts were reused without overwrite, and two fresh standalone repositories were rebuilt from the verified R0 bundle. Regular-file modes were normalized only in verification copies (62 + 1); symlink modes were excluded from identity and no symlink chmod occurred. The earlier failed copy was not success evidence.
+
+6df2 **321/321** and stripe-fix **3/3** preserved-state targets matched with exact tracked/untracked sets, normal content/size/mode/executable semantics, symlink target identity, NFC mapping, matching status digests, missing 0 and extra 0. The opaque ignored XLSX is 12,058 bytes with source/preserved/fresh-reconstructed SHA equality and no content semantics review. Sensitive path overlap and NFC collisions are 0. The single symlink points to the local Codex runtime; external-volume symlinks 0, external target payload checks required 0, SSD required false.
+
+Both dirty worktrees are `WORKTREE_STATE_INDEPENDENTLY_PRESERVED`. Astra is clean with ignored 0 and independently retained ref/history (7,549 reachable objects, missing 0), so its final disposition is `WORKTREE_DISPOSABLE_AFTER_PRESERVATION`. Ten artifacts, including per-worktree state manifests and root result, remain in `/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/`. Only after both full PASSes, the new and superseded failed temporary verification roots were removed.
+
+`WORKTREE_STATE_PRESERVATION = COMPLETE`; `WORKTREE_DECOMMISSION_READY = true`; `ORIGINAL_GIT_DEPENDENCY_COUNT = 3`; `C4_READINESS = NOT_READY_WORKTREE_DECOMMISSION_REQUIRED`. Successful authorized four-record local commit closes `C4D_WORKTREE_REMEDIATION = COMPLETE_COMMITTED`. Source/worktree state and permissions, Original/private preservation and all branch/refs remain unchanged. Destructive source operations, application changes, provider/deploy/push are 0.
+
+Next Gate: **C4-E WORKTREE DECOMMISSION EXECUTION**, not started. Re-lock exact targets and preservation before separately authorized removal; review stale registrations without broad prune; prove live external dependencies zero; retain Original and return to its final deletion review. Details, evidence and validator are in the three C4-D record files. Earlier blocked entries above are retained as history and superseded by this completed preservation result.
