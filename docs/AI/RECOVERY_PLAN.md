@@ -482,3 +482,49 @@ repository deletion, branch deletion, application changes, provider/deploy/push=
 This readiness does not authorize deletion. See the C4-E report, machine record
 and `scripts/validate-cleanup-c4e-worktree-decommission.mjs`. C4-D live-source
 validator PASS remains historical pre-removal evidence after decommission.
+
+## CLEANUP-C4F FINAL DELETION REVIEW — current governance
+
+Starting canonical HEAD `4c2ed71514eb52919626e6a1bf339e15c034f907`, branch
+`recovery/musiam-clean-20260920`, initially clean. Original HEAD/branch and exact
+102 / 0 / 433 status entries remain unchanged; external linked worktrees=0.
+C4-E commit closure passed its live validator (229 checks) before this review.
+
+`C4F_FINAL_DELETION_REVIEW = BLOCKED_UNPRESERVED_DATA`.
+`MEANINGFUL_UNIQUE_LOSS_COUNT = 7` / **35,049 logical bytes**.
+The directory-compressed status count concealed seven new `daily-20260924` files
+(expanded untracked 2,919 → 2,926) and two changed continuous-operation ledgers.
+The new state-before/experiments-before files match independent C4-A old ledgers;
+their cross-path mappings are retained. The remaining five new daily records and
+two current ledgers are unpreserved operational evidence and block deletion.
+
+Modified tracked accounted=102/102 (65 C3-C, 33 R0, four superseded);
+unaccounted untracked status roots=2 (`ops/continuous-operation`,
+`ops/market-learning`); ignored meaningful state unresolved=0.
+C3-C 383/383, historical C4-A 21/21, C4-C private 8/8 historical opaque equality
+with current metadata/permissions, C4-D ten preservation artifacts, C2 and R0
+archive continuity remain satisfied. R5 1,000/1,000 current source matches retain
+`PRESERVE_HOLD / SEPARATE_BUSINESS_SCOPE`; seven roadmap source areas survive.
+All 41 persistent refs, 24 reflog-only commits and currently readable Git objects
+are independently preserved; additional meaningful history loss=0. R0 repaired
+A survives outside Original; pre-existing missing B and prior forensic gaps remain
+limitations. Canonical runtime/Git dependency on Original=0 observed.
+
+Current Original allocated reclaim estimate=**7,353,495,552 bytes**;
+delta from prior allocation=−4,276,224 bytes, not C4-F achieved reclaim.
+Original deletion, source/archive/private preservation deletion, branch/ref/history
+deletion, application changes and provider/deploy/push=0. No new preservation
+was executed. Four review files only may be locally committed after validation,
+including this BLOCKED result; no push.
+
+Next required action: separately authorize exact seven-file current preservation
+and independent verification, then refresh the final review. The future exact
+deletion scope is only `/Users/kagekun/Desktop/musiam-front`. **C4-G ORIGINAL
+REPOSITORY DELETION EXECUTION** remains closed and unstarted; it requires READY
+and explicit `APPROVE_C4G_ORIGINAL_REPOSITORY_DELETION`. Historical source-presence
+validators cannot be used as post-deletion checks. Validator PASS proves this
+blocked review's accounting, not deletion readiness or production truth.
+
+See `docs/AI/CLEANUP_C4F_FINAL_DELETION_REVIEW.md`,
+`ops/recovery/cleanup-c4f-final-deletion-review-20260924.json`, and
+`scripts/validate-cleanup-c4f-final-deletion-review.mjs`.
