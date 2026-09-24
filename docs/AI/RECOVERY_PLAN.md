@@ -385,3 +385,35 @@ The Human deletion Gate remains closed. See
 `docs/AI/CLEANUP_C4B_PRIVATE_RETENTION_DECISION.md`,
 `ops/recovery/cleanup-c4b-private-retention-decision-20260923.json` and
 `scripts/validate-cleanup-c4b-private-retention-decision.mjs`.
+
+## CLEANUP-C4C PRIVATE PRESERVATION EXECUTION — current governance
+
+`C4C_PRIVATE_PRESERVATION = VERIFIED_COMPLETE` from canonical starting HEAD / C4-B
+commit `53f93addbb208667b08cd35980fc628a6b85fd57`. Owner-approved private Group A=4
+and Group B=4 were copied opaquely to
+`/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924`.
+Byte equality=8/8, source stability=8/8, missing/extra payload files=0. Files are
+0600, directories are 0700, destination ACL entries=0. One non-secret status
+sidecar is separate from the eight private payload files.
+
+OS/local processes read bytes for copy and silent comparison. Private payloads
+were not exposed to the model, printed, logged, parsed, diffed, scanned, hashed,
+added to Git or transferred externally. This is not a content-read-zero claim.
+Original HEAD/branch and 102 / 0 / 433 status entries/digest remain unchanged.
+Original writes/deletes/moves, application changes, worktree mutations and
+provider/deploy/push are 0. Group C additional preservation=0; its prior C4-B
+preservation judgment and C4-A unique-source resolution are carried forward.
+
+`PRIVATE_RETENTION_BLOCKER = RESOLVED`.
+`C4_READINESS = NOT_READY_WORKTREE_MIGRATION_REQUIRED`.
+`NEXT_GATE = C4-D WORKTREE DEPENDENCY REMEDIATION`.
+The three Original Git dependencies (two preservation requirements and one
+semantic decision) remain carried forward from C4-A without new worktree audit.
+The Human deletion Gate remains closed. C4-D, worktree preservation/removal/prune,
+Original/source/private preservation deletion and provider/deploy/push were not
+started. Validator checks metadata and recorded execution-time equality; it does
+not reopen private payloads or grant deletion/production authority.
+
+See `docs/AI/CLEANUP_C4C_PRIVATE_PRESERVATION_EXECUTION.md`,
+`ops/recovery/cleanup-c4c-private-preservation-20260924.json`, and
+`scripts/validate-cleanup-c4c-private-preservation.mjs`.

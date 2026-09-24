@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "status": "VERIFIED_COMPLETE",
+  "createdAt": "2026-09-24T10:47:53.622Z",
+  "startingHead": "53f93addbb208667b08cd35980fc628a6b85fd57",
+  "c4bCommit": "53f93addbb208667b08cd35980fc628a6b85fd57",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "canonicalBefore": {
+    "head": "53f93addbb208667b08cd35980fc628a6b85fd57",
+    "branch": "recovery/musiam-clean-20260920",
+    "modified": 0,
+    "dirtyTracked": 0,
+    "staged": 0,
+    "untracked": 0,
+    "statusSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "canonicalInitiallyClean": true,
+  "sourceRepo": "/Users/kagekun/Desktop/musiam-front",
+  "preservationRoot": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+  "authorityRecord": "ops/recovery/cleanup-c4b-private-retention-decision-20260923.json",
+  "allowedCanonicalPaths": [
+    "docs/AI/CLEANUP_C4C_PRIVATE_PRESERVATION_EXECUTION.md",
+    "ops/recovery/cleanup-c4c-private-preservation-20260924.json",
+    "scripts/validate-cleanup-c4c-private-preservation.mjs",
+    "docs/AI/RECOVERY_PLAN.md"
+  ],
+  "targetCount": 8,
+  "groupACount": 4,
+  "groupBCount": 4,
+  "targetPaths": [
+    ".env",
+    ".env.local",
+    ".env.stripe-sandbox.local",
+    ".vercel/.env.preview.local",
+    ".vscode/settings.json",
+    ".vscode/tasks.json",
+    ".claude/settings.local.json",
+    ".local/abi-knowledge/abi-canonical.json"
+  ],
+  "sourceMetadataBefore": [
+    {
+      "path": ".env",
+      "regularFile": true,
+      "logicalSize": 2806,
+      "mtimeNs": "1782489945488767845",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "443813",
+      "ctimeNs": "1782489945488767845"
+    },
+    {
+      "path": ".env.local",
+      "regularFile": true,
+      "logicalSize": 2870,
+      "mtimeNs": "1782487676245784016",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "26407308",
+      "ctimeNs": "1788233120540698164"
+    },
+    {
+      "path": ".env.stripe-sandbox.local",
+      "regularFile": true,
+      "logicalSize": 314,
+      "mtimeNs": "1789044837631515855",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "38479090",
+      "ctimeNs": "1789044837654332346"
+    },
+    {
+      "path": ".vercel/.env.preview.local",
+      "regularFile": true,
+      "logicalSize": 1910,
+      "mtimeNs": "1759924262000000000",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "449066",
+      "ctimeNs": "1788233787706808074"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "regularFile": true,
+      "logicalSize": 223,
+      "mtimeNs": "1757672949000000000",
+      "gitCategory": "tracked",
+      "device": "16777227",
+      "inode": "449679",
+      "ctimeNs": "1771397837202245007"
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "regularFile": true,
+      "logicalSize": 518,
+      "mtimeNs": "1757614838000000000",
+      "gitCategory": "tracked",
+      "device": "16777227",
+      "inode": "449680",
+      "ctimeNs": "1771397837202466091"
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "regularFile": true,
+      "logicalSize": 633,
+      "mtimeNs": "1781448568326647941",
+      "gitCategory": "tracked",
+      "device": "16777227",
+      "inode": "25080371",
+      "ctimeNs": "1781448568326647941"
+    },
+    {
+      "path": ".local/abi-knowledge/abi-canonical.json",
+      "regularFile": true,
+      "logicalSize": 28984,
+      "mtimeNs": "1789228218868034851",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "39290195",
+      "ctimeNs": "1789228218868076052"
+    }
+  ],
+  "sourceMetadataAfter": [
+    {
+      "path": ".env",
+      "regularFile": true,
+      "logicalSize": 2806,
+      "mtimeNs": "1782489945488767845",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "443813",
+      "ctimeNs": "1782489945488767845"
+    },
+    {
+      "path": ".env.local",
+      "regularFile": true,
+      "logicalSize": 2870,
+      "mtimeNs": "1782487676245784016",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "26407308",
+      "ctimeNs": "1788233120540698164"
+    },
+    {
+      "path": ".env.stripe-sandbox.local",
+      "regularFile": true,
+      "logicalSize": 314,
+      "mtimeNs": "1789044837631515855",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "38479090",
+      "ctimeNs": "1789044837654332346"
+    },
+    {
+      "path": ".vercel/.env.preview.local",
+      "regularFile": true,
+      "logicalSize": 1910,
+      "mtimeNs": "1759924262000000000",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "449066",
+      "ctimeNs": "1788233787706808074"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "regularFile": true,
+      "logicalSize": 223,
+      "mtimeNs": "1757672949000000000",
+      "gitCategory": "tracked",
+      "device": "16777227",
+      "inode": "449679",
+      "ctimeNs": "1771397837202245007"
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "regularFile": true,
+      "logicalSize": 518,
+      "mtimeNs": "1757614838000000000",
+      "gitCategory": "tracked",
+      "device": "16777227",
+      "inode": "449680",
+      "ctimeNs": "1771397837202466091"
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "regularFile": true,
+      "logicalSize": 633,
+      "mtimeNs": "1781448568326647941",
+      "gitCategory": "tracked",
+      "device": "16777227",
+      "inode": "25080371",
+      "ctimeNs": "1781448568326647941"
+    },
+    {
+      "path": ".local/abi-knowledge/abi-canonical.json",
+      "regularFile": true,
+      "logicalSize": 28984,
+      "mtimeNs": "1789228218868034851",
+      "gitCategory": "ignored",
+      "device": "16777227",
+      "inode": "39290195",
+      "ctimeNs": "1789228218868076052"
+    }
+  ],
+  "verification": [
+    {
+      "path": ".env",
+      "group": "A",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 2806,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".env.local",
+      "group": "A",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 2870,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".env.stripe-sandbox.local",
+      "group": "A",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 314,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".vercel/.env.preview.local",
+      "group": "A",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 1910,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "group": "B",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 223,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "group": "B",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 518,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "group": "B",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 633,
+      "fileMode": "0600"
+    },
+    {
+      "path": ".local/abi-knowledge/abi-canonical.json",
+      "group": "B",
+      "byteEqual": true,
+      "sourceStable": true,
+      "logicalSize": 28984,
+      "fileMode": "0600"
+    }
+  ],
+  "copiedCount": 8,
+  "byteEqualCount": 8,
+  "sourceStableCount": 8,
+  "destinationFileCount": 8,
+  "missingCount": 0,
+  "extraCount": 0,
+  "duplicateCount": 0,
+  "symlinkCount": 0,
+  "sourceRootEscapeCount": 0,
+  "fileModeExpected": "0600",
+  "directoryModeExpected": "0700",
+  "permissionCheckPass": true,
+  "unexpectedAclCount": 0,
+  "destinationDirectories": [
+    "",
+    "files",
+    "files/.claude",
+    "files/.local",
+    "files/.local/abi-knowledge",
+    "files/.vercel",
+    "files/.vscode"
+  ],
+  "metadataSidecar": "PRESERVATION_STATUS.json",
+  "metadataSidecarCount": 1,
+  "umask": "0077",
+  "privateBytesCopiedOpaquely": true,
+  "privatePayloadExposedToModel": false,
+  "privatePayloadPrintedOrLogged": false,
+  "privateHashProduced": false,
+  "externalTransferCount": 0,
+  "originalBefore": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "dirtyTracked": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89"
+  },
+  "originalAfter": {
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "dirtyTracked": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89"
+  },
+  "originalStatusDigestMatchesC4B": true,
+  "originalWrites": 0,
+  "originalDeletes": 0,
+  "originalMoves": 0,
+  "worktreeMutations": 0,
+  "applicationChanges": 0,
+  "providerOperations": 0,
+  "deployOperations": 0,
+  "pushOperations": 0,
+  "c4DeletionStarted": false,
+  "humanDeletionGateOpened": false,
+  "privateRetentionBlocker": "RESOLVED",
+  "worktreeBlocker": {
+    "status": "WORKTREE_DEPENDENCY_REMEDIATION_REQUIRED",
+    "count": 3,
+    "paths": [
+      "/Users/kagekun/.codex/worktrees/6df2/musiam-front",
+      "/Users/kagekun/Desktop/musiam-front-astra",
+      "/Users/kagekun/Desktop/musiam-front-stripe-fix"
+    ],
+    "evidence": "C4A_CARRIED_FORWARD_NOT_REAUDITED",
+    "preservationRequired": 2,
+    "semanticDecisionRequired": 1,
+    "staleMissingRegistrationsCarriedForward": 6
+  },
+  "groupCAdditionalPreservationCount": 0,
+  "uniqueSourceBlocker": "RESOLVED_C4A_CARRIED_FORWARD",
+  "c4Readiness": "NOT_READY_WORKTREE_MIGRATION_REQUIRED",
+  "nextGate": "C4-D WORKTREE DEPENDENCY REMEDIATION",
+  "truthBoundary": "OS/local processes read private bytes for opaque copy and silent cmp. Private payloads were not passed to the model, printed, logged, parsed, diffed, scanned, hashed or sent externally. Git status can internally inspect tracked files; statusSha256 hashes only NUL-delimited status metadata, never private payloads. Recorded byte equality is the execution-time observation; metadata-only validator does not re-prove byte identity. Source stability compares path/type/size/mtime plus inode/device/ctime around execution; it does not prove absence of external writers or OS-wide activity. Zero-operation fields describe this scoped execution, not a system-wide syscall audit. Worktree and prior source preservation evidence are carried forward, not re-audited. Preservation is not deletion authority, production parity or provider/deploy/push authorization.",
+  "validation": {
+    "status": "PASS",
+    "command": "node scripts/validate-cleanup-c4c-private-preservation.mjs",
+    "checks": 528,
+    "diffCheck": "PASS",
+    "parentReview": "Reviewed exact eight-file authority, exclusive opaque copy, silent cmp execution, source snapshots, owner-only permissions and ACLs, metadata-only validator, four-file scope, unchanged Original and closed deletion/worktree gates."
+  }
+}
