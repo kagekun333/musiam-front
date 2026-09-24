@@ -1,0 +1,1938 @@
+{
+  "schemaVersion": "cleanup-c4g-original-repository-deletion/v1",
+  "approval": "APPROVE_C4G_ORIGINAL_REPOSITORY_DELETION",
+  "approvalSource": "Explicit owner C4-G execution request attached 2026-09-25",
+  "startingCanonicalHead": "6c5ea76dee4d8d6f990d28ee1f231e546123ab85",
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "canonicalBefore": {
+    "path": "/Users/kagekun/Desktop/musiam-front-clean",
+    "head": "6c5ea76dee4d8d6f990d28ee1f231e546123ab85",
+    "branch": "recovery/musiam-clean-20260920",
+    "clean": true,
+    "commonDir": "/Users/kagekun/Desktop/musiam-front-clean/.git",
+    "gitDependencyOnOriginal": 0
+  },
+  "exactDeletionTarget": "/Users/kagekun/Desktop/musiam-front",
+  "originalBefore": {
+    "path": "/Users/kagekun/Desktop/musiam-front",
+    "head": "117379b6c61ab3fc072b6cd4b80ce1d406b0e175",
+    "branch": "codex/fix/stripe-metal-print-webhook-20260914",
+    "modified": 102,
+    "staged": 0,
+    "untracked": 433,
+    "statusSha256": "602c7495aa6747521bdf758daae04ac42ad7cb19c1e19a20e0e7b2fcd7d95d89",
+    "realpath": "/Users/kagekun/Desktop/musiam-front",
+    "isDirectory": true,
+    "isSymlink": false,
+    "externalLinkedWorktrees": 0,
+    "allocatedBytes": 7353495552,
+    "timestamp": "2026-09-24T23:40:48.491258+00:00",
+    "rootIdentity": {
+      "path": "/Users/kagekun/Desktop/musiam-front",
+      "type": "directory",
+      "size": 2272,
+      "mtimeNs": "1790155176364712403",
+      "ctimeNs": "1790155176364712403",
+      "inode": 443808,
+      "device": 16777227,
+      "mode": 511
+    }
+  },
+  "preDeletionValidator": "C4F_BLOCKER_REMEDIATION_VALIDATOR = PASS (1721 current checks + 26139 historical continuity checks)\nC4F_FINAL_BLOCKER_REMEDIATION = VERIFIED_COMPLETE_COMMITTED\nC4F_FINAL_DELETION_REVIEW = READY_FOR_HUMAN_DELETION_GATE; MEANINGFUL_UNIQUE_LOSS_COUNT = 0\nORIGINAL_DELETION = 0; ORIGINAL_WRITES = 0; C4G_EXECUTION_AUTHORIZED = false",
+  "preDeletionBlockers": {
+    "meaningfulUniqueLossCount": 0,
+    "unaccountedModifiedTracked": 0,
+    "unaccountedUntrackedEntries": 0,
+    "ignoredMeaningfulStateUnresolved": 0,
+    "futureProductUnpreservedSource": 0,
+    "privateRetentionBlocker": "RESOLVED",
+    "worktreeDependencyBlocker": "RESOLVED",
+    "canonicalRuntimeDependencyOnOriginal": 0,
+    "canonicalGitDependencyOnOriginal": 0,
+    "externalLinkedWorktrees": 0,
+    "persistentRefsPreserved": 41,
+    "reflogOnlyCommitsPreserved": 24
+  },
+  "preservationBefore": [
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/PRESERVATION_RESULT.json",
+        "type": "regular",
+        "size": 471377,
+        "mtimeNs": "1790272515283420233",
+        "ctimeNs": "1790272515283420233",
+        "inode": 43143175,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 110590,
+        "mtimeNs": "1790258243558100085",
+        "ctimeNs": "1790258243558100085",
+        "inode": 43029267,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 400964,
+        "mtimeNs": "1790272500588914303",
+        "ctimeNs": "1790272500588914303",
+        "inode": 43138095,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/ignored-artifacts/outputs/metal-print-cost-simulation/metal-print-global-cost-simulation.xlsx",
+        "type": "regular",
+        "size": 12058,
+        "mtimeNs": "1790258243558433256",
+        "ctimeNs": "1790258243558433256",
+        "inode": 43029271,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/tracked-delta.patch",
+        "type": "regular",
+        "size": 1820837,
+        "mtimeNs": "1790258243366666733",
+        "ctimeNs": "1790258243366666733",
+        "inode": 43029263,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/untracked.tar",
+        "type": "regular",
+        "size": 98365440,
+        "mtimeNs": "1790258243552114513",
+        "ctimeNs": "1790258243552114513",
+        "inode": 43029264,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 913,
+        "mtimeNs": "1790272500933390067",
+        "ctimeNs": "1790272500933390067",
+        "inode": 43138103,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 6618,
+        "mtimeNs": "1790272512439357059",
+        "ctimeNs": "1790272512439357059",
+        "inode": 43143152,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/tracked-delta.patch",
+        "type": "regular",
+        "size": 3507,
+        "mtimeNs": "1790272500917560749",
+        "ctimeNs": "1790272500917560749",
+        "inode": 43138101,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/untracked.tar",
+        "type": "regular",
+        "size": 10240,
+        "mtimeNs": "1790272500932994106",
+        "ctimeNs": "1790272500932994106",
+        "inode": 43138102,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 122880,
+        "mtimeNs": "1790196756073948665",
+        "ctimeNs": "1790196756073948665",
+        "inode": 42828459,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 21362,
+        "mtimeNs": "1790196756068677601",
+        "ctimeNs": "1790196756068677601",
+        "inode": 42828458,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 8253,
+        "mtimeNs": "1790196756079585060",
+        "ctimeNs": "1790196756079585060",
+        "inode": 42828460,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 16527360,
+        "mtimeNs": "1790179562932453499",
+        "ctimeNs": "1790179562932453499",
+        "inode": 42779048,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 386479,
+        "mtimeNs": "1790179562898273366",
+        "ctimeNs": "1790179562898273366",
+        "inode": 42779046,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 101342,
+        "mtimeNs": "1790179562898434032",
+        "ctimeNs": "1790179562898434032",
+        "inode": 42779047,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/canonical-output.tar.gz",
+        "type": "regular",
+        "size": 450843681,
+        "mtimeNs": "1790116371876180305",
+        "ctimeNs": "1790116371876180305",
+        "inode": 42319470,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-output.tar.gz",
+        "type": "regular",
+        "size": 1433855247,
+        "mtimeNs": "1790116401234877564",
+        "ctimeNs": "1790116401234877564",
+        "inode": 42319551,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-archive.tar.gz",
+        "type": "regular",
+        "size": 95906787,
+        "mtimeNs": "1790116406358452474",
+        "ctimeNs": "1790116406358452474",
+        "inode": 42319905,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-outputs.tar.gz",
+        "type": "regular",
+        "size": 254304,
+        "mtimeNs": "1790116406459914860",
+        "ctimeNs": "1790116406459914860",
+        "inode": 42320687,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/SOURCE_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 794401,
+        "mtimeNs": "1790120754266916973",
+        "ctimeNs": "1790120754266916973",
+        "inode": 42340991,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/verification/head-117379b6.bundle",
+        "type": "regular",
+        "size": 640344677,
+        "mtimeNs": "1789912201592822651",
+        "ctimeNs": "1789912210918748619",
+        "inode": 41142277,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "regular",
+        "size": 681815040,
+        "mtimeNs": "1789907384171632881",
+        "ctimeNs": "1789908937497089640",
+        "inode": 41043407,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+        "type": "regular",
+        "size": 2314388480,
+        "mtimeNs": "1789907082373654130",
+        "ctimeNs": "1789908936780833667",
+        "inode": 41043402,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "type": "regular",
+        "size": 1328117760,
+        "mtimeNs": "1789907123280792078",
+        "ctimeNs": "1789908931559985007",
+        "inode": 41043393,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/git-dir.raw.tar",
+        "type": "regular",
+        "size": 3111556096,
+        "mtimeNs": "1789907048786566901",
+        "ctimeNs": "1789908942552486057",
+        "inode": 41043413,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+        "type": "regular",
+        "size": 761171,
+        "mtimeNs": "1789907235817627715",
+        "ctimeNs": "1789908931566460038",
+        "inode": 41043399,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "type": "regular",
+        "size": 654122,
+        "mtimeNs": "1789907617844323419",
+        "ctimeNs": "1789908936784020829",
+        "inode": 41043405,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/archive-sha256.txt",
+        "type": "regular",
+        "size": 1538,
+        "mtimeNs": "1789907617856402160",
+        "ctimeNs": "1789908936785244243",
+        "inode": 41043406,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env",
+        "type": "regular",
+        "size": 2806,
+        "mtimeNs": "1790246873335990873",
+        "ctimeNs": "1790246873336025665",
+        "inode": 42999357,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.local",
+        "type": "regular",
+        "size": 2870,
+        "mtimeNs": "1790246873343919883",
+        "ctimeNs": "1790246873343948134",
+        "inode": 42999358,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.stripe-sandbox.local",
+        "type": "regular",
+        "size": 314,
+        "mtimeNs": "1790246873351068010",
+        "ctimeNs": "1790246873351105385",
+        "inode": 42999359,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel/.env.preview.local",
+        "type": "regular",
+        "size": 1910,
+        "mtimeNs": "1790246873357300251",
+        "ctimeNs": "1790246873357336459",
+        "inode": 42999360,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/settings.json",
+        "type": "regular",
+        "size": 223,
+        "mtimeNs": "1790246873362462770",
+        "ctimeNs": "1790246873362512521",
+        "inode": 42999361,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/tasks.json",
+        "type": "regular",
+        "size": 518,
+        "mtimeNs": "1790246873367793958",
+        "ctimeNs": "1790246873367821042",
+        "inode": 42999362,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude/settings.local.json",
+        "type": "regular",
+        "size": 633,
+        "mtimeNs": "1790246873373438150",
+        "ctimeNs": "1790246873373470942",
+        "inode": 42999363,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge/abi-canonical.json",
+        "type": "regular",
+        "size": 28984,
+        "mtimeNs": "1790246873378968049",
+        "ctimeNs": "1790246873379043550",
+        "inode": 42999364,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1790246873651159570",
+        "ctimeNs": "1790246873651159570",
+        "inode": 42999349,
+        "device": 16777227,
+        "mode": 448
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/PRESERVATION_STATUS.json",
+        "type": "regular",
+        "size": 2114,
+        "mtimeNs": "1790246873651245779",
+        "ctimeNs": "1790246873651290947",
+        "inode": 42999365,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/repair-candidate",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1789911965149992805",
+        "ctimeNs": "1789911965149992805",
+        "inode": 41118252,
+        "device": 16777227,
+        "mode": 448
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/R0_COMPLETION.txt",
+        "type": "regular",
+        "size": 172,
+        "mtimeNs": "1789910467841766199",
+        "ctimeNs": "1789910467880066140",
+        "inode": 41115710,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v2/archive-verification-summary.txt",
+        "type": "regular",
+        "size": 150,
+        "mtimeNs": "1789909675672475542",
+        "ctimeNs": "1789909675675250996",
+        "inode": 41074994,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v3-mode/mode-verification-summary.txt",
+        "type": "regular",
+        "size": 14,
+        "mtimeNs": "1789910177078092988",
+        "ctimeNs": "1789910177082454731",
+        "inode": 41114638,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4F",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/preserved-source.tar",
+        "type": "regular",
+        "size": 51200,
+        "mtimeNs": "1790287092948867476",
+        "ctimeNs": "1790287092948867476",
+        "inode": 43353496,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4F",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 4506,
+        "mtimeNs": "1790287092944249144",
+        "ctimeNs": "1790287092944249144",
+        "inode": 43353494,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4F",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 2600,
+        "mtimeNs": "1790287092944469060",
+        "ctimeNs": "1790287092944469060",
+        "inode": 43353495,
+        "device": 16777227,
+        "mode": 384
+      }
+    }
+  ],
+  "privateMetadataBefore": [
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873280382463",
+      "ctimeNs": "1790246873280382463",
+      "inode": 42999348,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+      "type": "directory",
+      "size": 128,
+      "mtimeNs": "1790246873651159570",
+      "ctimeNs": "1790246873651159570",
+      "inode": 42999349,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files",
+      "type": "directory",
+      "size": 288,
+      "mtimeNs": "1790246873350832215",
+      "ctimeNs": "1790246873350832215",
+      "inode": 42999351,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873373201522",
+      "ctimeNs": "1790246873373201522",
+      "inode": 42999352,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873325547124",
+      "ctimeNs": "1790246873325547124",
+      "inode": 42999353,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873378335625",
+      "ctimeNs": "1790246873378335625",
+      "inode": 42999356,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873357066248",
+      "ctimeNs": "1790246873357066248",
+      "inode": 42999354,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode",
+      "type": "directory",
+      "size": 128,
+      "mtimeNs": "1790246873367669915",
+      "ctimeNs": "1790246873367669915",
+      "inode": 42999355,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env",
+      "type": "regular",
+      "size": 2806,
+      "mtimeNs": "1790246873335990873",
+      "ctimeNs": "1790246873336025665",
+      "inode": 42999357,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.local",
+      "type": "regular",
+      "size": 2870,
+      "mtimeNs": "1790246873343919883",
+      "ctimeNs": "1790246873343948134",
+      "inode": 42999358,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.stripe-sandbox.local",
+      "type": "regular",
+      "size": 314,
+      "mtimeNs": "1790246873351068010",
+      "ctimeNs": "1790246873351105385",
+      "inode": 42999359,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel/.env.preview.local",
+      "type": "regular",
+      "size": 1910,
+      "mtimeNs": "1790246873357300251",
+      "ctimeNs": "1790246873357336459",
+      "inode": 42999360,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/settings.json",
+      "type": "regular",
+      "size": 223,
+      "mtimeNs": "1790246873362462770",
+      "ctimeNs": "1790246873362512521",
+      "inode": 42999361,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/tasks.json",
+      "type": "regular",
+      "size": 518,
+      "mtimeNs": "1790246873367793958",
+      "ctimeNs": "1790246873367821042",
+      "inode": 42999362,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude/settings.local.json",
+      "type": "regular",
+      "size": 633,
+      "mtimeNs": "1790246873373438150",
+      "ctimeNs": "1790246873373470942",
+      "inode": 42999363,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge/abi-canonical.json",
+      "type": "regular",
+      "size": 28984,
+      "mtimeNs": "1790246873378968049",
+      "ctimeNs": "1790246873379043550",
+      "inode": 42999364,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/PRESERVATION_STATUS.json",
+      "type": "regular",
+      "size": 2114,
+      "mtimeNs": "1790246873651245779",
+      "ctimeNs": "1790246873651290947",
+      "inode": 42999365,
+      "device": 16777227,
+      "mode": 384
+    }
+  ],
+  "siblingsBefore": {
+    "/Users/kagekun/Desktop/\u5927\u9ebb\u3068UBI": {
+      "inode": 39022795,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u51fa\u7248\u6e96\u5099": {
+      "inode": 9902772,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u4f01\u753b\u66f8\u30ea\u30b9\u30c8": {
+      "inode": 9902936,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/LibreOffice-backup-20260921": {
+      "inode": 41739843,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/YAWARAKA-OS": {
+      "inode": 28882943,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/myth-reboot-os": {
+      "inode": 6220410,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/Shamacole": {
+      "inode": 39142499,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/.DS_Store": {
+      "inode": 441085,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u6700\u5f8c\u306e\u624b\u7d19": {
+      "inode": 503809,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u897f\u91ce\u656c\u8a9e": {
+      "inode": 6389909,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/MAAI": {
+      "inode": 8035571,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/.localized": {
+      "inode": 441086,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/finalize_pchan_codex_memory.py": {
+      "inode": 41272339,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/upgrade_node_22.sh": {
+      "inode": 503808,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/codex_3sessions": {
+      "inode": 40957407,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/revenue-os": {
+      "inode": 11311504,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/export_project_pack.sh": {
+      "inode": 41099409,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/MUSIAM_CODEX_EXPORT": {
+      "inode": 40959489,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/claude-book-starter-kit": {
+      "inode": 6535178,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/amateras-og-review": {
+      "inode": 16980247,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/rsync_missing_list.txt": {
+      "inode": 23587392,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/default-app-audit-20260922-221436.txt": {
+      "inode": 42263075,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/AQW.docx": {
+      "inode": 5251832,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/mv-factory-os": {
+      "inode": 11504501,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/stripe-webhook-fix.patch": {
+      "inode": 39682388,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/auto-factory": {
+      "inode": 9658025,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/Drone Footage Factory OS": {
+      "inode": 14341628,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/ABI\u4f2f\u7235\u30a8\u30f3\u30d5\u3099\u30ec\u30e0": {
+      "inode": 9905174,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/SuperMovieOS": {
+      "inode": 14275731,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/novel-factory 3": {
+      "inode": 9777566,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u4e03\u5343\u4eba": {
+      "inode": 35623197,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u611f\u52d5\u7684\u306a\u5c0f\u8aac_\u6539\u8a02\u7248.txt": {
+      "inode": 503812,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/extract_codex_history_for_pchan_v2.py": {
+      "inode": 41268714,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/Fable": {
+      "inode": 27921978,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u88ab\u544a\u4eba\u3001\u5927\u9ebb\u8349": {
+      "inode": 33075930,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/musiam-front-clean": {
+      "inode": 41147450,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/Higgsfield-Studio": {
+      "inode": 37848507,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/MAAI_\u4f01\u753b\u66f8_v4.20_\u78ba\u5b9a\u7248.docx": {
+      "inode": 8034834,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/Auto Film Factory OS old": {
+      "inode": 14297613,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/book-projects": {
+      "inode": 6535187,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u6050\u6016\u5c0f\u8aac": {
+      "inode": 7208800,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/claude-book-os": {
+      "inode": 6369494,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/claude-book-os-BACKUP-20260319": {
+      "inode": 6534104,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u3042\u3072\u3099\u5199\u771f": {
+      "inode": 39122873,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/Hakusyaku_Cowork": {
+      "inode": 441087,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u30ab\u30f3\u30ca\u30d2\u3099\u30b9\u30c8\u3099\u30ad\u30e5\u30e1\u30f3\u30bf\u30ea\u30fc": {
+      "inode": 43115217,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/extract_codex_history_for_pchan.py": {
+      "inode": 41172006,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u672c\u5be9\u67fb": {
+      "inode": 9902748,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u611f\u52d5\u7684\u306a\u5c0f\u8aac_\u521d\u7a3f.txt": {
+      "inode": 503810,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/\u5a5a\u6d3b\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3": {
+      "inode": 5431658,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/human_drama_story.txt": {
+      "inode": 443809,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/PCHAN_PROJECT_MEMORY": {
+      "inode": 41099469,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/codex_3sessions.zip": {
+      "inode": 40957412,
+      "device": 16777227
+    },
+    "/Users/kagekun/Desktop/novel-factory": {
+      "inode": 9764798,
+      "device": 16777227
+    }
+  },
+  "filesystemBefore": {
+    "timestamp": "2026-09-24T23:40:48.491716+00:00",
+    "path": "/Users/kagekun/Desktop",
+    "device": 16777227,
+    "fragmentSize": 4096,
+    "availableBytes": 26915782656,
+    "freeBytes": 26915782656
+  },
+  "knownPreDeletionAllocatedBytes": 7353495552,
+  "deletedOriginalAllocatedBytes": 7353495552,
+  "deletionMethod": "Python shutil.rmtree exact absolute root, fd-based symlink-attack-resistant implementation; nested filesystem mounts refused",
+  "deletionAttempts": 1,
+  "deletionStartedAt": "2026-09-24T23:40:48.790305+00:00",
+  "deletionFinishedAt": "2026-09-24T23:40:50.714652+00:00",
+  "filesystemAfter": {
+    "timestamp": "2026-09-24T23:40:50.714724+00:00",
+    "path": "/Users/kagekun/Desktop",
+    "device": 16777227,
+    "fragmentSize": 4096,
+    "availableBytes": 26917449728,
+    "freeBytes": 26917449728
+  },
+  "originalExactPathAbsent": true,
+  "canonicalImmediatelyAfter": {
+    "path": "/Users/kagekun/Desktop/musiam-front-clean",
+    "head": "6c5ea76dee4d8d6f990d28ee1f231e546123ab85",
+    "branch": "recovery/musiam-clean-20260920",
+    "clean": true,
+    "commonDir": "/Users/kagekun/Desktop/musiam-front-clean/.git",
+    "gitDependencyOnOriginal": 0
+  },
+  "siblingIdentityContinuity": true,
+  "preservationAfter": [
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/PRESERVATION_RESULT.json",
+        "type": "regular",
+        "size": 471377,
+        "mtimeNs": "1790272515283420233",
+        "ctimeNs": "1790272515283420233",
+        "inode": 43143175,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 110590,
+        "mtimeNs": "1790258243558100085",
+        "ctimeNs": "1790258243558100085",
+        "inode": 43029267,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 400964,
+        "mtimeNs": "1790272500588914303",
+        "ctimeNs": "1790272500588914303",
+        "inode": 43138095,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/ignored-artifacts/outputs/metal-print-cost-simulation/metal-print-global-cost-simulation.xlsx",
+        "type": "regular",
+        "size": 12058,
+        "mtimeNs": "1790258243558433256",
+        "ctimeNs": "1790258243558433256",
+        "inode": 43029271,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/tracked-delta.patch",
+        "type": "regular",
+        "size": 1820837,
+        "mtimeNs": "1790258243366666733",
+        "ctimeNs": "1790258243366666733",
+        "inode": 43029263,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/codex-6df2/untracked.tar",
+        "type": "regular",
+        "size": 98365440,
+        "mtimeNs": "1790258243552114513",
+        "ctimeNs": "1790258243552114513",
+        "inode": 43029264,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/RAW_PATH_MAPPING.json",
+        "type": "regular",
+        "size": 913,
+        "mtimeNs": "1790272500933390067",
+        "ctimeNs": "1790272500933390067",
+        "inode": 43138103,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/WORKTREE_STATE.json",
+        "type": "regular",
+        "size": 6618,
+        "mtimeNs": "1790272512439357059",
+        "ctimeNs": "1790272512439357059",
+        "inode": 43143152,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/tracked-delta.patch",
+        "type": "regular",
+        "size": 3507,
+        "mtimeNs": "1790272500917560749",
+        "ctimeNs": "1790272500917560749",
+        "inode": 43138101,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4D",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4d-worktrees-20260924/stripe-fix/untracked.tar",
+        "type": "regular",
+        "size": 10240,
+        "mtimeNs": "1790272500932994106",
+        "ctimeNs": "1790272500932994106",
+        "inode": 43138102,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 122880,
+        "mtimeNs": "1790196756073948665",
+        "ctimeNs": "1790196756073948665",
+        "inode": 42828459,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 21362,
+        "mtimeNs": "1790196756068677601",
+        "ctimeNs": "1790196756068677601",
+        "inode": 42828458,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4A",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4a-unique-source-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 8253,
+        "mtimeNs": "1790196756079585060",
+        "ctimeNs": "1790196756079585060",
+        "inode": 42828460,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/preserved-source.tar",
+        "type": "regular",
+        "size": 16527360,
+        "mtimeNs": "1790179562932453499",
+        "ctimeNs": "1790179562932453499",
+        "inode": 42779048,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 386479,
+        "mtimeNs": "1790179562898273366",
+        "ctimeNs": "1790179562898273366",
+        "inode": 42779046,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C3C",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c3c-preservation-20260923/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 101342,
+        "mtimeNs": "1790179562898434032",
+        "ctimeNs": "1790179562898434032",
+        "inode": 42779047,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/canonical-output.tar.gz",
+        "type": "regular",
+        "size": 450843681,
+        "mtimeNs": "1790116371876180305",
+        "ctimeNs": "1790116371876180305",
+        "inode": 42319470,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-output.tar.gz",
+        "type": "regular",
+        "size": 1433855247,
+        "mtimeNs": "1790116401234877564",
+        "ctimeNs": "1790116401234877564",
+        "inode": 42319551,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-archive.tar.gz",
+        "type": "regular",
+        "size": 95906787,
+        "mtimeNs": "1790116406358452474",
+        "ctimeNs": "1790116406358452474",
+        "inode": 42319905,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/dirty-outputs.tar.gz",
+        "type": "regular",
+        "size": 254304,
+        "mtimeNs": "1790116406459914860",
+        "ctimeNs": "1790116406459914860",
+        "inode": 42320687,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "C2",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c2-20260923/SOURCE_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 794401,
+        "mtimeNs": "1790120754266916973",
+        "ctimeNs": "1790120754266916973",
+        "inode": 42340991,
+        "device": 16777227,
+        "mode": 420
+      }
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/verification/head-117379b6.bundle",
+        "type": "regular",
+        "size": 640344677,
+        "mtimeNs": "1789912201592822651",
+        "ctimeNs": "1789912210918748619",
+        "inode": 41142277,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-working-tree.pax",
+        "type": "regular",
+        "size": 681815040,
+        "mtimeNs": "1789907384171632881",
+        "ctimeNs": "1789908937497089640",
+        "inode": 41043407,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/untracked.pax",
+        "type": "regular",
+        "size": 2314388480,
+        "mtimeNs": "1789907082373654130",
+        "ctimeNs": "1789908936780833667",
+        "inode": 41043402,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/ignored-preserved.pax",
+        "type": "regular",
+        "size": 1328117760,
+        "mtimeNs": "1789907123280792078",
+        "ctimeNs": "1789908931559985007",
+        "inode": 41043393,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/git-dir.raw.tar",
+        "type": "regular",
+        "size": 3111556096,
+        "mtimeNs": "1789907048786566901",
+        "ctimeNs": "1789908942552486057",
+        "inode": 41043413,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/source-file-manifest.tsv",
+        "type": "regular",
+        "size": 761171,
+        "mtimeNs": "1789907235817627715",
+        "ctimeNs": "1789908931566460038",
+        "inode": 41043399,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/tracked-file-manifest.tsv",
+        "type": "regular",
+        "size": 654122,
+        "mtimeNs": "1789907617844323419",
+        "ctimeNs": "1789908936784020829",
+        "inode": 41043405,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/source-preservation/archive-sha256.txt",
+        "type": "regular",
+        "size": 1538,
+        "mtimeNs": "1789907617856402160",
+        "ctimeNs": "1789908936785244243",
+        "inode": 41043406,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env",
+        "type": "regular",
+        "size": 2806,
+        "mtimeNs": "1790246873335990873",
+        "ctimeNs": "1790246873336025665",
+        "inode": 42999357,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.local",
+        "type": "regular",
+        "size": 2870,
+        "mtimeNs": "1790246873343919883",
+        "ctimeNs": "1790246873343948134",
+        "inode": 42999358,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.stripe-sandbox.local",
+        "type": "regular",
+        "size": 314,
+        "mtimeNs": "1790246873351068010",
+        "ctimeNs": "1790246873351105385",
+        "inode": 42999359,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel/.env.preview.local",
+        "type": "regular",
+        "size": 1910,
+        "mtimeNs": "1790246873357300251",
+        "ctimeNs": "1790246873357336459",
+        "inode": 42999360,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/settings.json",
+        "type": "regular",
+        "size": 223,
+        "mtimeNs": "1790246873362462770",
+        "ctimeNs": "1790246873362512521",
+        "inode": 42999361,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/tasks.json",
+        "type": "regular",
+        "size": 518,
+        "mtimeNs": "1790246873367793958",
+        "ctimeNs": "1790246873367821042",
+        "inode": 42999362,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude/settings.local.json",
+        "type": "regular",
+        "size": 633,
+        "mtimeNs": "1790246873373438150",
+        "ctimeNs": "1790246873373470942",
+        "inode": 42999363,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge/abi-canonical.json",
+        "type": "regular",
+        "size": 28984,
+        "mtimeNs": "1790246873378968049",
+        "ctimeNs": "1790246873379043550",
+        "inode": 42999364,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1790246873651159570",
+        "ctimeNs": "1790246873651159570",
+        "inode": 42999349,
+        "device": 16777227,
+        "mode": 448
+      }
+    },
+    {
+      "group": "C4C_PRIVATE",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/PRESERVATION_STATUS.json",
+        "type": "regular",
+        "size": 2114,
+        "mtimeNs": "1790246873651245779",
+        "ctimeNs": "1790246873651290947",
+        "inode": 42999365,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0_HISTORY",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-history-recovery-01a0beba/repair-candidate",
+        "type": "directory",
+        "size": 128,
+        "mtimeNs": "1789911965149992805",
+        "ctimeNs": "1789911965149992805",
+        "inode": 41118252,
+        "device": 16777227,
+        "mode": 448
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/R0_COMPLETION.txt",
+        "type": "regular",
+        "size": 172,
+        "mtimeNs": "1789910467841766199",
+        "ctimeNs": "1789910467880066140",
+        "inode": 41115710,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v2/archive-verification-summary.txt",
+        "type": "regular",
+        "size": 150,
+        "mtimeNs": "1789909675672475542",
+        "ctimeNs": "1789909675675250996",
+        "inode": 41074994,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "R0",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/recovery/20260920T-r0-completion-01a0beba/diagnostics-r0-v3-mode/mode-verification-summary.txt",
+        "type": "regular",
+        "size": 14,
+        "mtimeNs": "1789910177078092988",
+        "ctimeNs": "1789910177082454731",
+        "inode": 41114638,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4F",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/preserved-source.tar",
+        "type": "regular",
+        "size": 51200,
+        "mtimeNs": "1790287092948867476",
+        "ctimeNs": "1790287092948867476",
+        "inode": 43353496,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4F",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/SOURCE_MANIFEST.json",
+        "type": "regular",
+        "size": 4506,
+        "mtimeNs": "1790287092944249144",
+        "ctimeNs": "1790287092944249144",
+        "inode": 43353494,
+        "device": 16777227,
+        "mode": 384
+      }
+    },
+    {
+      "group": "C4F",
+      "metadata": {
+        "path": "/Users/kagekun/Library/Application Support/MUSIAM/archive/cleanup-c4f-final-unique-20260924/RAW_PATH_MANIFEST.json",
+        "type": "regular",
+        "size": 2600,
+        "mtimeNs": "1790287092944469060",
+        "ctimeNs": "1790287092944469060",
+        "inode": 43353495,
+        "device": 16777227,
+        "mode": 384
+      }
+    }
+  ],
+  "privateMetadataAfter": [
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873280382463",
+      "ctimeNs": "1790246873280382463",
+      "inode": 42999348,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924",
+      "type": "directory",
+      "size": 128,
+      "mtimeNs": "1790246873651159570",
+      "ctimeNs": "1790246873651159570",
+      "inode": 42999349,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files",
+      "type": "directory",
+      "size": 288,
+      "mtimeNs": "1790246873350832215",
+      "ctimeNs": "1790246873350832215",
+      "inode": 42999351,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873373201522",
+      "ctimeNs": "1790246873373201522",
+      "inode": 42999352,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873325547124",
+      "ctimeNs": "1790246873325547124",
+      "inode": 42999353,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873378335625",
+      "ctimeNs": "1790246873378335625",
+      "inode": 42999356,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel",
+      "type": "directory",
+      "size": 96,
+      "mtimeNs": "1790246873357066248",
+      "ctimeNs": "1790246873357066248",
+      "inode": 42999354,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode",
+      "type": "directory",
+      "size": 128,
+      "mtimeNs": "1790246873367669915",
+      "ctimeNs": "1790246873367669915",
+      "inode": 42999355,
+      "device": 16777227,
+      "mode": 448
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env",
+      "type": "regular",
+      "size": 2806,
+      "mtimeNs": "1790246873335990873",
+      "ctimeNs": "1790246873336025665",
+      "inode": 42999357,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.local",
+      "type": "regular",
+      "size": 2870,
+      "mtimeNs": "1790246873343919883",
+      "ctimeNs": "1790246873343948134",
+      "inode": 42999358,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.env.stripe-sandbox.local",
+      "type": "regular",
+      "size": 314,
+      "mtimeNs": "1790246873351068010",
+      "ctimeNs": "1790246873351105385",
+      "inode": 42999359,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vercel/.env.preview.local",
+      "type": "regular",
+      "size": 1910,
+      "mtimeNs": "1790246873357300251",
+      "ctimeNs": "1790246873357336459",
+      "inode": 42999360,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/settings.json",
+      "type": "regular",
+      "size": 223,
+      "mtimeNs": "1790246873362462770",
+      "ctimeNs": "1790246873362512521",
+      "inode": 42999361,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.vscode/tasks.json",
+      "type": "regular",
+      "size": 518,
+      "mtimeNs": "1790246873367793958",
+      "ctimeNs": "1790246873367821042",
+      "inode": 42999362,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.claude/settings.local.json",
+      "type": "regular",
+      "size": 633,
+      "mtimeNs": "1790246873373438150",
+      "ctimeNs": "1790246873373470942",
+      "inode": 42999363,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/files/.local/abi-knowledge/abi-canonical.json",
+      "type": "regular",
+      "size": 28984,
+      "mtimeNs": "1790246873378968049",
+      "ctimeNs": "1790246873379043550",
+      "inode": 42999364,
+      "device": 16777227,
+      "mode": 384
+    },
+    {
+      "path": "/Users/kagekun/Library/Application Support/MUSIAM/private-preservation/cleanup-c4c-current-private-20260924/PRESERVATION_STATUS.json",
+      "type": "regular",
+      "size": 2114,
+      "mtimeNs": "1790246873651245779",
+      "ctimeNs": "1790246873651290947",
+      "inode": 42999365,
+      "device": 16777227,
+      "mode": 384
+    }
+  ],
+  "observedFilesystemFreeSpaceDeltaBytes": 1667072,
+  "status": "COMPLETE",
+  "postCommitStatus": "COMPLETE_COMMITTED_DERIVED_BY_VALIDATOR",
+  "allowedCanonicalPaths": [
+    "docs/AI/CLEANUP_C4G_ORIGINAL_REPOSITORY_DELETION_EXECUTION.md",
+    "ops/recovery/cleanup-c4g-original-repository-deletion-20260925.json",
+    "scripts/validate-cleanup-c4g-original-repository-deletion.mjs",
+    "docs/AI/RECOVERY_PLAN.md"
+  ],
+  "commitMessage": "recovery: complete original repo decommission",
+  "authorities": [
+    {
+      "path": "ops/recovery/cleanup-c4f-final-blocker-remediation-20260924.json",
+      "sha256": "eb98a8bdef2bfe451002f1a87f615e065b8c50314e40987e80bfd8c588e7179c"
+    },
+    {
+      "path": "ops/recovery/cleanup-c4f-final-deletion-review-20260924.json",
+      "sha256": "0b245a08c8214886a53b7065bec79c07bd5006d9705a91bf88c4aea973ba7434"
+    },
+    {
+      "path": "ops/recovery/cleanup-c4e-worktree-decommission-20260924.json",
+      "sha256": "fbdf7b82f1f914968013961670209f0254dee7e1dcdba7dc04bd796ff7889664"
+    },
+    {
+      "path": "ops/recovery/cleanup-c4d-worktree-remediation-20260924.json",
+      "sha256": "0eea3ea576777d21e162bf6e933c657c72239062085a07535204f8e42fd20d6d"
+    },
+    {
+      "path": "ops/recovery/cleanup-c4c-private-preservation-20260924.json",
+      "sha256": "fdc5e89d3e726e17362f6828662ea655ab26c5f30ea1e1807b8c425bd72872ac"
+    },
+    {
+      "path": "ops/recovery/cleanup-c4a-blocker-remediation-20260923.json",
+      "sha256": "e298fd127bbd1c7fa6693ef2f4fde509e3d697851da4b7f808bf092f25c797ab"
+    },
+    {
+      "path": "ops/recovery/cleanup-c4-decommission-review-20260923.json",
+      "sha256": "3411bde89ae915628b0a0b03bb844605204c6b29abc5e8876ef8e2c2b299f83c"
+    },
+    {
+      "path": "ops/recovery/cleanup-c3c-preservation-20260923.json",
+      "sha256": "649b489fc0751ccb8b1137fcd678e71f19d59f8fd2c4dd04ad5f135d795f486c"
+    },
+    {
+      "path": "ops/recovery/cleanup-c2-20260923.json",
+      "sha256": "f51127bc98729a8f0282b3a548be81f182553eb1632afeb0e4e2b28b791a057c"
+    }
+  ],
+  "operations": {
+    "unrelatedPathsDeleted": 0,
+    "canonicalDeletion": 0,
+    "preservationDeletion": 0,
+    "branchRefSeparateDeletion": 0,
+    "applicationRuntimeChanges": 0,
+    "privatePayloadReads": 0,
+    "privatePayloadHashes": 0,
+    "dependencyReinstall": 0,
+    "provider": 0,
+    "payment": 0,
+    "deploy": 0,
+    "push": 0
+  },
+  "originalGitPhysicalRepository": "DELETED_BY_AUTHORIZATION",
+  "meaningfulGitHistorySurvivesIndependently": true,
+  "originalRepository": "DECOMMISSIONED",
+  "musiamRecoveryCleanup": "COMPLETE",
+  "dependencyRestoreRequiredBeforeAppDevelopment": true,
+  "historicalValidatorPolicy": "NOT_APPLICABLE_POST_DELETION",
+  "nextGate": "POST_RECOVERY_DEVELOPMENT_BASELINE",
+  "recommendedNextModel": "GPT-6 Luna",
+  "reclaimBoundary": "Deleted path allocation is pre-delete du -sk. Observed filesystem available-space delta is not exact reclaim; concurrent activity and filesystem behavior can differ. No post-delete Original du measurement.",
+  "truthBoundary": "Recovery/Cleanup complete does not establish production deployment, payment activation, completed product contracts, R2 HOLD release, R3 candidate adoption, R5 integration, Oracle activation or completed post-RC enhancements. R7-C2 = BLOCKED_PRODUCT_CONTRACT; PAID_CONTINUATION_NOT_ACTIVATED; Oracle = ORACLE_INACTIVE_BY_DESIGN; R2 HOLD; R3 preserved; R5 separate scope. post-RC Privacy / Digital Commerce / LLM redesign remains unstarted. No production parity, payment/fulfillment/demand, rights or adoption claim. Private payloads and large mixed R0/C2 archives were not newly opened or hashed; prior byte/extraction evidence is reused with current metadata continuity. Pre-existing missing Git blob B and external forensic gaps remain limitations; no additional meaningful history loss. Same-disk preservation is not disaster backup. Operation counters describe this task, not an OS-wide syscall audit.",
+  "validation": {
+    "command": "node scripts/validate-cleanup-c4g-original-repository-deletion.mjs",
+    "result": "PASS",
+    "diffCheck": "PASS",
+    "nodeBuiltinsOnly": true,
+    "implementationCorrection": "Initial post-delete test incorrectly required a single Canonical registration. Corrected to verify zero Original dependency and retain two unrelated absent/prunable Canonical registrations; no Git mutation.",
+    "preCommitChecks": 1364,
+    "readOnlyReview": "No material scope/false-PASS findings. Verified retained stale Canonical registrations. Reviewed history count: Original historical readable=10893; independent repair readable=10894 including repaired A. Exact membership evidence remains the pre-deletion C4F replay."
+  },
+  "canonicalPostDeleteWorktreeRegistrations": [
+    "/Users/kagekun/Desktop/musiam-front-clean",
+    "/private/tmp/musiam-metal-print-backport-20260920",
+    "/private/tmp/musiam-production-webhook-guard-20260921"
+  ],
+  "canonicalStaleRegistrationBoundary": "Two pre-existing Canonical-owned prunable registrations point to absent /private/tmp worktrees. They are not Original dependencies and were not pruned or modified.",
+  "independentReadableObjectCount": 10894
+}

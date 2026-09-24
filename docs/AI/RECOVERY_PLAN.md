@@ -568,3 +568,24 @@ remain historical pre-deletion checks, not post-deletion validation.
 See `docs/AI/CLEANUP_C4F_FINAL_BLOCKER_REMEDIATION.md`,
 `ops/recovery/cleanup-c4f-final-blocker-remediation-20260924.json`, and
 `scripts/validate-cleanup-c4f-final-blocker-remediation.mjs`.
+
+
+## CLEANUP-C4G ORIGINAL DECOMMISSION — final current governance
+
+Owner approval `APPROVE_C4G_ORIGINAL_REPOSITORY_DELETION`; Canonical starting HEAD `6c5ea76dee4d8d6f990d28ee1f231e546123ab85`, initially clean. Fresh committed C4-F remediation validator PASS confirmed every deletion blocker resolved. The sole exact root `/Users/kagekun/Desktop/musiam-front` was removed in one guarded operation; exact path absent, unrelated deletions=0. Canonical HEAD/branch stayed unchanged immediately after deletion; only the authorized four-record local governance commit advances HEAD.
+
+`C4G_ORIGINAL_REPOSITORY_DELETION = COMPLETE` (authorized local commit closure derives `COMPLETE_COMMITTED`).
+`ORIGINAL_REPOSITORY = DECOMMISSIONED`
+`MUSIAM_RECOVERY_CLEANUP = COMPLETE`
+`DEPENDENCY_RESTORE_REQUIRED_BEFORE_APP_DEVELOPMENT = true`
+`PRIVATE_RETENTION_BLOCKER = RESOLVED`
+`WORKTREE_DEPENDENCY_BLOCKER = RESOLVED`
+`MEANINGFUL_UNIQUE_LOSS_COUNT = 0`
+
+All 46 R0/C2/C3-C/C4-A/C4-C/C4-D/C4-F checkpoints survived. Private eight payloads remain metadata-only verified with 0600/0700 owner-only permissions; no payload read/hash. Independent HEAD history, 41 refs, 24 reflog-only commits and worktree preservation survive. Original physical Git is `DELETED_BY_AUTHORIZATION`. Pre-delete allocation=7353495552 bytes; immediate observed filesystem available-space delta=1667072 bytes, not guaranteed exact reclaim.
+
+Historical Original-dependent validators are `NOT_APPLICABLE_POST_DELETION`. The new C4-G validator checks expected absence and independent continuity; no npm/pnpm/build or dependency restore. Application/runtime/provider/payment/deploy/push=0. Earlier BLOCKED/closed-Gate statements above remain historical facts.
+
+Recovery/Cleanup complete does not establish production deployment, payment activation, completed product contracts, R2 HOLD release, R3 candidate adoption, R5 integration, Oracle activation or completed post-RC enhancements. R7-C2 = BLOCKED_PRODUCT_CONTRACT; PAID_CONTINUATION_NOT_ACTIVATED; Oracle = ORACLE_INACTIVE_BY_DESIGN; R2 HOLD; R3 preserved; R5 separate scope. post-RC Privacy / Digital Commerce / LLM redesign remains unstarted. No production parity, payment/fulfillment/demand, rights or adoption claim. Private payloads and large mixed R0/C2 archives were not newly opened or hashed; prior byte/extraction evidence is reused with current metadata continuity. Pre-existing missing Git blob B and external forensic gaps remain limitations; no additional meaningful history loss. Same-disk preservation is not disaster backup. Operation counters describe this task, not an OS-wide syscall audit.
+
+Next Gate: **POST_RECOVERY_DEVELOPMENT_BASELINE**, recommended **GPT-6 Luna**: restore Canonical dependencies, establish development baseline, verify a clean application starting point and prioritize 伯爵Chat. This Gate is not started. See `docs/AI/CLEANUP_C4G_ORIGINAL_REPOSITORY_DELETION_EXECUTION.md`, `ops/recovery/cleanup-c4g-original-repository-deletion-20260925.json`, and `scripts/validate-cleanup-c4g-original-repository-deletion.mjs`.
