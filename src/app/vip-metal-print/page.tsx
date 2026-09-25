@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { METAL_PRINT_CATALOG_WORK_COUNT, METAL_PRINT_FEATURED_EDITIONS, METAL_PRINT_TOTAL_EDITION_COUNT, METAL_PRINT_VIP_EDITIONS, METAL_PRINT_VIP_PRICE_POLICY } from "@/lib/metal-print-vip";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./vip-metal-print.css";
@@ -34,7 +35,7 @@ export default function VipMetalPrintPage() {
           音楽や本の入口だった一枚を、60cm角・各3点だけのメタルプリントとして仕立てます。
           伯爵があなたの空間に合う一枚を選び、正式Offerへの同意と入金後に1点ずつ制作します。
         </p>
-        <a className="vip-metal-primary" href="/works">全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ</a>
+        <Link className="vip-metal-primary" href="/works">全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ</Link>
         <p className="vip-metal-micro">公開中の音楽ジャケット全{METAL_PRINT_TOTAL_EDITION_COUNT}作品から選べます。</p>
       </section>
 
@@ -83,7 +84,7 @@ export default function VipMetalPrintPage() {
       <section className="vip-metal-trust">
         <h2>音楽ジャケット全{METAL_PRINT_CATALOG_WORK_COUNT}作品から選ぶ。</h2>
         <p>各音楽作品ページから、その作品専用の60cm角・限定3点のCollector Dossierと正式Offerへ進めます。</p>
-        <a className="vip-metal-primary" href="/works">全作品カタログを開く</a>
+        <Link className="vip-metal-primary" href="/works">全作品カタログを開く</Link>
       </section>
 
       <section className="vip-metal-trust">

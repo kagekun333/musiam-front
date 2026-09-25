@@ -623,3 +623,29 @@ model **GPT-6 Luna**. Chat architecture handoff and complete evidence are in
 `docs/AI/POST_RECOVERY_DEVELOPMENT_BASELINE.md`,
 `ops/recovery/post-recovery-development-baseline-20260925.json`, and
 `scripts/validate-post-recovery-development-baseline.mjs`.
+
+## POST-RECOVERY LINT REMEDIATION — 2026-09-25
+
+Starting HEAD `c5e0df7a234a45dffb22efeb66e1f1b8c55bba92`; branch
+`recovery/musiam-clean-20260920`; initial tree clean. Lint reproduced 5 errors /
+5 warnings. Three R3 candidate errors were classified
+`NON_RUNTIME_PRESERVATION_SCOPE` from the R3 manifest, recovery record, current
+runtime reference scan, and matching root typecheck exclusion. R3 sources were
+not edited; ESLint excludes only the preserved Lane C c1 directory. Two active
+VIP Metal Print `/works` links now use Next `Link`.
+
+Final lint has 0 errors / 2 warnings. `pnpm run lint` exits 1 because its
+`--max-warnings=0` threshold rejects the two existing warnings in
+`src/lib/metal-print-redis.server.ts`; warning cleanup was outside scope. Root
+typecheck and applicable R1, R7-A/B/C1/C2/D1/D2, and Final Integration
+validators PASS. Catalog is 450/514; Exhibition is 514/0; Chat v3 and
+`history != entitlement` remain; R7-C2 remains blocked; Oracle remains
+inactive. Build remains `BLOCKED_EXTERNAL_FONT_DNS` for Google Fonts.
+
+No manifest/lockfile drift, provider/payment/customer-data operation, deploy,
+or push. Chat feature implementation has not started.
+`POST_RECOVERY_LINT_REMEDIATION = PASS`; baseline is READY for local development.
+Next Gate: **PRODUCT-LANE-A 伯爵CHAT STRENGTHENING**. Evidence:
+`docs/AI/POST_RECOVERY_LINT_REMEDIATION.md`,
+`ops/recovery/post-recovery-lint-remediation-20260925.json`, and
+`scripts/validate-post-recovery-lint-remediation.mjs`.

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "gate": "POST_RECOVERY_LINT_REMEDIATION",
+  "verdict": "PASS",
+  "baselineVerdict": "READY",
+  "startingHead": "c5e0df7a234a45dffb22efeb66e1f1b8c55bba92",
+  "branch": "recovery/musiam-clean-20260920",
+  "initialWorkingTree": "CLEAN",
+  "dependencyState": {
+    "packageManager": "pnpm",
+    "version": "10.29.3",
+    "authority": "pnpm-lock.yaml",
+    "present": true,
+    "packageManifestDrift": 0,
+    "lockfileDrift": 0
+  },
+  "originalLint": {
+    "command": "pnpm run lint",
+    "errors": 5,
+    "warnings": 5,
+    "findings": [
+      { "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts", "line": 264, "column": 158, "rule": "no-empty", "severity": "error" },
+      { "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts", "line": 326, "column": 165, "rule": "no-empty", "severity": "error" },
+      { "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts", "line": 332, "column": 181, "rule": "no-empty", "severity": "error" },
+      { "file": "src/app/vip-metal-print/page.tsx", "line": 37, "column": 9, "rule": "@next/next/no-html-link-for-pages", "severity": "error" },
+      { "file": "src/app/vip-metal-print/page.tsx", "line": 86, "column": 9, "rule": "@next/next/no-html-link-for-pages", "severity": "error" },
+      { "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts", "line": 129, "column": 26, "rule": "@typescript-eslint/no-unused-vars", "severity": "warning", "symbol": "priorLedger" },
+      { "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts", "line": 323, "column": 29, "rule": "@typescript-eslint/no-unused-vars", "severity": "warning", "symbol": "description" },
+      { "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts", "line": 323, "column": 41, "rule": "@typescript-eslint/no-unused-vars", "severity": "warning", "symbol": "edition" },
+      { "file": "src/lib/metal-print-redis.server.ts", "line": 564, "column": 10, "rule": "@typescript-eslint/no-unused-vars", "severity": "warning", "symbol": "qualified" },
+      { "file": "src/lib/metal-print-redis.server.ts", "line": 564, "column": 21, "rule": "@typescript-eslint/no-unused-vars", "severity": "warning", "symbol": "nurture" }
+    ]
+  },
+  "r3": {
+    "classification": "NON_RUNTIME_PRESERVATION_SCOPE",
+    "status": "RECOVERED_PRESERVED_EXPERIMENT",
+    "candidateStatus": "PRESERVED_CANDIDATE",
+    "appliedToRoot": false,
+    "rootRuntimeImport": false,
+    "lintExcludedPath": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/**",
+    "sourceFilesEdited": false
+  },
+  "changes": {
+    "applicationAndConfigFiles": [
+      "eslint.config.mjs",
+      "src/app/vip-metal-print/page.tsx"
+    ],
+    "records": [
+      "docs/AI/POST_RECOVERY_LINT_REMEDIATION.md",
+      "ops/recovery/post-recovery-lint-remediation-20260925.json",
+      "scripts/validate-post-recovery-lint-remediation.mjs",
+      "docs/AI/RECOVERY_PLAN.md"
+    ],
+    "packageManifestChanged": false,
+    "lockfileChanged": false,
+    "r3SourceFilesEdited": false,
+    "vipMetalPrintFilesChanged": ["src/app/vip-metal-print/page.tsx"],
+    "vipLinkFixes": 2,
+    "applicationBehaviorDrift": false
+  },
+  "lint": {
+    "officialCommand": "pnpm run lint",
+    "errors": 0,
+    "warnings": 2,
+    "warningFiles": ["src/lib/metal-print-redis.server.ts"],
+    "exitCode": 1,
+    "exitReason": "MAX_WARNINGS_ZERO",
+    "eslintIgnoreMigrationNotice": true
+  },
+  "typecheck": { "command": "pnpm run typecheck", "status": "PASS" },
+  "validators": [
+    { "id": "R1_METAL_PRINT_WEBHOOK_BOUNDARY", "command": "node --import tsx scripts/validate-metal-print-webhook-routing.ts", "status": "PASS", "providerCalls": 0 },
+    { "id": "R7_A_CATALOG", "command": "node --import tsx scripts/validate-r7a-catalog-foundation.ts", "status": "PASS", "primaryWorks": 450, "runtimeWorks": 514 },
+    { "id": "R7_B_CHAT_CORE", "command": "node --import tsx scripts/validate-r7b-chat-recommendation-core.ts", "status": "PASS", "fixtures": 15, "providerCalls": 0 },
+    { "id": "R7_C1_CHAT_UI_HISTORY", "command": "node --import tsx scripts/validate-r7c1-chat-ui-history.ts", "status": "PASS", "fixtures": 22 },
+    { "id": "R7_C2_PAID_CONTINUATION", "command": "node --import tsx scripts/validate-r7c2-paid-continuation.ts", "status": "PASS", "fixtures": 20 },
+    { "id": "R7_D1_EXHIBITION_ORACLE", "command": "node --import tsx scripts/validate-r7d1-exhibition-oracle.ts", "status": "PASS", "displayedWorks": 514, "missingReleasedWorks": 0, "oracle": "ORACLE_INACTIVE_BY_DESIGN" },
+    { "id": "R7_D2_SECONDARY_SURFACES", "command": "node --import tsx scripts/validate-r7d2-secondary-surfaces.ts", "status": "PASS", "checks": 40 },
+    { "id": "FINAL_INTEGRATION", "command": "node --import tsx scripts/validate-recovery-final-integration.ts", "status": "PASS", "checks": 45 }
+  ],
+  "invariants": {
+    "catalog": { "primaryWorks": 450, "runtimeWorks": 514 },
+    "exhibition": { "displayedWorks": 514, "missingReleasedWorks": 0 },
+    "chat": { "activeRoute": "/api/chat-experience-v3", "stableWorkIdCards": true, "historyIsEntitlement": false },
+    "paidContinuation": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+    "oracle": "ORACLE_INACTIVE_BY_DESIGN",
+    "providerOperations": 0,
+    "paymentOperations": 0,
+    "customerDataOperations": 0,
+    "deploys": 0,
+    "pushes": 0,
+    "productionParity": "UNVERIFIED"
+  },
+  "build": {
+    "command": "pnpm run build",
+    "status": "BLOCKED_EXTERNAL_FONT_DNS",
+    "hostname": "fonts.googleapis.com",
+    "fonts": ["Cinzel", "EB Garamond", "Inter", "Noto Serif JP"],
+    "workaroundApplied": false
+  },
+  "nextGate": "PRODUCT-LANE-A 伯爵CHAT STRENGTHENING",
+  "recommendedNextModel": "GPT-6 Luna",
+  "commit": { "status": "LOCAL_COMMIT_AUTHORIZED", "message": "chore: clear post-recovery lint blockers", "hook": "Husky commit-msg runs commitlint; message type validated" },
+  "truthBoundary": "Local lint, typecheck, and validators do not establish production parity, provider availability, payment activation, customer use, fulfillment, or demand."
+}

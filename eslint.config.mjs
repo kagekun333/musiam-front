@@ -24,6 +24,9 @@ export default [
       "src/app/oracle/omikuji._bak/**",
       "src/pages_legacy/**",
 
+      // R3 Lane C is a preserved, non-runtime candidate (also excluded from root typecheck).
+      "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/**",
+
       // ツール設定ファイル（Node CJS）
       "commitlint.config.cjs",
 
