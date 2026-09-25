@@ -7,12 +7,20 @@ tsconfig.tsbuildinfo
 .git/
 .musiam/
 .DS_Store
+.claude/settings.local.json
+
+# Generated development-only helpers and framework metadata
+.husky/_/
+next-env.d.ts
 
 # Audit records and local-only Preview candidates are not build inputs
 docs/AI/
 ops/recovery/
 ops/product/
 ops/market-learning/daily-20260925/
+scripts/validate-cleanup-c4c-private-preservation.mjs
+scripts/validate-chat-history-preview-deployment.mjs
+scripts/validate-chat-history-preview-deploy-input-remediation.mjs
 scripts/fixture-chat-history-runtime-safety.mjs
 scripts/fixture-chat-strengthening-02.browser.mjs
 
@@ -30,4 +38,3 @@ ops/audience-engine/media-repair-candidates/**/*.mp4
 # Local secrets are supplied by Vercel Environment Variables
 .env
 .env.*
-!.env.example

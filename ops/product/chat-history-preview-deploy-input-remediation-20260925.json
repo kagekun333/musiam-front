@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "id": "CHAT_HISTORY_PREVIEW_DEPLOY_INPUT_REMEDIATION",
+  "startingHead": "1e47fc52cc9b230c2d087b11b676fdb021f8e66d",
+  "branch": "recovery/musiam-clean-20260920",
+  "trackedTreeCleanAtStart": true,
+  "protectedDirectory": {
+    "path": "ops/market-learning/daily-20260925/",
+    "modified": false,
+    "staged": false,
+    "deleted": false,
+    "payloadInspected": false
+  },
+  "taskGeneratedTemporaryStore": {
+    "path": ".pnpm-store/",
+    "createdBy": "pnpm lint wrapper dependency repair attempt in this task",
+    "existedAtStateLock": false,
+    "metadataOnly": {
+      "rootIsDirectory": true,
+      "rootIsSymlink": false,
+      "descendantEntries": 259,
+      "regularFiles": 1,
+      "symlinks": 0,
+      "regularBytes": 8192
+    },
+    "contentsInspected": false,
+    "automaticReview": "Initial exact-path deletion request was rejected before the user explicitly authorized that exact path.",
+    "deletionStatus": "REMOVED_AFTER_EXPLICIT_EXACT_PATH_AUTHORIZATION",
+    "explicitUserAuthorization": true,
+    "preDeleteChecks": {
+      "rootIsDirectory": true,
+      "rootIsSymlink": false,
+      "realpathMatchesExactTarget": true,
+      "trackedDescendantCount": 0,
+      "symlinkDescendants": 0,
+      "specialDescendants": 0,
+      "metadataOnly": true,
+      "protectedPathOverlap": false
+    },
+    "absentAfterDeletion": true
+  },
+  "worktreeAtPause": [
+    ".vercelignore modified",
+    "docs/AI/CHAT_HISTORY_PREVIEW_DEPLOY_INPUT_REMEDIATION.md untracked",
+    "ops/product/chat-history-preview-deploy-input-remediation-20260925.json untracked",
+    "scripts/validate-chat-history-preview-deploy-input-remediation.mjs untracked",
+    ".pnpm-store/ untracked",
+    "ops/market-learning/daily-20260925/ protected existing untracked"
+  ],
+  "previousGateSnapshot": {
+    "head": "e5c9b089aaf5cfc3e57c3c17a36c75888f530aea",
+    "collector": "Vercel CLI 59.23.2 offline inspectDeploymentFiles",
+    "entries": 3226,
+    "regularFiles": 3220,
+    "directoryEntries": 6,
+    "totalBytes": 214071775,
+    "manifestSha256": "cc8eaf2bd8838ac881a94e39cbb1002f062de1ffab683fc0c37461034c7d5aa4"
+  },
+  "before": {
+    "collector": "Vercel CLI 59.23.2 inspectDeploymentFiles offline",
+    "entries": 3227,
+    "regularFiles": 3221,
+    "directoryEntries": 6,
+    "totalBytes": 214075946,
+    "manifestSha256": "81c35da4d2e64800681edc9174ca6f2e83c59faf9217956711cd18d3a54a4268",
+    "manifestHashAlgorithm": "SHA-256(JSON.stringify(ordered [path, mode, sha] tuples))",
+    "unexpectedUntrackedPaths": [
+      {
+        "path": ".husky/_/applypatch-msg",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/commit-msg",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/h",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/husky.sh",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/post-applypatch",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/post-checkout",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/post-commit",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/post-merge",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/post-rewrite",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/pre-applypatch",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/pre-auto-gc",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/pre-commit",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/pre-merge-commit",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/pre-push",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/pre-rebase",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": ".husky/_/prepare-commit-msg",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED"
+      },
+      {
+        "path": "next-env.d.ts",
+        "gitState": "IGNORED_UNTRACKED",
+        "classification": "GENERATED_NEXTJS_METADATA_NOT_DEPLOY_REQUIRED"
+      }
+    ],
+    "freshVsPreviousDifference": {
+      "additionalRegularFiles": 1,
+      "additionalBytes": 4171,
+      "explainedBy": "scripts/validate-chat-history-preview-deployment.mjs was added at 1e47fc52 after the prior collector snapshot."
+    }
+  },
+  "classification": {
+    "husky": {
+      "version": "9.1.7",
+      "generatedBy": "package.json prepare runs husky install; Husky writes .husky/_/h, husky.sh, and 14 hook wrappers.",
+      "count": 16,
+      "paths": [
+        ".husky/_/applypatch-msg",
+        ".husky/_/commit-msg",
+        ".husky/_/h",
+        ".husky/_/husky.sh",
+        ".husky/_/post-applypatch",
+        ".husky/_/post-checkout",
+        ".husky/_/post-commit",
+        ".husky/_/post-merge",
+        ".husky/_/post-rewrite",
+        ".husky/_/pre-applypatch",
+        ".husky/_/pre-auto-gc",
+        ".husky/_/pre-commit",
+        ".husky/_/pre-merge-commit",
+        ".husky/_/pre-push",
+        ".husky/_/pre-rebase",
+        ".husky/_/prepare-commit-msg"
+      ],
+      "gitState": "IGNORED_UNTRACKED",
+      "deploymentRuntimeRequired": false,
+      "verdict": "GENERATED_DEV_ONLY_NOT_DEPLOY_REQUIRED",
+      "actualTrackedHook": ".husky/commit-msg",
+      "trackedHookExcluded": false
+    },
+    "nextEnv": {
+      "path": "next-env.d.ts",
+      "gitState": "IGNORED_UNTRACKED_BY_ROOT_GITIGNORE",
+      "nextVersion": "15.5.12",
+      "generated": true,
+      "inTsconfigInclude": true,
+      "usedByLocalTypecheck": true,
+      "regeneratedByNextBuild": true,
+      "sourceOfTruth": false,
+      "deploymentRequired": false,
+      "verdict": "GENERATED_NEXTJS_METADATA_NOT_DEPLOY_REQUIRED"
+    },
+    "protectedDirectory": {
+      "path": "ops/market-learning/daily-20260925",
+      "mode": 16877,
+      "bytes": 0,
+      "hasContentId": false,
+      "descendantFileEntries": 0,
+      "isDirectory": true,
+      "isSymlink": false,
+      "verdict": "EMPTY_DIRECTORY_ENTRY_NO_DATA_EXPOSURE",
+      "evidenceBoundary": "Offline Vercel collector metadata only; no deployment/upload was attempted.",
+      "collectorDescendantFileEntries": 0,
+      "filesystemDescendantEntries": 5,
+      "filesystemDescendantRegularFiles": 5,
+      "filesystemDescendantRegularBytes": 10582,
+      "filesystemSymlinks": 0,
+      "filesystemSpecialEntries": 0,
+      "filesystemMetadataOnly": true,
+      "contentsInspected": false,
+      "contentsModified": false
+    },
+    "localClaudeSettings": {
+      "path": ".claude/settings.local.json",
+      "gitState": "TRACKED",
+      "contentsInspected": false,
+      "localDeveloperConfiguration": true,
+      "deploymentRuntimeRequired": false,
+      "vercelIgnoreRule": ".claude/settings.local.json",
+      "verdict": "LOCAL_DEVELOPER_CONFIG_NOT_DEPLOY_REQUIRED"
+    }
+  },
+  "vercelignoreChanges": {
+    "added": [
+      ".husky/_/",
+      "next-env.d.ts",
+      "scripts/validate-cleanup-c4c-private-preservation.mjs",
+      "scripts/validate-chat-history-preview-deployment.mjs",
+      "scripts/validate-chat-history-preview-deploy-input-remediation.mjs",
+      ".claude/settings.local.json"
+    ],
+    "removed": [
+      "!.env.example"
+    ],
+    "protectedRootRuleAlreadyPresent": "ops/market-learning/daily-20260925/",
+    "broadHuskyOpsOrSourceRulesAdded": false,
+    "reason": "Generated dev helpers, generated Next metadata, tracked local Claude settings, local gate/audit tools, and all .env* files are not deployment inputs."
+  },
+  "after": {
+    "collector": "Vercel CLI 59.23.2 inspectDeploymentFiles offline",
+    "entries": 3208,
+    "regularFiles": 3200,
+    "directoryEntries": 8,
+    "totalBytes": 214053118,
+    "manifestSha256": "c86dad16b2fdac9a11a08bf4daa3f0680037baa9a63e19f10f152e00f95d5284",
+    "manifestHashAlgorithm": "SHA-256(JSON.stringify(ordered [path, mode, sha] tuples))",
+    "unexpectedUntrackedIncluded": 0,
+    "untrackedIncludedPaths": [],
+    "protectedOperationalFilesIncluded": 0,
+    "envStarFilesIncluded": 0,
+    "secretPrivateConfigFilesIncluded": 0,
+    "privatePreservationPayloadsIncluded": 0,
+    "chatFixtureFilesIncluded": 0,
+    "governanceOnlyAuditMaterialsIncluded": 0,
+    "auditClassificationScope": [
+      "docs/AI/ and ops/product/ and ops/recovery/ records",
+      "Chat History Preview fixture files",
+      "Chat History Preview deployment/remediation validators",
+      "scripts/validate-cleanup-c4c-private-preservation.mjs"
+    ],
+    "trackedCommitHookIncluded": true,
+    "protectedDirectoryEntryIncluded": true,
+    "protectedDirectoryEntryPath": "ops/market-learning/daily-20260925",
+    "protectedDirectoryEntryBytes": 0,
+    "protectedDirectoryEntryHasContentId": false,
+    "safe": true,
+    "secretPrivateConfigExcludedPaths": [
+      ".claude/settings.local.json"
+    ],
+    "protectedDirectoryDescendantFileEntries": 0,
+    "pnpmStoreIncluded": false
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "typecheckCommand": "node_modules/.bin/tsc --noEmit",
+    "strengthening02": "PASS",
+    "strengthening02Checks": 16,
+    "previewReadiness": "PASS",
+    "previewReadinessChecks": 9,
+    "historyRuntimeSafety": "PASS",
+    "historyRuntimeSafetyChecks": 28,
+    "envMetadata": "PASS",
+    "envMetadataChecks": 12,
+    "r7c1": "PASS",
+    "r7c1Checks": 24,
+    "r7c2": "PASS",
+    "r7c2Checks": 20,
+    "catalog": "PASS",
+    "catalogPrimary": 450,
+    "catalogMerged": 514,
+    "exhibition": "PASS",
+    "exhibitionDisplayed": 514,
+    "exhibitionMissing": 0,
+    "diffCheck": "PASS",
+    "rootLint": "KNOWN_2_WARNINGS_0_ERRORS",
+    "rootLintWarnings": [
+      "src/lib/metal-print-redis.server.ts:564 qualified unused",
+      "src/lib/metal-print-redis.server.ts:564 nurture unused"
+    ],
+    "rootLintNote": "Direct ESLint confirmed zero errors and the two known warnings. pnpm lint wrapper aborted before lint because it attempted module-directory repair without a TTY; that attempt created the recorded .pnpm-store directory.",
+    "previewReadinessExecution": "PASS after the exact local commit in a clean committed worktree.",
+    "historyRuntimeSafetyExecution": "PASS after the exact local commit in a clean committed worktree.",
+    "envMetadataExecution": "PASS after the exact local commit in a clean committed worktree.",
+    "diffCheckExecution": "git diff --check passed after commit; remediation validator rechecks HEAD^..HEAD."
+  },
+  "applicationSourceChanges": 0,
+  "deployment": {
+    "previewCount": 0,
+    "previewDeploymentId": null,
+    "productionMutationCount": 0,
+    "pushCount": 0
+  },
+  "localCommit": "CREATED",
+  "verdict": "CHAT_HISTORY_PREVIEW_DEPLOY_INPUT = SAFE_COMMITTED",
+  "nextGate": "CHAT_HISTORY_PREVIEW_DEPLOYMENT = READY_FOR_REAPPROVAL",
+  "recommendedNextModel": "gpt-6-astra/high",
+  "truthBoundary": "Offline local source/deploy-input evidence only; no Preview deployment, build, runtime, or Production parity was established.",
+  "worktreeAfterDeletionBeforeCommit": [
+    ".vercelignore modified",
+    "docs/AI/CHAT_HISTORY_PREVIEW_DEPLOY_INPUT_REMEDIATION.md untracked",
+    "ops/product/chat-history-preview-deploy-input-remediation-20260925.json untracked",
+    "scripts/validate-chat-history-preview-deploy-input-remediation.mjs untracked",
+    "ops/market-learning/daily-20260925/ protected existing untracked"
+  ],
+  "intermediateAfterInitialIgnoreRules": {
+    "collector": "Vercel CLI 59.23.2 inspectDeploymentFiles offline",
+    "entries": 3208,
+    "regularFiles": 3201,
+    "directoryEntries": 7,
+    "totalBytes": 214053723,
+    "manifestSha256": "ed28bbfd5615e01bccf9bdc4c28bcadccb170d7936cc39c830397d1f41045c74",
+    "finding": "Tracked .claude/settings.local.json remained included; excluded by exact path in the final .vercelignore."
+  },
+  "localCommitMessage": "chore: harden preview deploy input",
+  "worktreeAfterCommit": [
+    "ops/market-learning/daily-20260925/ protected existing untracked"
+  ],
+  "pnpmStoreAbsentAfterCommit": true
+}
