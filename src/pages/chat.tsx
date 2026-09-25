@@ -224,6 +224,9 @@ export default function ChatPage() {
   const [rememberConversation, setRememberConversation] = useState(true);
   const [historyRestored, setHistoryRestored] = useState(false);
   const [memoryStatus, setMemoryStatus] = useState<MemoryStatus>("idle");
+  const [deletingHistory, setDeletingHistory] = useState(false);
+  const [historyDeleteError, setHistoryDeleteError] = useState(false);
+  const [historyDeleteIntent, setHistoryDeleteIntent] = useState<"forget" | "disable">("forget");
 
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const threadRef = useRef<HTMLDivElement>(null);
@@ -237,6 +240,7 @@ export default function ChatPage() {
   const interestBridgePendingRef = useRef<string | null>(null);
   const conversationIdRef = useRef("");
   const rememberConversationRef = useRef(true);
+  const deletingHistoryRef = useRef(false);
 
   const timeCopy = useMemo(() => getLocalizedSalonTimeCopy(lang, timeTone), [lang, timeTone]);
   const ui = useMemo(() => getChatUiText(lang), [lang]);
@@ -369,7 +373,7 @@ export default function ChatPage() {
   }
 
   async function persistConversation(nextMessages: ChatMsg[], nextLang: Lang = lang) {
-    if (!rememberConversationRef.current || !nextMessages.length) return;
+    if (!rememberConversationRef.current || deletingHistoryRef.current || !nextMessages.length) return;
     const revision = ++historyRevisionRef.current;
     const conversationId = ensureConversationId();
     const serializedMessages = normalizeChatHistory(nextMessages);
@@ -419,38 +423,61 @@ export default function ChatPage() {
     if (generation === entryGenerationRef.current) await begin(l, tone);
   }
 
-  async function queueHistoryDeletion(id: string) {
-    if (!id) return;
+  async function queueHistoryDeletion(id: string): Promise<boolean> {
+    if (deletingHistoryRef.current) return false;
+    deletingHistoryRef.current = true;
+    setDeletingHistory(true);
+    setHistoryDeleteError(false);
     ++historyRevisionRef.current;
+    let deleted = false;
     historyQueueRef.current = historyQueueRef.current.catch(() => undefined).then(async () => {
-      try { await fetch(`/api/chat-history?conversationId=${encodeURIComponent(id)}`, { method: "DELETE" }); } catch { /* optional deletion */ }
+      try {
+        const response = await fetch(`/api/chat-history?conversationId=${encodeURIComponent(id)}`, { method: "DELETE" });
+        const result = await response.json();
+        deleted = response.ok && result?.ok === true;
+      } catch { /* failure is reported below; the same ID remains available for retry */ }
     });
     await historyQueueRef.current;
+    deletingHistoryRef.current = false;
+    setDeletingHistory(false);
+    if (!deleted) {
+      setHistoryDeleteError(true);
+      setMemoryStatus("unavailable");
+    }
+    return deleted;
   }
 
   async function forgetConversation() {
-    const id = conversationIdRef.current;
-    await queueHistoryDeletion(id);
+    setHistoryDeleteIntent("forget");
+    const id = ensureConversationId();
+    if (!await queueHistoryDeletion(id)) return;
     conversationIdRef.current = "";
     try { localStorage.removeItem(CHAT_CONVERSATION_ID_KEY); } catch { /* ignore */ }
     setHistoryRestored(false);
+    setHistoryDeleteError(false);
     setMemoryStatus("idle");
     setToast(lang === "ja" ? "会話の記憶を消去しました" : "Conversation memory deleted");
     await begin(lang, timeTone);
   }
 
   async function toggleConversationMemory(enabled: boolean) {
-    rememberConversationRef.current = enabled;
-    setRememberConversation(enabled);
-    try { localStorage.setItem(CHAT_MEMORY_ENABLED_KEY, enabled ? "on" : "off"); } catch { /* ignore */ }
     if (enabled) {
+      rememberConversationRef.current = true;
+      setRememberConversation(true);
+      try { localStorage.setItem(CHAT_MEMORY_ENABLED_KEY, "on"); } catch { /* ignore */ }
       await persistConversation(messages, lang);
       setToast(lang === "ja" ? "この会話を記憶します" : "This conversation will be remembered");
       return;
     }
+    setHistoryDeleteIntent("disable");
+    const id = ensureConversationId();
+    if (!await queueHistoryDeletion(id)) return;
+    rememberConversationRef.current = false;
+    setRememberConversation(false);
+    try { localStorage.setItem(CHAT_MEMORY_ENABLED_KEY, "off"); } catch { /* ignore */ }
+    setHistoryRestored(false);
+    setHistoryDeleteError(false);
     setMemoryStatus("idle");
-    const id = conversationIdRef.current;
-    await queueHistoryDeletion(id);
     setToast(lang === "ja" ? "会話の記憶を停止しました" : "Conversation memory turned off");
   }
 
@@ -947,12 +974,18 @@ export default function ChatPage() {
             <input
               type="checkbox"
               checked={rememberConversation}
+              disabled={deletingHistory}
               onChange={(event) => void toggleConversationMemory(event.target.checked)}
             />
             <span>
               {lang === "ja" ? "この端末の会話を記憶し、次回続きを話す" : "Remember this conversation on this device and continue next time"}
             </span>
           </label>
+          {historyDeleteError && (
+            <p role="alert">
+              {lang === "ja" ? "保存された会話を削除できませんでした。もう一度お試しください。" : "Could not delete the saved conversation. Please try again."}
+            </p>
+          )}
           <p>
             {lang === "ja"
               ? memoryStatus === "unavailable"
@@ -962,8 +995,12 @@ export default function ChatPage() {
                 ? "Memory is currently unavailable. Chat can continue, but this conversation is not treated as saved yet."
                 : `Return in the same browser to continue. Stored for 90 days after the last update. ${historyRestored ? "Your previous conversation was restored." : memoryStatus === "saving" ? "Saving…" : memoryStatus === "saved" ? "Saved." : "You can turn it off or delete it at any time."}`}
           </p>
-          <button type="button" onClick={() => void forgetConversation()}>
-            {lang === "ja" ? "記憶を消去して新しく始める" : "Delete memory and start over"}
+          <button type="button" onClick={() => void (historyDeleteError && historyDeleteIntent === "disable" ? toggleConversationMemory(false) : forgetConversation())} disabled={deletingHistory}>
+            {deletingHistory
+              ? lang === "ja" ? "削除中…" : "Deleting…"
+              : historyDeleteError
+                ? lang === "ja" ? "削除を再試行" : "Retry deletion"
+                : lang === "ja" ? "記憶を消去して新しく始める" : "Delete memory and start over"}
           </button>
         </div>
 

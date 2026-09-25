@@ -1,4 +1,4 @@
-/* global process, URL, console, setTimeout, document */
+/* global process, URL, console, setTimeout, document, localStorage */
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import puppeteer from "puppeteer";
@@ -16,6 +16,7 @@ const card = { id: String(work.id), title: work.title, cover: work.cover, type: 
 const counts = new Map();
 const sendBodies = [];
 const historyWrites = [];
+const historyDeletes = [];
 let passed = 0;
 let blocked = 0;
 let externalBlocked = 0;
@@ -52,7 +53,7 @@ async function openFixture(browser, fixture = "default", lang = "ja") {
           await request.respond({ status: 503, contentType: "application/json", body: JSON.stringify({ ok: false, error: "history_unavailable" }) });
           return;
         }
-        const history = ["history-restore", "history-legacy", "history-invalid"].includes(fixture)
+        const history = ["history-restore", "history-legacy", "history-invalid", "history-delete-retry", "history-delete-success", "history-disable-retry"].includes(fixture)
           ? { version: 1, lang, messages: [
               { role: "assistant", content: "履歴の案内です" },
               { role: "user", content: "以前の希望" },
@@ -73,6 +74,14 @@ async function openFixture(browser, fixture = "default", lang = "ja") {
       if (fixture === "history-unavailable" && request.method() === "PUT") {
         await request.respond({ status: 503, contentType: "application/json", body: JSON.stringify({ ok: false, error: "history_unavailable" }) });
         return;
+      }
+      if (request.method() === "DELETE") {
+        const attempt = increment(key);
+        historyDeletes.push({ fixture, conversationId: url.searchParams.get("conversationId"), attempt });
+        if (["history-delete-retry", "history-disable-retry"].includes(fixture) && attempt === 1) {
+          await request.respond({ status: 503, contentType: "application/json", body: JSON.stringify({ ok: false, error: "history_unavailable" }) });
+          return;
+        }
       }
       if (request.method() === "PUT") {
         let body = {};
@@ -273,6 +282,52 @@ try {
   assert.ok(await unavailable.evaluate(() => document.body.innerText.includes("現在は保存できません")));
   check("F9: history 503 is non-fatal; Chat opens and history stays a separate feature", () => {});
   await unavailable.close();
+
+  const deletion = await openFixture(browser, "history-delete-retry");
+  await deletion.waitForFunction(() => document.body.innerText.includes("以前の希望"));
+  const oldId = await deletion.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1"));
+  await deletion.$$eval("button", (buttons) => buttons.find((button) => button.textContent?.includes("記憶を消去して新しく始める"))?.click());
+  await deletion.waitForFunction(() => document.body.innerText.includes("保存された会話を削除できませんでした"));
+  assert.equal(await deletion.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1")), oldId);
+  assert.ok(await deletion.evaluate(() => document.body.innerText.includes("以前の希望")));
+  assert.equal(await deletion.evaluate(() => document.body.innerText.includes("会話の記憶を消去しました")), false);
+  assert.ok(await deletion.$$eval("button", (buttons) => buttons.some((button) => button.textContent?.includes("削除を再試行") && !button.disabled)));
+  assert.equal(sendBodies.filter((entry) => entry.fixture === "history-delete-retry" && entry.body.messages?.length === 0).length, 0);
+  check("DELETE 503 keeps the old ID and restored conversation, shows failure and retry, and does not reset Chat", () => {});
+  await deletion.$$eval("button", (buttons) => buttons.find((button) => button.textContent?.includes("削除を再試行"))?.click());
+  await deletion.waitForFunction(() => document.body.innerText.includes("会話の記憶を消去しました"));
+  assert.notEqual(await deletion.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1")), oldId);
+  assert.equal(historyDeletes.filter((entry) => entry.fixture === "history-delete-retry").length, 2);
+  assert.ok(historyDeletes.filter((entry) => entry.fixture === "history-delete-retry").every((entry) => entry.conversationId === oldId));
+  await deletion.waitForFunction(() => document.body.innerText.includes("Fixture opening"));
+  assert.equal(sendBodies.filter((entry) => entry.fixture === "history-delete-retry" && entry.body.messages?.length === 0).length, 1);
+  check("DELETE retry success clears the old ID once and resets Chat once without stuck loading", () => {});
+  await deletion.close();
+
+  const directDelete = await openFixture(browser, "history-delete-success");
+  await directDelete.waitForFunction(() => document.body.innerText.includes("以前の希望"));
+  await directDelete.$$eval("button", (buttons) => buttons.find((button) => button.textContent?.includes("記憶を消去して新しく始める"))?.click());
+  await directDelete.waitForFunction(() => document.body.innerText.includes("会話の記憶を消去しました"));
+  assert.equal(historyDeletes.filter((entry) => entry.fixture === "history-delete-success").length, 1);
+  check("direct DELETE success acknowledges deletion once", () => {});
+  await directDelete.close();
+
+  const disable = await openFixture(browser, "history-disable-retry");
+  await disable.waitForFunction(() => document.body.innerText.includes("以前の希望"));
+  const disableId = await disable.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1"));
+  await disable.$eval("[class*=memoryControl] input[type=checkbox]", (input) => input.click());
+  await disable.waitForFunction(() => document.body.innerText.includes("保存された会話を削除できませんでした"));
+  assert.equal(await disable.$eval("[class*=memoryControl] input[type=checkbox]", (input) => input.checked), true);
+  assert.equal(await disable.evaluate(() => localStorage.getItem("musiam_chat_memory_enabled_v1")), null);
+  await disable.$$eval("button", (buttons) => buttons.find((button) => button.textContent?.includes("削除を再試行"))?.click());
+  await disable.waitForFunction(() => document.body.innerText.includes("会話の記憶を停止しました"));
+  assert.equal(await disable.$eval("[class*=memoryControl] input[type=checkbox]", (input) => input.checked), false);
+  assert.equal(await disable.evaluate(() => localStorage.getItem("musiam_chat_memory_enabled_v1")), "off");
+  assert.equal(await disable.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1")), disableId);
+  assert.ok(await disable.evaluate(() => document.body.innerText.includes("以前の希望")));
+  assert.equal(historyDeletes.filter((entry) => entry.fixture === "history-disable-retry").length, 2);
+  check("memory-off DELETE failure retains opt-in and retries without resetting the current conversation", () => {});
+  await disable.close();
 
   const stale = await openFixture(browser, "stale");
   await stale.waitForSelector("textarea");

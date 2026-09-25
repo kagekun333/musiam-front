@@ -1,0 +1,110 @@
+{
+  "id": "CHAT_HISTORY_RUNTIME_SAFETY_REMEDIATION",
+  "date": "2026-09-25",
+  "startingHead": "333ca0adb4fdb1d7a29264edc6c7ec830126b49d",
+  "branch": "recovery/musiam-clean-20260920",
+  "priorAudit": "CHAT_HISTORY_RUNTIME_READINESS = AUDITED_COMMITTED",
+  "protectedUntracked": "ops/market-learning/daily-20260925/",
+  "delete": {
+    "before": "non-2xx or thrown DELETE could be followed by success toast and local ID removal/reset",
+    "after": "HTTP success and body ok true required; failure retains ID, visible conversation and memory preference with retry; success clears old ID only for forget; memory-off retains visible conversation",
+    "failureFixture": "PASS",
+    "retryFixture": "PASS",
+    "directSuccessFixture": "PASS",
+    "memoryOffRetryFixture": "PASS",
+    "prematureLocalClear": false,
+    "duplicateResetAfterRetry": false
+  },
+  "logging": {
+    "rawStorageExceptionLogged": false,
+    "fields": ["fixed event", "operation", "internal category"],
+    "syntheticSecretTextExposed": false,
+    "fixture": "PASS"
+  },
+  "payload": {
+    "bodyLimit": "512kb",
+    "bodyLimitBytes": 524288,
+    "rationale": "40 messages times 2000 Japanese characters plus JSON overhead measured 241213 bytes; 512 KiB allows valid UTF-8 messages and bounds malformed/oversize HTTP bodies",
+    "validJapaneseFixtureBytes": 241213,
+    "oversizeFixtureBytes": 601213,
+    "oversizeStatus": 413,
+    "oversizeResponseBytes": 25,
+    "oversizeStorageCalls": 0,
+    "fixture": "PASS"
+  },
+  "concurrency": {
+    "decision": "ACCEPTED_DEFERRED_NON_BLOCKING",
+    "risk": "cross-tab/client read-then-set can lose updates",
+    "futureRemediation": "define version/CAS conflict protocol and UI conflict resolution before schema change"
+  },
+  "bearerIdTransport": {
+    "decision": "ACCEPTED_DEFERRED",
+    "risk": "anonymous UUID in GET/DELETE query string can enter request/proxy logs and grants history read/delete to holders",
+    "futureRemediation": "review log retention and body/header or session transport with migration plan",
+    "immediateLeakObserved": false
+  },
+  "environment": {
+    "requiredAlternatives": [
+      ["UPSTASH_REDIS_REST_URL", "KV_REST_API_URL"],
+      ["UPSTASH_REDIS_REST_TOKEN", "KV_REST_API_TOKEN"]
+    ],
+    "production": {
+      "UPSTASH_REDIS_REST_URL": "UNVERIFIED_SECRET_BOUNDARY",
+      "KV_REST_API_URL": "UNVERIFIED_SECRET_BOUNDARY",
+      "UPSTASH_REDIS_REST_TOKEN": "UNVERIFIED_SECRET_BOUNDARY",
+      "KV_REST_API_TOKEN": "UNVERIFIED_SECRET_BOUNDARY"
+    },
+    "preview": {
+      "UPSTASH_REDIS_REST_URL": "UNVERIFIED_SECRET_BOUNDARY",
+      "KV_REST_API_URL": "UNVERIFIED_SECRET_BOUNDARY",
+      "UPSTASH_REDIS_REST_TOKEN": "UNVERIFIED_SECRET_BOUNDARY",
+      "KV_REST_API_TOKEN": "UNVERIFIED_SECRET_BOUNDARY"
+    },
+    "metadataVerdict": "ENV_METADATA_UNVERIFIED_SECRET_BOUNDARY",
+    "metadataReason": "no dedicated names-and-targets-only Vercel connector listing and no local Vercel CLI; secret-bearing responses not requested",
+    "productionRequiredPairConfirmed": false,
+    "productionRequiredPairMissingConfirmed": false,
+    "clientSecretExposure": 0,
+    "redisConnectivity": "UNVERIFIED_WITHOUT_SECRET_ACCESS"
+  },
+  "validation": {
+    "browser": "PASS 17/17",
+    "browserProviderCalls": 0,
+    "browserExternalRequestsBlocked": 25,
+    "safetyFixture": "PASS",
+    "strengthening02": "PASS 16/16",
+    "r7c1": "PASS 24/24",
+    "r7c2": "PASS 20/20",
+    "r7a": "PASS; primary 450, runtime merged 514",
+    "r7d1": "PASS 20/20; Exhibition 514, missing 0, Oracle inactive",
+    "typecheck": "PASS",
+    "scopedLint": "PASS 0 errors 0 warnings",
+    "rootLint": "0 errors 2 existing warnings; strict command exits 1",
+    "build": "BLOCKED_EXTERNAL_FONT_DNS",
+    "buildCause": "fonts.googleapis.com ENOTFOUND for existing next/font imports",
+    "catalogPrimary": 450,
+    "catalogRuntime": 514,
+    "exhibitionDisplayed": 514,
+    "exhibitionReleasedMissing": 0,
+    "paidContinuation": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+    "oracle": "ORACLE_INACTIVE_BY_DESIGN"
+  },
+  "operations": {
+    "secretValuesRead": 0,
+    "envMutations": 0,
+    "customerHistoryReads": 0,
+    "customerHistoryWrites": 0,
+    "customerHistoryDeletes": 0,
+    "redisDataOperations": 0,
+    "providerCalls": 0,
+    "analyticsAdditions": 0,
+    "paymentEntitlementChanges": 0,
+    "deploys": 0,
+    "pushes": 0
+  },
+  "readiness": "BLOCKED_ENV_METADATA_UNVERIFIED",
+  "readinessReason": "local safety blockers resolved but Production env name/target presence cannot be safely verified; neither present nor missing is established",
+  "truthBoundary": "Local fixture PASS is not Production Redis persistence, customer history deletion, connectivity or deployment parity; unknown env metadata is not missing metadata.",
+  "nextGate": "names-and-targets-only Vercel env metadata verification for Production and Preview; no customer Redis data operation",
+  "recommendedNextModel": "GPT-6 Sol, medium"
+}

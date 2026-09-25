@@ -15,6 +15,8 @@ import {
 import { gcExpired, ipFromRequest, rateLimit } from "@/lib/rate";
 
 const ConversationIdSchema = z.string().uuid();
+// 40 messages × 2,000 UTF-8 characters can approach 240 KB before JSON overhead.
+export const config = { api: { bodyParser: { sizeLimit: "512kb" } } };
 const WriteSchema = z.object({
   conversationId: ConversationIdSchema,
   lang: z.string().min(2).max(10),
@@ -30,6 +32,10 @@ async function currentCatalog() {
   try { return await loadMergedWorksServer(); } catch { return []; }
 }
 
+export function logChatHistoryFailure(operation: string) {
+  console.error("chat_history_failed", { operation, category: "storage_unavailable" });
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Cache-Control", "no-store");
   const ip = ipFromRequest(req);
@@ -40,8 +46,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(429).json({ ok: false, error: "rate_limited" });
   }
 
+  let operation = "UNSUPPORTED";
   try {
     if (req.method === "GET") {
+      operation = "GET";
       const parsed = ConversationIdSchema.safeParse(req.query.conversationId);
       if (!parsed.success) return res.status(400).json({ ok: false, error: "invalid_conversation_id" });
       const stored = await readChatHistory(parsed.data);
@@ -63,6 +71,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     if (req.method === "PUT") {
+      operation = "PUT";
       const parsed = WriteSchema.safeParse(req.body ?? {});
       if (!parsed.success) return res.status(400).json({ ok: false, error: "invalid_body" });
       const catalog = hasAssistantRecommendedWorkId(parsed.data.messages) ? await currentCatalog() : [];
@@ -72,6 +81,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     if (req.method === "DELETE") {
+      operation = "DELETE";
       const parsed = ConversationIdSchema.safeParse(req.query.conversationId ?? req.body?.conversationId);
       if (!parsed.success) return res.status(400).json({ ok: false, error: "invalid_conversation_id" });
       await deleteChatHistory(parsed.data);
@@ -80,8 +90,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.setHeader("Allow", "GET, PUT, DELETE");
     return res.status(405).json({ ok: false, error: "method_not_allowed" });
-  } catch (error) {
-    console.error("chat_history_failed", error);
+  } catch {
+    logChatHistoryFailure(operation);
     return res.status(503).json({ ok: false, error: "history_unavailable" });
   }
 }
