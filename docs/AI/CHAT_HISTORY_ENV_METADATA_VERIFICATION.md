@@ -1,59 +1,61 @@
 # 伯爵MUSIAM — Chat history env metadata verification
 
-`CHAT_HISTORY_ENV_METADATA_VERIFICATION = BLOCKED_NO_METADATA_ONLY_INTERFACE`
+`CHAT_HISTORY_ENV_METADATA_VERIFICATION = COMPLETE_COMMITTED`
+
+`CHAT_HISTORY_RUNTIME_READINESS = READY_WITH_CONNECTIVITY_UNVERIFIED`
 
 ## State Lock and scope
 
-- Starting HEAD: `270385671b2cccf0029baa2a55d17f6bb03d2a12`; branch: `recovery/musiam-clean-20260920`.
-- Tracked working tree was clean at the start. The pre-existing untracked `ops/market-learning/daily-20260925/` remains out of scope and untouched.
-- This Gate records only the Vercel environment metadata inspection boundary. Application and configuration changes: **0**.
-- No Vercel environment list request was made. Secret values read / printed / persisted: **0 / 0 / 0**. Environment mutations: **0**. Local environment files generated: **0**.
+- Original verification starting HEAD: `270385671b2cccf0029baa2a55d17f6bb03d2a12`.
+- Finalization starting HEAD: `449203ca106af04a526da238b332100ea649ff68`; branch: `recovery/musiam-clean-20260920`.
+- Tracked working tree was clean before this update. The pre-existing untracked `ops/market-learning/daily-20260925/` remains out of scope and untouched.
+- This update changes only the verification report, machine record, and validator. Application/config source changes: **0**.
 
-## Project identity
+## Human-reviewed metadata evidence
 
-The current link metadata in `.vercel/project.json` identifies project `musiam-front` (`prj_OU4nbZIO3n3ieS99cMXY7eWigHAl`) and team/org `team_Hj7QBy2lnfpsuHXgOWKfFdZg`. This is linkage metadata only; no private `.vercel` payload was read.
+The user reported completing a human review in Vercel Dashboard → `musiam-front` → Settings → Environment Variables. The report identifies:
 
-## Metadata method decision
+| Name | Dashboard target | Production | Preview |
+| --- | --- | --- | --- |
+| `KV_REST_API_URL` | All Environments | PRESENT | PRESENT |
+| `KV_REST_API_TOKEN` | All Environments | PRESENT | PRESENT |
 
-- `vercel` is not installed in this checkout, so the environment CLI and its local help/schema are unavailable.
-- The available Vercel connector has project and deployment metadata operations but no dedicated environment-name-and-targets-only listing operation.
-- The official [Vercel `filterProjectEnvs` API schema](https://vercel.com/docs/rest-api/sdk/projects/retrieve-the-environment-variables-of-a-project-by-id-or-name) documents `target`, `type`, `value`, `id`, `key`, `createdAt`, and `updatedAt` in its response. Because `value` is a disallowed field, this API was not called. The [documented `vercel env ls` command](https://vercel.com/docs/cli/env) lists variables, but the available evidence does not establish that its output excludes values; it was not run.
-- Therefore no safe metadata-only environment inspection method is available in this Gate: `metadataMethodSafe = false`; `ENV_METADATA_VERIFICATION = BLOCKED_NO_METADATA_ONLY_INTERFACE`.
+Per the user's evidence instruction, `All Environments` is treated as including Production and Preview. The `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` aliases were not checked because the confirmed KV aliases satisfy the two required families. Their status remains `NOT_CHECKED_NOT_REQUIRED`, not absent.
 
-## Runtime contract and results
+Evidence provenance is `USER_REPORTED_HUMAN_DASHBOARD_REVIEW`; the Dashboard was not independently reopened during this finalization. The user reported that no secret values were viewed, copied, or shared. No environment API response or CLI env listing was requested by the agent. The [Vercel environment API schema](https://vercel.com/docs/rest-api/sdk/projects/retrieve-the-environment-variables-of-a-project-by-id-or-name) documents a `value` response field, so that API remains unused. The [CLI docs](https://vercel.com/docs/cli/env) do not establish that `vercel env ls` omits values, and the CLI is not installed in this checkout.
 
-Source `src/lib/chat-history.server.ts` selects URL and token aliases independently using nullish coalescing:
+## Contract and alias precedence
+
+Source `src/lib/chat-history.server.ts` independently selects:
 
 - URL: `UPSTASH_REDIS_REST_URL ?? KV_REST_API_URL`
 - Token: `UPSTASH_REDIS_REST_TOKEN ?? KV_REST_API_TOKEN`
 
-An empty primary string does not fall back. Runtime configuration requires a truthy URL and token. No values were compared.
+The KV aliases are valid members of their respective required families. Therefore:
 
 | Target | URL family | Token family | Contract |
 | --- | --- | --- | --- |
-| Production | `UNVERIFIED_SECRET_BOUNDARY` | `UNVERIFIED_SECRET_BOUNDARY` | `UNVERIFIED_SECRET_BOUNDARY` |
-| Preview | `UNVERIFIED_SECRET_BOUNDARY` | `UNVERIFIED_SECRET_BOUNDARY` | `UNVERIFIED_SECRET_BOUNDARY` |
-| Development | Not inspected | Not inspected | Not assessed |
+| Production | `PRESENT_METADATA_ONLY` (`KV_REST_API_URL`) | `PRESENT_METADATA_ONLY` (`KV_REST_API_TOKEN`) | `PRESENT_METADATA_ONLY` |
+| Preview | `PRESENT_METADATA_ONLY` (`KV_REST_API_URL`) | `PRESENT_METADATA_ONLY` (`KV_REST_API_TOKEN`) | `PRESENT_METADATA_ONLY` |
+| Development | Not assessed | Not assessed | Not assessed |
 
-Every required alias remains `UNVERIFIED_SECRET_BOUNDARY` for Production and Preview. No target/branch listing or custom-environment listing was obtained. Unknown is not evidence of absence.
+The source uses nullish coalescing: an empty primary `UPSTASH_*` string does not fall back to the KV alias. Name/target evidence does not establish any variable's value or effective runtime behavior. This is why readiness remains connectivity-unverified.
 
 ## Operations and truth boundary
 
-- Environment value fields consumed: **0**; no environment response was requested.
-- Secret values read / printed / persisted: **0 / 0 / 0**.
-- Environment mutations / local environment files generated: **0 / 0**.
+- Secret values read / copied / printed / persisted: **0 / 0 / 0 / 0**.
+- Environment mutations / local env files generated: **0 / 0**.
 - Redis connectivity: `UNVERIFIED_WITHOUT_SECRET_ACCESS`.
 - Customer-data reads / writes / deletes: **0 / 0 / 0**.
+- Production customer-history GET / PUT / DELETE: `UNVERIFIED_NOT_TESTED`.
 - Current local history contract deployed: `UNVERIFIED`.
 - Deploys / pushes: **0 / 0**.
-- Runtime readiness remains `BLOCKED_ENV_METADATA_UNVERIFIED`.
+- Deferred risks retained: concurrent PUT last-write-wins; bearer UUID in query strings; Redis connectivity; current local contract Production deployment parity.
 
-This Gate establishes neither environment-variable presence nor absence, Redis connectivity, Production deployment parity, or customer-history behavior. Prior runtime safety remediation remains the local source/fixture result recorded by its own authority; no Production behavior is inferred here.
-
-Deferred risks remain: concurrent PUT last-write-wins, bearer UUID in query strings, Redis connectivity unverified, and local-contract Production deployment parity unverified.
+`READY_WITH_CONNECTIVITY_UNVERIFIED` means the user-reported Dashboard metadata satisfies the required Production env-name contract. It does not prove secret values, Redis connectivity, effective runtime configuration, deployment parity, or customer-history behavior. Local source and fixture results remain separate from Production evidence.
 
 ## Next Gate
 
-Obtain a reviewed interface whose response is explicitly limited to environment variable names and target metadata, then record Production and Preview separately. Do not use an interface that returns `value`, decrypted values, secrets, or ciphertext. Do not access Redis customer data.
+Review Production deployment parity using read-only deployment metadata. Then identify a runtime-readiness check that does not access customer data. Do not change Production/Preview env values, access Redis, deploy, or push in this Gate.
 
 Recommended next model: GPT-6 Sol, medium.
