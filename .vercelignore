@@ -8,6 +8,14 @@ tsconfig.tsbuildinfo
 .musiam/
 .DS_Store
 
+# Audit records and local-only Preview candidates are not build inputs
+docs/AI/
+ops/recovery/
+ops/product/
+ops/market-learning/daily-20260925/
+scripts/fixture-chat-history-runtime-safety.mjs
+scripts/fixture-chat-strengthening-02.browser.mjs
+
 # Large local archives and generated output not used by the Next.js build
 _archive/
 アウトプット/
