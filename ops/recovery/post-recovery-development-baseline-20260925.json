@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "gate": "POST_RECOVERY_DEVELOPMENT_BASELINE",
+  "verdict": "BLOCKED_EXISTING_LINT_ERRORS",
+  "startingHead": "4099f96a671f02fbba853a98254b4c807f72bac6",
+  "branch": "recovery/musiam-clean-20260920",
+  "initialWorkingTree": "CLEAN",
+  "originalRepository": {
+    "state": "DECOMMISSIONED",
+    "expectedPath": "/Users/kagekun/Desktop/musiam-front",
+    "present": false,
+    "classification": "NOT_APPLICABLE_POST_DELETION"
+  },
+  "recoveryCleanup": "COMPLETE",
+  "dependencyRestoreRequiredBeforeGate": true,
+  "packageManager": {
+    "name": "pnpm",
+    "authority": "pnpm-lock.yaml",
+    "packageManagerField": null,
+    "nodeVersion": "v22.22.3",
+    "pnpmVersion": "10.29.3"
+  },
+  "dependencyRestore": {
+    "command": "pnpm install --frozen-lockfile",
+    "status": "PASS_NO_LOCKFILE_DRIFT",
+    "packagesLinked": 519,
+    "packagesReused": 519,
+    "packagesDownloaded": 0,
+    "buildScripts": "SKIPPED_BY_PNPM_POLICY"
+  },
+  "drift": {
+    "packageManifest": 0,
+    "lockfile": 0,
+    "trackedApplicationAndRuntime": 0
+  },
+  "typecheck": {
+    "command": "pnpm run typecheck",
+    "status": "PASS"
+  },
+  "lint": {
+    "command": "pnpm run lint",
+    "status": "FAIL_EXISTING_FINDINGS",
+    "errors": 5,
+    "warnings": 5,
+    "eslintIgnoreWarning": true,
+    "findings": [
+      {
+        "file": "ops/simulation-refinement/phase6-three-lanes-20260913/lane-c/c1-initial-draft/count-semantic-turn.ts",
+        "errors": 3,
+        "warnings": 3,
+        "classification": "PRESERVED_R3_CANDIDATE"
+      },
+      {
+        "file": "src/app/vip-metal-print/page.tsx",
+        "errors": 2,
+        "warnings": 0,
+        "classification": "CURRENT_APPLICATION"
+      },
+      {
+        "file": "src/lib/metal-print-redis.server.ts",
+        "errors": 0,
+        "warnings": 2,
+        "classification": "CURRENT_APPLICATION"
+      }
+    ],
+    "repairPerformed": false
+  },
+  "validators": {
+    "currentlyApplicable": [
+      { "id": "R1_METAL_PRINT_WEBHOOK_BOUNDARY", "script": "scripts/validate-metal-print-webhook-routing.ts", "status": "PASS", "networkRequests": 0, "providerCalls": 0 },
+      { "id": "R7_A_CATALOG", "script": "scripts/validate-r7a-catalog-foundation.ts", "status": "PASS", "primaryWorks": 450, "runtimeMergedWorks": 514, "networkRequests": 0 },
+      { "id": "R7_B_CHAT_CORE", "script": "scripts/validate-r7b-chat-recommendation-core.ts", "status": "PASS", "fixtures": 15, "providerCalls": 0, "networkCalls": 0 },
+      { "id": "R7_C1_CHAT_UI_HISTORY", "script": "scripts/validate-r7c1-chat-ui-history.ts", "status": "PASS", "fixtures": 22 },
+      { "id": "R7_C2_PAID_CONTINUATION", "script": "scripts/validate-r7c2-paid-continuation.ts", "status": "PASS", "fixtures": 20 },
+      { "id": "R7_D1_EXHIBITION_ORACLE", "script": "scripts/validate-r7d1-exhibition-oracle.ts", "status": "PASS", "runtimeWorks": 514, "displayedWorks": 514, "missingReleasedWorks": 0 },
+      { "id": "R7_D2_SECONDARY_SURFACES", "script": "scripts/validate-r7d2-secondary-surfaces.ts", "status": "PASS", "checks": 40 },
+      { "id": "FINAL_INTEGRATION", "script": "scripts/validate-recovery-final-integration.ts", "status": "PASS", "checks": 45 }
+    ],
+    "historicalFixedHead": [
+      { "id": "RECOVERY_ONLY_RC_BASE_STATE", "script": "scripts/validate-recovery-only-rc.ts", "status": "NOT_RUN_FIXED_APPLICATION_HEAD" },
+      { "id": "RECOVERY_ONLY_RC_VALIDATION", "script": "scripts/validate-recovery-only-rc-validation.ts", "status": "NOT_RUN_FIXED_GOVERNANCE_HEAD" },
+      { "id": "C4G_ORIGINAL_DELETION", "script": "scripts/validate-cleanup-c4g-original-repository-deletion.mjs", "status": "NOT_APPLICABLE_AFTER_DEPENDENCY_RESTORE", "attempt": "FAIL_PRECONDITION", "reason": "validator's historical recursive zero-symlink check counts 1507 pnpm dependency symlinks; source and lockfile remain unchanged" }
+    ],
+    "originalDependent": {
+      "classification": "NOT_APPLICABLE_POST_DELETION",
+      "scripts": [
+        "scripts/validate-cleanup-c1.mjs",
+        "scripts/validate-cleanup-c2.mjs",
+        "scripts/validate-cleanup-c2-source-removal.mjs",
+        "scripts/validate-cleanup-c3-unknown-triage.mjs",
+        "scripts/validate-cleanup-c3b-semantic-review.mjs",
+        "scripts/validate-cleanup-c3c-preservation.mjs",
+        "scripts/validate-cleanup-c4-decommission-review.mjs",
+        "scripts/validate-cleanup-c4a-blocker-remediation.mjs",
+        "scripts/validate-cleanup-c4b-private-retention-decision.mjs",
+        "scripts/validate-cleanup-c4c-private-preservation.mjs",
+        "scripts/validate-cleanup-c4d-worktree-remediation.mjs",
+        "scripts/validate-cleanup-c4e-worktree-decommission.mjs",
+        "scripts/validate-cleanup-c4f-final-blocker-remediation.mjs",
+        "scripts/validate-cleanup-c4f-final-deletion-review.mjs"
+      ],
+      "executed": false
+    }
+  },
+  "invariants": {
+    "catalog": { "primaryWorks": 450, "runtimeMergedWorks": 514, "stableIdIdentity": true, "titleOnlyMerge": false },
+    "exhibition": { "projection": "CANONICAL", "displayedWorks": 514, "missingReleasedWorks": 0 },
+    "chat": { "activeRoute": "/api/chat-experience-v3", "historyRoute": "/api/chat-history", "stableWorkIdCards": true, "historyIsEntitlement": false, "deterministicOneWorkRecommendation": true },
+    "paidContinuation": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+    "turnGuard": { "turns": 20, "purpose": "ABUSE_AND_API_COST_GUARD" },
+    "oracle": "ORACLE_INACTIVE_BY_DESIGN"
+  },
+  "chatArchitecture": {
+    "activeUi": "src/pages/chat.tsx",
+    "activeApi": "src/pages/api/chat-experience-v3.ts",
+    "historyStore": "Upstash Redis when configured; runtime configuration UNKNOWN",
+    "historyPolicy": { "identity": "anonymous UUID", "ttlDays": 90, "maximumMessages": 40, "deleteAvailable": true },
+    "recommendationFlow": "deterministic one-work selection from loadMergedWorksServer; stable work ID; recorded public actions",
+    "llmRoutingCode": ["OpenRouter", "Anthropic", "Groq", "LMStudio"],
+    "llmRuntimeProvider": "UNKNOWN_NOT_EXERCISED",
+    "monetization": "PAID_CONTINUATION_NOT_ACTIVATED",
+    "analyticsPrivacy": "optional PostHog capture and first-party bounded chat-interest event route present; runtime availability UNKNOWN; post-RC adoption gate unstarted",
+    "observedDebt": [
+      "active API combines request interpretation, recommendation, sales policy, and LLM orchestration",
+      "analytics is split between browser capture and first-party event route",
+      "provider policy and privacy adoption remain separate post-RC decisions"
+    ]
+  },
+  "build": {
+    "command": "pnpm run build",
+    "status": "BLOCKED_EXTERNAL_FONT_DNS",
+    "hostname": "fonts.googleapis.com",
+    "fonts": ["Cinzel", "EB Garamond", "Inter", "Noto Serif JP"],
+    "applicationBuildError": false,
+    "configurationChanged": false,
+    "workspaceRootWarning": "Next inferred /Users/kagekun from an additional parent package-lock.json"
+  },
+  "operations": {
+    "aiProviderCalls": 0,
+    "paymentOperations": 0,
+    "customerDataWrites": 0,
+    "deploys": 0,
+    "pushes": 0
+  },
+  "nextGate": "PRODUCT-LANE-A 伯爵CHAT STRENGTHENING",
+  "nextGateStatus": "BLOCKED_PENDING_SCOPED_LINT_REMEDIATION",
+  "recommendedNextModel": "GPT-6 Luna",
+  "truthBoundary": [
+    "Local typecheck and Recovery validators do not establish production parity or deployed behavior.",
+    "No provider, payment, customer-data, deploy, or push operation occurred.",
+    "Registry packages were reused from the local pnpm store; downloaded package count was zero.",
+    "The build result is an external Google Fonts DNS blocker, not production verification.",
+    "Original-dependent historical validators are not applicable after decommissioning."
+  ]
+}

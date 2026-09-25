@@ -589,3 +589,37 @@ Historical Original-dependent validators are `NOT_APPLICABLE_POST_DELETION`. The
 Recovery/Cleanup complete does not establish production deployment, payment activation, completed product contracts, R2 HOLD release, R3 candidate adoption, R5 integration, Oracle activation or completed post-RC enhancements. R7-C2 = BLOCKED_PRODUCT_CONTRACT; PAID_CONTINUATION_NOT_ACTIVATED; Oracle = ORACLE_INACTIVE_BY_DESIGN; R2 HOLD; R3 preserved; R5 separate scope. post-RC Privacy / Digital Commerce / LLM redesign remains unstarted. No production parity, payment/fulfillment/demand, rights or adoption claim. Private payloads and large mixed R0/C2 archives were not newly opened or hashed; prior byte/extraction evidence is reused with current metadata continuity. Pre-existing missing Git blob B and external forensic gaps remain limitations; no additional meaningful history loss. Same-disk preservation is not disaster backup. Operation counters describe this task, not an OS-wide syscall audit.
 
 Next Gate: **POST_RECOVERY_DEVELOPMENT_BASELINE**, recommended **GPT-6 Luna**: restore Canonical dependencies, establish development baseline, verify a clean application starting point and prioritize 伯爵Chat. This Gate is not started. See `docs/AI/CLEANUP_C4G_ORIGINAL_REPOSITORY_DELETION_EXECUTION.md`, `ops/recovery/cleanup-c4g-original-repository-deletion-20260925.json`, and `scripts/validate-cleanup-c4g-original-repository-deletion.mjs`.
+
+## POST-RECOVERY DEVELOPMENT BASELINE — current local state
+
+Starting State Lock matched HEAD `4099f96a671f02fbba853a98254b4c807f72bac6`,
+branch `recovery/musiam-clean-20260920`, and clean tree. Recovery/Cleanup remains
+`COMPLETE`; the decommissioned Original remains absent. `pnpm-lock.yaml` is the
+package authority. `pnpm install --frozen-lockfile` completed with 519 packages
+reused, zero downloads, and zero package/lockfile/application drift.
+
+Root typecheck PASS. Root lint is `FAIL_EXISTING_FINDINGS` (5 errors / 5
+warnings: 3 errors in the preserved R3 draft and 2 current-app errors in
+`src/app/vip-metal-print/page.tsx`); no source repair was in scope. R1, R7-A,
+R7-B, R7-C1, R7-C2, R7-D1, R7-D2, and Final Integration validators PASS.
+Local build is `BLOCKED_EXTERNAL_FONT_DNS` for Google Fonts. The historical
+C4-G validator's recursive zero-symlink check is not applicable after the
+authorized pnpm dependency restore, which created 1,507 dependency symlinks;
+source and lockfile remain unchanged. Original-dependent historical validators
+remain `NOT_APPLICABLE_POST_DELETION`.
+
+Current application invariants remain: Catalog 450 primary / 514 runtime;
+Exhibition 514 / missing 0; active Chat `/api/chat-experience-v3`; history is
+not entitlement; R7-C2 remains `BLOCKED_PRODUCT_CONTRACT /
+PAID_CONTINUATION_NOT_ACTIVATED`; Oracle remains inactive. Provider, payment,
+customer-data, deploy, and push operations are 0. Production parity remains
+unverified.
+
+`POST_RECOVERY_DEVELOPMENT_BASELINE = BLOCKED_EXISTING_LINT_ERRORS`; local
+dependencies are restored, but the Chat product lane is held until a separate
+scoped lint-remediation Gate. No Chat feature implementation has begun. Next
+product lane remains **PRODUCT-LANE-A 伯爵CHAT STRENGTHENING**; recommended
+model **GPT-6 Luna**. Chat architecture handoff and complete evidence are in
+`docs/AI/POST_RECOVERY_DEVELOPMENT_BASELINE.md`,
+`ops/recovery/post-recovery-development-baseline-20260925.json`, and
+`scripts/validate-post-recovery-development-baseline.mjs`.
