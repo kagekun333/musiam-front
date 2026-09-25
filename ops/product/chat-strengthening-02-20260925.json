@@ -1,0 +1,152 @@
+{
+  "id": "PRODUCT_LANE_A_CHAT_STRENGTHENING_02",
+  "status": "PASS_COMMITTED",
+  "startingHead": "4e975612dfa72e657a95a4ab1cdd76c667d4432e",
+  "branch": "recovery/musiam-clean-20260920",
+  "protectedUntrackedObserved": "ops/market-learning/daily-20260925/",
+  "protectedUntrackedTouched": false,
+  "scope": "providerless Chat fixtures, recommendation journey, and stable-work-ID-only history card restoration",
+  "activeApi": "/api/chat-experience-v3",
+  "improvements": {
+    "detailRoute": "/works/{workId}",
+    "localizedFollowUpPrompts": ["ask more about this work", "explore another work"],
+    "claimBoundary": "no inferred similarity, availability, price, or artist intent"
+  },
+  "recommendationContract": {
+    "exactlyOne": true,
+    "identity": "stable workId",
+    "publicActions": "recorded links only",
+    "titleIdentityFallback": false,
+    "selectionRerunOnHistoryRestore": false
+  },
+  "history": {
+    "contract": "STABLE_WORK_ID_ONLY",
+    "storageKey": "chat-history:v1:{conversationId}",
+    "schemaVersion": 1,
+    "persistedRecommendationField": "optional recommendedWorkId on assistant messages only",
+    "canonicalIdValidation": "exact stable ID in current merged Catalog on PUT and GET",
+    "invalidIdBehavior": "drop recommendation metadata, preserve message text and order, render no card",
+    "restoration": "latest assistant ID resolves against current merged Catalog; shared active-card builder supplies current title, cover, tags/type, and recorded public links",
+    "getResponseExtension": "ephemeral top-level restoredRecommendation; card snapshot is not persisted",
+    "legacyHistory": "message-only entries restore without migration",
+    "notPersisted": [
+      "title snapshot",
+      "image or cover snapshot",
+      "public URL snapshot",
+      "recommendation explanation",
+      "similarity score",
+      "hidden ranking",
+      "price",
+      "availability",
+      "sales status",
+      "ownership",
+      "entitlement",
+      "analytics or tracking data",
+      "account binding",
+      "additional user identifier"
+    ],
+    "maxMessages": 40,
+    "ttlDays": 90,
+    "deletionBehavior": "unchanged",
+    "staleRaceGuards": "unchanged",
+    "historyIsEntitlement": false
+  },
+  "fixture": {
+    "mode": "localhost browser HTTP interception plus deterministic history-helper validation",
+    "browser": "existing Chrome 153",
+    "browserChecksPassed": 13,
+    "browserChecksBlocked": 0,
+    "externalRequestsBlocked": 22,
+    "providerCalls": 0,
+    "customerDataMutations": 0,
+    "productionFixtureBackdoor": false,
+    "mobile390px": ["initial", "recommendation", "long reply", "retry/error"],
+    "accessibility": ["keyboard focus", "labeled composer", "loading status", "error alert"],
+    "F1": "PASS",
+    "F2": "PASS",
+    "F3": "PASS",
+    "F4": "PASS",
+    "F5": "PASS",
+    "F6": "PASS",
+    "F7": "PASS",
+    "F8": "PASS",
+    "F9": "PASS",
+    "F10": "PASS",
+    "F8Cases": {
+      "newFormat": "PASS",
+      "legacy": "PASS",
+      "invalidId": "PASS",
+      "historyUnavailable503": "PASS"
+    },
+    "stableWorkFixture": {
+      "workId": "apple-album-6797260493",
+      "title": "Fractal Hands",
+      "recordedPublicLink": "https://music.apple.com/us/album/fractal-hands-single/6797260493"
+    }
+  },
+  "chatSalesValidator": {
+    "classification": "NOT_APPLICABLE_CURRENT_CHAT_PRODUCT_LANE",
+    "outcome": "historical validator fails on salon_work_click",
+    "currentUiEvent": "salon_work_action_click",
+    "analyticsRestored": false,
+    "includedInProductGate": false
+  },
+  "validation": {
+    "strengthening02Validator": "PASS: 16 checks",
+    "browserFixture": "PASS: 13 checks; provider_calls=0; external_requests_blocked=22",
+    "typecheck": "PASS",
+    "scopedChangedTypeScriptLint": "PASS: 0 errors, 0 warnings",
+    "newMjsAndIgnoredValidatorLint": "PASS: targeted --no-ignore ESLint, 0 errors, 0 warnings",
+    "rootLint": {
+      "errors": 0,
+      "warnings": [
+        "qualified in src/lib/metal-print-redis.server.ts",
+        "nurture in src/lib/metal-print-redis.server.ts"
+      ],
+      "classification": "same known two-warning baseline; strict max-warnings command exits 1",
+      "newLintWarnings": 0
+    },
+    "recoveryValidators": {
+      "R1": "PASS",
+      "R7-A": "PASS",
+      "R7-B": "PASS",
+      "R7-C1": "PASS",
+      "R7-C2": "PASS",
+      "R7-D1": "PASS",
+      "R7-D2": "PASS",
+      "Final Integration": "PASS"
+    },
+    "catalog": {
+      "primary": 450,
+      "runtimeMerged": 514,
+      "runtimeProductionParity": "UNVERIFIED"
+    },
+    "exhibition": {
+      "displayed": 514,
+      "releasedWorksMissing": 0
+    },
+    "paidContinuation": "BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+    "oracle": "ORACLE_INACTIVE_BY_DESIGN",
+    "build": "BLOCKED_EXTERNAL_FONT_DNS: fonts.googleapis.com; existing Cinzel, EB Garamond, Inter, and Noto Serif JP imports",
+    "sourceTruth": "local source, deterministic validator, and mocked browser fixture only; not Production, Redis persistence, native-device, payment, fulfillment, or demand evidence"
+  },
+  "externalOperations": {
+    "provider": 0,
+    "payment": 0,
+    "customerDataMutations": 0,
+    "analyticsAdditions": 0,
+    "redisHistoryReadsOrWrites": 0,
+    "deploy": 0,
+    "push": 0,
+    "localDiagnostic": "earlier local history GET/PUT returned 503 before Redis access because Redis configuration was absent; no customer data changed"
+  },
+  "commit": {
+    "status": "PASS_COMMITTED",
+    "subject": "feat: deepen museum chat journey",
+    "push": false
+  },
+  "workingTree": "only the protected pre-existing ops/market-learning/daily-20260925/ directory remains untracked; scoped changes committed",
+  "nextHighestImpactChatIssue": "history runtime readiness remains unverified; local Redis configuration was absent in the prior diagnostic",
+  "nextGate": "CHAT_HISTORY_RUNTIME_READINESS: bounded read-only service-state and failure-behavior audit; no customer history reads or mutations",
+  "recommendedNextModel": "GPT-6 Sol, medium"
+}

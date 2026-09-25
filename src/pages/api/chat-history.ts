@@ -6,6 +6,12 @@ import {
   readChatHistory,
   writeChatHistory,
 } from "@/lib/chat-history.server";
+import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import {
+  hasAssistantRecommendedWorkId,
+  normalizeHistoryForCatalog,
+  resolveRestoredRecommendation,
+} from "@/lib/chat-history-recommendation";
 import { gcExpired, ipFromRequest, rateLimit } from "@/lib/rate";
 
 const ConversationIdSchema = z.string().uuid();
@@ -16,8 +22,13 @@ const WriteSchema = z.object({
     role: z.enum(["user", "assistant"]),
     content: z.string().trim().min(1).max(2000),
     persona: z.enum(["count", "duke"]).optional(),
+    recommendedWorkId: z.unknown().optional(),
   })).max(CHAT_HISTORY_MAX_MESSAGES),
 });
+
+async function currentCatalog() {
+  try { return await loadMergedWorksServer(); } catch { return []; }
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader("Cache-Control", "no-store");
@@ -33,14 +44,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === "GET") {
       const parsed = ConversationIdSchema.safeParse(req.query.conversationId);
       if (!parsed.success) return res.status(400).json({ ok: false, error: "invalid_conversation_id" });
-      const history = await readChatHistory(parsed.data);
-      return res.status(200).json({ ok: true, history: history ?? null });
+      const stored = await readChatHistory(parsed.data);
+      if (!stored) return res.status(200).json({ ok: true, history: null, restoredRecommendation: null });
+
+      const catalog = hasAssistantRecommendedWorkId(stored.messages) ? await currentCatalog() : [];
+      const messages = normalizeHistoryForCatalog(stored.messages, catalog);
+      const restoredRecommendation = resolveRestoredRecommendation(messages, catalog);
+      const history = {
+        version: stored.version,
+        conversationId: stored.conversationId,
+        lang: stored.lang,
+        messages,
+        createdAt: stored.createdAt,
+        updatedAt: stored.updatedAt,
+        expiresAt: stored.expiresAt,
+      };
+      return res.status(200).json({ ok: true, history, restoredRecommendation });
     }
 
     if (req.method === "PUT") {
       const parsed = WriteSchema.safeParse(req.body ?? {});
       if (!parsed.success) return res.status(400).json({ ok: false, error: "invalid_body" });
-      const history = await writeChatHistory(parsed.data);
+      const catalog = hasAssistantRecommendedWorkId(parsed.data.messages) ? await currentCatalog() : [];
+      const messages = normalizeHistoryForCatalog(parsed.data.messages, catalog);
+      const history = await writeChatHistory({ ...parsed.data, messages });
       return res.status(200).json({ ok: true, updatedAt: history.updatedAt, expiresAt: history.expiresAt });
     }
 

@@ -12,6 +12,7 @@ import { z } from "zod";
 import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { buildChatWorkCard } from "@/lib/chat-work-card";
 import { deriveChatCoreTurn, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { buildChatInterestBridge, chatInterestRecommendationSeed, isChatInterestDecline, isChatInterestInvitation } from "@/lib/chat-interest-bridge";
@@ -187,25 +188,7 @@ function normType(t?: string): "book" | "music" | "other" {
 }
 function workToCard(recommendation: ReturnType<typeof selectOneRecommendation>): RecoCard | null {
   if (!recommendation) return null;
-  const { work: w, links: publicLinks, reason } = recommendation;
-  const id = String(w.id ?? w.title ?? "");
-  const title = String(w.title || "").trim();
-  const cover = String(w.cover || "");
-  if (!id || !title || !cover) return null;
-  const links = publicLinks.map((it: { kind: string; url: string }) => ({
-    kind: (it.kind === "spotify" || it.kind === "appleMusic" || it.kind === "amazonMusic" ? "listen" : it.kind) as RecoLinkKind,
-    url: it.url,
-  }));
-  if (!links.length) return null;
-  return {
-    id,
-    title,
-    cover,
-    links,
-    moodTags: (w.moodTags ?? w.tags ?? []).slice(0, 4),
-    type: w.type,
-    reason,
-  };
+  return buildChatWorkCard(recommendation.work, recommendation.reason);
 }
 async function prescribeWork(input: {
   queryText: string;

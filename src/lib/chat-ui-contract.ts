@@ -9,6 +9,8 @@ export type ChatHistoryMessage = {
   role: "user" | "assistant";
   content: string;
   persona?: "count" | "duke";
+  /** Stable Catalog reference only. Card presentation fields are rebuilt from the current Catalog. */
+  recommendedWorkId?: string;
 };
 
 export type ChatCardLink = {
@@ -142,21 +144,49 @@ export function normalizeChatUiReply(value: unknown): ChatUiReply {
 }
 
 /** Preserve serialized order; malformed values are never rendered or resent. */
-export function normalizeChatHistory(value: unknown): ChatHistoryMessage[] {
+export function normalizeChatHistory(value: unknown, canonicalWorkIds?: ReadonlySet<string>): ChatHistoryMessage[] {
   if (!Array.isArray(value)) return [];
   return value.flatMap((message): ChatHistoryMessage[] => {
     if (!message || typeof message !== "object") return [];
     const raw = message as Record<string, unknown>;
     const content = text(raw.content, 2000);
     if ((raw.role !== "user" && raw.role !== "assistant") || !content) return [];
-    return [{ role: raw.role, content, ...(raw.persona === "count" || raw.persona === "duke" ? { persona: raw.persona } : {}) }];
+    const rawWorkId = raw.recommendedWorkId;
+    const recommendedWorkId = raw.role === "assistant"
+      && typeof rawWorkId === "string"
+      && rawWorkId.length > 0
+      && rawWorkId.length <= 180
+      && rawWorkId.trim() === rawWorkId
+      && (!canonicalWorkIds || canonicalWorkIds.has(rawWorkId))
+      ? rawWorkId
+      : undefined;
+    return [{
+      role: raw.role,
+      content,
+      ...(raw.persona === "count" || raw.persona === "duke" ? { persona: raw.persona } : {}),
+      ...(recommendedWorkId ? { recommendedWorkId } : {}),
+    }];
   }).slice(-40);
 }
 
 /** Do not append the same assistant result twice after a stale/retry race. */
-export function appendAssistantReply(messages: ChatHistoryMessage[], reply: Pick<ChatUiReply, "assistantText" | "persona">): ChatHistoryMessage[] {
+export function appendAssistantReply(messages: ChatHistoryMessage[], reply: Pick<ChatUiReply, "assistantText" | "persona"> & { recommendedWorkId?: string | null }): ChatHistoryMessage[] {
   if (!reply.assistantText) return messages;
   const previous = messages[messages.length - 1];
-  if (previous?.role === "assistant" && previous.content === reply.assistantText && previous.persona === reply.persona) return messages;
-  return [...messages, { role: "assistant" as const, content: reply.assistantText, persona: reply.persona }];
+  const candidateId = typeof reply.recommendedWorkId === "string"
+    && reply.recommendedWorkId.length > 0
+    && reply.recommendedWorkId.length <= 180
+    && reply.recommendedWorkId.trim() === reply.recommendedWorkId
+    ? reply.recommendedWorkId
+    : undefined;
+  if (previous?.role === "assistant" && previous.content === reply.assistantText && previous.persona === reply.persona) {
+    if (!candidateId || previous.recommendedWorkId === candidateId) return messages;
+    return [...messages.slice(0, -1), { ...previous, recommendedWorkId: candidateId }];
+  }
+  return [...messages, {
+    role: "assistant" as const,
+    content: reply.assistantText,
+    persona: reply.persona,
+    ...(candidateId ? { recommendedWorkId: candidateId } : {}),
+  }];
 }

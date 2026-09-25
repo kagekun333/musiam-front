@@ -27,6 +27,8 @@ const reply = { ok: true, assistantText: "こちらをどうぞ。", persona: "c
 check("normal send", () => assert.equal(normalizeChatUiReply(reply).assistantText, "こちらをどうぞ。"));
 check("history restore", () => assert.equal(normalizeChatHistory([{ role: "user", content: "こんにちは" }]).length, 1));
 check("restored conversation order", () => assert.deepEqual(normalizeChatHistory([{ role: "assistant", content: "A" }, { role: "user", content: "B" }]).map((m) => m.content), ["A", "B"]));
+check("assistant stable recommendation ID survives with a canonical ID allowlist", () => assert.equal(normalizeChatHistory([{ role: "assistant", content: "work", recommendedWorkId: "stable-work-1" }], new Set(["stable-work-1"]))[0]?.recommendedWorkId, "stable-work-1"));
+check("user and unknown recommendation IDs are stripped without dropping messages", () => assert.deepEqual(normalizeChatHistory([{ role: "user", content: "user", recommendedWorkId: "stable-work-1" }, { role: "assistant", content: "old card", recommendedWorkId: "unknown" }], new Set(["stable-work-1"])), [{ role: "user", content: "user" }, { role: "assistant", content: "old card" }]));
 check("double-send protection", () => assert.equal(appendAssistantReply([{ role: "assistant", content: "A", persona: "count" }], { assistantText: "A", persona: "count" }).length, 1));
 check("stale reply rejection primitive", () => assert.equal(appendAssistantReply([{ role: "user", content: "new" }], { assistantText: "old", persona: "count" }).length, 2));
 check("one recommendation becomes one card", () => assert.equal(normalizeChatUiReply(reply).cards.length, 1));

@@ -13,6 +13,7 @@ import {
   type ChatHistoryMessage,
   type ChatWorkCard,
 } from "@/lib/chat-ui-contract";
+import { getChatCardJourney } from "@/lib/chat-card-journey";
 import {
   SUPPORTED_LANG_VALUES,
   getChatUiText,
@@ -403,8 +404,9 @@ export default function ChatPage() {
         if (generation !== entryGenerationRef.current) return;
         const restored = normalizeChatHistory(json?.history?.messages);
         if (res.ok && restored.length) {
+          const restoredCard = normalizeChatUiReply({ card: json?.restoredRecommendation }).cards[0] ?? null;
           setMessages(restored);
-          setCards([]); setChoices([]); setCta(null);
+          setCards(restoredCard ? [restoredCard] : []); setChoices([]); setCta(null);
           setLang(normalizeLang(json?.history?.lang ?? l));
           setStarted(true);
           setHistoryRestored(true);
@@ -479,7 +481,12 @@ export default function ChatPage() {
       const reply = normalizeChatUiReply(json);
       const text = reply.assistantText;
       startTransition(() => {
-        const opening: ChatMsg[] = text ? [{ role: "assistant", content: text, persona: reply.persona }] : [];
+        const opening: ChatMsg[] = text ? [{
+          role: "assistant",
+          content: text,
+          persona: reply.persona,
+          ...(reply.cards[0]?.workId ? { recommendedWorkId: reply.cards[0].workId } : {}),
+        }] : [];
         setMessages(opening);
         setCards(reply.cards); setChoices(reply.choices); setCta(reply.cta);
         void persistConversation(opening, l);
@@ -578,8 +585,12 @@ export default function ChatPage() {
     }
 
     const { assistantText, persona, nextCards, choices: nextChoices, nextCta, intent, productId, interestBridge } = result.reply;
-    const completedMessages = appendAssistantReply(requestMessages, { assistantText, persona });
     const nextCard = nextCards[0] ?? null;
+    const completedMessages = appendAssistantReply(requestMessages, {
+      assistantText,
+      persona,
+      recommendedWorkId: nextCard?.workId,
+    });
     startTransition(() => {
       setMessages(completedMessages);
       setCards(nextCards); setChoices(nextChoices);
@@ -827,7 +838,9 @@ export default function ChatPage() {
               <p className={styles.giftWorkType}>{lang === "ja" ? "CATALOG RECOMMENDATION" : "CATALOG RECOMMENDATION"}</p>
               <h2 className={styles.giftTitle}>{lang === "ja" ? "いま、お渡しする作品" : "A work for this moment"}</h2>
             </div>
-            {cards.map((work) => (
+            {cards.map((work) => {
+              const journey = getChatCardJourney(work.workId, lang);
+              return (
               <article className={styles.giftCard} key={work.workId} data-work-id={work.workId}>
                 <img className={styles.giftCover} src={work.cover} alt={work.title} loading="lazy" decoding="async" />
                 <div className={styles.giftBody}>
@@ -859,9 +872,20 @@ export default function ChatPage() {
                       })}
                     </div>
                   )}
+                  <div className={styles.giftJourney} aria-label={lang === "ja" ? "作品をさらに楽しむ" : "Continue exploring this work"}>
+                    <a className={styles.linkButton} href={journey.detailHref}>
+                      {journey.detailLabel}
+                    </a>
+                    {journey.followUpPrompts.map((prompt) => (
+                      <button key={prompt} type="button" className={styles.linkButton} disabled={sending || !started} onClick={() => sendText(prompt)}>
+                        {prompt}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </section>
         )}
 

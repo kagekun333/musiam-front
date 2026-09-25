@@ -956,6 +956,14 @@
   margin-top: 4px;
 }
 
+.giftJourney {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(216, 182, 92, 0.18);
+}
+
 .linkButton {
   padding: 10px 16px;
   border-radius: 4px;

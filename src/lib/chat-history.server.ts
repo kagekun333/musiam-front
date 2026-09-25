@@ -4,6 +4,8 @@ export type StoredChatMessage = {
   role: "user" | "assistant";
   content: string;
   persona?: "count" | "duke";
+  /** Stable Catalog identity only; presentation fields are rebuilt when history is read. */
+  recommendedWorkId?: string;
 };
 
 export type StoredChatHistory = {
