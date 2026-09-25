@@ -26,27 +26,29 @@ export default function Nav() {
 
   return (
     <nav
-      className="sticky top-0 z-50 flex items-center gap-5 px-4 py-3 backdrop-blur-md bg-[rgba(7,14,24,0.72)] border-b border-white/[0.06]"
+      className="sticky top-0 z-50 flex min-w-0 items-center gap-4 overflow-hidden px-4 py-3 backdrop-blur-md bg-[rgba(7,14,24,0.72)] border-b border-white/[0.06]"
     >
-      <Link href="/" className="mr-auto font-semibold tracking-wide">
+      <Link href="/" className="shrink-0 font-semibold tracking-wide">
         伯爵 MUSIAM
       </Link>
 
-      {NAV_LINKS.map((item) => {
-        const exact = "exact" in item ? item.exact : undefined;
-        const active = pathname ? isActivePath(pathname, item.href, exact) : false;
-        const { href, label } = item;
-        return (
-          <Link
-            key={href}
-            href={href}
-            aria-current={active ? "page" : undefined}
-            className={active ? "opacity-100 font-bold underline" : "opacity-60 font-medium no-underline"}
-          >
-            {label}
-          </Link>
-        );
-      })}
+      <div className="flex min-w-0 flex-1 items-center gap-5 overflow-x-auto whitespace-nowrap">
+        {NAV_LINKS.map((item) => {
+          const exact = "exact" in item ? item.exact : undefined;
+          const active = pathname ? isActivePath(pathname, item.href, exact) : false;
+          const { href, label } = item;
+          return (
+            <Link
+              key={href}
+              href={href}
+              aria-current={active ? "page" : undefined}
+              className={`shrink-0 ${active ? "opacity-100 font-bold underline" : "opacity-60 font-medium no-underline"}`}
+            >
+              {label}
+            </Link>
+          );
+        })}
+      </div>
     </nav>
   );
 }

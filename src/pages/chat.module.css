@@ -331,6 +331,38 @@
   line-height: 1.75;
 }
 
+.chatIntro {
+  margin: 0 0 22px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
+  background: linear-gradient(135deg, rgba(216, 182, 92, 0.07), rgba(8, 8, 12, 0.22));
+}
+
+.chatIntroKicker {
+  margin: 0 0 8px !important;
+  color: var(--gold) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.2em;
+}
+
+.chatIntro h2 {
+  margin: 0 0 8px;
+  color: #fbf7ec;
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.8vw, 23px);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.chatIntro > p:last-child {
+  max-width: 720px;
+  margin: 0;
+  color: var(--ink-dim);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
 .chatHeader {
   display: flex;
   align-items: flex-start;
@@ -380,6 +412,23 @@
   flex-wrap: wrap;
   gap: 9px;
   margin-bottom: 18px;
+}
+
+.starterSection { margin-bottom: 18px; }
+
+.starterHeading { margin: 0 0 10px; }
+
+.starterHeading p {
+  margin: 0 0 3px;
+  color: #f1ecdf;
+  font-family: var(--serif);
+  font-size: 16px;
+}
+
+.starterHeading span {
+  color: var(--ink-dim);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .promptChip {
@@ -666,6 +715,16 @@
   font-family: var(--serif);
   font-size: 14px;
   color: rgba(216, 182, 92, 0.8);
+}
+
+.error button {
+  margin-top: 6px;
+  padding: 9px 14px;
+  border: 1px solid rgba(216, 182, 92, 0.4);
+  border-radius: 4px;
+  background: rgba(216, 182, 92, 0.08);
+  color: var(--gold-soft);
+  cursor: pointer;
 }
 
 /* フリートークOKを伝える薄文字 */
@@ -956,9 +1015,29 @@
     flex-direction: row;
   }
   .inputRow {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
   }
   .sendButton {
     height: 46px;
+    padding: 0 14px;
+  }
+  .input {
+    min-height: 46px;
+    padding: 10px 12px;
+  }
+  .chatShell {
+    padding: 18px 14px;
+  }
+  .chatIntro {
+    padding: 16px;
+  }
+  .thread {
+    min-height: 220px;
+    max-height: 50vh;
+  }
+  .bubbleText {
+    font-size: 15px;
+    line-height: 1.85;
   }
 }

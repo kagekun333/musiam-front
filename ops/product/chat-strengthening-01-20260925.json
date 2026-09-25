@@ -1,0 +1,50 @@
+{
+  "id": "PRODUCT_LANE_A_CHAT_STRENGTHENING_01",
+  "status": "PASS_COMMITTED",
+  "startingHead": "0bc815e603c258f0257ebda87a3bf1181637f9f2",
+  "branch": "recovery/musiam-clean-20260920",
+  "scope": "local chat UI and interaction improvements",
+  "improvements": [
+    "localized first-visit Count and MUSIAM work discovery explanation; distinguishes artist ABI伯爵 from conversational AI Count",
+    "localized prompt starter instructions and free-text guidance",
+    "retry action for a failed opening request; existing failed-message retry retained",
+    "shorter reply pacing and typewriter interval with reduced-motion support retained",
+    "mobile composer and spacing refinement; lazy recommendation cover loading"
+  ],
+  "contractChanges": "none",
+  "recommendationContract": "unchanged: deterministic single catalog work, stable workId, recorded public links",
+  "history": "unchanged; anonymous history remains separate from entitlement",
+  "paymentEntitlement": "no changes; R7-C2 remains BLOCKED_PRODUCT_CONTRACT / PAID_CONTINUATION_NOT_ACTIVATED",
+  "analytics": "no new tracking or storage",
+  "externalOperations": {
+    "provider": 0,
+    "payment": 0,
+    "customerDataMutations": 0,
+    "deploy": 0,
+    "push": 0
+  },
+  "localUiProbe": {
+    "historyApiGetRequests": 1,
+    "historyApiPutRequests": 1,
+    "storageConfigured": false,
+    "persistenceReached": false,
+    "result": "both requests returned 503 before Redis read/write; PUT contained only generated opening greeting"
+  },
+  "validation": {
+    "typecheck": "PASS",
+    "lintBefore": "0 errors / 2 existing warnings; strict command exits 1",
+    "lintAfter": "0 errors / same 2 existing warnings; scoped chat, nav, and validator lint PASS",
+    "recoveryValidators": {"R1":"PASS","R7-A":"PASS","R7-B":"PASS","R7-C1":"PASS","R7-C2":"PASS","R7-D1":"PASS","R7-D2":"PASS"},
+    "legacyChatSalesValidator": "FAIL: expects salon_work_click, unchanged active surface uses salon_work_action_click",
+    "build": "BLOCKED_EXTERNAL_FONT_DNS: fonts.googleapis.com for existing next/font imports",
+    "ui": "desktop/mobile initial state, starter, reply, and composer visually checked; no recommendation/error/history fixture mock",
+    "browserFixture": "not run: Puppeteer Chrome 141 unavailable",
+    "newValidator": "PASS: 13 checks; provider calls 0",
+    "diffCheck": "PASS"
+  },
+  "catalog": "450 primary / 514 runtime merged",
+  "exhibition": "514 displayed / 0 missing",
+  "oracle": "ORACLE_INACTIVE_BY_DESIGN",
+  "workingTree": "implementation files committed; pre-existing ops/market-learning/daily-20250925/ remains untracked and untouched",
+  "nextGate": "review committed Chat experience; select catalog discovery or browser fixture follow-up"
+}

@@ -47,10 +47,19 @@ type PendingReplyResult =
   | { ok: true; reply: AssistantReply }
   | { ok: false; error: unknown };
 
-const HUMAN_REPLY_DELAY_MS = 3000;
+const HUMAN_REPLY_DELAY_MS = 900;
 const READ_RECEIPT_DELAY_MS = 450;
 const CHAT_CONVERSATION_ID_KEY = "musiam_chat_conversation_id_v1";
 const CHAT_MEMORY_ENABLED_KEY = "musiam_chat_memory_enabled_v1";
+
+const CHAT_INTRO_COPY: Record<Lang, { title: string; body: string; prompt: string; promptHint: string }> = {
+  ja: { title: "伯爵と、MUSIAMの作品をめぐる会話を。", body: "会話AIの伯爵が、作品を探したり、聴いた印象を話したりするお手伝いをします。作品の作者「ABI伯爵」と、会話AIの伯爵は別の存在です。", prompt: "話題を選ぶか、そのまま入力してください", promptHint: "一言から始められます。下の入力欄に自由に書いても大丈夫です。" },
+  en: { title: "A conversation about the works of MUSIAM.", body: "The Count is MUSIAM's conversational guide for discovering works and sharing what you hear. ABI the artist and the AI Count are separate entities.", prompt: "Choose a starting point or write your own", promptHint: "A few words are enough. You can also type freely below." },
+  fr: { title: "Une conversation autour des œuvres de MUSIAM.", body: "Le Comte vous accompagne pour découvrir les œuvres et parler de ce que vous entendez. ABI伯爵, l’artiste, et le Comte IA sont deux entités distinctes.", prompt: "Choisissez un sujet ou écrivez le vôtre", promptHint: "Quelques mots suffisent. Vous pouvez aussi écrire librement ci-dessous." },
+  es: { title: "Una conversación sobre las obras de MUSIAM.", body: "El Conde te ayuda a descubrir obras y compartir lo que escuchas. ABI伯爵, el artista, y el Conde de IA son entidades distintas.", prompt: "Elige un tema o escribe el tuyo", promptHint: "Bastan unas palabras. También puedes escribir libremente abajo." },
+  de: { title: "Ein Gespräch über die Werke von MUSIAM.", body: "Der Graf begleitet dich beim Entdecken der Werke und beim Austausch über das Gehörte. ABI伯爵, der Künstler, und der KI-Graf sind zwei verschiedene Personen.", prompt: "Wähle einen Einstieg oder schreibe selbst", promptHint: "Ein paar Worte genügen. Du kannst unten auch frei schreiben." },
+  ar: { title: "حوار حول أعمال MUSIAM.", body: "يرشدك الكونت في اكتشاف الأعمال ومشاركة انطباعك عمّا تسمعه. ABI伯爵 الفنان والكونت الذكي شخصيتان منفصلتان.", prompt: "اختر بداية أو اكتب ما تريد", promptHint: "كلمات قليلة تكفي. يمكنك الكتابة بحرية في الأسفل أيضًا." },
+};
 
 function newConversationId() {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") return crypto.randomUUID();
@@ -168,7 +177,7 @@ function TypewriterText({ text, animate }: { text: string; animate: boolean }) {
       i += 1;
       setShown(text.slice(0, i));
       if (i >= text.length) window.clearInterval(id);
-    }, 80);
+    }, 22);
     return () => window.clearInterval(id);
   }, [text, animate]);
   return <>{shown}</>;
@@ -230,6 +239,7 @@ export default function ChatPage() {
 
   const timeCopy = useMemo(() => getLocalizedSalonTimeCopy(lang, timeTone), [lang, timeTone]);
   const ui = useMemo(() => getChatUiText(lang), [lang]);
+  const intro = CHAT_INTRO_COPY[lang];
   const langProfile = useMemo(() => getLanguageProfile(lang), [lang]);
   const starters = useMemo(() => {
     const defaults = getSalonStarters(lang, timeTone);
@@ -739,21 +749,34 @@ export default function ChatPage() {
             </small>
           </aside>
         )}
+        {!metalPrintEntry && !officeArtEntry && !musicWorkEntry && messages.length <= 1 && (
+          <aside className={styles.chatIntro} aria-label={lang === "ja" ? "伯爵Chatの案内" : "About Count Chat"}>
+            <p className={styles.chatIntroKicker}>MEET THE COUNT</p>
+            <h2>{intro.title}</h2>
+            <p>{intro.body}</p>
+          </aside>
+        )}
         {started && messages.length <= 1 && (
-          <div className={styles.promptRow}>
-            {starters.map((s, starterIndex) => (
-              <button
-                key={s}
-                className={styles.promptChip}
-                onClick={() => {
-                  capture("salon_starter_click", { lang, timeTone, starterIndex, sourceIntent: metalPrintEntry ? "metal-print" : officeArtEntry ? "office-art" : "direct" });
-                  sendText(s);
-                }}
-                disabled={sending}
-              >
-                {s}
-              </button>
-            ))}
+          <div className={styles.starterSection}>
+            <div className={styles.starterHeading}>
+              <p>{intro.prompt}</p>
+              <span>{intro.promptHint}</span>
+            </div>
+            <div className={styles.promptRow} aria-label={intro.prompt}>
+              {starters.map((s, starterIndex) => (
+                <button
+                  key={s}
+                  className={styles.promptChip}
+                  onClick={() => {
+                    capture("salon_starter_click", { lang, timeTone, starterIndex, sourceIntent: metalPrintEntry ? "metal-print" : officeArtEntry ? "office-art" : "direct" });
+                    sendText(s);
+                  }}
+                  disabled={sending}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
@@ -790,7 +813,7 @@ export default function ChatPage() {
           {replyPhase === "typing" && (
             <div className={styles.assistantBubble}>
               <p className={styles.bubbleRole}>{personaName("count", lang)}</p>
-              <p className={styles.thinking} aria-label={ui.typingLabel}>
+              <p className={styles.thinking} role="status" aria-label={ui.typingLabel}>
                 <span /><span /><span />
                 <span className={styles.thinkingText}>{ui.typingLabel}</span>
               </p>
@@ -806,7 +829,7 @@ export default function ChatPage() {
             </div>
             {cards.map((work) => (
               <article className={styles.giftCard} key={work.workId} data-work-id={work.workId}>
-                <img className={styles.giftCover} src={work.cover} alt={work.title} />
+                <img className={styles.giftCover} src={work.cover} alt={work.title} loading="lazy" decoding="async" />
                 <div className={styles.giftBody}>
                   {work.type && <p className={styles.giftWorkType}>{work.type}</p>}
                   <h3 className={styles.giftWorkTitle}>{work.title}</h3>
@@ -874,6 +897,7 @@ export default function ChatPage() {
             ref={inputRef}
             className={styles.input}
             rows={1}
+            aria-label={ui.inputPlaceholder}
             placeholder={metalPrintEntry
               ? lang === "ja"
                 ? "例：夕方に西日が入る書斎です"
@@ -925,6 +949,11 @@ export default function ChatPage() {
             {lastFailedRequestRef.current && (
               <button type="button" onClick={retryLastReply} disabled={sending}>
                 {lang === "ja" ? "もう一度送る" : "Try again"}
+              </button>
+            )}
+            {!lastFailedRequestRef.current && messages.length === 0 && (
+              <button type="button" onClick={() => void begin(lang, timeTone)} disabled={sending}>
+                {lang === "ja" ? "案内を再読み込み" : "Reload the welcome"}
               </button>
             )}
           </div>
