@@ -1,0 +1,100 @@
+{
+  "id": "CHAT_HISTORY_RUNTIME_READINESS",
+  "status": "AUDITED_COMMITTED",
+  "auditDate": "2026-09-25",
+  "startingHead": "e6b213a807d327d165db00b3d2f94fc6f3834e36",
+  "branch": "recovery/musiam-clean-20260920",
+  "protectedUntracked": "ops/market-learning/daily-20260925/",
+  "scope": "read-only source and metadata audit; records and validator only",
+  "storage": {
+    "provider": "Upstash Redis REST",
+    "adapter": "@upstash/redis Redis",
+    "key": "chat-history:v1:{conversationId}",
+    "schemaVersion": 1,
+    "get": "Redis GET exact UUID-derived key; absent key returns history null; no TTL refresh",
+    "put": "read existing record then Redis SET exact key with EX=7776000; refreshes expiry and preserves existing createdAt",
+    "delete": "Redis DEL exact key; no wildcard or global deletion",
+    "ttlSeconds": 7776000,
+    "maxMessages": 40,
+    "perMessageContentCharacters": 2000,
+    "httpBodyLimitExplicitInHistoryRoute": false,
+    "concurrency": "server read-then-set last-write-wins; no version check or compare-and-set",
+    "storageUnavailable": "GET, PUT and DELETE each return HTTP 503 {ok:false,error:history_unavailable}; no fallback persistence"
+  },
+  "environment": {
+    "contract": "server requires one URL and one token; UPSTASH_* preferred independently via nullish coalescing, KV_* fallback; missing either returns 503",
+    "requiredAlternatives": [
+      ["UPSTASH_REDIS_REST_URL", "KV_REST_API_URL"],
+      ["UPSTASH_REDIS_REST_TOKEN", "KV_REST_API_TOKEN"]
+    ],
+    "variables": [
+      {"name":"UPSTASH_REDIS_REST_URL","required":"URL alternative","serverOnly":true,"productionNeeded":true,"previewNeededForHistory":true,"local":"ABSENT","preview":"UNVERIFIED_SECRET_BOUNDARY","production":"UNVERIFIED_SECRET_BOUNDARY"},
+      {"name":"UPSTASH_REDIS_REST_TOKEN","required":"token alternative","serverOnly":true,"productionNeeded":true,"previewNeededForHistory":true,"local":"ABSENT","preview":"UNVERIFIED_SECRET_BOUNDARY","production":"UNVERIFIED_SECRET_BOUNDARY"},
+      {"name":"KV_REST_API_URL","required":"URL fallback alternative","serverOnly":true,"productionNeeded":true,"previewNeededForHistory":true,"local":"ABSENT","preview":"UNVERIFIED_SECRET_BOUNDARY","production":"UNVERIFIED_SECRET_BOUNDARY"},
+      {"name":"KV_REST_API_TOKEN","required":"token fallback alternative","serverOnly":true,"productionNeeded":true,"previewNeededForHistory":true,"local":"ABSENT","preview":"UNVERIFIED_SECRET_BOUNDARY","production":"UNVERIFIED_SECRET_BOUNDARY"}
+    ],
+    "localBasis": "current process keys absent and no local .env file; .env.example contains placeholders only",
+    "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+    "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+    "metadataStatus": "UNVERIFIED_DUE_TO_SECRET_BOUNDARY",
+    "metadataReason": "Vercel CLI unavailable; available connector has no dedicated environment-name/target listing; no secret-bearing project or environment response requested",
+    "clientSecretExposure": 0,
+    "clientExposureBasis": "server-only process.env references; no NEXT_PUBLIC history credential reference, history response, browser fixture, or compiled .next/static match for credential names"
+  },
+  "deployment": {
+    "latestListedProductionTargetId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+    "latestListedProductionTargetCreatedUtc": "2026-09-21T17:44:16.242Z",
+    "latestListedProductionTargetState": "READY",
+    "latestListedProductionTargetGitSha": null,
+    "currentActiveProductionDeployment": "UNVERIFIED",
+    "currentLocalHistoryContractDeployed": "UNVERIFIED",
+    "redisConnectivity": "UNVERIFIED_WITHOUT_SECRET_ACCESS"
+  },
+  "privacy": {
+    "conversationId": "anonymous browser-generated UUID v4 in localStorage; server UUID validated; no account/payment/entitlement binding",
+    "conversationIdCaveat": "UUID acts as bearer lookup capability and appears in GET/DELETE query string; holders can read/delete that conversation; typed message content can contain user-supplied personal data",
+    "persistedMessageAllowlist": ["role", "content", "persona", "recommendedWorkId"],
+    "recommendedWorkId": "assistant only, nonempty trimmed string <=180, exact merged Canonical Catalog ID on PUT and GET; unknown/stale ID removed while text stays; latest assistant card rebuilt without selection or title fallback",
+    "disallowedSnapshots": ["card", "title", "image URL", "public action URL", "reason", "score", "rank", "price", "availability", "ownership", "entitlement", "analytics/profile metadata"],
+    "logging": "history route logs raw caught error object; message body, conversationId and credential are not intentionally logged, but exception-field leakage is unproven",
+    "historyIsEntitlement": false
+  },
+  "findings": [
+    {"severity":"BLOCKER","code":"DELETE_FALSE_SUCCESS","evidence":"chat.tsx queueHistoryDeletion ignores non-2xx DELETE and exceptions; forgetConversation and memory-off paths show deletion/stopped toast even if Redis DEL fails","remediation":"Require confirmed DELETE ok before claiming removal; preserve the ID and retry path on failure"},
+    {"severity":"HIGH","code":"CONCURRENCY_RISK","evidence":"writeChatHistory reads then SETs whole record without CAS/version; client serialization is per browser instance only","remediation":"Define and implement server conflict policy or atomic/versioned writes before production activation"},
+    {"severity":"HIGH","code":"ERROR_LOG_PRIVACY_RISK","evidence":"API catch logs raw error object; provider exception fields have not been proven free of request/credential data","remediation":"Log a bounded error category without raw exception fields"},
+    {"severity":"MEDIUM","code":"PAYLOAD_BOUNDING_GAP","evidence":"40 messages and 2000 characters per message bound persisted content; history route has no explicit HTTP body byte limit, and recommendedWorkId is z.unknown before normalization","remediation":"Set explicit body byte bound and validate ID type/length before catalog load"},
+    {"severity":"MEDIUM","code":"ANONYMOUS_BEARER_ID","evidence":"GET and DELETE rely on knowledge of UUID; ID is stored in browser localStorage and sent in URL query","remediation":"Review threat model and privacy notice, including URL/request logging"},
+    {"severity":"NOTE","code":"ENV_METADATA_UNVERIFIED","evidence":"Production and Preview env name/target presence could not be inspected without a safe metadata-only tool","remediation":"Use a reviewed names-and-targets-only Vercel metadata listing"}
+  ],
+  "readiness": "BLOCKED_RUNTIME_SAFETY",
+  "secondaryConfigurationState": "ENV_METADATA_UNVERIFIED",
+  "validation": {
+    "strengthening02Deterministic": "PASS 16/16",
+    "strengthening02Browser": "PASS 13/13; F8 new/legacy/invalid, F9 503, F10 stale; provider calls 0; external requests blocked 22",
+    "r7c1": "PASS 24/24",
+    "r7c2": "PASS 20/20",
+    "typecheck": "PASS",
+    "scopedLint": "PASS: audit validator .mjs, 0 errors, 0 warnings (existing .eslintignore deprecation notice)",
+    "auditValidator": "PASS: 27/27",
+    "chatSales": "NOT_APPLICABLE_CURRENT_CHAT_PRODUCT_LANE"
+  },
+  "operations": {
+    "secretValuesRead": 0,
+    "envMutations": 0,
+    "customerHistoryReads": 0,
+    "customerHistoryWrites": 0,
+    "customerHistoryDeletes": 0,
+    "redisDataOperations": 0,
+    "providerCalls": 0,
+    "paymentMutations": 0,
+    "analyticsAdditions": 0,
+    "applicationChanges": 0,
+    "configChanges": 0,
+    "deploys": 0,
+    "pushes": 0
+  },
+  "truthBoundary": "Source and local synthetic fixtures establish contracts only. Fixture PASS is not Production Redis reliability; env presence is not connectivity; connectivity would not prove customer-data correctness; local HEAD Production parity is unverified.",
+  "nextGate": "Fix DELETE acknowledgement and define concurrency/logging/body-limit safeguards, then obtain safe Vercel env-name/target metadata and reassess; no Production history data access or deploy in this gate",
+  "recommendedNextModel": "GPT-6 Sol, medium"
+}
