@@ -18,9 +18,13 @@ docs/AI/
 ops/recovery/
 ops/product/
 ops/market-learning/daily-20260925/
+ops/market-learning/daily-20260925
+ops/market-learning/daily-20260926
 scripts/validate-cleanup-c4c-private-preservation.mjs
 scripts/validate-chat-history-preview-deployment.mjs
 scripts/validate-chat-history-preview-deploy-input-remediation.mjs
+scripts/validate-chat-history-preview-deployment-retry.mjs
+scripts/validate-chat-history-production-release-readiness.mjs
 scripts/fixture-chat-history-runtime-safety.mjs
 scripts/fixture-chat-strengthening-02.browser.mjs
 

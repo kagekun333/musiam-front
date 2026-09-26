@@ -1,0 +1,772 @@
+{
+  "schemaVersion": 3,
+  "id": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS",
+  "gate": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS_REMEDIATION",
+  "date": "2026-09-26",
+  "startingHead": "d745c61f9f3817a6c32ac82716b3948c9fb95eb7",
+  "branch": "recovery/musiam-clean-20260920",
+  "stateLock": {
+    "trackedChanges": [
+      ".vercelignore"
+    ],
+    "staged": 0,
+    "unknownTracked": 0,
+    "unknownUntracked": 0,
+    "allowedUntracked": [
+      ".pnpm-store/",
+      "docs/AI/CHAT_HISTORY_PRODUCTION_RELEASE_READINESS.md",
+      "ops/product/chat-history-production-release-readiness-20260926.json",
+      "scripts/validate-chat-history-production-release-readiness.mjs",
+      "ops/market-learning/daily-20260925/",
+      "ops/market-learning/daily-20260926/"
+    ]
+  },
+  "historicalObservation": {
+    "schemaVersion": 1,
+    "id": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS",
+    "date": "2026-09-26",
+    "startingHead": "d745c61f9f3817a6c32ac82716b3948c9fb95eb7",
+    "branch": "recovery/musiam-clean-20260920",
+    "trackedTreeCleanAtStart": true,
+    "protectedUntracked": "ops/market-learning/daily-20260925/",
+    "previewSourceHead": "b92a3c43e223e08dcd76fcb5869dc3244f460714",
+    "previewToCurrentHeadDelta": [
+      "docs/AI/CHAT_HISTORY_PREVIEW_DEPLOYMENT_RETRY.md",
+      "ops/product/chat-history-preview-deployment-retry-20260925.json",
+      "scripts/validate-chat-history-preview-deployment-retry.mjs"
+    ],
+    "applicationRuntimeDrift": 0,
+    "deployInput": {
+      "collector": "Vercel CLI 59.23.2 offline inspectDeploymentFiles",
+      "entries": 3210,
+      "regularFiles": 3202,
+      "directoryEntries": 8,
+      "bytes": 214069826,
+      "manifestSha256": "2279f1c42472759f04fb36835c6168fe53c8f54f61b8f2c0daa4e3b1cd3babc3",
+      "equalsVerifiedPreview": false,
+      "addedAuditSourceFiles": [
+        {
+          "path": "scripts/validate-chat-history-preview-deployment-retry.mjs",
+          "bytes": 11673
+        },
+        {
+          "path": "scripts/validate-chat-history-production-release-readiness.mjs",
+          "bytes": 5035
+        }
+      ],
+      "counterfactualWithoutAddedAuditSourceFiles": {
+        "entries": 3208,
+        "bytes": 214053118,
+        "manifestSha256": "c86dad16b2fdac9a11a08bf4daa3f0680037baa9a63e19f10f152e00f95d5284"
+      },
+      "unexpectedUntrackedFiles": 0,
+      "protectedDescendantFiles": 0,
+      "protectedDirectoryMetadataOnly": true,
+      "envFiles": 0,
+      "secretPrivateFiles": 0,
+      "chatFixtures": 0,
+      "governanceRecords": 0
+    },
+    "preview": {
+      "id": "dpl_Bc9YHMTXaqgV9qnxHbrmLZRW16pT",
+      "state": "READY",
+      "target": "preview",
+      "providerTargetField": null,
+      "aliases": [],
+      "gitCommitSha": "b92a3c43e223e08dcd76fcb5869dc3244f460714",
+      "verifiedDeployInputSha256": "c86dad16b2fdac9a11a08bf4daa3f0680037baa9a63e19f10f152e00f95d5284",
+      "nextVersion": "15.5.12",
+      "previousSmokeEvidence": "PASS_CARRIED_FORWARD_NOT_RERUN",
+      "smoke": {
+        "rootGet": 200,
+        "chatGet": 200,
+        "invalidHistoryGet": 400,
+        "invalidHistoryDelete": 400,
+        "invalidHistoryPut": 400,
+        "oversizedHistoryPut": 413,
+        "unsupportedChatGet": 405,
+        "invalidChatPost": 400,
+        "validHistoryOperations": 0,
+        "normalChatPosts": 0,
+        "redisCustomerDataOperationsBySmokeFlow": 0,
+        "providerCallsBySmokeFlow": 0,
+        "paymentOperations": 0,
+        "boundedErrorFatalCount": 0,
+        "bounded5xxCount": 0
+      }
+    },
+    "productionBefore": {
+      "deploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "state": "READY",
+      "target": "production",
+      "aliases": [
+        "www.hakusyaku.xyz",
+        "musiam-front.vercel.app",
+        "hakusyaku.xyz",
+        "musiam-front-hakusyakus-projects.vercel.app"
+      ],
+      "wwwTargetDeploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "isRollbackCandidate": true,
+      "rollbackExecutionTested": false,
+      "sourceAuthority": "EXACT_REPRODUCIBLE_SOURCE_3150_TUPLES_NO_GIT_SHA"
+    },
+    "currentChatHistoryContractDeployedToProduction": false,
+    "productionEnvContract": "PRESENT_METADATA_ONLY",
+    "redisConnectivity": "UNVERIFIED_WITHOUT_SECRET_ACCESS",
+    "productionCustomerHistory": "UNVERIFIED_NOT_TESTED",
+    "runtimeRisks": {
+      "concurrentPutLastWriteWins": "ACCEPTED_DEFERRED_NON_BLOCKING",
+      "bearerUuidQueryString": "ACCEPTED_DEFERRED",
+      "redisConnectivity": "DEFERRED_UNKNOWN_FAIL_CLOSED_503",
+      "productionCustomerHistory": "DEFERRED_UNKNOWN_NO_DATA_ACCESS",
+      "historyFailureChatIsolation": "LOCAL_CONTRACT_VERIFIED_NOT_PRODUCTION_PROOF"
+    },
+    "promotion": {
+      "method": "VERCEL_PROMOTE_PREVIEW_TO_PRODUCTION",
+      "capability": "SUPPORTED_WITH_NEW_PRODUCTION_DEPLOYMENT",
+      "rebuildsProduction": true,
+      "usesProductionEnvironmentVariables": true,
+      "exactPreviewArtifactPromotion": false,
+      "productionAliasChange": "ON_SUCCESS_POINTS_TO_NEW_PRODUCTION_DEPLOYMENT",
+      "executed": false
+    },
+    "rollback": {
+      "targetDeploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "method": "vercel rollback dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "precondition": "Reconfirm target READY, current alias, and rollback candidate immediately before any authorized promotion",
+      "verification": "After rollback, read deployment and www alias metadata and run bounded customer-data-free HTML smoke",
+      "executed": false
+    },
+    "localValidation": {
+      "typecheck": "PASS_DIRECT_TSC",
+      "strengthening02": "PASS_16_OF_16",
+      "historyRuntimeSafetyValidator": "STOPPED_UNEXPECTED_LOCAL_PNPM_STORE",
+      "historyRuntimeSafetyFixture": "BLOCKED_SANDBOX_LOOPBACK_EPERM",
+      "envMetadataValidator": "STOPPED_UNEXPECTED_LOCAL_PNPM_STORE",
+      "previewDeploymentValidator": "PASS_28_THEN_STOPPED_UNEXPECTED_LOCAL_PNPM_STORE",
+      "r7c1": "PASS_24_OF_24",
+      "r7c2": "PASS_20_OF_20",
+      "catalogPrimary": 450,
+      "catalogMerged": 514,
+      "exhibitionDisplayed": 514,
+      "exhibitionMissing": 0,
+      "gitDiffCheck": "PASS"
+    },
+    "generatedLocalArtifact": {
+      "path": ".pnpm-store/",
+      "source": "read-only delegated validation triggered pnpm fallback store creation",
+      "includedInDeployInput": false,
+      "removal": "AUTO_REVIEW_REJECTED_NO_BYPASS",
+      "customerData": false
+    },
+    "operations": {
+      "productionMutation": 0,
+      "customerDataOperations": 0,
+      "envMutations": 0,
+      "secretValuesRead": 0,
+      "providerCalls": 0,
+      "paymentOperations": 0,
+      "deployments": 0,
+      "promotions": 0,
+      "rollbacks": 0,
+      "pushes": 0
+    },
+    "verdict": "BLOCKED_SOURCE_PARITY",
+    "blockingReasons": [
+      "Current actual deploy-input hash differs from verified Preview; committed and new audit validator scripts are included.",
+      "Current Vercel Preview promotion performs a new Production build, so the tested Preview artifact itself is not the Production artifact."
+    ],
+    "requiredApprovalForFutureProductionGate": "APPROVE_CHAT_HISTORY_PRODUCTION_PROMOTION",
+    "nextGate": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS_REMEDIATION",
+    "recommendedNextModel": "gpt-6-astra/high",
+    "truthBoundary": "Source and metadata audit only. Preview smoke is historical bounded evidence; Production history, Redis connectivity, new Production build, and rollback execution are unverified. No Production change was made."
+  },
+  "previousRemediation": {
+    "schemaVersion": 2,
+    "id": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS",
+    "date": "2026-09-26",
+    "gate": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS_REMEDIATION",
+    "startingHead": "d745c61f9f3817a6c32ac82716b3948c9fb95eb7",
+    "branch": "recovery/musiam-clean-20260920",
+    "stateLock": {
+      "trackedChanges": 0,
+      "staged": 0,
+      "unknownUntracked": 0,
+      "allowedUntracked": [
+        ".pnpm-store/",
+        "docs/AI/CHAT_HISTORY_PRODUCTION_RELEASE_READINESS.md",
+        "ops/product/chat-history-production-release-readiness-20260926.json",
+        "scripts/validate-chat-history-production-release-readiness.mjs",
+        "ops/market-learning/daily-20260925/",
+        "ops/market-learning/daily-20260926/"
+      ]
+    },
+    "previewSourceHead": "b92a3c43e223e08dcd76fcb5869dc3244f460714",
+    "previewToStartingHeadDelta": [
+      "docs/AI/CHAT_HISTORY_PREVIEW_DEPLOYMENT_RETRY.md",
+      "ops/product/chat-history-preview-deployment-retry-20260925.json",
+      "scripts/validate-chat-history-preview-deployment-retry.mjs"
+    ],
+    "applicationRuntimeDrift": 0,
+    "auditValidatorSemantics": {
+      "paths": [
+        "scripts/validate-chat-history-preview-deployment-retry.mjs",
+        "scripts/validate-chat-history-production-release-readiness.mjs"
+      ],
+      "classification": "AUDIT_GOVERNANCE_ONLY",
+      "runtimeImports": 0,
+      "buildRuntimeSourceOfTruth": false,
+      "productionRequired": false,
+      "evidence": "Static source audit and tracked application/build reference search; package scripts do not invoke these validators."
+    },
+    "vercelignoreChange": {
+      "addedExactPaths": [
+        "ops/market-learning/daily-20260926",
+        "scripts/validate-chat-history-preview-deployment-retry.mjs",
+        "scripts/validate-chat-history-production-release-readiness.mjs"
+      ],
+      "broadExclusionsAdded": false,
+      "beforeBytes": 1141,
+      "afterBytes": 1298,
+      "byteDelta": 157,
+      "newProtectedRootRule": "NO_TRAILING_SLASH_EXCLUDES_ROOT_BEFORE_TRAVERSAL"
+    },
+    "expectedDeployInput": {
+      "entries": 3208,
+      "bytes": 214053118,
+      "manifestSha256": "c86dad16b2fdac9a11a08bf4daa3f0680037baa9a63e19f10f152e00f95d5284"
+    },
+    "deployInput": {
+      "collector": "Vercel CLI 59.23.2 offline inspectDeploymentFiles",
+      "entries": 3208,
+      "bytes": 214053275,
+      "regularFiles": 3200,
+      "directoryEntries": 8,
+      "manifestSha256": "a669040d9a05b72c5b6001dd318a2b5690bfdaed672457d2163ffa46b66cc498",
+      "protectedBoundary": [
+        {
+          "path": "ops/market-learning/daily-20260925",
+          "rootExists": true,
+          "descendantFileEntries": 0,
+          "payloadBytes": 0,
+          "contentIds": 0,
+          "symlinkOrSpecialPayload": 0,
+          "directoryEntries": 1
+        },
+        {
+          "path": "ops/market-learning/daily-20260926",
+          "rootExists": true,
+          "descendantFileEntries": 0,
+          "payloadBytes": 0,
+          "contentIds": 0,
+          "symlinkOrSpecialPayload": 0,
+          "directoryEntries": 0
+        }
+      ],
+      "pnpmStoreEntries": 0,
+      "envFiles": 0,
+      "governanceRecords": 0,
+      "chatFixtures": 0,
+      "privateFiles": 0,
+      "equalsVerifiedPreview": false,
+      "byteDrift": 157,
+      "deployInputDrift": true,
+      "manifestHashAlgorithm": "SHA-256(JSON.stringify(ordered [path, mode, sha] tuples))"
+    },
+    "protectedBoundaryMethod": "Unmodified Vercel CLI 59.23.2 inspectDeploymentFiles with fail-closed fs content/readlink guards for both roots and a traversal guard for daily-20260926; the new root was excluded before exploration. Existing daily-20260925 retained directory metadata only. No protected file content was read or hashed.",
+    "mismatchAnalysis": {
+      "observation": "The observed +157 payload bytes exactly equals the .vercelignore size increase.",
+      "inference": "The changed deploy configuration itself explains the remaining payload difference after removing the two audit validators. No counterfactual or normalized manifest is accepted as actual parity.",
+      "diagnosticManifestRecomputationPerformed": false
+    },
+    "previewContinuity": "NOT_REFRESHED_STOPPED_AT_STEP_5_HARD_STOP",
+    "productionContinuity": "NOT_REFRESHED_STOPPED_AT_STEP_5_HARD_STOP",
+    "productionEnvContract": "PRESENT_METADATA_ONLY_CARRIED_FORWARD_HUMAN_DASHBOARD",
+    "redisConnectivity": "UNVERIFIED_WITHOUT_SECRET_ACCESS",
+    "productionCustomerHistory": "UNVERIFIED_NOT_TESTED",
+    "runtimeRisks": {
+      "concurrentPutLastWriteWins": "ACCEPTED_DEFERRED_NON_BLOCKING",
+      "bearerUuidQueryString": "ACCEPTED_DEFERRED",
+      "redisConnectivity": "DEFERRED_UNKNOWN_FAIL_CLOSED_503",
+      "productionCustomerHistory": "DEFERRED_UNKNOWN_NO_DATA_ACCESS",
+      "historyFailureChatIsolation": "LOCAL_CONTRACT_VERIFIED_NOT_PRODUCTION_PROOF"
+    },
+    "releaseStrategy": {
+      "method": "STAGED_PRODUCTION_BUILD_THEN_PROMOTE",
+      "oldMethod": "VERCEL_PROMOTE_PREVIEW_TO_PRODUCTION",
+      "status": "OFFICIAL_SEMANTICS_VERIFIED_NOT_AUTHORIZED_TO_EXECUTE",
+      "stagedCommand": "vercel --prod --skip-domain",
+      "productionEnvironmentVariables": true,
+      "productionTargetBuild": true,
+      "assignsCustomProductionDomains": false,
+      "changesCurrentProductionTraffic": false,
+      "futurePromotionTarget": "VERIFIED_STAGED_PRODUCTION_DEPLOYMENT_ONLY",
+      "futurePromotionRebuild": false,
+      "documentation": [
+        "https://vercel.com/docs/cli/deploy#skip-domain",
+        "https://vercel.com/docs/deployments/promoting-a-deployment#staging-and-promoting-a-production-deployment"
+      ],
+      "executed": false
+    },
+    "generatedLocalArtifact": {
+      "path": ".pnpm-store/",
+      "classification": "KNOWN_LOCAL_GENERATED_ARTIFACT",
+      "deployInputEntries": 0,
+      "removed": false,
+      "currentTrackedCount": "NOT_RECHECKED_AFTER_HARD_STOP",
+      "customerData": "PRIOR_TASK_GENERATED_PROVENANCE_NOT_CONTENT_INSPECTED",
+      "blocksReadiness": false
+    },
+    "localValidation": {
+      "offlineCollector": "EXECUTED_PARITY_ASSERTION_FAILED",
+      "protectedBoundary": "PASS_ZERO_PAYLOAD_BOTH_ROOTS",
+      "typecheck": "NOT_RERUN_HARD_STOP",
+      "strengthening02": "NOT_RERUN_HARD_STOP",
+      "runtimeSafety": "NOT_RERUN_HARD_STOP",
+      "envMetadata": "NOT_RERUN_HARD_STOP",
+      "r7c1": "NOT_RERUN_HARD_STOP",
+      "r7c2": "NOT_RERUN_HARD_STOP",
+      "catalog": "NOT_RERUN_HARD_STOP",
+      "exhibition": "NOT_RERUN_HARD_STOP",
+      "readinessValidator": "NOT_UPDATED_OR_RUN_AFTER_HARD_STOP"
+    },
+    "rollback": {
+      "targetDeploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "continuity": "HISTORICAL_ONLY_NOT_REFRESHED_THIS_ATTEMPT",
+      "executed": false
+    },
+    "operations": {
+      "productionMutation": 0,
+      "customerDataOperations": 0,
+      "envMutations": 0,
+      "secretValuesRead": 0,
+      "providerCalls": 0,
+      "paymentOperations": 0,
+      "deployments": 0,
+      "promotions": 0,
+      "rollbacks": 0,
+      "pushes": 0,
+      "productionTrafficMutations": 0,
+      "protectedContentReads": 0,
+      "protectedContentHashes": 0,
+      "dependencyInstalls": 0,
+      "localCommits": 0
+    },
+    "verdict": "BLOCKED_DEPLOY_INPUT_PARITY",
+    "blockingReasons": [
+      "Actual manifest SHA-256 differs from the required verified Preview manifest. Actual payload exceeds the required bytes by 157 despite matching the entry count."
+    ],
+    "nextGate": "CHAT_HISTORY_PRODUCTION_RELEASE_READINESS_REMEDIATION",
+    "futureHumanGate": "CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT",
+    "futureHumanGateApproval": "APPROVE_CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT",
+    "futureHumanGateReady": false,
+    "recommendedNextModel": "gpt-6-astra/high",
+    "truthBoundary": "This attempt stopped at Step 5. Application source audit and zero protected payload were verified locally. Actual deploy-input parity failed. Previous Preview/Production/runtime evidence is historical and was not refreshed. No READY claim, commit, deploy, traffic, environment, customer-data operation, or push."
+  },
+  "contractAuthority": "DIRECT_USER_REQUEST_SPLIT_RAW_CONTROL_RUNTIME_PARITY_20260926",
+  "applicationRuntimeDrift": 0,
+  "runtimeDeployPayloadParity": "PASS",
+  "deployControlDelta": "SAFE_MINIMAL_AUDIT_ONLY",
+  "protectedOperationalDataExposure": 0,
+  "fullRawDeployInputParity": "NOT_EQUAL_BY_REVIEWED_DEPLOY_CONTROL_DELTA",
+  "deployInput": {
+    "entries": 3207,
+    "regularFiles": 3200,
+    "directoryEntries": 7,
+    "bytes": 214053310,
+    "manifestSha256": "8e6aa088f101e59e036be170609634488937455df64404c25d2ce1045904c493"
+  },
+  "runtimePayload": {
+    "entries": 3206,
+    "regularFiles": 3199,
+    "directoryEntries": 7,
+    "bytes": 214051977,
+    "manifestSha256": "205e6492b7db9dba03c4c4527775390b4a04677bf9a12f95c62625704d16d6b9"
+  },
+  "parityProof": {
+    "collector": "Vercel CLI 59.23.2 offline inspectDeploymentFiles",
+    "hashDefinition": "SHA-256(JSON.stringify(collector-ordered [path, mode, sha] tuples))",
+    "actualCollectorOutputModified": false,
+    "historicalSourceHead": "b92a3c43e223e08dcd76fcb5869dc3244f460714",
+    "historicalRawReproduced": {
+      "entries": 3208,
+      "regularFiles": 3200,
+      "directoryEntries": 8,
+      "bytes": 214053118,
+      "manifestSha256": "c86dad16b2fdac9a11a08bf4daa3f0680037baa9a63e19f10f152e00f95d5284"
+    },
+    "previousRawReproduced": {
+      "entries": 3208,
+      "regularFiles": 3200,
+      "directoryEntries": 8,
+      "bytes": 214053275,
+      "manifestSha256": "a669040d9a05b72c5b6001dd318a2b5690bfdaed672457d2163ffa46b66cc498"
+    },
+    "previousOnlyChangedPath": ".vercelignore",
+    "previousByteDelta": 157,
+    "currentRawDeltaPaths": [
+      ".vercelignore",
+      "ops/market-learning/daily-20260925"
+    ],
+    "currentControlByteDelta": 192,
+    "historicalReplayMethod": "Preview Git blobs materialized only for current actual safe payload paths in fresh temporary storage; full filesystem modes preserved because Git does not retain 0600 vs 0644. A new empty directory reproduces the historical protected metadata tuple. The unmodified collector must reproduce the complete historical c86dad16 raw hash before any comparison is accepted. This cryptographically anchors the reconstructed baseline; it is not a new remote deployment or raw-output normalization.",
+    "initialReplayAttempt": "Git-mode-only replay did not reproduce the historical raw hash; rejected. Preserving observed filesystem modes reproduced the exact independently fixed historical hash. No canonical mode changed.",
+    "classifications": {
+      "DEPLOY_CONTROL": [
+        ".vercelignore"
+      ],
+      "PROTECTED_EMPTY_DIRECTORY_METADATA": [
+        "ops/market-learning/daily-20260925"
+      ],
+      "EXCLUDED_AUDIT_VALIDATORS": [
+        "scripts/validate-chat-history-preview-deployment-retry.mjs",
+        "scripts/validate-chat-history-production-release-readiness.mjs"
+      ],
+      "PAYLOAD": "Every remaining entry is compared conservatively, including all 3199 regular files and 7 unchanged directory metadata entries; no additional governance or operational files are filtered."
+    }
+  },
+  "auditValidatorSemantics": {
+    "paths": [
+      "scripts/validate-chat-history-preview-deployment-retry.mjs",
+      "scripts/validate-chat-history-production-release-readiness.mjs"
+    ],
+    "classification": "AUDIT_GOVERNANCE_ONLY",
+    "runtimeImports": 0,
+    "buildRuntimeSourceOfTruth": false,
+    "productionRequired": false,
+    "evidence": "Static source audit and tracked application/build reference search; package scripts do not invoke these validators."
+  },
+  "deployControl": {
+    "addedExactPaths": [
+      "ops/market-learning/daily-20260925",
+      "ops/market-learning/daily-20260926",
+      "scripts/validate-chat-history-preview-deployment-retry.mjs",
+      "scripts/validate-chat-history-production-release-readiness.mjs"
+    ],
+    "existingRulesRemoved": 0,
+    "broadWildcardsAdded": 0,
+    "runtimeExclusionsAdded": 0,
+    "beforeBytes": 1141,
+    "previousBytes": 1298,
+    "currentBytes": 1333,
+    "additionalRootRuleReason": "CLI recursively lists a trailing-slash-excluded directory before filtering descendants. Exact root exclusion prunes before traversal. Both protected roots now have fail-closed traversal and content guards."
+  },
+  "protectedRoots": [
+    {
+      "path": "ops/market-learning/daily-20260925",
+      "metadataExistenceType": "REAL_DIRECTORY",
+      "descendantFileEntries": 0,
+      "payloadBytes": 0,
+      "contentIds": 0,
+      "symlinkSpecialPayload": 0,
+      "directoryMetadataEntries": 0,
+      "contentsRead": 0,
+      "descendantEnumerations": 0,
+      "modified": false,
+      "staged": false
+    },
+    {
+      "path": "ops/market-learning/daily-20260926",
+      "metadataExistenceType": "REAL_DIRECTORY",
+      "descendantFileEntries": 0,
+      "payloadBytes": 0,
+      "contentIds": 0,
+      "symlinkSpecialPayload": 0,
+      "directoryMetadataEntries": 0,
+      "contentsRead": 0,
+      "descendantEnumerations": 0,
+      "modified": false,
+      "staged": false
+    }
+  ],
+  "generatedLocalArtifact": {
+    "path": ".pnpm-store/",
+    "classification": "KNOWN_LOCAL_GENERATED_ARTIFACT",
+    "deployInputEntries": 0,
+    "gitTracked": 0,
+    "staged": 0,
+    "runtimeRelevance": 0,
+    "customerData": "TASK_GENERATED_LOCAL_DEPENDENCY_ARTIFACT_BY_PROVENANCE_NOT_CONTENT_INSPECTED",
+    "deleted": false,
+    "blocksReadiness": false
+  },
+  "continuity": {
+    "observedAt": "2026-09-26 13:03:38 UTC",
+    "source": "Vercel MCP read-only get_deployment",
+    "preview": {
+      "id": "dpl_Bc9YHMTXaqgV9qnxHbrmLZRW16pT",
+      "name": "musiam-front",
+      "url": "musiam-front-e2nbajn7i-hakusyakus-projects.vercel.app",
+      "type": "LAMBDAS",
+      "state": "READY",
+      "createdAt": 1790370398553,
+      "creator": {
+        "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+        "username": "kagekun333"
+      },
+      "project": {
+        "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+        "name": "musiam-front",
+        "framework": "nextjs"
+      },
+      "meta": {
+        "githubCommitRef": "recovery/musiam-clean-20260920",
+        "githubCommitSha": "b92a3c43e223e08dcd76fcb5869dc3244f460714",
+        "githubCommitMessage": "chore: harden preview deploy input",
+        "githubRepo": "musiam-front",
+        "githubOrg": "kagekun333"
+      },
+      "alias": [],
+      "target": null,
+      "regions": [
+        "iad1"
+      ],
+      "buildingAt": 1790370399878,
+      "ready": 1790370544114,
+      "readyState": "READY",
+      "source": "cli",
+      "aliasError": null
+    },
+    "production": {
+      "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "name": "musiam-front",
+      "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+      "type": "LAMBDAS",
+      "state": "READY",
+      "createdAt": 1790012656242,
+      "creator": {
+        "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+        "username": "kagekun333"
+      },
+      "project": {
+        "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+        "name": "musiam-front",
+        "framework": "nextjs"
+      },
+      "meta": {},
+      "alias": [
+        "www.hakusyaku.xyz",
+        "musiam-front.vercel.app",
+        "hakusyaku.xyz",
+        "musiam-front-hakusyakus-projects.vercel.app"
+      ],
+      "target": "production",
+      "regions": [
+        "iad1"
+      ],
+      "buildingAt": 1790012657421,
+      "ready": 1790012853325,
+      "readyState": "READY",
+      "source": "cli",
+      "aliasError": null
+    },
+    "www": {
+      "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "name": "musiam-front",
+      "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+      "type": "LAMBDAS",
+      "state": "READY",
+      "createdAt": 1790012656242,
+      "creator": {
+        "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+        "username": "kagekun333"
+      },
+      "project": {
+        "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+        "name": "musiam-front",
+        "framework": "nextjs"
+      },
+      "meta": {},
+      "alias": [
+        "www.hakusyaku.xyz",
+        "musiam-front.vercel.app",
+        "hakusyaku.xyz",
+        "musiam-front-hakusyakus-projects.vercel.app"
+      ],
+      "target": "production",
+      "regions": [
+        "iad1"
+      ],
+      "buildingAt": 1790012657421,
+      "ready": 1790012853325,
+      "readyState": "READY",
+      "source": "cli",
+      "aliasError": null
+    }
+  },
+  "previewEvidence": "PASS_CARRIED_FORWARD_NOT_SMOKE_RERUN",
+  "currentChatHistoryContractDeployedToProduction": false,
+  "productionEnvContract": "PRESENT_METADATA_ONLY",
+  "productionEnvAuthority": "USER_REPORTED_HUMAN_DASHBOARD_REVIEW_KV_PAIR_ALL_ENVIRONMENTS",
+  "redisConnectivity": "UNVERIFIED_WITHOUT_SECRET_ACCESS",
+  "productionCustomerHistory": "UNVERIFIED_NOT_TESTED",
+  "runtimeRisks": {
+    "concurrentPutLastWriteWins": "ACCEPTED_DEFERRED_NON_BLOCKING",
+    "bearerUuidQueryString": "ACCEPTED_DEFERRED",
+    "redisConnectivity": "DEFERRED_UNKNOWN_FAIL_CLOSED_503",
+    "productionCustomerHistory": "DEFERRED_UNKNOWN_NO_DATA_ACCESS",
+    "historyFailureChatIsolation": "LOCAL_CONTRACT_VERIFIED_NOT_PRODUCTION_PROOF"
+  },
+  "releaseStrategy": {
+    "method": "STAGED_PRODUCTION_BUILD_THEN_PROMOTE",
+    "supersededMethod": "VERCEL_PROMOTE_PREVIEW_TO_PRODUCTION",
+    "stagedCommand": "vercel --prod --skip-domain",
+    "stagedUsesProductionEnvironment": true,
+    "stagedTarget": "production",
+    "stagedChangesTraffic": false,
+    "stagedCustomDomainAssignment": false,
+    "futurePromotionTarget": "VERIFIED_STAGED_PRODUCTION_DEPLOYMENT_ONLY",
+    "futurePromotionRebuild": false,
+    "trafficGate": "CHAT_HISTORY_PRODUCTION_TRAFFIC_PROMOTION",
+    "docs": [
+      "https://vercel.com/docs/cli/deploy#skip-domain",
+      "https://vercel.com/docs/deployments/promoting-a-deployment#staging-and-promoting-a-production-deployment"
+    ],
+    "executed": false
+  },
+  "futureSmoke": {
+    "allowed": [
+      "GET /",
+      "GET /chat",
+      "invalid history GET",
+      "invalid history DELETE",
+      "invalid history PUT",
+      "oversized PUT",
+      "unsupported Chat GET",
+      "invalid Chat POST",
+      "deployment-scoped bounded fatal/error/5xx counts"
+    ],
+    "forbidden": [
+      "valid history GET",
+      "valid history PUT",
+      "valid history DELETE",
+      "normal Chat POST",
+      "Redis customer data",
+      "LLM provider",
+      "payment"
+    ]
+  },
+  "rollback": {
+    "targetDeploymentId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+    "state": "READY",
+    "isRollbackCandidate": true,
+    "executed": false,
+    "executionTested": false
+  },
+  "localValidation": {
+    "typecheck": {
+      "status": "PASS",
+      "command": "node node_modules/typescript/bin/tsc --noEmit -p /tmp/musiam-readiness-tsconfig.json",
+      "scope": "Original tsconfig extended with only protected roots and .pnpm-store excluded; no incremental write; filesystem guards prohibit protected traversal and .env reads."
+    },
+    "scopedLint": {
+      "status": "PASS",
+      "scope": "Chat API, history store, history recommendation, Chat page, and current readiness validator",
+      "errors": 0,
+      "warnings": 0,
+      "toolNotice": "Existing ESLintIgnoreWarning about legacy .eslintignore is separate from lint diagnostics."
+    },
+    "strengthening01": {
+      "status": "PASS",
+      "checks": 13
+    },
+    "strengthening02": {
+      "status": "PASS",
+      "checks": 16
+    },
+    "runtimeSafetyCanonical": {
+      "status": "BLOCKED_HISTORICAL_WORKTREE_ALLOWLIST",
+      "checksPassed": 2,
+      "reason": "Unchanged historical validator expects its old Gate file allowlist; current permitted readiness artifacts and local store are outside that historical scope. Not marked PASS."
+    },
+    "runtimeSafetyIsolated": {
+      "status": "PASS",
+      "checks": 28,
+      "unchangedValidator": true,
+      "method": "Same current source and unchanged historical validator in temporary sparse worktree/index, shared read-only canonical Git objects; real clean status, no git output mocking, canonical Git index untouched.",
+      "truth": "Historical source/evidence audit; its BLOCKED_ENV_METADATA_UNVERIFIED result remains historical and does not override later human env metadata authority."
+    },
+    "runtimeSafetyFixture": {
+      "status": "PASS",
+      "checks": 3,
+      "acceptedInvalidIdStatus": 400,
+      "oversizedStatus": 413,
+      "customerDataOperations": 0,
+      "providerCalls": 0,
+      "method": "Empty process environment; actual Next 15.5.12 apiResolver and current route; loopback-only HTTP; unchanged fixture; protected/.env reads fail closed; no Next dev dotenv loader.",
+      "initialSandboxAttempt": "BLOCKED_LOOPBACK_LISTEN_EPERM",
+      "resolution": "Approved sandbox escalation for loopback-only fixture; actual rerun PASS."
+    },
+    "r7c1": {
+      "status": "PASS",
+      "checks": 24
+    },
+    "r7c2": {
+      "status": "PASS",
+      "checks": 20
+    },
+    "r7a": {
+      "status": "PASS",
+      "primary": 450,
+      "merged": 514
+    },
+    "r7b": {
+      "status": "PASS",
+      "cases": 15
+    },
+    "r7d1": {
+      "status": "PASS",
+      "displayed": 514,
+      "missing": 0,
+      "oracle": "INACTIVE_BY_DESIGN"
+    },
+    "diffCheck": {
+      "status": "PASS"
+    },
+    "readinessValidator": {
+      "status": "PASS",
+      "checks": 17,
+      "mode": "candidate",
+      "contractOnlyChecks": 11,
+      "command": "node scripts/validate-chat-history-production-release-readiness.mjs",
+      "reproducibleAfterCommit": true
+    }
+  },
+  "operations": {
+    "productionMutation": 0,
+    "productionTrafficMutations": 0,
+    "aliasMutations": 0,
+    "customerDataOperations": 0,
+    "envMutations": 0,
+    "secretValuesRead": 0,
+    "providerCalls": 0,
+    "paymentOperations": 0,
+    "deployments": 0,
+    "stagedProductionDeployments": 0,
+    "promotions": 0,
+    "rollbacks": 0,
+    "pushes": 0,
+    "protectedContentReads": 0,
+    "protectedContentHashes": 0,
+    "protectedDescendantEnumerations": 0,
+    "dependencyInstalls": 0
+  },
+  "commitContract": {
+    "allowedFiles": [
+      ".vercelignore",
+      "docs/AI/CHAT_HISTORY_PRODUCTION_RELEASE_READINESS.md",
+      "ops/product/chat-history-production-release-readiness-20260926.json",
+      "scripts/validate-chat-history-production-release-readiness.mjs"
+    ],
+    "message": "chore: prepare staged production release",
+    "onlyAfterReady": true,
+    "huskyRequired": true,
+    "pushAllowed": false,
+    "identity": "Containing Git commit, validated as direct child of startingHead; no self-referential SHA field."
+  },
+  "verdict": "READY_FOR_STAGED_PRODUCTION_HUMAN_GATE",
+  "nextGate": "CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT",
+  "requiredApproval": "APPROVE_CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT",
+  "recommendedNextModel": "gpt-6-astra/high",
+  "truthBoundary": "Local source/payload equality and providerless fixtures are not Production runtime or Redis persistence evidence. Full raw input is unequal by reviewed deploy-control delta. Read-only live metadata confirms existing deployments and aliases only. Secret values, Redis connectivity, customer history, staged Production artifact/build, traffic promotion and rollback execution remain unverified. No Production change or push occurred."
+}
