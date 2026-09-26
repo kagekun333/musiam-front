@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 1,
+  "id": "CHAT_HISTORY_PRODUCTION_TRAFFIC_PROMOTION",
+  "date": "2026-09-26",
+  "approval": "APPROVE_CHAT_HISTORY_PRODUCTION_TRAFFIC_PROMOTION",
+  "startingLocalHead": "f9d065f26d384981140499611f0dfb7ae97c1ff6",
+  "branch": "recovery/musiam-clean-20260920",
+  "artifactSourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+  "candidateId": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+  "oldProductionId": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+  "stateLock": {
+    "trackedChanges": 0,
+    "staged": 0,
+    "unknownUntracked": 0,
+    "allowedUntracked": [
+      ".pnpm-store/",
+      "ops/market-learning/daily-20260925/",
+      "ops/market-learning/daily-20260926/"
+    ]
+  },
+  "priorGovernanceOnlyDelta": [
+    "docs/AI/CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT.md",
+    "ops/product/chat-history-staged-production-deployment-20260926.json",
+    "ops/product/chat-history-staged-production-deployment-20260926.validator.mjs"
+  ],
+  "semantics": {
+    "cliVersion": "59.23.2",
+    "officialDocumentation": [
+      "https://vercel.com/docs/cli/promote",
+      "https://vercel.com/docs/deployments/promoting-a-deployment"
+    ],
+    "existingProductionTargetPromoteRebuilds": false,
+    "rollingReleaseConfiguration": null,
+    "installedCliProductionBranchEndpoint": "POST /v10/projects/{projectId}/promote/{deploymentId}",
+    "previewCreationBranchNotUsed": true
+  },
+  "prePromotion": {
+    "capturedAt": "2026-09-26T19:48:08.830Z",
+    "snapshots": {
+      "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "sourceSha": null,
+        "createdAt": 1790012656242,
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325
+      },
+      "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "www.hakusyaku.xyz": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "sourceSha": null,
+        "createdAt": 1790012656242,
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325
+      },
+      "hakusyaku.xyz": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "sourceSha": null,
+        "createdAt": 1790012656242,
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325
+      },
+      "musiam-front.vercel.app": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "sourceSha": null,
+        "createdAt": 1790012656242,
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325
+      },
+      "musiam-front-hakusyakus-projects.vercel.app": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "sourceSha": null,
+        "createdAt": 1790012656242,
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325
+      }
+    }
+  },
+  "candidatePreflight": {
+    "startedAt": "2026-09-26T19:47:23.258420+00:00",
+    "base": "https://musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+    "requests": [
+      {
+        "path": "/",
+        "status": 200,
+        "exitCode": 0,
+        "redirect": false,
+        "html": true,
+        "bytes": 40735,
+        "passed": true
+      },
+      {
+        "path": "/chat",
+        "status": 200,
+        "exitCode": 0,
+        "redirect": false,
+        "html": true,
+        "bytes": 5271,
+        "passed": true
+      }
+    ],
+    "status": "PASS"
+  },
+  "promotion": {
+    "command": "vercel promote dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD --timeout 60s --scope team_Hj7QBy2lnfpsuHXgOWKfFdZg --no-color --non-interactive",
+    "cliExitCode": 0,
+    "writeRequests": [
+      {
+        "at": "2026-09-26T19:48:27.939Z",
+        "mode": "promote",
+        "method": "POST",
+        "host": "api.vercel.com",
+        "path": "/v10/projects/prj_OU4nbZIO3n3ieS99cMXY7eWigHAl/promote/dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD"
+      }
+    ],
+    "response": {
+      "at": "2026-09-26T19:48:28.421Z",
+      "status": 201
+    },
+    "clientReportedSuccess": true,
+    "retryPreventedByExclusiveWriteMarker": true,
+    "otherControlPlaneMutations": 0
+  },
+  "postPromotion": {
+    "capturedAt": "2026-09-26T19:48:53.102Z",
+    "passed": true,
+    "snapshots": {
+      "www.hakusyaku.xyz": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "hakusyaku.xyz": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "musiam-front.vercel.app": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "musiam-front-hakusyakus-projects.vercel.app": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "createdAt": 1790439892355,
+        "buildingAt": 1790439896130,
+        "ready": 1790440074168
+      },
+      "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "sourceSha": null,
+        "createdAt": 1790012656242,
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325
+      }
+    }
+  },
+  "productionSmoke": {
+    "status": "PASS",
+    "primaryAuthority": "https://www.hakusyaku.xyz",
+    "requests": [
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "rootGet",
+        "method": "GET",
+        "path": "/",
+        "startedAt": "2026-09-26T19:49:53.162239+00:00",
+        "finishedAt": "2026-09-26T19:49:53.587250+00:00",
+        "curlExitCode": 0,
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 0,
+        "responseBytes": 40774,
+        "html": true,
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "chatGet",
+        "method": "GET",
+        "path": "/chat",
+        "startedAt": "2026-09-26T19:49:53.588648+00:00",
+        "finishedAt": "2026-09-26T19:49:53.706966+00:00",
+        "curlExitCode": 0,
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 0,
+        "responseBytes": 5271,
+        "html": true,
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "invalidHistoryGet",
+        "method": "GET",
+        "path": "/api/chat-history?conversationId=not-a-uuid",
+        "startedAt": "2026-09-26T19:49:53.707510+00:00",
+        "finishedAt": "2026-09-26T19:49:54.817615+00:00",
+        "curlExitCode": 0,
+        "status": 400,
+        "contentType": "application/json; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 0,
+        "responseBytes": 46,
+        "error": "invalid_conversation_id",
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "invalidHistoryDelete",
+        "method": "DELETE",
+        "path": "/api/chat-history?conversationId=not-a-uuid",
+        "startedAt": "2026-09-26T19:49:54.820076+00:00",
+        "finishedAt": "2026-09-26T19:49:55.132728+00:00",
+        "curlExitCode": 0,
+        "status": 400,
+        "contentType": "application/json; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 0,
+        "responseBytes": 46,
+        "error": "invalid_conversation_id",
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "invalidHistoryPut",
+        "method": "PUT",
+        "path": "/api/chat-history",
+        "startedAt": "2026-09-26T19:49:55.134551+00:00",
+        "finishedAt": "2026-09-26T19:49:55.356243+00:00",
+        "curlExitCode": 0,
+        "status": 400,
+        "contentType": "application/json; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 2,
+        "responseBytes": 35,
+        "error": "invalid_body",
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "oversizedHistoryPut",
+        "method": "PUT",
+        "path": "/api/chat-history",
+        "startedAt": "2026-09-26T19:49:55.360032+00:00",
+        "finishedAt": "2026-09-26T19:49:56.207911+00:00",
+        "curlExitCode": 0,
+        "status": 413,
+        "contentType": "text/plain; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 614416,
+        "responseBytes": 25,
+        "boundedUnreflectedResponse": true,
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "unsupportedChatGet",
+        "method": "GET",
+        "path": "/api/chat-experience-v3",
+        "startedAt": "2026-09-26T19:49:56.208965+00:00",
+        "finishedAt": "2026-09-26T19:49:56.469787+00:00",
+        "curlExitCode": 0,
+        "status": 405,
+        "contentType": "application/json; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 0,
+        "responseBytes": 68,
+        "error": "method_not_allowed",
+        "passed": true
+      },
+      {
+        "host": "www.hakusyaku.xyz",
+        "name": "invalidChatPost",
+        "method": "POST",
+        "path": "/api/chat-experience-v3",
+        "startedAt": "2026-09-26T19:49:56.471762+00:00",
+        "finishedAt": "2026-09-26T19:49:56.704557+00:00",
+        "curlExitCode": 0,
+        "status": 400,
+        "contentType": "application/json; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 22,
+        "responseBytes": 62,
+        "error": "invalid_body",
+        "passed": true
+      }
+    ],
+    "count": 8,
+    "startedAt": "2026-09-26T19:49:53.161756+00:00",
+    "finishedAt": "2026-09-26T19:49:57.439065+00:00",
+    "credentialOrCookieSupplied": false,
+    "browserHydration": false,
+    "redirectsFollowed": 0
+  },
+  "supplementalHostnameChecks": {
+    "requests": [
+      {
+        "host": "hakusyaku.xyz",
+        "name": "aliasRootGet",
+        "method": "GET",
+        "path": "/",
+        "startedAt": "2026-09-26T19:49:56.705842+00:00",
+        "finishedAt": "2026-09-26T19:49:56.998714+00:00",
+        "curlExitCode": 0,
+        "status": 307,
+        "contentType": "text/html",
+        "redirectPresent": true,
+        "requestBytes": 0,
+        "responseBytes": 140,
+        "html": false,
+        "canonicalRedirect": true,
+        "passed": true
+      },
+      {
+        "host": "musiam-front.vercel.app",
+        "name": "aliasRootGet",
+        "method": "GET",
+        "path": "/",
+        "startedAt": "2026-09-26T19:49:56.999719+00:00",
+        "finishedAt": "2026-09-26T19:49:57.278770+00:00",
+        "curlExitCode": 0,
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "redirectPresent": false,
+        "requestBytes": 0,
+        "responseBytes": 40774,
+        "html": true,
+        "canonicalRedirect": false,
+        "passed": true
+      },
+      {
+        "host": "musiam-front-hakusyakus-projects.vercel.app",
+        "name": "aliasRootGet",
+        "method": "GET",
+        "path": "/",
+        "startedAt": "2026-09-26T19:49:57.281588+00:00",
+        "finishedAt": "2026-09-26T19:49:57.437983+00:00",
+        "curlExitCode": 0,
+        "status": 302,
+        "contentType": "text/html",
+        "redirectPresent": true,
+        "requestBytes": 0,
+        "responseBytes": 284,
+        "html": false,
+        "canonicalRedirect": false,
+        "passed": false
+      }
+    ],
+    "count": 3,
+    "rawHarnessExitCode": 1,
+    "rawHarnessStatus": "FAIL_GENERATED_ALIAS_NOT_200_OR_CANONICAL_WWW_REDIRECT",
+    "classification": {
+      "hakusyaku.xyz": "CANONICAL_WWW_REDIRECT_307",
+      "musiam-front.vercel.app": "PUBLIC_HTML_200",
+      "musiam-front-hakusyakus-projects.vercel.app": "VERCEL_GENERATED_PROJECT_ALIAS_PROTECTED_SSO_REDIRECT_302"
+    },
+    "generatedAliasRedirectMetadata": {
+      "responseBytes": 284,
+      "authenticationRequiredMarker": false,
+      "links": [
+        {
+          "scheme": "https",
+          "host": "vercel.com",
+          "path": "/sso-api",
+          "queryPresent": true
+        }
+      ]
+    },
+    "assessment": "Normal provider authentication response, not an application 200. Direct metadata resolves to the approved candidate; primary Production smoke passed. No evidence of a rollback trigger.",
+    "assessmentAuthority": "https://vercel.com/docs/deployment-protection",
+    "authenticatedGeneratedAliasApplicationResponse": "NOT_REQUESTED",
+    "redirectQueryValuesInspected": false,
+    "protectionSettingsChanged": false
+  },
+  "runtime": {
+    "candidateScoped": true,
+    "source": "Vercel MCP get_runtime_logs aggregate queries",
+    "since": "2026-09-26T19:48:27Z",
+    "capturedAt": "2026-09-26T19:50:56.134Z",
+    "errorCount": 0,
+    "fatalCount": 0,
+    "unexpected5xxCount": 0,
+    "applicationErrorObservation": "No error-level or fatal-level records in the queried candidate window",
+    "positiveControlCounts": {
+      "200": 4,
+      "400": 4,
+      "405": 1,
+      "413": 1
+    },
+    "positiveControlTotalDistinctValues": 5,
+    "positiveControlOnlyTop4Shown": true,
+    "logBodiesRead": false,
+    "queries": {
+      "queries": [
+        {
+          "deploymentId": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+          "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+          "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+          "since": "2026-09-26T19:48:27Z",
+          "until": "now",
+          "limit": 100,
+          "level": [
+            "error",
+            "fatal"
+          ],
+          "group_by": "level"
+        },
+        {
+          "deploymentId": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+          "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+          "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+          "since": "2026-09-26T19:48:27Z",
+          "until": "now",
+          "limit": 100,
+          "statusCode": "5xx",
+          "group_by": "statusCode"
+        },
+        {
+          "deploymentId": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+          "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+          "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+          "since": "2026-09-26T19:48:27Z",
+          "until": "now",
+          "limit": 100,
+          "group_by": "statusCode"
+        }
+      ],
+      "results": [
+        {
+          "status": "fulfilled",
+          "value": {
+            "content": [
+              {
+                "type": "text",
+                "text": "## Runtime Log Counts\n\n**Project:** prj_OU4nbZIO3n3ieS99cMXY7eWigHAl\n**Grouped by:** level\n\n| level | count |\n|---|---|"
+              }
+            ],
+            "isError": false
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "content": [
+              {
+                "type": "text",
+                "text": "## Runtime Log Counts\n\n**Project:** prj_OU4nbZIO3n3ieS99cMXY7eWigHAl\n**Grouped by:** statusCode\n\n| statusCode | count |\n|---|---|"
+              }
+            ],
+            "isError": false
+          }
+        },
+        {
+          "status": "fulfilled",
+          "value": {
+            "content": [
+              {
+                "type": "text",
+                "text": "## Runtime Log Counts\n\n**Project:** prj_OU4nbZIO3n3ieS99cMXY7eWigHAl\n**Grouped by:** statusCode\n\n| statusCode | count |\n|---|---|\n| 200 | 4 |\n| 400 | 4 |\n| 405 | 1 |\n| 413 | 1 |\n\n*5 distinct values total; showing top 4.*"
+              }
+            ],
+            "isError": false
+          }
+        }
+      ],
+      "capturedAt": "2026-09-26T19:50:56.134Z"
+    }
+  },
+  "rollback": {
+    "performed": false,
+    "requests": 0,
+    "targetIfTriggered": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+    "triggerConfirmed": false,
+    "reason": "Primary production routes, expected invalid-input responses, candidate identity and runtime aggregates passed; generated alias SSO redirect is provider protection."
+  },
+  "operations": {
+    "promotionWrites": 1,
+    "redeployments": 0,
+    "newDeployments": 0,
+    "manualAliasMutations": 0,
+    "rollbackWrites": 0,
+    "domainConfigMutations": 0,
+    "environmentMutations": 0,
+    "secretValuesInspected": 0,
+    "redisCustomerDataOperations": 0,
+    "normalChatProviderCalls": 0,
+    "paymentCheckoutEntitlementOperations": 0,
+    "accountSessionMutations": 0,
+    "dependencyMutations": 0,
+    "pushes": 0
+  },
+  "protectedRoots": {
+    "paths": [
+      "ops/market-learning/daily-20260925/",
+      "ops/market-learning/daily-20260926/"
+    ],
+    "rootMetadataOnly": true,
+    "contentReads": 0,
+    "descendantEnumerations": 0,
+    "contentHashes": 0,
+    "modifications": 0,
+    "staged": 0,
+    "deployInputDescendantEntries": 0,
+    "deployInputPayloadBytes": 0,
+    "deployInputContentIds": 0,
+    "deployInputSymlinkSpecialPayload": 0,
+    "dataExposure": 0,
+    "evidence": "Guarded readiness collector rerun; promotion reused the existing artifact and performed no source upload."
+  },
+  "validation": {
+    "readiness": {
+      "result": "PASS",
+      "checks": 17,
+      "mode": "historical validator with a temporary current-Gate State Lock adapter",
+      "originalSourceModified": false,
+      "adapterScope": "Only replace the obsolete first commit/worktree check with exact f9d065f State Lock and both historical governance commit deltas; all payload and remaining checks unchanged."
+    },
+    "stagedEvidence": {
+      "result": "PASS",
+      "checks": 9,
+      "sourceUnchanged": true,
+      "runBeforeNewArtifacts": true
+    },
+    "promotionEvidence": {
+      "result": "PASS",
+      "checks": 12
+    },
+    "targetedLint": "PASS",
+    "nodeSyntax": "PASS",
+    "jsonSyntax": "PASS",
+    "diffCheck": "PASS"
+  },
+  "truthBoundary": {
+    "productionEnvContract": "PRESENT_METADATA_ONLY",
+    "realRedisConnectivity": "UNVERIFIED",
+    "realCustomerHistoryCorrectness": "UNVERIFIED",
+    "realReturningUserHistory": "UNVERIFIED",
+    "paymentEntitlementCheckout": "UNVERIFIED",
+    "humanChatQuality": "UNVERIFIED",
+    "purchaseConversion": "UNVERIFIED"
+  },
+  "verdict": "PASS",
+  "releaseCycle": "COMPLETE",
+  "nextGate": "COUNT_CHAT_INTELLIGENCE_COMPLETION_AUDIT",
+  "nextGateStarted": false,
+  "localCommitPolicy": "Only these new governance artifacts may be committed after all checks; resulting SHA belongs in final handoff, not a self-referential record.",
+  "finalContinuity": {
+    "capturedAt": "2026-09-26T19:56:35.325Z",
+    "snapshots": {
+      "www.hakusyaku.xyz": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf"
+      },
+      "hakusyaku.xyz": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf"
+      },
+      "musiam-front.vercel.app": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf"
+      },
+      "musiam-front-hakusyakus-projects.vercel.app": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf"
+      },
+      "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "sourceSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf"
+      },
+      "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "state": "READY",
+        "target": "production",
+        "sourceSha": null
+      }
+    }
+  }
+}
