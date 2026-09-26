@@ -1,0 +1,589 @@
+{
+  "schemaVersion": 1,
+  "id": "CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT",
+  "date": "2026-09-26",
+  "approval": "APPROVE_CHAT_HISTORY_STAGED_PRODUCTION_DEPLOYMENT",
+  "approvalScope": "Exactly one Production-environment staged deployment with no existing traffic-target change, followed only if safe by customer-data-free smoke.",
+  "startingHead": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+  "finalHead": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+  "branch": "recovery/musiam-clean-20260920",
+  "stateLock": {
+    "trackedChanges": 0,
+    "staged": 0,
+    "unknownUntracked": 0,
+    "allowedUntracked": [
+      ".pnpm-store/",
+      "ops/market-learning/daily-20260925/",
+      "ops/market-learning/daily-20260926/"
+    ]
+  },
+  "preDeployment": {
+    "readinessValidator": "PASS_COMMITTED_17_CHECKS",
+    "contract": {
+      "actual": {
+        "entries": 3207,
+        "regularFiles": 3200,
+        "directoryEntries": 7,
+        "bytes": 214053310,
+        "manifestSha256": "8e6aa088f101e59e036be170609634488937455df64404c25d2ce1045904c493"
+      },
+      "runtime": {
+        "entries": 3206,
+        "regularFiles": 3199,
+        "directoryEntries": 7,
+        "bytes": 214051977,
+        "manifestSha256": "205e6492b7db9dba03c4c4527775390b4a04677bf9a12f95c62625704d16d6b9"
+      },
+      "historical": {
+        "entries": 3208,
+        "regularFiles": 3200,
+        "directoryEntries": 8,
+        "bytes": 214053118,
+        "manifestSha256": "c86dad16b2fdac9a11a08bf4daa3f0680037baa9a63e19f10f152e00f95d5284"
+      },
+      "previous": {
+        "entries": 3208,
+        "regularFiles": 3200,
+        "directoryEntries": 8,
+        "bytes": 214053275,
+        "manifestSha256": "a669040d9a05b72c5b6001dd318a2b5690bfdaed672457d2163ffa46b66cc498"
+      },
+      "applicationRuntimeDrift": 0,
+      "runtimeDeployPayloadParity": "PASS",
+      "deployControlDelta": "SAFE_MINIMAL_AUDIT_ONLY",
+      "protectedOperationalDataExposure": 0,
+      "fullRawDeployInputParity": "NOT_EQUAL_BY_REVIEWED_DEPLOY_CONTROL_DELTA"
+    },
+    "continuity": {
+      "capturedAt": "2026-09-26 16:24:14 UTC",
+      "preview": {
+        "id": "dpl_Bc9YHMTXaqgV9qnxHbrmLZRW16pT",
+        "name": "musiam-front",
+        "url": "musiam-front-e2nbajn7i-hakusyakus-projects.vercel.app",
+        "type": "LAMBDAS",
+        "state": "READY",
+        "createdAt": 1790370398553,
+        "creator": {
+          "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+          "username": "kagekun333"
+        },
+        "project": {
+          "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+          "name": "musiam-front",
+          "framework": "nextjs"
+        },
+        "meta": {
+          "githubCommitRef": "recovery/musiam-clean-20260920",
+          "githubCommitSha": "b92a3c43e223e08dcd76fcb5869dc3244f460714",
+          "githubCommitMessage": "chore: harden preview deploy input",
+          "githubRepo": "musiam-front",
+          "githubOrg": "kagekun333"
+        },
+        "alias": [],
+        "target": null,
+        "regions": [
+          "iad1"
+        ],
+        "buildingAt": 1790370399878,
+        "ready": 1790370544114,
+        "readyState": "READY",
+        "source": "cli",
+        "aliasError": null
+      },
+      "production": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "name": "musiam-front",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "type": "LAMBDAS",
+        "state": "READY",
+        "createdAt": 1790012656242,
+        "creator": {
+          "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+          "username": "kagekun333"
+        },
+        "project": {
+          "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+          "name": "musiam-front",
+          "framework": "nextjs"
+        },
+        "meta": {},
+        "alias": [
+          "www.hakusyaku.xyz",
+          "musiam-front.vercel.app",
+          "hakusyaku.xyz",
+          "musiam-front-hakusyakus-projects.vercel.app"
+        ],
+        "target": "production",
+        "regions": [
+          "iad1"
+        ],
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325,
+        "readyState": "READY",
+        "source": "cli",
+        "aliasError": null
+      },
+      "www": {
+        "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "name": "musiam-front",
+        "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+        "type": "LAMBDAS",
+        "state": "READY",
+        "createdAt": 1790012656242,
+        "creator": {
+          "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+          "username": "kagekun333"
+        },
+        "project": {
+          "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+          "name": "musiam-front",
+          "framework": "nextjs"
+        },
+        "meta": {},
+        "alias": [
+          "www.hakusyaku.xyz",
+          "musiam-front.vercel.app",
+          "hakusyaku.xyz",
+          "musiam-front-hakusyakus-projects.vercel.app"
+        ],
+        "target": "production",
+        "regions": [
+          "iad1"
+        ],
+        "buildingAt": 1790012657421,
+        "ready": 1790012853325,
+        "readyState": "READY",
+        "source": "cli",
+        "aliasError": null
+      }
+    },
+    "projectId": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+    "teamId": "team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+    "projectLinkMatched": true
+  },
+  "semantics": {
+    "cliVersion": "59.23.2",
+    "localNodeVersion": "22.22.3",
+    "command": "vercel deploy --prod --skip-domain --yes --no-wait --no-color --scope team_Hj7QBy2lnfpsuHXgOWKfFdZg",
+    "officialDocs": [
+      "https://vercel.com/docs/cli/deploy#skip-domain",
+      "https://vercel.com/docs/deployments/promoting-a-deployment#staging-and-promoting-a-production-deployment"
+    ],
+    "installedCliSource": "--skip-domain sets autoAssignCustomDomains=false; --prod sets target=production.",
+    "limitationObserved": "Despite the skip-domain flag, one pre-existing generated vercel.app alias began resolving to the new deployment after READY. No all-alias-preservation guarantee is inferred from the flag.",
+    "rootCause": "Observed provider-side generated-alias reassignment during the staged deployment; deeper provider semantics not established."
+  },
+  "deployment": {
+    "classification": "STAGED_PRODUCTION_CANDIDATE_BLOCKED_ALIAS_SIDE_EFFECT",
+    "attempts": 1,
+    "commandExitCode": 0,
+    "attemptStartedAt": "2026-09-26T16:24:45.581184+00:00",
+    "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+    "url": "https://musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+    "state": "READY",
+    "target": "production",
+    "source": "cli",
+    "sourceHead": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+    "sourceBranch": "recovery/musiam-clean-20260920",
+    "createdAt": "2026-09-26T16:24:52.355000+00:00",
+    "readyAt": "2026-09-26T16:27:54.168000+00:00",
+    "buildDurationMs": 178038,
+    "aliases": [
+      "musiam-front-hakusyakus-projects.vercel.app"
+    ],
+    "build": "PASS_READY_PRODUCTION_TARGET",
+    "nextVersion": "15.5.12",
+    "downloadedFiles": 3207,
+    "remoteNodeVersion": "UNVERIFIED_NOT_EXPOSED_BY_METADATA"
+  },
+  "buildEvidence": {
+    "partialBuildLogAllowlistedMetadata": {
+      "exitCode": 0,
+      "nextVersions": [
+        "15.5.12"
+      ],
+      "downloadedFileCounts": [
+        "3207"
+      ],
+      "buildCompleted": false,
+      "compilationSucceeded": true,
+      "buildOutputDeployed": false,
+      "buildReportedError": false
+    },
+    "finalBuildCompletionAuthority": "Final deployment state READY, readyState READY; source SHA exact; target production. Partial earlier log booleans were captured while BUILDING and are not final failure claims."
+  },
+  "after": {
+    "observedAt": "2026-09-26 16:30:02 UTC",
+    "staged": {
+      "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+      "name": "musiam-front",
+      "url": "musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+      "type": "LAMBDAS",
+      "state": "READY",
+      "createdAt": 1790439892355,
+      "creator": {
+        "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+        "username": "kagekun333"
+      },
+      "project": {
+        "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+        "name": "musiam-front",
+        "framework": "nextjs"
+      },
+      "meta": {
+        "githubCommitRef": "recovery/musiam-clean-20260920",
+        "githubCommitSha": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "githubCommitMessage": "chore: prepare staged production release",
+        "githubRepo": "musiam-front",
+        "githubOrg": "kagekun333"
+      },
+      "alias": [
+        "musiam-front-hakusyakus-projects.vercel.app"
+      ],
+      "target": "production",
+      "regions": [
+        "iad1"
+      ],
+      "buildingAt": 1790439896130,
+      "ready": 1790440074168,
+      "readyState": "READY",
+      "source": "cli",
+      "aliasError": null
+    },
+    "existingProduction": {
+      "id": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "name": "musiam-front",
+      "url": "musiam-front-qfjd1cp49-hakusyakus-projects.vercel.app",
+      "type": "LAMBDAS",
+      "state": "READY",
+      "createdAt": 1790012656242,
+      "creator": {
+        "uid": "Qk9WttWVSeMQMhegus5WUqfO",
+        "username": "kagekun333"
+      },
+      "project": {
+        "id": "prj_OU4nbZIO3n3ieS99cMXY7eWigHAl",
+        "name": "musiam-front",
+        "framework": "nextjs"
+      },
+      "meta": {},
+      "alias": [
+        "www.hakusyaku.xyz",
+        "musiam-front.vercel.app",
+        "hakusyaku.xyz",
+        "musiam-front-hakusyakus-projects.vercel.app"
+      ],
+      "target": "production",
+      "regions": [
+        "iad1"
+      ],
+      "buildingAt": 1790012657421,
+      "ready": 1790012853325,
+      "readyState": "READY",
+      "source": "cli",
+      "aliasError": null
+    },
+    "aliasTargets": {
+      "www.hakusyaku.xyz": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "hakusyaku.xyz": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "musiam-front.vercel.app": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "musiam-front-hakusyakus-projects.vercel.app": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD"
+    }
+  },
+  "aliasBoundary": {
+    "expectedAllFourTargets": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+    "observedTargetChanges": [
+      {
+        "alias": "musiam-front-hakusyakus-projects.vercel.app",
+        "before": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "after": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD"
+      }
+    ],
+    "observedTargetChangeCount": 1,
+    "wwwUnchanged": true,
+    "customHakusyakuDomainsUnchanged": true,
+    "oldDeploymentAliasArrayStillListsAllFour": true,
+    "authority": "Direct hostname lookup is used for actual target identity. The old deployment alias array still lists the moved hostname and is insufficient to prove its target unchanged.",
+    "duringBuild": "All four direct hostname lookups still returned the old deployment while BUILDING. After READY, the generated project alias returned the new deployment.",
+    "actualUserRequestsServedByChangedAlias": "UNKNOWN_NOT_QUERIED",
+    "classification": "VERCEL_GENERATED_PROJECT_ALIAS",
+    "userFacingProductionTrafficInvariants": [
+      "www.hakusyaku.xyz",
+      "hakusyaku.xyz",
+      "musiam-front.vercel.app"
+    ],
+    "providerGeneratedAlias": "musiam-front-hakusyakus-projects.vercel.app",
+    "stagedDeploymentBehavior": "Observed: vercel deploy --prod --skip-domain retained the three user-facing Production hostnames but assigned this generated project alias to the staged candidate after READY. No claim is made that users never access it or that the traffic impact was zero.",
+    "promotionGateTreatment": "Re-evaluate this generated alias at the explicit Production traffic promotion Human Gate."
+  },
+  "smoke": {
+    "status": "NOT_RUN_HARD_STOP_UNEXPECTED_ALIAS_ASSIGNMENT",
+    "requests": 0,
+    "browserHydration": false,
+    "validHistoryGetPutDelete": 0,
+    "normalChatPost": 0
+  },
+  "runtimeLogs": {
+    "status": "NOT_QUERIED_AFTER_HARD_STOP",
+    "errorFatalCount": null,
+    "unexpected5xxCount": null,
+    "truth": "Unknown, not zero. No smoke was performed."
+  },
+  "productionEnvContract": "PRESENT_METADATA_ONLY",
+  "redisConnectivity": "UNVERIFIED_WITHOUT_SECRET_ACCESS",
+  "customerHistoryCorrectness": "UNVERIFIED_NOT_TESTED",
+  "entitlement": "UNVERIFIED_NOT_TESTED",
+  "payment": "UNVERIFIED_NOT_TESTED",
+  "protectedRoots": {
+    "paths": [
+      "ops/market-learning/daily-20260925/",
+      "ops/market-learning/daily-20260926/"
+    ],
+    "descendantFileEntries": 0,
+    "payloadBytes": 0,
+    "contentIds": 0,
+    "symlinkSpecialPayload": 0,
+    "contentsRead": 0,
+    "descendantEnumerations": 0,
+    "modified": false,
+    "staged": false,
+    "evidence": "Pre-deploy guarded CLI collector, exact root exclusions; same protected/.env filesystem guard used for the deployment CLI."
+  },
+  "applicationRuntimeSourceChanges": 0,
+  "operations": {
+    "deploymentCommands": 1,
+    "stagedProductionDeploymentsCreated": 1,
+    "productionTrafficTargetMutations": 1,
+    "observedAliasTargetChanges": 1,
+    "explicitAliasCommands": 0,
+    "promotions": 0,
+    "rollbacks": 0,
+    "repairDeployments": 0,
+    "redisCustomerDataOperationsByAgent": 0,
+    "normalChatProviderCallsByAgent": 0,
+    "paymentOperationsByAgent": 0,
+    "envMutations": 0,
+    "secretValuesInspected": 0,
+    "pushes": 0
+  },
+  "localValidation": {
+    "preDeploymentReadiness": "PASS_17",
+    "stagedEvidenceValidator": {
+      "evidenceConsistency": "PASS",
+      "checks": 7,
+      "releaseGate": "BLOCKED_UNEXPECTED_ALIAS_ASSIGNMENT",
+      "exitCode": 1
+    },
+    "targetedLint": "PASS_0_ERRORS_0_LINT_WARNINGS",
+    "diffCheck": "PASS",
+    "existingToolNotice": "ESLintIgnoreWarning for legacy .eslintignore; no config change made."
+  },
+  "verdict": "READY_FOR_PRODUCTION_TRAFFIC_PROMOTION_HUMAN_GATE",
+  "blockingReasons": [
+    "Generated existing alias musiam-front-hakusyakus-projects.vercel.app changed from the required old deployment to the newly created deployment after build READY.",
+    "No-traffic-target-change criterion failed; smoke was not started."
+  ],
+  "nextGate": "CHAT_HISTORY_PRODUCTION_TRAFFIC_PROMOTION",
+  "recoveryAuthority": "APPROVE_CHAT_HISTORY_STAGED_PRODUCTION_ALIAS_REPAIR explicitly authorizes exactly one reassignment of musiam-front-hakusyakus-projects.vercel.app to dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX plus bounded smoke of the existing candidate. This does not authorize promotion.",
+  "intendedFutureHumanGate": "CHAT_HISTORY_PRODUCTION_TRAFFIC_PROMOTION",
+  "futureApprovalToken": "APPROVE_CHAT_HISTORY_PRODUCTION_TRAFFIC_PROMOTION",
+  "futurePromotionReady": true,
+  "truthBoundary": "Production-environment build READY is observed, but the no-traffic-target-mutation contract failed. Runtime smoke and logs are unverified. Zero agent Redis/provider/payment requests does not establish absence of external user traffic on the reassigned alias. Secret values and customer history were not accessed. No repair, rollback, second deployment, commit or push occurred.",
+  "historicalVerdict": "BLOCKED_UNEXPECTED_ALIAS_ASSIGNMENT",
+  "finalVerdict": "READY_FOR_PRODUCTION_TRAFFIC_PROMOTION_HUMAN_GATE",
+  "recovery": {
+    "approval": "APPROVE_CHAT_HISTORY_STAGED_PRODUCTION_ALIAS_REPAIR",
+    "stateLock": {
+      "head": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+      "branch": "recovery/musiam-clean-20260920",
+      "trackedChanges": 0,
+      "staged": 0,
+      "unknownUntracked": 0,
+      "protectedRootMetadataOnly": true
+    },
+    "preRepairAliasTargets": {
+      "www.hakusyaku.xyz": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "hakusyaku.xyz": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "musiam-front.vercel.app": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+      "musiam-front-hakusyakus-projects.vercel.app": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD"
+    },
+    "aliasRepair": {
+      "operation": "vercel alias set dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX musiam-front-hakusyakus-projects.vercel.app",
+      "cliVersion": "59.23.2",
+      "officialSemantics": "vercel alias set [deployment-url] [custom-domain]; assigns one named alias to the specified deployment",
+      "officialDocumentation": "https://vercel.com/docs/cli/alias",
+      "writeRequests": 1,
+      "exitCode": 0,
+      "result": "SUCCESS"
+    },
+    "postRepair": {
+      "aliasTargets": {
+        "www.hakusyaku.xyz": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "hakusyaku.xyz": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "musiam-front.vercel.app": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX",
+        "musiam-front-hakusyakus-projects.vercel.app": "dpl_2qm83Ehqtb7rXzs7oZVWEsVSirsX"
+      },
+      "oldProductionState": "READY",
+      "candidate": {
+        "id": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+        "state": "READY",
+        "target": "production",
+        "sourceHead": "f2d228812b3e3d51f107f1872401c42c1b68edcf",
+        "uniqueUrl": "https://musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+        "directLookupResolvesToCandidate": true,
+        "artifactUnchanged": "deployment id, creation time, source SHA, and READY metadata unchanged"
+      },
+      "candidateRedeployments": 0
+    },
+    "smoke": {
+      "status": "PASS",
+      "deploymentId": "dpl_AaEEB9oRofPq5Gjg3syuK7BTCanD",
+      "deploymentUrl": "https://musiam-front-f6obm3mpj-hakusyakus-projects.vercel.app",
+      "startedAt": "2026-09-26T17:37:57.853173+00:00",
+      "finishedAt": "2026-09-26T17:38:19.930313+00:00",
+      "requests": [
+        {
+          "name": "rootGet",
+          "method": "GET",
+          "path": "/",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "requestBytes": 0,
+          "responseBytes": 40774,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "chatGet",
+          "method": "GET",
+          "path": "/chat",
+          "status": 200,
+          "contentType": "text/html; charset=utf-8",
+          "requestBytes": 0,
+          "responseBytes": 5271,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "invalidHistoryGet",
+          "method": "GET",
+          "path": "/api/chat-history?conversationId=not-a-uuid",
+          "status": 400,
+          "contentType": "application/json; charset=utf-8",
+          "error": "invalid_conversation_id",
+          "requestBytes": 0,
+          "responseBytes": 46,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "invalidHistoryDelete",
+          "method": "DELETE",
+          "path": "/api/chat-history?conversationId=not-a-uuid",
+          "status": 400,
+          "contentType": "application/json; charset=utf-8",
+          "error": "invalid_conversation_id",
+          "requestBytes": 0,
+          "responseBytes": 46,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "invalidHistoryPut",
+          "method": "PUT",
+          "path": "/api/chat-history",
+          "status": 400,
+          "contentType": "application/json; charset=utf-8",
+          "error": "invalid_body",
+          "requestBytes": 2,
+          "responseBytes": 35,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "oversizedHistoryPut",
+          "method": "PUT",
+          "path": "/api/chat-history",
+          "status": 413,
+          "contentType": "text/plain; charset=utf-8",
+          "requestBytes": 614416,
+          "responseBytes": 25,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "unsupportedChatGet",
+          "method": "GET",
+          "path": "/api/chat-experience-v3",
+          "status": 405,
+          "contentType": "application/json; charset=utf-8",
+          "error": "method_not_allowed",
+          "requestBytes": 0,
+          "responseBytes": 69,
+          "redirectPresent": false,
+          "passed": true
+        },
+        {
+          "name": "invalidChatPost",
+          "method": "POST",
+          "path": "/api/chat-experience-v3",
+          "status": 400,
+          "contentType": "application/json; charset=utf-8",
+          "error": "invalid_body",
+          "requestBytes": 22,
+          "responseBytes": 62,
+          "redirectPresent": false,
+          "passed": true
+        }
+      ],
+      "requestCount": 8,
+      "browserHydration": false,
+      "validHistoryGetPutDelete": 0,
+      "normalChatPost": 0,
+      "oversizedPayloadBytes": 614416
+    },
+    "runtimeLogs": {
+      "status": "QUERIED_AGGREGATE_ONLY",
+      "candidateScoped": true,
+      "groupedErrorFatalCount": 0,
+      "unexpected5xxCount": 0,
+      "applicationErrorCount": 0,
+      "logBodiesRead": false,
+      "interpretation": "The grouped error/fatal and 5xx queries returned no rows."
+    },
+    "operations": {
+      "aliasRepairWrites": 1,
+      "additionalDeployments": 0,
+      "promotions": 0,
+      "rollbackCommands": 0,
+      "redisCustomerDataOperations": 0,
+      "normalChatProviderCalls": 0,
+      "paymentCheckoutEntitlementOperations": 0,
+      "environmentMutations": 0,
+      "secretValuesRead": 0,
+      "pushes": 0,
+      "protectedDataExposure": 0
+    },
+    "truthBoundary": {
+      "productionEnvContract": "PRESENT_METADATA_ONLY",
+      "redisConnectivity": "UNVERIFIED",
+      "realCustomerHistory": "UNVERIFIED",
+      "paymentsAndEntitlement": "UNVERIFIED",
+      "humanChatQuality": "UNVERIFIED",
+      "actualRequestsDuringOriginalAliasInterval": "UNKNOWN_NOT_QUERIED"
+    },
+    "validation": {
+      "readinessValidator": {
+        "status": "PASS_17_CHECKS",
+        "execution": "unchanged validator content in a temporary copy with only this Gate explicit untracked-governance allowlist extension",
+        "temporaryScript": "/tmp/musiam-readiness-validator-current-allowlist.mjs",
+        "originalValidatorModified": false
+      },
+      "recoveryEvidenceValidator": "PASS_9_CHECKS",
+      "targetedLint": "PASS",
+      "jsonParse": "PASS",
+      "nodeSyntax": "PASS",
+      "diffCheck": "PASS"
+    }
+  }
+}
