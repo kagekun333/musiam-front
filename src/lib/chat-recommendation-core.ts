@@ -276,7 +276,14 @@ function currentPhrase(query: string): string {
 }
 
 function catalogHaystack(work: CatalogWork) {
-  return normalize([work.title, ...(work.tags ?? []), ...(work.moodTags ?? []), ...(work.moodSeeds ?? [])].join(" "));
+  return normalize([
+    work.title,
+    work.distribution?.primaryGenre,
+    work.distribution?.secondaryGenre,
+    ...(work.tags ?? []),
+    ...(work.moodTags ?? []),
+    ...(work.moodSeeds ?? []),
+  ].join(" "));
 }
 
 function stableTieBreak(query: string, work: CatalogWork) {
@@ -301,6 +308,12 @@ function rankCatalogWorks(works: CatalogWork[], query: string) {
       if (!matches) continue;
       score += Math.min(matches, 4) * 5;
       reasons.push(signal.reason);
+    }
+    for (const genre of [work.distribution?.primaryGenre, work.distribution?.secondaryGenre].filter((value): value is string => typeof value === "string" && !!value.trim())) {
+      if (normalizedQuery.includes(normalize(genre))) {
+        score += 8;
+        reasons.push(`genre:${genre.trim()}`);
+      }
     }
     return { work, score, reasons: Array.from(new Set(reasons)), tie: stableTieBreak(query, work) };
   }).sort((left, right) => right.score - left.score || left.tie - right.tie);
@@ -358,18 +371,20 @@ export function selectOneRecommendation(input: {
   language: CoreLanguage;
   sales: SalesOptOut;
   preferWorkId?: string | null;
+  excludedWorkIds?: string[];
 }): Recommendation | null {
   if (input.sales.suppressRecommendations) return null;
-  const identity = resolveCatalogIdentity(input.query, input.works);
+  const availableWorks = input.works.filter((work) => !input.excludedWorkIds?.includes(String(work.id ?? "")));
+  const identity = resolveCatalogIdentity(input.query, availableWorks);
   // An explicit current name always wins over a previous ID. Ambiguous or
   // unknown quoted names require clarification, never a substitute card.
   if (identity.status === "ambiguous" || identity.status === "unknown") return null;
   const exact = identity.status === "exact" ? identity.work
-    : input.preferWorkId ? input.works.find((work) => String(work.id) === input.preferWorkId) ?? null : null;
+    : input.preferWorkId ? availableWorks.find((work) => String(work.id) === input.preferWorkId) ?? null : null;
   if (input.preferWorkId && !exact) return null;
   const candidate = exact
     ? { work: exact, score: 1, reasons: ["現在の指定"] }
-    : rankCatalogWorks(input.works, input.query).find((item) => item.score > 0) ?? null;
+    : rankCatalogWorks(availableWorks, input.query).find((item) => item.score > 0) ?? null;
   if (!candidate) return null;
   const links = getPublicLinksForCard(candidate.work);
   if (!links.length) return null;

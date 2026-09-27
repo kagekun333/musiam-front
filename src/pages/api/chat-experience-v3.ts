@@ -15,6 +15,14 @@ import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { buildChatWorkCard } from "@/lib/chat-work-card";
 import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
+import {
+  asksForLatestRelease,
+  asksForSonicDetails,
+  buildLunaEvidencePack,
+  deriveVisitorState,
+  latestReleasedWorks,
+  unknownSonicText,
+} from "@/lib/chat-release-knowledge";
 import { buildChatInterestBridge, chatInterestRecommendationSeed, isChatInterestDecline, isChatInterestInvitation } from "@/lib/chat-interest-bridge";
 import { buildMetalPrintSalesTurn } from "@/lib/metal-print-sales-conversation";
 import { buildMusicWorkAffinityTurn } from "@/lib/music-work-affinity";
@@ -129,7 +137,7 @@ function commercialIntent(t: string): Commercial {
 
 // 3) 作品（音楽/本）を求めている
 function wantsWork(t: string) {
-  return /(おすすめ|一作|作品|選んで|探して|聴きたい|聞きたい|読みたい|本|音楽|曲|recommend|pick|find|listen|read|book|music|song)/i.test(t);
+  return /(おすすめ|一作|作品|選んで|探して|聴きたい|聞きたい|読みたい|本|音楽|曲|recommend|pick|find|listen|read|book|music|song|work|livre|roman|lire|morceau|chanson|musique|œuvre|canción|cancion|música|musica|obra|libro|lied|musik|werk|lesen|buch|أغنية|موسيقى|عمل|كتاب)/i.test(t);
 }
 function wantsCreativeText(t: string) {
   return /(川柳|俳句|短歌|詩|ポエム|ジョーク|冗談|小噺|なぞかけ|一句|一首|面白い.*(こと|話|文)|write (a )?(poem|joke|haiku)|funny (poem|joke))/i.test(t);
@@ -140,8 +148,8 @@ export function wantsWorkFollowup(query: string, convo: string) {
     && (isChatInterestInvitation(convo) || /(おすすめ|一作|作品|聴|聞|読|本|音楽|曲|楽曲|recommend|pick|listen|read|book|music|song)/i.test(convo));
 }
 function desiredType(t: string): "book" | "music" | undefined {
-  if (/(本|読みたい|読む|小説|book|read|novel)/i.test(t)) return "book";
-  if (/(音楽|曲|一曲|音の景色|聴きたい|聞きたい|music|song|track|soundscape|listen)/i.test(t)) return "music";
+  if (/(本|読みたい|読む|小説|book|read|novel|livre|roman|lire|libro|buch|lesen|كتاب|قراءة)/i.test(t)) return "book";
+  if (/(音楽|曲|一曲|音の景色|聴きたい|聞きたい|music|song|track|soundscape|listen|musique|chanson|morceau|canción|cancion|música|musica|lied|musik|أغنية|موسيقى)/i.test(t)) return "music";
   return undefined;
 }
 
@@ -244,17 +252,32 @@ async function prescribeWork(input: {
   type?: "book" | "music";
   sales: ReturnType<typeof deriveChatCoreTurn>["sales"];
   preferWorkId?: string | null;
+  works?: Work[];
+  excludedWorkIds?: string[];
+  preferLatestEligible?: boolean;
 }): Promise<{ card: RecoCard | null; work: Work | null }> {
   let works: Work[] = [];
-  try { works = (await loadMergedWorksServer()) as Work[]; } catch { works = []; }
+  if (input.works) works = input.works;
+  else try { works = (await loadMergedWorksServer()) as Work[]; } catch { works = []; }
   let pool = works.filter((w) => !!String(w.cover || ""));
   if (input.type) pool = pool.filter((w) => normType(w.type) === input.type);
+  if (input.preferLatestEligible) {
+    const eligible = pool.filter((work) => !input.excludedWorkIds?.includes(String(work.id ?? "")));
+    const alternate = latestReleasedWorks(eligible, { medium: input.type, limit: eligible.length })[0];
+    if (alternate) {
+      const reason = input.lang === "ja"
+        ? "先ほどの作品を避け、現在のcatalogから別の一作を選びました。"
+        : "I avoided the work shown earlier and selected another work from the current catalog.";
+      return { card: buildChatWorkCard(alternate, reason), work: alternate };
+    }
+  }
   const recommendation = selectOneRecommendation({
     works: pool,
     query: input.queryText,
     language: input.lang,
     sales: input.sales,
     preferWorkId: input.preferWorkId,
+    excludedWorkIds: input.excludedWorkIds,
   });
   return recommendation ? { card: workToCard(recommendation), work: recommendation.work } : { card: null, work: null };
 }
@@ -626,6 +649,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let coreWorks: Work[] = [];
     try { coreWorks = (await loadMergedWorksServer()) as Work[]; } catch { coreWorks = []; }
     const coreTurn = deriveChatCoreTurn({ messages, language: lang as CoreLanguage, works: coreWorks });
+    const visitorState = deriveVisitorState(messages);
     // An explicit current language instruction outranks the UI default.
     lang = coreTurn.language as Lang;
     timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
@@ -665,6 +689,51 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       return controlled(unavailableRecommendationText(lang as CoreLanguage, coreTurn.actionStatus), "conversation");
     }
+    if (asksForSonicDetails(query)) {
+      const named = resolveCatalogIdentity(query, coreWorks);
+      const sonicWork = named.status === "exact"
+        ? named.work
+        : visitorState.lastPresentedWorkId
+          ? coreWorks.find((work) => String(work.id ?? "") === visitorState.lastPresentedWorkId) ?? null
+          : asksForLatestRelease(query)
+            ? latestReleasedWorks(coreWorks, { medium: desiredType(query) ?? visitorState.preferredMedium ?? undefined, limit: 1 })[0] ?? null
+            : null;
+      const baseCard = sonicWork ? buildChatWorkCard(sonicWork) : null;
+      const listenLinks = baseCard?.links.filter((link) => link.kind === "listen") ?? [];
+      const card = baseCard && listenLinks.length ? { ...baseCard, links: listenLinks } : null;
+      return controlled(
+        unknownSonicText(lang, String(sonicWork?.id ?? "catalog"), !!card),
+        sonicWork ? "work" : "conversation",
+        card,
+      );
+    }
+    if (asksForLatestRelease(query)) {
+      const medium = desiredType(query) ?? visitorState.preferredMedium ?? undefined;
+      const latest = latestReleasedWorks(coreWorks, { medium, limit: 1 })[0] ?? null;
+      if (!latest) {
+        const unavailable: Record<Lang, string> = {
+          ja: "現在のcatalogから、日付を確認できる新しい作品を見つけられませんでした。",
+          en: "I could not find a newly dated work in the current catalog.",
+          fr: "Je n’ai pas trouvé d’œuvre récemment datée dans le catalogue actuel.",
+          es: "No encontré una obra con fecha reciente en el catálogo actual.",
+          de: "Im aktuellen Katalog finde ich kein neu datiertes Werk.",
+          ar: "لم أجد عملاً حديث التاريخ في الفهرس الحالي.",
+        };
+        return controlled(unavailable[lang], "conversation");
+      }
+      const title = String(latest.title ?? "");
+      const date = String(latest.distribution?.releaseDate ?? latest.releasedAt ?? "");
+      const latestCard = buildChatWorkCard(latest);
+      const latestText: Record<Lang, string> = {
+        ja: `現在のcatalogで日付を確認できる${medium === "book" ? "新しい作品" : "最新の作品"}は「${title}」です。記録上の日付は${date}です。${latestCard ? "下のカードから確認できます。" : "確認できる公開リンクはまだ記録されていません。"}`,
+        en: `The latest dated work in the current catalog is “${title}” (${date}). ${latestCard ? "You can open it from the card below." : "No verified public action is recorded yet."}`,
+        fr: `L’œuvre la plus récente datée dans le catalogue actuel est « ${title} » (${date}). ${latestCard ? "Vous pouvez la consulter avec la carte ci-dessous." : "Aucune action publique vérifiée n’est encore enregistrée."}`,
+        es: `La obra con fecha más reciente en el catálogo actual es «${title}» (${date}). ${latestCard ? "Puede abrirla desde la tarjeta de abajo." : "Aún no hay una acción pública verificada registrada."}`,
+        de: `Das zuletzt datierte Werk im aktuellen Katalog ist „${title}“ (${date}). ${latestCard ? "Über die Karte unten können Sie es öffnen." : "Eine bestätigte öffentliche Aktion ist noch nicht eingetragen."}`,
+        ar: `أحدث عمل مؤرخ في الفهرس الحالي هو «${title}» (${date}). ${latestCard ? "يمكنك فتحه من البطاقة أدناه." : "لم يُسجل إجراء عام موثق بعد."}`,
+      };
+      return controlled(latestText[lang], "work", latestCard);
+    }
     if (coreTurn.sales.suppressSales && !wantsWork(query) && !wantsCreativeText(query)) {
       return controlled(coreTurn.sales.persistentSalesStop ? salesSuppressionText(lang as CoreLanguage, "sales") : temporaryNoBuyText(lang), "conversation");
     }
@@ -700,6 +769,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         : rawInterestBridge;
 
     // プラン決定
+    const visitorExcludedWorkIds = visitorState.reopenRequested ? [] : [
+      ...visitorState.rejectedWorkIds,
+      ...(visitorState.anotherRequested ? visitorState.recentRecommendedWorkIds : []),
+    ];
     let plan: Plan;
     if (distress) {
       plan = { persona: COUNT_PERSONA, mode: "care" };
@@ -714,6 +787,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         queryText: query, lang,
         type: coreTurn.actionKind === "listen" ? "music" : coreTurn.actionKind === "read" ? "book" : desiredType(query),
         sales: coreTurn.sales,
+        works: coreWorks,
+        excludedWorkIds: visitorExcludedWorkIds,
+        preferLatestEligible: visitorState.anotherRequested,
       });
       plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work) };
     } else if (musicAffinityTurn?.action === "dossier") {
@@ -733,9 +809,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { card, work } = await prescribeWork({
         queryText: bridgeSeed || query,
         lang,
-        type: desiredType(bridgeSeed || query),
+        type: desiredType(bridgeSeed || query) ?? visitorState.preferredMedium ?? undefined,
         sales: coreTurn.sales,
         preferWorkId: coreTurn.actionTargetId,
+        works: coreWorks,
+        excludedWorkIds: visitorExcludedWorkIds,
+        preferLatestEligible: visitorState.anotherRequested,
       });
       plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work),
         product: card ? PRODUCTS.find((p) => p.id === "tonight-work") : undefined };
@@ -758,9 +837,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const { card, work } = await prescribeWork({
         queryText: workQuery,
         lang,
-        type: desiredType(query),
+        type: desiredType(query) ?? visitorState.preferredMedium ?? undefined,
         sales: coreTurn.sales,
         preferWorkId: coreTurn.actionTargetId,
+        works: coreWorks,
+        excludedWorkIds: visitorExcludedWorkIds,
+        preferLatestEligible: visitorState.anotherRequested,
       });
       plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work),
         product: card ? PRODUCTS.find((p) => p.id === "tonight-work") : undefined };
@@ -779,7 +861,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (directText) {
       assistantText = sanitize(directText, lang);
     } else {
-      const system = buildSystemPrompt(plan, lang, summary, timeTone);
+      const catalogIdentity = resolveCatalogIdentity(query, coreWorks);
+      const evidenceWork = entryWork ?? (catalogIdentity.status === "exact" ? catalogIdentity.work : null);
+      const evidencePack = evidenceWork ? buildLunaEvidencePack(evidenceWork) : null;
+      const system = [
+        buildSystemPrompt(plan, lang, summary, timeTone),
+        evidencePack ? [
+          "CATALOG EVIDENCE PACK (candidate only):",
+          evidencePack,
+          "Keep FACT, tentative INTERPRETATION, and UNKNOWN separate. Never invent instruments, BPM, vocals, lyrics, intent, sonic texture, rights, or full-track availability. A recorded action URL proves only that the URL is cataloged.",
+        ].join("\n") : "",
+      ].filter(Boolean).join("\n\n");
       const fewShot = buildFewShot(plan.persona, lang);
       const history = messages.slice(-MAX_LLM_HISTORY);
       llm = await callLlm(system, fewShot, history, trace);

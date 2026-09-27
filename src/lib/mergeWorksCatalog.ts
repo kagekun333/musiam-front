@@ -24,6 +24,17 @@ export type CatalogWork = {
     release?: { albumuuid?: string | null; upc?: string | null };
     recordings?: { isrc: string; trackNumber: number | null }[];
   };
+  /** Explicitly sourced distribution metadata; absent until an approved feed is connected. */
+  distribution?: {
+    source?: string;
+    artist?: string | null;
+    releaseDate?: string | null;
+    primaryGenre?: string | null;
+    secondaryGenre?: string | null;
+    isrc?: string | null;
+    upc?: string | null;
+    identifiers?: Record<string, string | null | undefined>;
+  };
   contentEvidence?: {
     description: string;
     source: string;

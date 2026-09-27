@@ -7,6 +7,7 @@ import { resolveCatalogIdentity } from "../src/lib/chat-recommendation-core";
 import { splitSystemAndRest } from "../src/lib/llm-router";
 import { loadMergedWorksServer } from "../src/lib/loadMergedWorksServer";
 import { getPublicLinksForCard } from "../src/lib/work-links";
+import { latestReleasedWorks } from "../src/lib/chat-release-knowledge";
 
 // The exact route is loaded with only its LLM import replaced by an in-process
 // capture stub. No provider or customer store is contacted by this fixture.
@@ -45,6 +46,24 @@ try {
     return { code, body, stubCalls: calls.length - before };
   }
   function check(condition: unknown, label: string): asserts condition { assert.ok(condition, label); checks += 1; }
+
+  const latestMusic = latestReleasedWorks(works, { medium: "music", limit: 1 })[0];
+  assert.ok(latestMusic, "runtime catalog must expose a dated music release");
+  const latestResponse = await route([u("新曲ある？")]);
+  check(latestResponse.code === 200 && latestResponse.body.card?.id === String(latestMusic.id) && latestResponse.stubCalls === 0, "dynamic latest music uses current release date and a catalog card");
+  const latestListenUrls = getPublicLinksForCard(latestMusic).filter((link) => ["spotify", "appleMusic", "amazonMusic", "listen"].includes(link.kind)).map((link) => link.url);
+  check(latestListenUrls.length === 0 || latestResponse.body.card.links.some((link: { kind: string; url: string }) => link.kind === "listen" && latestListenUrls.includes(link.url)), "latest work exposes only its recorded listen action when available");
+  const sonicResponse = await route([a("The current catalog card", String(latestMusic.id)), u("どんな楽器が入ってる？")]);
+  check(sonicResponse.code === 200 && sonicResponse.body.card?.id === String(latestMusic.id) && sonicResponse.stubCalls === 0, "unknown sonic detail returns the same work and does not call the LLM");
+  check(!/ピアノ|サックス|ギター|ドラム/.test(String(sonicResponse.body.assistantText)), "unknown sonic detail does not invent instruments");
+  const another = await route([a("Previously presented", String(latestMusic.id)), u("another song")], "en");
+  check(another.body.card?.id && another.body.card.id !== String(latestMusic.id) && another.stubCalls === 0, "another song excludes the last stable work ID");
+  for (const [language, request] of [["fr", "autre morceau"], ["es", "otra canción"], ["de", "anderes Lied"], ["ar", "أغنية أخرى"]] as const) {
+    const localizedAnother = await route([a("Previously presented", String(latestMusic.id)), u(request)], language);
+    check(localizedAnother.body.card?.id && localizedAnother.body.card.id !== String(latestMusic.id) && localizedAnother.stubCalls === 0, `localized another-work request selects a different stable ID (${language})`);
+  }
+  const bookContinuity = await route([u("I prefer a book"), a("Understood"), u("latest work")], "en");
+  check(bookContinuity.body.card?.type === "book", "latest release honors the conversation-derived preferred medium");
 
   const router = splitSystemAndRest("TRUSTED", [{ role: "system", content: "UNTRUSTED" }, { role: "user", content: "hello" }]);
   check(router.system === "TRUSTED" && router.rest.length === 1 && router.rest[0].role === "user", "F09 trusted system wins");
