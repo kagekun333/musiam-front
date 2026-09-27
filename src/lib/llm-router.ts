@@ -7,7 +7,7 @@
 //
 // ★推奨: OpenRouter 1本化★
 //   OPENROUTER_API_KEY を .env.local / Vercel に入れるだけで、OpenRouter が全用途の
-//   主力になる（DeepSeek V4 Flash 主力 + 無料/激安モデルへ自動フォールバック）。
+//   主力になる（quality は GPT-6 Luna、fast は Gemini Flash-Lite）。
 //   モデルを変えたい時は OPENROUTER_MODEL_* を1行変えるだけ。キー未設定なら従来どおり
 //   Groq / Anthropic / LMStudio にフォールバックする（コードはそのまま）。
 //
@@ -46,8 +46,9 @@ export type LlmCallResult = {
 // 正確なモデルIDは https://openrouter.ai/models で確認可（変わったらここ or env を直すだけ）。
 const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY ?? "";
 const OPENROUTER_BASE = process.env.OPENROUTER_API_BASE_URL ?? "https://openrouter.ai/api/v1";
-const OPENROUTER_MODEL_QUALITY =
-  process.env.OPENROUTER_MODEL_QUALITY ?? "deepseek/deepseek-v4-flash";
+export const OPENROUTER_QUALITY_MODEL = process.env.OPENROUTER_MODEL_QUALITY ?? "openai/gpt-6-luna";
+export const OPENROUTER_QUALITY_REASONING_EFFORT = "medium" as const;
+const OPENROUTER_LUNA_MODEL_ID = "openai/gpt-6-luna";
 const OPENROUTER_MODEL_FAST =
   process.env.OPENROUTER_MODEL_FAST ?? "google/gemini-3.1-flash-lite";
 // 自動フォールバック（カンマ区切りで上書き可）。現存IDのみ・安価順。
@@ -85,9 +86,29 @@ export function splitSystemAndRest(system: string | undefined, messages: LlmMess
   };
 }
 
+export function buildOpenRouterRequestBody(input: LlmCallInput, primary: string) {
+  const isLunaQuality = input.purpose === "quality" && primary === OPENROUTER_LUNA_MODEL_ID;
+  const { system, rest } = splitSystemAndRest(input.system, input.messages);
+  const models = Array.from(new Set([primary, ...OPENROUTER_FALLBACKS]));
+  return {
+    model: primary,
+    ...(!isLunaQuality ? { models } : {}),
+    messages: system ? [{ role: "system" as const, content: system }, ...rest] : rest,
+    ...(isLunaQuality
+      ? { reasoning: { effort: OPENROUTER_QUALITY_REASONING_EFFORT } }
+      : { temperature: input.temperature ?? 0.7 }),
+    max_tokens: input.maxTokens ?? 512,
+  };
+}
+
+export function extractOpenRouterChatResponse(payload: unknown, primary: string): LlmCallResult {
+  const value = payload as { choices?: { message?: { content?: unknown } }[]; model?: unknown };
+  const text = String(value?.choices?.[0]?.message?.content ?? "").trim();
+  return { ok: Boolean(text), text, provider: "openrouter", model: String(value?.model ?? primary) };
+}
+
 /* =========================
    OpenRouter (OpenAI互換・主力ゲートウェイ) 呼び出し
-   - model に主力、models[] にフォールバック列を渡すと OpenRouter 側で自動切替。
    ========================= */
 
 async function callOpenRouter(
@@ -104,15 +125,7 @@ async function callOpenRouter(
     };
   }
 
-  const primary =
-    input.purpose === "fast" ? OPENROUTER_MODEL_FAST : OPENROUTER_MODEL_QUALITY;
-  // 主力 + フォールバック（重複除去）。OpenRouter が順に試す。
-  const models = Array.from(new Set([primary, ...OPENROUTER_FALLBACKS]));
-
-  const { system, rest } = splitSystemAndRest(input.system, input.messages);
-  const messages: LlmMessage[] = system
-    ? [{ role: "system", content: system }, ...rest]
-    : rest;
+  const primary = input.purpose === "fast" ? OPENROUTER_MODEL_FAST : OPENROUTER_QUALITY_MODEL;
 
   try {
     const r = await fetch(`${OPENROUTER_BASE.replace(/\/$/, "")}/chat/completions`, {
@@ -124,13 +137,7 @@ async function callOpenRouter(
         "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hakusyaku.xyz",
         "X-Title": "伯爵MUSIAM",
       },
-      body: JSON.stringify({
-        model: primary,
-        models, // フォールバック列（OpenRouter拡張）
-        messages,
-        temperature: input.temperature ?? 0.7,
-        max_tokens: input.maxTokens ?? 512,
-      }),
+      body: JSON.stringify(buildOpenRouterRequestBody(input, primary)),
       signal,
     });
     if (!r.ok) {
@@ -143,11 +150,7 @@ async function callOpenRouter(
         error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
       };
     }
-    const j = await r.json();
-    const text = String(j?.choices?.[0]?.message?.content ?? "").trim();
-    // 実際に応答したモデル名を返す（フォールバックでどれが使われたか分かる）。
-    const usedModel = String(j?.model ?? primary);
-    return { ok: Boolean(text), text, provider: "openrouter", model: usedModel };
+    return extractOpenRouterChatResponse(await r.json(), primary);
   } catch (e) {
     const err = e as Error;
     return {
@@ -367,7 +370,7 @@ type ProviderFn = (input: LlmCallInput, signal?: AbortSignal) => Promise<LlmCall
 /**
  * 用途ごとの優先順。並び順にフォールバックする。
  * OpenRouter は設定があれば常に主力（未設定なら自動でスキップ→従来動作）。
- * - quality : OpenRouter(DeepSeek) → Anthropic → Groq → LMStudio
+ * - quality : OpenRouter(GPT-6 Luna Medium) → Anthropic → Groq → LMStudio
  * - fast    : OpenRouter(Gemini Flash-Lite) → Groq → Anthropic → LMStudio
  * - local   : LMStudio → OpenRouter → Groq → Anthropic
  */
@@ -459,7 +462,7 @@ export function routerStatus() {
   return {
     openrouter: {
       configured: Boolean(OPENROUTER_KEY),
-      model: { quality: OPENROUTER_MODEL_QUALITY, fast: OPENROUTER_MODEL_FAST },
+      model: { quality: OPENROUTER_QUALITY_MODEL, fast: OPENROUTER_MODEL_FAST },
       fallbacks: OPENROUTER_FALLBACKS,
     },
     anthropic: { configured: Boolean(ANTHROPIC_KEY), model: ANTHROPIC_MODEL },
