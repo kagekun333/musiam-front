@@ -33,6 +33,8 @@ export type LlmCallResult = {
   provider: "openrouter" | "anthropic" | "groq" | "lmstudio" | "none";
   model: string;
   failureCode?: ProviderFailureCode;
+  networkCauseCode?: string;
+  networkCauseName?: string;
   /** どのproviderでリトライしたかのトレース。 */
   tried?: string[];
   diagnostics?: ProviderAttemptDiagnostic[];
@@ -48,6 +50,8 @@ export type ProviderAttemptDiagnostic = {
   requestedModel: string | null;
   outcome: "success" | "failure";
   failureCode: ProviderFailureCode | null;
+  networkCauseCode?: string;
+  networkCauseName?: string;
 };
 
 function failed(provider: ProviderAttemptDiagnostic["provider"], model: string, failureCode: ProviderFailureCode): LlmCallResult {
@@ -72,6 +76,42 @@ function classifyResponseFailure(error: unknown): ProviderFailureCode {
   if (error instanceof Error && error.name === "LlmProviderEmptyResponse") return "empty_response";
   if (error instanceof Error && error.name === "LlmProviderInvalidResponse") return "invalid_response";
   return classifyProviderFailure(error);
+}
+
+const SAFE_NETWORK_CAUSE_CODES = new Set([
+  "ENOTFOUND", "EAI_AGAIN", "ECONNREFUSED", "ECONNRESET", "ETIMEDOUT",
+  "UND_ERR_CONNECT_TIMEOUT", "UND_ERR_HEADERS_TIMEOUT", "UND_ERR_SOCKET",
+  "CERT_HAS_EXPIRED", "UNABLE_TO_VERIFY_LEAF_SIGNATURE", "SELF_SIGNED_CERT_IN_CHAIN",
+  "ERR_TLS_CERT_ALTNAME_INVALID", "ERR_INVALID_URL",
+]);
+const SAFE_NETWORK_CAUSE_NAMES = new Set([
+  "Error", "TypeError", "SystemError", "ConnectTimeoutError", "HeadersTimeoutError",
+  "SocketError", "TLSSocket", "FetchError", "AbortError",
+]);
+
+function ownStringField(value: unknown, key: string): string | null {
+  if (!value || (typeof value !== "object" && typeof value !== "function")) return null;
+  try {
+    const field = (value as Record<string, unknown>)[key];
+    return typeof field === "string" ? field : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Extract only allowlisted transport identifiers. Never reads exception messages or stack. */
+export function extractSafeNetworkCause(error: unknown): { networkCauseCode: string; networkCauseName: string } {
+  const cause = (() => {
+    try { return error && (typeof error === "object" || typeof error === "function")
+      ? (error as Record<string, unknown>).cause : undefined; }
+    catch { return undefined; }
+  })();
+  const rawCode = ownStringField(cause, "code");
+  const networkCauseCode = rawCode && SAFE_NETWORK_CAUSE_CODES.has(rawCode)
+    ? rawCode : "NETWORK_CAUSE_UNKNOWN";
+  const rawName = ownStringField(cause, "name") ?? ownStringField(error, "name");
+  const networkCauseName = rawName && SAFE_NETWORK_CAUSE_NAMES.has(rawName) ? rawName : "UNKNOWN";
+  return { networkCauseCode, networkCauseName };
 }
 
 async function readProviderJson(response: Response): Promise<unknown> {
@@ -210,7 +250,11 @@ async function callOpenRouter(
     }
     return extractOpenRouterChatResponse(await readProviderJson(r));
   } catch (e) {
-    return failed("openrouter", primary, classifyResponseFailure(e));
+    const failureCode = classifyResponseFailure(e);
+    return {
+      ...failed("openrouter", primary, failureCode),
+      ...(failureCode === "network_error" ? extractSafeNetworkCause(e) : {}),
+    };
   }
 }
 
@@ -453,13 +497,20 @@ export async function chat(input: LlmCallInput): Promise<LlmCallResult> {
     const requestedModel = requestedModelFor(name as ProviderAttemptDiagnostic["provider"], input.purpose);
     diagnostics.push({ provider: name as ProviderAttemptDiagnostic["provider"], requestedModel,
       outcome: result.ok && result.text ? "success" : "failure",
-      failureCode: result.ok && result.text ? null : failureCode ?? "empty_response" });
+      failureCode: result.ok && result.text ? null : failureCode ?? "empty_response",
+      ...(name === "openrouter" && result.failureCode === "network_error" ? {
+        networkCauseCode: result.networkCauseCode ?? "NETWORK_CAUSE_UNKNOWN",
+        networkCauseName: result.networkCauseName ?? "UNKNOWN",
+      } : {}) });
     if (result.ok && result.text) {
       return { ...result, tried, diagnostics };
     }
   }
 
-  const logAttempts = diagnostics.map(({ provider, requestedModel, outcome, failureCode: code }) => ({ provider, requestedModel, outcome, failureCode: code }));
+  const logAttempts = diagnostics.map(({ provider, requestedModel, outcome, failureCode: code, networkCauseCode, networkCauseName }) => ({
+    provider, requestedModel, outcome, failureCode: code,
+    ...(provider === "openrouter" && code === "network_error" ? { networkCauseCode, networkCauseName } : {}),
+  }));
   console.error("COUNT_CHAT_LLM_ALL_FAILED", {
     ...(safeTrace(input.trace) ? { trace: safeTrace(input.trace) } : {}),
     attemptCount: logAttempts.length,
