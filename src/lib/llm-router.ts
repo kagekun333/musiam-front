@@ -158,6 +158,15 @@ const OPENROUTER_FALLBACKS = (
   .map((s) => s.trim())
   .filter(Boolean);
 
+export function buildOpenRouterRequestHeaders(apiKey: string, referer: string): Record<string, string> {
+  return {
+    "content-type": "application/json",
+    authorization: `Bearer ${apiKey}`,
+    "HTTP-Referer": referer,
+    "X-Title": "Hakusyaku MUSIAM",
+  };
+}
+
 const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY ?? "";
 const ANTHROPIC_MODEL = process.env.ANTHROPIC_MODEL ?? "claude-haiku-4-5-20251001";
 
@@ -235,13 +244,10 @@ async function callOpenRouter(
   try {
     const r = await fetch(`${OPENROUTER_BASE.replace(/\/$/, "")}/chat/completions`, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${OPENROUTER_KEY}`,
-        // OpenRouter のランキング表示用（任意）。
-        "HTTP-Referer": process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hakusyaku.xyz",
-        "X-Title": "伯爵MUSIAM",
-      },
+      headers: buildOpenRouterRequestHeaders(
+        OPENROUTER_KEY,
+        process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hakusyaku.xyz",
+      ),
       body: JSON.stringify(buildOpenRouterRequestBody(input, primary)),
       signal,
     });
