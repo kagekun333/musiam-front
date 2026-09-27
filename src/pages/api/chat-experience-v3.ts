@@ -607,6 +607,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const assistantText = timeCopy.opening;
       return res.status(200).json({
         ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
+        provider: "none", model: null,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
       });
     }
@@ -616,6 +617,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const assistantText = timeCopy.longClose;
       return res.status(200).json({
         ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
+        provider: "none", model: null,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
       });
     }
@@ -630,7 +632,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const controlled = (assistantText: string, intent: string, card: RecoCard | null = null, actionResult: "LINK_PRESENTED" | null = null) =>
       res.status(200).json({
         ok: true, v: 3, assistantText, card, cta: null, persona: "count", intent,
-        productId: null, interestBridge: null, timeTone, provider: "none",
+        productId: null, interestBridge: null, timeTone, provider: "none", model: null,
         ...(actionResult ? { actionResult: { status: actionResult, workId: card?.id ?? null, kind: coreTurn.actionKind } } : {}),
         memory: { residue: assistantText.slice(0, 120), cardTitle: card?.title ?? null, timestamp: new Date().toISOString() },
         trace,
@@ -835,6 +837,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       interestBridge: interestBridge ? { id: interestBridge.id, action: interestBridge.action } : null,
       timeTone,
       provider: llm.provider,
+      model: llm.model || null,
       memory: {
         residue: assistantText.slice(0, 120),
         cardTitle: plan.card?.title ?? null,

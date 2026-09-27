@@ -40,11 +40,11 @@ assert.equal("reasoning" in otherModel, false);
 const fallbackResponse = extractOpenRouterChatResponse({
   model: "deepseek/deepseek-v4-pro",
   choices: [{ message: { content: "Fallback response" } }],
-}, "openai/gpt-6-luna");
+});
 assert.equal(fallbackResponse.ok, true);
 assert.equal(fallbackResponse.model, "deepseek/deepseek-v4-pro", "response model metadata must report the model actually used");
 assert.equal(fallbackResponse.provider, "openrouter");
-assert.equal(extractOpenRouterChatResponse({ choices: [{ message: { content: "  " } }] }, "openai/gpt-6-luna").ok, false);
+assert.equal(extractOpenRouterChatResponse({ choices: [{ message: { content: "  " } }] }).ok, false);
 assert.equal(routerStatus().openrouter.model.quality, OPENROUTER_QUALITY_MODEL);
 
 const source = readFileSync("src/lib/llm-router.ts", "utf8");

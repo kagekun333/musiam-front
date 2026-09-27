@@ -101,10 +101,12 @@ export function buildOpenRouterRequestBody(input: LlmCallInput, primary: string)
   };
 }
 
-export function extractOpenRouterChatResponse(payload: unknown, primary: string): LlmCallResult {
+export function extractOpenRouterChatResponse(payload: unknown): LlmCallResult {
   const value = payload as { choices?: { message?: { content?: unknown } }[]; model?: unknown };
   const text = String(value?.choices?.[0]?.message?.content ?? "").trim();
-  return { ok: Boolean(text), text, provider: "openrouter", model: String(value?.model ?? primary) };
+  // Only upstream metadata is an observation; the requested model is not evidence.
+  const model = typeof value?.model === "string" && value.model.trim() ? value.model : "";
+  return { ok: Boolean(text), text, provider: "openrouter", model };
 }
 
 /* =========================
@@ -150,7 +152,7 @@ async function callOpenRouter(
         error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
       };
     }
-    return extractOpenRouterChatResponse(await r.json(), primary);
+    return extractOpenRouterChatResponse(await r.json());
   } catch (e) {
     const err = e as Error;
     return {
