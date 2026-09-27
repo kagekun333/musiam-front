@@ -10,6 +10,8 @@
     "verify:chat-campaign-entry": "tsx scripts/verify-chat-campaign-entry.ts",
     "validate:metal-print-sales-readiness": "node --import tsx scripts/validate-metal-print-sales-readiness.ts",
     "validate:all-catalog-metal-print": "node --import tsx scripts/validate-all-catalog-metal-print.ts",
+    "import:distrokid-release-metadata": "node --import tsx scripts/import-distrokid-release-metadata.ts",
+    "validate:count-chat-distrokid-release-ingestion": "node --import tsx scripts/validate-count-chat-distrokid-release-ingestion.ts",
     "validate:metal-print-mission": "tsx scripts/validate-metal-print-mission.ts",
     "validate:metal-print-offer-capacity": "tsx scripts/validate-metal-print-offer-capacity.ts",
     "validate:metal-print-economics-actuals": "tsx scripts/validate-metal-print-economics-actuals.ts",
