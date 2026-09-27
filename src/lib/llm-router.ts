@@ -32,11 +32,68 @@ export type LlmCallResult = {
   text: string;
   provider: "openrouter" | "anthropic" | "groq" | "lmstudio" | "none";
   model: string;
-  /** 失敗時のエラー詳細（非致命的）。UIには出さない。 */
-  error?: string;
+  failureCode?: ProviderFailureCode;
   /** どのproviderでリトライしたかのトレース。 */
   tried?: string[];
+  diagnostics?: ProviderAttemptDiagnostic[];
 };
+
+export type ProviderFailureCode =
+  | "not_configured" | "http_400" | "http_401" | "http_402" | "http_403"
+  | "http_404" | "http_408" | "http_429" | "http_5xx" | "http_other"
+  | "timeout" | "network_error" | "empty_response" | "invalid_response" | "unknown_failure";
+
+export type ProviderAttemptDiagnostic = {
+  provider: "openrouter" | "anthropic" | "groq" | "lmstudio";
+  requestedModel: string | null;
+  outcome: "success" | "failure";
+  failureCode: ProviderFailureCode | null;
+};
+
+function failed(provider: ProviderAttemptDiagnostic["provider"], model: string, failureCode: ProviderFailureCode): LlmCallResult {
+  return { ok: false, text: "", provider, model, failureCode };
+}
+
+export function classifyHttpFailure(status: number): ProviderFailureCode {
+  if (status >= 500 && status <= 599) return "http_5xx";
+  if ([400, 401, 402, 403, 404, 408, 429].includes(status)) return `http_${status}` as ProviderFailureCode;
+  return "http_other";
+}
+
+export function classifyProviderFailure(error: unknown): ProviderFailureCode {
+  if (error instanceof Error && error.name === "LlmProviderTimeout") return "timeout";
+  if (error instanceof SyntaxError) return "invalid_response";
+  if (error instanceof Error && error.name === "AbortError") return "timeout";
+  if (error instanceof TypeError) return "network_error";
+  return "unknown_failure";
+}
+
+function classifyResponseFailure(error: unknown): ProviderFailureCode {
+  if (error instanceof Error && error.name === "LlmProviderEmptyResponse") return "empty_response";
+  if (error instanceof Error && error.name === "LlmProviderInvalidResponse") return "invalid_response";
+  return classifyProviderFailure(error);
+}
+
+async function readProviderJson(response: Response): Promise<unknown> {
+  const body = await response.text();
+  if (!body.trim()) throw Object.assign(new Error("empty provider response"), { name: "LlmProviderEmptyResponse" });
+  try { return JSON.parse(body); }
+  catch { throw Object.assign(new Error("invalid provider response"), { name: "LlmProviderInvalidResponse" }); }
+}
+
+function requestedModelFor(provider: ProviderAttemptDiagnostic["provider"], purpose: LlmPurpose): string | null {
+  const raw = provider === "openrouter"
+    ? purpose === "fast" ? OPENROUTER_MODEL_FAST : OPENROUTER_QUALITY_MODEL
+    : provider === "anthropic" ? ANTHROPIC_MODEL
+      : provider === "groq" ? GROQ_MODEL : LMSTUDIO_MODEL;
+  // Model IDs are ASCII identifiers. Reject URLs, whitespace, and common key prefixes.
+  if (!raw || raw.length > 120 || !/^[A-Za-z0-9][A-Za-z0-9._:/-]*$/.test(raw) || /^(?:sk-|or-v1-|gsk_|AIza|bearer)/i.test(raw)) return null;
+  return raw;
+}
+
+function safeTrace(trace: string | undefined): string | null {
+  return trace && /^[a-z0-9_-]{1,64}$/i.test(trace) ? trace : null;
+}
 
 /* =========================
    プロバイダ設定
@@ -102,11 +159,17 @@ export function buildOpenRouterRequestBody(input: LlmCallInput, primary: string)
 }
 
 export function extractOpenRouterChatResponse(payload: unknown): LlmCallResult {
-  const value = payload as { choices?: { message?: { content?: unknown } }[]; model?: unknown };
-  const text = String(value?.choices?.[0]?.message?.content ?? "").trim();
+  if (!payload || typeof payload !== "object" || !Array.isArray((payload as { choices?: unknown }).choices)) {
+    return failed("openrouter", "", "invalid_response");
+  }
+  const value = payload as { choices: { message?: { content?: unknown } }[]; model?: unknown };
+  const content = value.choices[0]?.message?.content;
+  if (content !== undefined && content !== null && typeof content !== "string") return failed("openrouter", "", "invalid_response");
+  const text = String(content ?? "").trim();
+  if (!text) return failed("openrouter", "", "empty_response");
   // Only upstream metadata is an observation; the requested model is not evidence.
   const model = typeof value?.model === "string" && value.model.trim() ? value.model : "";
-  return { ok: Boolean(text), text, provider: "openrouter", model };
+  return { ok: true, text, provider: "openrouter", model };
 }
 
 /* =========================
@@ -123,7 +186,7 @@ async function callOpenRouter(
       text: "",
       provider: "openrouter",
       model: "",
-      error: "OPENROUTER_API_KEY not set",
+      failureCode: "not_configured",
     };
   }
 
@@ -143,25 +206,11 @@ async function callOpenRouter(
       signal,
     });
     if (!r.ok) {
-      const errText = await r.text().catch(() => "");
-      return {
-        ok: false,
-        text: "",
-        provider: "openrouter",
-        model: primary,
-        error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
-      };
+      return failed("openrouter", primary, classifyHttpFailure(r.status));
     }
-    return extractOpenRouterChatResponse(await r.json());
+    return extractOpenRouterChatResponse(await readProviderJson(r));
   } catch (e) {
-    const err = e as Error;
-    return {
-      ok: false,
-      text: "",
-      provider: "openrouter",
-      model: primary,
-      error: err?.message ?? "openrouter call failed",
-    };
+    return failed("openrouter", primary, classifyResponseFailure(e));
   }
 }
 
@@ -179,7 +228,7 @@ async function callAnthropic(
       text: "",
       provider: "anthropic",
       model: ANTHROPIC_MODEL,
-      error: "ANTHROPIC_API_KEY not set",
+      failureCode: "not_configured",
     };
   }
 
@@ -208,35 +257,21 @@ async function callAnthropic(
       signal,
     });
     if (!r.ok) {
-      const errText = await r.text().catch(() => "");
-      return {
-        ok: false,
-        text: "",
-        provider: "anthropic",
-        model: ANTHROPIC_MODEL,
-        error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
-      };
+      return failed("anthropic", ANTHROPIC_MODEL, classifyHttpFailure(r.status));
     }
-    const j = await r.json();
+    const j = await readProviderJson(r) as { content?: unknown };
+    if (!Array.isArray(j?.content)) return failed("anthropic", ANTHROPIC_MODEL, "invalid_response");
     const text =
-      Array.isArray(j?.content)
-        ? j.content
+      j.content
             .map((c: { type?: string; text?: string }) =>
               c?.type === "text" ? c.text ?? "" : ""
             )
             .join("")
-            .trim()
-        : "";
-    return { ok: Boolean(text), text, provider: "anthropic", model: ANTHROPIC_MODEL };
+            .trim();
+    if (!text) return failed("anthropic", ANTHROPIC_MODEL, "empty_response");
+    return { ok: true, text, provider: "anthropic", model: ANTHROPIC_MODEL };
   } catch (e) {
-    const err = e as Error;
-    return {
-      ok: false,
-      text: "",
-      provider: "anthropic",
-      model: ANTHROPIC_MODEL,
-      error: err?.message ?? "anthropic call failed",
-    };
+    return failed("anthropic", ANTHROPIC_MODEL, classifyResponseFailure(e));
   }
 }
 
@@ -254,7 +289,7 @@ async function callGroq(
       text: "",
       provider: "groq",
       model: GROQ_MODEL,
-      error: "GROQ_API_KEY not set",
+      failureCode: "not_configured",
     };
   }
 
@@ -279,27 +314,15 @@ async function callGroq(
       signal,
     });
     if (!r.ok) {
-      const errText = await r.text().catch(() => "");
-      return {
-        ok: false,
-        text: "",
-        provider: "groq",
-        model: GROQ_MODEL,
-        error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
-      };
+      return failed("groq", GROQ_MODEL, classifyHttpFailure(r.status));
     }
-    const j = await r.json();
+    const j = await readProviderJson(r) as { choices?: { message?: { content?: unknown } }[] };
+    if (!Array.isArray(j?.choices) || typeof j.choices[0]?.message?.content !== "string") return failed("groq", GROQ_MODEL, "invalid_response");
     const text = String(j?.choices?.[0]?.message?.content ?? "").trim();
-    return { ok: Boolean(text), text, provider: "groq", model: GROQ_MODEL };
+    if (!text) return failed("groq", GROQ_MODEL, "empty_response");
+    return { ok: true, text, provider: "groq", model: GROQ_MODEL };
   } catch (e) {
-    const err = e as Error;
-    return {
-      ok: false,
-      text: "",
-      provider: "groq",
-      model: GROQ_MODEL,
-      error: err?.message ?? "groq call failed",
-    };
+    return failed("groq", GROQ_MODEL, classifyResponseFailure(e));
   }
 }
 
@@ -317,7 +340,7 @@ async function callLmStudio(
       text: "",
       provider: "lmstudio",
       model: LMSTUDIO_MODEL || "",
-      error: "LMSTUDIO_BASE_URL or LMSTUDIO_MODEL not set",
+      failureCode: "not_configured",
     };
   }
 
@@ -339,27 +362,15 @@ async function callLmStudio(
       signal,
     });
     if (!r.ok) {
-      const errText = await r.text().catch(() => "");
-      return {
-        ok: false,
-        text: "",
-        provider: "lmstudio",
-        model: LMSTUDIO_MODEL,
-        error: `HTTP ${r.status}: ${errText.slice(0, 240)}`,
-      };
+      return failed("lmstudio", LMSTUDIO_MODEL, classifyHttpFailure(r.status));
     }
-    const j = await r.json();
+    const j = await readProviderJson(r) as { choices?: { message?: { content?: unknown } }[] };
+    if (!Array.isArray(j?.choices) || typeof j.choices[0]?.message?.content !== "string") return failed("lmstudio", LMSTUDIO_MODEL, "invalid_response");
     const text = String(j?.choices?.[0]?.message?.content ?? "").trim();
-    return { ok: Boolean(text), text, provider: "lmstudio", model: LMSTUDIO_MODEL };
+    if (!text) return failed("lmstudio", LMSTUDIO_MODEL, "empty_response");
+    return { ok: true, text, provider: "lmstudio", model: LMSTUDIO_MODEL };
   } catch (e) {
-    const err = e as Error;
-    return {
-      ok: false,
-      text: "",
-      provider: "lmstudio",
-      model: LMSTUDIO_MODEL,
-      error: err?.message ?? "lmstudio call failed",
-    };
+    return failed("lmstudio", LMSTUDIO_MODEL, classifyResponseFailure(e));
   }
 }
 
@@ -368,6 +379,10 @@ async function callLmStudio(
    ========================= */
 
 type ProviderFn = (input: LlmCallInput, signal?: AbortSignal) => Promise<LlmCallResult>;
+
+class LlmProviderTimeout extends Error {
+  constructor() { super("provider request timed out"); this.name = "LlmProviderTimeout"; }
+}
 
 /**
  * 用途ごとの優先順。並び順にフォールバックする。
@@ -409,7 +424,7 @@ async function withTimeout<T>(p: Promise<T>, ms: number, onAbort: () => void): P
   const timeout = new Promise<never>((_, reject) => {
     timer = setTimeout(() => {
       onAbort();
-      reject(new Error(`llm-router: timeout after ${ms}ms`));
+      reject(new LlmProviderTimeout());
     }, ms);
   });
   try {
@@ -426,36 +441,37 @@ async function withTimeout<T>(p: Promise<T>, ms: number, onAbort: () => void): P
 export async function chat(input: LlmCallInput): Promise<LlmCallResult> {
   const chain = providerChainFor(input.purpose);
   const tried: string[] = [];
-  let lastError: string | undefined;
+  const diagnostics: ProviderAttemptDiagnostic[] = [];
 
   for (const { name, fn } of chain) {
     tried.push(name);
     const ac = new AbortController();
     const result = await withTimeout(fn(input, ac.signal), 8000, () => ac.abort()).catch(
-      (e: unknown) => {
-        const err = e as Error;
-        return {
-          ok: false,
-          text: "",
-          provider: name as LlmCallResult["provider"],
-          model: "",
-          error: err?.message ?? "timeout",
-        } satisfies LlmCallResult;
-      }
+      (e: unknown) => failed(name as ProviderAttemptDiagnostic["provider"], "", classifyProviderFailure(e))
     );
+    const failureCode = result.failureCode ?? (result.ok ? null : "unknown_failure");
+    const requestedModel = requestedModelFor(name as ProviderAttemptDiagnostic["provider"], input.purpose);
+    diagnostics.push({ provider: name as ProviderAttemptDiagnostic["provider"], requestedModel,
+      outcome: result.ok && result.text ? "success" : "failure",
+      failureCode: result.ok && result.text ? null : failureCode ?? "empty_response" });
     if (result.ok && result.text) {
-      return { ...result, tried };
+      return { ...result, tried, diagnostics };
     }
-    lastError = result.error ?? lastError;
   }
 
+  const logAttempts = diagnostics.map(({ provider, requestedModel, outcome, failureCode: code }) => ({ provider, requestedModel, outcome, failureCode: code }));
+  console.error("COUNT_CHAT_LLM_ALL_FAILED", {
+    ...(safeTrace(input.trace) ? { trace: safeTrace(input.trace) } : {}),
+    attemptCount: logAttempts.length,
+    attempts: logAttempts,
+  });
   return {
     ok: false,
     text: "",
     provider: "none",
     model: "",
-    error: lastError ?? "all providers failed",
     tried,
+    diagnostics,
   };
 }
 
