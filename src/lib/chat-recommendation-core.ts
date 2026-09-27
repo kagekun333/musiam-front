@@ -2,9 +2,18 @@ import claimsMatrix from "../../ops/simulation-refinement/phase5-generalization-
 import { getPublicLinksForCard, type PublicLink } from "@/lib/work-links";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 
-export type CoreMessage = { role: "system" | "user" | "assistant"; content: string };
+export type CoreMessage = {
+  role: "system" | "user" | "assistant";
+  content: string;
+  /** Stable ID of a card actually shown with this assistant message. */
+  recommendedWorkId?: string | null;
+};
 export type CoreLanguage = "ja" | "en" | "fr" | "es" | "de" | "ar";
 export type ActionMedium = "music" | "book" | "other";
+export type ActionKind = "listen" | "read" | "view";
+export type CatalogIdentityResolution =
+  | { status: "exact"; work: CatalogWork; source: "id" | "alias" | "title" }
+  | { status: "ambiguous" | "unknown" | "none"; work: null; source: null };
 
 type R4Claim = {
   workId?: string;
@@ -16,7 +25,12 @@ type R4Claim = {
 
 export type SalesOptOut = {
   temporaryNoBuy: boolean;
+  persistentSalesStop: boolean;
+  persistentRecommendationStop: boolean;
+  /** Backward-compatible union of the two persistent stop states. */
   persistentStop: boolean;
+  currentStopRequest: boolean;
+  currentReopenRequest: boolean;
   suppressSales: boolean;
   suppressRecommendations: boolean;
 };
@@ -25,9 +39,11 @@ export type ChatCoreTurn = {
   language: CoreLanguage;
   currentRequest: string;
   sales: SalesOptOut;
+  actionKind: ActionKind | null;
   actionTargetId: string | null;
   actionLinks: PublicLink[];
-  actionStatus: "not_requested" | "available" | "unavailable" | "suppressed";
+  /** link_available means a recorded URL exists, not that an action ran. */
+  actionStatus: "not_requested" | "link_available" | "unavailable" | "ambiguous" | "suppressed";
 };
 
 export type Recommendation = {
@@ -38,13 +54,59 @@ export type Recommendation = {
   evidence: Pick<R4Claim, "workId" | "sourceScope" | "allowedClaims" | "prohibitedClaims" | "ambiguity"> | null;
 };
 
-const TEMPORARY_NO_BUY = /(今日は|今(?:日|回|は))?.{0,12}(?:買わない|購入しない)|(?:今日は|今は).{0,12}(?:見るだけ|考えたい)|(?:just|only) browsing|not buying (?:today|now)|not looking to buy/i;
-const PERSISTENT_STOP = /(?:もう|これ以上)?(?:営業|売り込).{0,16}(?:しないで|するな|やめて)|(?:商品|作品|カード|リンク).{0,18}(?:勧めないで|おすすめしないで|出さないで)|(?:don['’]?t|do not|stop)\b.{0,28}\b(?:sell|selling|recommend(?:ing)?|pitch(?:ing)?)/i;
-const PURCHASE_REOPEN = /(?:やっぱり|改めて).{0,12}(?:買いたい|購入したい)|(?:I )?(?:want|would like) to (?:buy|purchase)|(?:buy|purchase).{0,16}(?:now|again)/i;
-const LISTEN_REQUEST = /(?:聴(?:く|きたい|いて)|聞(?:く|きたい|いて)|listen|hear|play|preview)/i;
-const READ_REQUEST = /(?:読(?:む|みたい|んで)|read)/i;
-const REFERENCE_WORD = /(?:これ|それ|あれ|この|その|前(?:の|に)|さっきの|this|that|previous)/i;
-const NAMED_OUTSIDE = /[「『"“][^」』"”]{2,120}[」』"”]/;
+const TEMPORARY_NO_BUY = [
+  /(?:今日は|今(?:日|回|は)).{0,12}(?:買わない|購入しない|買うつもりはない)|(?:今日は|今は).{0,12}(?:見るだけ|考えたい)/i,
+  /(?:just|only) browsing|not buying (?:anything )?(?:today|now)|not looking to buy|(?:don['’]?t|do not) want to buy (?:today|now)|(?:only|just) looking|(?:think|decide) about (?:it|buying) (?:first|later)/i,
+  /(?:je )?(?:n['’]achète pas|ne vais pas acheter|ne veux pas acheter) (?:aujourd'hui|maintenant)|pas d['’]achat pour le moment|(?:je )?(?:regarde|parcours) (?:seulement|juste)|je (?:veux|vais) réfléchir/i,
+  /no (?:voy a comprar|compro|quiero comprar) (?:hoy|ahora|por ahora)|solo (?:estoy mirando|miro)|quiero pensarlo/i,
+  /(?:ich )?(?:kaufe|möchte) (?:heute|jetzt) (?:nicht|nichts)|ich (?:schaue|sehe) (?:nur|erst)|ich möchte (?:erst )?überlegen/i,
+  /(?:لن أشتري|لا أريد الشراء|لا أشتري) (?:اليوم|الآن)|(?:أتصفح|أنظر) فقط|أريد (?:أن أفكر|التفكير)/i,
+];
+const SALES_STOP = [
+  /(?:もう|これ以上)?(?:営業|売り込).{0,16}(?:しないで|するな|やめて|まないで)|(?:もう|これ以上).{0,12}(?:売らないで|営業しないで)/i,
+  /(?:don['’]?t|do not|stop)\b.{0,28}\b(?:sell|selling|pitch(?:ing)?)|no more (?:sales|pitches)|\bno sales\b/i,
+  /(?:ne .{0,25}|n['’].{0,25})vend.{0,20}(?:plus|pas|rien)|(?:arrêtez|arrête|cessez|cesse) de (?:me )?vend|plus de vente/i,
+  /no (?:me )?vend.{0,20}(?:más|nunca|nada)|(?:deja|deje) de vender|no más ventas/i,
+  /(?:verkauf|verkaufen) .{0,16}(?:nichts|nicht|mehr)|(?:nicht|nichts) (?:mehr )?verkauf|keine verkäufe mehr/i,
+  /(?:لا|لن) تبيع.{0,24}|(?:توقف|امتنع) عن البيع/i,
+];
+const RECOMMENDATION_STOP = [
+  /(?:商品|作品|カード|リンク|おすすめ|推薦).{0,18}(?:勧めないで|おすすめしないで|出さないで|やめて|いらない)|(?:もう|今後).{0,12}(?:勧めないで|おすすめしないで)|(?:勧める|おすすめする)のをやめて/i,
+  /(?:don['’]?t|do not|stop)\b.{0,28}\b(?:recommend(?:ing)?|suggest(?:ing)?)|no more recommendations|(?:please )?stop (?:the )?recommendations/i,
+  /(?:ne .{0,25}|n['’].{0,25})(?:recommand|propos).{0,20}(?:plus|pas)|(?:arrêtez|arrête|cessez|cesse) de (?:me )?(?:recommand|propos)|plus de recommandations/i,
+  /no (?:me )?(?:recomiend|ofrezc).{0,20}(?:más|nunca)|(?:deja|deje) de recomendar|no (?:quiero|más) recomendaciones/i,
+  /(?:empfiehl|empfehlen|empfehl) .{0,24}(?:nicht|keine|mehr)|keine empfehlungen mehr/i,
+  /(?:لا|لن) (?:توص|ترشح|تقترح).{0,24}|(?:توقف|امتنع) عن (?:التوصية|الاقتراح)|لا أريد (?:توصيات|اقتراحات)/i,
+];
+const PURCHASE_REOPEN = [
+  /(?:やっぱり|改めて|また).{0,12}(?:買いたい|購入したい)/i,
+  /(?:I )?(?:want|would like) to (?:buy|purchase)|(?:buy|purchase).{0,16}(?:now|again)/i,
+  /(?:je veux|j['’]aimerais) acheter/i,
+  /(?:quiero|me gustaría) comprar/i,
+  /(?:ich möchte|ich will) kaufen/i,
+  /(?:أريد|أود) (?:الشراء|أن أشتري)/i,
+];
+const RECOMMENDATION_REOPEN = [
+  /(?:やっぱり|改めて|また).{0,12}(?:勧めて|おすすめして|紹介して)/i,
+  /(?:recommend|suggest) (?:something|works?|products?) (?:again|now)|(?:I )?(?:want|would like) recommendations again/i,
+  /(?:je veux|j['’]aimerais) des recommandations|(?:recommandez|proposez)-?moi (?:de nouveau|à nouveau)/i,
+  /(?:recomiéndame|recomiendame|recomiende) (?:otra vez|de nuevo)|quiero recomendaciones/i,
+  /(?:ich möchte|ich will) (?:wieder )?empfehlungen|empfiehl mir (?:wieder|erneut)/i,
+  /(?:أريد|أود) توصيات|(?:اقترح|رشح|أوص) لي (?:مرة أخرى|الآن)/i,
+];
+const LISTEN_REQUEST = /(?:聴(?:く|きたい|いて)|聞(?:く|きたい|いて)|\b(?:listen|hear|play|preview)\b|écouter|escuchar|hören|anhören|استمع|الاستماع|أسمع|سماع)/i;
+const READ_REQUEST = /(?:読(?:む|みたい|んで)|\bread\b|lire|leer|lesen|أقرأ|قراءة)/i;
+const VIEW_REQUEST = /(?:見(?:る|たい|せて)|開(?:く|きたい|いて)|\b(?:view|open|see|show|voir|ouvrir|ver|abrir|ansehen|öffnen)\b|عرض|افتح|أرى)/i;
+const REFERENCE_WORD = /(?:これ|それ|あれ|この|その|前(?:の|に)|さっきの|\b(?:this|that|previous|it|ce|cette|cela|celui|ésta|esta|esto|ese|diese|dieses)\b|هذا|هذه|ذلك)/i;
+const QUOTED_NAME = /[「『"“«„]([^」』"”»“]{1,120})[」』"”»“]/gu;
+const DISTRESS_REQUEST = [
+  /(?:死にたい|自殺|自傷|消えたい|生きていたくない|自分を傷つけたい|もう生きられない|限界|つらすぎ|辛すぎ|涙が止ま)/i,
+  /(?:\bsuicid(?:e|al)\b|\b(?:kill|hurt|harm) myself\b|\bi want to die\b|\bi don't want to live\b|\bself[ -]?harm\b)/i,
+  /(?:suicide|suicider|je veux mourir|je ne veux plus vivre|me faire du mal)/i,
+  /(?:suicidio|suicidarme|quiero morir|no quiero vivir|hacerme daño)/i,
+  /(?:suizid|selbstmord|ich will sterben|ich möchte sterben|mich selbst verletzen)/i,
+  /(?:انتحار|أريد أن أموت|لا أريد أن أعيش|أؤذي نفسي|قتل نفسي)/i,
+];
 // Only catalog/editorial-style metadata participates here. SSD production notes
 // and all R4 machine observations are deliberately excluded.
 const INTENT_SIGNALS = [
@@ -60,6 +122,11 @@ function normalize(value: unknown) {
   return String(value ?? "").normalize("NFKC").toLocaleLowerCase();
 }
 
+/** Current text only; the caller decides whether historical turns are relevant. */
+export function isDistressRequest(text: string): boolean {
+  return matchesAny(DISTRESS_REQUEST, normalize(text));
+}
+
 function lastUser(messages: CoreMessage[]) {
   for (let index = messages.length - 1; index >= 0; index -= 1) {
     if (messages[index].role === "user") return messages[index].content.trim();
@@ -67,9 +134,10 @@ function lastUser(messages: CoreMessage[]) {
   return "";
 }
 
-function requestedMedium(query: string): ActionMedium | null {
-  if (LISTEN_REQUEST.test(query)) return "music";
-  if (READ_REQUEST.test(query)) return "book";
+function requestedAction(query: string): ActionKind | null {
+  if (LISTEN_REQUEST.test(query)) return "listen";
+  if (READ_REQUEST.test(query)) return "read";
+  if (VIEW_REQUEST.test(query)) return "view";
   return null;
 }
 
@@ -85,43 +153,122 @@ function languageFor(defaultLanguage: CoreLanguage, query: string): CoreLanguage
   return /(?:日本語で|日本語(?:だけ|のみ)で|in japanese)/i.test(query) ? "ja" : defaultLanguage;
 }
 
+function matchesAny(patterns: RegExp[], query: string): boolean {
+  return patterns.some((pattern) => pattern.test(query));
+}
+
 function salesOptOut(messages: CoreMessage[], currentRequest: string): SalesOptOut {
-  let persistentStop = false;
-  for (const message of messages) {
-    if (message.role !== "user") continue;
-    if (PERSISTENT_STOP.test(message.content)) persistentStop = true;
-    if (persistentStop && PURCHASE_REOPEN.test(message.content)) persistentStop = false;
+  let persistentSalesStop = false;
+  let persistentRecommendationStop = false;
+  let currentStopRequest = false;
+  let currentReopenRequest = false;
+  let currentUserIndex = -1;
+  for (let index = messages.length - 1; index >= 0; index -= 1) {
+    if (messages[index].role === "user") { currentUserIndex = index; break; }
   }
-  const temporaryNoBuy = TEMPORARY_NO_BUY.test(currentRequest);
+  for (const [index, message] of messages.entries()) {
+    if (message.role !== "user") continue;
+    const content = normalize(message.content);
+    const salesStop = matchesAny(SALES_STOP, content);
+    const recommendationStop = matchesAny(RECOMMENDATION_STOP, content);
+    const purchaseReopen = matchesAny(PURCHASE_REOPEN, content);
+    const recommendationReopen = matchesAny(RECOMMENDATION_REOPEN, content);
+    // Within one message, explicit stop has priority over a conflicting reopen.
+    if (salesStop) persistentSalesStop = true;
+    else if (purchaseReopen) persistentSalesStop = false;
+    if (recommendationStop) persistentRecommendationStop = true;
+    else if (purchaseReopen || recommendationReopen) persistentRecommendationStop = false;
+    if (index === currentUserIndex) {
+      currentStopRequest = salesStop || recommendationStop;
+      currentReopenRequest = !currentStopRequest && (purchaseReopen || recommendationReopen);
+    }
+  }
+  const temporaryNoBuy = matchesAny(TEMPORARY_NO_BUY, normalize(currentRequest));
   return {
     temporaryNoBuy,
-    persistentStop,
-    suppressSales: temporaryNoBuy || persistentStop,
-    suppressRecommendations: persistentStop,
+    persistentSalesStop,
+    persistentRecommendationStop,
+    persistentStop: persistentSalesStop || persistentRecommendationStop,
+    currentStopRequest,
+    currentReopenRequest,
+    suppressSales: temporaryNoBuy || persistentSalesStop || persistentRecommendationStop,
+    suppressRecommendations: persistentRecommendationStop,
   };
 }
 
-function referencedWork(messages: CoreMessage[], works: CatalogWork[], medium: ActionMedium | null): CatalogWork | null {
-  if (!medium) return null;
+function previousRecommendedWorkId(messages: CoreMessage[]): string | null {
+  let currentUserIndex = messages.length;
   for (let index = messages.length - 1; index >= 0; index -= 1) {
+    if (messages[index].role === "user") { currentUserIndex = index; break; }
+  }
+  for (let index = currentUserIndex - 1; index >= 0; index -= 1) {
     const message = messages[index];
-    if (message.role !== "assistant") continue;
-    const text = normalize(message.content);
-    const match = works.find((work) =>
-      workMedium(work) === medium && Boolean(work.title) && text.includes(normalize(work.title))
-    );
-    if (match) return match;
+    if (message.role === "assistant") return message.recommendedWorkId ? String(message.recommendedWorkId) : null;
   }
   return null;
 }
 
-function namedCatalogWork(query: string, works: CatalogWork[]): CatalogWork | null {
-  const normalized = normalize(query);
-  return works.find((work) => {
-    const id = normalize(work.id);
-    const title = normalize(work.title);
-    return Boolean(id || title) && (normalized.includes(id) || normalized.includes(title));
-  }) ?? null;
+function uniqueMatch(works: CatalogWork[], source: "id" | "alias" | "title"): CatalogIdentityResolution {
+  const unique = Array.from(new Map(works.map((work) => [String(work.id ?? ""), work])).values());
+  if (unique.length === 1 && unique[0].id != null && String(unique[0].id)) {
+    return { status: "exact", work: unique[0], source };
+  }
+  return { status: "ambiguous", work: null, source: null };
+}
+
+function delimitedName(query: string, name: string): boolean {
+  if (!name) return false;
+  for (let start = query.indexOf(name); start >= 0; start = query.indexOf(name, start + 1)) {
+    const before = query[start - 1] ?? "";
+    const after = query[start + name.length] ?? "";
+    // A short title such as ME must never match inside "recommend". For Japanese
+    // title+particle requests, the exact particle is accepted as a delimiter.
+    const leftOK = !before || !/[\p{L}\p{N}]/u.test(before);
+    const rightOK = !after || !/[\p{L}\p{N}]/u.test(after)
+      || /^(?:を|が|は|に|の|で|と)(?:聴|聞|読|見|開|ください)/u.test(query.slice(start + name.length));
+    if (leftOK && rightOK) return true;
+  }
+  return false;
+}
+
+function exactIdentity(name: string, works: CatalogWork[]): CatalogIdentityResolution {
+  const value = normalize(name).trim();
+  if (!value) return { status: "none", work: null, source: null };
+  const byId = works.filter((work) => work.id != null && normalize(work.id) === value);
+  if (byId.length) return uniqueMatch(byId, "id");
+  const byAlias = works.filter((work) => (work.catalogAliases ?? []).some((alias) => normalize(alias) === value));
+  const byTitle = works.filter((work) => work.title && normalize(work.title) === value);
+  if (byAlias.length || byTitle.length) return uniqueMatch([...byAlias, ...byTitle], byAlias.length ? "alias" : "title");
+  return { status: "unknown", work: null, source: null };
+}
+
+/** Resolves explicit catalog identity without title substrings or assistant prose. */
+export function resolveCatalogIdentity(query: string, works: CatalogWork[]): CatalogIdentityResolution {
+  const quoted = Array.from(query.matchAll(QUOTED_NAME), (match) => match[1].trim()).filter(Boolean);
+  if (quoted.length) {
+    if (new Set(quoted.map(normalize)).size !== 1) return { status: "ambiguous", work: null, source: null };
+    return exactIdentity(quoted[0], works);
+  }
+  const normalized = normalize(query).trim();
+  const bySource: { source: "id" | "alias" | "title"; matches: CatalogWork[] }[] = [];
+  for (const source of ["id", "alias", "title"] as const) {
+    const matches = works.filter((work) => {
+      const names = source === "id" ? [String(work.id ?? "")]
+        : source === "alias" ? work.catalogAliases ?? [] : [work.title ?? ""];
+      return names.some((name) => {
+        const value = normalize(name).trim();
+        // A title/alias embedded in prose can be an ordinary word. Require
+        // quotes for that case; an unquoted name must be the entire request.
+        return value && (normalized === value || (source === "id" && delimitedName(normalized, value)));
+      });
+    });
+    bySource.push({ source, matches });
+  }
+  if (bySource[0].matches.length) return uniqueMatch(bySource[0].matches, "id");
+  const byAlias = bySource[1].matches;
+  const byTitle = bySource[2].matches;
+  if (byAlias.length || byTitle.length) return uniqueMatch([...byAlias, ...byTitle], byAlias.length ? "alias" : "title");
+  return { status: "none", work: null, source: null };
 }
 
 function currentPhrase(query: string): string {
@@ -146,7 +293,6 @@ function rankCatalogWorks(works: CatalogWork[], query: string) {
   const normalizedQuery = normalize(query);
   return works.map((work) => {
     const haystack = catalogHaystack(work);
-    const title = normalize(work.title);
     let score = 0;
     const reasons: string[] = [];
     for (const signal of INTENT_SIGNALS) {
@@ -156,8 +302,6 @@ function rankCatalogWorks(works: CatalogWork[], query: string) {
       score += Math.min(matches, 4) * 5;
       reasons.push(signal.reason);
     }
-    if (title && normalizedQuery.includes(title)) score += 20;
-    if (String(work.id ?? "") && normalizedQuery.includes(normalize(work.id))) score += 20;
     return { work, score, reasons: Array.from(new Set(reasons)), tie: stableTieBreak(query, work) };
   }).sort((left, right) => right.score - left.score || left.tie - right.tie);
 }
@@ -177,20 +321,33 @@ export function lookupR4EvidenceByWorkId(workId: string): R4Claim | null {
 export function deriveChatCoreTurn(input: { messages: CoreMessage[]; language: CoreLanguage; works: CatalogWork[] }): ChatCoreTurn {
   const currentRequest = lastUser(input.messages);
   const sales = salesOptOut(input.messages, currentRequest);
-  const medium = requestedMedium(currentRequest);
-  const asksForPriorAction = Boolean(medium && REFERENCE_WORD.test(currentRequest));
-  const prior = asksForPriorAction ? referencedWork(input.messages, input.works, medium) : null;
-  const actionLinks = prior ? getPublicLinksForCard(prior) : [];
-  const actionStatus = !medium ? "not_requested"
+  const actionKind = requestedAction(currentRequest);
+  const identity = actionKind ? resolveCatalogIdentity(currentRequest, input.works) : null;
+  const priorId = actionKind && identity?.status === "none" && REFERENCE_WORD.test(currentRequest)
+    ? previousRecommendedWorkId(input.messages)
+    : null;
+  const prior = priorId ? input.works.find((work) => String(work.id ?? "") === priorId) ?? null : null;
+  const target = identity?.status === "exact" ? identity.work : prior;
+  const targetMedium = target ? workMedium(target) : null;
+  const compatible = actionKind === "view"
+    || (actionKind === "listen" && targetMedium === "music")
+    || (actionKind === "read" && targetMedium === "book");
+  const recordedLinks = target && compatible ? getPublicLinksForCard(target) : [];
+  const actionLinks = actionKind === "listen"
+    ? recordedLinks.filter((link) => ["spotify", "appleMusic", "amazonMusic", "listen"].includes(link.kind))
+    : actionKind === "read" ? recordedLinks.filter((link) => link.kind === "read") : recordedLinks;
+  const actionStatus: ChatCoreTurn["actionStatus"] = !actionKind ? "not_requested"
     : sales.suppressRecommendations ? "suppressed"
-      : prior && actionLinks.length ? "available"
-        : "unavailable";
+      : identity?.status === "ambiguous" ? "ambiguous"
+        : target && actionLinks.length ? "link_available" : "unavailable";
   return {
     language: languageFor(input.language, currentRequest),
     currentRequest,
     sales,
-    actionTargetId: actionStatus === "available" ? String(prior?.id ?? "") || null : null,
-    actionLinks: actionStatus === "available" ? actionLinks : [],
+    actionKind,
+    actionTargetId: target && identity?.status !== "ambiguous" && identity?.status !== "unknown"
+      ? String(target.id ?? "") || null : null,
+    actionLinks: actionStatus === "link_available" ? actionLinks : [],
     actionStatus,
   };
 }
@@ -203,11 +360,13 @@ export function selectOneRecommendation(input: {
   preferWorkId?: string | null;
 }): Recommendation | null {
   if (input.sales.suppressRecommendations) return null;
-  const exact = input.preferWorkId
-    ? input.works.find((work) => String(work.id) === input.preferWorkId) ?? null
-    : namedCatalogWork(input.query, input.works);
-  // A quoted unknown title is not a license to replace it with an unrelated item.
-  if (!exact && NAMED_OUTSIDE.test(input.query)) return null;
+  const identity = resolveCatalogIdentity(input.query, input.works);
+  // An explicit current name always wins over a previous ID. Ambiguous or
+  // unknown quoted names require clarification, never a substitute card.
+  if (identity.status === "ambiguous" || identity.status === "unknown") return null;
+  const exact = identity.status === "exact" ? identity.work
+    : input.preferWorkId ? input.works.find((work) => String(work.id) === input.preferWorkId) ?? null : null;
+  if (input.preferWorkId && !exact) return null;
   const candidate = exact
     ? { work: exact, score: 1, reasons: ["現在の指定"] }
     : rankCatalogWorks(input.works, input.query).find((item) => item.score > 0) ?? null;
@@ -232,7 +391,18 @@ export function selectOneRecommendation(input: {
   };
 }
 
-export function salesSuppressionText(language: CoreLanguage): string {
+export function salesSuppressionText(language: CoreLanguage, scope: "sales" | "recommendations" = "recommendations"): string {
+  if (scope === "sales") {
+    const salesTexts: Record<CoreLanguage, string> = {
+      ja: "承知しました。こちらから購入や販売の案内はしません。作品については、ご希望があればお話しできます。",
+      en: "Understood. I will stop sales and purchase prompts. We can still discuss works if you ask.",
+      fr: "Entendu. Je ne vous proposerai plus d'achat. Nous pouvons encore parler des œuvres si vous le souhaitez.",
+      es: "Entendido. Dejaré de ofrecer compras. Podemos seguir hablando de obras si usted lo pide.",
+      de: "Verstanden. Ich werde keine Kaufangebote mehr machen. Über Werke können wir sprechen, wenn Sie möchten.",
+      ar: "مفهوم. سأتوقف عن عرض الشراء. يمكننا مواصلة الحديث عن الأعمال إذا طلبت ذلك.",
+    };
+    return salesTexts[language];
+  }
   const texts: Record<CoreLanguage, string> = {
     ja: "承知しました。こちらから商品や作品を勧めることは控えます。今は、話したいことだけをそのまま聞かせてください。",
     en: "Understood. I will not introduce products or works unless you explicitly reopen that subject. We can stay with what you want to discuss.",
@@ -245,11 +415,30 @@ export function salesSuppressionText(language: CoreLanguage): string {
 }
 
 export function unavailableRecommendationText(language: CoreLanguage, actionStatus?: ChatCoreTurn["actionStatus"]): string {
-  if (language === "ja") {
-    if (actionStatus === "unavailable") return "その操作に結びつく、確認済みの公開リンクをこの会話から特定できません。別の作品名を指定していただければ、catalog にあるものだけを確かめます。";
-    return "その条件に合う作品を、catalog の記録だけから確かに選べませんでした。架空の作品やリンクで埋めることはいたしません。";
-  }
-  return actionStatus === "unavailable"
-    ? "I cannot identify a verified public action link for that request from this conversation."
-    : "I cannot select a catalog-grounded work for that request without inventing one.";
+  const ambiguous: Record<CoreLanguage, string> = {
+    ja: "作品名が複数の catalog 作品に一致します。作品 ID か、別の識別できる名前を指定してください。",
+    en: "That name matches multiple catalog works. Please specify a work ID or another unambiguous name.",
+    fr: "Ce nom correspond à plusieurs œuvres du catalogue. Précisez l'identifiant de l'œuvre ou un autre nom sans ambiguïté.",
+    es: "Ese nombre corresponde a varias obras del catálogo. Indique el ID de la obra u otro nombre inequívoco.",
+    de: "Dieser Name passt zu mehreren Werken im Katalog. Bitte nennen Sie die Werk-ID oder einen eindeutigen Namen.",
+    ar: "هذا الاسم يطابق أكثر من عمل في الفهرس. يرجى تحديد معرّف العمل أو اسم واضح.",
+  };
+  const unavailable: Record<CoreLanguage, string> = {
+    ja: "その操作に結びつく、確認済みの公開リンクをこの会話から特定できません。別の作品名を指定していただければ、catalog にあるものだけを確かめます。",
+    en: "I cannot identify a verified public action link for that request from this conversation.",
+    fr: "Je ne peux pas identifier de lien public vérifié pour cette action dans cette conversation.",
+    es: "No puedo identificar en esta conversación un enlace público verificado para esa acción.",
+    de: "Ich kann in diesem Gespräch keinen bestätigten öffentlichen Link für diese Aktion ermitteln.",
+    ar: "لا أستطيع تحديد رابط عام موثّق لهذا الإجراء من هذه المحادثة.",
+  };
+  const noRecommendation: Record<CoreLanguage, string> = {
+    ja: "その条件に合う作品を、catalog の記録だけから確かに選べませんでした。架空の作品やリンクで埋めることはいたしません。",
+    en: "I cannot select a catalog-grounded work for that request without inventing one.",
+    fr: "Je ne peux pas choisir une œuvre confirmée par le catalogue pour cette demande.",
+    es: "No puedo seleccionar para esa solicitud una obra confirmada por el catálogo.",
+    de: "Ich kann für diese Anfrage kein durch den Katalog belegtes Werk auswählen.",
+    ar: "لا أستطيع اختيار عمل تؤكده بيانات الفهرس لهذا الطلب.",
+  };
+  return actionStatus === "ambiguous" ? ambiguous[language]
+    : actionStatus === "unavailable" ? unavailable[language] : noRecommendation[language];
 }

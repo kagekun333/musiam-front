@@ -74,17 +74,15 @@ const LMSTUDIO_MODEL = process.env.LMSTUDIO_MODEL ?? "";
    共通ヘルパ
    ========================= */
 
-function splitSystemAndRest(system: string | undefined, messages: LlmMessage[]) {
-  // messages の先頭にすでに system が入っていたら尊重。重複を防ぐ。
-  const hasSystemInMessages = messages.some((m) => m.role === "system");
-  if (hasSystemInMessages) {
-    const first = messages.find((m) => m.role === "system");
-    return {
-      system: first?.content ?? system ?? "",
-      rest: messages.filter((m) => m.role !== "system"),
-    };
-  }
-  return { system: system ?? "", rest: messages };
+export function splitSystemAndRest(system: string | undefined, messages: LlmMessage[]) {
+  // A separately supplied server-owned system prompt is authoritative.
+  // Internal callers that put a system message in the array remain supported
+  // when they do not provide that separate prompt.
+  const firstSystem = messages.find((m) => m.role === "system");
+  return {
+    system: system ?? firstSystem?.content ?? "",
+    rest: messages.filter((m) => m.role !== "system"),
+  };
 }
 
 /* =========================

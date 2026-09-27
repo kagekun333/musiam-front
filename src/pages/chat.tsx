@@ -223,6 +223,7 @@ export default function ChatPage() {
   const [sourceContent, setSourceContent] = useState("");
   const [rememberConversation, setRememberConversation] = useState(true);
   const [historyRestored, setHistoryRestored] = useState(false);
+  const [historyRestoreError, setHistoryRestoreError] = useState(false);
   const [memoryStatus, setMemoryStatus] = useState<MemoryStatus>("idle");
   const [deletingHistory, setDeletingHistory] = useState(false);
   const [historyDeleteError, setHistoryDeleteError] = useState(false);
@@ -234,6 +235,8 @@ export default function ChatPage() {
   const sendInFlightRef = useRef(false);
   const entryGenerationRef = useRef(0);
   const historyRevisionRef = useRef(0);
+  const historyRestoreAttemptRef = useRef(0);
+  const historyRestoreBlockedRef = useRef(false);
   const historyQueueRef = useRef(Promise.resolve());
   const lastFailedRequestRef = useRef<{ messages: ChatMsg[]; userMessageIndex: number; userTurn: number } | null>(null);
   const metalFunnelActivatedRef = useRef(false);
@@ -397,34 +400,58 @@ export default function ChatPage() {
 
   async function restoreOrBegin(l: Lang, tone: SalonTimeTone) {
     const generation = entryGenerationRef.current;
+    const attempt = ++historyRestoreAttemptRef.current;
     let enabled = true;
     try { enabled = localStorage.getItem(CHAT_MEMORY_ENABLED_KEY) !== "off"; } catch { /* ignore */ }
     rememberConversationRef.current = enabled;
     setRememberConversation(enabled);
+    historyRestoreBlockedRef.current = enabled;
+    setHistoryRestoreError(false);
     if (enabled) {
       try {
-        const res = await fetch(`/api/chat-history?conversationId=${encodeURIComponent(ensureConversationId())}`, { cache: "no-store" });
+        const conversationId = ensureConversationId();
+        const res = await fetch(`/api/chat-history?conversationId=${encodeURIComponent(conversationId)}`, { cache: "no-store" });
+        if (!res.ok) throw new Error("history_unavailable");
         const json = await res.json();
-        if (generation !== entryGenerationRef.current) return;
-        const restored = normalizeChatHistory(json?.history?.messages);
-        if (res.ok && restored.length) {
-          const restoredCard = normalizeChatUiReply({ card: json?.restoredRecommendation }).cards[0] ?? null;
-          setMessages(restored);
-          setCards(restoredCard ? [restoredCard] : []); setChoices([]); setCta(null);
-          setLang(normalizeLang(json?.history?.lang ?? l));
-          setStarted(true);
-          setHistoryRestored(true);
-          setMemoryStatus("saved");
-          capture("salon_history_restored", { messageCount: restored.length });
-          return;
+        if (generation !== entryGenerationRef.current || attempt !== historyRestoreAttemptRef.current) return;
+        if (!json || typeof json !== "object" || json.ok !== true || !("history" in json)) throw new Error("invalid_history_response");
+        const history = json.history;
+        if (history !== null) {
+          if (!history || typeof history !== "object" || history.version !== 1
+            || (history.conversationId !== undefined && history.conversationId !== conversationId)
+            || !SUPPORTED_LANG_VALUES.includes(history.lang)
+            || !Array.isArray(history.messages) || history.messages.length > 40) throw new Error("invalid_history_response");
+          const restored = normalizeChatHistory(history.messages);
+          if (restored.length !== history.messages.length) throw new Error("invalid_history_response");
+          if (restored.length) {
+            const restoredCard = normalizeChatUiReply({ card: json?.restoredRecommendation }).cards[0] ?? null;
+            setMessages(restored);
+            setCards(restoredCard ? [restoredCard] : []); setChoices([]); setCta(null);
+            setLang(history.lang);
+            setStarted(true);
+            setHistoryRestored(true);
+            setMemoryStatus("saved");
+            historyRestoreBlockedRef.current = false;
+            capture("salon_history_restored", { messageCount: restored.length });
+            return;
+          }
         }
-      } catch { /* 新しい会話へフォールバック */ }
+      } catch {
+        if (generation !== entryGenerationRef.current || attempt !== historyRestoreAttemptRef.current) return;
+        setHistoryRestoreError(true);
+        setMemoryStatus("unavailable");
+        return;
+      }
     }
-    if (generation === entryGenerationRef.current) await begin(l, tone);
+    if (generation === entryGenerationRef.current && attempt === historyRestoreAttemptRef.current) {
+      historyRestoreBlockedRef.current = false;
+      await begin(l, tone);
+    }
   }
 
   async function queueHistoryDeletion(id: string): Promise<boolean> {
     if (deletingHistoryRef.current) return false;
+    ++historyRestoreAttemptRef.current;
     deletingHistoryRef.current = true;
     setDeletingHistory(true);
     setHistoryDeleteError(false);
@@ -453,6 +480,8 @@ export default function ChatPage() {
     if (!await queueHistoryDeletion(id)) return;
     conversationIdRef.current = "";
     try { localStorage.removeItem(CHAT_CONVERSATION_ID_KEY); } catch { /* ignore */ }
+    historyRestoreBlockedRef.current = false;
+    setHistoryRestoreError(false);
     setHistoryRestored(false);
     setHistoryDeleteError(false);
     setMemoryStatus("idle");
@@ -475,13 +504,18 @@ export default function ChatPage() {
     rememberConversationRef.current = false;
     setRememberConversation(false);
     try { localStorage.setItem(CHAT_MEMORY_ENABLED_KEY, "off"); } catch { /* ignore */ }
+    const restoreWasBlocked = historyRestoreBlockedRef.current;
+    historyRestoreBlockedRef.current = false;
+    setHistoryRestoreError(false);
     setHistoryRestored(false);
     setHistoryDeleteError(false);
     setMemoryStatus("idle");
     setToast(lang === "ja" ? "会話の記憶を停止しました" : "Conversation memory turned off");
+    if (restoreWasBlocked) await begin(lang, timeTone);
   }
 
   async function begin(l: Lang = lang, tone: SalonTimeTone = timeTone) {
+    if (historyRestoreBlockedRef.current) return;
     const requestId = ++replyRequestIdRef.current;
     sendInFlightRef.current = false;
     setStarted(false);
@@ -988,9 +1022,13 @@ export default function ChatPage() {
           )}
           <p>
             {lang === "ja"
-              ? memoryStatus === "unavailable"
+              ? historyRestoreError
+                ? "保存された会話を確認できません。復元を再試行するか、記憶を消去してから新しく始めてください。"
+              : memoryStatus === "unavailable"
                 ? "現在は保存できません。会話は続けられますが、この表示が消えるまで記憶済みとは扱いません。"
                 : `同じブラウザで再訪すると続きから話せます。最終更新から90日間保存します。${historyRestored ? "前回の会話を復元しました。" : memoryStatus === "saving" ? "保存中です。" : memoryStatus === "saved" ? "保存しました。" : "いつでも停止・消去できます。"}`
+              : historyRestoreError
+                ? "We cannot check your saved conversation. Retry restoration or delete the memory before starting anew."
               : memoryStatus === "unavailable"
                 ? "Memory is currently unavailable. Chat can continue, but this conversation is not treated as saved yet."
                 : `Return in the same browser to continue. Stored for 90 days after the last update. ${historyRestored ? "Your previous conversation was restored." : memoryStatus === "saving" ? "Saving…" : memoryStatus === "saved" ? "Saved." : "You can turn it off or delete it at any time."}`}
@@ -1003,6 +1041,17 @@ export default function ChatPage() {
                 : lang === "ja" ? "記憶を消去して新しく始める" : "Delete memory and start over"}
           </button>
         </div>
+
+        {historyRestoreError && (
+          <div className={styles.error} role="alert">
+            <p>{lang === "ja"
+              ? "保存された会話を確認できませんでした。会話を上書きしないため、復元を再試行してください。"
+              : "We could not check your saved conversation. Retry restoration to avoid overwriting it."}</p>
+            <button type="button" onClick={() => void restoreOrBegin(lang, timeTone)}>
+              {lang === "ja" ? "会話の復元を再試行" : "Retry conversation restore"}
+            </button>
+          </div>
+        )}
 
         {error && (
           <div className={styles.error} role="alert">

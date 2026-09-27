@@ -13,7 +13,7 @@ import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { buildChatWorkCard } from "@/lib/chat-work-card";
-import { deriveChatCoreTurn, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
+import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { buildChatInterestBridge, chatInterestRecommendationSeed, isChatInterestDecline, isChatInterestInvitation } from "@/lib/chat-interest-bridge";
 import { buildMetalPrintSalesTurn } from "@/lib/metal-print-sales-conversation";
@@ -70,16 +70,16 @@ const BodySchema = z.object({
   }).optional(),
   messages: z
     .array(
-      z.object({
-        role: z.enum(["system", "user", "assistant"]),
-        content: z.string().max(MAX_CONTENT_CHARS),
-      })
+      z.discriminatedUnion("role", [
+        z.object({ role: z.literal("user"), content: z.string().max(MAX_CONTENT_CHARS) }),
+        z.object({ role: z.literal("assistant"), content: z.string().max(MAX_CONTENT_CHARS), recommendedWorkId: z.string().max(180).nullable().optional() }),
+      ]) // The HTTP client has no authority to supply a system message.
     )
     .max(MAX_MESSAGES)
     .default([]),
 });
 
-type Msg = { role: "system" | "user" | "assistant"; content: string };
+type Msg = { role: "user" | "assistant"; content: string; recommendedWorkId?: string | null };
 type LlmMeta = {
   ok: boolean;
   text: string;
@@ -101,7 +101,6 @@ function conversationText(m: Msg[]) {
 }
 function fullConversationText(m: Msg[]) {
   return m
-    .filter((x) => x.role !== "system")
     .map((x) => `${x.role}: ${x.content.trim()}`)
     .filter((x) => x.length > 12)
     .join("\n");
@@ -116,9 +115,7 @@ function previousAssistantText(m: Msg[]) {
 /* ───────── 相手の状態を読む ───────── */
 
 // 1) 弱っている（売らない・寄り添う）
-function isDistress(t: string) {
-  return /(消えたい|死にたい|生きるのが|もう無理|限界|つらすぎ|涙が止ま|自傷|リスカ|希死|want to die|kill myself|end it all|can't go on|suicid)/i.test(t);
-}
+function isDistress(t: string) { return isDistressRequest(t); }
 
 // 2) 商用の高単価意図（公爵へ格上げ）
 type Commercial = "business" | "order" | null;
@@ -150,13 +147,64 @@ function desiredType(t: string): "book" | "music" | undefined {
 
 // 4) 低単価商材の合図
 function productHint(t: string): Product | undefined {
-  if (/(占い|運勢|今日の|タロット|oracle|fortune)/i.test(t)) return PRODUCTS.find((p) => p.id === "omikuji-song");
   if (/(壁紙|wallpaper)/i.test(t)) return PRODUCTS.find((p) => p.id === "wallpaper");
   if (/(画集|アート|ジャケット|artbook|art)/i.test(t)) return PRODUCTS.find((p) => p.id === "artbook");
   if (/(作り方|自分で作|プロンプト|魔導書|how.*make|prompt)/i.test(t)) return PRODUCTS.find((p) => p.id === "grimoire");
   if (/(高音質|未配信|wav|flac|ベスト|best)/i.test(t)) return PRODUCTS.find((p) => p.id === "best-vol1");
   if (/(商用|ライセンス|license|commercial)/i.test(t)) return PRODUCTS.find((p) => p.id === "bgm-license");
   return undefined;
+}
+
+function asksForRetiredOracle(t: string) {
+  return /(占い|運勢|タロット|\boracle\b|fortune|horoscope|horóscopo|oráculo|orakel|wahrsagen|فال|أبراج)/i.test(t);
+}
+
+function retiredOracleText(lang: Lang): string {
+  const copy: Record<Lang, string> = {
+    ja: "占いは現在ご案内しておりません。利用できるものとしてお渡しすることはできません。",
+    en: "The oracle is not available at present, so I cannot offer it as an active experience.",
+    fr: "L’oracle n’est pas disponible actuellement ; je ne peux pas vous le proposer comme une expérience active.",
+    es: "El oráculo no está disponible actualmente; no puedo ofrecerlo como una experiencia activa.",
+    de: "Das Orakel ist derzeit nicht verfügbar; ich kann es nicht als aktives Angebot empfehlen.",
+    ar: "خدمة العرافة غير متاحة حاليًا، لذلك لا يمكنني تقديمها كتجربة متاحة.",
+  };
+  return copy[lang];
+}
+
+function unknownEntryWorkText(lang: Lang): string {
+  const copy: Record<Lang, string> = {
+    ja: "指定された作品を現在のcatalogで確認できません。作品名やIDをもう一度教えてください。",
+    en: "I cannot verify that work in the current catalog. Please give me its name or ID again.",
+    fr: "Je ne peux pas confirmer cette œuvre dans le catalogue actuel. Redonnez-moi son nom ou son identifiant.",
+    es: "No puedo verificar esa obra en el catálogo actual. Indíqueme de nuevo su nombre o ID.",
+    de: "Ich kann dieses Werk im aktuellen Katalog nicht bestätigen. Bitte nennen Sie Titel oder ID erneut.",
+    ar: "لا أستطيع التحقق من هذا العمل في الفهرس الحالي. يرجى ذكر اسمه أو معرّفه مرة أخرى.",
+  };
+  return copy[lang];
+}
+
+function actionLinkText(lang: Lang, kind: "listen" | "read" | "view", title: string): string {
+  const copy: Record<Lang, string> = {
+    ja: `「${title}」の確認済み公開リンクを下のカードに示しました。ここでは${kind === "listen" ? "再生" : kind === "read" ? "閲覧" : "ページの表示"}を実行していません。`,
+    en: `I have presented a verified public link for “${title}” in the card below. I have not ${kind === "listen" ? "played" : kind === "read" ? "read" : "opened"} it for you.`,
+    fr: `Le lien public vérifié pour « ${title} » se trouve dans la carte ci-dessous. Je n’ai pas ${kind === "listen" ? "lancé la lecture" : kind === "read" ? "lu l’œuvre" : "ouvert la page"} à votre place.`,
+    es: `El enlace público verificado de «${title}» aparece en la tarjeta. No he ${kind === "listen" ? "reproducido" : kind === "read" ? "leído" : "abierto"} la obra por usted.`,
+    de: `Der bestätigte öffentliche Link zu „${title}“ steht in der Karte unten. Ich habe das Werk nicht für Sie ${kind === "listen" ? "abgespielt" : kind === "read" ? "gelesen" : "geöffnet"}.`,
+    ar: `أعرض رابطًا عامًا مؤكّدًا للعمل «${title}» في البطاقة أدناه. لم ${kind === "listen" ? "أشغّله" : kind === "read" ? "أقرأه" : "أفتحه"} نيابةً عنك.`,
+  };
+  return copy[lang];
+}
+
+function temporaryNoBuyText(lang: Lang): string {
+  const copy: Record<Lang, string> = {
+    ja: "承知しました。今日は購入の案内を控えます。話したいことをそのまま聞かせてください。",
+    en: "Understood. I will leave purchase offers aside today. Tell me what you would like to discuss.",
+    fr: "Entendu. Je laisse les propositions d’achat de côté aujourd’hui. Dites-moi de quoi vous souhaitez parler.",
+    es: "Entendido. Hoy dejaré de lado las ofertas de compra. Dígame de qué desea hablar.",
+    de: "Verstanden. Heute lasse ich Kaufangebote beiseite. Sagen Sie mir, worüber Sie sprechen möchten.",
+    ar: "مفهوم. سأترك عروض الشراء جانبًا اليوم. أخبرني عمّا تود الحديث عنه.",
+  };
+  return copy[lang];
 }
 
 // 2.5) 法人のオフィスアート導入（公爵・税制メリット訴求）
@@ -579,26 +627,64 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // An explicit current language instruction outranks the UI default.
     lang = coreTurn.language as Lang;
     timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
+    const controlled = (assistantText: string, intent: string, card: RecoCard | null = null, actionResult: "LINK_PRESENTED" | null = null) =>
+      res.status(200).json({
+        ok: true, v: 3, assistantText, card, cta: null, persona: "count", intent,
+        productId: null, interestBridge: null, timeTone, provider: "none",
+        ...(actionResult ? { actionResult: { status: actionResult, workId: card?.id ?? null, kind: coreTurn.actionKind } } : {}),
+        memory: { residue: assistantText.slice(0, 120), cardTitle: card?.title ?? null, timestamp: new Date().toISOString() },
+        trace,
+      });
     const convo = conversationText(messages);
+    // These controls are resolved before affinity, creative, or commercial text.
+    if (isDistress(convo)) return controlled(gracefulFallback({ persona: COUNT_PERSONA, mode: "care" }, lang, timeTone), "care");
+    if (coreTurn.sales.currentStopRequest || coreTurn.sales.suppressRecommendations) {
+      const scope = coreTurn.sales.persistentRecommendationStop ? "recommendations" : "sales";
+      return controlled(salesSuppressionText(lang as CoreLanguage, scope), "conversation");
+    }
+    const entryWork = entryContext?.intent === "music-work"
+      ? coreWorks.find((work) => String(work.id ?? "") === entryContext.workId && normType(work.type) === "music") ?? null
+      : null;
+    if (entryContext && !entryWork) return controlled(unknownEntryWorkText(lang), "conversation");
+    if (asksForRetiredOracle(query)) return controlled(retiredOracleText(lang), "conversation");
+    const explicitIdentity = coreTurn.actionKind ? resolveCatalogIdentity(query, coreWorks) : null;
+    const explicitActionTarget = coreTurn.actionTargetId || (explicitIdentity && explicitIdentity.status !== "none")
+      || /(?:これ|それ|あれ|この|その|前の|さっきの|という(?:曲|作品|本)|の(?:続編|新作)|\b(?:this|that|previous|it|ce|cette|cela|esto|ese|diese|dieses)\b|هذا|هذه|ذلك)/i.test(query);
+    if (coreTurn.actionKind && explicitActionTarget) {
+      if (coreTurn.actionStatus === "link_available" && coreTurn.actionTargetId) {
+        const work = coreWorks.find((item) => String(item.id ?? "") === coreTurn.actionTargetId);
+        const candidate = work ? buildChatWorkCard(work) : null;
+        const allowedUrls = new Set(coreTurn.actionLinks.map((link) => link.url));
+        const links = candidate?.links.filter((link) => allowedUrls.has(link.url)) ?? [];
+        if (candidate && links.length) {
+          const card = { ...candidate, links };
+          return controlled(actionLinkText(lang, coreTurn.actionKind, card.title), "work", card, "LINK_PRESENTED");
+        }
+      }
+      return controlled(unavailableRecommendationText(lang as CoreLanguage, coreTurn.actionStatus), "conversation");
+    }
+    if (coreTurn.sales.suppressSales && !wantsWork(query) && !wantsCreativeText(query)) {
+      return controlled(coreTurn.sales.persistentSalesStop ? salesSuppressionText(lang as CoreLanguage, "sales") : temporaryNoBuyText(lang), "conversation");
+    }
     const fullConvo = fullConversationText(messages);
     const summary = summarize(messages, lang);
-    const creativeText = creativeTextResponse(query, lang);
+    const creativeText = coreTurn.actionKind ? null : creativeTextResponse(query, lang);
     const followsWorkOffer = userTurns > 1 && wantsWorkFollowup(query, previousAssistantText(messages));
     const acceptedInterestBridge = followsWorkOffer && isChatInterestInvitation(previousAssistantText(messages));
-    const musicAffinityTurn = entryContext?.intent === "music-work"
-      ? buildMusicWorkAffinityTurn({ workTitle: entryContext.workTitle, latest: query, previousAssistant: previousAssistantText(messages), userTurns, lang })
+    const musicAffinityTurn = entryWork && !coreTurn.actionKind && !coreTurn.sales.suppressSales
+      ? buildMusicWorkAffinityTurn({ workTitle: String(entryWork.title), latest: query, previousAssistant: previousAssistantText(messages), userTurns, lang })
       : null;
 
     // 状態を読む
     const distress = isDistress(convo);
-    const commercial = distress ? null : commercialIntent(query);
-    const hintProduct = distress ? undefined : productHint(query);
-    const officeArt = distress ? false : wantsOfficeArt(query);
-    const vipMetalPrint = distress ? false : wantsVipMetalPrint(query);
+    const commercial = distress || coreTurn.sales.suppressSales ? null : commercialIntent(query);
+    const hintProduct = distress || coreTurn.sales.suppressSales ? undefined : productHint(query);
+    const officeArt = distress || coreTurn.sales.suppressSales ? false : wantsOfficeArt(query);
+    const vipMetalPrint = distress || coreTurn.sales.suppressSales ? false : wantsVipMetalPrint(query);
     const metalSalesTurn = vipMetalPrint ? buildMetalPrintSalesTurn(query, lang) : null;
     const selectedEdition = vipMetalPrint ? selectedMetalEdition(query) : null;
     const nonSellingMetalTurn = metalSalesTurn?.stage === "stop" || metalSalesTurn?.stage.startsWith("nurture_") === true;
-    const rawInterestBridge = distress ? null : buildChatInterestBridge({
+    const rawInterestBridge = distress || coreTurn.sales.suppressSales ? null : buildChatInterestBridge({
       conversation: convo,
       latest: query,
       previousAssistant: previousAssistantText(messages),
@@ -619,6 +705,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // A persistent explicit stop is session-scoped until a current purchase
       // request reopens it; temporary no-buy only suppresses the CTA below.
       plan = { persona: COUNT_PERSONA, mode: "salon" };
+    } else if (coreTurn.actionKind) {
+      // A generic listen/read/view request may select one public catalog work;
+      // a specific or deictic action was already resolved above.
+      const { card, work } = await prescribeWork({
+        queryText: query, lang,
+        type: coreTurn.actionKind === "listen" ? "music" : coreTurn.actionKind === "read" ? "book" : desiredType(query),
+        sales: coreTurn.sales,
+      });
+      plan = { persona: COUNT_PERSONA, mode: "salon", card, workNote: workNote(work) };
     } else if (musicAffinityTurn?.action === "dossier") {
       plan = { persona: DUKE_PERSONA, mode: "salon", product: PRODUCTS.find((p) => p.id === "vip-metal-print") };
     } else if (musicAffinityTurn) {
@@ -673,9 +768,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const deterministicWorkText = workRecommendationText(plan, lang);
     const vipDossierText = vipMetalDossierText(plan, lang, fullConvo || convo || query);
-    const deterministicCoreText = coreTurn.sales.persistentStop
-      ? salesSuppressionText(lang as CoreLanguage)
-      : (wantsWork(query) || followsWorkOffer) && !plan.card
+    const deterministicCoreText = (coreTurn.actionKind || wantsWork(query) || followsWorkOffer) && !plan.card
         ? unavailableRecommendationText(lang as CoreLanguage, coreTurn.actionStatus)
         : null;
     const directText = deterministicCoreText || musicAffinityTurn?.text || (nonSellingMetalTurn ? metalSalesTurn?.text ?? null : creativeText || deterministicWorkText || vipDossierText || interestBridge?.text || null);

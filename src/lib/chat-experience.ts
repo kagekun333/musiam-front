@@ -1095,7 +1095,8 @@ function productCueForPrompt(product: Product, lang: Lang): string {
 }
 
 export function productMenuForPrompt(lang: Lang): string {
-  return PRODUCTS.map((p) => {
+  // Oracle is withdrawn; do not offer it as an active product in Chat prompts.
+  return PRODUCTS.filter((p) => p.id !== "omikuji-song").map((p) => {
     const name = lang === "ja" ? p.nameJa : p.nameEn;
     const tag = p.vip ? (lang === "ja" ? "[公爵案件] " : "[Duke request] ") : "";
     return `- ${tag}${name}（${p.priceJa}）: ${productCueForPrompt(p, lang)}`;

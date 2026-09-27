@@ -49,11 +49,11 @@ async function openFixture(browser, fixture = "default", lang = "ja") {
     const key = `${fixture}:${request.method()}:${url.pathname}`;
     if (url.pathname === "/api/chat-history") {
       if (request.method() === "GET") {
-        if (fixture === "history-unavailable") {
+        if (fixture === "history-unavailable" && increment(key) === 1) {
           await request.respond({ status: 503, contentType: "application/json", body: JSON.stringify({ ok: false, error: "history_unavailable" }) });
           return;
         }
-        const history = ["history-restore", "history-legacy", "history-invalid", "history-delete-retry", "history-delete-success", "history-disable-retry"].includes(fixture)
+        const history = ["history-restore", "history-legacy", "history-invalid", "history-unavailable", "history-delete-retry", "history-delete-success", "history-disable-retry"].includes(fixture)
           ? { version: 1, lang, messages: [
               { role: "assistant", content: "履歴の案内です" },
               { role: "user", content: "以前の希望" },
@@ -278,9 +278,18 @@ try {
   await invalidHistory.close();
 
   const unavailable = await openFixture(browser, "history-unavailable");
-  await unavailable.waitForFunction(() => [...document.querySelectorAll("[class*=bubbleText]")].some((node) => node.textContent?.includes("Fixture opening")));
-  assert.ok(await unavailable.evaluate(() => document.body.innerText.includes("現在は保存できません")));
-  check("F9: history 503 is non-fatal; Chat opens and history stays a separate feature", () => {});
+  await unavailable.waitForFunction(() => document.body.innerText.includes("会話の復元を再試行"));
+  const unavailableId = await unavailable.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1"));
+  assert.equal(sendBodies.filter((entry) => entry.fixture === "history-unavailable" && entry.body.messages?.length === 0).length, 0);
+  assert.equal(historyWrites.filter((entry) => entry.fixture === "history-unavailable").length, 0);
+  assert.equal(await unavailable.$eval("textarea", (node) => node.disabled), true);
+  assert.ok(await unavailable.evaluate(() => document.body.innerText.includes("保存された会話を確認できません")));
+  await unavailable.$$eval("button", (buttons) => buttons.find((button) => button.textContent?.includes("会話の復元を再試行"))?.click());
+  await unavailable.waitForFunction(() => document.body.innerText.includes("以前の希望"));
+  assert.equal(await unavailable.evaluate(() => localStorage.getItem("musiam_chat_conversation_id_v1")), unavailableId);
+  assert.equal(sendBodies.filter((entry) => entry.fixture === "history-unavailable" && entry.body.messages?.length === 0).length, 0);
+  assert.equal(historyWrites.filter((entry) => entry.fixture === "history-unavailable").length, 0);
+  check("F9: history 503 leaves the saved ID untouched and retries restoration without an opening write", () => {});
   await unavailable.close();
 
   const deletion = await openFixture(browser, "history-delete-retry");

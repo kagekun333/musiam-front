@@ -176,10 +176,11 @@ check("history order and 40-message cap remain unchanged", () => {
   assert.equal(normalizeChatHistory(Array.from({ length: 45 }, (_, i) => ({ role: "user", content: String(i) }))).length, 40);
 });
 
-check("F9: history 503 remains isolated from Chat opening and is described as unavailable, not entitlement", () => {
-  assert.match(page, /if \(generation === entryGenerationRef\.current\) await begin\(l, tone\)/);
-  assert.match(page, /Memory is currently unavailable/);
-  assert.match(page, /Chat can continue/);
+check("F9: history 503 blocks same-ID opening until restoration or explicit deletion", () => {
+  assert.match(page, /if \(!res\.ok\) throw new Error\("history_unavailable"\)/);
+  assert.match(page, /historyRestoreBlockedRef\.current = enabled/);
+  assert.match(page, /if \(historyRestoreBlockedRef\.current\) return/);
+  assert.match(page, /Retry restoration to avoid overwriting it/);
   assert.match(historyApi, /return res\.status\(503\)\.json\(\{ ok: false, error: "history_unavailable" \}\)/);
   assert.doesNotMatch(historyStore, /entitlement/i);
 });

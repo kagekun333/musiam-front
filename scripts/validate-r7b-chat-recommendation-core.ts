@@ -11,10 +11,10 @@ function assert(condition: unknown, message: string): asserts condition {
 
 async function main() {
 const works = await loadMergedWorksServer();
-const musicWithAction = works.find((work) => /music|album|track|song|audio/i.test(String(work.type)) && Boolean(work.title) && Boolean(work.cover) && getPublicLinksForCard(work).length);
+const musicWithAction = works.find((work) => /music|album|track|song|audio/i.test(String(work.type)) && Boolean(work.title) && Boolean(work.cover) && getPublicLinksForCard(work).some((link) => ["spotify", "appleMusic", "amazonMusic", "listen"].includes(link.kind)));
 assert(musicWithAction, "a catalog music work with a recorded public action is required for fixtures");
 
-const messages = (...items: { role: "user" | "assistant"; content: string }[]) => items;
+const messages = (...items: { role: "user" | "assistant"; content: string; recommendedWorkId?: string }[]) => items;
 const base = { works, language: "ja" as const };
 
 // 1. greeting: no invented work.
@@ -38,14 +38,14 @@ const reopened = deriveChatCoreTurn({ ...base, messages: messages({ role: "user"
 assert(!reopened.sales.persistentStop && !reopened.sales.suppressSales, "current explicit purchase reopen must not be blocked by an earlier temporary or persistent stop");
 
 // 8. Action completion is only for an existing, previously named catalog work.
-const listen = deriveChatCoreTurn({ ...base, messages: messages({ role: "assistant", content: `先ほどの「${musicWithAction.title}」です。` }, { role: "user", content: "これ聴きたい" }) });
-assert(listen.actionStatus === "available" && listen.actionTargetId === String(musicWithAction.id), "listen request must complete only the previous work's recorded public action");
+const listen = deriveChatCoreTurn({ ...base, messages: messages({ role: "assistant", content: `先ほどの「${musicWithAction.title}」です。`, recommendedWorkId: String(musicWithAction.id) }, { role: "user", content: "これ聴きたい" }) });
+assert(listen.actionStatus === "link_available" && listen.actionTargetId === String(musicWithAction.id), "listen request must present only the previous work's recorded public link");
 const noActionWork: CatalogWork = { id: "no-action", title: "No Action", type: "music", cover: "/cover.jpg", moodTags: ["静か"] };
-const noAction = deriveChatCoreTurn({ works: [noActionWork], language: "ja", messages: messages({ role: "assistant", content: "「No Action」を紹介しました。" }, { role: "user", content: "これ聴きたい" }) });
+const noAction = deriveChatCoreTurn({ works: [noActionWork], language: "ja", messages: messages({ role: "assistant", content: "「No Action」を紹介しました。", recommendedWorkId: "no-action" }, { role: "user", content: "これ聴きたい" }) });
 assert(noAction.actionStatus === "unavailable" && noAction.actionLinks.length === 0, "missing action must not be fabricated");
 
 // 9. The current explicit work wins over a previous one.
-const alternate = works.find((work) => String(work.id) !== String(musicWithAction.id) && Boolean(work.title) && Boolean(work.cover) && getPublicLinksForCard(work).length);
+const alternate = works.find((work) => String(work.id) !== String(musicWithAction.id) && Boolean(work.title) && Boolean(work.cover) && getPublicLinksForCard(work).length && works.filter((item) => item.title === work.title).length === 1);
 assert(alternate, "a second catalog work with a recorded public action is required for previous-work fixture");
 const explicitNew = selectOneRecommendation({ works, query: `「${alternate.title}」を聴きたい`, language: "ja", sales: greeting.sales });
 assert(String(explicitNew?.work.id) === String(alternate.id), "current named work must beat a previous recommendation");
