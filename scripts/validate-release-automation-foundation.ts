@@ -60,21 +60,77 @@ assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27
 const myMusic = capture.fromHtml(html("my-music.html"), "https://distrokid.com/mymusic", "2026-09-27T00:00:00Z");
 assert.equal(myMusic.releases.length, 2, "My Music capture keeps each visible same-origin release row");
 assert.deepEqual(myMusic.releases.map((row: { visibleStatus: string | null }) => row.visibleStatus), ["Live", "Upcoming"]);
-const detail = capture.fromHtml(html("release-detail.html"), "https://distrokid.com/album/11111111-1111-4111-8111-111111111111", "2026-09-27T00:00:00Z").releases[0];
-assert.equal(detail.title, "VII");
-assert.equal(detail.upc, "700989739020");
-assert.equal(detail.isrc, "QI6J32604414");
-assert.equal(detail.albumuuid, "11111111-1111-4111-8111-111111111111");
-assert.ok(detail.publicUrls.includes("https://distrokid.com/hyperfollow/abi/vii"));
-const capturedHumanFormatUuid = capture.fromHtml(`<div data-field="albumuuid">D631F8A9-14A5-40E7-867D01081E026EF1</div>`, "https://distrokid.com/album/D631F8A9-14A5-40E7-867D01081E026EF1", "2026-09-27T00:00:00Z").releases[0];
-assert.equal(capturedHumanFormatUuid.albumuuid, "D631F8A9-14A5-40E7-867D01081E026EF1", "DistroKid's observed UUID form is retained as a stable source ID");
+// Sanitized URL placeholder only; the supplied capture evidence did not include the real VII pathname.
+const sanitizedUuid = "aaaaaaaa-bbbb-cccc-dddddddddddddddd";
+const detail = capture.fromHtml(html("release-detail.html"), `https://distrokid.com/album/${sanitizedUuid}`, "2026-09-27T00:00:00Z").releases[0];
+assert.equal(detail.title, "Example Release");
+assert.equal(detail.artist, "Synthetic Artist");
+assert.equal(detail.releaseDate, "2026-01-03", "month-name date parsing is timezone independent");
+assert.equal(detail.uploadDate, "2025-12-20");
+assert.equal(detail.label, "Example Label");
+assert.equal(detail.upc, "123456789012");
+assert.equal(detail.isrc, "USABC2600001");
+assert.equal(detail.albumuuid, sanitizedUuid, "valid release UUID is extracted from the sanitized detail path");
+assert.equal(detail.visibleStatus, "Live");
+assert.deepEqual(detail.publicUrls, [
+  "https://open.spotify.com/album/4aawyAB9vmqN3uQ7FjRGTy",
+  "https://distrokid.com/hyperfollow/exampleartist/example-release",
+  "https://music.apple.com/us/album/example-release/1234567890",
+  "https://music.youtube.com/watch?v=abcdefghijk",
+]);
+assert.equal(detail.publicUrls.some((url: string) => url.includes("ref=globalmenu")), false, "generic HyperFollow navigation is rejected");
+assert.equal(JSON.stringify(detail).includes("synthetic-url-secret"), false, "public URL tracking queries are stripped");
+const domText = (value: string) => ({ nodeType: 3, nodeValue: value });
+const domElement = (tag: string, attrs: Record<string, string> = {}, children: any[] = [], value?: string) => ({
+  nodeType: 1, tagName: tag.toUpperCase(), childNodes: children, hidden: Object.hasOwn(attrs, "hidden"), value,
+  getAttribute: (name: string) => attrs[name] ?? null,
+  hasAttribute: (name: string) => Object.hasOwn(attrs, name),
+  getClientRects: () => Object.hasOwn(attrs, "hidden") || attrs["aria-hidden"] === "true" || /display\s*:\s*none/.test(attrs.style ?? "") ? [] : [{}],
+});
+const fakeDocument = {
+  defaultView: { getComputedStyle: (node: any) => ({ display: /display\s*:\s*none/.test(node.getAttribute("style") ?? "") ? "none" : "block", visibility: "visible", opacity: "1" }) },
+  documentElement: domElement("html", {}, [domElement("body", {}, [
+    domElement("main", {}, [domElement("div", {}, [domElement("span", {}, [domText("Release title")]), domElement("strong", {}, [domText("Document Sample")])]), domElement("label", { for: "artist" }, [domText("Artist")]), domElement("input", { id: "artist", value: "Document Artist" }, [], "Document Artist"), domElement("div", { hidden: "" }, [domElement("span", { "data-field": "title" }, [domText("synthetic-hidden-dom-value")])])])])]),
+};
+const documentCapture = capture.fromDocument(fakeDocument, `https://distrokid.com/releases/${sanitizedUuid}`, "2026-09-27T00:00:00Z").releases[0];
+assert.equal(documentCapture.title, "Document Sample", "live capture reads rendered neighboring label-value elements");
+assert.equal(documentCapture.artist, "Document Artist", "live capture resolves visible form labels");
+assert.equal(JSON.stringify(documentCapture).includes("synthetic-hidden-dom-value"), false, "live capture omits hidden DOM descendants");
+const structured = capture.fromHtml(html("structured-state.html"), "https://distrokid.com/album/bbbbbbbb-cccc-dddd-eeeeeeeeeeeeeeee", "2026-09-27T00:00:00Z").releases[0];
+assert.equal(structured.title, "Structured Sample");
+assert.equal(structured.artist, "State Artist");
+assert.equal(structured.releaseDate, "2026-02-14");
+assert.equal(structured.label, "State Label");
+assert.equal(structured.upc, "987654321098");
+assert.equal(structured.isrc, "USDEF2600002");
+assert.equal(structured.primaryGenre, "Indie Pop");
+assert.equal(structured.visibleStatus, "Upcoming");
+assert.equal(JSON.stringify(structured).includes("private@example.invalid"), false, "structured projection drops non-allowlisted private values");
+assert.equal(JSON.stringify(structured).includes("synthetic-state-secret"), false, "structured projection drops secret-shaped values");
+assert.equal(capture.fromHtml("<main></main>", "https://distrokid.com/releases/details/cccccccc-dddd-eeee-ffffffffffffffff/edit").releases[0].albumuuid, "cccccccc-dddd-eeee-ffffffffffffffff", "UUID extraction works outside the synthetic /album route shape");
+assert.equal(capture.fromHtml("<main></main>", "https://distrokid.com/release?albumuuid=dddddddd-eeee-ffff-aaaaaaaaaaaaaaaa").releases[0].albumuuid, "dddddddd-eeee-ffff-aaaaaaaaaaaaaaaa", "valid UUID query parameter is parsed deterministically");
+const noGuess = capture.fromHtml(html("no-value-no-guess.html"), "https://distrokid.com/album/edit", "2026-09-27T00:00:00Z").releases[0];
+assert.equal(noGuess.upc, null, "empty or unpaired digits are never guessed as UPC");
+assert.equal(noGuess.isrc, null, "invalid/unpaired ISRC text is not captured");
+assert.deepEqual(noGuess.publicUrls, [], "generic HyperFollow navigation is excluded");
+const diagnostic = capture.diagnoseHtml(html("release-detail.html"), `https://distrokid.com/album/${sanitizedUuid}`);
+assert.equal(diagnostic.pathname, `/album/${sanitizedUuid}`);
+assert.ok(diagnostic.tags.includes("section"));
+assert.ok(diagnostic.safeClasses.includes("metadata-row"));
+assert.deepEqual(diagnostic.dataAttributeNames, ["data-track-row", "data-field"]);
+assert.equal(Object.hasOwn(diagnostic, "html"), false, "diagnostics do not persist or return page HTML");
+const structuredDiagnostic = capture.diagnoseHtml(html("structured-state.html"), "https://distrokid.com/album/details");
+assert.equal(structuredDiagnostic.embeddedJsonExists, true);
+assert.equal(JSON.stringify(structuredDiagnostic).includes("private@example.invalid"), false, "diagnostic never returns script contents");
+const capturedSanitizedUuid = capture.fromHtml(`<div data-field="albumuuid">${sanitizedUuid}</div>`, `https://distrokid.com/album/${sanitizedUuid}`, "2026-09-27T00:00:00Z").releases[0];
+assert.equal(capturedSanitizedUuid.albumuuid, sanitizedUuid, "synthetic UUID form is retained as a stable source ID");
 const parsedExtensionDoc = parseCanonicalReleaseDocument({ schemaVersion: 1, releases: [detail] });
 assert.equal(parsedExtensionDoc[0].albumuuid, detail.albumuuid, "extension output matches canonical importer input");
 const edit = capture.fromHtml(html("edit-form.html"), "https://distrokid.com/album/edit", "2026-09-27T00:00:00Z").releases[0];
-assert.equal(edit.primaryGenre, "J-Pop");
+assert.equal(edit.primaryGenre, "Indie Pop");
 assert.equal(edit.secondaryGenre, "Alternative");
 const secretFixtureOutput = JSON.stringify(capture.fromHtml(html("secret-fields.html"), "https://distrokid.com/album/edit", "2026-09-27T00:00:00Z"));
-for (const secret of ["synthetic-password-never-capture", "synthetic-token-never-capture", "synthetic-cookie-never-capture", "synthetic-payment-never-capture", "synthetic-csrf-never-capture", "synthetic-email-never-capture"]) assert.equal(secretFixtureOutput.includes(secret), false, "sensitive-shaped page values are not captured");
+for (const secret of ["synthetic-password-never-capture", "synthetic-token-never-capture", "synthetic-cookie-never-capture", "synthetic-payment-never-capture", "synthetic-csrf-never-capture", "synthetic-email-never-capture", "synthetic-hidden-account-content", "synthetic-hidden-artist"]) assert.equal(secretFixtureOutput.includes(secret), false, "sensitive-shaped or hidden page values are not captured");
 assert.equal(secretFixtureOutput.includes("password"), false);
 
 const urls = Array.from({ length: 22 }, (_, index) => `https://distrokid.com/album/${String(index + 1).padStart(8, "0")}-1111-4111-8111-111111111111`);
