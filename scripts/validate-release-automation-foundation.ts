@@ -110,6 +110,24 @@ assert.deepEqual(dashboardDetail.publicUrls, ["https://open.spotify.com/album/4a
 const dashboardDiagnostic = capture.diagnoseHtml(html("dashboard-album.html"), "https://distrokid.com/dashboard/album/");
 assert.equal(dashboardDiagnostic.visibleLabelSnippets.some((row: { field: string }) => row.field === "releaseDate"), true);
 assert.equal(dashboardDiagnostic.dataAttributeNames.includes("data-album-genre-primary"), true);
+const japaneseDashboard = capture.fromHtml(html("dashboard-album-japanese.html"), "https://distrokid.com/dashboard/album/?id=D631F8A9-14A5-40E7-867D01081E026EF1", "2026-09-27T00:00:00Z").releases[0];
+assert.equal(japaneseDashboard.title, "Ⅶ", "canonical display title preserves the source exact representation");
+assert.equal(japaneseDashboard.title.normalize("NFKC"), "VII", "comparison may normalize Roman numeral compatibility characters");
+assert.equal(japaneseDashboard.artist, "ABI伯爵");
+assert.equal(japaneseDashboard.isrc, "QT6J32604414");
+assert.equal(japaneseDashboard.primaryGenre, "Electronic");
+assert.equal(japaneseDashboard.albumuuid, "D631F8A9-14A5-40E7-867D01081E026EF1");
+assert.equal(japaneseDashboard.label, "Hakusyaku Lab");
+assert.equal(japaneseDashboard.releaseDate, "2026-09-27");
+assert.equal(japaneseDashboard.uploadDate, "2026-09-04");
+assert.equal(japaneseDashboard.upc, "700989739020");
+assert.deepEqual(japaneseDashboard.publicUrls, [
+  "https://open.spotify.com/album/1qsMiOzudMSgKIneEZPofH",
+  "https://distrokid.com/hyperfollow/abi35/n5dpul17z6g",
+]);
+assert.equal(japaneseDashboard.publicUrls.some((url: string) => url.includes("ref=globalmenu")), false);
+const invalidJapaneseDate = capture.fromHtml(`<div data-field="releaseDate">2026年2月30日</div>`, "https://distrokid.com/dashboard/album/").releases[0];
+assert.equal(invalidJapaneseDate.releaseDate, null, "invalid Japanese calendar dates are unavailable, never inferred");
 const structured = capture.fromHtml(html("structured-state.html"), "https://distrokid.com/album/bbbbbbbb-cccc-dddd-eeeeeeeeeeeeeeee", "2026-09-27T00:00:00Z").releases[0];
 assert.equal(structured.title, "Structured Sample");
 assert.equal(structured.artist, "State Artist");

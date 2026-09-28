@@ -8,7 +8,7 @@
     ["uploaddate", "uploadDate"], ["dateuploaded", "uploadDate"], ["uploaded", "uploadDate"], ["uploadeddate", "uploadDate"], ["hochgeladen", "uploadDate"], ["fechadesubida", "uploadDate"], ["datedemiseenligne", "uploadDate"],
     ["releasedate", "releaseDate"], ["dateofrelease", "releaseDate"], ["datepublished", "releaseDate"],
     ["datedesortie", "releaseDate"], ["fechadelanzamiento", "releaseDate"], ["veröffentlichungsdatum", "releaseDate"], ["veroffentlichungsdatum", "releaseDate"],
-    ["発売日", "releaseDate"], ["配信日", "releaseDate"], ["upc", "upc"], ["upccode", "upc"],
+    ["発売日", "releaseDate"], ["配信日", "releaseDate"], ["レーベル", "label"], ["アップロード日", "uploadDate"], ["リリース日", "releaseDate"], ["upc", "upc"], ["upccode", "upc"], ["distrokidupc", "upc"],
     ["isrc", "isrc"], ["trackisrc", "isrc"], ["albumuuid", "albumuuid"], ["albumid", "albumuuid"],
     ["primarygenre", "primaryGenre"], ["primarygenretype", "primaryGenre"], ["albumgenreprimary", "primaryGenre"], ["genre", "primaryGenre"],
     ["secondarygenre", "secondaryGenre"], ["secondarygenretype", "secondaryGenre"], ["albumgenresecondary", "secondaryGenre"],
@@ -74,6 +74,8 @@
       if (date.getUTCFullYear() !== Number(year) || date.getUTCMonth() + 1 !== Number(month) || date.getUTCDate() !== Number(day)) return null;
       return date.toISOString().slice(0, 10);
     };
+    const japanese = clean.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日$/);
+    if (japanese) return makeDate(japanese[1], japanese[2], japanese[3]);
     if (iso) {
       const [year, month, day] = iso[1].split("-");
       return makeDate(year, month, day);
@@ -300,7 +302,7 @@
       if (classNames.includes("album-title")) add("title", visibleText(node));
       if (classNames.includes("band-name")) add("artist", visibleText(node));
       if (classNames.includes("upc")) {
-        const match = visibleText(node).match(/^(?:UPC\s*:?\s*)?(\d{8,14})$/i);
+        const match = visibleText(node).match(/^(?:(?:DistroKid\s+)?UPC\s*:?\s*)?(\d{8,14})$/i);
         if (match) add("upc", match[1]);
       }
     }
