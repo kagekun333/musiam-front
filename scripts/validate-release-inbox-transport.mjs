@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
+import vm from "node:vm";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { createReleaseInboxServer, releaseInboxRequestRejection } from "../tools/release-inbox/receive.mjs";
@@ -16,6 +17,7 @@ const origin = `chrome-extension://${extensionId}`;
 const manifest = JSON.parse(await fs.readFile(path.join(root, "tools/distrokid-capture-extension/manifest.json"), "utf8"));
 const receiverSource = await fs.readFile(path.join(root, "tools/release-inbox/receive.mjs"), "utf8");
 const popupSource = await fs.readFile(path.join(root, "tools/distrokid-capture-extension/popup.js"), "utf8");
+const popupHtml = await fs.readFile(path.join(root, "tools/distrokid-capture-extension/popup.html"), "utf8");
 const transportSource = await fs.readFile(path.join(root, "tools/distrokid-capture-extension/inbox-transport.js"), "utf8");
 
 assert.deepEqual(compareReleaseInboxOrigin(extensionId, origin), { status: "MATCH", expectedOrigin: origin, configuredOrigin: origin });
@@ -35,6 +37,8 @@ assert.match(receiverSource, /server\.listen\(PORT, "127\.0\.0\.1"/);
 assert.match(receiverSource, /Access-Control-Allow-Methods": "GET, POST, OPTIONS"/);
 assert.match(receiverSource, /Access-Control-Allow-Headers": "Content-Type, X-MUSIAM-Session"/);
 assert.match(popupSource, /MusiamReleaseInboxTransport\.send/);
+assert.match(popupHtml, /id="probe"[^>]*>Test local inbox connection</);
+assert.match(popupSource, /MusiamReleaseInboxTransport\.probe\(\)/);
 assert.doesNotMatch(popupSource, /catch\s*\{\s*statusNode\.textContent\s*=/);
 assert.doesNotMatch(transportSource, /error\.(?:message|stack)|console\.|textContent/);
 assert.match(transportSource, /SAFE_RECEIVER_ERRORS/);
@@ -53,7 +57,7 @@ assert.equal(JSON.stringify(result).includes(fakeSecret), false);
 result = await transport.send(validPayload, async () => mockResponse(403));
 assert.equal(result.code, "LOCAL_INBOX_CHALLENGE_HTTP_403");
 result = await transport.send(validPayload, async () => mockResponse(403, { error: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: "MISSING", nonce: fakeSecret }));
-assert.deepEqual(result, { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH" }, "popup transport forwards only allowlisted receiver errors");
+assert.deepEqual(result, { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: "MISSING" }, "popup transport forwards allowlisted receiver code and category only");
 assert.equal(JSON.stringify(result).includes(fakeSecret), false, "receiver fields and nonce are not exposed");
 result = await transport.send(validPayload, async (url) => url.endsWith("/challenge") ? { ok: true, json: async () => ({ nonce: `secret.${fakeSecret}` }) } : mockResponse(200, { accepted: 1 }));
 assert.equal(result.code, "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID");
@@ -72,6 +76,41 @@ result = await transport.send(validPayload, async (url) => url.endsWith("/challe
   : mockResponse(201, { accepted: 1 }));
 assert.deepEqual(result, { ok: true, accepted: 1 });
 assert.equal(JSON.stringify(result).includes(syntheticNonce), false, "nonce is not exposed by transport results");
+const probeRequests = [];
+result = await transport.probe(async (url, options = {}) => {
+  probeRequests.push({ path: new URL(url).pathname, method: options.method ?? "GET", body: options.body ?? null });
+  return mockResponse(200, { nonce: syntheticNonce });
+});
+assert.deepEqual(result, { ok: true, code: "LOCAL_INBOX_CHALLENGE_PASS" }, "expected extension challenge succeeds without returning its nonce");
+assert.deepEqual(probeRequests, [{ path: "/v1/challenge", method: "GET", body: null }], "probe performs only one challenge GET with no body");
+assert.equal(JSON.stringify(result).includes(syntheticNonce), false, "probe never exposes challenge nonce");
+for (const originCategory of ["MISSING", "NULL", "OTHER_CHROME_EXTENSION", "OTHER_ORIGIN"]) {
+  const categoryResult = await transport.probe(async () => mockResponse(403, { error: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory, origin: fakeSecret }));
+  assert.deepEqual(categoryResult, { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory }, `safe origin category ${originCategory} is forwarded`);
+  assert.equal(JSON.stringify(categoryResult).includes(fakeSecret), false, "raw Origin is never forwarded");
+}
+const unknownCategoryResult = await transport.probe(async () => mockResponse(403, { error: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: fakeSecret }));
+assert.deepEqual(unknownCategoryResult, { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH" }, "unknown category is discarded");
+const popupHandlers = new Map();
+const popupElements = new Map();
+for (const id of ["status", "probe", "capture", "capture-all", "diagnose", "download", "send"]) {
+  popupElements.set(id, { addEventListener: (event, handler) => popupHandlers.set(`${id}:${event}`, handler), disabled: false, textContent: "" });
+}
+let popupProbeCalls = 0;
+let popupSendCalls = 0;
+const popupContext = {
+  document: { getElementById: (id) => popupElements.get(id) },
+  MusiamReleaseInboxTransport: {
+    probe: async () => { popupProbeCalls++; return { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: "MISSING" }; },
+    send: async () => { popupSendCalls++; return { ok: true, accepted: 1 }; },
+  },
+};
+popupContext.globalThis = popupContext;
+vm.runInNewContext(popupSource, popupContext);
+await popupHandlers.get("probe:click")();
+assert.equal(popupProbeCalls, 1, "probe popup click invokes one bridge probe");
+assert.equal(popupSendCalls, 0, "probe popup click never invokes the payload sender");
+assert.equal(popupElements.get("status").textContent, "LOCAL_EXTENSION_ORIGIN_MISMATCH; Origin category: MISSING. No payload was sent.");
 result = await transport.send(validPayload, async (url) => url.endsWith("/challenge") ? { ok: true, json: async () => ({ nonce: "A".repeat(43) }) } : mockResponse(401, { error: `SESSION_REJECTED_${fakeSecret}` }));
 assert.equal(result.code, "LOCAL_INBOX_SESSION_REJECTED");
 result = await transport.send(validPayload, async (url) => url.endsWith("/challenge") ? { ok: true, json: async () => ({ nonce: "A".repeat(43) }) } : mockResponse(400, { error: fakeSecret }));
@@ -105,6 +144,15 @@ try {
   assert.equal(preflight.headers.get("access-control-allow-origin"), origin);
   assert.equal(preflight.headers.get("access-control-allow-methods"), "GET, POST, OPTIONS");
   assert.equal(preflight.headers.get("access-control-allow-headers"), "Content-Type, X-MUSIAM-Session");
+  const probeRequestsLive = [];
+  const probeFetch = (url, options = {}) => {
+    probeRequestsLive.push({ path: new URL(url).pathname, method: options.method ?? "GET", body: options.body ?? null });
+    return fetch(url.replace("127.0.0.1:43127", `127.0.0.1:${address.port}`), { ...options, headers: { ...(options.headers ?? {}), Origin: origin } });
+  };
+  result = await transport.probe(probeFetch);
+  assert.deepEqual(result, { ok: true, code: "LOCAL_INBOX_CHALLENGE_PASS" }, "exact expected extension origin passes live challenge probe");
+  assert.deepEqual(probeRequestsLive, [{ path: "/v1/challenge", method: "GET", body: null }]);
+  assert.deepEqual(await fs.readdir(temporaryInbox), [], "successful probe writes no payload");
   const wrongOrigin = await fetch(`${base}/challenge`, { headers: { Origin: "chrome-extension://ponmlkjihgfedcbaponmlkjihgfedcba" } });
   assert.equal(wrongOrigin.status, 403);
   assert.deepEqual(await wrongOrigin.json(), { error: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: "OTHER_CHROME_EXTENSION" });
@@ -118,7 +166,7 @@ try {
     return fetch(url.replace("127.0.0.1:43127", `127.0.0.1:${address.port}`), { ...options, headers: { ...(options.headers ?? {}), Origin: "chrome-extension://ponmlkjihgfedcbaponmlkjihgfedcba" } });
   };
   result = await transport.send(validPayload, wrongOriginFetch);
-  assert.deepEqual(result, { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH" });
+  assert.deepEqual(result, { ok: false, code: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: "OTHER_CHROME_EXTENSION" });
   assert.deepEqual(rejectedPaths, ["/v1/challenge"], "challenge rejection stops before POST");
   assert.deepEqual(await fs.readdir(temporaryInbox), [], "challenge rejection writes no payload");
 
@@ -147,4 +195,4 @@ try {
   await fs.rm(temporaryInbox, { recursive: true, force: true });
 }
 
-process.stdout.write(`${JSON.stringify({ result: "PASS", originContract: "PASS", manifestLoopbackContract: "PASS", mockedSafeErrors: "PASS", receiverPreflight: "PASS", receiverOriginGate: "PASS", ipv4Loopback: "PASS", ipv6Loopback: "PASS", originCategories: "PASS", remoteCategories: "PASS", challengeRejectsBeforePost: "PASS", rejectedPayloadWrites: 0, syntheticLoopbackSends: 1, remoteSends: 0 })}\n`);
+process.stdout.write(`${JSON.stringify({ result: "PASS", originContract: "PASS", manifestLoopbackContract: "PASS", mockedSafeErrors: "PASS", popupProbe: "PASS", probeRequests: 1, probePosts: 0, probePayloadWrites: 0, receiverPreflight: "PASS", receiverOriginGate: "PASS", ipv4Loopback: "PASS", ipv6Loopback: "PASS", originCategories: "PASS", remoteCategories: "PASS", challengeRejectsBeforePost: "PASS", rejectedPayloadWrites: 0, syntheticLoopbackSends: 1, remoteSends: 0 })}\n`);
