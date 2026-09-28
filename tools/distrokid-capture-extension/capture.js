@@ -10,8 +10,8 @@
     ["datedesortie", "releaseDate"], ["fechadelanzamiento", "releaseDate"], ["veröffentlichungsdatum", "releaseDate"], ["veroffentlichungsdatum", "releaseDate"],
     ["発売日", "releaseDate"], ["配信日", "releaseDate"], ["upc", "upc"], ["upccode", "upc"],
     ["isrc", "isrc"], ["trackisrc", "isrc"], ["albumuuid", "albumuuid"], ["albumid", "albumuuid"],
-    ["primarygenre", "primaryGenre"], ["primarygenretype", "primaryGenre"], ["genre", "primaryGenre"],
-    ["secondarygenre", "secondaryGenre"], ["secondarygenretype", "secondaryGenre"],
+    ["primarygenre", "primaryGenre"], ["primarygenretype", "primaryGenre"], ["albumgenreprimary", "primaryGenre"], ["genre", "primaryGenre"],
+    ["secondarygenre", "secondaryGenre"], ["secondarygenretype", "secondaryGenre"], ["albumgenresecondary", "secondaryGenre"],
     ["status", "status"], ["releasestatus", "status"], ["visiblestatus", "status"], ["track", "trackTitle"], ["tracktitle", "trackTitle"],
   ]);
   const SENSITIVE_NAME = /password|cookie|token|secret|payment|billing|card|security|authorization|auth|email|phone|csrf|session|credential|api.?key/i;
@@ -25,7 +25,7 @@
     for (const match of tag.matchAll(/([^\s=/>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)) {
       const name = match[1].toLowerCase();
       const safeNames = new Set(["aria-label", "aria-hidden", "class", "disabled", "for", "hidden", "href", "id", "name", "selected", "type", "value"]);
-      const safeDataNames = new Set(["data-field", "data-label", "data-track-row", "data-release-row", "data-artist"]);
+      const safeDataNames = new Set(["data-field", "data-label", "data-track-row", "data-release-row", "data-artist", "data-albumtitle", "data-album-genre-primary", "data-album-genre-secondary"]);
       if (SENSITIVE_NAME.test(name) || (name.startsWith("data-") ? !safeDataNames.has(name) : !safeNames.has(name))) continue;
       if (name === "value" && !/^<(?:input|option)\b/i.test(tag)) continue;
       out[name] = decode(match[2] ?? match[3] ?? match[4] ?? "");
@@ -225,9 +225,13 @@
       const segments = url.pathname.split("/").map((segment) => { try { return decodeURIComponent(segment); } catch { return segment; } });
       const pathId = segments.find(isAlbumUuid);
       if (pathId) return pathId;
-      for (const name of ["albumuuid", "album_uuid", "albumUuid"]) {
+      for (const name of ["albumuuid", "album_uuid", "albumUuid", "albumid", "albumId", "release_id", "releaseId"]) {
         const queryId = url.searchParams.get(name);
         if (isAlbumUuid(queryId)) return queryId;
+      }
+      if (/\/dashboard\/album\/?$/i.test(url.pathname)) {
+        const dashboardAlbumId = url.searchParams.get("id");
+        if (isAlbumUuid(dashboardAlbumId)) return dashboardAlbumId;
       }
     } catch { /* malformed page URL has no release identity */ }
     return null;
@@ -289,6 +293,16 @@
         for (const label of controlLabels) add(label, controlValue, a.type);
       }
       if (node.attrs["data-field"]) add(node.attrs["data-field"], visibleText(node));
+      if (node.attrs["data-albumtitle"] != null) add("title", node.attrs["data-albumtitle"]);
+      if (node.attrs["data-album-genre-primary"] != null) add("primaryGenre", node.attrs["data-album-genre-primary"]);
+      if (node.attrs["data-album-genre-secondary"] != null) add("secondaryGenre", node.attrs["data-album-genre-secondary"]);
+      const classNames = String(node.attrs.class ?? "").split(/\s+/).map((name) => name.toLowerCase());
+      if (classNames.includes("album-title")) add("title", visibleText(node));
+      if (classNames.includes("band-name")) add("artist", visibleText(node));
+      if (classNames.includes("upc")) {
+        const match = visibleText(node).match(/^(?:UPC\s*:?\s*)?(\d{8,14})$/i);
+        if (match) add("upc", match[1]);
+      }
     }
     for (const pair of visibleLabelPairs(tree)) add(pair.label, pair.value);
     for (const [field, value] of Object.entries(structuredReleaseFields(markup))) add(field, value);
@@ -310,6 +324,23 @@
     }
     let albumuuid = values.albumuuid;
     albumuuid ??= albumUuidFromUrl(pageUrl);
+    if (!albumuuid) {
+      let pageOrigin = null;
+      try { pageOrigin = new URL(pageUrl).origin; } catch { /* malformed page URL */ }
+      for (const anchor of nodes.filter((node) => node.tag === "a" && node.attrs.href)) {
+        try {
+          const linkedUrl = new URL(anchor.attrs.href, pageUrl);
+          if (linkedUrl.origin !== pageOrigin) continue;
+          const segments = linkedUrl.pathname.split("/").filter(Boolean);
+          const candidate = segments.find((segment, index) => {
+            if (!isAlbumUuid(segment)) return false;
+            const previous = segments[index - 1]?.toLowerCase();
+            return previous === "album" || previous === "release" || previous === "releases";
+          });
+          if (candidate) { albumuuid = candidate; break; }
+        } catch { /* unrelated or malformed link */ }
+      }
+    }
     const isrcs = tracks.map((track) => track.isrc).filter(Boolean);
     const uniqueIsrcs = [...new Set(isrcs)];
     const release = {
@@ -396,7 +427,7 @@
       if (element.hidden || element.getAttribute("aria-hidden") === "true" || style?.display === "none" || style?.visibility === "hidden" || style?.opacity === "0") return false;
       return element.tagName?.toLowerCase() === "html" || element.tagName?.toLowerCase() === "body" || element.getClientRects?.().length > 0 || style?.display === "contents";
     };
-    const allowedAttributes = ["aria-label", "aria-hidden", "class", "data-field", "data-label", "data-track-row", "data-release-row", "data-artist", "disabled", "for", "hidden", "href", "id", "name", "selected", "type"];
+    const allowedAttributes = ["aria-label", "aria-hidden", "class", "data-field", "data-label", "data-track-row", "data-release-row", "data-artist", "data-albumtitle", "data-album-genre-primary", "data-album-genre-secondary", "disabled", "for", "hidden", "href", "id", "name", "selected", "type"];
     const voidTags = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
     const serialize = (node) => {
       if (node.nodeType === 3) return escape(node.nodeValue);
@@ -416,7 +447,7 @@
       for (const name of allowedAttributes) {
         if (!node.hasAttribute(name)) continue;
         const value = node.getAttribute(name) ?? "";
-        if (name === "data-field" || name === "data-label") attrsOut.push(`${name}="${escape(value)}"`);
+        if (["data-field", "data-label", "data-albumtitle", "data-album-genre-primary", "data-album-genre-secondary"].includes(name)) attrsOut.push(`${name}="${escape(value)}"`);
         else if (name === "data-artist" && !SENSITIVE_VALUE.test(value)) attrsOut.push(`${name}="${escape(value)}"`);
         else if (["data-track-row", "data-release-row", "disabled", "hidden", "selected"].includes(name)) attrsOut.push(name);
         else if (name === "value") continue;
