@@ -1,5 +1,6 @@
 import { getPublicLinksForCard } from "@/lib/work-links";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
+import { tokyoYmd } from "@/lib/release-status";
 
 export type WorkMedium = "music" | "book" | "other";
 export const INGESTION_PIPELINE_STATUS = "READY" as const;
@@ -251,7 +252,7 @@ export function classifyIncrementalRows(
 
 export function latestReleasedWorks(works: CatalogWork[], options: { medium?: WorkMedium; now?: Date; limit?: number } = {}): CatalogWork[] {
   const now = options.now ?? new Date();
-  const upperBound = now.toISOString().slice(0, 10);
+  const upperBound = tokyoYmd(now);
   return works.filter((work) => {
     if (options.medium && mediumForWork(work) !== options.medium) return false;
     const date = clean(work.distribution?.releaseDate) ?? clean(work.releasedAt);
@@ -316,6 +317,10 @@ export function eligibleForVisitor(work: CatalogWork, state: VisitorState): bool
 
 export function asksForLatestRelease(text: string): boolean {
   return /(?:新曲|最新曲|最近.{0,8}(?:出した|リリース|作品)|新しい作品|最新.{0,6}(?:作品|リリース)|\b(?:new|latest|recent)\s+(?:song|release|work|album)s?\b|what(?:'s| is) new|dernier(?:e)?s? (?:morceau|sortie|œuvre)|nouveau(?:lle)?s? (?:morceau|œuvre)|últim[oa]s? (?:canción|lanzamiento|obra)|nuev[oa]s? (?:canción|obra)|neu(?:e|este|sten) (?:lied|veröffentlichung|werk)|aktuell(?:e|sten) (?:lieder|werke)|أحدث (?:أغنية|إصدار|عمل)|أغنية جديدة)/i.test(text);
+}
+
+export function asksForUpcomingRelease(text: string): boolean {
+  return /(?:次の新曲|次のリリース|近日(?:公開|リリース)|公開予定|配信予定|\b(?:upcoming|next|coming\s+soon)\s+(?:song|release|album)\b|\bwhat(?:'s| is)\s+coming\b|prochain(?:e)?\s+(?:morceau|sortie|album)|próxim[oa]\s+(?:canción|lanzamiento|álbum)|näch(?:ste|sten)\s+(?:lied|veröffentlichung|album)|الإصدار القادم|الأغنية القادمة)/i.test(text);
 }
 
 export function asksForSonicDetails(text: string): boolean {

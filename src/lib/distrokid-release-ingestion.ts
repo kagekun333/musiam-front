@@ -16,6 +16,11 @@ export type CanonicalRelease = {
   sourceObservedAt: string | null;
   /** Optional source facts, kept separate from raw source rows. */
   releaseType?: "single" | "album" | "ep" | null;
+  label?: string | null;
+  albumuuid?: string | null;
+  uploadDate?: string | null;
+  visibleStatus?: string | null;
+  tracks?: { title: string | null; isrc: string | null }[];
   releaseIdentifiers?: Record<string, string>;
   workId?: string | null;
   canonicalWorkId?: string | null;
@@ -32,6 +37,7 @@ const optionalStringFields = [
 ] as const;
 const allowedFields = new Set<string>([
   "releaseSource", ...optionalStringFields, "publicUrls", "releaseType", "releaseIdentifiers",
+  "label", "albumuuid", "uploadDate", "visibleStatus", "tracks",
 ]);
 
 const clean = (value: unknown): string | null => typeof value === "string" && value.trim() ? value.trim() : null;
@@ -71,6 +77,14 @@ export function parseCanonicalRelease(value: unknown): CanonicalRelease {
   if (row.releaseIdentifiers !== undefined && (!row.releaseIdentifiers || typeof row.releaseIdentifiers !== "object" || Array.isArray(row.releaseIdentifiers))) {
     throw new Error("releaseIdentifiers must be an object of string identifiers");
   }
+  if (row.tracks !== undefined && (!Array.isArray(row.tracks) || row.tracks.some((track) => !track || typeof track !== "object" || Array.isArray(track) ||
+    ((track as Record<string, unknown>).title !== null && typeof (track as Record<string, unknown>).title !== "string") ||
+    ((track as Record<string, unknown>).isrc !== null && typeof (track as Record<string, unknown>).isrc !== "string")))) {
+    throw new Error("tracks must be an array of { title, isrc } records");
+  }
+  for (const field of ["label", "albumuuid", "uploadDate", "visibleStatus"] as const) {
+    if (row[field] !== undefined && row[field] !== null && typeof row[field] !== "string") throw new Error(`${field} must be a string or null`);
+  }
   const releaseIdentifiers: Record<string, string> = {};
   for (const [key, identifier] of Object.entries((row.releaseIdentifiers ?? {}) as Record<string, unknown>)) {
     if (!key.trim() || typeof identifier !== "string" || !identifier.trim()) throw new Error("releaseIdentifiers values must be non-empty strings");
@@ -89,6 +103,11 @@ export function parseCanonicalRelease(value: unknown): CanonicalRelease {
     artworkRef: clean(row.artworkRef),
     publicUrls: ((row.publicUrls ?? []) as string[]).map((url) => url.trim()).filter(Boolean),
     sourceObservedAt: clean(row.sourceObservedAt),
+    ...(row.label !== undefined ? { label: clean(row.label) } : {}),
+    ...(row.albumuuid !== undefined ? { albumuuid: clean(row.albumuuid) } : {}),
+    ...(row.uploadDate !== undefined ? { uploadDate: clean(row.uploadDate) } : {}),
+    ...(row.visibleStatus !== undefined ? { visibleStatus: clean(row.visibleStatus) } : {}),
+    ...(Array.isArray(row.tracks) ? { tracks: (row.tracks as Array<{ title: string | null; isrc: string | null }>).map((track) => ({ title: clean(track.title), isrc: clean(track.isrc) })) } : {}),
     ...(row.releaseType !== undefined ? { releaseType: row.releaseType as CanonicalRelease["releaseType"] } : {}),
     ...(Object.keys(releaseIdentifiers).length ? { releaseIdentifiers } : {}),
     ...(clean(row.workId) ? { workId: clean(row.workId) } : {}),
@@ -128,6 +147,7 @@ export function releaseFingerprint(release: CanonicalRelease): string {
     upc: clean(release.upc) ? identityToken(release.upc!) : null, artworkRef: clean(release.artworkRef),
     publicUrls: [...release.publicUrls].sort(), releaseType: release.releaseType ?? null,
     releaseIdentifiers: Object.fromEntries(Object.entries(release.releaseIdentifiers ?? {}).sort(([a], [b]) => a.localeCompare(b))),
+    label: clean(release.label), albumuuid: clean(release.albumuuid), uploadDate: clean(release.uploadDate), visibleStatus: clean(release.visibleStatus), tracks: release.tracks ?? [],
   });
 }
 
@@ -198,11 +218,13 @@ export function projectReleaseMetadata(release: CanonicalRelease, work: CatalogW
   for (const [key, value] of Object.entries(release.releaseIdentifiers ?? {})) identifiers[key] = value;
   if (release.sourceReleaseId) identifiers.sourceReleaseId = release.sourceReleaseId;
   if (release.upc) identifiers.upc = release.upc;
+  if (release.albumuuid) identifiers.albumuuid = release.albumuuid;
   return {
     ...work,
     distribution: {
       ...work.distribution,
       source: release.releaseSource,
+      label: release.label ?? work.distribution?.label ?? null,
       artist: release.artist ?? work.distribution?.artist ?? null,
       releaseDate: release.releaseDate ?? work.distribution?.releaseDate ?? null,
       primaryGenre: release.primaryGenre ?? work.distribution?.primaryGenre ?? null,

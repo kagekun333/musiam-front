@@ -7,6 +7,7 @@ export type CatalogWork = {
   title?: string;
   type?: string;
   cover?: string;
+  previewUrl?: string;
   tags?: string[];
   releasedAt?: string;
   href?: string;
@@ -21,16 +22,18 @@ export type CatalogWork = {
   /** Explicit, stable aliases only. A display title is never an alias. */
   catalogAliases?: string[];
   identifiers?: {
-    release?: { albumuuid?: string | null; upc?: string | null };
+    release?: { albumuuid?: string | null; upc?: string | null; appleCollectionId?: string | null };
     recordings?: { isrc: string; trackNumber: number | null }[];
   };
   /** Explicitly sourced distribution metadata; absent until an approved feed is connected. */
   distribution?: {
     source?: string;
+    label?: string | null;
     artist?: string | null;
     releaseDate?: string | null;
     primaryGenre?: string | null;
     secondaryGenre?: string | null;
+    appleGenre?: string | null;
     isrc?: string | null;
     upc?: string | null;
     identifiers?: Record<string, string | null | undefined>;

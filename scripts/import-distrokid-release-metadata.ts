@@ -36,11 +36,11 @@ function parseCsv(text: string): unknown[] {
     headers.forEach((header, index) => {
       const key = header.trim();
       const cellValue = values[index].trim();
-      record[key] = cellValue || (key === "publicUrls" ? [] : key === "releaseIdentifiers" ? {} : null);
+      record[key] = cellValue || (key === "publicUrls" || key === "tracks" ? [] : key === "releaseIdentifiers" ? {} : null);
     });
-    for (const field of ["publicUrls", "releaseIdentifiers"]) {
+    for (const field of ["publicUrls", "releaseIdentifiers", "tracks"]) {
       if (typeof record[field] === "string") {
-        if (!(record[field] as string).trim()) { record[field] = field === "publicUrls" ? [] : {}; continue; }
+        if (!(record[field] as string).trim()) { record[field] = field === "releaseIdentifiers" ? {} : []; continue; }
         try { record[field] = JSON.parse(record[field] as string); }
         catch { throw new Error(`CSV ${field} cell must contain JSON`); }
       }

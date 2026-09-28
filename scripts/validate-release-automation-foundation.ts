@@ -1,0 +1,133 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { createRequire } from "node:module";
+import { classifyAppleArtistLookup, nextUpcomingRelease, resolveReleaseState } from "../src/lib/release-automation";
+import { parseCanonicalReleaseDocument } from "../src/lib/distrokid-release-ingestion";
+import { projectResolvedDistroKidRelease } from "../src/lib/distrokid-catalog-projection";
+import { releaseTiming } from "../src/lib/release-status";
+import { classifyAppleArtistResults, stableAppleWorkId } from "./apple-catalog-diff.mjs";
+import { resolveAppleUpcResult } from "./apple-upc-resolver.mjs";
+
+async function main() {
+const here = process.cwd();
+const require = createRequire(path.join(process.cwd(), "package.json"));
+const capture = require("./tools/distrokid-capture-extension/capture.js");
+const html = (name: string) => fs.readFileSync(path.join(here, "tools/distrokid-capture-extension/fixtures", name), "utf8");
+
+const human = [
+  { releaseSource: "distrokid", sourceReleaseId: "D631F8A9-14A5-40E7-867D01081E026EF1", title: "VII", artist: "ABI伯爵", releaseDate: "2026-09-27", label: "Hakusyaku Lab", primaryGenre: null, secondaryGenre: null, upc: "700989739020", isrc: "QI6J32604414", albumuuid: "D631F8A9-14A5-40E7-867D01081E026EF1", artworkRef: null, publicUrls: [], sourceObservedAt: null },
+  { releaseSource: "distrokid", sourceReleaseId: "22859F40-B4F4-4488-B13E3EC3991CCE09", title: "キャンバスの語源", artist: "ABI伯爵", releaseDate: "2026-10-02", label: "Hakusyaku Lab", primaryGenre: "J-Pop", secondaryGenre: null, upc: "700574488180", isrc: "QTA2S2650095", albumuuid: "22859F40-B4F4-4488-B13E3EC3991CCE09", artworkRef: null, publicUrls: [], sourceObservedAt: null },
+];
+assert.equal(releaseTiming(human[0].releaseDate, new Date("2026-09-27T12:00:00Z")), "RELEASED");
+assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z") }).state, "RELEASED_UNRESOLVED");
+assert.equal(releaseTiming(human[1].releaseDate, new Date("2026-09-27T12:00:00Z")), "UPCOMING");
+assert.equal(resolveReleaseState({ release: human[1], asOf: new Date("2026-09-27T12:00:00Z") }).state, "UPCOMING");
+const nextUpcoming = nextUpcomingRelease(human, new Date("2026-09-27T12:00:00Z"));
+assert.ok(nextUpcoming);
+assert.equal(nextUpcoming.title, "キャンバスの語源");
+assert.equal(nextUpcomingRelease(human, new Date("2026-10-02T12:00:00Z")), null, "release day is not upcoming in Tokyo date");
+
+const sameDayCollection = (collectionId: number): any => ({ wrapperType: "collection", artistId: 1811526635, collectionId, collectionName: "Same Day", artistName: "ABI伯爵", releaseDate: "2026-09-27T00:00:00Z", collectionViewUrl: "https://music.apple.com/jp/album/same-day/" + collectionId, artworkUrl100: "https://is1-ssl.mzstatic.com/image/thumb/Music/item/100x100bb.jpg", trackCount: 1 });
+const currentIds = new Set(["apple-album-10"]);
+const appleRows = [sameDayCollection(10), sameDayCollection(11), sameDayCollection(12)];
+const diff = classifyAppleArtistResults(appleRows, currentIds, 1811526635, 200);
+assert.deepEqual(diff.existingIds, ["apple-album-10"]);
+assert.deepEqual(diff.proposedAffectedIds, ["apple-album-11", "apple-album-12"], "same-day and delayed-indexed releases are found by stable ID set difference");
+assert.equal(classifyAppleArtistResults(Array(200).fill(null).map((_, index) => sameDayCollection(index + 100)), currentIds, 1811526635, 200).capWarning, "APPLE_ARTIST_LOOKUP_LIMIT_REACHED_200");
+assert.equal(diff.completeness, "NOT_PROVEN");
+assert.deepEqual(classifyAppleArtistLookup({ resultCount: 200, requestedLimit: 200 }), { completeness: "NOT_PROVEN", sourceTruncated: true, warning: "APPLE_ARTIST_LOOKUP_LIMIT_REACHED_200" });
+assert.equal(stableAppleWorkId("not-numeric"), null);
+assert.equal(stableAppleWorkId(123), "apple-album-123");
+const appliedDiff = classifyAppleArtistResults(appleRows, new Set([...currentIds, "apple-album-11", "apple-album-12"]), 1811526635);
+assert.equal(appliedDiff.newItems.length, 0, "rerunning the same ID set is idempotent");
+
+const appleResult = sameDayCollection(7001);
+appleResult.collectionName = "VII - Single";
+appleResult.primaryGenreName = "Alternative";
+appleResult.tracks = [{ wrapperType: "track", trackName: "VII", isrc: "QI6J32604414", previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123.m4a" }];
+const upcResolution = resolveAppleUpcResult({ expectedArtist: "ABI伯爵", expectedIsrc: "QI6J32604414", expectedReleaseDate: "2026-09-27" }, [appleResult]);
+assert.equal(upcResolution.status, "RESOLVED", "exact UPC result with expected artist/date/ISRC resolves");
+assert.ok(upcResolution.collection);
+assert.equal(upcResolution.collection.collectionId, "7001");
+assert.equal(resolveAppleUpcResult({ expectedArtist: "ABI伯爵" }, [sameDayCollection(1), sameDayCollection(2)]).status, "AMBIGUOUS");
+assert.equal(resolveAppleUpcResult({ expectedArtist: "ABI伯爵" }, []).status, "NO_RESULT");
+assert.equal(resolveAppleUpcResult({ expectedArtist: "Other Artist" }, [sameDayCollection(1)]).status, "ARTIST_MISMATCH");
+assert.equal(resolveAppleUpcResult({ expectedArtist: "ABI伯爵", expectedIsrc: "wrong" }, [appleResult]).status, "ISRC_MISMATCH");
+assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z"), appleCollectionId: "7001" }).stableWorkId, "apple-album-7001");
+assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z"), catalogWork: { id: "apple-album-7001" } }).state, "CATALOG_ACTIVE");
+
+const myMusic = capture.fromHtml(html("my-music.html"), "https://distrokid.com/mymusic", "2026-09-27T00:00:00Z");
+assert.equal(myMusic.releases.length, 2, "My Music capture keeps each visible same-origin release row");
+assert.deepEqual(myMusic.releases.map((row: { visibleStatus: string | null }) => row.visibleStatus), ["Live", "Upcoming"]);
+const detail = capture.fromHtml(html("release-detail.html"), "https://distrokid.com/album/11111111-1111-4111-8111-111111111111", "2026-09-27T00:00:00Z").releases[0];
+assert.equal(detail.title, "VII");
+assert.equal(detail.upc, "700989739020");
+assert.equal(detail.isrc, "QI6J32604414");
+assert.equal(detail.albumuuid, "11111111-1111-4111-8111-111111111111");
+assert.ok(detail.publicUrls.includes("https://distrokid.com/hyperfollow/abi/vii"));
+const capturedHumanFormatUuid = capture.fromHtml(`<div data-field="albumuuid">D631F8A9-14A5-40E7-867D01081E026EF1</div>`, "https://distrokid.com/album/D631F8A9-14A5-40E7-867D01081E026EF1", "2026-09-27T00:00:00Z").releases[0];
+assert.equal(capturedHumanFormatUuid.albumuuid, "D631F8A9-14A5-40E7-867D01081E026EF1", "DistroKid's observed UUID form is retained as a stable source ID");
+const parsedExtensionDoc = parseCanonicalReleaseDocument({ schemaVersion: 1, releases: [detail] });
+assert.equal(parsedExtensionDoc[0].albumuuid, detail.albumuuid, "extension output matches canonical importer input");
+const edit = capture.fromHtml(html("edit-form.html"), "https://distrokid.com/album/edit", "2026-09-27T00:00:00Z").releases[0];
+assert.equal(edit.primaryGenre, "J-Pop");
+assert.equal(edit.secondaryGenre, "Alternative");
+const secretFixtureOutput = JSON.stringify(capture.fromHtml(html("secret-fields.html"), "https://distrokid.com/album/edit", "2026-09-27T00:00:00Z"));
+for (const secret of ["synthetic-password-never-capture", "synthetic-token-never-capture", "synthetic-cookie-never-capture", "synthetic-payment-never-capture", "synthetic-csrf-never-capture", "synthetic-email-never-capture"]) assert.equal(secretFixtureOutput.includes(secret), false, "sensitive-shaped page values are not captured");
+assert.equal(secretFixtureOutput.includes("password"), false);
+
+const urls = Array.from({ length: 22 }, (_, index) => `https://distrokid.com/album/${String(index + 1).padStart(8, "0")}-1111-4111-8111-111111111111`);
+urls.push("https://evil.example/album/33333333-3333-4333-8333-333333333333");
+const selection = capture.selectBatchUrls(urls, "https://distrokid.com/mymusic");
+assert.equal(selection.urls.length, 20);
+assert.equal(selection.truncated, true);
+assert.equal(selection.candidateCount, 22);
+let fetched = 0;
+let delays = 0;
+const batch = await capture.captureBatch(urls, "https://distrokid.com/mymusic", async (url: string) => {
+  fetched++;
+  return { ok: true, url, headers: { get: () => "10" }, text: async () => html("release-detail.html") };
+}, async () => { delays++; });
+assert.equal(fetched, 20, "batch capture performs no more than 20 same-origin reads");
+assert.equal(delays, 19, "batch is rate bounded between requested pages");
+assert.equal(batch.failures.length, 0);
+assert.equal(batch.sourceTruncated, true);
+const visible = capture.visibleLinks({ querySelectorAll: () => [
+  { href: urls[0], getAttribute: () => null, getClientRects: () => [{}] },
+  { href: urls[1], getAttribute: () => null, getClientRects: () => [] },
+  { href: "https://evil.example/album/33333333-3333-4333-8333-333333333333", getAttribute: () => null, getClientRects: () => [{}] },
+] }, "https://distrokid.com/mymusic");
+assert.deepEqual(visible, [urls[0]], "batch discovery uses visible same-origin links only");
+
+const projected = projectResolvedDistroKidRelease({ release: human[0], apple: {
+  collectionId: "7001", title: "VII - Single", artist: "ABI伯爵", releaseDate: "2026-09-27",
+  primaryGenreName: "Alternative", collectionViewUrl: "https://music.apple.com/jp/album/vii/7001",
+  artworkUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music/item/100x100bb.jpg", trackCount: 1,
+  tracks: [{ title: "VII", isrc: "QI6J32604414", previewUrl: null }],
+} }, new Date("2026-09-27T12:00:00Z"));
+assert.ok(projected);
+assert.equal(projected.id, "apple-album-7001");
+assert.ok(projected.distribution);
+assert.equal(projected.distribution.appleGenre, "Alternative");
+assert.equal(projected.distribution.primaryGenre, null, "Apple genre is not substituted for missing distributor genre");
+assert.equal(projectResolvedDistroKidRelease({ release: human[1], apple: { collectionId: "7002", title: "Canvas", artist: "ABI伯爵", releaseDate: "2026-10-02", primaryGenreName: null, collectionViewUrl: "https://music.apple.com/jp/album/canvas/7002", artworkUrl: null, trackCount: 1, tracks: [] } }, new Date("2026-09-27T12:00:00Z")), null, "upcoming release never projects into Catalog");
+
+const schema = JSON.parse(fs.readFileSync(path.join(here, "tools/release-inbox/schema.json"), "utf8"));
+assert.equal(schema.properties.releases.maxItems, 20, "inbox schema bounds each batch");
+const receiveSource = fs.readFileSync(path.join(here, "tools/release-inbox/receive.mjs"), "utf8");
+assert.match(receiveSource, /server\.listen\(PORT, "127\.0\.0\.1"/);
+assert.match(receiveSource, /timingSafeEqual/);
+assert.match(receiveSource, /parseCanonicalReleaseDocument/);
+assert.doesNotMatch(receiveSource, /works\.json|loadMergedWorksServer/);
+assert.doesNotMatch(receiveSource, /console\.(?:log|info)\([^\n]*(?:title|artist|upc|token)/i);
+const manifest = JSON.parse(fs.readFileSync(path.join(here, "tools/distrokid-capture-extension/manifest.json"), "utf8"));
+assert.equal(manifest.manifest_version, 3);
+assert.equal(manifest.permissions.includes("cookies"), false);
+assert.equal(manifest.permissions.includes("storage"), false);
+assert.equal(manifest.content_scripts, undefined, "capture runs only after explicit popup action");
+
+process.stdout.write(`${JSON.stringify({ result: "PASS", appleIdDiff: "PASS", upcResolution: "PASS", releaseStates: "PASS", extensionHtmlFixtures: "PASS", secretNonCapture: "PASS", batch: { maximum: capture.maxBatch, captured: batch.capturedCount, failures: batch.failures.length, truncated: batch.sourceTruncated }, inboxSchema: "PASS", providerCalls: 0, distroKidLogin: 0 })}\n`);
+}
+
+void main().catch((error) => { process.stderr.write(`${error instanceof Error ? error.message : "release automation fixture failed"}\n`); process.exitCode = 1; });

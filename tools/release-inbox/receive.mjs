@@ -1,0 +1,111 @@
+import http from "node:http";
+import fs from "node:fs/promises";
+import path from "node:path";
+import crypto from "node:crypto";
+import { pathToFileURL } from "node:url";
+import { parseCanonicalReleaseDocument } from "../../src/lib/distrokid-release-ingestion.ts";
+
+const PORT = 43127;
+const MAX_BODY = 1024 * 1024;
+const ROOT = path.resolve(new URL("../..", import.meta.url).pathname);
+
+function getArgument(name) {
+  const prefix = `--${name}=`;
+  return process.argv.slice(2).find((arg) => arg.startsWith(prefix))?.slice(prefix.length) ?? null;
+}
+function safeTokenMatch(actual, expected) {
+  if (typeof actual !== "string" || !expected) return false;
+  const left = Buffer.from(actual);
+  const right = Buffer.from(expected);
+  return left.length === right.length && crypto.timingSafeEqual(left, right);
+}
+function reply(response, status, body, origin) {
+  response.writeHead(status, {
+    "Content-Type": "application/json; charset=utf-8",
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": origin,
+    "Vary": "Origin",
+    "Content-Security-Policy": "default-src 'none'",
+  });
+  response.end(JSON.stringify(body));
+}
+async function readBody(request) {
+  const chunks = [];
+  let bytes = 0;
+  for await (const chunk of request) {
+    bytes += chunk.length;
+    if (bytes > MAX_BODY) throw new Error("BODY_TOO_LARGE");
+    chunks.push(chunk);
+  }
+  return JSON.parse(Buffer.concat(chunks).toString("utf8"));
+}
+
+async function start() {
+  const inboxArgument = getArgument("inbox");
+  const extensionOrigin = getArgument("extension-origin");
+  if (!inboxArgument || !extensionOrigin || !/^chrome-extension:\/\/[a-p]{32}$/.test(extensionOrigin)) {
+    throw new Error("Set --inbox outside the repo and --extension-origin=chrome-extension://<32-char-id>.");
+  }
+  const inbox = path.resolve(inboxArgument);
+  const relative = path.relative(ROOT, inbox);
+  if (relative === "" || (!relative.startsWith(`..${path.sep}`) && relative !== ".." && !path.isAbsolute(relative))) {
+    throw new Error("Inbox path must be outside the repository.");
+  }
+  const challenges = new Map();
+  const server = http.createServer(async (request, response) => {
+    const origin = request.headers.origin;
+    if (origin !== extensionOrigin || !request.socket.remoteAddress?.match(/^(127\.0\.0\.1|::ffff:127\.0\.0\.1|::1)$/)) {
+      reply(response, 403, { error: "LOCAL_ORIGIN_REJECTED" }, extensionOrigin);
+      return;
+    }
+    if (request.method === "OPTIONS" && ["/v1/releases", "/v1/challenge"].includes(request.url)) {
+      response.writeHead(204, {
+        "Access-Control-Allow-Origin": extensionOrigin,
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, X-MUSIAM-Session",
+        "Access-Control-Max-Age": "60",
+        "Vary": "Origin",
+      });
+      response.end();
+      return;
+    }
+    if (request.method === "GET" && request.url === "/v1/challenge") {
+      const now = Date.now();
+      for (const [nonce, expiresAt] of challenges) if (expiresAt <= now) challenges.delete(nonce);
+      if (challenges.size >= 128) { reply(response, 429, { error: "CHALLENGE_LIMIT" }, extensionOrigin); return; }
+      const nonce = crypto.randomBytes(32).toString("base64url");
+      challenges.set(nonce, now + 60_000);
+      reply(response, 200, { nonce }, extensionOrigin);
+      return;
+    }
+    if (request.method !== "POST" || request.url !== "/v1/releases") { reply(response, 404, { error: "NOT_FOUND" }, extensionOrigin); return; }
+    const nonce = request.headers["x-musiam-session"];
+    let acceptedNonce = null;
+    let expiresAt = null;
+    for (const [candidate, expiry] of challenges) {
+      if (safeTokenMatch(nonce, candidate)) { acceptedNonce = candidate; expiresAt = expiry; break; }
+    }
+    if (acceptedNonce) challenges.delete(acceptedNonce);
+    if (!expiresAt || expiresAt <= Date.now()) { reply(response, 401, { error: "SESSION_REJECTED" }, extensionOrigin); return; }
+    if (!String(request.headers["content-type"] ?? "").toLowerCase().startsWith("application/json")) { reply(response, 415, { error: "JSON_REQUIRED" }, extensionOrigin); return; }
+    try {
+      const payload = await readBody(request);
+      if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.releases) || payload.releases.length > 20) throw new Error("INVALID_BATCH");
+      const releases = parseCanonicalReleaseDocument(payload);
+      await fs.mkdir(inbox, { recursive: true, mode: 0o700 });
+      const target = path.join(inbox, `release-capture-${new Date().toISOString().replace(/[:.]/g, "-")}-${crypto.randomUUID()}.json`);
+      const safePayload = `${JSON.stringify({ schemaVersion: 1, releases }, null, 2)}\n`;
+      await fs.writeFile(target, safePayload, { flag: "wx", mode: 0o600 });
+      reply(response, 201, { accepted: releases.length }, extensionOrigin);
+    } catch (error) {
+      const code = error instanceof Error && error.message === "BODY_TOO_LARGE" ? "BODY_TOO_LARGE" : "INVALID_RELEASE_BATCH";
+      reply(response, code === "BODY_TOO_LARGE" ? 413 : 400, { error: code }, extensionOrigin);
+    }
+  });
+  server.listen(PORT, "127.0.0.1", () => process.stdout.write(`MUSIAM release inbox listening on 127.0.0.1:${PORT}\n`));
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1] ?? "").href) start().catch((error) => {
+  process.stderr.write(`${error instanceof Error ? error.message : "Release inbox unavailable"}\n`);
+  process.exitCode = 1;
+});

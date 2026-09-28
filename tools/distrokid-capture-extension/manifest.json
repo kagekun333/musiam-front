@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "MUSIAM DistroKid Release Capture",
+  "version": "0.1.0",
+  "description": "User-triggered, local-only capture of selected DistroKid release metadata.",
+  "permissions": ["activeTab", "scripting", "downloads"],
+  "host_permissions": [
+    "https://distrokid.com/*",
+    "https://www.distrokid.com/*",
+    "http://127.0.0.1:43127/*"
+  ],
+  "action": { "default_popup": "popup.html" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://127.0.0.1:43127"
+  }
+}

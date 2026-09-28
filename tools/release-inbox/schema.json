@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hakusyaku.example/schemas/musiam-release-inbox-v1.json",
+  "title": "MUSIAM Canonical Release Inbox Batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "releases"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "releases": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["releaseSource", "publicUrls"],
+        "properties": {
+          "releaseSource": { "type": "string", "minLength": 1 },
+          "sourceReleaseId": { "type": ["string", "null"] },
+          "title": { "type": ["string", "null"] },
+          "artist": { "type": ["string", "null"] },
+          "releaseDate": { "type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+          "primaryGenre": { "type": ["string", "null"] },
+          "secondaryGenre": { "type": ["string", "null"] },
+          "isrc": { "type": ["string", "null"] },
+          "upc": { "type": ["string", "null"] },
+          "artworkRef": { "type": ["string", "null"] },
+          "publicUrls": { "type": "array", "items": { "type": "string", "format": "uri" } },
+          "sourceObservedAt": { "type": ["string", "null"], "format": "date-time" },
+          "releaseType": { "enum": ["single", "album", "ep", null] },
+          "releaseIdentifiers": { "type": "object", "additionalProperties": { "type": "string" } },
+          "workId": { "type": ["string", "null"] },
+          "canonicalWorkId": { "type": ["string", "null"] },
+          "alias": { "type": ["string", "null"] },
+          "label": { "type": ["string", "null"] },
+          "albumuuid": { "type": ["string", "null"] },
+          "uploadDate": { "type": ["string", "null"] },
+          "visibleStatus": { "type": ["string", "null"] },
+          "tracks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["title", "isrc"],
+              "properties": { "title": { "type": ["string", "null"] }, "isrc": { "type": ["string", "null"] } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

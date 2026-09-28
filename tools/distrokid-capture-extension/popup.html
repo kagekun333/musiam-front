@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MUSIAM release capture</title>
+<style>
+  body { font: 14px system-ui, sans-serif; min-width: 320px; padding: 12px; color: #222; }
+  button, input { box-sizing: border-box; width: 100%; margin: 5px 0; padding: 9px; }
+  #status { white-space: pre-wrap; margin-top: 8px; }
+</style>
+<h1>MUSIAM Release Capture</h1>
+<button id="capture">Capture this page</button>
+<button id="capture-all">Capture All Visible Releases (max 20)</button>
+<button id="download" disabled>Download canonical JSON</button>
+<button id="send" disabled>Send to local inbox</button>
+<div id="status" role="status">Capture runs only when you click a button. DistroKid fields are sent only to the local inbox when you click Send.</div>
+<script src="popup.js"></script>
+</html>

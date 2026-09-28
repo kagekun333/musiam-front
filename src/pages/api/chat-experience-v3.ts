@@ -11,12 +11,14 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
-import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { loadMergedWorksServer, loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
+import { nextUpcomingRelease } from "@/lib/release-automation";
 import { buildChatWorkCard } from "@/lib/chat-work-card";
 import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import {
   asksForLatestRelease,
+  asksForUpcomingRelease,
   asksForSonicDetails,
   buildLunaEvidencePack,
   deriveVisitorState,
@@ -673,6 +675,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       : null;
     if (entryContext && !entryWork) return controlled(unknownEntryWorkText(lang), "conversation");
     if (asksForRetiredOracle(query)) return controlled(retiredOracleText(lang), "conversation");
+    if (asksForUpcomingRelease(query)) {
+      const upcoming = nextUpcomingRelease(loadStoredDistributionReleases());
+      if (!upcoming) {
+        const unavailable: Record<Lang, string> = {
+          ja: "現在の配信元記録に、公開予定日が確認できる次のリリースはありません。",
+          en: "There is no next release with a verified scheduled date in the current distributor records.",
+          fr: "Aucune prochaine sortie avec une date prévue vérifiée n’apparaît dans les données du distributeur.",
+          es: "No hay un próximo lanzamiento con fecha programada verificada en los registros actuales del distribuidor.",
+          de: "In den aktuellen Vertriebsdaten ist keine nächste Veröffentlichung mit bestätigtem Termin eingetragen.",
+          ar: "لا يوجد إصدار قادم بتاريخ مجدول موثق في سجلات التوزيع الحالية.",
+        };
+        return controlled(unavailable[lang], "conversation");
+      }
+      const title = upcoming.title ?? "";
+      const date = upcoming.releaseDate ?? "";
+      const genreJa = upcoming.primaryGenre ? ` 配信上のジャンルは${upcoming.primaryGenre}です。` : "";
+      const genreByLang: Record<Lang, string> = upcoming.primaryGenre ? {
+        ja: genreJa,
+        en: ` The distributor lists its genre as ${upcoming.primaryGenre}.`,
+        fr: ` Le distributeur indique le genre « ${upcoming.primaryGenre} ».`,
+        es: ` El distribuidor indica el género «${upcoming.primaryGenre}».`,
+        de: ` Der Vertrieb nennt das Genre „${upcoming.primaryGenre}“.`,
+        ar: ` ويذكر الموزع أن النوع هو ${upcoming.primaryGenre}.`,
+      } : { ja: "", en: "", fr: "", es: "", de: "", ar: "" };
+      const text: Record<Lang, string> = {
+        ja: `配信元の記録では、次のリリースは「${title}」で、${date}公開予定です。公開リンクはまだ確認できていません。${genreByLang.ja}`,
+        en: `The distributor record lists “${title}” for ${date}. Its public store link is not verified yet.${genreByLang.en}`,
+        fr: `Le distributeur indique « ${title} » pour le ${date}. Son lien public n’est pas encore vérifié.${genreByLang.fr}`,
+        es: `El distribuidor indica «${title}» para el ${date}. Su enlace público aún no está verificado.${genreByLang.es}`,
+        de: `Der Vertrieb führt „${title}“ für den ${date}. Ein öffentlicher Store-Link ist noch nicht bestätigt.${genreByLang.de}`,
+        ar: `يسجل الموزع «${title}» بتاريخ ${date}. لم يتم التحقق من رابط المتجر العام بعد.${genreByLang.ar}`,
+      };
+      return controlled(text[lang], "conversation");
+    }
     const explicitIdentity = coreTurn.actionKind ? resolveCatalogIdentity(query, coreWorks) : null;
     const explicitActionTarget = coreTurn.actionTargetId || (explicitIdentity && explicitIdentity.status !== "none")
       || /(?:これ|それ|あれ|この|その|前の|さっきの|という(?:曲|作品|本)|の(?:続編|新作)|\b(?:this|that|previous|it|ce|cette|cela|esto|ese|diese|dieses)\b|هذا|هذه|ذلك)/i.test(query);

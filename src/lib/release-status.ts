@@ -1,16 +1,21 @@
-function tokyoYmd() {
-  const now = new Date();
-  const tokyo = new Date(now.getTime() + (9 * 60 - now.getTimezoneOffset()) * 60000);
-  const y = tokyo.getUTCFullYear();
-  const m = String(tokyo.getUTCMonth() + 1).padStart(2, "0");
-  const d = String(tokyo.getUTCDate()).padStart(2, "0");
-  return `${y}-${m}-${d}`;
+export function tokyoYmd(now = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(now);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
 }
 
 export function isFutureRelease(releasedAt?: string) {
   const value = String(releasedAt || "").slice(0, 10);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   return value > tokyoYmd();
+}
+
+export type ReleaseTiming = "RELEASED" | "UPCOMING" | "UNKNOWN";
+
+export function releaseTiming(releaseDate?: string | null, asOf = new Date()): ReleaseTiming {
+  const value = String(releaseDate || "").slice(0, 10);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return "UNKNOWN";
+  return value > tokyoYmd(asOf) ? "UPCOMING" : "RELEASED";
 }
 
 export function formatReleaseText(releasedAt?: string, lang: "ja" | "en" = "ja") {
