@@ -526,7 +526,7 @@
     for (const value of urls) {
       try {
         const url = new URL(value, pageUrl);
-        if (url.origin !== origin || url.protocol !== "https:" || !url.pathname.split("/").some(isAlbumUuid)) continue;
+        if (url.origin !== origin || url.protocol !== "https:" || !albumUuidFromUrl(url.toString())) continue;
         unique.add(url.toString());
       } catch { /* ignored */ }
     }

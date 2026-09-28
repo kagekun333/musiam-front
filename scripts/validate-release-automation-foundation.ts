@@ -206,8 +206,19 @@ const urls = Array.from({ length: 22 }, (_, index) => `https://distrokid.com/alb
 urls.push("https://evil.example/album/33333333-3333-4333-8333-333333333333");
 const selection = capture.selectBatchUrls(urls, "https://distrokid.com/mymusic");
 assert.equal(selection.urls.length, 20);
+assert.deepEqual(selection.urls, urls.slice(0, 20), "over-20 batches preserve the first 20 eligible URLs in source order");
 assert.equal(selection.truncated, true);
 assert.equal(selection.candidateCount, 22);
+const realDashboardUrl = "https://distrokid.com/dashboard/album/?albumuuid=D631F8A9-14A5-40E7-867D01081E026EF1";
+const pathAlbumUrl = "https://distrokid.com/album/D631F8A9-14A5-40E7-867D01081E026EF1";
+assert.deepEqual(capture.selectBatchUrls([realDashboardUrl], "https://distrokid.com/mymusic").urls, [realDashboardUrl], "real dashboard albumuuid query URLs are eligible");
+assert.deepEqual(capture.selectBatchUrls([pathAlbumUrl], "https://distrokid.com/mymusic").urls, [pathAlbumUrl], "UUID path-form release detail URLs remain eligible");
+assert.deepEqual(capture.selectBatchUrls(["https://distrokid.com/dashboard/album/?albumuuid=not-a-uuid"], "https://distrokid.com/mymusic").urls, [], "invalid album identity is rejected");
+assert.deepEqual(capture.selectBatchUrls(["https://distrokid.com/dashboard/mymusic"], "https://distrokid.com/mymusic").urls, [], "unrelated same-origin links are rejected");
+assert.deepEqual(capture.selectBatchUrls(["https://other.example/dashboard/album/?albumuuid=D631F8A9-14A5-40E7-867D01081E026EF1"], "https://distrokid.com/mymusic").urls, [], "cross-origin release links are rejected");
+const duplicateSelection = capture.selectBatchUrls([realDashboardUrl, realDashboardUrl], "https://distrokid.com/mymusic");
+assert.deepEqual(duplicateSelection.urls, [realDashboardUrl], "duplicate release URLs are deduplicated");
+assert.equal(duplicateSelection.candidateCount, 1);
 let fetched = 0;
 let delays = 0;
 const batch = await capture.captureBatch(urls, "https://distrokid.com/mymusic", async (url: string) => {
