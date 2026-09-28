@@ -2,4 +2,33 @@
 set -eu
 HOST_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
 cd "$HOST_ROOT"
-exec node --import tsx "$HOST_ROOT/tools/release-native-host/host.mjs"
+
+# This fail-closed switch is used only by the providerless fixture. It cannot
+# select or execute a different program; it only simulates missing Node.
+if [ "${MUSIAM_NATIVE_HOST_TEST_FORCE_UNAVAILABLE:-0}" = "1" ]; then
+  NODE_BIN=""
+else
+  NODE_BIN=""
+  for candidate in \
+    "${HOME:-}/.local/bin/node" \
+    "/opt/homebrew/bin/node" \
+    "/usr/local/bin/node" \
+    "/usr/bin/node"
+  do
+    if [ -x "$candidate" ]; then
+      NODE_BIN="$candidate"
+      break
+    fi
+  done
+
+  if [ -z "$NODE_BIN" ]; then
+    NODE_BIN=$(command -v node 2>/dev/null || true)
+  fi
+fi
+
+if [ -z "$NODE_BIN" ] || [ ! -x "$NODE_BIN" ]; then
+  printf '%s\n' 'MUSIAM native host: Node runtime unavailable.' >&2
+  exit 127
+fi
+
+exec "$NODE_BIN" --import tsx "$HOST_ROOT/tools/release-native-host/host.mjs"
