@@ -32,6 +32,31 @@ function reply(response, status, body, origin) {
   });
   response.end(JSON.stringify(body));
 }
+function originCategory(origin, expectedOrigin) {
+  if (origin === expectedOrigin) return "EXPECTED_EXTENSION";
+  if (origin === undefined || origin === null || origin === "") return "MISSING";
+  if (origin === "null") return "NULL";
+  if (typeof origin === "string" && /^chrome-extension:\/\//i.test(origin)) return "OTHER_CHROME_EXTENSION";
+  return "OTHER_ORIGIN";
+}
+function remoteAddressCategory(remoteAddress) {
+  if (typeof remoteAddress !== "string" || !remoteAddress) return "MISSING";
+  if (remoteAddress === "127.0.0.1") return "IPV4_LOOPBACK";
+  if (remoteAddress === "::1") return "IPV6_LOOPBACK";
+  if (remoteAddress === "::ffff:127.0.0.1") return "IPV4_MAPPED_LOOPBACK";
+  return "OTHER";
+}
+export function releaseInboxRequestRejection({ origin, extensionOrigin, remoteAddress }) {
+  const observedOriginCategory = originCategory(origin, extensionOrigin);
+  if (observedOriginCategory !== "EXPECTED_EXTENSION") {
+    return { error: "LOCAL_EXTENSION_ORIGIN_MISMATCH", originCategory: observedOriginCategory };
+  }
+  const observedRemoteAddressCategory = remoteAddressCategory(remoteAddress);
+  if (!["IPV4_LOOPBACK", "IPV6_LOOPBACK", "IPV4_MAPPED_LOOPBACK"].includes(observedRemoteAddressCategory)) {
+    return { error: "LOCAL_REMOTE_ADDRESS_REJECTED", remoteAddressCategory: observedRemoteAddressCategory };
+  }
+  return null;
+}
 async function readBody(request) {
   const chunks = [];
   let bytes = 0;
@@ -55,8 +80,9 @@ export function createReleaseInboxServer({ extensionOrigin, inbox: inboxArgument
   const challenges = new Map();
   const server = http.createServer(async (request, response) => {
     const origin = request.headers.origin;
-    if (origin !== extensionOrigin || !request.socket.remoteAddress?.match(/^(127\.0\.0\.1|::ffff:127\.0\.0\.1|::1)$/)) {
-      reply(response, 403, { error: "LOCAL_ORIGIN_REJECTED" }, extensionOrigin);
+    const rejection = releaseInboxRequestRejection({ origin, extensionOrigin, remoteAddress: request.socket.remoteAddress });
+    if (rejection) {
+      reply(response, 403, rejection, extensionOrigin);
       return;
     }
     if (request.method === "OPTIONS" && ["/v1/releases", "/v1/challenge"].includes(request.url)) {

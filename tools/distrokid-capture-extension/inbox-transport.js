@@ -2,6 +2,15 @@
   "use strict";
   const BASE = "http://127.0.0.1:43127/v1";
   const statusCode = (value) => Number.isInteger(value) && value >= 100 && value <= 599 ? value : null;
+  const SAFE_RECEIVER_ERRORS = new Set(["LOCAL_EXTENSION_ORIGIN_MISMATCH", "LOCAL_REMOTE_ADDRESS_REJECTED"]);
+
+  async function safeForbiddenCode(response, fallbackCode) {
+    try {
+      const body = await response.json();
+      if (SAFE_RECEIVER_ERRORS.has(body?.error)) return body.error;
+    } catch { /* status-only fallback */ }
+    return fallbackCode;
+  }
 
   async function send(payload, fetchImpl = fetch) {
     if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.releases) || payload.releases.length > 20) {
@@ -15,6 +24,7 @@
     }
     if (!challengeResponse?.ok) {
       const status = statusCode(challengeResponse?.status);
+      if (status === 403) return { ok: false, code: await safeForbiddenCode(challengeResponse, "LOCAL_INBOX_CHALLENGE_HTTP_403") };
       return { ok: false, code: status ? `LOCAL_INBOX_CHALLENGE_HTTP_${status}` : "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" };
     }
 
@@ -38,7 +48,7 @@
     if (!response?.ok) {
       const status = statusCode(response?.status);
       if (status === 401) return { ok: false, code: "LOCAL_INBOX_SESSION_REJECTED" };
-      if (status === 403) return { ok: false, code: "LOCAL_INBOX_ORIGIN_REJECTED" };
+      if (status === 403) return { ok: false, code: await safeForbiddenCode(response, "LOCAL_INBOX_ORIGIN_REJECTED") };
       if ([400, 413, 415].includes(status)) return { ok: false, code: "LOCAL_INBOX_INVALID_PAYLOAD" };
       return { ok: false, code: status ? `LOCAL_INBOX_POST_HTTP_${status}` : "LOCAL_INBOX_POST_RESPONSE_INVALID" };
     }
