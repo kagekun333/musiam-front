@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
 import { classifyAppleArtistLookup, nextUpcomingRelease, resolveReleaseState } from "../src/lib/release-automation";
+import { buildWorkKnowledgeEnvelope } from "../src/lib/chat-release-knowledge";
 import { parseCanonicalReleaseDocument } from "../src/lib/distrokid-release-ingestion";
 import { projectResolvedDistroKidRelease } from "../src/lib/distrokid-catalog-projection";
 import { releaseTiming } from "../src/lib/release-status";
@@ -16,11 +17,13 @@ const capture = require("./tools/distrokid-capture-extension/capture.js");
 const html = (name: string) => fs.readFileSync(path.join(here, "tools/distrokid-capture-extension/fixtures", name), "utf8");
 
 const human = [
-  { releaseSource: "distrokid", sourceReleaseId: "D631F8A9-14A5-40E7-867D01081E026EF1", title: "VII", artist: "ABI伯爵", releaseDate: "2026-09-27", label: "Hakusyaku Lab", primaryGenre: null, secondaryGenre: null, upc: "700989739020", isrc: "QI6J32604414", albumuuid: "D631F8A9-14A5-40E7-867D01081E026EF1", artworkRef: null, publicUrls: [], sourceObservedAt: null },
+  { releaseSource: "distrokid", sourceReleaseId: "D631F8A9-14A5-40E7-867D01081E026EF1", title: "Ⅶ", artist: "ABI伯爵", releaseDate: null, uploadDate: null, label: "Hakusyaku Lab", primaryGenre: "Electronic", secondaryGenre: null, upc: "700989739020", isrc: "QT6J32604414", albumuuid: "D631F8A9-14A5-40E7-867D01081E026EF1", artworkRef: null, publicUrls: ["https://open.spotify.com/album/1qsMiOzudMSgKIneEZPofH", "https://distrokid.com/hyperfollow/abi35/n5dpul17z6g"], sourceObservedAt: null },
   { releaseSource: "distrokid", sourceReleaseId: "22859F40-B4F4-4488-B13E3EC3991CCE09", title: "キャンバスの語源", artist: "ABI伯爵", releaseDate: "2026-10-02", label: "Hakusyaku Lab", primaryGenre: "J-Pop", secondaryGenre: null, upc: "700574488180", isrc: "QTA2S2650095", albumuuid: "22859F40-B4F4-4488-B13E3EC3991CCE09", artworkRef: null, publicUrls: [], sourceObservedAt: null },
 ];
-assert.equal(releaseTiming(human[0].releaseDate, new Date("2026-09-27T12:00:00Z")), "RELEASED");
-assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z") }).state, "RELEASED_UNRESOLVED");
+assert.equal(releaseTiming(human[0].releaseDate, new Date("2026-09-27T12:00:00Z")), "UNKNOWN");
+assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z") }).state, "PUBLIC_RELEASE_DATE_PENDING");
+assert.equal(resolveReleaseState({ release: human[0], publicReleaseDate: "2026-09-27", appleCollectionId: "7001", asOf: new Date("2026-09-27T12:00:00Z") }).state, "RELEASED_RESOLVED", "a resolved Apple public date supplies released status");
+assert.equal(resolveReleaseState({ release: human[0], publicReleaseDate: "2026-10-02", asOf: new Date("2026-09-27T12:00:00Z") }).state, "PUBLIC_RELEASE_DATE_PENDING", "public future dates cannot establish upcoming status");
 assert.equal(releaseTiming(human[1].releaseDate, new Date("2026-09-27T12:00:00Z")), "UPCOMING");
 assert.equal(resolveReleaseState({ release: human[1], asOf: new Date("2026-09-27T12:00:00Z") }).state, "UPCOMING");
 const nextUpcoming = nextUpcomingRelease(human, new Date("2026-09-27T12:00:00Z"));
@@ -45,8 +48,8 @@ assert.equal(appliedDiff.newItems.length, 0, "rerunning the same ID set is idemp
 const appleResult = sameDayCollection(7001);
 appleResult.collectionName = "VII - Single";
 appleResult.primaryGenreName = "Alternative";
-appleResult.tracks = [{ wrapperType: "track", trackName: "VII", isrc: "QI6J32604414", previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123.m4a" }];
-const upcResolution = resolveAppleUpcResult({ expectedArtist: "ABI伯爵", expectedIsrc: "QI6J32604414", expectedReleaseDate: "2026-09-27" }, [appleResult]);
+appleResult.tracks = [{ wrapperType: "track", trackName: "VII", isrc: "QT6J32604414", previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview123.m4a" }];
+const upcResolution = resolveAppleUpcResult({ expectedArtist: "ABI伯爵", expectedIsrc: "QT6J32604414", expectedReleaseDate: null }, [appleResult]);
 assert.equal(upcResolution.status, "RESOLVED", "exact UPC result with expected artist/date/ISRC resolves");
 assert.ok(upcResolution.collection);
 assert.equal(upcResolution.collection.collectionId, "7001");
@@ -54,8 +57,10 @@ assert.equal(resolveAppleUpcResult({ expectedArtist: "ABI伯爵" }, [sameDayColl
 assert.equal(resolveAppleUpcResult({ expectedArtist: "ABI伯爵" }, []).status, "NO_RESULT");
 assert.equal(resolveAppleUpcResult({ expectedArtist: "Other Artist" }, [sameDayCollection(1)]).status, "ARTIST_MISMATCH");
 assert.equal(resolveAppleUpcResult({ expectedArtist: "ABI伯爵", expectedIsrc: "wrong" }, [appleResult]).status, "ISRC_MISMATCH");
-assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z"), appleCollectionId: "7001" }).stableWorkId, "apple-album-7001");
-assert.equal(resolveReleaseState({ release: human[0], asOf: new Date("2026-09-27T12:00:00Z"), catalogWork: { id: "apple-album-7001" } }).state, "CATALOG_ACTIVE");
+assert.equal(human[0].releaseDate, null, "the real VII DistroKid capture does not fabricate its missing release date");
+assert.equal(human[0].uploadDate, null, "the real VII DistroKid capture keeps upload date optional");
+assert.equal(resolveReleaseState({ release: human[0], publicReleaseDate: "2026-09-27", asOf: new Date("2026-09-27T12:00:00Z"), appleCollectionId: "7001" }).stableWorkId, "apple-album-7001");
+assert.equal(resolveReleaseState({ release: human[0], publicReleaseDate: "2026-09-27", asOf: new Date("2026-09-27T12:00:00Z"), catalogWork: { id: "apple-album-7001" } }).state, "CATALOG_ACTIVE");
 
 const myMusic = capture.fromHtml(html("my-music.html"), "https://distrokid.com/mymusic", "2026-09-27T00:00:00Z");
 assert.equal(myMusic.releases.length, 2, "My Music capture keeps each visible same-origin release row");
@@ -224,14 +229,24 @@ const projected = projectResolvedDistroKidRelease({ release: human[0], apple: {
   collectionId: "7001", title: "VII - Single", artist: "ABI伯爵", releaseDate: "2026-09-27",
   primaryGenreName: "Alternative", collectionViewUrl: "https://music.apple.com/jp/album/vii/7001",
   artworkUrl: "https://is1-ssl.mzstatic.com/image/thumb/Music/item/100x100bb.jpg", trackCount: 1,
-  tracks: [{ title: "VII", isrc: "QI6J32604414", previewUrl: null }],
+  tracks: [{ title: "VII", isrc: "QT6J32604414", previewUrl: null }],
 } }, new Date("2026-09-27T12:00:00Z"));
 assert.ok(projected);
 assert.equal(projected.id, "apple-album-7001");
+assert.equal(projected.releasedAt, "2026-09-27", "a matched Apple UPC result may supply its public release date when DistroKid date is absent");
 assert.ok(projected.distribution);
 assert.equal(projected.distribution.appleGenre, "Alternative");
-assert.equal(projected.distribution.primaryGenre, null, "Apple genre is not substituted for missing distributor genre");
+assert.equal(projected.distribution.primaryGenre, "Electronic", "captured DistroKid genre remains authoritative");
+assert.equal(projected.distribution.releaseDate, "2026-09-27", "public Apple date is projected as distribution release date only after UPC resolution");
+assert.equal(projected.distribution.releaseDateAuthority, "APPLE_PUBLIC_DISTRIBUTION", "Apple date provenance remains explicit in projected Catalog metadata");
+assert.equal(buildWorkKnowledgeEnvelope(projected)?.distribution.releaseDateAuthority, "APPLE_PUBLIC_DISTRIBUTION", "knowledge envelope retains public date authority");
+const noDistributorGenreProjection = projectResolvedDistroKidRelease({ release: { ...human[0], primaryGenre: null }, apple: {
+  collectionId: "7001", title: "VII - Single", artist: "ABI伯爵", releaseDate: "2026-09-27", primaryGenreName: "Alternative",
+  collectionViewUrl: "https://music.apple.com/jp/album/vii/7001", artworkUrl: null, trackCount: 1, tracks: [],
+} }, new Date("2026-09-27T12:00:00Z"));
+assert.equal(noDistributorGenreProjection?.distribution?.primaryGenre, null, "Apple genre is not substituted for missing distributor genre");
 assert.equal(projectResolvedDistroKidRelease({ release: human[1], apple: { collectionId: "7002", title: "Canvas", artist: "ABI伯爵", releaseDate: "2026-10-02", primaryGenreName: null, collectionViewUrl: "https://music.apple.com/jp/album/canvas/7002", artworkUrl: null, trackCount: 1, tracks: [] } }, new Date("2026-09-27T12:00:00Z")), null, "upcoming release never projects into Catalog");
+assert.equal(projectResolvedDistroKidRelease({ release: human[0], apple: { collectionId: "7003", title: "VII - Single", artist: "ABI伯爵", releaseDate: "2026-10-02", primaryGenreName: null, collectionViewUrl: "https://music.apple.com/jp/album/vii/7003", artworkUrl: null, trackCount: 1, tracks: [] } }, new Date("2026-09-27T12:00:00Z")), null, "a future Apple date cannot establish an upcoming release date");
 
 const schema = JSON.parse(fs.readFileSync(path.join(here, "tools/release-inbox/schema.json"), "utf8"));
 assert.equal(schema.properties.releases.maxItems, 20, "inbox schema bounds each batch");

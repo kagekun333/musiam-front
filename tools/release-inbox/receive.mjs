@@ -2,8 +2,11 @@ import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
+import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
-import { parseCanonicalReleaseDocument } from "../../src/lib/distrokid-release-ingestion.ts";
+
+const require = createRequire(import.meta.url);
+const { parseCanonicalReleaseDocument } = require("../../src/lib/distrokid-release-ingestion.ts");
 
 const PORT = 43127;
 const MAX_BODY = 1024 * 1024;
@@ -40,11 +43,9 @@ async function readBody(request) {
   return JSON.parse(Buffer.concat(chunks).toString("utf8"));
 }
 
-async function start() {
-  const inboxArgument = getArgument("inbox");
-  const extensionOrigin = getArgument("extension-origin");
+export function createReleaseInboxServer({ extensionOrigin, inbox: inboxArgument }) {
   if (!inboxArgument || !extensionOrigin || !/^chrome-extension:\/\/[a-p]{32}$/.test(extensionOrigin)) {
-    throw new Error("Set --inbox outside the repo and --extension-origin=chrome-extension://<32-char-id>.");
+    throw new Error("Invalid local release inbox origin or path.");
   }
   const inbox = path.resolve(inboxArgument);
   const relative = path.relative(ROOT, inbox);
@@ -102,6 +103,14 @@ async function start() {
       reply(response, code === "BODY_TOO_LARGE" ? 413 : 400, { error: code }, extensionOrigin);
     }
   });
+  return server;
+}
+
+async function start() {
+  const inbox = getArgument("inbox");
+  const extensionOrigin = getArgument("extension-origin");
+  if (!inbox || !extensionOrigin) throw new Error("Set --inbox outside the repo and --extension-origin=chrome-extension://<32-char-id>.");
+  const server = createReleaseInboxServer({ extensionOrigin, inbox });
   server.listen(PORT, "127.0.0.1", () => process.stdout.write(`MUSIAM release inbox listening on 127.0.0.1:${PORT}\n`));
 }
 

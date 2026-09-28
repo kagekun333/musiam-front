@@ -49,7 +49,8 @@ async function main() {
   let lookupCalls = 0;
   for (const release of releases) {
     const timing = releaseTiming(release.releaseDate, new Date(`${asOf}T12:00:00+09:00`));
-    if (!release.title || timing === "UNKNOWN") {
+    const publicDateFallback = release.releaseDate == null;
+    if (!release.title) {
       outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "UNRESOLVED", reason: "REQUIRED_RELEASE_METADATA_MISSING", stableWorkId: null });
       continue;
     }
@@ -58,11 +59,11 @@ async function main() {
       continue;
     }
     if (!release.upc || !release.artist) {
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "UNRESOLVED", reason: "UPC_OR_ARTIST_MISSING", stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : "UNRESOLVED", reason: "UPC_OR_ARTIST_MISSING", stableWorkId: null });
       continue;
     }
     if (lookupCalls >= MAX_LOOKUPS) {
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "RELEASED_UNRESOLVED", lookup: "BATCH_LIMIT_DEFERRED", stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : "RELEASED_UNRESOLVED", lookup: "BATCH_LIMIT_DEFERRED", stableWorkId: null });
       continue;
     }
     if (lookupCalls) await pause(250);
@@ -70,29 +71,33 @@ async function main() {
     let response;
     try { response = await fetch(appleLookupUrl(release.upc), { headers: { Accept: "application/json" }, signal: AbortSignal.timeout(10000) }); }
     catch (error) {
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "RELEASED_UNRESOLVED", lookup: "LOOKUP_UNAVAILABLE", causeCategory: safeFailureCategory(error), stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : "RELEASED_UNRESOLVED", lookup: "LOOKUP_UNAVAILABLE", causeCategory: safeFailureCategory(error), stableWorkId: null });
       continue;
     }
     if (!response.ok) {
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "RELEASED_UNRESOLVED", lookup: "HTTP_ERROR", httpStatus: response.status, stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : "RELEASED_UNRESOLVED", lookup: "HTTP_ERROR", httpStatus: response.status, stableWorkId: null });
       continue;
     }
     let payload;
     try { payload = await response.json(); }
     catch {
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "RELEASED_UNRESOLVED", lookup: "INVALID_JSON", stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : "RELEASED_UNRESOLVED", lookup: "INVALID_JSON", stableWorkId: null });
       continue;
     }
     const lookup = resolveAppleUpcResult({ expectedArtist: release.artist, expectedIsrc: release.isrc, expectedReleaseDate: release.releaseDate }, Array.isArray(payload.results) ? payload.results : []);
     if (lookup.status !== "RESOLVED" || !lookup.collection) {
       const state = ["NO_RESULT", "AMBIGUOUS"].includes(lookup.status) ? "RELEASED_UNRESOLVED" : "UNRESOLVED";
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: state, lookup: lookup.status, stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : state, lookup: lookup.status, stableWorkId: null });
+      continue;
+    }
+    if (publicDateFallback && !lookup.collection.releaseDate) {
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "PUBLIC_RELEASE_DATE_PENDING", lookup: "APPLE_RELEASE_DATE_UNAVAILABLE", stableWorkId: null });
       continue;
     }
     const candidate = { release, apple: lookup.collection };
     const projected = projectResolvedDistroKidRelease(candidate, new Date(`${asOf}T12:00:00+09:00`));
     if (!projected) {
-      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "UNRESOLVED", lookup: "CATALOG_PROJECTION_REJECTED", stableWorkId: null });
+      outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: publicDateFallback ? "PUBLIC_RELEASE_DATE_PENDING" : "UNRESOLVED", lookup: "CATALOG_PROJECTION_REJECTED", stableWorkId: null });
       continue;
     }
     const stableWorkId = String(projected.id);
@@ -104,7 +109,7 @@ async function main() {
     plannedResolutions.push(candidate);
     outcomes.push({ sourceReleaseId: release.sourceReleaseId, status: "RELEASED_RESOLVED", stableWorkId, apple: lookup.collection });
   }
-  const counts = Object.fromEntries(["UPCOMING", "RELEASED_UNRESOLVED", "RELEASED_RESOLVED", "CATALOG_ACTIVE", "UNRESOLVED"].map((status) => [status, outcomes.filter((item) => item.status === status).length]));
+  const counts = Object.fromEntries(["UPCOMING", "PUBLIC_RELEASE_DATE_PENDING", "RELEASED_UNRESOLVED", "RELEASED_RESOLVED", "CATALOG_ACTIVE", "UNRESOLVED"].map((status) => [status, outcomes.filter((item) => item.status === status).length]));
   const newIds = outcomes.filter((item) => item.status === "RELEASED_RESOLVED").map((item) => item.stableWorkId).sort();
   const confirmation = (argument("confirm-new") ?? "").split(",").filter(Boolean).sort();
   if (apply) {

@@ -56,6 +56,9 @@ assert.equal(titleOnly.status, "UNRESOLVED", "F. title-only row remains unresolv
 if (titleOnly.status === "UNRESOLVED") assert.equal(titleOnly.reason, "TITLE_ONLY");
 assert.deepEqual(resolveDistributionRow({ isrc: "USAAA2600001" }, [sample]), { status: "RESOLVED", workId: "stable-a", method: "EXACT_ISRC" }, "G. exact ISRC maps to one stable work");
 assert.deepEqual(resolveDistributionRow({ upc: "001234567890" }, [sample]), { status: "RESOLVED", workId: "stable-a", method: "UNIQUE_RELEASE_ID" }, "release identifiers map only when unique");
+const appleIdWork = music("apple-id-work", "Apple identity", "2026-09-20", { identifiers: { release: { appleCollectionId: "7001" } } });
+assert.deepEqual(resolveDistributionRow({ appleCollectionId: "7001" }, [appleIdWork]), { status: "RESOLVED", workId: "apple-id-work", method: "UNIQUE_RELEASE_ID" }, "exact Apple collection ID is a distinct identity fallback");
+assert.deepEqual(resolveDistributionRow({ upc: "001234567890", appleCollectionId: "7001" }, [appleIdWork, sample]), { status: "RESOLVED", workId: "stable-a", method: "UNIQUE_RELEASE_ID" }, "exact UPC outranks Apple collection ID");
 const duplicateIsrc = music("stable-b", "Other title", "2026-09-21", { identifiers: { recordings: [{ isrc: "USAAA2600001", trackNumber: 1 }] } });
 assert.deepEqual(resolveDistributionRow({ isrc: "USAAA2600001" }, [sample, duplicateIsrc]), { status: "UNRESOLVED", reason: "AMBIGUOUS_IDENTIFIER" }, "ambiguous exact identifiers require review");
 const projected = projectDistributionMetadata({ workId: "stable-a", title: "Sample", primaryGenre: "Ambient", secondaryGenre: "Electronic", releaseDate: "2026-09-20" }, [sample], "approved-export");

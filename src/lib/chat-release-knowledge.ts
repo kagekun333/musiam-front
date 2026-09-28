@@ -14,6 +14,7 @@ export type KnowledgeEnvelope = {
   distribution: {
     source: string | null;
     artist: string | null;
+    releaseDateAuthority: "DISTROKID_EXPLICIT" | "APPLE_PUBLIC_DISTRIBUTION" | "OWNER_VERIFIED" | "MUSIAM_CATALOG" | null;
     primaryGenre: string | null;
     secondaryGenre: string | null;
     isrc: string[];
@@ -36,11 +37,13 @@ export type DistributionRow = {
   title?: string | null;
   artist?: string | null;
   releaseDate?: string | null;
+  releaseDateAuthority?: "DISTROKID_EXPLICIT" | "APPLE_PUBLIC_DISTRIBUTION" | "OWNER_VERIFIED" | null;
   primaryGenre?: string | null;
   secondaryGenre?: string | null;
   isrc?: string | null;
   upc?: string | null;
   releaseId?: string | null;
+  appleCollectionId?: string | null;
 };
 
 export type IdentityResolution =
@@ -66,9 +69,11 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
   const isrc = Array.from(new Set([clean(distribution?.isrc), ...recordingIsrcs].filter((value): value is string => !!value)));
   const upc = clean(distribution?.upc) ?? clean(work.identifiers?.release?.upc);
   const albumuuid = clean(work.identifiers?.release?.albumuuid) ?? clean(work.ssd?.albumuuid);
+  const appleCollectionId = clean(work.identifiers?.release?.appleCollectionId) ?? clean(distribution?.identifiers?.appleCollectionId);
   const identifiers: Record<string, string> = { ...(distribution?.identifiers ?? {}) as Record<string, string> };
   if (albumuuid) identifiers.albumuuid = albumuuid;
   if (upc) identifiers.upc = upc;
+  if (appleCollectionId) identifiers.appleCollectionId = appleCollectionId;
   for (const [key, value] of Object.entries(identifiers)) if (!clean(value)) delete identifiers[key];
 
   const links = getPublicLinksForCard(work);
@@ -120,6 +125,9 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
     distribution: {
       source: clean(distribution?.source),
       artist: clean(distribution?.artist),
+      releaseDateAuthority: distribution?.releaseDate
+        ? distribution.releaseDateAuthority ?? null
+        : clean(work.releasedAt) ? "MUSIAM_CATALOG" : null,
       primaryGenre: clean(distribution?.primaryGenre),
       secondaryGenre: clean(distribution?.secondaryGenre),
       isrc,
@@ -166,7 +174,10 @@ const allIsrcs = (work: CatalogWork) => Array.from(new Set([
 const releaseIds = (work: CatalogWork) => [
   clean(work.distribution?.upc), clean(work.identifiers?.release?.upc),
   clean(work.distribution?.identifiers?.albumuuid), clean(work.identifiers?.release?.albumuuid), clean(work.ssd?.albumuuid),
-  ...Object.values(work.distribution?.identifiers ?? {}).map(clean),
+  ...Object.entries(work.distribution?.identifiers ?? {}).filter(([name]) => name !== "appleCollectionId").map(([, value]) => clean(value)),
+].filter((value): value is string => !!value).map(compact);
+const appleCollectionIds = (work: CatalogWork) => [
+  clean(work.identifiers?.release?.appleCollectionId), clean(work.distribution?.identifiers?.appleCollectionId),
 ].filter((value): value is string => !!value).map(compact);
 
 export function resolveDistributionRow(row: DistributionRow, works: CatalogWork[]): IdentityResolution {
@@ -191,6 +202,12 @@ export function resolveDistributionRow(row: DistributionRow, works: CatalogWork[
     if (matches.length === 1) return { status: "RESOLVED", workId: String(matches[0].id), method: "UNIQUE_RELEASE_ID" };
     if (matches.length > 1) return { status: "UNRESOLVED", reason: "AMBIGUOUS_IDENTIFIER" };
   }
+  const appleCollectionId = compact(row.appleCollectionId);
+  if (appleCollectionId) {
+    const matches = works.filter((work) => appleCollectionIds(work).includes(appleCollectionId));
+    if (matches.length === 1) return { status: "RESOLVED", workId: String(matches[0].id), method: "UNIQUE_RELEASE_ID" };
+    if (matches.length > 1) return { status: "UNRESOLVED", reason: "AMBIGUOUS_IDENTIFIER" };
+  }
   const alias = clean(row.alias);
   if (alias) {
     const matches = works.filter((work) => (work.catalogAliases ?? []).includes(alias));
@@ -212,6 +229,7 @@ export function projectDistributionMetadata(
   const identifiers = { ...(work.distribution?.identifiers ?? {}) };
   if (clean(row.releaseId)) identifiers.releaseId = clean(row.releaseId)!;
   if (clean(row.upc)) identifiers.upc = clean(row.upc)!;
+  if (clean(row.appleCollectionId)) identifiers.appleCollectionId = clean(row.appleCollectionId)!;
   return {
     resolution,
     work: {
@@ -221,6 +239,7 @@ export function projectDistributionMetadata(
         source: clean(source) ?? work.distribution?.source,
         artist: clean(row.artist) ?? work.distribution?.artist ?? null,
         releaseDate: clean(row.releaseDate) ?? work.distribution?.releaseDate ?? null,
+        releaseDateAuthority: clean(row.releaseDate) ? row.releaseDateAuthority ?? null : work.distribution?.releaseDateAuthority ?? null,
         primaryGenre: clean(row.primaryGenre) ?? work.distribution?.primaryGenre ?? null,
         secondaryGenre: clean(row.secondaryGenre) ?? work.distribution?.secondaryGenre ?? null,
         isrc: clean(row.isrc) ?? work.distribution?.isrc ?? null,

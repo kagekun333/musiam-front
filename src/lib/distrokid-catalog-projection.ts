@@ -8,7 +8,7 @@ export type AppleReleaseResolution = {
     collectionId: string;
     title: string;
     artist: string;
-    releaseDate: string;
+    releaseDate: string | null;
     primaryGenreName: string | null;
     collectionViewUrl: string;
     artworkUrl: string | null;
@@ -23,8 +23,10 @@ function normalized(value: string | null | undefined) {
 
 export function projectResolvedDistroKidRelease(record: AppleReleaseResolution, asOf = new Date()): CatalogWork | null {
   const { release, apple } = record;
-  if (!/^\d+$/.test(apple.collectionId) || !release.title || !release.artist || !release.releaseDate ||
-      releaseTiming(release.releaseDate, asOf) !== "RELEASED" || release.releaseDate !== apple.releaseDate ||
+  const publicReleaseDate = apple.releaseDate;
+  const effectiveReleaseDate = release.releaseDate ?? publicReleaseDate;
+  if (!/^\d+$/.test(apple.collectionId) || !release.title || !release.artist || !publicReleaseDate || !effectiveReleaseDate ||
+      releaseTiming(effectiveReleaseDate, asOf) !== "RELEASED" || (release.releaseDate && release.releaseDate !== publicReleaseDate) ||
       normalized(release.artist) !== normalized(apple.artist) || !apple.title || !apple.collectionViewUrl) return null;
   const storeUrl = new URL(apple.collectionViewUrl);
   const imageUrl = apple.artworkUrl ? new URL(apple.artworkUrl) : null;
@@ -48,7 +50,7 @@ export function projectResolvedDistroKidRelease(record: AppleReleaseResolution, 
     type: "music",
     ...(imageUrl ? { cover: imageUrl.toString() } : {}),
     tags: ["apple-music", release.releaseType ?? (apple.trackCount === 1 ? "single" : "album")],
-    releasedAt: release.releaseDate,
+    releasedAt: effectiveReleaseDate,
     href: storeUrl.toString(),
     primaryHref: storeUrl.toString(),
     links: { [actionKey]: storeUrl.toString(), listen: storeUrl.toString() },
@@ -57,7 +59,8 @@ export function projectResolvedDistroKidRelease(record: AppleReleaseResolution, 
       source: release.releaseSource,
       label: release.label ?? null,
       artist: release.artist,
-      releaseDate: release.releaseDate,
+      releaseDate: effectiveReleaseDate,
+      releaseDateAuthority: release.releaseDate ? "DISTROKID_EXPLICIT" : "APPLE_PUBLIC_DISTRIBUTION",
       primaryGenre: release.primaryGenre,
       secondaryGenre: release.secondaryGenre,
       appleGenre: apple.primaryGenreName,

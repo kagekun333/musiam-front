@@ -31,6 +31,7 @@ export type CatalogWork = {
     label?: string | null;
     artist?: string | null;
     releaseDate?: string | null;
+    releaseDateAuthority?: "DISTROKID_EXPLICIT" | "APPLE_PUBLIC_DISTRIBUTION" | "OWNER_VERIFIED" | null;
     primaryGenre?: string | null;
     secondaryGenre?: string | null;
     appleGenre?: string | null;

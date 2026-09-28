@@ -51,11 +51,15 @@ const byIsrc = work("isrc-work", "ISRC match", "2026-08-01", { identifiers: { re
 const byUpc = work("upc-work", "UPC match", "2026-08-02", { distribution: { upc: "223456789012" } });
 assert.equal(resolveReleaseWork(single, [byIsrc]).method, "EXACT_ISRC", "exact ISRC maps to one stable work");
 assert.equal(resolveReleaseWork(album, [byUpc]).method, "UNIQUE_RELEASE_ID", "unique UPC/release maps to one stable work");
+const appleCollectionWork = work("apple-collection-work", "Apple ID only", "2026-08-02", { identifiers: { release: { appleCollectionId: "7001" } } });
+assert.equal(resolveReleaseWork(release({ sourceReleaseId: null, isrc: null, upc: "223456789012", releaseIdentifiers: { appleCollectionId: "7001" } }), [appleCollectionWork, byUpc]).workId, "upc-work", "exact UPC outranks an Apple collection ID");
+assert.equal(resolveReleaseWork(release({ sourceReleaseId: null, isrc: null, upc: null, albumuuid: null, releaseIdentifiers: { appleCollectionId: "7001" } }), [appleCollectionWork]).workId, "apple-collection-work", "exact Apple collection ID is a later identity bridge");
 assert.equal(resolveReleaseWork(release({ title: "Same title", isrc: null, upc: null, sourceReleaseId: null }), [byIsrc, byUpc]).workId, null, "title-only stays unresolved even when similar titles could exist");
 assert.equal(resolveReleaseWork(release({ title: "Same title", isrc: null, upc: null, sourceReleaseId: null }), [byIsrc, work("other", "Same title", "2026-08-03")]).workId, null, "duplicate titles do not create identity");
 
 const noGenre = release({ sourceReleaseId: "missing-genre", primaryGenre: null, secondaryGenre: null, isrc: null });
 assert.equal(classifyReleaseIngestion({ incoming: [noGenre], stored: [], works: [] })[0].status, "NEW", "missing optional genre and ISRC do not invent metadata");
+assert.equal(classifyReleaseIngestion({ incoming: [release({ sourceReleaseId: "undated-release", releaseDate: null, uploadDate: null })], stored: [], works: [] })[0].status, "NEW", "missing releaseDate and uploadDate do not block source registration");
 assert.equal(projectReleaseMetadata(single, known).distribution?.primaryGenre, "Alternative", "projection preserves supplied genre only");
 assert.equal(projectReleaseMetadata(single, known).cover, undefined, "projection does not fabricate cover art");
 assert.equal(projectReleaseMetadata(single, known).type, "music", "projection retains the existing Catalog type");

@@ -171,16 +171,22 @@ export function resolveReleaseWork(release: CanonicalRelease, works: CatalogWork
     const result = choose(works.filter((work) => workIsrcs(work).some((value) => identityToken(value) === identityToken(release.isrc!))), "EXACT_ISRC");
     if (result) return result;
   }
-  const storedIdentifiers = (work: CatalogWork) => [work.distribution?.upc, work.identifiers?.release?.upc,
-    work.identifiers?.release?.albumuuid, work.ssd?.albumuuid, ...Object.values(work.distribution?.identifiers ?? {})]
+  const storedIdentifiers = (work: CatalogWork) => [work.identifiers?.release?.albumuuid, work.ssd?.albumuuid,
+    ...Object.entries(work.distribution?.identifiers ?? {}).filter(([name]) => name !== "appleCollectionId").map(([, value]) => value)]
     .filter((value): value is string => !!value).map(identityToken);
-  const explicitReleaseIds = [release.sourceReleaseId, ...Object.values(release.releaseIdentifiers ?? {})].filter((x): x is string => !!x);
-  if (explicitReleaseIds.length) {
-    const result = choose(works.filter((work) => explicitReleaseIds.some((value) => storedIdentifiers(work).includes(identityToken(value)))), "UNIQUE_RELEASE_ID");
+  const explicitReleaseIds = [release.sourceReleaseId, release.albumuuid,
+    ...Object.entries(release.releaseIdentifiers ?? {}).filter(([name]) => !["appleCollectionId", "upc"].includes(name)).map(([, value]) => value)]
+    .filter((x): x is string => !!x);
+  if (explicitReleaseIds.length || release.upc) {
+    const releaseIdentityValues = [...explicitReleaseIds, release.upc].filter((value): value is string => !!value).map(identityToken);
+    const result = choose(works.filter((work) => releaseIdentityValues.some((value) =>
+      storedIdentifiers(work).includes(value) || [work.distribution?.upc, work.identifiers?.release?.upc].some((candidate) => candidate && identityToken(candidate) === value))), "UNIQUE_RELEASE_ID");
     if (result) return result;
   }
-  if (release.upc) {
-    const result = choose(works.filter((work) => storedIdentifiers(work).includes(identityToken(release.upc!))), "UNIQUE_RELEASE_ID");
+  const appleCollectionId = release.releaseIdentifiers?.appleCollectionId;
+  if (appleCollectionId) {
+    const result = choose(works.filter((work) => [work.identifiers?.release?.appleCollectionId,
+      work.distribution?.identifiers?.appleCollectionId].some((value) => value && identityToken(value) === identityToken(appleCollectionId))), "UNIQUE_RELEASE_ID");
     if (result) return result;
   }
   if (release.alias) {
@@ -227,6 +233,7 @@ export function projectReleaseMetadata(release: CanonicalRelease, work: CatalogW
       label: release.label ?? work.distribution?.label ?? null,
       artist: release.artist ?? work.distribution?.artist ?? null,
       releaseDate: release.releaseDate ?? work.distribution?.releaseDate ?? null,
+      releaseDateAuthority: release.releaseDate ? "DISTROKID_EXPLICIT" : work.distribution?.releaseDateAuthority ?? null,
       primaryGenre: release.primaryGenre ?? work.distribution?.primaryGenre ?? null,
       secondaryGenre: release.secondaryGenre ?? work.distribution?.secondaryGenre ?? null,
       isrc: release.isrc ?? work.distribution?.isrc ?? null,

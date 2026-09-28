@@ -63,19 +63,8 @@ downloadButton.addEventListener("click", () => {
 });
 sendButton.addEventListener("click", async () => {
   if (!captured?.document) { statusNode.textContent = "Capture release records first."; return; }
-  try {
-    const challengeResponse = await fetch("http://127.0.0.1:43127/v1/challenge", { cache: "no-store" });
-    if (!challengeResponse.ok) throw new Error("LOCAL_INBOX_UNAVAILABLE");
-    const challenge = await challengeResponse.json();
-    const response = await fetch("http://127.0.0.1:43127/v1/releases", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "X-MUSIAM-Session": challenge.nonce },
-      body: JSON.stringify(captured.document),
-    });
-    if (!response.ok) throw new Error(response.status === 401 ? "Local inbox authentication failed." : "Local inbox rejected the batch.");
-    const result = await response.json();
-    statusNode.textContent = `Saved ${result.accepted} record(s) to the local inbox.`;
-  } catch {
-    statusNode.textContent = "Local inbox unavailable. Use Download canonical JSON; nothing was sent remotely.";
-  }
+  const result = await globalThis.MusiamReleaseInboxTransport.send(captured.document);
+  statusNode.textContent = result.ok
+    ? `Saved ${result.accepted} record(s) to the local inbox.`
+    : `${result.code}. No remote destination was contacted.`;
 });
