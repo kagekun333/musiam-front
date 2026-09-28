@@ -151,6 +151,16 @@
     }
     return result;
   }
+  function boundedJapaneseDateLabel(value) {
+    const match = String(value ?? "").trim().match(/^(アップロード日|リリース日|発売日|配信日)\s*[:：]?\s*(.*)$/);
+    if (!match) return null;
+    const field = fieldName(match[1]);
+    return field === "uploadDate" || field === "releaseDate" ? { field, label: match[1], remainder: match[2] } : null;
+  }
+  function boundedJapaneseDateValue(value, field) {
+    const match = String(value ?? "").match(/\d{4}年\d{1,2}月\d{1,2}日/);
+    return match ? safeFieldValue(field, match[0]) : null;
+  }
   function visibleLabelPairs(rootNode) {
     const pairs = [];
     const visit = (node, ancestors = []) => {
@@ -161,6 +171,19 @@
       const meaningful = node.children.filter((child) => typeof child !== "string" || child.trim());
       for (let index = 0; index < meaningful.length; index++) {
         const child = meaningful[index];
+        const boundedLabel = boundedJapaneseDateLabel(typeof child === "string" ? child : visibleText(child));
+        if (boundedLabel) {
+          const inlineValue = boundedJapaneseDateValue(boundedLabel.remainder, boundedLabel.field);
+          let boundedValue = inlineValue;
+          if (!boundedValue) {
+            let nextIndex = index + 1;
+            while (nextIndex < meaningful.length && typeof meaningful[nextIndex] === "string" && /^[\s:：-]*$/.test(meaningful[nextIndex])) nextIndex++;
+            const next = meaningful[nextIndex];
+            const nextLabel = next === undefined ? null : boundedJapaneseDateLabel(typeof next === "string" ? next : visibleText(next));
+            if (next !== undefined && !nextLabel) boundedValue = boundedJapaneseDateValue(typeof next === "string" ? next : visibleText(next), boundedLabel.field);
+          }
+          if (boundedValue) pairs.push({ field: boundedLabel.field, label: boundedLabel.label, value: boundedValue, hierarchy: [...ancestors, node.tag].slice(-5) });
+        }
         if (typeof child !== "string") {
           const field = fieldName(visibleText(child));
           let nextIndex = index + 1;

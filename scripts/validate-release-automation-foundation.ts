@@ -96,6 +96,20 @@ const documentCapture = capture.fromDocument(fakeDocument, `https://distrokid.co
 assert.equal(documentCapture.title, "Document Sample", "live capture reads rendered neighboring label-value elements");
 assert.equal(documentCapture.artist, "Document Artist", "live capture resolves visible form labels");
 assert.equal(JSON.stringify(documentCapture).includes("synthetic-hidden-dom-value"), false, "live capture omits hidden DOM descendants");
+const dateDocument = {
+  defaultView: fakeDocument.defaultView,
+  documentElement: domElement("html", {}, [domElement("body", {}, [domElement("main", {}, [
+    domElement("div", {}, [domElement("span", {}, [domText("アップロード日：")]), domElement("span", {}, [domText("2026年9月4日")])]),
+    domElement("div", {}, [domText("リリース日："), domElement("span", {}, [domText("2026年9月27日")])]),
+    domElement("div", {}, [domElement("span", {}, [domText("アップロード日：")]), domText("2026年9月4日")]),
+    domElement("div", {}, [domText("リリース日：2026年9月27日")]),
+    domElement("div", {}, [domText("2026年10月3日")]),
+    domElement("div", {}, [domText("別の日付：2026年10月4日")]),
+  ])])]),
+};
+const serializedDateCapture = capture.fromDocument(dateDocument, "https://distrokid.com/dashboard/album/").releases[0];
+assert.equal(serializedDateCapture.uploadDate, "2026-09-04", "live DOM serialization keeps label/value structure for bounded upload dates");
+assert.equal(serializedDateCapture.releaseDate, "2026-09-27", "live DOM serialization keeps label/value structure for bounded release dates");
 const dashboardDetail = capture.fromHtml(html("dashboard-album.html"), "https://distrokid.com/dashboard/album/", "2026-09-27T00:00:00Z").releases[0];
 assert.equal(dashboardDetail.title, "Dashboard Sample", "dashboard album title class/data attribute is allowlisted");
 assert.equal(dashboardDetail.artist, "Dashboard Artist", "dashboard artist header class is allowlisted");
@@ -126,6 +140,22 @@ assert.deepEqual(japaneseDashboard.publicUrls, [
   "https://distrokid.com/hyperfollow/abi35/n5dpul17z6g",
 ]);
 assert.equal(japaneseDashboard.publicUrls.some((url: string) => url.includes("ref=globalmenu")), false);
+const dateStructureFixtures = [
+  { name: "label span + value span", markup: `<div><span>アップロード日：</span><span>2026年9月4日</span></div>`, field: "uploadDate", expected: "2026-09-04" },
+  { name: "text label + value span", markup: `<div>リリース日：<span>2026年9月27日</span></div>`, field: "releaseDate", expected: "2026-09-27" },
+  { name: "label span + text value", markup: `<div><span>リリース日：</span>2026年9月27日</div>`, field: "releaseDate", expected: "2026-09-27" },
+  { name: "same-element Japanese label/value", markup: `<div>アップロード日：2026年9月4日</div>`, field: "uploadDate", expected: "2026-09-04" },
+];
+for (const fixture of dateStructureFixtures) {
+  const parsed = capture.fromHtml(`<main>${fixture.markup}</main>`, "https://distrokid.com/dashboard/album/").releases[0];
+  assert.equal(parsed[fixture.field], fixture.expected, fixture.name);
+}
+const unrelatedJapaneseDates = capture.fromHtml(`<main><div>2026年9月4日</div><div>別の日付：2026年9月27日</div></main>`, "https://distrokid.com/dashboard/album/").releases[0];
+assert.equal(unrelatedJapaneseDates.uploadDate, null, "unlabeled dates are not assigned to upload date");
+assert.equal(unrelatedJapaneseDates.releaseDate, null, "unrecognized labels do not assign unrelated dates");
+const pairedJapaneseDates = capture.fromHtml(`<main><section><span>アップロード日：</span><span>2026年9月4日</span><span>参考日：2026年10月2日</span></section><section><span>リリース日：</span><span>2026年9月27日</span><span>別の日付：2026年10月3日</span></section></main>`, "https://distrokid.com/dashboard/album/").releases[0];
+assert.equal(pairedJapaneseDates.uploadDate, "2026-09-04", "multiple dates remain attached to the upload label's immediate bounded value");
+assert.equal(pairedJapaneseDates.releaseDate, "2026-09-27", "multiple dates remain attached to the release label's immediate bounded value");
 const invalidJapaneseDate = capture.fromHtml(`<div data-field="releaseDate">2026年2月30日</div>`, "https://distrokid.com/dashboard/album/").releases[0];
 assert.equal(invalidJapaneseDate.releaseDate, null, "invalid Japanese calendar dates are unavailable, never inferred");
 const structured = capture.fromHtml(html("structured-state.html"), "https://distrokid.com/album/bbbbbbbb-cccc-dddd-eeeeeeeeeeeeeeee", "2026-09-27T00:00:00Z").releases[0];
