@@ -8,17 +8,13 @@ Load `tools/distrokid-capture-extension/` as an unpacked extension from Chrome's
 
 The extension emits the canonical `{ schemaVersion: 1, releases: [...] }` format. It reads visible title, artist, status, release date, label, upload date, UPC, ISRC, album UUID, primary/secondary genre fields when present, track title/ISRC, and allowlisted public music/HyperFollow links. Missing fields remain null. It rejects password, hidden, file, token, cookie, secret, payment, account-security, email, and phone fields; the raw HTML is not written to disk.
 
-## Optional local inbox
+## Local inbox transport
 
-The bridge is not installed or started by this Gate. After separately choosing an inbox location outside the repository, start it manually with the unpacked extension ID shown by Chrome:
+The extension now uses Chrome Native Messaging through `com.hakusyaku.musiam.release_inbox`. The host accepts only `ping` and `saveReleaseBatch`, validates batches with the canonical DistroKid parser, caps messages at 1 MiB and batches at 20 records, and writes canonical JSON to `$HOME/Library/Application Support/HakusyakuMUSIAM/release-inbox` with directory mode 0700 and file mode 0600. It does not update Catalog files or save page HTML.
 
-```sh
-node --import tsx tools/release-inbox/receive.mjs \
-  --inbox="$HOME/Library/Application Support/HakusyakuMUSIAM/release-inbox" \
-  --extension-origin=chrome-extension://<32-character-extension-id>
-```
+`scripts/install-musiam-release-native-host.mjs` installs the exact extension origin in the macOS user-level Chrome NativeMessagingHosts directory. This installer has not been run as part of the implementation Gate; Chrome install and extension reload remain a Human Gate. If the native host is absent, the extension reports `NATIVE_HOST_NOT_INSTALLED`; it does not fall back to HTTP.
 
-It binds only to `127.0.0.1:43127`, accepts only the exact configured extension origin, requires a one-use random challenge valid for 60 seconds, limits batches to 20 records and request bodies to 1 MiB, validates the canonical schema, and writes mode-0600 JSON files under a mode-0700 inbox directory. It does not update Catalog files. If the bridge is not running, use the extension's Download option.
+The former `tools/release-inbox/receive.mjs` localhost HTTP receiver is retained as historical code. It is deprecated and must not be started in the normal release-capture workflow.
 
 ## Import and Apple resolution
 

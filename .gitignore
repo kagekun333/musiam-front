@@ -107,6 +107,16 @@ scripts/mood-fill-atugiri.mjs
 scripts/mood-infer-from-itunes.mjs
 scripts/normalize-atugiri.mjs
 tools/
+!tools/
+tools/*
+!tools/distrokid-capture-extension/
+tools/distrokid-capture-extension/*
+!tools/distrokid-capture-extension/inbox-transport.js
+!tools/distrokid-capture-extension/manifest.json
+!tools/distrokid-capture-extension/popup.html
+!tools/distrokid-capture-extension/popup.js
+!tools/release-native-host/
+!tools/release-native-host/**
 
 /*.md
 

@@ -1,0 +1,9 @@
+{
+  "name": "com.hakusyaku.musiam.release_inbox",
+  "description": "Hakusyaku MUSIAM release inbox",
+  "path": "<ABSOLUTE_EXECUTABLE_HOST_PATH>",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://okhkdhofjkdogeilbnmmmdpflppeabff/"
+  ]
+}

@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+HOST_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
+cd "$HOST_ROOT"
+exec node --import tsx "$HOST_ROOT/tools/release-native-host/host.mjs"

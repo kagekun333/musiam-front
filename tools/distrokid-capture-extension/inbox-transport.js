@@ -1,93 +1,67 @@
 (function (root) {
   "use strict";
-  const BASE = "http://127.0.0.1:43127/v1";
-  const statusCode = (value) => Number.isInteger(value) && value >= 100 && value <= 599 ? value : null;
-  const SAFE_RECEIVER_ERRORS = new Set(["LOCAL_EXTENSION_ORIGIN_MISMATCH", "LOCAL_REMOTE_ADDRESS_REJECTED"]);
-  const SAFE_ORIGIN_CATEGORIES = new Set(["EXPECTED_EXTENSION", "MISSING", "NULL", "OTHER_CHROME_EXTENSION", "OTHER_ORIGIN"]);
+  const HOST = "com.hakusyaku.musiam.release_inbox";
+  const MAX_RELEASES = 20;
+  const SAFE_CODES = new Set([
+    "NATIVE_HOST_INVALID_MESSAGE",
+    "NATIVE_HOST_INVALID_RELEASE_BATCH",
+    "NATIVE_HOST_WRITE_FAILED",
+    "NATIVE_HOST_NOT_INSTALLED",
+    "NATIVE_HOST_NOT_ALLOWED",
+    "NATIVE_HOST_UNAVAILABLE",
+    "NATIVE_HOST_INVALID_RESPONSE",
+  ]);
 
-  async function safeForbiddenResult(response, fallbackCode) {
-    try {
-      const body = await response.json();
-      if (SAFE_RECEIVER_ERRORS.has(body?.error)) {
-        const result = { ok: false, code: body.error };
-        if (body.error === "LOCAL_EXTENSION_ORIGIN_MISMATCH" && SAFE_ORIGIN_CATEGORIES.has(body?.originCategory)) {
-          result.originCategory = body.originCategory;
-        }
-        return result;
+  function mapRuntimeError(message) {
+    const normalized = typeof message === "string" ? message.toLowerCase() : "";
+    if (normalized.includes("forbidden") || normalized.includes("not allowed")) return "NATIVE_HOST_NOT_ALLOWED";
+    if (normalized.includes("host not found") || normalized.includes("native messaging host not found")) return "NATIVE_HOST_NOT_INSTALLED";
+    return "NATIVE_HOST_UNAVAILABLE";
+  }
+
+  function sendMessage(message, runtime = globalThis.chrome?.runtime) {
+    return new Promise((resolve) => {
+      if (!runtime || typeof runtime.sendNativeMessage !== "function") {
+        resolve({ ok: false, code: "NATIVE_HOST_UNAVAILABLE" });
+        return;
       }
-    } catch { /* status-only fallback */ }
-    return { ok: false, code: fallbackCode };
+      try {
+        runtime.sendNativeMessage(HOST, message, (response) => {
+          const lastError = runtime.lastError;
+          if (lastError) {
+            resolve({ ok: false, code: mapRuntimeError(lastError.message) });
+            return;
+          }
+          if (!response || typeof response !== "object" || typeof response.ok !== "boolean") {
+            resolve({ ok: false, code: "NATIVE_HOST_INVALID_RESPONSE" });
+            return;
+          }
+          resolve(response);
+        });
+      } catch (error) {
+        resolve({ ok: false, code: mapRuntimeError(error instanceof Error ? error.message : "") });
+      }
+    });
   }
 
-  async function probe(fetchImpl = fetch) {
-    let response;
-    try {
-      response = await fetchImpl(`${BASE}/challenge`, { method: "GET", cache: "no-store" });
-    } catch {
-      return { ok: false, code: "LOCAL_INBOX_CHALLENGE_FETCH_FAILED" };
+  async function probe(runtime) {
+    const result = await sendMessage({ op: "ping" }, runtime);
+    if (result.ok && result.bridge === "MUSIAM_RELEASE_NATIVE_HOST") {
+      return { ok: true, code: "NATIVE_RELEASE_BRIDGE_PASS" };
     }
-    if (!response?.ok) {
-      const status = statusCode(response?.status);
-      if (status === 403) return safeForbiddenResult(response, "LOCAL_INBOX_CHALLENGE_HTTP_403");
-      return { ok: false, code: status ? `LOCAL_INBOX_CHALLENGE_HTTP_${status}` : "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" };
-    }
-    let challenge;
-    try { challenge = await response.json(); }
-    catch { return { ok: false, code: "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" }; }
-    if (typeof challenge?.nonce !== "string" || !/^[A-Za-z0-9_-]{32,128}$/.test(challenge.nonce)) {
-      return { ok: false, code: "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" };
-    }
-    return { ok: true, code: "LOCAL_INBOX_CHALLENGE_PASS" };
+    return { ok: false, code: SAFE_CODES.has(result.code) ? result.code : "NATIVE_HOST_INVALID_RESPONSE" };
   }
 
-  async function send(payload, fetchImpl = fetch) {
-    if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.releases) || payload.releases.length > 20) {
-      return { ok: false, code: "LOCAL_INBOX_INVALID_PAYLOAD" };
+  async function send(payload, runtime) {
+    if (!payload || payload.schemaVersion !== 1 || !Array.isArray(payload.releases) || payload.releases.length > MAX_RELEASES) {
+      return { ok: false, code: "NATIVE_HOST_INVALID_RELEASE_BATCH" };
     }
-    let challengeResponse;
-    try {
-      challengeResponse = await fetchImpl(`${BASE}/challenge`, { cache: "no-store" });
-    } catch {
-      return { ok: false, code: "LOCAL_INBOX_CHALLENGE_FETCH_FAILED" };
+    const result = await sendMessage({ op: "saveReleaseBatch", payload }, runtime);
+    if (result.ok && Number.isInteger(result.accepted) && result.accepted >= 0 && result.accepted <= MAX_RELEASES) {
+      return { ok: true, accepted: result.accepted };
     }
-    if (!challengeResponse?.ok) {
-      const status = statusCode(challengeResponse?.status);
-      if (status === 403) return safeForbiddenResult(challengeResponse, "LOCAL_INBOX_CHALLENGE_HTTP_403");
-      return { ok: false, code: status ? `LOCAL_INBOX_CHALLENGE_HTTP_${status}` : "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" };
-    }
-
-    let challenge;
-    try { challenge = await challengeResponse.json(); }
-    catch { return { ok: false, code: "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" }; }
-    if (typeof challenge?.nonce !== "string" || !/^[A-Za-z0-9_-]{32,128}$/.test(challenge.nonce)) {
-      return { ok: false, code: "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" };
-    }
-
-    let response;
-    try {
-      response = await fetchImpl(`${BASE}/releases`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-MUSIAM-Session": challenge.nonce },
-        body: JSON.stringify(payload),
-      });
-    } catch {
-      return { ok: false, code: "LOCAL_INBOX_POST_FETCH_FAILED" };
-    }
-    if (!response?.ok) {
-      const status = statusCode(response?.status);
-      if (status === 401) return { ok: false, code: "LOCAL_INBOX_SESSION_REJECTED" };
-      if (status === 403) return safeForbiddenResult(response, "LOCAL_INBOX_ORIGIN_REJECTED");
-      if ([400, 413, 415].includes(status)) return { ok: false, code: "LOCAL_INBOX_INVALID_PAYLOAD" };
-      return { ok: false, code: status ? `LOCAL_INBOX_POST_HTTP_${status}` : "LOCAL_INBOX_POST_RESPONSE_INVALID" };
-    }
-    let result;
-    try { result = await response.json(); }
-    catch { return { ok: false, code: "LOCAL_INBOX_POST_RESPONSE_INVALID" }; }
-    if (!Number.isInteger(result?.accepted) || result.accepted < 0 || result.accepted > 20) {
-      return { ok: false, code: "LOCAL_INBOX_POST_RESPONSE_INVALID" };
-    }
-    return { ok: true, accepted: result.accepted };
+    return { ok: false, code: SAFE_CODES.has(result.code) ? result.code : "NATIVE_HOST_INVALID_RESPONSE" };
   }
 
-  root.MusiamReleaseInboxTransport = Object.freeze({ probe, send });
+  root.MusiamReleaseInboxTransport = Object.freeze({ probe, send, hostName: HOST });
 })(globalThis);

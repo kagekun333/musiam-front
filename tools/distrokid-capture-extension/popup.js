@@ -5,16 +5,15 @@ const downloadButton = document.getElementById("download");
 const sendButton = document.getElementById("send");
 
 probeButton.addEventListener("click", async () => {
-  statusNode.textContent = "Checking the local inbox challenge only…";
+  statusNode.textContent = "Checking the local native inbox…";
   let result;
   try { result = await globalThis.MusiamReleaseInboxTransport.probe(); }
-  catch { result = { ok: false, code: "LOCAL_INBOX_CHALLENGE_RESPONSE_INVALID" }; }
+  catch { result = { ok: false, code: "NATIVE_HOST_UNAVAILABLE" }; }
   if (result.ok) {
     statusNode.textContent = result.code;
     return;
   }
-  const category = result.originCategory ? `; Origin category: ${result.originCategory}` : "";
-  statusNode.textContent = `${result.code}${category}. No payload was sent.`;
+  statusNode.textContent = `${result.code}. No payload was sent.`;
 });
 
 async function currentTab() {
