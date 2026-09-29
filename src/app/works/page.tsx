@@ -1,27 +1,30 @@
-// src/app/works/page.tsx — 作品カタログ index (350作品の内部リンクハブ / SEO)
-// 既存の exhibition.tsx には触れず、新規ルートで軽量な一覧を提供する。
+// src/app/works/page.tsx — Live Runtime Catalog を使う作品カタログ index。
+// Apple release overlay を含む最新公開作品を表示し、表示層だけ provider identity で重複を畳む。
 import type { Metadata } from "next";
 import Link from "next/link";
-import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
 import { dedupeWorks } from "@/lib/dedupeWorks";
 import { siteUrl } from "@/lib/site-url";
 import WorksCatalog, { type CatalogItem } from "./WorksCatalog";
 import "./works-page.css";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: "展示 — 作品カタログ | 伯爵 MUSIAM",
   description:
-    "伯爵MUSIAMのオリジナル音楽・本のすべて。350作品を種別・キーワードで探せる展示室。",
+    "伯爵MUSIAMのオリジナル音楽・本を、最新の公開カタログから種別・キーワードで探せる展示室。",
   alternates: { canonical: `${siteUrl()}/works` },
   openGraph: {
     title: "作品カタログ | 伯爵 MUSIAM",
-    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。350作品を種別・キーワードで探せます。",
+    description: "伯爵MUSIAMのオリジナル音楽・本を最新の公開カタログから探せます。",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "作品カタログ | 伯爵 MUSIAM",
-    description: "伯爵MUSIAMのオリジナル音楽・本のすべて。350作品を種別・キーワードで探せます。",
+    description: "伯爵MUSIAMのオリジナル音楽・本を最新の公開カタログから探せます。",
   },
 };
 
@@ -33,7 +36,7 @@ function typeKey(type?: string): CatalogItem["type"] {
 }
 
 export default async function WorksIndexPage() {
-  const all = dedupeWorks(await loadMergedWorksServer());
+  const all = dedupeWorks(await loadLiveMergedWorksServer());
   const items: CatalogItem[] = all
     .filter((w) => w.id != null && w.title)
     .map((w) => ({

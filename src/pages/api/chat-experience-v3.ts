@@ -15,6 +15,15 @@ import { loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
 import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
 import { nextUpcomingRelease } from "@/lib/release-automation";
 import { buildChatWorkCard } from "@/lib/chat-work-card";
+import {
+  buildRecallCatalogCandidates,
+  buildRecallModelMessages,
+  fuzzyRecallWork,
+  isWorkRecallRequest,
+  parseRecallModelDecision,
+  recallClarificationText,
+  recallReplyText,
+} from "@/lib/chat-work-recall";
 import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import {
@@ -656,10 +665,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // An explicit current language instruction outranks the UI default.
     lang = coreTurn.language as Lang;
     timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
-    const controlled = (assistantText: string, intent: string, card: RecoCard | null = null, actionResult: "LINK_PRESENTED" | null = null) =>
+    const controlled = (
+      assistantText: string,
+      intent: string,
+      card: RecoCard | null = null,
+      actionResult: "LINK_PRESENTED" | null = null,
+      providerMeta?: { provider: LlmMeta["provider"]; model: string },
+    ) =>
       res.status(200).json({
         ok: true, v: 3, assistantText, card, cta: null, persona: "count", intent,
-        productId: null, interestBridge: null, timeTone, provider: "none", model: null,
+        productId: null, interestBridge: null, timeTone,
+        provider: providerMeta?.provider ?? "none",
+        model: providerMeta?.model || null,
         ...(actionResult ? { actionResult: { status: actionResult, workId: card?.id ?? null, kind: coreTurn.actionKind } } : {}),
         memory: { residue: assistantText.slice(0, 120), cardTitle: card?.title ?? null, timestamp: new Date().toISOString() },
         trace,
@@ -710,6 +727,53 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       };
       return controlled(text[lang], "conversation");
     }
+    if (isWorkRecallRequest(query)) {
+      const fuzzy = fuzzyRecallWork(query, coreWorks);
+      if (fuzzy.status === "exact") {
+        const card = buildChatWorkCard(fuzzy.work);
+        const canListen = Boolean(card?.links.some((link) => link.kind === "listen"));
+        return controlled(recallReplyText(lang, String(fuzzy.work.title ?? ""), "high", canListen), "work", card);
+      }
+
+      const recallCandidates = buildRecallCatalogCandidates(coreWorks, query);
+      if (!recallCandidates.length) {
+        return controlled(recallClarificationText(lang), "conversation");
+      }
+
+      const recallPrompt = buildRecallModelMessages(query, recallCandidates);
+      const recallLlm = await llmChat({
+        purpose: "quality",
+        system: recallPrompt.system,
+        messages: [{ role: "user", content: recallPrompt.user }],
+        maxTokens: 120,
+        trace: `${trace}-recall`,
+      });
+      if (recallLlm.ok) {
+        const decision = parseRecallModelDecision(recallLlm.text, recallCandidates);
+        if (decision.workId && (decision.confidence === "high" || decision.confidence === "medium")) {
+          const work = coreWorks.find((item) => String(item.id ?? "") === decision.workId) ?? null;
+          if (work) {
+            const card = buildChatWorkCard(work);
+            const canListen = Boolean(card?.links.some((link) => link.kind === "listen"));
+            return controlled(
+              recallReplyText(lang, String(work.title ?? ""), decision.confidence, canListen),
+              "work",
+              card,
+              null,
+              { provider: recallLlm.provider, model: recallLlm.model },
+            );
+          }
+        }
+      }
+      return controlled(
+        recallClarificationText(lang),
+        "conversation",
+        null,
+        null,
+        recallLlm.ok ? { provider: recallLlm.provider, model: recallLlm.model } : undefined,
+      );
+    }
+
     const explicitIdentity = coreTurn.actionKind ? resolveCatalogIdentity(query, coreWorks) : null;
     const explicitActionTarget = coreTurn.actionTargetId || (explicitIdentity && explicitIdentity.status !== "none")
       || /(?:これ|それ|あれ|この|その|前の|さっきの|という(?:曲|作品|本)|の(?:続編|新作)|\b(?:this|that|previous|it|ce|cette|cela|esto|ese|diese|dieses)\b|هذا|هذه|ذلك)/i.test(query);

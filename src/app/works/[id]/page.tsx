@@ -1,10 +1,10 @@
-// src/app/works/[id]/page.tsx — 作品個別ページ (307作品分の検索流入口)
-// works.json + works-ssd.json をサーバーでマージして静的生成する。
+// src/app/works/[id]/page.tsx — Live Runtime Catalog の作品個別ページ。
+// Apple release overlay を含む最新公開作品を、静的ビルド件数に縛られず表示する。
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { siteUrl } from "@/lib/site-url";
 import { isHyperfollowUrl } from "@/lib/work-links";
@@ -14,12 +14,13 @@ import { getMetalPrintEditionIdForWork, METAL_PRINT_VIP_EDITIONS } from "@/lib/m
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./work-page.css";
 
-export const dynamicParams = false;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type Params = { id: string };
 
 async function getWork(id: string): Promise<{ work: CatalogWork | null; all: CatalogWork[] }> {
-  const all = await loadMergedWorksServer();
+  const all = await loadLiveMergedWorksServer();
   const decoded = decodeURIComponent(id);
   const work = all.find((w) => String(w.id) === decoded) ?? null;
   return { work, all };
@@ -38,11 +39,11 @@ async function getCountNote(id: string): Promise<string | null> {
   }
 }
 
-export async function generateStaticParams(): Promise<Params[]> {
-  const works = await loadMergedWorksServer();
-  return works
-    .filter((w) => w.id != null && w.title)
-    .map((w) => ({ id: encodeURIComponent(String(w.id)) }));
+function publicCoverUrl(cover?: string): string | undefined {
+  const value = String(cover ?? "").trim();
+  if (!value) return undefined;
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${siteUrl()}${value.startsWith("/") ? value : `/${value}`}`;
 }
 
 function typeLabel(type?: string): string {
@@ -170,7 +171,7 @@ export async function generateMetadata(
     t === "Music"
       ? `「${work.title}」— 伯爵MUSIAMのオリジナル楽曲。Spotify・Apple Music・Amazon Musicで配信中。`
       : `「${work.title}」— 伯爵MUSIAMのオリジナル作品。`;
-  const cover = work.cover ? `${siteUrl()}${work.cover}` : undefined;
+  const cover = publicCoverUrl(work.cover);
   return {
     title,
     description,
@@ -216,7 +217,7 @@ export default async function WorkPage(
     "@context": "https://schema.org",
     "@type": t === "Music" ? "MusicAlbum" : t === "Film" ? "VideoObject" : "Book",
     name: work.title,
-    ...(work.cover ? { image: `${siteUrl()}${work.cover}` } : {}),
+    ...(publicCoverUrl(work.cover) ? { image: publicCoverUrl(work.cover) } : {}),
     ...(work.releasedAt ? { datePublished: work.releasedAt } : {}),
     byArtist: { "@type": "MusicGroup", name: "ABI伯爵" },
   };
