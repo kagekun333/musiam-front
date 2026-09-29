@@ -19,7 +19,7 @@
   },
   "previewBrowserHydrationIncident": {
     "deploymentId": "dpl_61nSPSUwbWTrRAp2WT7WKeZiGexK",
-    "classification": "RECORDED_NO_CLEANUP",
+    "classification": "RECORDED_NON_BLOCKING_PREVIEW_TEST_INCIDENT",
     "cleanup": false
   },
   "namespaceContract": {
@@ -49,21 +49,56 @@
     "productionRedisOperations": 0,
     "providerCalls": 0
   },
+  "environmentMetadata": {
+    "source": "Vercel CLI 59.23.2 read-only metadata",
+    "kvRestApiUrl": ["Production", "Preview", "Development"],
+    "kvRestApiToken": ["Production", "Preview", "Development"],
+    "cronSecret": ["Production", "Preview"],
+    "secretValuesRead": false,
+    "secretValuesPersisted": false
+  },
   "preview": {
-    "deployInputManifest": null,
-    "deploymentId": null,
-    "url": null,
-    "state": "NOT_CREATED",
-    "blocker": "BLOCKED_TOOLING_EXACT_CLI_PATH_UNAVAILABLE",
+    "deployInputManifest": {
+      "entries": 3260,
+      "regularFiles": 3254,
+      "directoryEntries": 6,
+      "bytes": 214403495,
+      "sha256": "e8d7fd221d7efeda157ed166cb44ac11d6abd2d7e3cffb96f9e5ab6c48073fd4",
+      "protectedPayload": 0,
+      "humanDirtyPayload": 0,
+      "envPayload": 0,
+      "secretPrivatePayload": 0,
+      "unexpectedUntrackedRegularFiles": 0,
+      "specialPayload": 0
+    },
+    "deploymentId": "dpl_m9H4X6698UcXZXTgLg9JpdxLnUde",
+    "url": "https://musiam-front-jahjqh1o5-hakusyakus-projects.vercel.app",
+    "state": "READY",
+    "blocker": null,
     "browserSmoke": false,
-    "rawHttpSmoke": false
+    "rawHttpSmoke": true,
+    "rawHttpResults": {
+      "root": 200,
+      "chat": 200,
+      "exhibition": 200,
+      "unauthorizedAppleCron": 401
+    },
+    "runtimeLogWindow": {
+      "chatHistoryCalls": 0,
+      "chatExperienceCalls": 0,
+      "errorFatal": 0,
+      "status5xx": 0
+    },
+    "providerCalls": 0,
+    "customerRedisOperationsDuringRawSmoke": 0,
+    "appleOverlayWrites": 0
   },
   "production": {
     "deploymentIdBefore": "dpl_3iucqknaPAzxVZeDNTsC45VjtV1U",
-    "deploymentIdAfter": null,
+    "deploymentIdAfter": "dpl_3iucqknaPAzxVZeDNTsC45VjtV1U",
     "mutationCount": 0,
     "dataMigration": 0
   },
-  "verdict": "BLOCKED_PREVIEW",
-  "nextHumanGate": null
+  "verdict": "READY_FOR_PRODUCTION_ENABLEMENT",
+  "nextHumanGate": "APPROVE_APPLE_RELEASE_OVERLAY_PRODUCTION_ENABLEMENT"
 }
