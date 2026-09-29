@@ -231,6 +231,33 @@ function delimitedName(query: string, name: string): boolean {
   return false;
 }
 
+function naturalEmbeddedCatalogName(query: string, name: string): boolean {
+  const normalizedQuery = normalize(query).trim();
+  const value = normalize(name).trim();
+  if (!value || normalizedQuery === value) return false;
+
+  // Keep very short/common titles such as "ME" quote-only when embedded in prose.
+  const alphaNumericLength = Array.from(value).filter((char) => /[\p{L}\p{N}]/u.test(char)).length;
+  if (alphaNumericLength < 4 && !/\s/u.test(value)) return false;
+
+  for (let start = normalizedQuery.indexOf(value); start >= 0; start = normalizedQuery.indexOf(value, start + 1)) {
+    const beforeChar = normalizedQuery[start - 1] ?? "";
+    if (beforeChar && /[\p{L}\p{N}]/u.test(beforeChar)) continue;
+
+    const before = normalizedQuery.slice(0, start).trim();
+    const after = normalizedQuery.slice(start + value.length).trim();
+
+    // Natural Japanese work references attach particles directly to Latin/Japanese titles.
+    if (/^(?:って|について|とは|は(?:どんな|何|どう)|を(?:聴|聞|見|開)|のこと|っていう|って何|ってどんな)/u.test(after)) return true;
+
+    // Explicit work-reference wording is safe enough when the catalog match is unique.
+    const wrapper = `${before} ${after}`.trim();
+    if (/(?:について|教えて|どんな(?:曲|作品)|何(?:の曲|の作品)|聴きたい|聞きたい|見たい|開いて)/u.test(wrapper)) return true;
+    if (/(?:tell me about|what(?:'s| is)|listen to|play|hear|open|show|about)/i.test(wrapper)) return true;
+  }
+  return false;
+}
+
 function exactIdentity(name: string, works: CatalogWork[]): CatalogIdentityResolution {
   const value = normalize(name).trim();
   if (!value) return { status: "none", work: null, source: null };
@@ -257,9 +284,13 @@ export function resolveCatalogIdentity(query: string, works: CatalogWork[]): Cat
         : source === "alias" ? work.catalogAliases ?? [] : [work.title ?? ""];
       return names.some((name) => {
         const value = normalize(name).trim();
-        // A title/alias embedded in prose can be an ordinary word. Require
-        // quotes for that case; an unquoted name must be the entire request.
-        return value && (normalized === value || (source === "id" && delimitedName(normalized, value)));
+        // Embedded title/alias matches require explicit reference wording;
+        // short/common titles remain quote-only to avoid substring false positives.
+        return value && (
+          normalized === value
+          || (source === "id" && delimitedName(normalized, value))
+          || (source !== "id" && naturalEmbeddedCatalogName(normalized, value))
+        );
       });
     });
     bySource.push({ source, matches });
