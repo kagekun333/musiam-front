@@ -20,6 +20,10 @@ ops/product/
 ops/market-learning/daily-20260925/
 ops/market-learning/daily-20260925
 ops/market-learning/daily-20260926
+ops/market-learning/daily-20260927/
+ops/market-learning/daily-20260927
+ops/continuous-operation/experiments.json
+ops/continuous-operation/state.json
 scripts/validate-cleanup-c4c-private-preservation.mjs
 scripts/validate-chat-history-preview-deployment.mjs
 scripts/validate-chat-history-preview-deploy-input-remediation.mjs
