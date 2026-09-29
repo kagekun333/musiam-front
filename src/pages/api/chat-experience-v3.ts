@@ -745,7 +745,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         purpose: "quality",
         system: recallPrompt.system,
         messages: [{ role: "user", content: recallPrompt.user }],
-        maxTokens: 120,
+        maxTokens: 512,
         trace: `${trace}-recall`,
       });
       if (recallLlm.ok) {
