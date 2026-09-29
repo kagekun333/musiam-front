@@ -1,0 +1,88 @@
+{
+  "gate": "COUNT_CHAT_APPLE_RELEASE_OVERLAY_PRODUCTION_ENABLEMENT",
+  "approval": "APPROVE_APPLE_RELEASE_OVERLAY_PRODUCTION_ENABLEMENT",
+  "date": "2026-09-29",
+  "branch": "recovery/musiam-clean-20260920",
+  "localHeadBeforeRecord": "eaf32dbe0d1e6c8adbdec393291099f1ef9ad813",
+  "deployedPayload": {
+    "validatedPreviewDeploymentId": "dpl_m9H4X6698UcXZXTgLg9JpdxLnUde",
+    "manifestSha256": "e8d7fd221d7efeda157ed166cb44ac11d6abd2d7e3cffb96f9e5ab6c48073fd4",
+    "entries": 3260,
+    "regularFiles": 3254,
+    "protectedPayload": 0,
+    "humanDirtyPayload": 0,
+    "envPayload": 0,
+    "secretPrivatePayload": 0
+  },
+  "production": {
+    "deploymentId": "dpl_CenUx7stAdHVDKTKAPuVg87dmLk1",
+    "state": "READY",
+    "target": "production",
+    "aliases": ["hakusyaku.xyz", "www.hakusyaku.xyz", "musiam-front.vercel.app"],
+    "previousDeploymentId": "dpl_3iucqknaPAzxVZeDNTsC45VjtV1U",
+    "rollbackCandidateAvailable": true
+  },
+  "cron": {
+    "enabled": true,
+    "appleReleaseSync": {
+      "path": "/api/cron/apple-release-sync",
+      "schedule": "30 0 * * *",
+      "manualFirstInvocationAt": "2026-09-29T19:36:33.127Z",
+      "httpStatus": 200
+    },
+    "metalPrintOpsPreserved": {
+      "path": "/api/cron/metal-print-ops",
+      "schedule": "0 0 * * *"
+    }
+  },
+  "firstProductionSync": {
+    "appleOverlayNamespace": "musiam:release-overlay:v1",
+    "persistentWrite": "CONFIRMED_BY_POST_SYNC_OVERLAY_VISIBILITY",
+    "exhibitionItemCount": 582,
+    "staticBaseCount": 514,
+    "admittedOverlayCount": 68,
+    "latestWork": {
+      "id": "apple-album-6808806776",
+      "title": "Sun Without a Map",
+      "releasedAt": "2026-09-29"
+    }
+  },
+  "countChatSmoke": {
+    "httpStatus": 200,
+    "query": "最新曲は？",
+    "provider": "none",
+    "model": null,
+    "recognizedWorkId": "apple-album-6808806776",
+    "recognizedTitle": "Sun Without a Map",
+    "recognizedReleaseDate": "2026-09-29",
+    "appleGenre": "Dance"
+  },
+  "accounting": {
+    "llmProviderCalls": 0,
+    "customerHistoryEndpointCalls": 0,
+    "customerRedisOperations": 0,
+    "paymentOperations": 0,
+    "entitlementOperations": 0,
+    "productionSecretMutations": 0,
+    "gitPushes": 0
+  },
+  "observability": {
+    "productionRequestPaths": {
+      "/api/cron/apple-release-sync": 1,
+      "/api/exhibition": 1,
+      "/api/chat-experience-v3": 1
+    },
+    "productionStatus200Count": 3,
+    "errorFatalCount": 0,
+    "status5xxCount": 0
+  },
+  "safety": {
+    "productionHistoryKeyContract": "chat-history:v1:{conversationId}",
+    "productionAppleOverlayKey": "musiam:release-overlay:v1",
+    "previewNamespacesRemainSeparated": true,
+    "humanOwnedFilesChanged": false,
+    "protectedRootsAccessedForEnablement": false
+  },
+  "verdict": "PASS_PRODUCTION",
+  "nextGate": "NORMAL_AUTOMATIC_OPERATION"
+}
