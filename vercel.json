@@ -3,6 +3,10 @@
     {
       "path": "/api/cron/metal-print-ops",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/apple-release-sync",
+      "schedule": "30 0 * * *"
     }
   ]
 }

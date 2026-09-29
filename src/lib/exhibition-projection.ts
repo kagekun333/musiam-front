@@ -1,5 +1,5 @@
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
-import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
+import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
 import editorialKnowledgeJson from "../../public/works/editorial-knowledge.json";
 
 type RawLinks = Record<string, string | null | undefined>;
@@ -162,5 +162,5 @@ export function projectExhibitionWorks(
 }
 
 export async function loadExhibitionProjection() {
-  return projectExhibitionWorks(await loadMergedWorksServer());
+  return projectExhibitionWorks(await loadLiveMergedWorksServer());
 }

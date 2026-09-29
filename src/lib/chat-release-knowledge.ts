@@ -17,13 +17,15 @@ export type KnowledgeEnvelope = {
     releaseDateAuthority: "DISTROKID_EXPLICIT" | "APPLE_PUBLIC_DISTRIBUTION" | "OWNER_VERIFIED" | "MUSIAM_CATALOG" | null;
     primaryGenre: string | null;
     secondaryGenre: string | null;
+    appleGenre: string | null;
+    primaryGenreSource: "APPLE_PUBLIC_CATALOG" | "DISTRIBUTION_METADATA" | null;
     isrc: string[];
     upc: string | null;
     identifiers: Record<string, string>;
   };
   catalog: { tags: string[]; moodTags: string[]; moodSeeds: string[] };
   actions: KnowledgeAction[];
-  evidence: { field: string; sourceType: "DISTRIBUTION_METADATA" | "MUSIAM_CATALOG"; stableIdentifier: string }[];
+  evidence: { field: string; sourceType: "APPLE_PUBLIC_CATALOG" | "DISTRIBUTION_METADATA" | "MUSIAM_CATALOG"; stableIdentifier: string }[];
   interpretations: { status: "UNPOPULATED" };
   unknowns: string[];
   /** Reserved extension point. No audio analysis is produced by this Gate. */
@@ -65,6 +67,10 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
   const workId = clean(work.id);
   if (!workId) return null;
   const distribution = work.distribution;
+  const applePublicSource = distribution?.source === "apple-music";
+  const primaryGenreSource = distribution?.primaryGenre
+    ? applePublicSource ? "APPLE_PUBLIC_CATALOG" as const : "DISTRIBUTION_METADATA" as const
+    : null;
   const recordingIsrcs = (work.identifiers?.recordings ?? []).map((entry) => clean(entry?.isrc)).filter((value): value is string => !!value);
   const isrc = Array.from(new Set([clean(distribution?.isrc), ...recordingIsrcs].filter((value): value is string => !!value)));
   const upc = clean(distribution?.upc) ?? clean(work.identifiers?.release?.upc);
@@ -85,12 +91,13 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
   const storeUrl = clean(work.salesHref);
   if (storeUrl) actions.push({ kind: "store", url: storeUrl, scope: "recorded-public-url" });
 
-  const fields: Array<[string, unknown, "DISTRIBUTION_METADATA" | "MUSIAM_CATALOG"]> = [
+  const fields: Array<[string, unknown, "APPLE_PUBLIC_CATALOG" | "DISTRIBUTION_METADATA" | "MUSIAM_CATALOG"]> = [
     ["title", work.title, distribution ? "DISTRIBUTION_METADATA" : "MUSIAM_CATALOG"],
     ["medium", work.type, "MUSIAM_CATALOG"],
     ["releaseDate", distribution?.releaseDate ?? work.releasedAt, distribution?.releaseDate ? "DISTRIBUTION_METADATA" : "MUSIAM_CATALOG"],
-    ["primaryGenre", distribution?.primaryGenre, "DISTRIBUTION_METADATA"],
+    ["primaryGenre", distribution?.primaryGenre, primaryGenreSource ?? "DISTRIBUTION_METADATA"],
     ["secondaryGenre", distribution?.secondaryGenre, "DISTRIBUTION_METADATA"],
+    ["appleGenre", distribution?.appleGenre, "APPLE_PUBLIC_CATALOG"],
     ["tags", work.tags, "MUSIAM_CATALOG"],
     ["moodTags", work.moodTags, "MUSIAM_CATALOG"],
     ["moodSeeds", work.moodSeeds, "MUSIAM_CATALOG"],
@@ -110,6 +117,7 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
     ...(!clean(distribution?.artist) ? ["artist"] : []),
     ...(!clean(distribution?.primaryGenre) ? ["primaryGenre"] : []),
     ...(!clean(distribution?.secondaryGenre) ? ["secondaryGenre"] : []),
+    ...(!clean(distribution?.appleGenre) ? ["appleGenre"] : []),
     ...(!isrc.length ? ["isrc"] : []),
     ...(!upc ? ["upc"] : []),
     ...(!Object.keys(identifiers).length ? ["releaseIdentifiers"] : []),
@@ -130,6 +138,8 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
         : clean(work.releasedAt) ? "MUSIAM_CATALOG" : null,
       primaryGenre: clean(distribution?.primaryGenre),
       secondaryGenre: clean(distribution?.secondaryGenre),
+      appleGenre: clean(distribution?.appleGenre),
+      primaryGenreSource,
       isrc,
       upc,
       identifiers,

@@ -11,7 +11,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
-import { loadMergedWorksServer, loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
+import { loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
+import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
 import { nextUpcomingRelease } from "@/lib/release-automation";
 import { buildChatWorkCard } from "@/lib/chat-work-card";
 import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
@@ -260,7 +261,7 @@ async function prescribeWork(input: {
 }): Promise<{ card: RecoCard | null; work: Work | null }> {
   let works: Work[] = [];
   if (input.works) works = input.works;
-  else try { works = (await loadMergedWorksServer()) as Work[]; } catch { works = []; }
+  else try { works = (await loadLiveMergedWorksServer()) as Work[]; } catch { works = []; }
   let pool = works.filter((w) => !!String(w.cover || ""));
   if (input.type) pool = pool.filter((w) => normType(w.type) === input.type);
   if (input.preferLatestEligible) {
@@ -649,7 +650,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const query = lastUserText(messages);
     let coreWorks: Work[] = [];
-    try { coreWorks = (await loadMergedWorksServer()) as Work[]; } catch { coreWorks = []; }
+    try { coreWorks = (await loadLiveMergedWorksServer()) as Work[]; } catch { coreWorks = []; }
     const coreTurn = deriveChatCoreTurn({ messages, language: lang as CoreLanguage, works: coreWorks });
     const visitorState = deriveVisitorState(messages);
     // An explicit current language instruction outranks the UI default.
@@ -760,13 +761,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const title = String(latest.title ?? "");
       const date = String(latest.distribution?.releaseDate ?? latest.releasedAt ?? "");
       const latestCard = buildChatWorkCard(latest);
+      const appleGenre = typeof latest.distribution?.appleGenre === "string" ? latest.distribution.appleGenre.trim() : "";
+      const appleGenreFact: Record<Lang, string> = appleGenre ? {
+        ja: ` Apple Music上では「${appleGenre}」に分類されています。`,
+        en: ` Apple Music classifies it as ${appleGenre}.`,
+        fr: ` Apple Music la classe dans le genre « ${appleGenre} ».`,
+        es: ` Apple Music la clasifica como «${appleGenre}».`,
+        de: ` Apple Music ordnet sie dem Genre „${appleGenre}“ zu.`,
+        ar: ` تصنفها Apple Music ضمن نوع ${appleGenre}.`,
+      } : { ja: "", en: "", fr: "", es: "", de: "", ar: "" };
       const latestText: Record<Lang, string> = {
-        ja: `現在のcatalogで日付を確認できる${medium === "book" ? "新しい作品" : "最新の作品"}は「${title}」です。記録上の日付は${date}です。${latestCard ? "下のカードから確認できます。" : "確認できる公開リンクはまだ記録されていません。"}`,
-        en: `The latest dated work in the current catalog is “${title}” (${date}). ${latestCard ? "You can open it from the card below." : "No verified public action is recorded yet."}`,
-        fr: `L’œuvre la plus récente datée dans le catalogue actuel est « ${title} » (${date}). ${latestCard ? "Vous pouvez la consulter avec la carte ci-dessous." : "Aucune action publique vérifiée n’est encore enregistrée."}`,
-        es: `La obra con fecha más reciente en el catálogo actual es «${title}» (${date}). ${latestCard ? "Puede abrirla desde la tarjeta de abajo." : "Aún no hay una acción pública verificada registrada."}`,
-        de: `Das zuletzt datierte Werk im aktuellen Katalog ist „${title}“ (${date}). ${latestCard ? "Über die Karte unten können Sie es öffnen." : "Eine bestätigte öffentliche Aktion ist noch nicht eingetragen."}`,
-        ar: `أحدث عمل مؤرخ في الفهرس الحالي هو «${title}» (${date}). ${latestCard ? "يمكنك فتحه من البطاقة أدناه." : "لم يُسجل إجراء عام موثق بعد."}`,
+        ja: `現在のcatalogで日付を確認できる${medium === "book" ? "新しい作品" : "最新の作品"}は「${title}」です。記録上の日付は${date}です。${latestCard ? "下のカードから確認できます。" : "確認できる公開リンクはまだ記録されていません。"}${appleGenreFact.ja}`,
+        en: `The latest dated work in the current catalog is “${title}” (${date}). ${latestCard ? "You can open it from the card below." : "No verified public action is recorded yet."}${appleGenreFact.en}`,
+        fr: `L’œuvre la plus récente datée dans le catalogue actuel est « ${title} » (${date}). ${latestCard ? "Vous pouvez la consulter avec la carte ci-dessous." : "Aucune action publique vérifiée n’est encore enregistrée."}${appleGenreFact.fr}`,
+        es: `La obra con fecha más reciente en el catálogo actual es «${title}» (${date}). ${latestCard ? "Puede abrirla desde la tarjeta de abajo." : "Aún no hay una acción pública verificada registrada."}${appleGenreFact.es}`,
+        de: `Das zuletzt datierte Werk im aktuellen Katalog ist „${title}“ (${date}). ${latestCard ? "Über die Karte unten können Sie es öffnen." : "Eine bestätigte öffentliche Aktion ist noch nicht eingetragen."}${appleGenreFact.de}`,
+        ar: `أحدث عمل مؤرخ في الفهرس الحالي هو «${title}» (${date}). ${latestCard ? "يمكنك فتحه من البطاقة أدناه." : "لم يُسجل إجراء عام موثق بعد."}${appleGenreFact.ar}`,
       };
       return controlled(latestText[lang], "work", latestCard);
     }

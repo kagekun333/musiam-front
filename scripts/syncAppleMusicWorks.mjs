@@ -1,31 +1,17 @@
+/* global process, fetch, AbortSignal, Buffer */
 import fs from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { classifyAppleArtistResults, APPLE_ARTIST_LOOKUP_LIMIT } from "./apple-catalog-diff.mjs";
+import { APPLE_ARTIST_ID, projectAppleCollectionForStaticCatalog, safeArtworkUrl } from "../src/lib/apple-public-catalog.mjs";
 
-const ARTIST_ID = "1811526635";
+const ARTIST_ID = APPLE_ARTIST_ID;
 const ROOT = process.cwd();
 const WORKS_PATH = path.join(ROOT, "public/works/works.json");
 const SOURCE_PATHS = [WORKS_PATH, path.join(ROOT, "public/works/catalog-imports.json"), path.join(ROOT, "public/works/works-ssd.json")];
 const COVERS_DIR = path.join(ROOT, "public/works/covers");
 const API_URL = `https://itunes.apple.com/lookup?id=${ARTIST_ID}&entity=album&limit=${APPLE_ARTIST_LOOKUP_LIMIT}&country=US`;
 
-function titleOf(value = "") { return value.replace(/\s+-\s+(Single|EP)$/i, "").trim(); }
-function safeArtworkUrl(value) {
-  try {
-    const url = new URL(value);
-    if (url.protocol !== "https:" || !(url.hostname === "mzstatic.com" || url.hostname.endsWith(".mzstatic.com"))) return null;
-    return url.toString().replace(/\/\d+x\d+bb\.jpg(?:\?.*)?$/, "/1600x1600bb.jpg");
-  } catch { return null; }
-}
-function safeStoreUrl(value) {
-  try {
-    const url = new URL(value);
-    if (url.protocol !== "https:" || !(url.hostname === "music.apple.com" || url.hostname.endsWith(".music.apple.com") || url.hostname === "itunes.apple.com" || url.hostname.endsWith(".itunes.apple.com"))) return null;
-    url.searchParams.delete("uo");
-    return url.toString();
-  } catch { return null; }
-}
 async function sourceItems(file) {
   const document = JSON.parse(await fs.readFile(file, "utf8"));
   return Array.isArray(document) ? document : Array.isArray(document.items) ? document.items : [];
@@ -63,20 +49,30 @@ async function main() {
   const unresolved = [...plan.unresolved];
   for (const candidate of plan.newItems) {
     const item = candidate.source;
-    const title = titleOf(String(item.collectionName ?? ""));
-    const releaseDate = typeof item.releaseDate === "string" ? item.releaseDate.slice(0, 10) : "";
-    const href = safeStoreUrl(item.collectionViewUrl);
-    const artworkUrl = safeArtworkUrl(item.artworkUrl100);
-    if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(releaseDate) || !href || !artworkUrl) {
+    const work = projectAppleCollectionForStaticCatalog(item, ARTIST_ID);
+    if (!work) {
       unresolved.push({ workId: candidate.workId, reason: "REQUIRED_PUBLIC_METADATA_MISSING" });
       continue;
     }
-    readyItems.push({ candidate, title, releaseDate, href, artworkUrl, item });
+    readyItems.push({ candidate, work, item });
   }
+  const observedDates = sourceResults
+    .filter((item) => item?.wrapperType === "collection" && item.artistId === Number(ARTIST_ID))
+    .map((item) => typeof item.releaseDate === "string" ? item.releaseDate.slice(0, 10) : "")
+    .filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value))
+    .sort();
+  const staticMusicDates = documents.flat()
+    .filter((item) => String(item?.type ?? "") === "music")
+    .map((item) => String(item?.distribution?.releaseDate ?? item?.releasedAt ?? "").slice(0, 10))
+    .filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value))
+    .sort();
   const output = {
     mode: apply ? "APPLY" : "DRY_RUN",
     appleResultsCount: plan.appleResultsCount,
-    currentStableIds: plan.currentStableIds,
+    currentStableIdCount: plan.currentStableIds.length,
+    currentStaticMusicCutoff: staticMusicDates.at(-1) ?? null,
+    oldestObservedReleaseDate: observedDates[0] ?? null,
+    newestObservedReleaseDate: observedDates.at(-1) ?? null,
     new: readyItems.map(({ candidate }) => candidate.workId),
     existing: plan.existingIds,
     unresolved,
@@ -95,27 +91,9 @@ async function main() {
 
   const primary = JSON.parse(await fs.readFile(WORKS_PATH, "utf8"));
   const newWorks = [];
-  for (const { candidate, title, releaseDate, href, item } of readyItems) {
+  for (const { candidate, work, item } of readyItems) {
     const cover = await downloadCover(item.collectionId, item.artworkUrl100);
-    newWorks.push({
-      id: candidate.workId,
-      title,
-      type: "music",
-      cover,
-      tags: ["apple-music", item.trackCount === 1 ? "single" : "album"],
-      releasedAt: releaseDate,
-      href,
-      primaryHref: href,
-      links: { appleMusic: href, listen: href },
-      distribution: {
-        source: "apple-music",
-        artist: String(item.artistName),
-        releaseDate,
-        primaryGenre: typeof item.primaryGenreName === "string" ? item.primaryGenreName : null,
-        identifiers: { appleCollectionId: String(item.collectionId) },
-      },
-      identifiers: { release: { appleCollectionId: String(item.collectionId) } },
-    });
+    newWorks.push({ ...work, id: candidate.workId, cover });
   }
   const existingIds = new Set(primary.items.map((item) => String(item?.id ?? "")));
   const uniqueNew = newWorks.filter((work) => !existingIds.has(work.id));
