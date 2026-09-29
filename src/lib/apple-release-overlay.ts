@@ -1,6 +1,7 @@
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { APPLE_ARTIST_ID, projectAppleCollectionToCatalogWork, safeArtworkUrl, safeStoreUrl } from "@/lib/apple-public-catalog.mjs";
 import { APPLE_ARTIST_LOOKUP_LIMIT, classifyAppleArtistResults } from "../../scripts/apple-catalog-diff.mjs";
+import { appleReleaseOverlayKey, resolveRuntimeDataScope, type RuntimeDataScope } from "@/lib/runtime-data-scope";
 
 export { APPLE_ARTIST_LOOKUP_LIMIT };
 
@@ -258,8 +259,10 @@ export async function runAppleReleaseSync(input: {
   store: AppleReleaseOverlayStore;
   fetcher?: typeof fetch;
   now?: Date;
+  scope?: RuntimeDataScope;
 }): Promise<AppleReleaseSyncReport> {
   const fetcher = input.fetcher ?? fetch;
+  const overlayKey = appleReleaseOverlayKey(input.scope ?? resolveRuntimeDataScope(process.env.VERCEL_ENV));
   let payload: unknown;
   let response: Response;
   try {
@@ -281,7 +284,7 @@ export async function runAppleReleaseSync(input: {
   const results = payload.results as Array<Record<string, unknown>>;
 
   let stored: unknown;
-  try { stored = await input.store.get(APPLE_RELEASE_OVERLAY_KEY); }
+  try { stored = await input.store.get(overlayKey); }
   catch { throw new AppleReleaseSyncError("OVERLAY_STORE_READ_FAILED"); }
   let previous: AppleReleaseOverlaySnapshot | null = null;
   if (stored !== null && stored !== undefined) {
@@ -366,7 +369,7 @@ export async function runAppleReleaseSync(input: {
   if (Object.keys(snapshot.works).length > APPLE_RELEASE_OVERLAY_MAX_WORKS || encodedSize(snapshot) > APPLE_RELEASE_OVERLAY_MAX_BYTES) {
     throw new AppleReleaseSyncError("OVERLAY_SNAPSHOT_LIMIT");
   }
-  try { await input.store.set(APPLE_RELEASE_OVERLAY_KEY, snapshot); }
+  try { await input.store.set(overlayKey, snapshot); }
   catch { throw new AppleReleaseSyncError("OVERLAY_STORE_WRITE_FAILED"); }
 
   const backfillWindowStatus = classifyAppleBackfillWindow(dateRangeObserved.oldest, currentStaticMusicCutoff, sourceTruncated);
@@ -396,10 +399,10 @@ export async function runAppleReleaseSync(input: {
   };
 }
 
-export async function readAppleReleaseOverlay(store: AppleReleaseOverlayStore | null, now = new Date()): Promise<{ status: OverlayReadStatus; snapshot: AppleReleaseOverlaySnapshot | null }> {
+export async function readAppleReleaseOverlay(store: AppleReleaseOverlayStore | null, now = new Date(), scope: RuntimeDataScope = resolveRuntimeDataScope(process.env.VERCEL_ENV)): Promise<{ status: OverlayReadStatus; snapshot: AppleReleaseOverlaySnapshot | null }> {
   if (!store) return { status: "UNAVAILABLE", snapshot: null };
   let raw: unknown;
-  try { raw = await store.get(APPLE_RELEASE_OVERLAY_KEY); }
+  try { raw = await store.get(appleReleaseOverlayKey(scope)); }
   catch { return { status: "UNAVAILABLE", snapshot: null }; }
   if (raw === null || raw === undefined) return { status: "EMPTY", snapshot: null };
   const snapshot = validateAppleReleaseOverlaySnapshot(raw);

@@ -1,4 +1,5 @@
 import { Redis } from "@upstash/redis";
+import { chatHistoryKey, resolveRuntimeDataScope } from "@/lib/runtime-data-scope";
 
 export type StoredChatMessage = {
   role: "user" | "assistant";
@@ -31,8 +32,12 @@ function getRedis() {
   return redis;
 }
 
+export function chatHistoryRedisKey(conversationId: string, vercelEnv = process.env.VERCEL_ENV) {
+  return chatHistoryKey(conversationId, resolveRuntimeDataScope(vercelEnv));
+}
+
 function key(conversationId: string) {
-  return `chat-history:v1:${conversationId}`;
+  return chatHistoryRedisKey(conversationId);
 }
 
 export async function readChatHistory(conversationId: string) {

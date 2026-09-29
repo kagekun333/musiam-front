@@ -1,0 +1,69 @@
+{
+  "gate": "COUNT_CHAT_APPLE_RELEASE_OVERLAY_PRODUCTION_READINESS",
+  "updatedAt": "2026-09-29",
+  "startingAuthority": {
+    "branch": "recovery/musiam-clean-20260920",
+    "head": "247267ed160f170a0440b6f980308f5d65d107ee"
+  },
+  "incident": {
+    "classification": "POSSIBLE_NON_MUTATING_PROTECTED_ROOT_TRAVERSAL",
+    "protectedRootContentInOutput": false,
+    "actualFileReadsProvenAbsent": false,
+    "modification": 0,
+    "stage": 0,
+    "commit": 0,
+    "deployment": 0,
+    "redisOperations": 0,
+    "additionalProtectedRootOperationsThisContinuation": 0,
+    "humanOwnedFilesReadOrChangedThisContinuation": false
+  },
+  "previewBrowserHydrationIncident": {
+    "deploymentId": "dpl_61nSPSUwbWTrRAp2WT7WKeZiGexK",
+    "classification": "RECORDED_NO_CLEANUP",
+    "cleanup": false
+  },
+  "namespaceContract": {
+    "authority": "process.env.VERCEL_ENV",
+    "unknownEnvironment": "local",
+    "chatHistory": {
+      "production": "chat-history:v1:{conversationId}",
+      "preview": "chat-history:preview:v1:{conversationId}",
+      "development": "chat-history:development:v1:{conversationId}",
+      "local": "chat-history:local:v1:{conversationId}"
+    },
+    "appleOverlay": {
+      "production": "musiam:release-overlay:v1",
+      "preview": "musiam:release-overlay:preview:v1",
+      "development": "musiam:release-overlay:development:v1",
+      "local": "musiam:release-overlay:local:v1"
+    }
+  },
+  "localValidation": {
+    "runtimeDataScopeFixture": "PASS",
+    "chatHistoryKeyFixture": "PASS",
+    "appleOverlayReadWriteScopeFixture": "PASS",
+    "unauthorizedCronNoOpFixture": "PASS",
+    "explicitFileTypeScript": "PASS",
+    "scopedLint": "PASS",
+    "scopedGitDiffCheck": "PASS",
+    "productionRedisOperations": 0,
+    "providerCalls": 0
+  },
+  "preview": {
+    "deployInputManifest": null,
+    "deploymentId": null,
+    "url": null,
+    "state": "NOT_CREATED",
+    "blocker": "BLOCKED_TOOLING_EXACT_CLI_PATH_UNAVAILABLE",
+    "browserSmoke": false,
+    "rawHttpSmoke": false
+  },
+  "production": {
+    "deploymentIdBefore": "dpl_3iucqknaPAzxVZeDNTsC45VjtV1U",
+    "deploymentIdAfter": null,
+    "mutationCount": 0,
+    "dataMigration": 0
+  },
+  "verdict": "BLOCKED_PREVIEW",
+  "nextHumanGate": null
+}
