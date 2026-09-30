@@ -43,6 +43,7 @@ next-env.d.ts
 
 # MUSIAM reports
 .musiam/reports/
+.musiam/control-plane/
 
 
 # track env examples

@@ -17,6 +17,8 @@ next-env.d.ts
 docs/AI/
 ops/recovery/
 ops/product/
+ops/control-plane/
+scripts/control-plane/
 ops/market-learning/daily-20260925/
 ops/market-learning/daily-20260925
 ops/market-learning/daily-20260926

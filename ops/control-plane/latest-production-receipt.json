@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-30",
+  "project": "musiam-front",
+  "productionDomain": "hakusyaku.xyz",
+  "productionDeploymentId": "dpl_CZrmiXJdFNxQhYToG8NkjQKbWGDK",
+  "productionDeploymentUrl": "musiam-front-35zn2tp4g-hakusyakus-projects.vercel.app",
+  "productionState": "READY",
+  "runtimeSourceCommit": "48c7781ecdaa170d354fed8b2c2e2cea96d093cb",
+  "previewDeploymentId": "dpl_DR9Wg1LyZmUZ79Hoiko5mJChdTic",
+  "previewDeploymentUrl": "musiam-front-atnbsbn1u-hakusyakus-projects.vercel.app",
+  "deployManifestSha256": "631c6b32fcddaca0be9ee1429134b7ce6fb504e796f7e44fb1779694d238c531",
+  "previousProductionDeploymentId": "dpl_CenUx7stAdHVDKTKAPuVg87dmLk1",
+  "rollbackCandidateAvailable": true,
+  "verifiedRoutes": {
+    "/works": 200,
+    "/works/apple-album-6808806776": 200,
+    "/api/chat-experience-v3:sesoko-recall": 200,
+    "/api/chat-experience-v3:natural-title": 200
+  },
+  "productionChecks": {
+    "errorFatalCount": 0,
+    "status5xxCount": 0
+  },
+  "notes": [
+    "Runtime source commit is the last application-code commit included in the deployed safe source.",
+    "Later local commits may be non-runtime documentation/control-plane changes and must be classified by drift-check rather than assumed deployed."
+  ]
+}

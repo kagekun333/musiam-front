@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "canonicalRepo": "/Users/kagekun/Desktop/musiam-front-clean",
+  "remote": "origin",
+  "productionDomain": "hakusyaku.xyz",
+  "receiptPath": "ops/control-plane/latest-production-receipt.json",
+  "leasePath": ".musiam/control-plane/active-lease.json",
+  "humanOwnedPaths": [
+    "ops/continuous-operation/experiments.json",
+    "ops/continuous-operation/state.json"
+  ],
+  "protectedRoots": [
+    "ops/market-learning/daily-20260925",
+    "ops/market-learning/daily-20260926",
+    "ops/market-learning/daily-20260927"
+  ],
+  "deploymentControlPaths": [
+    ".vercelignore",
+    ".gitignore"
+  ],
+  "nonRuntimePrefixes": [
+    "docs/AI/",
+    "ops/control-plane/",
+    "ops/product/",
+    "ops/recovery/",
+    "scripts/control-plane/"
+  ]
+}
