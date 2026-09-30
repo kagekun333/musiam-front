@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "id": "human-role-selection-v1",
+  "source": {
+    "path": "content/letters/human-role-in-ai-music.md",
+    "sha256": "6de0ab979b4201fb677d6f5b5adbe88a654067d94125b4878c646ba8025b7c39",
+    "url": "/letters/human-role-in-ai-music",
+    "date": "2026-06-12",
+    "title": "AIが何でも作れる時代に、人間に残る仕事"
+  },
+  "evidence": {
+    "q1": {
+      "kind": "quote",
+      "authority": "OWNER_SOURCE",
+      "scope": "owner_position_not_verified_world_fact",
+      "excerpt": "私が大切にしているのは、作る速さより「捨てる勇気」。十作って一を残す。その一が、館の品位を決めます。",
+      "line": 14
+    },
+    "q2": {
+      "kind": "quote",
+      "authority": "OWNER_SOURCE",
+      "scope": "owner_position_not_verified_world_fact",
+      "excerpt": "道具が賢くなるほど、人間は問われる。何を美しいと思うのか、と。",
+      "line": 18
+    }
+  },
+  "channels": {
+    "letter": {
+      "purpose": "既存Letterを再編集せず、読む入口を作る",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "作る速さより、残す基準。この手紙は制作の判断に目を向けています。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "quote",
+          "text": "私が大切にしているのは、作る速さより「捨てる勇気」。十作って一を残す。その一が、館の品位を決めます。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "intelligence": {
+      "purpose": "調査前の問いと検証計画",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "調査の問い：候補が増えると、選別の基準はどう変わるのか。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "inference",
+          "text": "検証計画：制作記録の候補と採用理由を比較し、判断の変化を記録する。現時点で一般的な結論は置かない。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "seo_article": {
+      "purpose": "検索需要未検証の記事seed",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "記事案：AI音楽を選ぶ基準を、没にした理由から考える。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "inference",
+          "text": "構成案：残す基準／世界観から外れる音／聴き比べの記録。検索語は仮説であり、需要や順位は未確認。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "x": {
+      "purpose": "短い論点",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "AI音楽で気になるのは、作れた数より残した理由。選ばなかった音から、美意識を読める気がします。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "threads": {
+      "purpose": "対話の入口",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "候補を並べて聴くとき、出来のよさと自分の世界観は別の基準かもしれません。あなたなら、残す音をどう決めますか。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "instagram": {
+      "purpose": "カルーセルとcaptionのラフ",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "画面案：候補の札を並べる／残す札だけを照らす／余白を見せる。素材は未制作。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "inference",
+          "text": "Caption案：空いた場所にも、選んだ理由がある。制作を、残す側から眺めてみる。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "short_video": {
+      "purpose": "縦動画の絵・声・締めの脚本seed",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "冒頭画：机に並ぶ候補の札。声：作ることの次に、選ぶことが待っている。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "inference",
+          "text": "中盤画：札を脇へ寄せる。声：世界観から外れた理由を、言葉にしてみる。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "inference",
+          "text": "締め画：残した札と余白。声：あなたなら何を残しますか。音源・撮影素材の権利確認と収録はこれから。",
+          "evidence_ids": [
+            "q1"
+          ]
+        }
+      ]
+    },
+    "newsletter": {
+      "purpose": "同意済み読者向けの再訪seed、送信しない",
+      "segments": [
+        {
+          "kind": "inference",
+          "text": "件名案：残した音の、隣にあるもの",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "inference",
+          "text": "今号の入口は、選ばなかった候補です。手紙を読み、残す基準を自分の制作にも問い直してみませんか。",
+          "evidence_ids": [
+            "q1"
+          ]
+        },
+        {
+          "kind": "quote",
+          "text": "道具が賢くなるほど、人間は問われる。何を美しいと思うのか、と。",
+          "evidence_ids": [
+            "q2"
+          ]
+        }
+      ]
+    }
+  },
+  "cta": {
+    "href": "/works",
+    "label": "選び抜かれた作品を展示の門で見る",
+    "evidence_id": "q1",
+    "reason": "選別の話から、実際に残された作品を見る導線。価格や購入条件の主張を含めない。"
+  }
+}
