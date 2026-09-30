@@ -30,6 +30,7 @@ async function main() {
   const historyRoute = read("src/pages/api/chat-history.ts");
   const exhibitionRoute = read("src/pages/api/exhibition.ts");
   const exhibitionProjection = read("src/lib/exhibition-projection.ts");
+  const liveCatalogLoader = read("src/lib/loadLiveMergedWorksServer.ts");
   const todayPick = read("src/app/api/todays-pick/route.ts");
   const nowPlaying = read("src/app/api/now-playing/route.ts");
   const home = read("src/app/page.tsx");
@@ -62,7 +63,12 @@ async function main() {
   const exhibition = projectExhibitionWorks(canonical, undefined, "2026-09-21");
   check(exhibition.coverage.missingFromExhibitionReleasedWorks === 0, "all explicitly released canonical works must reach the exhibition projection");
   check(exhibition.coverage.displayedWorks === 514, "exhibition projection must display 514 released works");
-  check(exhibitionRoute.includes("loadExhibitionProjection") && exhibitionProjection.includes("loadMergedWorksServer"), "Exhibition API must use the canonical server projection");
+  check(
+    exhibitionRoute.includes("loadExhibitionProjection")
+      && exhibitionProjection.includes("loadLiveMergedWorksServer")
+      && liveCatalogLoader.includes("loadMergedWorksServer"),
+    "Exhibition API must use the live projection backed by the canonical server loader",
+  );
 
   check(chat.includes('fetch("/api/chat-experience-v3"'), "Chat UI must keep the active v3 route");
   check(chatRoute.includes("HARD_MAX_USER_TURNS = 20"), "active chat guard must remain the 20-turn abuse/cost limit");

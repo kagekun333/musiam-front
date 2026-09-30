@@ -1,6 +1,6 @@
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
-import editorialKnowledgeJson from "../../public/works/editorial-knowledge.json";
+import { getEditorialKnowledgeForWorkId, getEditorialKnowledgeRows, type EditorialKnowledgeRow } from "@/lib/editorial-knowledge";
 
 type RawLinks = Record<string, string | null | undefined>;
 
@@ -20,8 +20,6 @@ export type ExhibitionWork = {
   primaryHref?: string;
   salesHref?: string;
 };
-
-type EditorialRow = { workId?: string | number; summaryJa?: string };
 
 export type ExhibitionReleaseState = "RELEASED" | "FUTURE_OR_UNRELEASED" | "UNKNOWN_RELEASE_STATE";
 
@@ -86,11 +84,11 @@ function publicHref(value?: string) {
   return /^https?:\/\//i.test(href) || href.startsWith("/") ? href : undefined;
 }
 
-function editorialSummaryFor(workId: string, rows: EditorialRow[]) {
-  return rows.find((row) => String(row.workId ?? "") === workId)?.summaryJa;
+function editorialSummaryFor(workId: string, rows: EditorialKnowledgeRow[]) {
+  return getEditorialKnowledgeForWorkId(workId, rows)?.summaryJa;
 }
 
-function publicWork(work: CatalogWork, editorialRows: EditorialRow[]): ExhibitionWork {
+function publicWork(work: CatalogWork, editorialRows: EditorialKnowledgeRow[]): ExhibitionWork {
   const id = String(work.id ?? "");
   const type = ["music", "video", "art", "book", "article"].includes(String(work.type))
     ? (work.type as ExhibitionWork["type"])
@@ -120,7 +118,7 @@ function publicWork(work: CatalogWork, editorialRows: EditorialRow[]): Exhibitio
 
 export function projectExhibitionWorks(
   works: CatalogWork[],
-  editorialRows: EditorialRow[] = (editorialKnowledgeJson.items ?? []) as EditorialRow[],
+  editorialRows: EditorialKnowledgeRow[] = getEditorialKnowledgeRows(),
   today = exhibitionTokyoYmd()
 ): { works: ExhibitionWork[]; coverage: ExhibitionCoverage } {
   const displayed: ExhibitionWork[] = [];

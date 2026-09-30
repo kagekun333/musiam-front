@@ -145,6 +145,46 @@
       ],
       "sourceFileHash": "5b421f887b01d9319fde99e3d84c632015fecf752644c544b709e1b47b82fc5a",
       "sourceHref": "/letters/the-souls-sandbox"
+    },
+    {
+      "workId": "fuego-en-la-noche-228",
+      "workIds": [
+        "fuego-en-la-noche-228",
+        "spotify-single-0isH27stV7eiEpIbqfhood"
+      ],
+      "title": "Fuego en la Noche",
+      "summaryJa": "ABI伯爵署名のLetterでは、本作を前日の静謐な神話的世界から一転した情熱的な一曲として紹介している。",
+      "ownerIntentSummaryJa": "神話の静けさのあとにあえて熱量の高い曲を置き、振れ幅を館の個性として、夜の「眠る」と「燃え上がる」という両義性をこの曲に込めたと述べている。",
+      "facets": [
+        "スペイン語",
+        "英語",
+        "夜",
+        "情熱",
+        "対比"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "9b3bf01d6ac97806886a91c0a5c2d41e99da29e38a8324f335b411e6861893ab",
+      "sourceHref": "/letters/fuego-en-la-noche"
+    },
+    {
+      "workId": "g-rli-garden-149",
+      "workIds": [
+        "g-rli-garden-149",
+        "spotify-single-0n4YxepwuViPkKvIuLXtwR"
+      ],
+      "title": "Görli Garden",
+      "summaryJa": "ABI伯爵署名のLetterでは、本作を「ベルリンの公園」の一曲として紹介し、同日の作品群を世界の街と日本の闇のあいだを回遊する構成として語っている。",
+      "facets": [
+        "ベルリン",
+        "公園",
+        "ドイツ語",
+        "世界の街"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "cca5dcaf3c61c453c36ab5c7b44649dec71e9348f1e0b6f22d2abd57ab1b2551",
+      "sourceHref": "/letters/brandenburg-gate"
     }
   ]
 }

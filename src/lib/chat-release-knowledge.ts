@@ -1,5 +1,6 @@
 import { getPublicLinksForCard } from "@/lib/work-links";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
+import { editorialSourceClass, getEditorialKnowledgeForWorkId, type EditorialSourceClass, type OwnerIntentStatus } from "@/lib/editorial-knowledge";
 import { tokyoYmd } from "@/lib/release-status";
 
 export type WorkMedium = "music" | "book" | "other";
@@ -26,6 +27,14 @@ export type KnowledgeEnvelope = {
   catalog: { tags: string[]; moodTags: string[]; moodSeeds: string[] };
   actions: KnowledgeAction[];
   evidence: { field: string; sourceType: "APPLE_PUBLIC_CATALOG" | "DISTRIBUTION_METADATA" | "MUSIAM_CATALOG"; stableIdentifier: string }[];
+  editorial: null | {
+    summaryJa: string | null;
+    ownerIntentSummaryJa: string | null;
+    facets: string[];
+    sourceClass: EditorialSourceClass;
+    ownerIntentStatus: OwnerIntentStatus;
+    sourceHref: string | null;
+  };
   interpretations: { status: "UNPOPULATED" };
   unknowns: string[];
   /** Reserved extension point. No audio analysis is produced by this Gate. */
@@ -66,6 +75,16 @@ export function mediumForWork(work: CatalogWork): WorkMedium {
 export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope | null {
   const workId = clean(work.id);
   if (!workId) return null;
+  const editorialRow = getEditorialKnowledgeForWorkId(workId);
+  const editorial = editorialRow ? {
+    summaryJa: clean(editorialRow.summaryJa),
+    ownerIntentSummaryJa: clean(editorialRow.ownerIntentSummaryJa),
+    facets: (editorialRow.facets ?? []).map(String).filter(Boolean),
+    sourceClass: editorialSourceClass(editorialRow),
+    ownerIntentStatus: editorialRow.ownerIntentStatus ?? "UNKNOWN" as const,
+    sourceHref: clean(editorialRow.sourceHref),
+  } : null;
+  const hasExplicitOwnerIntent = editorial?.ownerIntentStatus === "EXPLICIT" && !!editorial.ownerIntentSummaryJa;
   const distribution = work.distribution;
   const applePublicSource = distribution?.source === "apple-music";
   const primaryGenreSource = distribution?.primaryGenre
@@ -122,7 +141,9 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
     ...(!upc ? ["upc"] : []),
     ...(!Object.keys(identifiers).length ? ["releaseIdentifiers"] : []),
     ...(!actions.some((action) => action.kind === "listen") ? ["publicListenAction"] : []),
-    "instruments", "bpm", "vocalPresence", "lyrics", "lyricTheme", "productionIntent", "sonicTexture", "recordingLocation", "rights", "fullTrackAvailability",
+    ...(!editorial?.summaryJa ? ["editorialSummary"] : []),
+    ...(!hasExplicitOwnerIntent ? ["ownerProductionIntent"] : []),
+    "instruments", "bpm", "vocalPresence", "lyrics", "lyricTheme", "sonicTexture", "recordingLocation", "rights", "fullTrackAvailability",
   ];
 
   return {
@@ -151,6 +172,7 @@ export function buildWorkKnowledgeEnvelope(work: CatalogWork): KnowledgeEnvelope
     },
     actions,
     evidence,
+    editorial,
     interpretations: { status: "UNPOPULATED" },
     unknowns,
     audioAnalysis: null,
@@ -171,7 +193,15 @@ export function buildLunaEvidencePack(work: CatalogWork): string | null {
       catalogMetadata: envelope.catalog,
       actions: envelope.actions,
     },
-    interpretation: "Only infer a tentative relevance from the listed catalog metadata; never restate an inference as a fact.",
+    editorial: envelope.editorial,
+    editorialPolicy: {
+      ownerIntentMayBeAttributedToOwner: envelope.editorial?.ownerIntentStatus === "EXPLICIT" && !!envelope.editorial.ownerIntentSummaryJa,
+      editorialSummaryMayDescribeWork: !!envelope.editorial?.summaryJa,
+      nonExplicitOwnerIntentMustNotBeInvented: true,
+      curatorialInterpretationAllowedIfClearlyFramedAsInterpretation: true,
+      biographicalFabricationForbidden: true,
+    },
+    interpretation: "You may offer a compact curatorial reading, but clearly frame it as your reading and never restate it as owner biography, historical fact, lyrics, instruments, or production intent.",
     unknown: envelope.unknowns,
   });
 }
@@ -350,6 +380,14 @@ export function asksForLatestRelease(text: string): boolean {
 
 export function asksForUpcomingRelease(text: string): boolean {
   return /(?:次の新曲|次のリリース|近日(?:公開|リリース)|公開予定|配信予定|\b(?:upcoming|next|coming\s+soon)\s+(?:song|release|album)\b|\bwhat(?:'s| is)\s+coming\b|prochain(?:e)?\s+(?:morceau|sortie|album)|próxim[oa]\s+(?:canción|lanzamiento|álbum)|näch(?:ste|sten)\s+(?:lied|veröffentlichung|album)|الإصدار القادم|الأغنية القادمة)/i.test(text);
+}
+
+export function asksForWorkStory(text: string): boolean {
+  return /(?:どんな(?:曲|作品)|どういう(?:曲|作品)|テーマ|意味|何を描|何を表現|制作背景|作った理由|なぜ.{0,10}作|なんで.{0,10}作|どうして.{0,10}作|この曲について|この作品について|\b(?:what is this song about|what is this work about|what does .* mean|why did .* make|why was .* made|story behind|meaning|theme)\b|de quoi parle|pourquoi .* créé|signifie|de qué trata|por qué .* hizo|bedeutet|warum .* gemacht|worum geht|عن ماذا|لماذا.*صنع|معنى)/i.test(text);
+}
+
+export function asksForTechnicalSonicDetails(text: string): boolean {
+  return /(?:どんな音|どんな楽器|何の楽器|楽器.*(?:入|使)|歌詞|BPM|テンポ|ボーカル|歌って|ピアノ|ギター|ドラム|音色|ミックス|マスタリング|\b(?:what does it sound like|what instruments|lyrics|bpm|tempo|vocals?|piano|guitar|drums?|mix|mastering)\b|quels instruments|paroles|tempo|suena|instrumentos|letra|instrumente|liedtext|klingt|آلات موسيقية|كلمات الأغنية)/i.test(text);
 }
 
 export function asksForSonicDetails(text: string): boolean {

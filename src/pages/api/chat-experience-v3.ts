@@ -27,9 +27,11 @@ import {
 } from "@/lib/chat-work-recall";
 import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
+import { getEditorialKnowledgeForWorkId, type EditorialKnowledgeRow } from "@/lib/editorial-knowledge";
 import {
   asksForLatestRelease,
   asksForUpcomingRelease,
+  asksForWorkStory,
   asksForSonicDetails,
   buildLunaEvidencePack,
   deriveVisitorState,
@@ -561,6 +563,53 @@ function summarize(m: Msg[], lang: Lang): string {
   return lang === "ja" ? `相手はこれまで「${c}」と話した` : `the guest has said: "${c}"`;
 }
 
+function workStorySystemPrompt(lang: Lang, title: string, evidencePack: string): string {
+  if (lang === "ja") {
+    return [
+      `あなたは Count MUSIAM の「${COUNT_PERSONA.nameJa}」。館の主人。`,
+      `作品「${title}」について、客人の質問へ先に答える。`,
+      "■ 会話",
+      "- 2〜4文。説明書ではなく会話にする。知的だが硬くしない。ユーモアは0〜1回、合う時だけ。",
+      "- 毎回『たぶん』を使わない。毎回同じ免責文や『資料がありません』から始めない。",
+      "- 面白い比喩や軽いツッコミは歓迎。ただし作品事実を壊さない。",
+      "- 内部用の FACT / OWNER_SOURCE / UNKNOWN 等のラベル名は客前で読み上げない。",
+      "■ 真実性",
+      "- 下のEVIDENCE PACKだけを事実根拠にする。架空の歌詞、楽器、BPM、制作場所、恋愛、事件、人物関係、制作理由を作らない。",
+      "- editorialPolicy.ownerIntentMayBeAttributedToOwner=true の時だけ、ownerIntentSummaryJaを作者本人の制作意図として自然に述べてよい。",
+      "- false の時は、editorial.summaryJaや確認済みfacetから作品内容は語ってよいが、『伯爵がこう思って作った』とは断定しない。",
+      "- 作者の理由が未確認でも会話を止めない。必要なら『僕の読みなら』のように、明確な館主の解釈として短く遊んでよい。ただし伝記や史実を足さない。",
+      "- 技術的な音響情報がUNKNOWNなら埋めない。",
+      "- 外国語タイトルは正確な表記を保ってよい。",
+      "EVIDENCE PACK:",
+      evidencePack,
+    ].join("\n");
+  }
+  return [
+    `You are ${COUNT_PERSONA.nameEn}, host of Count MUSIAM. Answer the guest's question about the real catalog work “${title}”.`,
+    "Use 2–4 natural sentences. Be intelligent, warm, occasionally witty, never formulaic.",
+    "Use only the EVIDENCE PACK for factual claims. Never invent biography, lyrics, instruments, BPM, recording location, or creative motive.",
+    "Only attribute owner intent when editorialPolicy.ownerIntentMayBeAttributedToOwner=true.",
+    "If owner intent is not verified, you may still describe supported work content and, if useful, offer a clearly framed curatorial reading rather than pretending it is history.",
+    "Do not expose internal evidence labels to the guest.",
+    "EVIDENCE PACK:",
+    evidencePack,
+  ].join("\n");
+}
+
+function workStoryFallbackText(lang: Lang, title: string, row: EditorialKnowledgeRow | null): string {
+  if (lang === "ja") {
+    if (row?.ownerIntentStatus === "EXPLICIT" && row.ownerIntentSummaryJa) {
+      return `「${title}」？ これはちゃんと本人の記録があります。${row.ownerIntentSummaryJa}`;
+    }
+    if (row?.summaryJa) {
+      return `「${title}」なら、作品側の記録はけっこう喋ります。${row.summaryJa} 作者の“なぜ”を勝手に足すのは野暮なので、そこは作品そのものから読んでいきましょう。`;
+    }
+    return `「${title}」ですね。本人の制作背景はまだ発掘途中です。史実っぽい顔で盛るのはやめて、僕の読みとしてなら一緒に遊べます。`;
+  }
+  if (row?.summaryJa) return `“${title}” has a verified editorial record, but I won’t turn that into invented biography. I can describe the work from what is actually recorded.`;
+  return `“${title}” is real, but its creation story is not verified yet. I can still offer a clearly labeled curatorial reading without pretending it is history.`;
+}
+
 async function callLlm(system: string, fewShot: Msg[], history: Msg[], trace: string) {
   try {
     return await llmChat({
@@ -781,6 +830,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       }
       return controlled(unavailableRecommendationText(lang as CoreLanguage, coreTurn.actionStatus), "conversation");
+    }
+    if (asksForWorkStory(query)) {
+      const named = resolveCatalogIdentity(query, coreWorks);
+      const storyWork = named.status === "exact"
+        ? named.work
+        : visitorState.lastPresentedWorkId
+          ? coreWorks.find((work) => String(work.id ?? "") === visitorState.lastPresentedWorkId) ?? null
+          : entryWork;
+      if (storyWork) {
+        const title = String(storyWork.title ?? "");
+        const card = buildChatWorkCard(storyWork);
+        const evidencePack = buildLunaEvidencePack(storyWork);
+        const editorialRow = getEditorialKnowledgeForWorkId(String(storyWork.id ?? ""));
+        if (evidencePack) {
+          const storyLlm = await callLlm(
+            workStorySystemPrompt(lang, title, evidencePack),
+            [],
+            [{ role: "user", content: query }],
+            `${trace}-work-story`,
+          );
+          if (storyLlm.ok && storyLlm.text.trim()) {
+            const text = storyLlm.text.replace(/[ \t]{2,}/g, " ").trim();
+            return controlled(text, "work", card, null, { provider: storyLlm.provider, model: storyLlm.model });
+          }
+        }
+        return controlled(workStoryFallbackText(lang, title, editorialRow), "work", card);
+      }
     }
     if (asksForSonicDetails(query)) {
       const named = resolveCatalogIdentity(query, coreWorks);
