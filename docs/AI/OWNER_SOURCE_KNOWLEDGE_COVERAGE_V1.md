@@ -270,7 +270,22 @@ V1 NOT_EXPLICIT examples:
 
 ---
 
-## 6. Validation
+## 6. Work Story intent coverage
+
+Coverage V1 also extends the generic Work Story detector so creation-meaning questions do not fall back to ordinary recommendation.
+
+Covered examples include:
+
+- どんな曲？
+- テーマは？
+- なぜ作ったの？
+- 何を込めた曲？
+- どんな思いを込めたの？
+- この曲で何を伝えたいの？
+
+This is a general intent expansion, not an OMNI-specific branch.
+
+## 7. Validation
 
 Validator:
 
@@ -301,7 +316,7 @@ sourceLettersVerified=12
 
 ---
 
-## 7. Coverage ranking for autonomous continuation
+## 8. Coverage ranking for autonomous continuation
 
 Tool:
 
@@ -339,7 +354,7 @@ A large part of the remaining problem is **review throughput**.
 
 ---
 
-## 8. Live runtime coverage caveat
+## 9. Live runtime coverage caveat
 
 Current live Production has more works than the static 420-work deduped base because Apple overlay adds post-cutoff releases.
 
@@ -371,7 +386,7 @@ Do not upgrade generic jacket-generation prompts into owner intent.
 
 ---
 
-## 9. Latest-release mining result
+## 10. Latest-release mining result
 
 A targeted scan of recent Apple-only releases found that many recent titles are present in:
 
@@ -395,7 +410,7 @@ This protects MUSIAM from becoming confidently fictional about its newest works.
 
 ---
 
-## 10. Next-ranked works
+## 11. Next-ranked works
 
 After the first tranche, the ranking tool identifies future candidates such as:
 
@@ -424,7 +439,7 @@ Each next tranche must still read the source Letter and classify:
 
 ---
 
-## 11. What remains intentionally unknown
+## 12. What remains intentionally unknown
 
 Coverage V1 does not fill:
 
@@ -443,7 +458,7 @@ Count Chat may use clearly framed curatorial interpretation without turning it i
 
 ---
 
-## 12. Autonomous loop after V1
+## 13. Autonomous loop after V1
 
 Future `次` execution can use:
 
@@ -465,7 +480,7 @@ This allows coverage to increase without manually choosing every song.
 
 ---
 
-## 13. V1 target
+## 14. V1 target
 
 Production target for this Gate:
 

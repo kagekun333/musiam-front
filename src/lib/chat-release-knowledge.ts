@@ -383,7 +383,7 @@ export function asksForUpcomingRelease(text: string): boolean {
 }
 
 export function asksForWorkStory(text: string): boolean {
-  return /(?:どんな(?:曲|作品)|どういう(?:曲|作品)|テーマ|意味|何を描|何を表現|制作背景|作った理由|なぜ.{0,10}作|なんで.{0,10}作|どうして.{0,10}作|この曲について|この作品について|\b(?:what is this song about|what is this work about|what does .* mean|why did .* make|why was .* made|story behind|meaning|theme)\b|de quoi parle|pourquoi .* créé|signifie|de qué trata|por qué .* hizo|bedeutet|warum .* gemacht|worum geht|عن ماذا|لماذا.*صنع|معنى)/i.test(text);
+  return /(?:どんな(?:曲|作品)|どういう(?:曲|作品)|テーマ|意味|何を描|何を表現|何を込め|なにを込め|何が込め|どんな(?:思い|想い|意図).{0,8}(?:込め|こめ)|何を伝え|何が伝え|制作背景|作った理由|なぜ.{0,10}作|なんで.{0,10}作|どうして.{0,10}作|この曲について|この作品について|\b(?:what is this song about|what is this work about|what does .* mean|what did .* put into|what was .* meant to convey|what is .* trying to say|why did .* make|why was .* made|story behind|meaning|theme)\b|de quoi parle|pourquoi .* créé|signifie|de qué trata|por qué .* hizo|bedeutet|warum .* gemacht|worum geht|عن ماذا|لماذا.*صنع|معنى)/i.test(text);
 }
 
 export function asksForTechnicalSonicDetails(text: string): boolean {
