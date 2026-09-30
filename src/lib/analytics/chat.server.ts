@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { GrowthEventSchema, type GrowthEvent } from "./schema";
 import { persistGrowthEvents } from "./store.server";
 
-type Sink = (events: GrowthEvent[]) => Promise<void>;
+type Sink = (events: GrowthEvent[]) => Promise<unknown>;
 
 const object = (value: unknown): Record<string, unknown> | null =>
   value !== null && typeof value === "object" && !Array.isArray(value)
