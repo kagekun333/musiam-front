@@ -19,6 +19,7 @@ ops/recovery/
 ops/product/
 ops/control-plane/
 scripts/control-plane/
+scripts/owner-source/
 ops/market-learning/daily-20260925/
 ops/market-learning/daily-20260925
 ops/market-learning/daily-20260926
