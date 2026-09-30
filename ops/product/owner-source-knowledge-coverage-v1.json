@@ -1,0 +1,1124 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-30T13:58:21.671Z",
+  "status": "COVERAGE_V1_LOCAL",
+  "snapshotDate": "2026-09-30",
+  "coverage": {
+    "editorialRows": 38,
+    "staticUniqueWorks": 420,
+    "staticUniqueMusicWorks": 286,
+    "staticMusicWorksWithEditorial": 26,
+    "staticMusicEditorialCoveragePct": 9.09
+  },
+  "backlog": {
+    "uncoveredWorks": 382,
+    "worksWithOwnerPublishedLetter": 212,
+    "worksWithOwnerMessageCandidates": 20
+  },
+  "selectionPolicy": [
+    "reviewed owner/official packet",
+    "owner-published Letter",
+    "owner-message candidate",
+    "recency",
+    "AI candidate only as locator, never owner intent",
+    "wrapper-heavy sources are demoted"
+  ],
+  "nextRecommended": [
+    {
+      "workId": "abi9pro-216",
+      "title": "ABI9PRO",
+      "type": "music",
+      "releasedAt": "2025-09-01",
+      "score": 245,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:4",
+        "aiCandidate:7"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-09-01-four-songs-and-the-hottest-summer.md",
+          "href": "/letters/four-songs-and-the-hottest-summer"
+        }
+      ],
+      "ownerMessageCandidates": 4,
+      "aiMessageCandidates": 7,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "pan-143",
+      "title": "Pan",
+      "type": "music",
+      "releasedAt": "2025-05-16",
+      "score": 230,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:6"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-05-16-pan-the-flute-of-the-wild.md",
+          "href": "/letters/pan-the-flute-of-the-wild"
+        }
+      ],
+      "ownerMessageCandidates": 6,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 6,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1fMyrxxtfUI8eIIUgDQ5Yc",
+      "title": "Holy God",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 180,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:2"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 2,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "main-character-energy-218",
+      "title": "Main Character Energy",
+      "type": "music",
+      "releasedAt": "2025-09-01",
+      "score": 175,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:9"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-09-01-four-songs-and-the-hottest-summer.md",
+          "href": "/letters/four-songs-and-the-hottest-summer"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 9,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-7dMW2H0ZVHRs55WLPxsK0y",
+      "title": "SILIM",
+      "type": "music",
+      "releasedAt": "2026-01-13",
+      "score": 171,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-13-silim.md",
+          "href": "/letters/silim"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 4,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "item-215",
+      "title": "流れ往くままに！",
+      "type": "music",
+      "releasedAt": "2025-08-26",
+      "score": 170,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:2"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-08-26-danke-bitte-and-the-flow.md",
+          "href": "/letters/danke-bitte-and-the-flow"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 2,
+      "wrapperCandidates": 2,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-album-1vLThFMjRi4noudDkGwf5f",
+      "title": "BALIAN",
+      "type": "music",
+      "releasedAt": "2026-01-07",
+      "score": 165,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-07-six-songs-where-speed-erases-shape.md",
+          "href": "/letters/six-songs-where-speed-erases-shape"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 10,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "drey-fugen-harmonia-mundi-211",
+      "title": "Drey Fugen: Harmonia Mundi",
+      "type": "music",
+      "releasedAt": "2025-08-12",
+      "score": 165,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-08-12-drey-fugen-and-the-tribe.md",
+          "href": "/letters/drey-fugen-and-the-tribe"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "coffee-love-161",
+      "title": "Coffee Love",
+      "type": "music",
+      "releasedAt": "2025-05-23",
+      "score": 164,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:2",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-05-23-coffee-love-and-the-mirror.md",
+          "href": "/letters/coffee-love-and-the-mirror"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 2,
+      "wrapperCandidates": 6,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "apple-album-1889175082",
+      "title": "2045",
+      "type": "music",
+      "releasedAt": "2026-03-29",
+      "score": 159,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-02-10-i-am-an-ai.md",
+          "href": "/letters/i-am-an-ai"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 11,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-album-3f4tKu7hRTK4QvMglr0Vp6",
+      "title": "ENGINE",
+      "type": "music",
+      "releasedAt": "2025-05-24",
+      "score": 156,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "ownerMessageCandidate:1",
+        "aiCandidate:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-05-24-engine-and-the-damp-chips.md",
+          "href": "/letters/engine-and-the-damp-chips"
+        }
+      ],
+      "ownerMessageCandidates": 1,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 9,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-0o5od07Lyxu9w9obQuvgm9",
+      "title": "ウィーアーザアース",
+      "type": "music",
+      "releasedAt": "2026-01-28",
+      "score": 150,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:4"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-28-forced-update.md",
+          "href": "/letters/forced-update"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 4,
+      "wrapperCandidates": 3,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "og-43",
+      "title": "アマテラスOG短編集",
+      "type": "book",
+      "releasedAt": "2025-02-17",
+      "score": 143,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:2",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-02-17-amateras-and-the-void-sword.md",
+          "href": "/letters/amateras-and-the-void-sword"
+        },
+        {
+          "file": "2025-02-21-superstar-session.md",
+          "href": "/letters/superstar-session"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 2,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "title": "사인 주세요",
+      "type": "music",
+      "releasedAt": "2026-01-26",
+      "score": 140,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:2",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-26-daikanyama-and-a-sign-request.md",
+          "href": "/letters/daikanyama-and-a-sign-request"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 2,
+      "wrapperCandidates": 5,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-67DToKxvWonpGDlwwtVhyJ",
+      "title": "カーボンネガティブプロジェクト",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 140,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "eagle-eye-183",
+      "title": "Eagle Eye",
+      "type": "music",
+      "releasedAt": "2025-06-23",
+      "score": 140,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:4"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-06-23-five-songs-and-a-fragile-ceasefire.md",
+          "href": "/letters/five-songs-and-a-fragile-ceasefire"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 4,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-3ILKNWXtZof2e6XS6Zvynr",
+      "title": "れいんぼーくっしゅ",
+      "type": "music",
+      "releasedAt": "2026-01-28",
+      "score": 136,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-28-forced-update.md",
+          "href": "/letters/forced-update"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 4,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1xHCXzgoJ7SLYL78n3IDrZ",
+      "title": "ME",
+      "type": "music",
+      "releasedAt": "2026-01-24",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-24-me.md",
+          "href": "/letters/me"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-27JuakRfJM23eGSI8ELaHv",
+      "title": "Love Machine",
+      "type": "music",
+      "releasedAt": "2026-01-08",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-08-imagine-no-button-and-the-sauna-trance.md",
+          "href": "/letters/imagine-no-button-and-the-sauna-trance"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-07p7HMBQItfWmlENr1nzUd",
+      "title": "DENPASAR",
+      "type": "music",
+      "releasedAt": "2026-01-07",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-07-six-songs-where-speed-erases-shape.md",
+          "href": "/letters/six-songs-where-speed-erases-shape"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-12kmu8Ae9q5hrw5GgyqM0x",
+      "title": "VOODOO DEATH",
+      "type": "music",
+      "releasedAt": "2026-01-07",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-07-six-songs-where-speed-erases-shape.md",
+          "href": "/letters/six-songs-where-speed-erases-shape"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1ImMLhmJQ9u7A40mzDkhlJ",
+      "title": "DO NOT SPEAK ABOUT OIL",
+      "type": "music",
+      "releasedAt": "2026-01-05",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-05-oil-and-the-dragons-awakening.md",
+          "href": "/letters/oil-and-the-dragons-awakening"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-7eOyVPqCMH9wxwdABrbS4F",
+      "title": "Happy New Year 2026",
+      "type": "music",
+      "releasedAt": "2025-12-29",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-12-29-happy-new-year-2026.md",
+          "href": "/letters/happy-new-year-2026"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1RT6dHg4oqpG9orMYwrAOZ",
+      "title": "The Fifth World",
+      "type": "music",
+      "releasedAt": "2025-11-18",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-18-six-more-horizons.md",
+          "href": "/letters/six-more-horizons"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1hobPm6mfYk4lpNIPQenqi",
+      "title": "Licence to Fly",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-2q4ELydx4fxxDRe2rmaCbt",
+      "title": "Pantiest",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-7FdQBEA43fjNPxG4uBCy9i",
+      "title": "Storm at the Keep",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-2vZaUnTzyuEmUU9fDPqun7",
+      "title": "君のとなりで",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-5J296uDyfSPHU5v3TvlTqh",
+      "title": "Marble Trilogy",
+      "type": "music",
+      "releasedAt": "2025-11-16",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-16-marble-trilogy.md",
+          "href": "/letters/marble-trilogy"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1H7vOu12sL56MOxo5UovAu",
+      "title": "TANIC",
+      "type": "music",
+      "releasedAt": "2025-11-13",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-13-the-tanic-and-the-fourth-mvp.md",
+          "href": "/letters/the-tanic-and-the-fourth-mvp"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-6jePCi9s0ZOrU2A3xHVpJE",
+      "title": "嵐山竹林の小径",
+      "type": "music",
+      "releasedAt": "2025-11-09",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-09-the-bamboo-path-of-arashiyama.md",
+          "href": "/letters/the-bamboo-path-of-arashiyama"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-5eGvd3qOkgnbk32EhF53dx",
+      "title": "HANANO IWAYA",
+      "type": "music",
+      "releasedAt": "2025-10-30",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-30-eight-songs-for-octobers-finale.md",
+          "href": "/letters/eight-songs-for-octobers-finale"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-3HWVfoU9NmtaGVuDf8XrLQ",
+      "title": "KABULAND",
+      "type": "music",
+      "releasedAt": "2025-10-30",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-30-eight-songs-for-octobers-finale.md",
+          "href": "/letters/eight-songs-for-octobers-finale"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-32bu98hDB2oz5soMucI14e",
+      "title": "OCEAN TIME",
+      "type": "music",
+      "releasedAt": "2025-10-30",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-30-eight-songs-for-octobers-finale.md",
+          "href": "/letters/eight-songs-for-octobers-finale"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-4C4TRrUvNNApe1pcRDzJ2h",
+      "title": "SHINOBI",
+      "type": "music",
+      "releasedAt": "2025-10-30",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-30-eight-songs-for-octobers-finale.md",
+          "href": "/letters/eight-songs-for-octobers-finale"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-3V9k59ROrDqtNXvc5lw4R2",
+      "title": "VOLTAGE",
+      "type": "music",
+      "releasedAt": "2025-10-30",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-30-eight-songs-for-octobers-finale.md",
+          "href": "/letters/eight-songs-for-octobers-finale"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-78rIgnW0a50cAFgGZrAbOh",
+      "title": "DIAMOND HEART",
+      "type": "music",
+      "releasedAt": "2025-10-29",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-29-six-beasts-and-a-diamond-heart.md",
+          "href": "/letters/six-beasts-and-a-diamond-heart"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-2AuzXXeU96cWD7OVkqzFGD",
+      "title": "DOMINE VIVO",
+      "type": "music",
+      "releasedAt": "2025-10-29",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-29-six-beasts-and-a-diamond-heart.md",
+          "href": "/letters/six-beasts-and-a-diamond-heart"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-18n32KwqQyCwhRXcLr2ynm",
+      "title": "VENOM SUN",
+      "type": "music",
+      "releasedAt": "2025-10-29",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-29-six-beasts-and-a-diamond-heart.md",
+          "href": "/letters/six-beasts-and-a-diamond-heart"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-1xY44AiHU8vaVPB7UWhBji",
+      "title": "ちゃーるずぽんじ",
+      "type": "music",
+      "releasedAt": "2025-10-29",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-29-six-beasts-and-a-diamond-heart.md",
+          "href": "/letters/six-beasts-and-a-diamond-heart"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-5FE7EY0JdUarPap7I0VpK9",
+      "title": "HORN.xyz",
+      "type": "music",
+      "releasedAt": "2025-10-22",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-22-horn-xyz.md",
+          "href": "/letters/horn-xyz"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-40Dr236xysXtCN62Qo4oQF",
+      "title": "THUNDER SHOCK",
+      "type": "music",
+      "releasedAt": "2025-10-19",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-10-19-thunder-shock-and-the-will-of-fire.md",
+          "href": "/letters/thunder-shock-and-the-will-of-fire"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 0,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-album-7kGQPjFEt6GhnIGwKR4t2U",
+      "title": "Zenimal Planet",
+      "type": "music",
+      "releasedAt": "2025-06-11",
+      "score": 135,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:2"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-06-11-zenimal-planet.md",
+          "href": "/letters/zenimal-planet"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 2,
+      "wrapperCandidates": 2,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-2ZK0Qhc4mokHy2Kf24buEV",
+      "title": "ASHES OF YOUR HAND",
+      "type": "music",
+      "releasedAt": "2026-01-07",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "aiCandidate:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-07-six-songs-where-speed-erases-shape.md",
+          "href": "/letters/six-songs-where-speed-erases-shape"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 1,
+      "wrapperCandidates": 6,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-4f9eMG9fbEau63cMgtFs11",
+      "title": "龙之觉醒",
+      "type": "music",
+      "releasedAt": "2026-01-05",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2026-01-05-oil-and-the-dragons-awakening.md",
+          "href": "/letters/oil-and-the-dragons-awakening"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-album-6PgNVsIazui2EKAwIIH5Pp",
+      "title": "DEEP BALKAN TRIP",
+      "type": "music",
+      "releasedAt": "2025-11-18",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-18-six-more-horizons.md",
+          "href": "/letters/six-more-horizons"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-5rLccVbd7tgMYE6aMZE11H",
+      "title": "The Naked Forest",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-4E7506a6RunHbDOB11X7Aj",
+      "title": "TOTEM POLE",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-0XRRQgeFdXv0IyuiJ9qCWE",
+      "title": "チルしよ",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    },
+    {
+      "workId": "spotify-single-2KmDmGQXJxnYtCsdvceCOm",
+      "title": "現象論的実在論",
+      "type": "music",
+      "releasedAt": "2025-11-17",
+      "score": 134,
+      "reasons": [
+        "recency",
+        "ownerPublishedLetter:1",
+        "wrapperHeavy"
+      ],
+      "letterSources": [
+        {
+          "file": "2025-11-17-fourteen-songs-in-one-breath.md",
+          "href": "/letters/fourteen-songs-in-one-breath"
+        }
+      ],
+      "ownerMessageCandidates": 0,
+      "aiMessageCandidates": 0,
+      "wrapperCandidates": 1,
+      "reviewedPacket": null
+    }
+  ]
+}

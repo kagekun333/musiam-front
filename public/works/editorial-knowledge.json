@@ -185,6 +185,400 @@
       "ownerIntentStatus": "NOT_EXPLICIT",
       "sourceFileHash": "cca5dcaf3c61c453c36ab5c7b44649dec71e9348f1e0b6f22d2abd57ab1b2551",
       "sourceHref": "/letters/brandenburg-gate"
+    },
+    {
+      "workId": "spotify-single-5bIfjfVK9QwHfu1NzNc94M",
+      "title": "ENA",
+      "summaryJa": "一年を通して意識してきたアフリカへの眼差しを、Mama Afrikaとともに具体的な作品へ結実させた二曲の一つ。",
+      "ownerIntentSummaryJa": "TICAD9やG20南アフリカを通じて一年間意識してきたアフリカへの眼差しを、ようやく具体的な作品として結実させた二曲の一つだと本人が書いている。",
+      "facets": [
+        "アフリカ",
+        "TICAD9",
+        "世界の音"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "052a6689dd97c14fe640769f36b129d5379d75da3cdb2b973d04b72df621b949",
+      "sourceHref": "/letters/ena-and-mama-afrika"
+    },
+    {
+      "workId": "spotify-single-60QCBTuEwNc380r2YtUO0f",
+      "title": "Mama Afrika",
+      "summaryJa": "アフリカ大陸そのものを母として讃える一曲。館の世界観に新しい地域の色を加える作品として紹介されている。",
+      "ownerIntentSummaryJa": "大陸そのものを母として讃えること、そして一年を通して意識してきたアフリカへの眼差しを具体的な作品へ結実させることを本人が記している。",
+      "facets": [
+        "アフリカ",
+        "母",
+        "TICAD9",
+        "世界の音"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "052a6689dd97c14fe640769f36b129d5379d75da3cdb2b973d04b72df621b949",
+      "sourceHref": "/letters/ena-and-mama-afrika"
+    },
+    {
+      "workId": "spotify-single-7s0xajVHIGgMYdwUuj48Cb",
+      "title": "FORCED UPDATE!",
+      "summaryJa": "望むと望まざるとに関わらず訪れる「強制アップデート」を扱い、日本語版『強制アップデート』と同じテーマを英語側から解釈した一曲。",
+      "ownerIntentSummaryJa": "準備が整っていなくても変化は容赦なく訪れるという「強制アップデート」のテーマを、日本語版と英語版の二つの解釈で作品化したと本人が書いている。",
+      "facets": [
+        "変化",
+        "適応",
+        "強制アップデート",
+        "英語版"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "f427a324e0c42a08f0bc52a072b3e5f3cd0adfa14163203c3dc33a7eaba97826",
+      "sourceHref": "/letters/forced-update"
+    },
+    {
+      "workId": "spotify-single-2ti9uIOu2JPOMMzUf41Snl",
+      "title": "強制アップデート",
+      "summaryJa": "望むと望まざるとに関わらず訪れる変化を扱い、英語版『FORCED UPDATE!』と同じテーマを日本語側から解釈した一曲。",
+      "ownerIntentSummaryJa": "準備が整っていなくても変化は容赦なく訪れるという「強制アップデート」のテーマを、日本語版と英語版の二つの解釈で作品化したと本人が書いている。",
+      "facets": [
+        "変化",
+        "適応",
+        "強制アップデート",
+        "日本語版"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "f427a324e0c42a08f0bc52a072b3e5f3cd0adfa14163203c3dc33a7eaba97826",
+      "sourceHref": "/letters/forced-update"
+    },
+    {
+      "workId": "spotify-single-5Upi5xvmOJeJy5Asmdvimp",
+      "title": "ABZU",
+      "summaryJa": "メソポタミア神話における原初の淡水という概念を入口に置いた一曲。EARTH OSと同日に、終わりと始まりが交差する文脈で紹介されている。",
+      "facets": [
+        "メソポタミア神話",
+        "原初の淡水",
+        "始まり"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "6c052a19cc1f1024c5129c116e4eb730755f4baa873d27e9ce68232e9706baf2",
+      "sourceHref": "/letters/a-badge-removed-a-house-dissolved"
+    },
+    {
+      "workId": "spotify-album-1NKoPWYQcHc64FtHt23vm8",
+      "title": "EARTH OS",
+      "summaryJa": "地球そのものを一つのシステムとして捉える発想の一曲。ABZUと同日に、終わりと始まりが交差する文脈で紹介されている。",
+      "facets": [
+        "地球",
+        "システム",
+        "始まり"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "6c052a19cc1f1024c5129c116e4eb730755f4baa873d27e9ce68232e9706baf2",
+      "sourceHref": "/letters/a-badge-removed-a-house-dissolved"
+    },
+    {
+      "workId": "spotify-single-0ol0erPK3VG7zT3lgjxU06",
+      "title": "DEMIURGOS",
+      "summaryJa": "プラトン哲学に由来する「世界を作る者」という概念を、遠い恒星HD 10700と並べた一曲。",
+      "ownerIntentSummaryJa": "神話的な創造者と無機質な符号で呼ばれる星を「二つの創造」として並べ、どちらにも人間の想像力が届かない領域への憧れを表したと本人が書いている。",
+      "facets": [
+        "プラトン",
+        "造物主",
+        "創造",
+        "想像力"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "a1f7244cdf9a1a359ff3079ba3af25078c35959e8713ce62978c05b6b71ce8dd",
+      "sourceHref": "/letters/demiurgos-and-a-distant-star"
+    },
+    {
+      "workId": "spotify-single-7pL3uJQ3s6iNS6dK8JTjtW",
+      "title": "HD 10700",
+      "summaryJa": "カタログ番号だけで呼ばれる遠い恒星を、神話的な造物主DEMIURGOSと並べた一曲。",
+      "ownerIntentSummaryJa": "神話的な創造者と無機質な符号で呼ばれる星を「二つの創造」として並べ、どちらにも人間の想像力が届かない領域への憧れを表したと本人が書いている。",
+      "facets": [
+        "恒星",
+        "創造",
+        "宇宙",
+        "想像力"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "a1f7244cdf9a1a359ff3079ba3af25078c35959e8713ce62978c05b6b71ce8dd",
+      "sourceHref": "/letters/demiurgos-and-a-distant-star"
+    },
+    {
+      "workId": "spotify-single-76dP6vCO6ZcRdITKr34znQ",
+      "title": "HIBIYA BRASS WALK",
+      "summaryJa": "日比谷を歩く個人的な散策という小さな視点から始まる一曲。",
+      "ownerIntentSummaryJa": "日本全体へ呼びかける『親愛なる日本の皆様』と規模は違っても、どちらも「誰かに届けたい」という同じ願いから生まれたと本人が書いている。",
+      "facets": [
+        "日比谷",
+        "散歩",
+        "真鍮",
+        "届ける"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "21366330b1cf214350f2254d7d06b1b35d02304979ce0d4745076e13ba0a010b",
+      "sourceHref": "/letters/a-brass-walk-and-a-dear-message"
+    },
+    {
+      "workId": "spotify-single-3BIOa6bVUntKFbZVC8n4Rs",
+      "title": "親愛なる日本の皆様",
+      "summaryJa": "日本全体への呼びかけという大きな視点を持つ一曲。タイトルの大きさに見合う誠実さを込める姿勢とともに紹介されている。",
+      "ownerIntentSummaryJa": "HIBIYA BRASS WALKと規模は違っても、どちらも「誰かに届けたい」という同じ願いから生まれたと本人が書いている。",
+      "facets": [
+        "日本",
+        "呼びかけ",
+        "誠実さ",
+        "届ける"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "21366330b1cf214350f2254d7d06b1b35d02304979ce0d4745076e13ba0a010b",
+      "sourceHref": "/letters/a-brass-walk-and-a-dear-message"
+    },
+    {
+      "workId": "spotify-single-0fLDjvSsCiMvK7l0Yqb7Pa",
+      "title": "Spirit River Rising",
+      "summaryJa": "川に宿る精霊を入口に、土地と霊性をめぐる三曲の一角として置かれた作品。",
+      "ownerIntentSummaryJa": "WORLD STRIKE Thirteen Tonguesと神奈備とともに、土地に宿る力を意識し、館という「場所」そのものへの敬意も込めた三曲だと本人が書いている。",
+      "facets": [
+        "川",
+        "精霊",
+        "土地",
+        "霊性"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "8237604c15a64b19154eedab53538629b382762b7ea83141eaf7a6380e2cbed8",
+      "sourceHref": "/letters/spirit-river-and-thirteen-tongues"
+    },
+    {
+      "workId": "spotify-single-18L8cZMCoYylC09TiZAi0z",
+      "workIds": [
+        "spotify-single-18L8cZMCoYylC09TiZAi0z",
+        "ssd-67976cd4-736a-482f-88319e9fe7361cf7"
+      ],
+      "title": "WORLD STRIKE Thirteen Tongues",
+      "summaryJa": "世界規模の声を入口に、土地と霊性をめぐる三曲の一角として置かれた作品。",
+      "ownerIntentSummaryJa": "Spirit River Risingと神奈備とともに、土地に宿る力を意識し、館という「場所」そのものへの敬意も込めた三曲だと本人が書いている。",
+      "facets": [
+        "多言語",
+        "世界",
+        "土地",
+        "霊性"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "8237604c15a64b19154eedab53538629b382762b7ea83141eaf7a6380e2cbed8",
+      "sourceHref": "/letters/spirit-river-and-thirteen-tongues"
+    },
+    {
+      "workId": "spotify-single-5esj0yCWW7PnK3YJRpGR4s",
+      "title": "神奈備",
+      "summaryJa": "神が宿るとされる山や森を指す古語を題に、土地そのものに神聖さが宿る自然観を扱う一曲。",
+      "ownerIntentSummaryJa": "Spirit River RisingとWORLD STRIKE Thirteen Tonguesとともに、土地に宿る力を意識し、館という「場所」そのものへの敬意も込めた三曲だと本人が書いている。",
+      "facets": [
+        "神奈備",
+        "神域",
+        "自然観",
+        "土地",
+        "霊性"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "8237604c15a64b19154eedab53538629b382762b7ea83141eaf7a6380e2cbed8",
+      "sourceHref": "/letters/spirit-river-and-thirteen-tongues"
+    },
+    {
+      "workId": "spotify-single-2Xb6klIRauA4zxhrddldUn",
+      "workIds": [
+        "spotify-single-2Xb6klIRauA4zxhrddldUn",
+        "ssd-2f4d480c-2f9d-4a53-86ee43c31f0b40f8"
+      ],
+      "title": "IMAGINE NO BUTTON",
+      "summaryJa": "ボタン一つの簡単解決に頼らない想像力の大切さを扱う一曲。",
+      "ownerIntentSummaryJa": "「簡単解決を許さない想像力の大切さ」を歌った曲だと本人が書いている。",
+      "facets": [
+        "想像力",
+        "簡単解決",
+        "思考"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "54ec309a49968fc1f09f4c1b3665e8eea9f5c88355c04690f20cc97d5292df8e",
+      "sourceHref": "/letters/imagine-no-button-and-the-sauna-trance"
+    },
+    {
+      "workId": "spotify-single-5JYgZgm324NPTCkiAyFjbb",
+      "workIds": [
+        "spotify-single-5JYgZgm324NPTCkiAyFjbb",
+        "ssd-765bf046-98fc-48ba-9cb98f7f74298ea4"
+      ],
+      "title": "サウナトランス ととのい",
+      "summaryJa": "言葉で説明しきれない「ととのい」の身体感覚を、リズムと音色の変化で追いかけた一曲。",
+      "ownerIntentSummaryJa": "言葉で説明しきれない身体感覚を、リズムと音色の変化で追いかけた作品だと本人が書いている。",
+      "facets": [
+        "サウナ",
+        "ととのい",
+        "身体感覚",
+        "リズム",
+        "音色"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "54ec309a49968fc1f09f4c1b3665e8eea9f5c88355c04690f20cc97d5292df8e",
+      "sourceHref": "/letters/imagine-no-button-and-the-sauna-trance"
+    },
+    {
+      "workId": "spotify-single-2PB3rZMx4luyCZUAaRtLMq",
+      "workIds": [
+        "spotify-single-2PB3rZMx4luyCZUAaRtLMq",
+        "ssd-660de799-d4f2-4ce3-90e5cd771706b080"
+      ],
+      "title": "ピース・イズ・エンジニアード",
+      "summaryJa": "「設計された平和」という理想状態を、自然に訪れる「ととのい」と対照的に置いた一曲。",
+      "facets": [
+        "平和",
+        "設計",
+        "理想状態"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "54ec309a49968fc1f09f4c1b3665e8eea9f5c88355c04690f20cc97d5292df8e",
+      "sourceHref": "/letters/imagine-no-button-and-the-sauna-trance"
+    },
+    {
+      "workId": "spotify-single-6njSivM1klHpaXooqKNwvS",
+      "title": "速度が形を消すとき",
+      "summaryJa": "速さの極限で輪郭が曖昧になる現象を扱う一曲。",
+      "ownerIntentSummaryJa": "速さの極限で輪郭が曖昧になる現象を音にしたと本人が書いている。",
+      "facets": [
+        "速度",
+        "輪郭",
+        "現象",
+        "科学"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "f95b79f0185a938544a3d94a84ab5e43afe5bcfe97fd6f7cda90bd0be146cdf4",
+      "sourceHref": "/letters/six-songs-where-speed-erases-shape"
+    },
+    {
+      "workId": "spotify-single-4tJO09k9mjc8y7I7gphaH1",
+      "title": "量子恋愛アルゴリズム",
+      "summaryJa": "確率的にしか定まらない恋愛感情を、量子的な比喩で扱う一曲。",
+      "ownerIntentSummaryJa": "確率的にしか定まらない恋愛感情を音にしたと本人が書いている。",
+      "facets": [
+        "量子",
+        "恋愛",
+        "確率",
+        "科学"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "f95b79f0185a938544a3d94a84ab5e43afe5bcfe97fd6f7cda90bd0be146cdf4",
+      "sourceHref": "/letters/six-songs-where-speed-erases-shape"
+    },
+    {
+      "workId": "spotify-single-6Hn0j6sf1GdH6vSnoQBEW0",
+      "title": "Truth Unbound",
+      "summaryJa": "真実が縛りから解き放たれる瞬間という、社会的な「自由」を描く一曲。",
+      "ownerIntentSummaryJa": "心上人と並べて、社会的な解放と個人的な解放という二つの「自由」を描いたと本人が書いている。",
+      "facets": [
+        "真実",
+        "自由",
+        "解放",
+        "社会"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "8a55176ce4d4d934a13494b714ad1acb74a4d77315cde26b3a7e567c14447c3f",
+      "sourceHref": "/letters/unbound-and-the-beloved"
+    },
+    {
+      "workId": "spotify-single-4akPulmmHphQJBEgk96Cx8",
+      "title": "心上人",
+      "summaryJa": "誰かを想う気持ちが抑制から解き放たれる瞬間という、個人的な「自由」を描く一曲。",
+      "ownerIntentSummaryJa": "Truth Unboundと並べて、社会的な解放と個人的な解放という二つの「自由」を描いたと本人が書いている。",
+      "facets": [
+        "恋愛",
+        "自由",
+        "解放",
+        "中国語"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "8a55176ce4d4d934a13494b714ad1acb74a4d77315cde26b3a7e567c14447c3f",
+      "sourceHref": "/letters/unbound-and-the-beloved"
+    },
+    {
+      "workId": "spotify-single-2kirIJ0L1WlgdEAlgrhw21",
+      "title": "OMNI",
+      "summaryJa": "「すべて」を意味する語を単独タイトルにし、音楽・書籍・ニュース・独白を飲み込む館の雑食性を象徴させた一曲。",
+      "ownerIntentSummaryJa": "「すべて」を意味する一語に、館があらゆる要素を受け入れてきた雑食性への自負を込めたと本人が書いている。",
+      "facets": [
+        "すべて",
+        "館",
+        "雑食性",
+        "多様性"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "cdbd2d0c2a3a3b6cff34cf0e20e23a1e6b71d524eab716508e63d6669c32eaf5",
+      "sourceHref": "/letters/omni"
+    },
+    {
+      "workId": "infinite-graves-168",
+      "title": "Infinite Graves",
+      "summaryJa": "墓標と死を扱い、同日に置かれた希望の曲との対極によって世界の両面を見せる一曲。",
+      "ownerIntentSummaryJa": "死を扱うInfinite Gravesと希望を扱う別曲を意図して同じ日に並べ、どちらか一方だけでは世界は嘘になると本人が書いている。",
+      "facets": [
+        "死",
+        "墓標",
+        "対極",
+        "希望"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "96bfae7d56b89b882e1e50689c351a7f506b044a5d5287dc767b0e7f440ca2c2",
+      "sourceHref": "/letters/infinite-graves-and-shine"
+    },
+    {
+      "workId": "back-me-130",
+      "title": "Back Me",
+      "summaryJa": "館の最初の二曲の一つ。聴く人の背中を叩くのではなく、そっと押す音として作られた。",
+      "ownerIntentSummaryJa": "制作時の呪文を「隣に立って、行っておいで、と言う音」とし、煽る音は捨て、背中は叩かずそっと押すものだと本人が書いている。",
+      "facets": [
+        "応援",
+        "背中を押す",
+        "最初の楽曲",
+        "制作裏話"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "16edcf76840f5c0b7499347de87a563e60e0435c8e9221832c20e3c3ae6411c0",
+      "sourceHref": "/letters/the-first-sound-back-me"
+    },
+    {
+      "workId": "spotify-album-2DMwcXtZzZaeazATCTW5Xx",
+      "title": "House in the World",
+      "summaryJa": "館の最初の二曲の一つ。この世界に自分の居場所を見つける音として紹介されている。",
+      "ownerIntentSummaryJa": "書物で世界観を築いた館が初めて音楽を持つ日に、Back Meとともに「挨拶状にふさわしい二曲」として置き、世界に自分の居場所を見つける音だと本人が書いている。",
+      "facets": [
+        "居場所",
+        "最初の楽曲",
+        "館",
+        "挨拶"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "16edcf76840f5c0b7499347de87a563e60e0435c8e9221832c20e3c3ae6411c0",
+      "sourceHref": "/letters/the-first-sound-back-me"
     }
   ]
 }
