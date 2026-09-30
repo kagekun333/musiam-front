@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "canonicalBranch": "recovery/musiam-clean-20260920",
+  "worktreeRoot": "/Users/kagekun/Desktop/MUSIAM_WORKTREES",
+  "mergeQueuePath": ".musiam/control-plane/merge-queue.json",
+  "laneStatePath": ".musiam/control-plane/lane.json",
+  "validationReceiptPath": ".musiam/control-plane/lane-validation.json",
+  "remotePublishPolicy": "ON_FIRST_MEANINGFUL_COMMIT",
+  "mergePolicy": "FF_ONLY_AFTER_REBASE_AND_VALIDATION",
+  "lanes": [
+    {
+      "id": "knowledge-v2",
+      "branch": "lane/knowledge-v2",
+      "preferredTool": "codex",
+      "purpose": "Owner Source knowledge coverage, Catalog Intelligence, Count Chat work understanding.",
+      "allowedPaths": [
+        "public/works/editorial-knowledge.json",
+        "public/works/catalog-foundation.manifest.json",
+        "public/works/work-intelligence.json",
+        "src/lib/editorial-knowledge.ts",
+        "src/lib/chat-release-knowledge.ts",
+        "src/lib/catalog-intelligence.ts",
+        "src/lib/exhibition-projection.ts",
+        "scripts/owner-source/",
+        "scripts/validate-owner-source-",
+        "scripts/validate-catalog-intelligence.ts",
+        "ops/product/owner-source-",
+        "docs/AI/OWNER_SOURCE_",
+        "docs/AI/CATALOG_INTELLIGENCE_"
+      ],
+      "sharedIntegrationPaths": [
+        "src/pages/api/chat-experience-v3.ts"
+      ]
+    },
+    {
+      "id": "analytics-spine",
+      "branch": "lane/analytics-spine",
+      "preferredTool": "codex",
+      "purpose": "Traffic, funnel, conversion, revenue and experiment instrumentation.",
+      "allowedPaths": [
+        "src/lib/analytics/",
+        "src/lib/posthog",
+        "src/app/api/analytics/",
+        "src/pages/api/analytics",
+        "scripts/analytics/",
+        "ops/product/analytics-",
+        "ops/product/growth-",
+        "docs/AI/GROWTH_",
+        "docs/AI/ANALYTICS_"
+      ],
+      "sharedIntegrationPaths": [
+        "src/pages/api/chat-experience-v3.ts",
+        "src/app/works/",
+        "src/pages/exhibition.tsx"
+      ]
+    },
+    {
+      "id": "media-os",
+      "branch": "lane/media-os",
+      "preferredTool": "work",
+      "purpose": "Letters, Intelligence Underground, SEO and social distribution operating system.",
+      "allowedPaths": [
+        "scripts/media/",
+        "ops/media/",
+        "ops/product/media-",
+        "docs/AI/MEDIA_",
+        "docs/AI/SOCIAL_",
+        "docs/AI/SEO_"
+      ],
+      "sharedIntegrationPaths": []
+    },
+    {
+      "id": "europe-opportunity",
+      "branch": "lane/europe-opportunity",
+      "preferredTool": "work",
+      "purpose": "Europe Finds, zero-inventory commerce, sourcing and opportunity scoring.",
+      "allowedPaths": [
+        "scripts/commerce/",
+        "ops/commerce/",
+        "ops/product/europe-",
+        "ops/product/commerce-",
+        "docs/AI/EUROPE_",
+        "docs/AI/COMMERCE_"
+      ],
+      "sharedIntegrationPaths": []
+    },
+    {
+      "id": "sales-arena",
+      "branch": "lane/sales-arena",
+      "preferredTool": "codex",
+      "purpose": "Sales Arena, conversation charm evaluation and Count Chat sales improvement.",
+      "allowedPaths": [
+        "src/lib/sales/",
+        "scripts/sales/",
+        "ops/product/sales-",
+        "docs/AI/SALES_",
+        "docs/AI/COUNT_CHAT_SALES_"
+      ],
+      "sharedIntegrationPaths": [
+        "src/pages/api/chat-experience-v3.ts"
+      ]
+    }
+  ]
+}

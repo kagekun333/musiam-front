@@ -25,5 +25,10 @@
     "ops/recovery/",
     "scripts/control-plane/",
     "scripts/owner-source/"
-  ]
+  ],
+  "parallel": {
+    "laneConfigPath": "ops/control-plane/parallel-lanes.json",
+    "worktreeRoot": "/Users/kagekun/Desktop/MUSIAM_WORKTREES",
+    "mergeQueuePath": ".musiam/control-plane/merge-queue.json"
+  }
 }
