@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "gate": "MUSIAM_CONTROL_PLANE_SOURCE_PARITY",
+  "date": "2026-09-30",
+  "verdict": "PASS_LOCAL_REMOTE_WITH_RECORDED_PRODUCTION_PARITY",
+  "local": {
+    "branch": "recovery/musiam-clean-20260920",
+    "head": "c4d4624c17cc284dde2a2bf4f31bd3d43f161787",
+    "trackedDirtyAllowed": [
+      "ops/continuous-operation/experiments.json",
+      "ops/continuous-operation/state.json"
+    ]
+  },
+  "remote": {
+    "name": "origin",
+    "branch": "recovery/musiam-clean-20260920",
+    "branchHead": "c4d4624c17cc284dde2a2bf4f31bd3d43f161787",
+    "upstream": "origin/recovery/musiam-clean-20260920",
+    "ahead": 0,
+    "behind": 0,
+    "mainHead": "5459425ca1251ef641f2a796eb266b37802c1fa7",
+    "mainRelation": "REMOTE_MAIN_IS_ANCESTOR_OF_CANONICAL_LOCAL"
+  },
+  "production": {
+    "deploymentId": "dpl_CZrmiXJdFNxQhYToG8NkjQKbWGDK",
+    "state": "READY",
+    "runtimeSourceCommit": "48c7781ecdaa170d354fed8b2c2e2cea96d093cb",
+    "manifestSha256": "631c6b32fcddaca0be9ee1429134b7ce6fb504e796f7e44fb1779694d238c531",
+    "runtimeDeltaFromLocal": 0,
+    "localAheadClasses": [
+      "DEPLOY_CONTROL",
+      "NON_RUNTIME"
+    ]
+  },
+  "controlPlane": {
+    "leaseSelfTest": "PASS",
+    "leaseConflictRejection": "PASS",
+    "sourceParityCheck": "PASS",
+    "driftClassification": "PASS",
+    "safeDeployPolicy": "ACTIVE",
+    "rollbackReceipt": "ACTIVE"
+  },
+  "nextGate": "CATALOG_INTELLIGENCE_GRAPH_V1"
+}
