@@ -27,6 +27,7 @@
     "ops/commerce/",
     "scripts/control-plane/",
     "scripts/media/",
+    "scripts/sales/",
     "scripts/commerce/",
     "scripts/owner-source/"
   ],
