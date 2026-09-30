@@ -322,7 +322,7 @@ function workRecommendationText(plan: Plan, lang: Lang): string | null {
   const action = cardActionText(card, lang);
   const reason = card.reason ?? (lang === "ja" ? "catalog の記録を手がかりに選びました。" : "I selected it from the catalog record.");
   const byLang: Record<Lang, string> = {
-    ja: `${reason}いまお渡しするのは「${title}」。下のカードから${action}。`,
+    ja: `${reason}「${title}」。下のカードから${action}。`,
     en: `${reason} I will offer "${title}" now. The card below lets you ${action}.`,
     fr: `${reason} Je vous propose « ${title} ». La carte ci-dessous permet de ${action}.`,
     es: `${reason} Te ofrezco « ${title} ». En la tarjeta de abajo puedes ${action}.`,

@@ -56,6 +56,8 @@ function byTitle(works: CatalogWork[], title: string): CatalogWork {
   assert.ok(german, "German-language discovery should return a real catalog work");
   assert.ok(["Danke&Bitte", "Görli Garden"].includes(String(german?.work.title)));
   assert.notEqual(String(german?.work.title), "BRANDENBURGER TOR");
+  assert.match(german!.reason, /^あります。/);
+  assert.doesNotMatch(german!.reason, /catalog metadata/i);
 
   const okinawa = selectOneRecommendation({
     works: music,
@@ -65,6 +67,8 @@ function byTitle(works: CatalogWork[], title: string): CatalogWork {
   });
   assert.ok(okinawa, "Okinawa discovery should return a real catalog work");
   assert.ok(scoreWorkIntelligenceQuery(okinawa!.work, "沖縄の曲ある？").score > 0);
+  assert.match(okinawa!.reason, /^あります。/);
+  assert.doesNotMatch(okinawa!.reason, /catalog metadata/i);
 
   const sameTitleWrongId: CatalogWork = {
     id: "fake-sesoko-id",

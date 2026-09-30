@@ -401,6 +401,17 @@ export function deriveChatCoreTurn(input: { messages: CoreMessage[]; language: C
   };
 }
 
+function naturalFacetReasonJa(reasons: string[]): string | null {
+  const facet = reasons.find((reason) => /^(?:言語|国|地域|場所|文化|テーマ|ビジュアル|時期|検索別名):/.test(reason));
+  if (!facet) return null;
+  const [kind, ...rest] = facet.split(":");
+  const label = rest.join(":").trim();
+  if (!label) return null;
+  if (kind === "言語") return `あります。${label}なら、まずこの一曲。`;
+  if (["国", "地域", "場所"].includes(kind)) return `あります。${label}で拾うなら、まずこの一曲。`;
+  return `あります。${label}を手がかりに、まずこれ。`;
+}
+
 export function selectOneRecommendation(input: {
   works: CatalogWork[];
   query: string;
@@ -426,12 +437,13 @@ export function selectOneRecommendation(input: {
   if (!links.length) return null;
   const phrase = currentPhrase(input.query);
   const selectedReasons = candidate.reasons.length ? candidate.reasons.join("と") : "現在の指定";
+  const facetReason = input.language === "ja" ? naturalFacetReasonJa(candidate.reasons) : null;
   const baseReason = input.language === "ja"
     ? `選んだ根拠は、catalog metadata にある${selectedReasons}です。`
     : "I selected it from the catalog metadata that matches the request.";
-  const reason = input.language === "ja" && phrase
+  const reason = facetReason ?? (input.language === "ja" && phrase
     ? `今の「${phrase}」というご希望を手がかりにしました。${baseReason}`
-    : baseReason;
+    : baseReason);
   return {
     work: candidate.work,
     reasons: candidate.reasons,
@@ -483,7 +495,7 @@ export function unavailableRecommendationText(language: CoreLanguage, actionStat
     ar: "لا أستطيع تحديد رابط عام موثّق لهذا الإجراء من هذه المحادثة.",
   };
   const noRecommendation: Record<CoreLanguage, string> = {
-    ja: "その条件に合う作品を、catalog の記録だけから確かに選べませんでした。架空の作品やリンクで埋めることはいたしません。",
+    ja: "今のcatalogでは、その条件を確実に言える作品をまだ拾えてません。適当に一曲で埋めるのはダサいので、ここは保留です。",
     en: "I cannot select a catalog-grounded work for that request without inventing one.",
     fr: "Je ne peux pas choisir une œuvre confirmée par le catalogue pour cette demande.",
     es: "No puedo seleccionar para esa solicitud una obra confirmada por el catálogo.",
