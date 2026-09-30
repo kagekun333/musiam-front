@@ -24,8 +24,10 @@
     "ops/product/",
     "ops/recovery/",
     "ops/media/",
+    "ops/commerce/",
     "scripts/control-plane/",
     "scripts/media/",
+    "scripts/commerce/",
     "scripts/owner-source/"
   ],
   "parallel": {
