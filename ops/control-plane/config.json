@@ -23,6 +23,7 @@
     "ops/control-plane/",
     "ops/product/",
     "ops/recovery/",
-    "scripts/control-plane/"
+    "scripts/control-plane/",
+    "scripts/owner-source/"
   ]
 }
