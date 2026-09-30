@@ -127,6 +127,7 @@ PASS evidence:
 - an included language is described as “contains that language” rather than falsely presented as a single-language work
 - response-language instructions such as 「日本語で答えて」 do not influence work-language recommendation
 - deterministic catalog copy preserves legitimate non-Japanese scripts; the LLM-only language sanitizer must not erase Korean/Chinese/Arabic work titles
+- work-medium classification is centralized in `chat-request-medium.ts`; `日本語` and `本日` must never be misread as book intent, while `聴けるもの` resolves to music
 
 ## Known limitation
 

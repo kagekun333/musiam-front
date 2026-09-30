@@ -15,6 +15,7 @@ import { loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
 import { loadLiveMergedWorksServer } from "@/lib/loadLiveMergedWorksServer";
 import { nextUpcomingRelease } from "@/lib/release-automation";
 import { buildChatWorkCard } from "@/lib/chat-work-card";
+import { requestedWorkMedium as desiredType, wantsCatalogWork as wantsWork } from "@/lib/chat-request-medium";
 import {
   buildRecallCatalogCandidates,
   buildRecallModelMessages,
@@ -148,9 +149,6 @@ function commercialIntent(t: string): Commercial {
 }
 
 // 3) 作品（音楽/本）を求めている
-function wantsWork(t: string) {
-  return /(おすすめ|一作|作品|選んで|探して|聴(?:きたい|いて|ける|く)|聞きたい|読みたい|本|音楽|曲|recommend|pick|find|listen|read|book|music|song|work|livre|roman|lire|morceau|chanson|musique|œuvre|canción|cancion|música|musica|obra|libro|lied|musik|werk|lesen|buch|أغنية|موسيقى|عمل|كتاب)/i.test(t);
-}
 function wantsCreativeText(t: string) {
   return /(川柳|俳句|短歌|詩|ポエム|ジョーク|冗談|小噺|なぞかけ|一句|一首|面白い.*(こと|話|文)|write (a )?(poem|joke|haiku)|funny (poem|joke))/i.test(t);
 }
@@ -159,12 +157,6 @@ export function wantsWorkFollowup(query: string, convo: string) {
   return /(よろしく|お願い|ください|出して|紹介して|どれ|リンク|url|聴かせて|聞かせて|読みたい|はい|うん|ぜひ|見てみたい|見てみる|見せて|見たい|聴きたい|please|yes|sure|which|link|url)/i.test(query)
     && (isChatInterestInvitation(convo) || /(おすすめ|一作|作品|聴|聞|読|本|音楽|曲|楽曲|recommend|pick|listen|read|book|music|song)/i.test(convo));
 }
-function desiredType(t: string): "book" | "music" | undefined {
-  if (/(本|読みたい|読む|読める|小説|book|read|novel|livre|roman|lire|libro|buch|lesen|كتاب|قراءة)/i.test(t)) return "book";
-  if (/(音楽|曲|一曲|音の景色|聴(?:きたい|いて|ける|く)|聞きたい|再生|music|song|track|soundscape|listen|hear|play|musique|chanson|morceau|canción|cancion|música|musica|lied|musik|أغنية|موسيقى)/i.test(t)) return "music";
-  return undefined;
-}
-
 // 4) 低単価商材の合図
 function productHint(t: string): Product | undefined {
   if (/(壁紙|wallpaper)/i.test(t)) return PRODUCTS.find((p) => p.id === "wallpaper");
