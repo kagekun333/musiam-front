@@ -76,3 +76,23 @@ Eight provider duplicate bindings were added only after matching the same stable
 - Eagle Eye → `spotify-single-75DrnUJQGstoPG5xEWXEbW`
 
 The V2 validator now proves that each alternate ID receives the reviewed Knowledge Envelope and Exhibition description while deferred candidates remain unbound.
+
+## Work Story completion guard
+
+Production smoke exposed one quality failure that was not a factual hallucination but was still unacceptable: a successful Luna response for `Holy God` ended mid-sentence at `館の世界を一望させ`.
+
+The Work Story route now validates response completion before presenting model prose to the visitor.
+
+- clearly complete prose is returned normally;
+- clearly truncated prose is rejected even when the provider returned `ok=true`;
+- the visitor receives the existing evidence-grounded deterministic fallback instead;
+- observability logs only `trace`, provider, model and response length; user text and generated story content are not copied into the warning log.
+
+The guard is generic across works and supports Japanese plus the existing supported response languages. It does not special-case `Holy God`.
+
+Regression examples:
+
+- `館の世界を一望させ` → incomplete
+- `館の世界を一望させる一曲ですね。` → complete
+- `This work brings the whole museum into` → incomplete
+- `This work brings the whole museum into view.` → complete

@@ -32,6 +32,7 @@ import {
   asksForLatestRelease,
   asksForUpcomingRelease,
   asksForWorkStory,
+  workStoryResponseLooksComplete,
   asksForSonicDetails,
   buildLunaEvidencePack,
   deriveVisitorState,
@@ -855,7 +856,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           );
           if (storyLlm.ok && storyLlm.text.trim()) {
             const text = storyLlm.text.replace(/[ \t]{2,}/g, " ").trim();
-            return controlled(text, "work", card, null, { provider: storyLlm.provider, model: storyLlm.model });
+            if (workStoryResponseLooksComplete(text, lang)) {
+              return controlled(text, "work", card, null, { provider: storyLlm.provider, model: storyLlm.model });
+            }
+            console.warn("COUNT_CHAT_WORK_STORY_INCOMPLETE_RESPONSE", {
+              trace: `${trace}-work-story`,
+              provider: storyLlm.provider,
+              model: storyLlm.model,
+              responseLength: text.length,
+            });
           }
         }
         return controlled(workStoryFallbackText(lang, title, editorialRow), "work", card);

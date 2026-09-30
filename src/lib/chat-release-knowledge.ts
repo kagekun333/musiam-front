@@ -386,6 +386,28 @@ export function asksForWorkStory(text: string): boolean {
   return /(?:どんな(?:曲|作品)|どういう(?:曲|作品)|テーマ|意味|何を描|何を表現|何を込め|なにを込め|何が込め|どんな(?:思い|想い|意図).{0,8}(?:込め|こめ)|何を伝え|何が伝え|制作背景|作った理由|なぜ.{0,10}作|なんで.{0,10}作|どうして.{0,10}作|この曲について|この作品について|\b(?:what is this song about|what is this work about|what does .* mean|what did .* put into|what was .* meant to convey|what is .* trying to say|why did .* make|why was .* made|story behind|meaning|theme)\b|de quoi parle|pourquoi .* créé|signifie|de qué trata|por qué .* hizo|bedeutet|warum .* gemacht|worum geht|عن ماذا|لماذا.*صنع|معنى)/i.test(text);
 }
 
+export function workStoryResponseLooksComplete(
+  text: string,
+  language: "ja" | "en" | "fr" | "es" | "de" | "ar",
+): boolean {
+  const value = String(text ?? "").normalize("NFKC").trim();
+  if (value.length < 12) return false;
+
+  // A model can return ok=true even when its generated sentence is cut off.
+  // Work Story responses are prose, so terminal punctuation is the strongest
+  // language-independent completion signal.
+  if (/[。！？!?…．.」』”’›»)]$/u.test(value)) return true;
+
+  if (language === "ja") {
+    // Allow natural chat endings that sometimes omit final punctuation while
+    // rejecting connective/conjugation stems such as 「一望させ」.
+    if (/(?:です|ます|でした|ました|ません|ですね|ですよ|でしょう|でしょうね|だね|だよ|なんだ|なのです|のです|かもしれない|かもしれません|と思います|と考えます|に見えます|だろう)$/u.test(value)) return true;
+    if (/(?:させ|して|し|で|が|を|に|へ|と|ながら|けれど|けど|ので|から|なら|たり|つつ|として|という)$/u.test(value)) return false;
+  }
+
+  return false;
+}
+
 export function asksForTechnicalSonicDetails(text: string): boolean {
   return /(?:どんな音|どんな楽器|何の楽器|楽器.*(?:入|使)|歌詞|BPM|テンポ|ボーカル|歌って|ピアノ|ギター|ドラム|音色|ミックス|マスタリング|\b(?:what does it sound like|what instruments|lyrics|bpm|tempo|vocals?|piano|guitar|drums?|mix|mastering)\b|quels instruments|paroles|tempo|suena|instrumentos|letra|instrumente|liedtext|klingt|آلات موسيقية|كلمات الأغنية)/i.test(text);
 }
