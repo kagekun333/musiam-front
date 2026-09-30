@@ -3,27 +3,43 @@
   "recordedAt": "2026-09-30",
   "project": "musiam-front",
   "productionDomain": "hakusyaku.xyz",
-  "productionDeploymentId": "dpl_CZrmiXJdFNxQhYToG8NkjQKbWGDK",
-  "productionDeploymentUrl": "musiam-front-35zn2tp4g-hakusyakus-projects.vercel.app",
+  "productionDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
+  "productionDeploymentUrl": "musiam-front-gxyc0sstu-hakusyakus-projects.vercel.app",
   "productionState": "READY",
-  "runtimeSourceCommit": "48c7781ecdaa170d354fed8b2c2e2cea96d093cb",
-  "previewDeploymentId": "dpl_DR9Wg1LyZmUZ79Hoiko5mJChdTic",
-  "previewDeploymentUrl": "musiam-front-atnbsbn1u-hakusyakus-projects.vercel.app",
-  "deployManifestSha256": "631c6b32fcddaca0be9ee1429134b7ce6fb504e796f7e44fb1779694d238c531",
-  "previousProductionDeploymentId": "dpl_CenUx7stAdHVDKTKAPuVg87dmLk1",
+  "runtimeSourceCommit": "495ded9a8cd756d136a58399150f52cf30f24a07",
+  "previewDeploymentId": "dpl_BaHAL9n7Z3grjqcFahpok4qAk53D",
+  "previewDeploymentUrl": "musiam-front-huh0f119k-hakusyakus-projects.vercel.app",
+  "deployManifestSha256": "6360617c986c2c73f616406d965e78dee627a7e5a37b565dc58f7ece2c1060d2",
+  "previousProductionDeploymentId": "dpl_CZrmiXJdFNxQhYToG8NkjQKbWGDK",
   "rollbackCandidateAvailable": true,
   "verifiedRoutes": {
     "/works": 200,
-    "/works/apple-album-6808806776": 200,
-    "/api/chat-experience-v3:sesoko-recall": 200,
-    "/api/chat-experience-v3:natural-title": 200
+    "/api/chat-experience-v3:okinawa": 200,
+    "/api/chat-experience-v3:german-language": 200,
+    "/api/chat-experience-v3:french-language": 200,
+    "/api/chat-experience-v3:korean-language": 200,
+    "/api/chat-experience-v3:music-medium-japanese-output": 200,
+    "/api/chat-experience-v3:unsupported-language": 200
+  },
+  "businessInvariants": {
+    "worksUniqueCountVisible": 488,
+    "latestWorkVisible": "Sun Without a Map",
+    "okinawaRecommendation": "Sesoko Island",
+    "germanRecommendation": "Görli Garden",
+    "frenchRecommendation": "WORLD STRIKE Thirteen Tongues",
+    "koreanRecommendation": "하늘 위로",
+    "musicMediumClassifier": "PASS",
+    "unsupportedLanguageDoesNotInvent": true,
+    "languageCoverageValidated": 16
   },
   "productionChecks": {
     "errorFatalCount": 0,
     "status5xxCount": 0
   },
   "notes": [
-    "Runtime source commit is the last application-code commit included in the deployed safe source.",
-    "Later local commits may be non-runtime documentation/control-plane changes and must be classified by drift-check rather than assumed deployed."
+    "Catalog Intelligence is discovery metadata only and never a stable identity merge key.",
+    "Language facets distinguish primary, mixed, included and instrumental scope where known.",
+    "Deterministic catalog copy preserves legitimate non-Japanese scripts.",
+    "Work-medium classification is centralized to avoid substring errors such as 日本語 being misread as book intent."
   ]
 }

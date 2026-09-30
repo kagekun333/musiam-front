@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "gate": "CATALOG_INTELLIGENCE_GRAPH_V1",
+  "date": "2026-09-30",
+  "verdict": "PASS_PRODUCTION",
+  "runtimeSourceCommit": "495ded9a8cd756d136a58399150f52cf30f24a07",
+  "previewDeploymentId": "dpl_BaHAL9n7Z3grjqcFahpok4qAk53D",
+  "productionDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
+  "deployManifestSha256": "6360617c986c2c73f616406d965e78dee627a7e5a37b565dc58f7ece2c1060d2",
+  "intelligenceRecordCount": 22,
+  "languageCoverageValidated": 16,
+  "geographyCoverage": {
+    "okinawaSeedWorks": 7,
+    "germanyBerlinSeedWorks": 3
+  },
+  "productionSmoke": {
+    "worksPage": "PASS",
+    "okinawa": "PASS",
+    "germanLanguage": "PASS",
+    "frenchIncludedLanguage": "PASS",
+    "koreanScriptPreserved": "PASS",
+    "musicMediumJapaneseOutput": "PASS",
+    "unsupportedLanguageNoHallucination": "PASS",
+    "errorFatalCount": 0,
+    "status5xxCount": 0
+  },
+  "safety": {
+    "titleOnlyIdentityMerge": 0,
+    "catalogExternalWorkInvented": 0,
+    "protectedPayload": 0,
+    "humanDirtyPayload": 0,
+    "envPayload": 0,
+    "secretPrivatePayload": 0
+  },
+  "nextGate": "OWNER_SOURCE_CORPUS_PROBE"
+}
