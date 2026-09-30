@@ -1,13 +1,10 @@
 # Media OS MVP validation — 2026-09-30
 
-- Branch/base observed: `lane/media-os` / `6b69804cd988661133158169c1457cede4c3813a`.
-- Python contract: `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/media -p 'test_*.py'` PASS, 17 tests. Coverage includes deterministic output, source hash and frontmatter binding, evidence kind/locator/provenance, DRAFT-only behavior, invalid input types, distinct channel purposes, path traversal, noncanonical paths, and symlink rejection.
-- Python artifact: `PYTHONDONTWRITEBYTECODE=1 python3 scripts/media/pipeline.py ops/media/sources/human-role-selection-v1.json --check` PASS. JSON and review Markdown match deterministic compilation and source bytes.
-- Node prototype: `node scripts/media/test.mjs` PASS; 15 invalid recipes rejected, deterministic compile confirmed, and absolute, dot, control-character, traversal and symlink paths rejected. Temporary symlink fixture was removed.
-- Node artifact: `node scripts/media/validate.mjs` PASS. `node scripts/media/build.mjs` PASS; existing eight-channel DRAFT output matched and remained unchanged.
-- Syntax: `node --check` passed on all four `.mjs` files; `python3 -m py_compile scripts/media/pipeline.py scripts/media/test_pipeline.py` passed. Generated `__pycache__` files were removed.
-- `git diff --check` and staged whitespace validation are run immediately before commit.
+- Branch: `lane/media-os`; merge-review base: `674532aca5c594dff181a087ba028e9bde0a8c20`.
+- Canonical V1 implementation: `scripts/media/pipeline.py` with `scripts/media/test_pipeline.py`.
+- Contract parity: `ops/media/source.schema.json` describes the Python recipe shape; the compiler remains the semantic authority for source-byte, provenance, line-locator, CTA-route, cross-channel, and DRAFT-only checks.
+- Merge review removed the independent Node prototype and its `museum-not-label` prototype artifacts. They remain recoverable from Git history but are not a second V1 contract.
+- Publication authority remains **DISABLED**. All generated channel outputs remain `DRAFT / UNREVIEWED`; queue rows are non-executable.
+- No source Letter, application runtime, package dependency, credentials, production state, account, publication, push, or deployment is modified by this lane.
 
-The Python implementation is the documented MVP contract. The lane also contains an independent Node prototype with a separate recipe schema and `museum-not-label` sample; it was validated but is not called by the Python entrypoint. Merge-queue review should confirm the supported entrypoint/schema and decide whether to consolidate these two implementations.
-
-All channel drafts and queues remain DRAFT / UNREVIEWED; publication is DISABLED and queue rows are non-executable. Source and route checks are local evidence only. No source content, site code, package dependencies, or production state changed. Editorial approval, semantic accuracy review, public delivery, demand, and revenue remain unverified. No network, account, publishing, deployment, push, or external mutation was used.
+Post-consolidation validation: Python unit suite **18/18 PASS**; deterministic recipe/package check **PASS**; Python syntax compilation **PASS**; `git diff --check` **PASS**. The Control Plane reruns the canonical test command at the committed lane HEAD before queueing. Technical PASS does not imply editorial approval, public delivery, demand, conversion, or revenue evidence.

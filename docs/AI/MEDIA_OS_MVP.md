@@ -21,7 +21,7 @@ python3 scripts/media/pipeline.py ops/media/sources/human-role-selection-v1.json
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/media -p 'test_*.py'
 ```
 
-This Python interface is the documented MVP contract. A separate Node prototype, with a different recipe schema and the `museum-not-label` sample, is also present in this lane and remains independently validated. Both emit DRAFT-only artifacts. The implementations are not wired together; merge-queue review should confirm the supported entrypoint and schema before consolidation.
+The Python interface is the canonical V1 contract. `ops/media/source.schema.json` now describes the same recipe shape. The compiler remains the semantic authority for checks that JSON Schema alone cannot prove, including source-byte hashes, Letter frontmatter parity, exact evidence excerpts and line locators, authority/kind compatibility, CTA source relevance, route existence, cross-channel prose reuse, and DRAFT-only publication boundaries. The earlier parallel Node prototype and its sample artifacts were removed during merge review so V1 has one executable contract.
 
 Generate command intentionally fails if the package directory exists. To create another package, author a new recipe with a new id; never overwrite an approved/reviewed candidate. --check is read-only.
 

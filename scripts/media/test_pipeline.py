@@ -1,8 +1,9 @@
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
-from pipeline import ROOT, compile_recipe, confined, load_recipe, render
+from pipeline import CHANNELS, ROOT, compile_recipe, confined, load_recipe, render
 
 
 class PipelineTests(unittest.TestCase):
@@ -76,6 +77,13 @@ class PipelineTests(unittest.TestCase):
             relative = link.relative_to(ROOT).as_posix() + '/recipe.json'
             with self.assertRaisesRegex(ValueError, 'symlink forbidden'):
                 confined(relative, 'ops/media')
+
+    def test_schema_matches_compiler_contract(self):
+        schema = json.loads((ROOT / 'ops/media/source.schema.json').read_text(encoding='utf-8'))
+        self.assertEqual(set(schema['required']), {'schema_version', 'id', 'source', 'evidence', 'channels', 'cta'})
+        self.assertEqual(set(schema['properties']['channels']['required']), set(CHANNELS))
+        self.assertFalse(schema['additionalProperties'])
+        self.assertFalse(schema['properties']['channels']['additionalProperties'])
 
     def test_draft_only(self):
         p = compile_recipe(self.r)
