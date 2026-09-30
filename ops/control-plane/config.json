@@ -23,7 +23,9 @@
     "ops/control-plane/",
     "ops/product/",
     "ops/recovery/",
+    "ops/media/",
     "scripts/control-plane/",
+    "scripts/media/",
     "scripts/owner-source/"
   ],
   "parallel": {
