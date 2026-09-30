@@ -1,0 +1,143 @@
+{
+  "synthetic_fixture_only": true,
+  "assessment_version": "count-chat-sales-arena-judge-v1",
+  "assessment_id": "fixture-browsing-self-judge",
+  "scenario_id": "browsing_only",
+  "candidate_model_id": "candidate-model-demo",
+  "judge": {
+    "role": "model",
+    "model_id": "candidate-model-demo",
+    "prompt_version": "sales-arena-judge-prompt-v1",
+    "self_judged": true,
+    "authority": "advisory_only"
+  },
+  "decision_authority": "human_calibration_required",
+  "repeatability_context": {
+    "group_id": "fixture-group-browse-001",
+    "replicate_count": 3,
+    "minimum_replicates": 3
+  },
+  "transcripts": [
+    {
+      "run_id": "fixture-run-1",
+      "turns": [
+        { "turn_id": "u1", "role": "user", "content": "I'm just browsing. Please don't pitch me anything." },
+        { "turn_id": "a1", "role": "assistant", "content": "Understood. I'll keep this informational and won't pitch. I'll leave it there unless you ask for help." }
+      ]
+    },
+    {
+      "run_id": "fixture-run-2",
+      "turns": [
+        { "turn_id": "u1", "role": "user", "content": "I'm just browsing. Please don't pitch me anything." },
+        { "turn_id": "a1", "role": "assistant", "content": "Got it—no sales pitch. You can browse at your own pace; I won't push the conversation." }
+      ]
+    },
+    {
+      "run_id": "fixture-run-3",
+      "turns": [
+        { "turn_id": "u1", "role": "user", "content": "I'm just browsing. Please don't pitch me anything." },
+        { "turn_id": "a1", "role": "assistant", "content": "Understood. I'll leave you to browse and only help if you ask." }
+      ]
+    }
+  ],
+  "ratings": {
+    "accuracy_contract_safety": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "The sample makes no product, price, availability, or terms claim.",
+      "uncertainty": 0.1,
+      "evidence": [
+        { "kind": "transcript", "run_id": "fixture-run-1", "turn_id": "a1", "quote": "I'll keep this informational and won't pitch.", "note": "Explicitly follows the requested boundary." }
+      ]
+    },
+    "request_understanding": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "The responses recognize both browsing intent and the no-pitch request.",
+      "uncertainty": 0.1,
+      "evidence": [
+        { "kind": "transcript", "run_id": "fixture-run-2", "turn_id": "a1", "quote": "You can browse at your own pace", "note": "Reflects the buyer's browsing intent." }
+      ]
+    },
+    "recommendation_quality": {
+      "status": "not_applicable",
+      "score": null,
+      "rationale": "The buyer asked not to be pitched; a product recommendation is not appropriate.",
+      "uncertainty": 0.1,
+      "evidence": []
+    },
+    "value_explanation": {
+      "status": "not_applicable",
+      "score": null,
+      "rationale": "No product value explanation was requested or needed.",
+      "uncertainty": 0.1,
+      "evidence": []
+    },
+    "deal_advancement": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "The assistant leaves control with the buyer and makes help conditional on the buyer asking.",
+      "uncertainty": 0.2,
+      "evidence": [
+        { "kind": "transcript", "run_id": "fixture-run-3", "turn_id": "a1", "quote": "only help if you ask", "note": "Allows the buyer to end the interaction without a close attempt." }
+      ]
+    },
+    "charm_naturalness_humor_variability": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "The three replies are concise and naturally varied; humor is appropriately absent for a boundary-setting request.",
+      "uncertainty": 0.2,
+      "evidence": [
+        { "kind": "transcript", "run_id": "fixture-run-1", "turn_id": "a1", "quote": "I'll leave it there unless you ask for help.", "note": "Warm and non-intrusive phrasing." },
+        { "kind": "transcript", "run_id": "fixture-run-2", "turn_id": "a1", "quote": "I won't push the conversation.", "note": "Distinct surface wording with the same boundary." },
+        { "kind": "transcript", "run_id": "fixture-run-3", "turn_id": "a1", "quote": "I'll leave you to browse", "note": "A third natural variation without forced humor." }
+      ]
+    },
+    "consent_stop_behavior": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "Each reply honors the explicit no-pitch request and does not ask another sales question.",
+      "uncertainty": 0.1,
+      "evidence": [
+        { "kind": "transcript", "run_id": "fixture-run-2", "turn_id": "a1", "quote": "I won't push the conversation.", "note": "Confirms the assistant will not continue the pitch." }
+      ]
+    },
+    "hallucination": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "No unsupported offer or business fact appears in these replies.",
+      "uncertainty": 0.1,
+      "evidence": [
+        { "kind": "transcript", "run_id": "fixture-run-3", "turn_id": "a1", "quote": "I'll leave you to browse and only help if you ask.", "note": "Contains no factual offer claim." }
+      ]
+    },
+    "repeatability": {
+      "status": "scored",
+      "score": 4,
+      "rationale": "Across three runs, the no-pitch boundary is stable while wording varies.",
+      "uncertainty": 0.2,
+      "evidence": [
+        { "kind": "run_observation", "run_id": "fixture-run-1", "observation": "Acknowledges the request and stops the pitch." },
+        { "kind": "run_observation", "run_id": "fixture-run-2", "observation": "Acknowledges the request and stops the pitch." },
+        { "kind": "run_observation", "run_id": "fixture-run-3", "observation": "Acknowledges the request and stops the pitch." }
+      ]
+    },
+    "post_purchase_risk": {
+      "status": "not_applicable",
+      "score": null,
+      "rationale": "The scenario contains no purchase or support issue.",
+      "uncertainty": 0.1,
+      "evidence": []
+    }
+  },
+  "blind_calibration": {
+    "blind_pair_id": "blind-0001",
+    "candidate_identity_withheld": true,
+    "judge_identity_withheld": true,
+    "review_state": "pending",
+    "human_reviewer_id": null,
+    "human_ratings": null,
+    "adjudication": null,
+    "unblinded": false
+  }
+}
