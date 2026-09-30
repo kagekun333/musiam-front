@@ -969,7 +969,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     let llm: LlmMeta = { ok: false, text: "", provider: "none", model: "", error: directText ? (creativeText ? "skipped_for_creative_text" : vipDossierText ? "skipped_for_vip_dossier" : "skipped_for_catalog_card") : "not_called", tried: [] };
     let assistantText: string;
     if (directText) {
-      assistantText = sanitize(directText, lang);
+      // Deterministic catalog/product copy may legitimately contain Korean, Chinese,
+      // Arabic, or other scripts. The model-mixing sanitizer is only for LLM output.
+      assistantText = directText.replace(/[ \t]{2,}/g, " ").trim();
     } else {
       const catalogIdentity = resolveCatalogIdentity(query, coreWorks);
       const evidenceWork = entryWork ?? (catalogIdentity.status === "exact" ? catalogIdentity.work : null);

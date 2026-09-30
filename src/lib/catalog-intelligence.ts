@@ -120,7 +120,7 @@ function languageAliasMatches(query: string, token: string): boolean {
       || new RegExp(`${escaped}(?:で|を)(?:歌|書|話)`, "u").test(query);
   }
   const forward = new RegExp(`(?:^|[^a-z0-9])${escaped}(?:[- ]language)?(?:[^a-z0-9]+.{0,10})?(?:song|music|track|rap|work)(?:$|[^a-z0-9])`, "i");
-  const reverse = new RegExp(`(?:song|music|track|rap|work).{0,12}(?:in|with)?\s*${escaped}(?:$|[^a-z0-9])`, "i");
+  const reverse = new RegExp(`(?:song|music|track|rap|work).{0,12}(?:in|with)?[ ]*${escaped}(?:$|[^a-z0-9])`, "i");
   return forward.test(query) || reverse.test(query);
 }
 
