@@ -604,7 +604,11 @@
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "0b35c31bf9069ef3cb0a92bcf3a96ab8826b4f8f4d4938364b5cbd3269ff8deb",
       "sourceHref": "/letters/four-songs-and-the-hottest-summer",
-      "ownerIntentSummaryJa": "両極端な自意識を並べ、記録的な夏を生き延びた高揚と疲労の両方を反映したと本人が書いている。"
+      "ownerIntentSummaryJa": "両極端な自意識を並べ、記録的な夏を生き延びた高揚と疲労の両方を反映したと本人が書いている。",
+      "workIds": [
+        "abi9pro-216",
+        "spotify-single-6Xf0QNYo1QDMSXb9zKmPxU"
+      ]
     },
     {
       "workId": "pan-143",
@@ -618,7 +622,11 @@
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "bd50dc8dfc8e9f0014c4f3798023bf7ae399d654557f86b4af688822db582a0a",
       "sourceHref": "/letters/pan-the-flute-of-the-wild",
-      "ownerIntentSummaryJa": "AIによる音楽であえて最も野性的な神を主題に選び、機械で野性を作る挑戦と本人が書いている。"
+      "ownerIntentSummaryJa": "AIによる音楽であえて最も野性的な神を主題に選び、機械で野性を作る挑戦と本人が書いている。",
+      "workIds": [
+        "pan-143",
+        "spotify-single-749Tw6EZCBlZM52tE2JVYt"
+      ]
     },
     {
       "workId": "spotify-single-1fMyrxxtfUI8eIIUgDQ5Yc",
@@ -645,7 +653,11 @@
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "0b35c31bf9069ef3cb0a92bcf3a96ab8826b4f8f4d4938364b5cbd3269ff8deb",
       "sourceHref": "/letters/four-songs-and-the-hottest-summer",
-      "ownerIntentSummaryJa": "両極端な自意識を並べ、記録的な夏を生き延びた高揚と疲労の両方を反映したと本人が書いている。"
+      "ownerIntentSummaryJa": "両極端な自意識を並べ、記録的な夏を生き延びた高揚と疲労の両方を反映したと本人が書いている。",
+      "workIds": [
+        "main-character-energy-218",
+        "spotify-single-4UmMbxajVR7P6Y2PkUlWcz"
+      ]
     },
     {
       "workId": "item-215",
@@ -659,7 +671,11 @@
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "bb27a5f254266350052d2e2cb8b6d2fdc4554c7b684cead60b91610b623a03d3",
       "sourceHref": "/letters/danke-bitte-and-the-flow",
-      "ownerIntentSummaryJa": "人とのやり取りでは礼儀を尽くし、抗えない大きな流れには身を任せるという使い分けを、二曲に込めたと本人が書いている。"
+      "ownerIntentSummaryJa": "人とのやり取りでは礼儀を尽くし、抗えない大きな流れには身を任せるという使い分けを、二曲に込めたと本人が書いている。",
+      "workIds": [
+        "item-215",
+        "spotify-single-1OZ2YPhTCoARTJhDvNMGFR"
+      ]
     },
     {
       "workId": "spotify-album-1vLThFMjRi4noudDkGwf5f",
@@ -685,7 +701,11 @@
       "sourceClass": "OWNER_PUBLISHED_MEDIA",
       "ownerIntentStatus": "NOT_EXPLICIT",
       "sourceFileHash": "7898bbb08d1ff736f785049a7148e19a352d19d1d039a5309eb3817ce2f65aed",
-      "sourceHref": "/letters/drey-fugen-and-the-tribe"
+      "sourceHref": "/letters/drey-fugen-and-the-tribe",
+      "workIds": [
+        "drey-fugen-harmonia-mundi-211",
+        "spotify-single-4GtdD71vSh1NCycz68o3Qq"
+      ]
     },
     {
       "workId": "coffee-love-161",
@@ -699,7 +719,11 @@
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "4c949c2b443a4fbe500c5aaa3947db65d02572a8ba1ecc25e48ac465351b0e63",
       "sourceHref": "/letters/coffee-love-and-the-mirror",
-      "ownerIntentSummaryJa": "賑やかな日の翌日に静けさを置き、十八曲と二曲の落差で両方を生かす緩急の設計を本人が語っている。"
+      "ownerIntentSummaryJa": "賑やかな日の翌日に静けさを置き、十八曲と二曲の落差で両方を生かす緩急の設計を本人が語っている。",
+      "workIds": [
+        "coffee-love-161",
+        "spotify-single-1prDtJ6sGIsTnWf7WNz01k"
+      ]
     },
     {
       "workId": "spotify-album-3f4tKu7hRTK4QvMglr0Vp6",
@@ -712,7 +736,11 @@
       "sourceClass": "OWNER_PUBLISHED_MEDIA",
       "ownerIntentStatus": "NOT_EXPLICIT",
       "sourceFileHash": "fa896ab400e902139a2110c91f1ead8210fc002788b49a1ee1311474511977f7",
-      "sourceHref": "/letters/engine-and-the-damp-chips"
+      "sourceHref": "/letters/engine-and-the-damp-chips",
+      "workIds": [
+        "spotify-album-3f4tKu7hRTK4QvMglr0Vp6",
+        "engine-163"
+      ]
     },
     {
       "workId": "og-43",
@@ -767,7 +795,11 @@
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "eeb162883c2af1eeba2652ca7de54e2f51fd4a5747f8c04508ec439509c9404d",
       "sourceHref": "/letters/five-songs-and-a-fragile-ceasefire",
-      "ownerIntentSummaryJa": "五曲を異なる国や気分を旅するように作り、世界が少しでも軽くなる日に軽やかな旅の音を重ねたかったと本人が書いている。"
+      "ownerIntentSummaryJa": "五曲を異なる国や気分を旅するように作り、世界が少しでも軽くなる日に軽やかな旅の音を重ねたかったと本人が書いている。",
+      "workIds": [
+        "eagle-eye-183",
+        "spotify-single-75DrnUJQGstoPG5xEWXEbW"
+      ]
     },
     {
       "workId": "spotify-single-1xHCXzgoJ7SLYL78n3IDrZ",

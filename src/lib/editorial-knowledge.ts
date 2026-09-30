@@ -38,6 +38,33 @@ function normalizeSearch(value: unknown) {
   return normalize(value).toLocaleLowerCase();
 }
 
+function escapeRegex(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function queryMentionsReviewedTitle(query: string, title: string): boolean {
+  const q = normalizeSearch(query);
+  const t = normalizeSearch(title);
+  if (!q || !t) return false;
+  if (t.length >= 4) return q.includes(t);
+
+  const quoted = [
+    `「${t}」`, `『${t}』`, `“${t}”`, `"${t}"`, `'${t}'`, `\`${t}\``,
+  ];
+  if (quoted.some((value) => q.includes(value))) return true;
+
+  if (/^[a-z0-9]+$/i.test(t)) {
+    const escaped = escapeRegex(t);
+    const japaneseTitleContext = new RegExp(
+      `^${escaped}(?=(?:は|って|とは|について|の(?:曲|作品|意味|テーマ)|を(?:聴|聞|読|見)|が(?:好き|何)|で(?:何|どんな)|[ 、。！？!?：:,]))`,
+      "i",
+    );
+    return japaneseTitleContext.test(q);
+  }
+
+  return false;
+}
+
 function explicitIds(row: EditorialKnowledgeRow): string[] {
   return Array.from(new Set([
     normalize(row.workId),
@@ -66,10 +93,7 @@ export function resolveEditorialKnowledgeFromQuery(
   const q = normalizeSearch(query);
   if (!q) return null;
 
-  const matchedRows = rows.filter((row) => {
-    const title = normalizeSearch(row.title);
-    return title.length >= 4 && q.includes(title);
-  });
+  const matchedRows = rows.filter((row) => queryMentionsReviewedTitle(q, normalize(row.title)));
   if (matchedRows.length !== 1) return null;
 
   const row = matchedRows[0];

@@ -54,3 +54,25 @@ All run with `node --import tsx`:
 - `scripts/validate-r7a-catalog-foundation.ts`: PASS, editorial manifest hash/count verified, zero network requests.
 
 No Production, Vercel, remote Git or canonical checkout operation was performed. Protected daily roots and Human-owned state/experiments were not accessed. No push.
+
+## Preview hardening — short reviewed titles and provider duplicates
+
+The first Preview audit exposed two structural gaps before Production:
+
+1. reviewed titles shorter than four ASCII characters (`Pan`, `ME`) were excluded by the conservative editorial query resolver even in explicit title contexts such as `Panってどんな曲？` and `MEはなんで作ったの？`;
+2. eight V2 works had a second catalog ID pointing to the same reviewed Spotify album URL, so Chat could use the primary reviewed ID while Exhibition could show a provider duplicate without editorial description.
+
+The resolver now accepts a short reviewed ASCII title only when the query gives explicit work-title context, for example a quoted title or a title at the beginning followed by Japanese title particles such as `は`, `って`, `とは`, or `について`. Ordinary substrings remain rejected: `pandaみたいな曲ある？` does not resolve `Pan`, and `recommend me something` does not resolve `ME`.
+
+Eight provider duplicate bindings were added only after matching the same stable Spotify album URL in the catalog; no title-only binding was used:
+
+- ABI9PRO → `spotify-single-6Xf0QNYo1QDMSXb9zKmPxU`
+- Pan → `spotify-single-749Tw6EZCBlZM52tE2JVYt`
+- Main Character Energy → `spotify-single-4UmMbxajVR7P6Y2PkUlWcz`
+- 流れ往くままに！ → `spotify-single-1OZ2YPhTCoARTJhDvNMGFR`
+- Drey Fugen: Harmonia Mundi → `spotify-single-4GtdD71vSh1NCycz68o3Qq`
+- Coffee Love → `spotify-single-1prDtJ6sGIsTnWf7WNz01k`
+- ENGINE → `engine-163`
+- Eagle Eye → `spotify-single-75DrnUJQGstoPG5xEWXEbW`
+
+The V2 validator now proves that each alternate ID receives the reviewed Knowledge Envelope and Exhibition description while deferred candidates remain unbound.
