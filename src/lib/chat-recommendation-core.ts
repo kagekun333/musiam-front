@@ -440,14 +440,11 @@ export function selectOneRecommendation(input: {
   const links = getPublicLinksForCard(candidate.work);
   if (!links.length) return null;
   const phrase = currentPhrase(input.query);
-  const selectedReasons = candidate.reasons.length ? candidate.reasons.join("と") : "現在の指定";
   const facetReason = input.language === "ja" ? naturalFacetReasonJa(candidate.reasons) : null;
   const baseReason = input.language === "ja"
-    ? `選んだ根拠は、catalog metadata にある${selectedReasons}です。`
+    ? phrase ? `今の「${phrase}」なら、まずこれ。` : "今の条件なら、まずこれ。"
     : "I selected it from the catalog metadata that matches the request.";
-  const reason = facetReason ?? (input.language === "ja" && phrase
-    ? `今の「${phrase}」というご希望を手がかりにしました。${baseReason}`
-    : baseReason);
+  const reason = facetReason ?? baseReason;
   return {
     work: candidate.work,
     reasons: candidate.reasons,

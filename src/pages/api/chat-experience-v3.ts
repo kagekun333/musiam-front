@@ -149,7 +149,7 @@ function commercialIntent(t: string): Commercial {
 
 // 3) 作品（音楽/本）を求めている
 function wantsWork(t: string) {
-  return /(おすすめ|一作|作品|選んで|探して|聴きたい|聞きたい|読みたい|本|音楽|曲|recommend|pick|find|listen|read|book|music|song|work|livre|roman|lire|morceau|chanson|musique|œuvre|canción|cancion|música|musica|obra|libro|lied|musik|werk|lesen|buch|أغنية|موسيقى|عمل|كتاب)/i.test(t);
+  return /(おすすめ|一作|作品|選んで|探して|聴(?:きたい|いて|ける|く)|聞きたい|読みたい|本|音楽|曲|recommend|pick|find|listen|read|book|music|song|work|livre|roman|lire|morceau|chanson|musique|œuvre|canción|cancion|música|musica|obra|libro|lied|musik|werk|lesen|buch|أغنية|موسيقى|عمل|كتاب)/i.test(t);
 }
 function wantsCreativeText(t: string) {
   return /(川柳|俳句|短歌|詩|ポエム|ジョーク|冗談|小噺|なぞかけ|一句|一首|面白い.*(こと|話|文)|write (a )?(poem|joke|haiku)|funny (poem|joke))/i.test(t);
@@ -160,8 +160,8 @@ export function wantsWorkFollowup(query: string, convo: string) {
     && (isChatInterestInvitation(convo) || /(おすすめ|一作|作品|聴|聞|読|本|音楽|曲|楽曲|recommend|pick|listen|read|book|music|song)/i.test(convo));
 }
 function desiredType(t: string): "book" | "music" | undefined {
-  if (/(本|読みたい|読む|小説|book|read|novel|livre|roman|lire|libro|buch|lesen|كتاب|قراءة)/i.test(t)) return "book";
-  if (/(音楽|曲|一曲|音の景色|聴きたい|聞きたい|music|song|track|soundscape|listen|musique|chanson|morceau|canción|cancion|música|musica|lied|musik|أغنية|موسيقى)/i.test(t)) return "music";
+  if (/(本|読みたい|読む|読める|小説|book|read|novel|livre|roman|lire|libro|buch|lesen|كتاب|قراءة)/i.test(t)) return "book";
+  if (/(音楽|曲|一曲|音の景色|聴(?:きたい|いて|ける|く)|聞きたい|再生|music|song|track|soundscape|listen|hear|play|musique|chanson|morceau|canción|cancion|música|musica|lied|musik|أغنية|موسيقى)/i.test(t)) return "music";
   return undefined;
 }
 
