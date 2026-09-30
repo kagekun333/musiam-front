@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "gate": "OWNER_SOURCE_KNOWLEDGE_COVERAGE_V2",
+  "date": "2026-09-30",
+  "verdict": "PASS_PRODUCTION",
+  "runtimeSourceCommit": "358a75e0b471db75c2899c3e10a5b357a1ebb7f3",
+  "previewDeploymentId": "dpl_FTPdnrGKgfCBSciBaUT3GmzAKH4o",
+  "productionDeploymentId": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
+  "previousProductionDeploymentId": "dpl_AWAqNbxhBYBv3BE9Rm63pcFrriGv",
+  "deployManifestSha256": "cf49ebc7ff12510814334c91548ac9413339d9681f85f8d64b0e76fc4d68da03",
+  "safePayload": {
+    "protectedPayload": 0,
+    "humanDirtyPayload": 0,
+    "envPayload": 0,
+    "secretPrivatePayload": 0,
+    "unexpectedUntrackedRegularFiles": 0,
+    "specialPayload": 0
+  },
+  "coverage": {
+    "editorialKnowledgeRows": 52,
+    "staticUniqueMusicWorks": 286,
+    "staticMusicWorksWithEditorial": 39,
+    "staticMusicEditorialCoveragePct": 13.64,
+    "coverageV2AddedWorks": 14,
+    "coverageV2ExplicitOwnerIntent": 8,
+    "coverageV2NonExplicitOwnerIntent": 6
+  },
+  "hardening": {
+    "shortReviewedTitleContextGuard": "PASS",
+    "providerDuplicateBindings": "PASS",
+    "workStoryCompletionGuard": "PASS_GENERIC",
+    "truncatedResponseFallback": "PASS",
+    "titleOnlyIdentityMerge": 0
+  },
+  "productionSmoke": {
+    "holyGod": "PASS_COMPLETE",
+    "pan": "PASS_SHORT_TITLE_FALLBACK",
+    "me": "PASS_SHORT_TITLE_OWNER_INTENT",
+    "status5xxCount": 0,
+    "nonBlockingProviderFallbackEventsObserved": 1
+  },
+  "rollback": {
+    "candidateDeploymentId": "dpl_AWAqNbxhBYBv3BE9Rm63pcFrriGv",
+    "candidateStateAtClosure": "READY"
+  },
+  "nextProgram": "MUSIAM_PARALLEL_EXECUTION_LANES"
+}

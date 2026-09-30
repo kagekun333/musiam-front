@@ -3,60 +3,47 @@
   "recordedAt": "2026-09-30",
   "project": "musiam-front",
   "productionDomain": "hakusyaku.xyz",
-  "productionDeploymentId": "dpl_G3PeFaja7cNxdyKMrQRu7PTtyGHP",
-  "productionDeploymentUrl": "musiam-front-1o2djtl6o-hakusyakus-projects.vercel.app",
+  "productionDeploymentId": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
+  "productionDeploymentUrl": "musiam-front-nhf18uijy-hakusyakus-projects.vercel.app",
   "productionState": "READY",
-  "runtimeSourceCommit": "04ef1492f16e38cce9df6b0f715c9170d939b9f8",
-  "previewDeploymentId": "dpl_A5ZVy9D4wdHkx4kG2t5mYn4ACefr",
-  "previewDeploymentUrl": "musiam-front-llaa5rhyp-hakusyakus-projects.vercel.app",
-  "deployManifestSha256": "3d99942aa12be9ee6f433374e519850a51f13944e6ef319ad4466f47be4a8ee1",
-  "previousProductionDeploymentId": "dpl_Bh9jXS7y6C9HHo6FsnpdhoTFmvF7",
+  "runtimeSourceCommit": "358a75e0b471db75c2899c3e10a5b357a1ebb7f3",
+  "previewDeploymentId": "dpl_FTPdnrGKgfCBSciBaUT3GmzAKH4o",
+  "previewDeploymentUrl": "musiam-front-i52xlj6ie-hakusyakus-projects.vercel.app",
+  "deployManifestSha256": "cf49ebc7ff12510814334c91548ac9413339d9681f85f8d64b0e76fc4d68da03",
+  "previousProductionDeploymentId": "dpl_AWAqNbxhBYBv3BE9Rm63pcFrriGv",
   "rollbackCandidateAvailable": true,
   "verifiedRoutes": {
-    "/works": 200,
-    "/api/exhibition": 200,
-    "/api/chat-experience-v3:back-me-owner-intent": 200,
-    "/api/chat-experience-v3:mama-afrika-story": 200,
-    "/api/chat-experience-v3:abzu-non-explicit-boundary": 200,
-    "/api/chat-experience-v3:demiurgos-story": 200,
-    "/api/chat-experience-v3:hibiya-owner-intent": 200,
-    "/api/chat-experience-v3:world-strike-story": 200,
-    "/api/chat-experience-v3:sauna-story": 200,
-    "/api/chat-experience-v3:omni-intent": 200,
-    "/api/chat-experience-v3:infinite-graves-owner-intent": 200,
-    "/api/chat-experience-v3:sun-without-a-map-curatorial-story": 200
+    "/api/chat-experience-v3:holy-god-story": 200,
+    "/api/chat-experience-v3:pan-short-title": 200,
+    "/api/chat-experience-v3:me-short-title-owner-intent": 200
   },
   "businessInvariants": {
-    "worksUniqueCountVisible": 488,
-    "latestWorkVisible": "Sun Without a Map",
-    "ownerSourceKnowledgeCoverage": "PASS_PRODUCTION",
-    "editorialKnowledgeRows": 38,
-    "coverageTrancheAdded": 24,
-    "explicitOwnerIntentRowsAdded": 21,
-    "nonExplicitOwnerIntentRowsAdded": 3,
-    "sourceLettersHashVerified": 12,
+    "ownerSourceKnowledgeCoverageV2": "PASS_PRODUCTION",
+    "editorialKnowledgeRows": 52,
     "staticUniqueMusicWorks": 286,
-    "staticMusicWorksWithEditorial": 26,
-    "staticMusicEditorialCoveragePct": 9.09,
-    "providerDuplicateBindingsVerified": 3,
-    "providerDuplicateExhibitionDescriptions": [
-      "spotify-single-5e8xTCcPJWfd2SUHsjd1BW",
-      "spotify-single-022wqGt3TzfjInPuDgHGXf",
-      "house-in-the-world-131"
-    ],
-    "ownerIntentBoundaryPreserved": true,
-    "titleOnlyIdentityMerge": 0,
-    "sunWithoutAMapCuratorialInterpretation": "ALLOWED_FRAMED_AS_COUNT_READING"
+    "staticMusicWorksWithEditorial": 39,
+    "staticMusicEditorialCoveragePct": 13.64,
+    "shortReviewedTitleGuard": "PASS",
+    "providerDuplicateBindingsV2": "PASS",
+    "workStoryCompletionGuard": "PASS",
+    "holyGodCompleteResponse": true,
+    "panShortTitleResolution": true,
+    "meShortTitleResolution": true
   },
   "productionChecks": {
-    "errorFatalCount": 0,
-    "status5xxCount": 0
+    "status5xxCount": 0,
+    "unexpectedApplicationErrorFatalCount": 0,
+    "nonBlockingProviderFallbackEventsObserved": 1
   },
+  "observabilityNotes": [
+    "One error-level COUNT_CHAT_LLM_ALL_FAILED event was observed during smoke when OpenRouter timed out; the request returned HTTP 200 with the existing evidence-grounded fallback.",
+    "This event is recorded as NON_BLOCKING_PROVIDER_FALLBACK rather than an application failure.",
+    "The Work Story completion guard rejects clearly truncated successful-model prose before it can be shown to visitors."
+  ],
   "notes": [
-    "Owner-published Letters are promoted only after stable-ID binding and source-file hash verification.",
-    "EXPLICIT owner intent may be attributed to 伯爵; NOT_EXPLICIT rows retain ownerProductionIntent as unknown.",
-    "Provider duplicates are bound only after matching stable Spotify album URLs and release dates, never by title alone.",
-    "Short/common ASCII title matches in the coverage ranker require explicit work-like forms or exact frontmatter keyword tokens.",
-    "Recent Apple-only works remain knowledge gaps when only generic cover briefs or operational logs exist."
+    "Runtime source commit is 358a75e; later local commits may be control-plane/receipt-only and are classified separately by drift-check.",
+    "Coverage V2 added reviewed owner-source knowledge while retaining stable-ID and owner-intent boundaries.",
+    "Short reviewed titles such as Pan and ME require explicit title context and do not resolve from ordinary substrings.",
+    "Previous Production remains READY as rollback candidate."
   ]
 }
