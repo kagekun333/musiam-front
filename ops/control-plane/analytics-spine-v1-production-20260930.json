@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "gate": "ANALYTICS_SPINE_V1",
+  "date": "2026-09-30",
+  "verdict": "PASS_PRODUCTION_CODE_DORMANT_STORAGE",
+  "runtimeSourceCommit": "0357ee0dee84446eb00b6663024139c1df40d855",
+  "previewDeploymentId": "dpl_2XQV4NDE2xbb2xmmzCjgHx9jzY8m",
+  "productionDeploymentId": "dpl_4LNUvTF58ofVXp8MaPXnRJZvYNp8",
+  "previousProductionDeploymentId": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
+  "deployManifestSha256": "7ba2c43a889338b76ac182e6dd387e1d902c9101011110ed29ef16e3d2d373ba",
+  "localValidation": {
+    "verdict": "MUSIAM_GROWTH_ANALYTICS_SPINE_V1=PASS_LOCAL",
+    "piiProjection": "PASS",
+    "storageDisabledDuringValidation": true
+  },
+  "privacyBoundary": {
+    "storesUserMessageText": false,
+    "storesAssistantMessageText": false,
+    "storesName": false,
+    "storesEmail": false,
+    "storesAddress": false,
+    "storesIpAddress": false,
+    "storesConversationOrSessionId": false,
+    "storesWorkIdOrTitle": false,
+    "storesProductId": false,
+    "storesUrl": false,
+    "serverGeneratedRequestUuidOnly": true,
+    "retentionApproxDaysWhenEnabled": 30
+  },
+  "runtimeEventsImplemented": [
+    "chat_start",
+    "chat_first_request",
+    "recommendation_presented",
+    "work_links_presented",
+    "action_link_presented",
+    "product_interest_bridge",
+    "product_cta_presented"
+  ],
+  "reservedButNotClaimedWithoutAuthoritativeEvidence": [
+    "visit",
+    "work_action",
+    "product_interest",
+    "quote",
+    "checkout",
+    "paid",
+    "repeat"
+  ],
+  "storage": {
+    "enabledInPreview": false,
+    "enabledInProduction": false,
+    "enableFlag": "MUSIAM_ANALYTICS_SPINE_ENABLED",
+    "redisNamespace": "growth:v1:{environment}:count-chat:YYYY-MM-DD",
+    "requestTimeoutMs": 200,
+    "dailyRowCap": 100000
+  },
+  "productionSmoke": {
+    "latestWork": "PASS",
+    "ownerSourceStory": "PASS",
+    "exhibition": "PASS",
+    "errorFatalCount": 0,
+    "status5xxCount": 0
+  },
+  "rollback": {
+    "candidateDeploymentId": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
+    "candidateStateAtClosure": "READY"
+  },
+  "nextGate": "ANALYTICS_SPINE_STORAGE_ENABLEMENT_OR_PARALLEL_LANE_MERGES"
+}

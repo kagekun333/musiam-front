@@ -3,19 +3,19 @@
   "recordedAt": "2026-09-30",
   "project": "musiam-front",
   "productionDomain": "hakusyaku.xyz",
-  "productionDeploymentId": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
-  "productionDeploymentUrl": "musiam-front-nhf18uijy-hakusyakus-projects.vercel.app",
+  "productionDeploymentId": "dpl_4LNUvTF58ofVXp8MaPXnRJZvYNp8",
+  "productionDeploymentUrl": "musiam-front-1rb73dzrv-hakusyakus-projects.vercel.app",
   "productionState": "READY",
-  "runtimeSourceCommit": "358a75e0b471db75c2899c3e10a5b357a1ebb7f3",
-  "previewDeploymentId": "dpl_FTPdnrGKgfCBSciBaUT3GmzAKH4o",
-  "previewDeploymentUrl": "musiam-front-i52xlj6ie-hakusyakus-projects.vercel.app",
-  "deployManifestSha256": "cf49ebc7ff12510814334c91548ac9413339d9681f85f8d64b0e76fc4d68da03",
-  "previousProductionDeploymentId": "dpl_AWAqNbxhBYBv3BE9Rm63pcFrriGv",
+  "runtimeSourceCommit": "0357ee0dee84446eb00b6663024139c1df40d855",
+  "previewDeploymentId": "dpl_2XQV4NDE2xbb2xmmzCjgHx9jzY8m",
+  "previewDeploymentUrl": "musiam-front-mfhob4jrf-hakusyakus-projects.vercel.app",
+  "deployManifestSha256": "7ba2c43a889338b76ac182e6dd387e1d902c9101011110ed29ef16e3d2d373ba",
+  "previousProductionDeploymentId": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
   "rollbackCandidateAvailable": true,
   "verifiedRoutes": {
-    "/api/chat-experience-v3:holy-god-story": 200,
-    "/api/chat-experience-v3:pan-short-title": 200,
-    "/api/chat-experience-v3:me-short-title-owner-intent": 200
+    "/api/chat-experience-v3:latest-work": 200,
+    "/api/chat-experience-v3:back-me-story": 200,
+    "/api/exhibition": 200
   },
   "businessInvariants": {
     "ownerSourceKnowledgeCoverageV2": "PASS_PRODUCTION",
@@ -26,24 +26,25 @@
     "shortReviewedTitleGuard": "PASS",
     "providerDuplicateBindingsV2": "PASS",
     "workStoryCompletionGuard": "PASS",
-    "holyGodCompleteResponse": true,
-    "panShortTitleResolution": true,
-    "meShortTitleResolution": true
+    "growthAnalyticsSpineV1": "CODE_DEPLOYED_STORAGE_DISABLED",
+    "growthAnalyticsStorageFlagPresent": false,
+    "growthAnalyticsPiiProjection": "PASS",
+    "growthAnalyticsResponseMutation": "NONE",
+    "latestWorkVisible": "Sun Without a Map",
+    "liveExhibitionRawItems": 582
   },
   "productionChecks": {
     "status5xxCount": 0,
-    "unexpectedApplicationErrorFatalCount": 0,
-    "nonBlockingProviderFallbackEventsObserved": 1
+    "unexpectedApplicationErrorFatalCount": 0
   },
   "observabilityNotes": [
-    "One error-level COUNT_CHAT_LLM_ALL_FAILED event was observed during smoke when OpenRouter timed out; the request returned HTTP 200 with the existing evidence-grounded fallback.",
-    "This event is recorded as NON_BLOCKING_PROVIDER_FALLBACK rather than an application failure.",
-    "The Work Story completion guard rejects clearly truncated successful-model prose before it can be shown to visitors."
+    "Growth Analytics Spine V1 code is deployed but persistence remains disabled because MUSIAM_ANALYTICS_SPINE_ENABLED is not configured.",
+    "The analytics projection schema excludes request/response text, names, email, addresses, IPs, conversation/session IDs, work IDs/titles, product IDs and URLs.",
+    "Analytics persistence is failure-isolated from Count Chat responses and uses environment-separated Redis namespaces when enabled."
   ],
   "notes": [
-    "Runtime source commit is 358a75e; later local commits may be control-plane/receipt-only and are classified separately by drift-check.",
-    "Coverage V2 added reviewed owner-source knowledge while retaining stable-ID and owner-intent boundaries.",
-    "Short reviewed titles such as Pan and ME require explicit title context and do not resolve from ordinary substrings.",
-    "Previous Production remains READY as rollback candidate."
+    "Runtime source commit is 0357ee0; later local commits may be control-plane/receipt-only and are classified separately by drift-check.",
+    "Previous Production remains READY as rollback candidate.",
+    "Analytics storage enablement is intentionally separate from code deployment."
   ]
 }
