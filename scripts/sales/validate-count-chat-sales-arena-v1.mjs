@@ -17,9 +17,9 @@ const sampleAssessment = JSON.parse(await readFile(fixturePath("count-chat-sales
 assert.deepEqual(validateScenarioDataset(dataset), []);
 assert.equal(dataset.scenarios.length, REQUIRED_SCENARIOS.length);
 assert.deepEqual(dataset.scenarios.map((scenario) => scenario.id), REQUIRED_SCENARIOS);
-assert.ok(dataset.scenarios.every((scenario) => scenario.split === "held_out"));
+assert.ok(dataset.scenarios.every((scenario) => scenario.split === "evaluation_fixture"));
 assert.equal(DIMENSIONS.length, 10);
-console.log(`PASS dataset: ${dataset.scenarios.length} held-out scenarios, ${DIMENSIONS.length} dimensions`);
+console.log(`PASS dataset: ${dataset.scenarios.length} evaluation-fixture scenarios, ${DIMENSIONS.length} dimensions`);
 
 assert.deepEqual(validateJudgeAssessment(sampleAssessment, dataset), []);
 const summary = summarizeJudgeAssessments([sampleAssessment], dataset);

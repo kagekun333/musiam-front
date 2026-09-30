@@ -66,7 +66,7 @@ export function validateScenarioDataset(dataset) {
     if (!nonEmptyString(scenario.id)) errors.push(`${prefix}.id is required`);
     else if (ids.has(scenario.id)) errors.push(`${prefix}.id duplicates ${scenario.id}`);
     else ids.add(scenario.id);
-    if (scenario.split !== "held_out") errors.push(`${prefix}.split must be held_out`);
+    if (scenario.split !== "evaluation_fixture") errors.push(`${prefix}.split must be evaluation_fixture`);
     if (!nonEmptyString(scenario.category)) errors.push(`${prefix}.category is required`);
     if (!nonEmptyString(scenario.user_message)) errors.push(`${prefix}.user_message is required`);
     if (!Array.isArray(scenario.known_offer_facts) || scenario.known_offer_facts.length !== 0) {
@@ -83,7 +83,7 @@ export function validateScenarioDataset(dataset) {
   }
 
   for (const id of REQUIRED_SCENARIOS) {
-    if (!ids.has(id)) errors.push(`required held-out scenario is missing: ${id}`);
+    if (!ids.has(id)) errors.push(`required evaluation-fixture scenario is missing: ${id}`);
   }
 
   if (!isRecord(dataset.protocol) || dataset.protocol.minimum_replicates !== 3) {

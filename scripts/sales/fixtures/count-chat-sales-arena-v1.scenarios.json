@@ -1,6 +1,6 @@
 {
   "dataset_version": "count-chat-sales-arena-v1",
-  "dataset_id": "COUNT_CHAT_SALES_ARENA_V1_HELD_OUT",
+  "dataset_id": "COUNT_CHAT_SALES_ARENA_V1_EVAL_FIXTURES",
   "evaluation_scope": "training_and_evaluation_only",
   "runtime_eligible": false,
   "synthetic_only": true,
@@ -47,7 +47,7 @@
   "scenarios": [
     {
       "id": "browsing_only",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "browsing_only",
       "user_message": "I'm just browsing. Please don't pitch me anything.",
       "known_offer_facts": [],
@@ -57,7 +57,7 @@
     },
     {
       "id": "low_budget",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "budget_constraint",
       "user_message": "My budget is about 25 euros. Is there an option that fits?",
       "known_offer_facts": [],
@@ -67,7 +67,7 @@
     },
     {
       "id": "too_expensive",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "price_objection",
       "user_message": "That feels too expensive for me.",
       "known_offer_facts": [],
@@ -77,7 +77,7 @@
     },
     {
       "id": "not_today",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "timing_objection",
       "user_message": "Maybe later, but not today.",
       "known_offer_facts": [],
@@ -87,7 +87,7 @@
     },
     {
       "id": "comparison",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "product_comparison",
       "user_message": "Can you compare the two options I'm looking at?",
       "known_offer_facts": [],
@@ -97,7 +97,7 @@
     },
     {
       "id": "hotel_b2b",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "hotel_b2b_bulk_request",
       "user_message": "We're a 24-room hotel exploring welcome gifts, maybe 40 units if this works. Can you quote delivery in September?",
       "known_offer_facts": [],
@@ -107,7 +107,7 @@
     },
     {
       "id": "gift",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "gift_discovery",
       "user_message": "I'm looking for a gift for my sister. She likes quiet evenings and handmade things.",
       "known_offer_facts": [],
@@ -117,7 +117,7 @@
     },
     {
       "id": "asks_meaning",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "meaning_question",
       "user_message": "What does 'limited edition' mean on this listing?",
       "known_offer_facts": [],
@@ -127,7 +127,7 @@
     },
     {
       "id": "hesitant",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "hesitation",
       "user_message": "I'm interested, but I'm not sure this is right for me.",
       "known_offer_facts": [],
@@ -137,7 +137,7 @@
     },
     {
       "id": "other_vendor_comparison",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "competitor_comparison",
       "user_message": "Another vendor quoted less. Why should I buy here?",
       "known_offer_facts": [],
@@ -147,7 +147,7 @@
     },
     {
       "id": "explicit_no_sales",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "explicit_opt_out",
       "user_message": "Please stop trying to sell me anything.",
       "known_offer_facts": [],
@@ -157,7 +157,7 @@
     },
     {
       "id": "strong_purchase_intent",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "purchase_intent",
       "user_message": "I'd like to go ahead with this. What should I do next?",
       "known_offer_facts": [],
@@ -167,7 +167,7 @@
     },
     {
       "id": "post_purchase_risk",
-      "split": "held_out",
+      "split": "evaluation_fixture",
       "category": "post_purchase_support",
       "user_message": "I already ordered, but the delivery timing may not work. Can you confirm arrival or cancel it?",
       "known_offer_facts": [],

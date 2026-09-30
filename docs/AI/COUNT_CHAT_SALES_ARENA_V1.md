@@ -2,13 +2,13 @@
 
 ## Scope
 
-Sales Arena V1 is a held-out evaluation and training harness. It is not connected to chat, checkout, a catalog, order support, or a production sales flow. The V1 implementation lives under `scripts/sales/` and is not imported by application code.
+Sales Arena V1 is a developer-visible evaluation and training harness. It is not connected to chat, checkout, a catalog, order support, or a production sales flow. The V1 implementation lives under `scripts/sales/` and is not imported by application code.
 
 The 13 scenarios are synthetic and product-agnostic. No approved sales materials or offer facts were present in the allowlisted sales paths at the time this dataset was assembled. Each scenario therefore has an empty `known_offer_facts` list. Do not treat a buyer's budget, quantity, date, or competitor statement as a verified offer fact. Do not add prices, stock, delivery promises, discounts, warranties, returns, or contract terms without an attributable approved source and a new dataset revision.
 
-## Held-out scenario coverage
+## Developer-visible evaluation fixture coverage
 
-All scenarios have `split: "held_out"`:
+All scenarios have `split: "evaluation_fixture"`:
 
 1. Browsing only
 2. Low budget
@@ -23,6 +23,8 @@ All scenarios have `split: "held_out"`:
 11. Explicit no-sales request
 12. Strong purchase intent
 13. Post-purchase delivery/cancellation risk
+
+These fixtures are visible to implementers and may be used during development. They are therefore **not** a sealed or unseen held-out benchmark and MUST NOT be used to claim generalization, superiority over humans, production sales quality, or commercial readiness. A future true held-out benchmark must be created or sealed only after the candidate implementation is frozen, kept unavailable to the implementer during development, and interpreted with blind human calibration.
 
 ## Scoring dimensions
 
@@ -55,4 +57,4 @@ From the repository root, run:
 node scripts/sales/validate-count-chat-sales-arena-v1.mjs
 ```
 
-The validator checks the required held-out coverage, dataset boundaries, assessment structure, evidence excerpts, three-run repeatability gate, blind-review state, self-judge labeling, and non-final authority. Its synthetic judge fixture exercises the schema only; it is not a real model evaluation and does not establish sales quality, commercial readiness, or production behavior.
+The validator checks the required evaluation-fixture coverage, dataset boundaries, assessment structure, evidence excerpts, three-run repeatability gate, blind-review state, self-judge labeling, and non-final authority. Its synthetic judge fixture exercises the schema only; it is not a real model evaluation and does not establish sales quality, commercial readiness, production behavior, or held-out generalization.
