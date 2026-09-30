@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "gate": "MUSIAM_GROWTH_ANALYTICS_SPINE_V1",
+  "status": "PASS_LOCAL_CANDIDATE",
+  "date": "2026-09-30",
+  "scope": "count_chat_server",
+  "storage": {
+    "provider": "existing_upstash_or_kv",
+    "enabledOnlyWhen": "MUSIAM_ANALYTICS_SPINE_ENABLED=1",
+    "namespace": "growth:v1:{scope}:count-chat:YYYY-MM-DD",
+    "timeoutMs": 200,
+    "maxRowsPerDay": 100000,
+    "retentionDaysApprox": 30,
+    "scopeAuthority": "VERCEL_ENV with unknown/local fail-closed to local namespace",
+    "environmentIsolation": true
+  },
+  "eventsImplemented": [
+    "chat_start",
+    "chat_first_request",
+    "recommendation_presented",
+    "work_links_presented",
+    "action_link_presented",
+    "product_interest_bridge",
+    "product_cta_presented"
+  ],
+  "reservedNotYetClaimedAsObserved": [
+    "visit",
+    "work_action",
+    "product_interest",
+    "quote",
+    "checkout",
+    "paid",
+    "repeat"
+  ],
+  "privacy": {
+    "messageTextStored": false,
+    "assistantTextStored": false,
+    "ipStored": false,
+    "sessionIdStored": false,
+    "conversationIdStored": false,
+    "emailStored": false,
+    "nameStored": false,
+    "addressStored": false,
+    "workIdStored": false,
+    "workTitleStored": false,
+    "productIdStored": false,
+    "urlStored": false
+  },
+  "productionMutation": false,
+  "next": "Add authoritative client action and settled commerce events after V1 merge."
+}

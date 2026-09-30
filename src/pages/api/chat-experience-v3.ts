@@ -9,6 +9,7 @@
 
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
+import { observeChatResponse } from "@/lib/analytics/chat.server";
 import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
 import { loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
@@ -680,11 +681,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const timeTone = normalizeSalonTimeTone(parsed.data.timeTone ?? getSalonTimeTone());
     let timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
     const userTurns = countUserTurns(messages);
+    // Observe only validated successful responses; never pass request text to analytics.
+    const respond = async (payload: Record<string, unknown>) => {
+      await observeChatResponse(payload, userTurns);
+      return res.status(200).json(payload);
+    };
 
     // 開幕（伯爵の出迎え）
     if (userTurns === 0) {
       const assistantText = timeCopy.opening;
-      return res.status(200).json({
+      return respond({
         ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
         provider: "none", model: null,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
@@ -694,7 +700,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // ハード上限（長時間連投の遮断）
     if (userTurns > HARD_MAX_USER_TURNS) {
       const assistantText = timeCopy.longClose;
-      return res.status(200).json({
+      return respond({
         ok: true, v: 3, assistantText, card: null, cta: null, persona: "count", timeTone,
         provider: "none", model: null,
         memory: { residue: assistantText.slice(0, 120), timestamp: new Date().toISOString() }, trace,
@@ -716,7 +722,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       actionResult: "LINK_PRESENTED" | null = null,
       providerMeta?: { provider: LlmMeta["provider"]; model: string },
     ) =>
-      res.status(200).json({
+      respond({
         ok: true, v: 3, assistantText, card, cta: null, persona: "count", intent,
         productId: null, interestBridge: null, timeTone,
         provider: providerMeta?.provider ?? "none",
@@ -1110,7 +1116,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               ? "work"
               : "conversation";
 
-    return res.status(200).json({
+    return respond({
       ok: true,
       v: 3,
       assistantText,
