@@ -404,10 +404,14 @@ export function deriveChatCoreTurn(input: { messages: CoreMessage[]; language: C
 function naturalFacetReasonJa(reasons: string[]): string | null {
   const facet = reasons.find((reason) => /^(?:言語|国|地域|場所|文化|テーマ|ビジュアル|時期|検索別名):/.test(reason));
   if (!facet) return null;
-  const [kind, ...rest] = facet.split(":");
-  const label = rest.join(":").trim();
-  if (!label) return null;
-  if (kind === "言語") return `あります。${label}なら、まずこの一曲。`;
+  const [kind, label = "", scope = ""] = facet.split(":");
+  if (!label.trim()) return null;
+  if (kind === "言語") {
+    if (scope === "included") return `あります。${label}を含む多言語曲なら、まずこれ。`;
+    if (scope === "mixed") return `あります。${label}を含むミックス言語の曲なら、まずこれ。`;
+    if (scope === "instrumental") return `あります。${label}なら、まずこの一曲。`;
+    return `あります。${label}なら、まずこの一曲。`;
+  }
   if (["国", "地域", "場所"].includes(kind)) return `あります。${label}で拾うなら、まずこの一曲。`;
   return `あります。${label}を手がかりに、まずこれ。`;
 }

@@ -12,12 +12,14 @@ export type IntelligenceFacetKind =
   | "search_alias";
 
 export type IntelligenceConfidence = "high" | "medium" | "low";
+export type LanguageScope = "primary" | "mixed" | "included" | "instrumental";
 
 export type IntelligenceFacet = {
   kind: IntelligenceFacetKind;
   value: string;
   label: string;
   aliases?: string[];
+  scope?: LanguageScope;
   source: {
     type: string;
     ref: string;
@@ -51,6 +53,13 @@ const WEIGHTS: Record<IntelligenceFacetKind, number> = {
   search_alias: 30,
 };
 
+const LANGUAGE_SCOPE_MULTIPLIER: Record<LanguageScope, number> = {
+  primary: 1,
+  mixed: 0.9,
+  included: 0.65,
+  instrumental: 1,
+};
+
 function normalize(value: unknown): string {
   return String(value ?? "")
     .normalize("NFKC")
@@ -60,7 +69,7 @@ function normalize(value: unknown): string {
 }
 
 function facetKey(facet: IntelligenceFacet): string {
-  return [facet.kind, normalize(facet.value), normalize(facet.label), facet.source.type, facet.source.ref].join("|");
+  return [facet.kind, normalize(facet.value), normalize(facet.label), facet.scope ?? "", facet.source.type, facet.source.ref].join("|");
 }
 
 function mergeFacets(...groups: (IntelligenceFacet[] | undefined)[]): IntelligenceFacet[] {
@@ -102,12 +111,27 @@ function escapeRegex(value: string): string {
   return value.replace(/[.*+?^$()|[\]\\]/g, "\\$&");
 }
 
+function languageAliasMatches(query: string, token: string): boolean {
+  if (query === token) return true;
+  const escaped = escapeRegex(token);
+  if (/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(token)) {
+    return new RegExp(`${escaped}(?:の)?(?:曲|歌|音楽|ラップ|作品)`, "u").test(query)
+      || new RegExp(`(?:曲|歌|音楽|ラップ|作品).{0,8}${escaped}`, "u").test(query)
+      || new RegExp(`${escaped}(?:で|を)(?:歌|書|話)`, "u").test(query);
+  }
+  const forward = new RegExp(`(?:^|[^a-z0-9])${escaped}(?:[- ]language)?(?:[^a-z0-9]+.{0,10})?(?:song|music|track|rap|work)(?:$|[^a-z0-9])`, "i");
+  const reverse = new RegExp(`(?:song|music|track|rap|work).{0,12}(?:in|with)?\s*${escaped}(?:$|[^a-z0-9])`, "i");
+  return forward.test(query) || reverse.test(query);
+}
+
 function aliasMatches(query: string, alias: string, kind: IntelligenceFacetKind): boolean {
   const q = normalize(query);
   const token = normalize(alias);
   if (!q || !token || token.length < 2) return false;
 
-  if (kind !== "language" && /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(token)) {
+  if (kind === "language") return languageAliasMatches(q, token);
+
+  if (/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(token)) {
     const withoutLanguagePhrase = q.replaceAll(`${token}語`, "");
     if (!withoutLanguagePhrase.includes(token) && q.includes(`${token}語`)) return false;
   }
@@ -131,7 +155,10 @@ export function scoreWorkIntelligenceQuery(
     const tokens = Array.from(new Set([facet.label, facet.value, ...(facet.aliases ?? [])].filter(Boolean)));
     if (!tokens.some((token) => aliasMatches(query, token, facet.kind))) continue;
     matched.push(facet);
-    score += WEIGHTS[facet.kind];
+    const scopeMultiplier = facet.kind === "language" && facet.scope
+      ? LANGUAGE_SCOPE_MULTIPLIER[facet.scope]
+      : 1;
+    score += WEIGHTS[facet.kind] * scopeMultiplier;
     const prefix =
       facet.kind === "language" ? "言語"
       : facet.kind === "country" ? "国"
@@ -142,7 +169,9 @@ export function scoreWorkIntelligenceQuery(
       : facet.kind === "visual" ? "ビジュアル"
       : facet.kind === "time" ? "時期"
       : "検索別名";
-    reasons.push(`${prefix}:${facet.label}`);
+    reasons.push(facet.kind === "language" && facet.scope
+      ? `${prefix}:${facet.label}:${facet.scope}`
+      : `${prefix}:${facet.label}`);
   }
 
   return { score, reasons: Array.from(new Set(reasons)), matched };

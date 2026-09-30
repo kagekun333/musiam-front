@@ -25,7 +25,7 @@ function byTitle(works: CatalogWork[], title: string): CatalogWork {
 (async () => {
   const file = intelligenceJson as WorkIntelligenceFile;
   assert.equal(file.schemaVersion, 1);
-  assert.ok(file.records.length >= 10);
+  assert.ok(file.records.length >= 22);
 
   const works = await loadMergedWorksServer();
   assert.equal(works.length, 514);
@@ -70,6 +70,51 @@ function byTitle(works: CatalogWork[], title: string): CatalogWork {
   assert.match(okinawa!.reason, /^あります。/);
   assert.doesNotMatch(okinawa!.reason, /catalog metadata/i);
 
+  const languageCases = [
+    { query: "フランス語の曲ある？", label: "フランス語" },
+    { query: "中国語の曲ある？", label: "中国語" },
+    { query: "韓国語の曲ある？", label: "韓国語" },
+    { query: "スペイン語の曲ある？", label: "スペイン語" },
+    { query: "ポルトガル語の曲ある？", label: "ポルトガル語" },
+    { query: "イタリア語の曲ある？", label: "イタリア語" },
+    { query: "ラテン語の曲ある？", label: "ラテン語" },
+    { query: "古代ギリシャ語の曲ある？", label: "古代ギリシャ語" },
+    { query: "アラビア語の曲ある？", label: "アラビア語" },
+    { query: "ヒンディー語の曲ある？", label: "ヒンディー語" },
+    { query: "ロシア語の曲ある？", label: "ロシア語" },
+    { query: "インドネシア語の曲ある？", label: "インドネシア語" },
+    { query: "スワヒリ語の曲ある？", label: "スワヒリ語" },
+    { query: "ベンガル語の曲ある？", label: "ベンガル語" },
+    { query: "英語の曲ある？", label: "英語" },
+    { query: "日本語の曲ある？", label: "日本語" },
+  ] as const;
+
+  const languageResults: Record<string, string> = {};
+  const languageReasons: Record<string, string> = {};
+  for (const test of languageCases) {
+    const rec = selectOneRecommendation({
+      works: music,
+      query: test.query,
+      language: "ja",
+      sales: openSales,
+    });
+    assert.ok(rec, `Expected real recommendation for ${test.label}`);
+    assert.ok(
+      rec!.work.intelligence?.facets?.some((facet) => facet.kind === "language" && facet.label === test.label),
+      `Selected work must carry the requested language facet: ${test.label}`,
+    );
+    assert.match(rec!.reason, /^あります。/);
+    assert.doesNotMatch(rec!.reason, /catalog metadata/i);
+    languageResults[test.label] = String(rec!.work.title);
+    languageReasons[test.label] = rec!.reason;
+  }
+
+  assert.match(languageReasons["フランス語"], /含む多言語曲/);
+  assert.equal(languageResults["中国語"], "赔偿节奏");
+  assert.equal(languageResults["韓国語"], "하늘 위로");
+  assert.equal(languageResults["イタリア語"], "Madre del Silenzio");
+  assert.notEqual(languageResults["ヒンディー語"], "WORLD STRIKE Thirteen Tongues");
+
   const sameTitleWrongId: CatalogWork = {
     id: "fake-sesoko-id",
     title: "Sesoko Island",
@@ -98,6 +143,9 @@ function byTitle(works: CatalogWork[], title: string): CatalogWork {
     intelligenceRecordCount: file.records.length,
     germanRecommendation: german?.work.title,
     okinawaRecommendation: okinawa?.work.title,
+    languageCoverageCount: languageCases.length,
+    languageResults,
+    languageReasons,
   }));
 })().catch((error) => {
   console.error(error);
