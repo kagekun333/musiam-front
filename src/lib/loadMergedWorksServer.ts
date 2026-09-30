@@ -5,8 +5,10 @@ import importJson from "../../public/works/catalog-imports.json";
 import readinessJson from "../../public/works/catalog-readiness.json";
 import distributionReleaseJson from "../../public/works/distrokid-release-metadata.json";
 import resolvedDistroKidJson from "../../public/works/distrokid-release-resolutions.json";
+import workIntelligenceJson from "../../public/works/work-intelligence.json";
 import { projectStoredReleaseMetadata, type CanonicalRelease } from "@/lib/distrokid-release-ingestion";
 import { projectResolvedDistroKidRelease, type AppleReleaseResolution } from "@/lib/distrokid-catalog-projection";
+import { applyWorkIntelligence, type WorkIntelligenceFile } from "@/lib/catalog-intelligence";
 
 type ReadinessRow = {
   id?: string | number;
@@ -28,10 +30,11 @@ export async function loadMergedWorksServer(): Promise<CatalogWork[]> {
   const readinessRows = (readinessJson.items ?? []) as ReadinessRow[];
 
   const projected = projectStoredReleaseMetadata(catalog, loadStoredDistributionReleases());
-  return projected.map((work) => ({
+  const withStatus = projected.map((work) => ({
     ...work,
     catalogStatus: statusFor(work, readinessRows) ?? work.catalogStatus,
   }));
+  return applyWorkIntelligence(withStatus, workIntelligenceJson as WorkIntelligenceFile);
 }
 
 export function loadStoredDistributionReleases(): CanonicalRelease[] {

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "workIds": ["spotify-single-6ukIB4oJJZdhUwKr9OOqzF", "danke-bitte-214"],
+      "facets": [
+        {"kind":"language","value":"de","label":"ドイツ語","aliases":["ドイツ語","German","Deutsch"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:danke-bitte-214","confidence":"medium"}},
+        {"kind":"country","value":"Germany","label":"ドイツ","aliases":["ドイツ","Germany","Deutschland"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:danke-bitte-214","confidence":"medium"}},
+        {"kind":"place","value":"Berlin","label":"ベルリン","aliases":["ベルリン","Berlin"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:danke-bitte-214","confidence":"medium"}}
+      ]
+    },
+    {
+      "workIds": ["spotify-single-0n4YxepwuViPkKvIuLXtwR", "g-rli-garden-149"],
+      "facets": [
+        {"kind":"language","value":"de","label":"ドイツ語","aliases":["ドイツ語","German","Deutsch"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:g-rli-garden-149","confidence":"medium"}},
+        {"kind":"country","value":"Germany","label":"ドイツ","aliases":["ドイツ","Germany","Deutschland"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:g-rli-garden-149","confidence":"medium"}},
+        {"kind":"place","value":"Berlin","label":"ベルリン","aliases":["ベルリン","Berlin","Görli","Görlitzer Park"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:g-rli-garden-149","confidence":"medium"}}
+      ]
+    },
+    {
+      "workIds": ["spotify-single-6EwYY1zSl5Yg4YkZ5xTj0P", "brandenburger-tor-147"],
+      "facets": [
+        {"kind":"language","value":"instrumental","label":"インストゥルメンタル","aliases":["インスト","インストゥルメンタル","instrumental"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:brandenburger-tor-147","confidence":"medium"}},
+        {"kind":"country","value":"Germany","label":"ドイツ","aliases":["ドイツ","Germany","Deutschland"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:brandenburger-tor-147","confidence":"medium"}},
+        {"kind":"place","value":"Berlin","label":"ベルリン","aliases":["ベルリン","Berlin","Brandenburg Gate","ブランデンブルク門"],"source":{"type":"LEGACY_SSD_NOTE_EXPLICIT","ref":"works-ssd:brandenburger-tor-147","confidence":"medium"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6800129451"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"Sesoko Island","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"Sesoko Island","confidence":"high"}},
+        {"kind":"place","value":"Sesoko Island","label":"瀬底島","aliases":["瀬底島","瀬底","Sesoko Island","Sesoko"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:Sesoko Island","confidence":"high"}},
+        {"kind":"search_alias","value":"瀬底島","label":"瀬底島","aliases":["瀬底島","瀬底"],"source":{"type":"CURATED_TRANSLATION_ALIAS","ref":"Sesoko Island","confidence":"high"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6801016338"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"古宇利島","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"古宇利島","confidence":"high"}},
+        {"kind":"place","value":"Kouri Island","label":"古宇利島","aliases":["古宇利","古宇利島","Kouri","Kouri Island"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:古宇利オーシャンロード","confidence":"high"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6801905903"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"久米島","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"久米島","confidence":"high"}},
+        {"kind":"place","value":"Kume Island","label":"久米島","aliases":["久米島","Kumejima","Kume Island"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:風の記憶、久米島","confidence":"high"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6801905894"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"伊良部島","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"伊良部島","confidence":"high"}},
+        {"kind":"place","value":"Irabu Island","label":"伊良部島","aliases":["伊良部","伊良部島","Irabu","Irabu Island"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:伊良部サンセット","confidence":"high"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6801905670"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"座間味島","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"座間味島","confidence":"high"}},
+        {"kind":"place","value":"Zamami Island","label":"座間味島","aliases":["座間味","座間味島","Zamami","Zamami Island"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:座間味サンセット","confidence":"high"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6801895582"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"阿嘉島","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"阿嘉島","confidence":"high"}},
+        {"kind":"place","value":"Aka Island","label":"阿嘉島","aliases":["阿嘉島","阿嘉","Aka Island"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:阿嘉島","confidence":"high"}}
+      ]
+    },
+    {
+      "workIds": ["apple-album-6801775130"],
+      "facets": [
+        {"kind":"country","value":"Japan","label":"日本","aliases":["日本","Japan"],"source":{"type":"CURATED_GEOGRAPHY","ref":"久高島","confidence":"high"}},
+        {"kind":"region","value":"Okinawa","label":"沖縄","aliases":["沖縄","Okinawa"],"source":{"type":"CURATED_GEOGRAPHY","ref":"久高島","confidence":"high"}},
+        {"kind":"place","value":"Kudaka Island","label":"久高島","aliases":["久高島","久高","Kudaka","Kudaka Island"],"source":{"type":"TITLE_EXPLICIT_GEOGRAPHY","ref":"title:久高島、祈り","confidence":"high"}}
+      ]
+    }
+  ]
+}

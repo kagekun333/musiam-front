@@ -1,6 +1,7 @@
 import claimsMatrix from "../../ops/simulation-refinement/phase5-generalization-20260913/music/batch-r3/claims-matrix.json";
 import { getPublicLinksForCard, type PublicLink } from "@/lib/work-links";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
+import { intelligenceSearchText, scoreWorkIntelligenceQuery } from "@/lib/catalog-intelligence";
 
 export type CoreMessage = {
   role: "system" | "user" | "assistant";
@@ -314,6 +315,7 @@ function catalogHaystack(work: CatalogWork) {
     ...(work.tags ?? []),
     ...(work.moodTags ?? []),
     ...(work.moodSeeds ?? []),
+    intelligenceSearchText(work),
   ].join(" "));
 }
 
@@ -340,6 +342,9 @@ function rankCatalogWorks(works: CatalogWork[], query: string) {
       score += Math.min(matches, 4) * 5;
       reasons.push(signal.reason);
     }
+    const intelligence = scoreWorkIntelligenceQuery(work, query);
+    score += intelligence.score;
+    reasons.push(...intelligence.reasons);
     for (const genre of [work.distribution?.primaryGenre, work.distribution?.secondaryGenre].filter((value): value is string => typeof value === "string" && !!value.trim())) {
       if (normalizedQuery.includes(normalize(genre))) {
         score += 8;

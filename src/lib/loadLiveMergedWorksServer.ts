@@ -2,6 +2,8 @@ import type { CatalogWork } from "@/lib/mergeWorksCatalog";
 import { loadMergedWorksServer } from "@/lib/loadMergedWorksServer";
 import { getAppleReleaseOverlayStore } from "@/lib/apple-release-overlay-store.server";
 import { mergeLiveCatalogWorks, readAppleReleaseOverlay, type OverlayReadStatus } from "@/lib/apple-release-overlay";
+import workIntelligenceJson from "../../public/works/work-intelligence.json";
+import { applyWorkIntelligence, type WorkIntelligenceFile } from "@/lib/catalog-intelligence";
 
 export async function loadLiveMergedWorksServer(): Promise<CatalogWork[]> {
   return (await loadLiveMergedWorksServerWithStatus()).works;
@@ -18,5 +20,9 @@ export async function loadLiveMergedWorksServerWithStatus(input: {
     catch { return { works: baseWorks.slice(), overlayStatus: "UNAVAILABLE" }; }
   }
   const overlay = await readAppleReleaseOverlay(store);
-  return { works: mergeLiveCatalogWorks(baseWorks, overlay.snapshot), overlayStatus: overlay.status };
+  const merged = mergeLiveCatalogWorks(baseWorks, overlay.snapshot);
+  return {
+    works: applyWorkIntelligence(merged, workIntelligenceJson as WorkIntelligenceFile),
+    overlayStatus: overlay.status,
+  };
 }

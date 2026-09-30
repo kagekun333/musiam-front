@@ -1,4 +1,5 @@
 import { getPrimaryPublicHref } from "@/lib/work-links";
+import type { WorkIntelligence } from "@/lib/catalog-intelligence";
 
 type RawLinks = Record<string, string | null | undefined>;
 
@@ -21,6 +22,8 @@ export type CatalogWork = {
   canonicalMasterTitle?: string;
   /** Explicit, stable aliases only. A display title is never an alias. */
   catalogAliases?: string[];
+  /** Discovery/search facets. Never an identity proof or merge key. */
+  intelligence?: WorkIntelligence;
   identifiers?: {
     release?: { albumuuid?: string | null; upc?: string | null; appleCollectionId?: string | null };
     recordings?: { isrc: string; trackNumber: number | null }[];
