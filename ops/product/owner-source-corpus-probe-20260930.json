@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "gate": "OWNER_SOURCE_CORPUS_PROBE",
+  "date": "2026-09-30",
+  "status": "PASS_PROBE",
+  "startingHead": "a4b3369acc39909ddb4d680e2f8e278dfb592b60",
+  "purpose": "Prove that MUSIAM can mine owner/official/archive sources by stable work identity while separating direct owner statements, official release data, approved artifacts, AI-derived interpretation, and knowledge gaps.",
+  "sourceClasses": {
+    "OWNER_MESSAGE": "Direct statement by 伯爵 / ABI伯爵, including signed published Letters.",
+    "OWNER_PUBLISHED_MEDIA": "Published/saved owner-authored media with clear owner attribution.",
+    "OFFICIAL_RELEASE_DATA": "Owned release metadata or lyrics exported from distribution/catalog records.",
+    "APPROVED_ARTIFACT": "A MUSIAM artifact that was actually produced/approved/published; may still contain AI-assisted prose and is not automatically an autobiographical statement.",
+    "AI_DERIVED_FROM_OFFICIAL_SOURCE": "AI analysis based on official lyrics/assets. Useful interpretation, never owner intent.",
+    "AI_DRAFT": "Unapproved assistant/model suggestion or generic generated brief. Never promoted to owner intent.",
+    "OPERATIONAL_LOG": "Automation/deployment/catalog log. Identity/status evidence only, not creative meaning.",
+    "KNOWLEDGE_GAP": "No sufficiently strong source found for the requested semantic claim."
+  },
+  "sourceRoots": [
+    {
+      "kind": "local_archive",
+      "path": "/Users/kagekun/Desktop/MUSIAM_CODEX_EXPORT",
+      "note": "343-session Codex export; useful but dominated by operational history and approval wrappers."
+    },
+    {
+      "kind": "local_archive",
+      "path": "/Users/kagekun/Desktop/Hakusyaku_Cowork/03_CASH_HakusyakuMusiam/CodexMUSIAM歴史",
+      "note": "Filtered MUSIAM Codex history. Good for locating prior work, not automatically an owner-primary source."
+    },
+    {
+      "kind": "local_archive",
+      "path": "/Users/kagekun/Desktop/PCHAN_PROJECT_MEMORY/00_MUSIAM_FRONT",
+      "note": "Project memory snapshots/manifests/history. Strong for locating project artifacts and old repository facts."
+    },
+    {
+      "kind": "library",
+      "name": "ChatGPT / MUSIAM saved Library",
+      "note": "Search surfaced Letters, distribution exports, work histories and archive chunks."
+    }
+  ],
+  "works": [
+    {
+      "title": "Fuego en la Noche",
+      "primaryRuntimeId": "fuego-en-la-noche-228",
+      "additionalStableIds": [
+        "spotify-single-0isH27stV7eiEpIbqfhood"
+      ],
+      "releaseDate": "2025-09-04",
+      "evidenceStrength": "STRONG",
+      "ownerIntentStatus": "VERIFIED_OWNER_PUBLISHED_MEDIA",
+      "lyricsStatus": "OFFICIAL_FULL_LYRICS_AVAILABLE",
+      "coverBriefStatus": "ARTIFACT/ASSET REFERENCES_AVAILABLE",
+      "sources": [
+        {
+          "class": "OWNER_PUBLISHED_MEDIA",
+          "locator": {
+            "libraryFileId": "libfile_a557db61aae0819193bd79718560b71a",
+            "fileName": "TEXT_SNAPSHOT(4).md",
+            "embeddedPath": "content/letters/2025-09-04-fuego-en-la-noche.md"
+          },
+          "supports": [
+            "The owner publicly described the work as a passionate contrast to the previous quiet/mythic piece.",
+            "The owner explicitly described deliberate contrast/range as part of the館 identity.",
+            "The owner explicitly connected the work with night's dual nature: sleeping and burning/aliveness."
+          ],
+          "doesNotSupport": [
+            "Any private biographical event not stated in the Letter.",
+            "A claim that every detailed lyrical image is autobiographical."
+          ]
+        },
+        {
+          "class": "OFFICIAL_RELEASE_DATA",
+          "locator": {
+            "libraryFileId": "libfile_34d837de53a08191826e45edfd6ae704",
+            "fileName": "releases_master_fixed.json"
+          },
+          "supports": [
+            "Official release date and identifiers.",
+            "Full registered lyrics are available for internal semantic extraction.",
+            "The lyrics mix Spanish and English."
+          ],
+          "publicHandling": "Do not duplicate full lyrics into public knowledge records by default; store derived semantics and source locator."
+        },
+        {
+          "class": "APPROVED_ARTIFACT",
+          "locator": {
+            "archivedEvidence": "Prior Codex audit of 伯爵の魔導書 PDF",
+            "currentPrimaryArtifactAvailability": "NOT_CONFIRMED_AT_PROBED_OLD_REPO_PATH"
+          },
+          "supports": [
+            "An archived product-artifact extract describes the song as Spanish/English passionate Latin pop and includes an MV visual concept."
+          ],
+          "caution": "Treat as approved-artifact evidence, not direct autobiographical owner testimony unless provenance is independently confirmed."
+        }
+      ],
+      "allowedKnowledgeNow": [
+        "Passionate Spanish/English work.",
+        "Owner-published theme of contrast between quietness and heat/intensity.",
+        "Owner-published framing of night as both sleep and burning/aliveness.",
+        "Official lyrics may support bounded thematic summaries."
+      ],
+      "prohibitedClaims": [
+        "Invented romance or real-life affair.",
+        "Invented place/date of composition.",
+        "Invented personal event as the reason for the song."
+      ],
+      "nextMining": "Link official lyrics + Letter + any original Suno/ChatGPT creation session into a stable Knowledge Envelope."
+    },
+    {
+      "title": "Görli Garden",
+      "primaryRuntimeId": "g-rli-garden-149",
+      "additionalStableIds": [
+        "spotify-single-0n4YxepwuViPkKvIuLXtwR"
+      ],
+      "releaseDate": "2025-05-21",
+      "evidenceStrength": "STRONG_CONTENT_MEDIUM_OWNER_INTENT",
+      "ownerIntentStatus": "NOT_YET_VERIFIED_DIRECT_OWNER_MESSAGE",
+      "lyricsStatus": "OFFICIAL_FULL_LYRICS_AVAILABLE",
+      "coverBriefStatus": "MV/visual planning evidence available",
+      "sources": [
+        {
+          "class": "OFFICIAL_RELEASE_DATA",
+          "locator": {
+            "libraryFileId": "libfile_2e64e851402c819186927dfd02b49963",
+            "fileName": "distrokid_complete_export_repaired.json"
+          },
+          "supports": [
+            "Full official German lyrics.",
+            "The text directly depicts a Berlin park, freedom, community, non-judgment and multicultural coexistence.",
+            "The repeated chorus includes Görli Garden as a feeling rather than merely a place."
+          ],
+          "publicHandling": "Use semantic summaries; do not reproduce full lyrics by default."
+        },
+        {
+          "class": "AI_DERIVED_FROM_OFFICIAL_SOURCE",
+          "locator": {
+            "libraryFileId": "libfile_805afbcfee008191b4a3d6b8e4704ba1",
+            "fileName": "CODEX_HISTORY(2).md"
+          },
+          "supports": [
+            "Prior MV planning read lyrics.txt and characterized the work around freedom, community, peace, greenery and gentle anti-authoritarianism.",
+            "Prior planning treated a repeated chorus as the core visual segment."
+          ],
+          "caution": "This is assistant analysis of source material, not direct owner intent."
+        }
+      ],
+      "allowedKnowledgeNow": [
+        "German-language work with official lyrics.",
+        "Lyrics strongly support themes of park life, community, freedom, non-judgment and multicultural coexistence.",
+        "It can be discussed confidently at the level of lyrical content."
+      ],
+      "prohibitedClaims": [
+        "That 伯爵 explicitly said these themes were his personal reason for creating the song, unless a direct source is found.",
+        "Invented personal Berlin event."
+      ],
+      "nextMining": "Locate original creation conversation or owner comment about why Görli/Görlitzer Park was chosen."
+    },
+    {
+      "title": "Sesoko Island",
+      "primaryRuntimeId": "apple-album-6800129451",
+      "additionalStableIds": [],
+      "releaseDate": "2026-08-11",
+      "evidenceStrength": "PARTIAL",
+      "ownerIntentStatus": "KNOWLEDGE_GAP",
+      "lyricsStatus": "NOT_CONFIRMED_IN_PROBE",
+      "coverBriefStatus": "NOT_CONFIRMED_IN_PROBE",
+      "sources": [
+        {
+          "class": "OPERATIONAL_LOG",
+          "locator": {
+            "localArchive": "MUSIAM_FILTERED_CHUNK_001.md / MUSIAM_CODEX_EXPORT",
+            "observedFacts": [
+              "Release/catalog addition on 2026-08-12 operational timeline",
+              "A browser session had a Sesoko Island image search."
+            ]
+          },
+          "supports": [
+            "Identity/release workflow and interest in Sesoko imagery."
+          ],
+          "doesNotSupport": [
+            "Why the song was created.",
+            "That a specific trip or personal event inspired it."
+          ]
+        },
+        {
+          "class": "OFFICIAL_RELEASE_DATA",
+          "locator": {
+            "runtimeId": "apple-album-6800129451"
+          },
+          "supports": [
+            "Public title/date/link identity.",
+            "Geographic discovery link to Sesoko Island is curated separately in Catalog Intelligence."
+          ]
+        }
+      ],
+      "allowedKnowledgeNow": [
+        "It is a real released work tied by title/discovery metadata to Sesoko Island/Okinawa.",
+        "Recall aliases such as 瀬底島 can help users find it."
+      ],
+      "prohibitedClaims": [
+        "Specific creation story, trip memory, emotions or lyrics without stronger source.",
+        "Treating an image search as proof of artistic intent."
+      ],
+      "nextMining": "Search original ChatGPT music project/export around Aug 9–11 2026 and Suno history; prefer direct user prompts over Codex operational wrappers."
+    },
+    {
+      "title": "Sun Without a Map",
+      "primaryRuntimeId": "apple-album-6808806776",
+      "additionalStableIds": [],
+      "releaseDate": "2026-09-29",
+      "evidenceStrength": "PARTIAL",
+      "ownerIntentStatus": "KNOWLEDGE_GAP",
+      "lyricsStatus": "NOT_CONFIRMED_IN_PROBE",
+      "coverBriefStatus": "GENERIC_AI_COVER_BRIEF_FOUND",
+      "sources": [
+        {
+          "class": "AI_DRAFT",
+          "locator": {
+            "libraryFileId": "libfile_1724357451cc8191aed0e21e005221d1",
+            "fileName": "MUSIAM_CODEX_CHUNK_001.md"
+          },
+          "supports": [
+            "A generic jacket-generation instruction existed using the title as the only semantic input."
+          ],
+          "doesNotSupport": [
+            "Song meaning.",
+            "Lyrics.",
+            "Owner intent.",
+            "Any specific visual symbolism as canonical."
+          ]
+        },
+        {
+          "class": "OPERATIONAL_LOG",
+          "locator": {
+            "localArchive": "PCHAN_PROJECT_MEMORY / Codex history"
+          },
+          "supports": [
+            "DistroKid/Apple release identity and prior semantic staging that explicitly remained unknown."
+          ]
+        }
+      ],
+      "allowedKnowledgeNow": [
+        "Real release identity/date/public link.",
+        "Current Apple public catalog facts.",
+        "The title itself may be used for recall, but not as proof of deeper meaning."
+      ],
+      "prohibitedClaims": [
+        "A made-up 'without a map' life philosophy as owner intent.",
+        "Invented lyrics or instruments.",
+        "Treating generic cover-generation text as the song's story."
+      ],
+      "nextMining": "Locate original ChatGPT/Suno composition session; if absent, keep owner intent unknown and use clearly framed curatorial interpretation only."
+    },
+    {
+      "title": "星海の眠り　〜Slumber in the Star Sea〜",
+      "primaryRuntimeId": "spotify-album-79CuhhEhb0GtBzgkk7fwsY",
+      "additionalStableIds": [
+        "slumber-in-the-star-sea-210"
+      ],
+      "releaseDate": "2025-08-11",
+      "evidenceStrength": "PARTIAL",
+      "ownerIntentStatus": "KNOWLEDGE_GAP",
+      "lyricsStatus": "NOT_CONFIRMED_IN_PROBE",
+      "coverBriefStatus": "ASSET/TITLE REFERENCES_FOUND",
+      "sources": [
+        {
+          "class": "OPERATIONAL_LOG",
+          "locator": {
+            "localArchive": "MUSIAM/PCHAN project history"
+          },
+          "supports": [
+            "Stable title/catalog identity.",
+            "Historical use as a recommendation in omikuji-related UI.",
+            "Cover asset references existed in the old project."
+          ],
+          "doesNotSupport": [
+            "Why it was created.",
+            "Detailed sonic/lyrical meaning."
+          ]
+        }
+      ],
+      "allowedKnowledgeNow": [
+        "Real catalog work and release date.",
+        "Historical MUSIAM product/UI use is documented."
+      ],
+      "prohibitedClaims": [
+        "Invented cosmic-spiritual creation story.",
+        "Invented instrumentation or lyrics."
+      ],
+      "nextMining": "Search original music-creation chats/Suno project and archived lyrics/assets by both Japanese and English title variants."
+    }
+  ],
+  "probeConclusions": {
+    "archiveMiningViable": true,
+    "directOwnerSourceCoverageUneven": true,
+    "strongestExample": "Fuego en la Noche",
+    "strongestOfficialLyricsExample": "Görli Garden",
+    "recentReleaseGapExample": "Sun Without a Map",
+    "rule": "Absence of owner intent does not block conversation; it blocks factual attribution. Curatorial interpretation remains allowed when clearly not presented as biography/history.",
+    "runtimeIntegration": "NOT_STARTED",
+    "nextGate": "OWNER_SOURCE_CORPUS_INDEX_V1"
+  }
+}
