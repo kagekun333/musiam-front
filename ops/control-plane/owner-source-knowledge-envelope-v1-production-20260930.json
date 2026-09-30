@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "gate": "OWNER_SOURCE_KNOWLEDGE_ENVELOPE_V1",
+  "date": "2026-09-30",
+  "verdict": "PASS_PRODUCTION",
+  "runtimeSourceCommit": "d45870c29af071e6df5855e8b5414b79e190cded",
+  "previewDeploymentId": "dpl_EMGM3vwVYA6gMqWxh99NxT1JQi3J",
+  "productionDeploymentId": "dpl_EcFXu56nE9ejeU9V9CDnPZ9xiftB",
+  "previousProductionDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
+  "deployManifestSha256": "ea16a14cd1d89d6190041a395c439ce3fc7168396967c71c7acd8c04d038a34c",
+  "safePayload": {
+    "protectedPayload": 0,
+    "humanDirtyPayload": 0,
+    "envPayload": 0,
+    "secretPrivatePayload": 0,
+    "unexpectedUntrackedRegularFiles": 0,
+    "specialPayload": 0
+  },
+  "runtimeKnowledge": {
+    "editorialKnowledgeItems": 14,
+    "fuego": {
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "productionStory": "PASS",
+      "productionFollowup": "PASS"
+    },
+    "gorli": {
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "productionStory": "PASS_NO_OWNER_MOTIVE_FABRICATION"
+    },
+    "sesoko": {
+      "ownerIntentStatus": "KNOWLEDGE_GAP",
+      "productionStory": "PASS_CURATORIAL_INTERPRETATION"
+    },
+    "sunWithoutAMap": {
+      "ownerIntentStatus": "KNOWLEDGE_GAP",
+      "productionStory": "PASS_CURATORIAL_INTERPRETATION"
+    },
+    "technicalSonicUnknown": "PASS"
+  },
+  "productionSmoke": {
+    "fuegoStory": 200,
+    "fuegoOwnerIntentFollowup": 200,
+    "gorliStory": 200,
+    "sesokoStory": 200,
+    "sunWithoutAMapStory": 200,
+    "fuegoTechnicalQuestion": 200,
+    "exhibition": 200,
+    "errorFatalCount": 0,
+    "status5xxCount": 0
+  },
+  "rollback": {
+    "candidateDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
+    "candidateStateAtClosure": "READY"
+  },
+  "nextGate": "OWNER_SOURCE_KNOWLEDGE_COVERAGE_V1"
+}

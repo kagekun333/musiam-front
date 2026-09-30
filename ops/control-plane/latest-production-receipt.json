@@ -3,43 +3,49 @@
   "recordedAt": "2026-09-30",
   "project": "musiam-front",
   "productionDomain": "hakusyaku.xyz",
-  "productionDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
-  "productionDeploymentUrl": "musiam-front-gxyc0sstu-hakusyakus-projects.vercel.app",
+  "productionDeploymentId": "dpl_EcFXu56nE9ejeU9V9CDnPZ9xiftB",
+  "productionDeploymentUrl": "musiam-front-j59svff0x-hakusyakus-projects.vercel.app",
   "productionState": "READY",
-  "runtimeSourceCommit": "495ded9a8cd756d136a58399150f52cf30f24a07",
-  "previewDeploymentId": "dpl_BaHAL9n7Z3grjqcFahpok4qAk53D",
-  "previewDeploymentUrl": "musiam-front-huh0f119k-hakusyakus-projects.vercel.app",
-  "deployManifestSha256": "6360617c986c2c73f616406d965e78dee627a7e5a37b565dc58f7ece2c1060d2",
-  "previousProductionDeploymentId": "dpl_CZrmiXJdFNxQhYToG8NkjQKbWGDK",
+  "runtimeSourceCommit": "d45870c29af071e6df5855e8b5414b79e190cded",
+  "previewDeploymentId": "dpl_EMGM3vwVYA6gMqWxh99NxT1JQi3J",
+  "previewDeploymentUrl": "musiam-front-jonegmpd0-hakusyakus-projects.vercel.app",
+  "deployManifestSha256": "ea16a14cd1d89d6190041a395c439ce3fc7168396967c71c7acd8c04d038a34c",
+  "previousProductionDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
   "rollbackCandidateAvailable": true,
   "verifiedRoutes": {
     "/works": 200,
-    "/api/chat-experience-v3:okinawa": 200,
-    "/api/chat-experience-v3:german-language": 200,
-    "/api/chat-experience-v3:french-language": 200,
-    "/api/chat-experience-v3:korean-language": 200,
-    "/api/chat-experience-v3:music-medium-japanese-output": 200,
-    "/api/chat-experience-v3:unsupported-language": 200
+    "/api/exhibition": 200,
+    "/api/chat-experience-v3:fuego-story": 200,
+    "/api/chat-experience-v3:fuego-owner-intent-followup": 200,
+    "/api/chat-experience-v3:gorli-story": 200,
+    "/api/chat-experience-v3:sesoko-curatorial-story": 200,
+    "/api/chat-experience-v3:sun-without-a-map-curatorial-story": 200,
+    "/api/chat-experience-v3:fuego-technical-unknown": 200
   },
   "businessInvariants": {
     "worksUniqueCountVisible": 488,
     "latestWorkVisible": "Sun Without a Map",
-    "okinawaRecommendation": "Sesoko Island",
-    "germanRecommendation": "Görli Garden",
-    "frenchRecommendation": "WORLD STRIKE Thirteen Tongues",
-    "koreanRecommendation": "하늘 위로",
-    "musicMediumClassifier": "PASS",
-    "unsupportedLanguageDoesNotInvent": true,
-    "languageCoverageValidated": 16
+    "ownerSourceKnowledgeEnvelope": "PASS_PRODUCTION",
+    "fuegoOwnerIntentAttribution": "EXPLICIT_OWNER_PUBLISHED_MEDIA",
+    "gorliOwnerIntentAttribution": "NOT_EXPLICIT_NO_FABRICATION",
+    "sesokoCuratorialInterpretation": "ALLOWED_FRAMED_AS_COUNT_READING",
+    "sunWithoutAMapCuratorialInterpretation": "ALLOWED_FRAMED_AS_COUNT_READING",
+    "technicalSonicUnknownPreserved": true,
+    "duplicateProviderIdentityResolvedByReviewedStableIds": true,
+    "exhibitionEditorialDescriptions": [
+      "Fuego en la Noche",
+      "Görli Garden"
+    ]
   },
   "productionChecks": {
     "errorFatalCount": 0,
     "status5xxCount": 0
   },
   "notes": [
-    "Catalog Intelligence is discovery metadata only and never a stable identity merge key.",
-    "Language facets distinguish primary, mixed, included and instrumental scope where known.",
-    "Deterministic catalog copy preserves legitimate non-Japanese scripts.",
-    "Work-medium classification is centralized to avoid substring errors such as 日本語 being misread as book intent."
+    "Owner-published editorial knowledge is separated from catalog facts and unknown sonic data.",
+    "Only EXPLICIT owner intent may be attributed to 伯爵 as creation intent.",
+    "Non-explicit works may use evidence-grounded summaries and clearly framed curatorial interpretation, but not invented biography.",
+    "Technical sonic questions continue to preserve UNKNOWN when instruments/BPM/lyrics are not verified.",
+    "Editorial knowledge binds only through reviewed stable IDs; title-only identity merge remains forbidden."
   ]
 }
