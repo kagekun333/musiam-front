@@ -397,7 +397,7 @@ export function asksForSonicDetails(text: string): boolean {
 export function unknownSonicText(language: "ja" | "en" | "fr" | "es" | "de" | "ar", workId: string, hasListenAction: boolean): string {
   const variant = Array.from(workId).reduce((sum, char) => sum + char.charCodeAt(0), 0) % 2;
   const withAction: Record<typeof language, [string, string]> = {
-    ja: ["音の細部は記録だけでは断言できません。よろしければ、下の確認済みリンクからお聴きください。", "楽器や音色までは資料にありません。耳で確かめていただけるよう、公開リンクを添えました。"],
+    ja: ["そこはまだ発掘できてません。想像で音を足すより早いので、下のカードで耳から答え合わせしましょう。", "その音の細部はまだ裏が取れてません。ここで勝手に楽器を召喚するのも格好悪いので、下のカードで聴けます。"],
     en: ["The catalog does not establish those sonic details. You can listen through the verified public link below.", "I cannot verify the instruments or texture from the records. I have included the public listening link so you can hear it yourself."],
     fr: ["Le catalogue ne permet pas d’affirmer ces détails sonores. Vous pouvez écouter l’œuvre avec le lien public vérifié ci-dessous.", "Les instruments et le timbre ne sont pas documentés. J’ai ajouté le lien d’écoute public pour que vous puissiez l’entendre."],
     es: ["El catálogo no confirma esos detalles sonoros. Puede escuchar la obra desde el enlace público verificado de abajo.", "Los instrumentos y el timbre no constan en los registros. He añadido el enlace de escucha para que pueda comprobarlo."],
@@ -405,7 +405,7 @@ export function unknownSonicText(language: "ja" | "en" | "fr" | "es" | "de" | "a
     ar: ["لا يثبت الفهرس هذه التفاصيل الصوتية. يمكنك الاستماع إلى العمل عبر الرابط العام الموثق أدناه.", "لا تسجل البيانات الآلات أو الطابع الصوتي. أرفقت رابط الاستماع العام لتتحقق بنفسك."],
   };
   const withoutAction: Record<typeof language, string> = {
-    ja: "そこまでは今の資料では分かりません。確認できる公開試聴リンクも見当たりません。",
+    ja: "そこはまだ未発掘です。適当に音を召喚するのはやめておきます。試聴の裏が取れたら、耳で答え合わせしましょう。",
     en: "The available records do not establish those details, and I cannot find a verified public listening link.",
     fr: "Les données disponibles ne permettent pas de l’établir, et je ne trouve aucun lien d’écoute public vérifié.",
     es: "Los registros disponibles no permiten confirmarlo y no encuentro un enlace público de escucha verificado.",

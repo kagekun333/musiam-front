@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import editorialJson from "../public/works/editorial-knowledge.json";
 import { getEditorialKnowledgeForWorkId, resolveEditorialKnowledgeFromQuery } from "../src/lib/editorial-knowledge";
-import { buildLunaEvidencePack, buildWorkKnowledgeEnvelope, asksForWorkStory, asksForSonicDetails } from "../src/lib/chat-release-knowledge";
+import { buildLunaEvidencePack, buildWorkKnowledgeEnvelope, asksForWorkStory, asksForSonicDetails, unknownSonicText } from "../src/lib/chat-release-knowledge";
 import { projectExhibitionWorks } from "../src/lib/exhibition-projection";
 import { loadMergedWorksServer } from "../src/lib/loadMergedWorksServer";
 import type { CatalogWork } from "../src/lib/mergeWorksCatalog";
@@ -80,6 +80,9 @@ import type { CatalogWork } from "../src/lib/mergeWorksCatalog";
   assert.equal(asksForWorkStory("この曲のテーマは？"), true);
   assert.equal(asksForWorkStory("どんな楽器が入ってる？"), false);
   assert.equal(asksForSonicDetails("どんな楽器が入ってる？"), true);
+  const sonicUnknown = unknownSonicText("ja", "fuego-en-la-noche-228", true);
+  assert.match(sonicUnknown, /発掘|裏が取れて/);
+  assert.doesNotMatch(sonicUnknown, /資料にありません|catalog metadata/i);
 
   const projected = projectExhibitionWorks([
     fuego!,

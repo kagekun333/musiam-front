@@ -298,6 +298,9 @@ Prompt rules:
 - humor 0–1 times when appropriate
 - do not use “たぶん” every time
 - do not begin every answer with “資料がありません”
+- when owner intent is non-explicit, lead with the supported work itself before placing a short boundary on motive
+- when editorial evidence is absent, do not lead with database/registration status; a clearly framed curatorial reading may lead
+- technical UNKNOWN in Japanese should stay truthful without reverting to bureaucratic canned copy
 - do not expose internal FACT / UNKNOWN labels
 - keep foreign work titles intact
 - no fake biography
@@ -372,7 +375,7 @@ V1 expected:
 
 - itemCount: 14
 - SHA-256:
-  `c48cbb3b2b52724562faeb674b5203c77bae241369a69cdf5b456200c167bea6`
+  `eceb8b8711987b0da97b75cca72546b7e341eed387468f5ab208ed3a50de8f19`
 
 The two new Letter hashes were checked against the current repository source files and matched exactly.
 
