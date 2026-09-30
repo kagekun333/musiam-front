@@ -270,7 +270,31 @@ V1 NOT_EXPLICIT examples:
 
 ---
 
-## 6. Work Story intent coverage
+## 6. Provider duplicate binding
+
+Production smoke exposed three works where the same real release existed under more than one explicit catalog ID:
+
+- Back Me
+  - `back-me-130`
+  - `spotify-single-5e8xTCcPJWfd2SUHsjd1BW`
+- Infinite Graves
+  - `infinite-graves-168`
+  - `spotify-single-022wqGt3TzfjInPuDgHGXf`
+- House in the World
+  - `spotify-album-2DMwcXtZzZaeazATCTW5Xx`
+  - `house-in-the-world-131`
+
+These bindings were not inferred from title equality. Each pair was verified against the same stable Spotify album URL and release date in the catalog.
+
+The reviewed Editorial row now explicitly lists both IDs in `workIds[]`, so Chat and Exhibition receive the same knowledge regardless of which provider-facing ID is displayed.
+
+The Coverage validator now verifies all three bindings and checks that the provider duplicate receives an Exhibition description.
+
+Current Editorial Knowledge SHA-256 after these explicit bindings:
+
+`747983aa6b78b699f34c15acb455b17066d38d3b1cfcfaa9d18e3dd8d0e91acb`
+
+## 7. Work Story intent coverage
 
 Coverage V1 also extends the generic Work Story detector so creation-meaning questions do not fall back to ordinary recommendation.
 
@@ -285,7 +309,7 @@ Covered examples include:
 
 This is a general intent expansion, not an OMNI-specific branch.
 
-## 7. Validation
+## 8. Validation
 
 Validator:
 
@@ -316,7 +340,7 @@ sourceLettersVerified=12
 
 ---
 
-## 8. Coverage ranking for autonomous continuation
+## 9. Coverage ranking for autonomous continuation
 
 Tool:
 
@@ -354,7 +378,7 @@ A large part of the remaining problem is **review throughput**.
 
 ---
 
-## 9. Live runtime coverage caveat
+## 10. Live runtime coverage caveat
 
 Current live Production has more works than the static 420-work deduped base because Apple overlay adds post-cutoff releases.
 
@@ -386,7 +410,7 @@ Do not upgrade generic jacket-generation prompts into owner intent.
 
 ---
 
-## 10. Latest-release mining result
+## 11. Latest-release mining result
 
 A targeted scan of recent Apple-only releases found that many recent titles are present in:
 
@@ -410,7 +434,7 @@ This protects MUSIAM from becoming confidently fictional about its newest works.
 
 ---
 
-## 11. Next-ranked works
+## 12. Next-ranked works
 
 After the first tranche, the ranking tool identifies future candidates such as:
 
@@ -439,7 +463,7 @@ Each next tranche must still read the source Letter and classify:
 
 ---
 
-## 12. What remains intentionally unknown
+## 13. What remains intentionally unknown
 
 Coverage V1 does not fill:
 
@@ -458,7 +482,7 @@ Count Chat may use clearly framed curatorial interpretation without turning it i
 
 ---
 
-## 13. Autonomous loop after V1
+## 14. Autonomous loop after V1
 
 Future `次` execution can use:
 
@@ -480,7 +504,7 @@ This allows coverage to increase without manually choosing every song.
 
 ---
 
-## 14. V1 target
+## 15. V1 target
 
 Production target for this Gate:
 

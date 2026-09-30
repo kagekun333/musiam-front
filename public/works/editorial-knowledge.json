@@ -546,7 +546,11 @@
       "sourceClass": "OWNER_PUBLISHED_MEDIA",
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "96bfae7d56b89b882e1e50689c351a7f506b044a5d5287dc767b0e7f440ca2c2",
-      "sourceHref": "/letters/infinite-graves-and-shine"
+      "sourceHref": "/letters/infinite-graves-and-shine",
+      "workIds": [
+        "infinite-graves-168",
+        "spotify-single-022wqGt3TzfjInPuDgHGXf"
+      ]
     },
     {
       "workId": "back-me-130",
@@ -562,7 +566,11 @@
       "sourceClass": "OWNER_PUBLISHED_MEDIA",
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "16edcf76840f5c0b7499347de87a563e60e0435c8e9221832c20e3c3ae6411c0",
-      "sourceHref": "/letters/the-first-sound-back-me"
+      "sourceHref": "/letters/the-first-sound-back-me",
+      "workIds": [
+        "back-me-130",
+        "spotify-single-5e8xTCcPJWfd2SUHsjd1BW"
+      ]
     },
     {
       "workId": "spotify-album-2DMwcXtZzZaeazATCTW5Xx",
@@ -578,7 +586,11 @@
       "sourceClass": "OWNER_PUBLISHED_MEDIA",
       "ownerIntentStatus": "EXPLICIT",
       "sourceFileHash": "16edcf76840f5c0b7499347de87a563e60e0435c8e9221832c20e3c3ae6411c0",
-      "sourceHref": "/letters/the-first-sound-back-me"
+      "sourceHref": "/letters/the-first-sound-back-me",
+      "workIds": [
+        "spotify-album-2DMwcXtZzZaeazATCTW5Xx",
+        "house-in-the-world-131"
+      ]
     }
   ]
 }

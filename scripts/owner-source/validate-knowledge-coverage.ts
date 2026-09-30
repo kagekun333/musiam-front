@@ -6,6 +6,7 @@ import editorialJson from "../../public/works/editorial-knowledge.json";
 import { buildWorkKnowledgeEnvelope } from "../../src/lib/chat-release-knowledge";
 import { loadMergedWorksServer } from "../../src/lib/loadMergedWorksServer";
 import { dedupeWorks } from "../../src/lib/dedupeWorks";
+import { projectExhibitionWorks } from "../../src/lib/exhibition-projection";
 import type { CatalogWork } from "../../src/lib/mergeWorksCatalog";
 
 const REPO = process.cwd();
@@ -76,7 +77,9 @@ function letterMap() {
   }
 
   const letters = letterMap();
-  const catalog = dedupeWorks(await loadMergedWorksServer());
+  const rawCatalog = await loadMergedWorksServer();
+  const catalog = dedupeWorks(rawCatalog);
+  const rawCatalogById = new Map(rawCatalog.filter((work) => work.id).map((work) => [String(work.id), work] as const));
   const catalogIds = new Set<string>();
   for (const work of catalog) {
     if (work.id) catalogIds.add(String(work.id));
@@ -146,6 +149,32 @@ function letterMap() {
     assert.ok(envelope?.unknowns.includes("ownerProductionIntent"), id);
   }
 
+  const providerDuplicateBindings = [
+    { id: "spotify-single-5e8xTCcPJWfd2SUHsjd1BW", expectedWorkId: "back-me-130", title: "Back Me" },
+    { id: "spotify-single-022wqGt3TzfjInPuDgHGXf", expectedWorkId: "infinite-graves-168", title: "Infinite Graves" },
+    { id: "house-in-the-world-131", expectedWorkId: "spotify-album-2DMwcXtZzZaeazATCTW5Xx", title: "House in the World" },
+  ] as const;
+
+  for (const binding of providerDuplicateBindings) {
+    const row = byId.get(binding.id);
+    assert.ok(row, `Missing reviewed provider duplicate binding: ${binding.id}`);
+    assert.equal(row.workId, binding.expectedWorkId, `Provider duplicate mapped to wrong editorial row: ${binding.id}`);
+    const rawWork = rawCatalogById.get(binding.id);
+    assert.ok(rawWork, `Provider duplicate not found in raw catalog: ${binding.id}`);
+    const envelope = buildWorkKnowledgeEnvelope(rawWork!);
+    assert.ok(envelope?.editorial?.summaryJa, `Provider duplicate must receive editorial knowledge: ${binding.id}`);
+  }
+
+  const projectedDuplicates = projectExhibitionWorks(
+    providerDuplicateBindings.map((binding) => rawCatalogById.get(binding.id)!).filter(Boolean),
+    undefined,
+    "2026-09-30",
+  ).works;
+  for (const binding of providerDuplicateBindings) {
+    const projected = projectedDuplicates.find((work) => work.id === binding.id);
+    assert.ok(String(projected?.description ?? "").trim(), `Provider duplicate must receive Exhibition description: ${binding.id}`);
+  }
+
   const fake: CatalogWork = {
     id: "fake-back-me-id",
     title: "Back Me",
@@ -162,6 +191,7 @@ function letterMap() {
     explicitOwnerIntent: explicit,
     nonExplicitOwnerIntent: notExplicit,
     sourceLettersVerified: usedLetters.size,
+    providerDuplicateBindings: providerDuplicateBindings.length,
   }));
 })().catch((error) => {
   console.error(error);
