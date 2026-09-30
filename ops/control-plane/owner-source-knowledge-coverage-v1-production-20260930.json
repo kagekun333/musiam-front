@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "gate": "OWNER_SOURCE_KNOWLEDGE_COVERAGE_V1",
+  "date": "2026-09-30",
+  "verdict": "PASS_PRODUCTION",
+  "runtimeSourceCommit": "04ef1492f16e38cce9df6b0f715c9170d939b9f8",
+  "previewDeploymentId": "dpl_A5ZVy9D4wdHkx4kG2t5mYn4ACefr",
+  "productionDeploymentId": "dpl_G3PeFaja7cNxdyKMrQRu7PTtyGHP",
+  "previousProductionDeploymentId": "dpl_Bh9jXS7y6C9HHo6FsnpdhoTFmvF7",
+  "deployManifestSha256": "3d99942aa12be9ee6f433374e519850a51f13944e6ef319ad4466f47be4a8ee1",
+  "safePayload": {
+    "protectedPayload": 0,
+    "humanDirtyPayload": 0,
+    "envPayload": 0,
+    "secretPrivatePayload": 0,
+    "unexpectedUntrackedRegularFiles": 0,
+    "specialPayload": 0
+  },
+  "coverage": {
+    "editorialKnowledgeRows": 38,
+    "trancheAdded": 24,
+    "explicitOwnerIntent": 21,
+    "nonExplicitOwnerIntent": 3,
+    "sourceLettersHashVerified": 12,
+    "staticUniqueWorks": 420,
+    "staticUniqueMusicWorks": 286,
+    "staticMusicWorksWithEditorial": 26,
+    "staticMusicEditorialCoveragePct": 9.09,
+    "liveWorksVisible": 488,
+    "liveExhibitionRawItems": 582
+  },
+  "sourceIntegrity": {
+    "editorialKnowledgeSha256": "747983aa6b78b699f34c15acb455b17066d38d3b1cfcfaa9d18e3dd8d0e91acb",
+    "titleOnlyIdentityMerge": 0,
+    "providerDuplicateBindings": [
+      {
+        "title": "Back Me",
+        "reviewedIds": [
+          "back-me-130",
+          "spotify-single-5e8xTCcPJWfd2SUHsjd1BW"
+        ]
+      },
+      {
+        "title": "Infinite Graves",
+        "reviewedIds": [
+          "infinite-graves-168",
+          "spotify-single-022wqGt3TzfjInPuDgHGXf"
+        ]
+      },
+      {
+        "title": "House in the World",
+        "reviewedIds": [
+          "spotify-album-2DMwcXtZzZaeazATCTW5Xx",
+          "house-in-the-world-131"
+        ]
+      }
+    ]
+  },
+  "productionSmoke": {
+    "backMeOwnerIntent": "PASS",
+    "mamaAfrikaStory": "PASS",
+    "abzuNonExplicitBoundary": "PASS",
+    "demiurgosStory": "PASS",
+    "hibiyaOwnerIntent": "PASS",
+    "worldStrikeStory": "PASS",
+    "saunaStory": "PASS",
+    "omniIntent": "PASS",
+    "infiniteGravesOwnerIntent": "PASS",
+    "sunWithoutAMapCuratorialStory": "PASS",
+    "providerDuplicateExhibitionDescriptions": "PASS_3_OF_3",
+    "worksPageLatestVisible": "PASS",
+    "errorFatalCount": 0,
+    "status5xxCount": 0
+  },
+  "rollback": {
+    "candidateDeploymentId": "dpl_Bh9jXS7y6C9HHo6FsnpdhoTFmvF7",
+    "candidateStateAtClosure": "READY"
+  },
+  "nextGate": "OWNER_SOURCE_KNOWLEDGE_COVERAGE_V2"
+}

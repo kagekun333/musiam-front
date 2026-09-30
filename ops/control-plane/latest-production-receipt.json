@@ -3,49 +3,60 @@
   "recordedAt": "2026-09-30",
   "project": "musiam-front",
   "productionDomain": "hakusyaku.xyz",
-  "productionDeploymentId": "dpl_EcFXu56nE9ejeU9V9CDnPZ9xiftB",
-  "productionDeploymentUrl": "musiam-front-j59svff0x-hakusyakus-projects.vercel.app",
+  "productionDeploymentId": "dpl_G3PeFaja7cNxdyKMrQRu7PTtyGHP",
+  "productionDeploymentUrl": "musiam-front-1o2djtl6o-hakusyakus-projects.vercel.app",
   "productionState": "READY",
-  "runtimeSourceCommit": "d45870c29af071e6df5855e8b5414b79e190cded",
-  "previewDeploymentId": "dpl_EMGM3vwVYA6gMqWxh99NxT1JQi3J",
-  "previewDeploymentUrl": "musiam-front-jonegmpd0-hakusyakus-projects.vercel.app",
-  "deployManifestSha256": "ea16a14cd1d89d6190041a395c439ce3fc7168396967c71c7acd8c04d038a34c",
-  "previousProductionDeploymentId": "dpl_GeurD3ciQsucVKbYX1V1idXWD7cv",
+  "runtimeSourceCommit": "04ef1492f16e38cce9df6b0f715c9170d939b9f8",
+  "previewDeploymentId": "dpl_A5ZVy9D4wdHkx4kG2t5mYn4ACefr",
+  "previewDeploymentUrl": "musiam-front-llaa5rhyp-hakusyakus-projects.vercel.app",
+  "deployManifestSha256": "3d99942aa12be9ee6f433374e519850a51f13944e6ef319ad4466f47be4a8ee1",
+  "previousProductionDeploymentId": "dpl_Bh9jXS7y6C9HHo6FsnpdhoTFmvF7",
   "rollbackCandidateAvailable": true,
   "verifiedRoutes": {
     "/works": 200,
     "/api/exhibition": 200,
-    "/api/chat-experience-v3:fuego-story": 200,
-    "/api/chat-experience-v3:fuego-owner-intent-followup": 200,
-    "/api/chat-experience-v3:gorli-story": 200,
-    "/api/chat-experience-v3:sesoko-curatorial-story": 200,
-    "/api/chat-experience-v3:sun-without-a-map-curatorial-story": 200,
-    "/api/chat-experience-v3:fuego-technical-unknown": 200
+    "/api/chat-experience-v3:back-me-owner-intent": 200,
+    "/api/chat-experience-v3:mama-afrika-story": 200,
+    "/api/chat-experience-v3:abzu-non-explicit-boundary": 200,
+    "/api/chat-experience-v3:demiurgos-story": 200,
+    "/api/chat-experience-v3:hibiya-owner-intent": 200,
+    "/api/chat-experience-v3:world-strike-story": 200,
+    "/api/chat-experience-v3:sauna-story": 200,
+    "/api/chat-experience-v3:omni-intent": 200,
+    "/api/chat-experience-v3:infinite-graves-owner-intent": 200,
+    "/api/chat-experience-v3:sun-without-a-map-curatorial-story": 200
   },
   "businessInvariants": {
     "worksUniqueCountVisible": 488,
     "latestWorkVisible": "Sun Without a Map",
-    "ownerSourceKnowledgeEnvelope": "PASS_PRODUCTION",
-    "fuegoOwnerIntentAttribution": "EXPLICIT_OWNER_PUBLISHED_MEDIA",
-    "gorliOwnerIntentAttribution": "NOT_EXPLICIT_NO_FABRICATION",
-    "sesokoCuratorialInterpretation": "ALLOWED_FRAMED_AS_COUNT_READING",
-    "sunWithoutAMapCuratorialInterpretation": "ALLOWED_FRAMED_AS_COUNT_READING",
-    "technicalSonicUnknownPreserved": true,
-    "duplicateProviderIdentityResolvedByReviewedStableIds": true,
-    "exhibitionEditorialDescriptions": [
-      "Fuego en la Noche",
-      "Görli Garden"
-    ]
+    "ownerSourceKnowledgeCoverage": "PASS_PRODUCTION",
+    "editorialKnowledgeRows": 38,
+    "coverageTrancheAdded": 24,
+    "explicitOwnerIntentRowsAdded": 21,
+    "nonExplicitOwnerIntentRowsAdded": 3,
+    "sourceLettersHashVerified": 12,
+    "staticUniqueMusicWorks": 286,
+    "staticMusicWorksWithEditorial": 26,
+    "staticMusicEditorialCoveragePct": 9.09,
+    "providerDuplicateBindingsVerified": 3,
+    "providerDuplicateExhibitionDescriptions": [
+      "spotify-single-5e8xTCcPJWfd2SUHsjd1BW",
+      "spotify-single-022wqGt3TzfjInPuDgHGXf",
+      "house-in-the-world-131"
+    ],
+    "ownerIntentBoundaryPreserved": true,
+    "titleOnlyIdentityMerge": 0,
+    "sunWithoutAMapCuratorialInterpretation": "ALLOWED_FRAMED_AS_COUNT_READING"
   },
   "productionChecks": {
     "errorFatalCount": 0,
     "status5xxCount": 0
   },
   "notes": [
-    "Owner-published editorial knowledge is separated from catalog facts and unknown sonic data.",
-    "Only EXPLICIT owner intent may be attributed to 伯爵 as creation intent.",
-    "Non-explicit works may use evidence-grounded summaries and clearly framed curatorial interpretation, but not invented biography.",
-    "Technical sonic questions continue to preserve UNKNOWN when instruments/BPM/lyrics are not verified.",
-    "Editorial knowledge binds only through reviewed stable IDs; title-only identity merge remains forbidden."
+    "Owner-published Letters are promoted only after stable-ID binding and source-file hash verification.",
+    "EXPLICIT owner intent may be attributed to 伯爵; NOT_EXPLICIT rows retain ownerProductionIntent as unknown.",
+    "Provider duplicates are bound only after matching stable Spotify album URLs and release dates, never by title alone.",
+    "Short/common ASCII title matches in the coverage ranker require explicit work-like forms or exact frontmatter keyword tokens.",
+    "Recent Apple-only works remain knowledge gaps when only generic cover briefs or operational logs exist."
   ]
 }
