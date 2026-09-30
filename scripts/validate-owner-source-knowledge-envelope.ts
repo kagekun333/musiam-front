@@ -28,6 +28,14 @@ import type { CatalogWork } from "../src/lib/mergeWorksCatalog";
   const fuegoAliasEditorial = getEditorialKnowledgeForWorkId("spotify-single-0isH27stV7eiEpIbqfhood");
   assert.equal(fuegoAliasEditorial?.workId, "fuego-en-la-noche-228");
 
+  const fuegoQueryResolution = resolveEditorialKnowledgeFromQuery("Fuego en la Nocheってどんな曲？", works);
+  assert.equal(String(fuegoQueryResolution?.work.id), "fuego-en-la-noche-228");
+  assert.equal(fuegoQueryResolution?.row.ownerIntentStatus, "EXPLICIT");
+
+  const gorliQueryResolution = resolveEditorialKnowledgeFromQuery("Görli Gardenはなんで作ったの？", works);
+  assert.equal(String(gorliQueryResolution?.work.id), "g-rli-garden-149");
+  assert.equal(gorliQueryResolution?.row.ownerIntentStatus, "NOT_EXPLICIT");
+
   const gorliEditorial = getEditorialKnowledgeForWorkId("g-rli-garden-149");
   assert.ok(gorliEditorial);
   assert.equal(gorliEditorial?.sourceClass, "OWNER_PUBLISHED_MEDIA");

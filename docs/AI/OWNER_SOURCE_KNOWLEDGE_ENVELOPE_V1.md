@@ -138,6 +138,8 @@ Editorial knowledge is attached only through explicit IDs in:
 
 Title equality alone never attaches editorial knowledge.
 
+When the base catalog contains duplicate provider records with the same title, a reviewed Editorial row may resolve the visitor query to its explicitly enumerated `workIds[]`; this is reviewed stable-ID binding, not a title-only merge.
+
 A fake work with title `Fuego en la Noche` and an unrelated ID must receive no editorial summary.
 
 This prevents:

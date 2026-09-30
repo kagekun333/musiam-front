@@ -27,7 +27,7 @@ import {
 } from "@/lib/chat-work-recall";
 import { deriveChatCoreTurn, isDistressRequest, resolveCatalogIdentity, salesSuppressionText, selectOneRecommendation, unavailableRecommendationText, type CoreLanguage } from "@/lib/chat-recommendation-core";
 import type { CatalogWork } from "@/lib/mergeWorksCatalog";
-import { getEditorialKnowledgeForWorkId, type EditorialKnowledgeRow } from "@/lib/editorial-knowledge";
+import { getEditorialKnowledgeForWorkId, resolveEditorialKnowledgeFromQuery, type EditorialKnowledgeRow } from "@/lib/editorial-knowledge";
 import {
   asksForLatestRelease,
   asksForUpcomingRelease,
@@ -580,6 +580,7 @@ function workStorySystemPrompt(lang: Lang, title: string, evidencePack: string):
       "- 作者の理由が未確認でも会話を止めない。必要なら『僕の読みなら』のように、明確な館主の解釈として短く遊んでよい。ただし伝記や史実を足さない。",
       "- 技術的な音響情報がUNKNOWNなら埋めない。",
       "- 外国語タイトルは正確な表記を保ってよい。",
+      "- URLは本文へ書かない。公開アクションがある場合は下の作品カードに任せる。",
       "EVIDENCE PACK:",
       evidencePack,
     ].join("\n");
@@ -833,16 +834,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     if (asksForWorkStory(query)) {
       const named = resolveCatalogIdentity(query, coreWorks);
-      const storyWork = named.status === "exact"
+      const editorialMatch = resolveEditorialKnowledgeFromQuery(query, coreWorks);
+      const storyWork = editorialMatch?.work ?? (named.status === "exact"
         ? named.work
         : visitorState.lastPresentedWorkId
           ? coreWorks.find((work) => String(work.id ?? "") === visitorState.lastPresentedWorkId) ?? null
-          : entryWork;
+          : entryWork);
       if (storyWork) {
         const title = String(storyWork.title ?? "");
         const card = buildChatWorkCard(storyWork);
         const evidencePack = buildLunaEvidencePack(storyWork);
-        const editorialRow = getEditorialKnowledgeForWorkId(String(storyWork.id ?? ""));
+        const editorialRow = editorialMatch?.row ?? getEditorialKnowledgeForWorkId(String(storyWork.id ?? ""));
         if (evidencePack) {
           const storyLlm = await callLlm(
             workStorySystemPrompt(lang, title, evidencePack),
@@ -860,13 +862,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     if (asksForSonicDetails(query)) {
       const named = resolveCatalogIdentity(query, coreWorks);
-      const sonicWork = named.status === "exact"
+      const editorialMatch = resolveEditorialKnowledgeFromQuery(query, coreWorks);
+      const sonicWork = editorialMatch?.work ?? (named.status === "exact"
         ? named.work
         : visitorState.lastPresentedWorkId
           ? coreWorks.find((work) => String(work.id ?? "") === visitorState.lastPresentedWorkId) ?? null
           : asksForLatestRelease(query)
             ? latestReleasedWorks(coreWorks, { medium: desiredType(query) ?? visitorState.preferredMedium ?? undefined, limit: 1 })[0] ?? null
-            : null;
+            : null);
       const baseCard = sonicWork ? buildChatWorkCard(sonicWork) : null;
       const listenLinks = baseCard?.links.filter((link) => link.kind === "listen") ?? [];
       const card = baseCard && listenLinks.length ? { ...baseCard, links: listenLinks } : null;
