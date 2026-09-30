@@ -1,0 +1,43 @@
+{
+  "task": "MUSIAM_EUROPE_OPPORTUNITY_DESK_V1",
+  "schemaVersion": "1.0.0",
+  "startingHead": "6b69804cd988661133158169c1457cede4c3813a",
+  "scope": "LOCAL_RESEARCH_ONLY",
+  "checks": [
+    {
+      "command": "node --test scripts/commerce/europe-opportunity.test.mjs",
+      "status": "PASS",
+      "tests": 13
+    },
+    {
+      "command": "node --check scripts/commerce/europe-opportunity.mjs",
+      "status": "PASS"
+    },
+    {
+      "command": "Python jsonschema Draft202012Validator + FormatChecker (installed locally)",
+      "status": "PASS",
+      "candidates": 3
+    },
+    {
+      "command": "node scripts/commerce/europe-opportunity.mjs --write",
+      "status": "PASS"
+    },
+    {
+      "command": "Parent assert persisted output equals buildDesk(input, input.asOf)",
+      "status": "PASS",
+      "checks": [
+        "deterministic",
+        "3 HOLD",
+        "no rejected sample",
+        "all gross margins null",
+        "empty commercial ranking"
+      ]
+    }
+  ],
+  "testEvidence": "Synthetic fixtures validate gates; real sample only establishes sourced page observations, not authenticity, demand, stock reservation, profit or fulfillment.",
+  "applicationBuild": "NOT_RUN: no application imports or production integration",
+  "inventoryPurchase": "NOT_EXECUTED",
+  "externalCommercialActions": "NOT_EXECUTED",
+  "deploy": "NOT_EXECUTED",
+  "push": "NOT_EXECUTED"
+}

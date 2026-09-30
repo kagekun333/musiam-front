@@ -1,0 +1,545 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:musiam:europe-opportunity:candidate:1.0.0",
+  "title": "MUSIAM Europe Opportunity candidate V1",
+  "description": "All monetary values EUR. country is sourcing channel country, not origin. VERIFIED is observed page content, not authenticity or fulfillment proof. Runtime validator adds bounds and semantic gates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "product",
+    "country",
+    "source",
+    "facts",
+    "costs",
+    "capitalRequirement",
+    "nextAction",
+    "exclusion",
+    "routes",
+    "acquisitionPrice",
+    "referencePrice",
+    "expectedGrossMargin",
+    "authenticityRisk",
+    "returnRisk",
+    "liquidity",
+    "timeToSellDays",
+    "availabilityConfidence",
+    "contentValue"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "product": {
+      "type": "object",
+      "required": [
+        "name",
+        "category"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "fashion-accessories",
+            "design-objects",
+            "coffee-gear",
+            "books-art"
+          ]
+        }
+      }
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "url",
+        "accessedAt",
+        "publishedAt",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "accessedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "publishedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "kind": {
+          "enum": [
+            "manufacturer",
+            "publisher",
+            "retailer"
+          ]
+        }
+      }
+    },
+    "facts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "field",
+          "value",
+          "status",
+          "sourceUrl",
+          "accessedAt"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "type": "string",
+            "minLength": 1
+          },
+          "value": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "status": {
+            "const": "VERIFIED"
+          },
+          "sourceUrl": {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          "accessedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "costs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fees",
+        "shipping",
+        "tax",
+        "customs",
+        "packaging",
+        "returnReserve"
+      ],
+      "properties": {
+        "fees": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        },
+        "shipping": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        },
+        "tax": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        },
+        "customs": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        },
+        "packaging": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        },
+        "returnReserve": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "capitalRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "speculativeInventory",
+        "customerPrefundingRequired",
+        "purchaseExposure"
+      ],
+      "properties": {
+        "speculativeInventory": {
+          "const": 0
+        },
+        "customerPrefundingRequired": {
+          "const": true
+        },
+        "purchaseExposure": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/metric"
+            },
+            {
+              "properties": {
+                "value": {
+                  "minimum": 0
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "nextAction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "regulated",
+        "unverifiableCounterfeit",
+        "deceptiveClaims"
+      ],
+      "properties": {
+        "regulated": {
+          "const": false
+        },
+        "unverifiableCounterfeit": {
+          "const": false
+        },
+        "deceptiveClaims": {
+          "const": false
+        }
+      }
+    },
+    "routes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "editorial",
+        "sourcing",
+        "productCandidate"
+      ],
+      "properties": {
+        "editorial": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourcing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "productCandidate": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "acquisitionPrice": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0
+            }
+          }
+        }
+      ]
+    },
+    "referencePrice": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0
+            }
+          }
+        }
+      ]
+    },
+    "expectedGrossMargin": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "authenticityRisk": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "returnRisk": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "liquidity": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "timeToSellDays": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0
+            }
+          }
+        }
+      ]
+    },
+    "availabilityConfidence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    },
+    "contentValue": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/metric"
+        },
+        {
+          "properties": {
+            "value": {
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "status",
+        "note",
+        "sourceUrl",
+        "accessedAt"
+      ],
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "VERIFIED",
+            "ESTIMATE",
+            "ASSUMPTION",
+            "UNKNOWN"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "accessedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "currency": {
+          "const": "EUR"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "UNKNOWN"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "sourceUrl": {
+                "type": "null"
+              },
+              "accessedAt": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "VERIFIED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "sourceUrl": {
+                "type": "string",
+                "pattern": "^https://"
+              },
+              "accessedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

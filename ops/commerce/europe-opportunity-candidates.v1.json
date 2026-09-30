@@ -1,0 +1,514 @@
+{
+  "schemaVersion": "1.0.0",
+  "asOf": "2026-09-30T16:14:00Z",
+  "candidates": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EU-001",
+      "product": {
+        "name": "Comandante C40 MK4 Nitro Blade — Schwarz",
+        "category": "coffee-gear"
+      },
+      "country": "DE",
+      "source": {
+        "url": "https://guentercoffee.com/products/comandante-c40-mk4-kaffeemuehle",
+        "accessedAt": "2026-09-30T16:14:00Z",
+        "publishedAt": null,
+        "kind": "retailer"
+      },
+      "facts": [
+        {
+          "field": "displayedPriceEUR",
+          "value": 229,
+          "status": "VERIFIED",
+          "sourceUrl": "https://guentercoffee.com/products/comandante-c40-mk4-kaffeemuehle",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "displayedAvailability",
+          "value": "In-stock message for black variant; not a reservation",
+          "status": "VERIFIED",
+          "sourceUrl": "https://guentercoffee.com/products/comandante-c40-mk4-kaffeemuehle",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "supplierEUShippingUnder6kgEUR",
+          "value": 14.95,
+          "status": "VERIFIED",
+          "sourceUrl": "https://guentercoffee.com/products/comandante-c40-mk4-kaffeemuehle",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        }
+      ],
+      "acquisitionPrice": {
+        "value": 229,
+        "status": "VERIFIED",
+        "note": "Public displayed price only; checkout/variant not confirmed.",
+        "sourceUrl": "https://guentercoffee.com/products/comandante-c40-mk4-kaffeemuehle",
+        "accessedAt": "2026-09-30T16:14:00Z"
+      },
+      "referencePrice": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "Target France retail/sourcing reference and customer willingness to pay unverified; no Japan arbitrage or FX claim.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "costs": {
+        "fees": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "shipping": {
+          "value": 24.95,
+          "status": "ASSUMPTION",
+          "note": "14.95 EUR observed supplier EU tariff plus 10 EUR assumed onward France shipment; parcel weight and both legs need recheck.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "tax": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "customs": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "packaging": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "returnReserve": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        }
+      },
+      "expectedGrossMargin": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "No verified selling/reference price; recompute only when complete.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "authenticityRisk": {
+        "value": 0.15,
+        "status": "ESTIMATE",
+        "note": "Source channel appears identifiable; no invoice, chain-of-custody or authorized-retailer proof. Block any unverified substitute listing.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "returnRisk": {
+        "value": 0.3,
+        "status": "ESTIMATE",
+        "note": "Glass breakage/weight or customer suitability; return policy, liability and reserve unresolved.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "liquidity": {
+        "value": 0.5,
+        "status": "ESTIMATE",
+        "note": "Curatorial prior only; no sold-through or customer interest evidence.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "timeToSellDays": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "No demand evidence; supplier delivery promise is not time-to-sell.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "availabilityConfidence": {
+        "value": 0.65,
+        "status": "ESTIMATE",
+        "note": "Page indication only, potentially cached; quantity, checkout and destination not verified.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "contentValue": {
+        "value": 0.8,
+        "status": "ESTIMATE",
+        "note": "Manual coffee ritual: explain the tool before proposing sourcing.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "capitalRequirement": {
+        "speculativeInventory": 0,
+        "customerPrefundingRequired": true,
+        "purchaseExposure": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Full landed purchase/refund exposure unresolved; customer funds do not remove liability.",
+          "sourceUrl": null,
+          "accessedAt": null
+        }
+      },
+      "nextAction": "Draft editorial internally; obtain opt-in interest only under future authorization; recheck exact SKU, price, stock, authenticity, total costs and return terms before any quote.",
+      "exclusion": {
+        "regulated": false,
+        "unverifiableCounterfeit": false,
+        "deceptiveClaims": false
+      },
+      "routes": {
+        "editorial": "Manual coffee ritual: explain the tool before proposing sourcing.",
+        "sourcing": "Interest-stage research candidate only; no quote, contact, payment or procurement authorized.",
+        "productCandidate": "Internal candidate only; not sellable catalog inventory or listing."
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EU-002",
+      "product": {
+        "name": "Paris. Portrait of a City — ISBN 978-3-8365-0293-1",
+        "category": "books-art"
+      },
+      "country": "DE",
+      "source": {
+        "url": "https://www.taschen.com/fr/books/style-food-travel/05706/paris-portrait-of-a-city/",
+        "accessedAt": "2026-09-30T16:14:00Z",
+        "publishedAt": null,
+        "kind": "publisher"
+      },
+      "facts": [
+        {
+          "field": "displayedPriceText",
+          "value": "60 (currency not exposed in retrieved text)",
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.taschen.com/fr/books/style-food-travel/05706/paris-portrait-of-a-city/",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "displayedAvailability",
+          "value": "In stock, multilingual English/French/German",
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.taschen.com/fr/books/style-food-travel/05706/paris-portrait-of-a-city/",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "weightKg",
+          "value": 4.3,
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.taschen.com/fr/books/style-food-travel/05706/paris-portrait-of-a-city/",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "pages",
+          "value": 544,
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.taschen.com/fr/books/style-food-travel/05706/paris-portrait-of-a-city/",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        }
+      ],
+      "acquisitionPrice": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "Displayed 60 lacks explicit currency; do not infer EUR.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "referencePrice": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "Target France retail/sourcing reference and customer willingness to pay unverified; no Japan arbitrage or FX claim.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "costs": {
+        "fees": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "shipping": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "tax": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "customs": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "packaging": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "returnReserve": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        }
+      },
+      "expectedGrossMargin": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "No verified selling/reference price; recompute only when complete.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "authenticityRisk": {
+        "value": 0.1,
+        "status": "ESTIMATE",
+        "note": "Source channel appears identifiable; no invoice, chain-of-custody or authorized-retailer proof. Block any unverified substitute listing.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "returnRisk": {
+        "value": 0.3,
+        "status": "ESTIMATE",
+        "note": "Glass breakage/weight or customer suitability; return policy, liability and reserve unresolved.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "liquidity": {
+        "value": 0.45,
+        "status": "ESTIMATE",
+        "note": "Curatorial prior only; no sold-through or customer interest evidence.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "timeToSellDays": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "No demand evidence; supplier delivery promise is not time-to-sell.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "availabilityConfidence": {
+        "value": 0.55,
+        "status": "ESTIMATE",
+        "note": "Page indication only, potentially cached; quantity, checkout and destination not verified.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "contentValue": {
+        "value": 0.9,
+        "status": "ESTIMATE",
+        "note": "Paris as a visual archive: editorial connection to music and city imagery.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "capitalRequirement": {
+        "speculativeInventory": 0,
+        "customerPrefundingRequired": true,
+        "purchaseExposure": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Full landed purchase/refund exposure unresolved; customer funds do not remove liability.",
+          "sourceUrl": null,
+          "accessedAt": null
+        }
+      },
+      "nextAction": "Draft editorial internally; obtain opt-in interest only under future authorization; recheck exact SKU, price, stock, authenticity, total costs and return terms before any quote.",
+      "exclusion": {
+        "regulated": false,
+        "unverifiableCounterfeit": false,
+        "deceptiveClaims": false
+      },
+      "routes": {
+        "editorial": "Paris as a visual archive: editorial connection to music and city imagery.",
+        "sourcing": "Interest-stage research candidate only; no quote, contact, payment or procurement authorized.",
+        "productCandidate": "Internal candidate only; not sellable catalog inventory or listing."
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EU-003",
+      "product": {
+        "name": "Duralex Picardie — 25cl transparent 80 ans, lot de 4",
+        "category": "design-objects"
+      },
+      "country": "FR",
+      "source": {
+        "url": "https://www.duralex.com/collections/picardie",
+        "accessedAt": "2026-09-30T16:14:00Z",
+        "publishedAt": null,
+        "kind": "manufacturer"
+      },
+      "facts": [
+        {
+          "field": "displayedPriceEUR",
+          "value": 6.9,
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.duralex.com/collections/picardie",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "displayedCompareAtEUR",
+          "value": 9.9,
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.duralex.com/collections/picardie",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        },
+        {
+          "field": "collectionCard",
+          "value": "25cl transparent 80 ans, lot de 4; add-to-cart control shown",
+          "status": "VERIFIED",
+          "sourceUrl": "https://www.duralex.com/collections/picardie",
+          "accessedAt": "2026-09-30T16:14:00Z"
+        }
+      ],
+      "acquisitionPrice": {
+        "value": 6.9,
+        "status": "VERIFIED",
+        "note": "Public displayed price only; checkout/variant not confirmed.",
+        "sourceUrl": "https://www.duralex.com/collections/picardie",
+        "accessedAt": "2026-09-30T16:14:00Z"
+      },
+      "referencePrice": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "Target France retail/sourcing reference and customer willingness to pay unverified; no Japan arbitrage or FX claim.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "costs": {
+        "fees": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "shipping": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "tax": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "customs": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "packaging": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        },
+        "returnReserve": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Not verified; resolve before quote.",
+          "sourceUrl": null,
+          "accessedAt": null
+        }
+      },
+      "expectedGrossMargin": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "No verified selling/reference price; recompute only when complete.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "authenticityRisk": {
+        "value": 0.1,
+        "status": "ESTIMATE",
+        "note": "Source channel appears identifiable; no invoice, chain-of-custody or authorized-retailer proof. Block any unverified substitute listing.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "returnRisk": {
+        "value": 0.6,
+        "status": "ESTIMATE",
+        "note": "Glass breakage/weight or customer suitability; return policy, liability and reserve unresolved.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "liquidity": {
+        "value": 0.35,
+        "status": "ESTIMATE",
+        "note": "Curatorial prior only; no sold-through or customer interest evidence.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "timeToSellDays": {
+        "value": null,
+        "status": "UNKNOWN",
+        "note": "No demand evidence; supplier delivery promise is not time-to-sell.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "availabilityConfidence": {
+        "value": 0.4,
+        "status": "ESTIMATE",
+        "note": "Page indication only, potentially cached; quantity, checkout and destination not verified.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "contentValue": {
+        "value": 0.85,
+        "status": "ESTIMATE",
+        "note": "Anniversary table object: discuss design, with no scarcity claim.",
+        "sourceUrl": null,
+        "accessedAt": null
+      },
+      "capitalRequirement": {
+        "speculativeInventory": 0,
+        "customerPrefundingRequired": true,
+        "purchaseExposure": {
+          "value": null,
+          "status": "UNKNOWN",
+          "note": "Full landed purchase/refund exposure unresolved; customer funds do not remove liability.",
+          "sourceUrl": null,
+          "accessedAt": null
+        }
+      },
+      "nextAction": "Draft editorial internally; obtain opt-in interest only under future authorization; recheck exact SKU, price, stock, authenticity, total costs and return terms before any quote.",
+      "exclusion": {
+        "regulated": false,
+        "unverifiableCounterfeit": false,
+        "deceptiveClaims": false
+      },
+      "routes": {
+        "editorial": "Anniversary table object: discuss design, with no scarcity claim.",
+        "sourcing": "Interest-stage research candidate only; no quote, contact, payment or procurement authorized.",
+        "productCandidate": "Internal candidate only; not sellable catalog inventory or listing."
+      }
+    }
+  ]
+}

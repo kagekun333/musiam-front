@@ -1,0 +1,22 @@
+{
+  "task": "MUSIAM_EUROPE_OPPORTUNITY_DESK_V1",
+  "owner": "root",
+  "startingHead": "6b69804cd988661133158169c1457cede4c3813a",
+  "branch": "lane/europe-opportunity",
+  "status": "RELEASED_AFTER_LOCAL_VALIDATION",
+  "allowedPaths": [
+    "scripts/commerce/",
+    "ops/commerce/",
+    "docs/AI/EUROPE_",
+    "docs/AI/COMMERCE_"
+  ],
+  "subagentWriteLease": [
+    "scripts/commerce/europe-opportunity.mjs",
+    "scripts/commerce/europe-opportunity.test.mjs"
+  ],
+  "forbidden": "All other writes; protected roots and Human-owned files: no access",
+  "network": "Public web research only",
+  "production": "No deploy or push; no commerce actions",
+  "completion": "Offline validation and exact allowlist local commit",
+  "rollback": "Revert this lane commit with separate authorization; no reset/clean"
+}

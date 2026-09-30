@@ -1,0 +1,271 @@
+{
+  "schemaVersion": "1.0.0",
+  "asOf": "2026-09-30T16:14:00Z",
+  "currency": "EUR",
+  "policy": {
+    "offlineOnly": true,
+    "transactionCapability": false,
+    "speculativeInventory": 0,
+    "verifiedMeaning": "page observation only",
+    "commercialReadiness": "Every candidate requires live recheck, payment confirmation and manual authorization."
+  },
+  "candidates": [
+    {
+      "id": "EU-001",
+      "product": {
+        "name": "Comandante C40 MK4 Nitro Blade — Schwarz",
+        "category": "coffee-gear"
+      },
+      "country": "DE",
+      "validation": {
+        "valid": true,
+        "errors": []
+      },
+      "commercialStatus": "HOLD",
+      "gates": [
+        "referencePrice: unverified commercial price (UNKNOWN)",
+        "authenticityRisk: freshness UNKNOWN",
+        "returnRisk: freshness UNKNOWN",
+        "liquidity: freshness UNKNOWN",
+        "availabilityConfidence: freshness UNKNOWN",
+        "contentValue: freshness UNKNOWN",
+        "costs.shipping: freshness UNKNOWN",
+        "economics: UNKNOWN inputs; missing values are never zero",
+        "timeToSellDays: UNKNOWN",
+        "purchaseExposure: UNKNOWN",
+        "purchaseExposure: required acquisition and logistics costs UNKNOWN"
+      ],
+      "reasons": [
+        "referencePrice: unverified commercial price (UNKNOWN)",
+        "authenticityRisk: freshness UNKNOWN",
+        "returnRisk: freshness UNKNOWN",
+        "liquidity: freshness UNKNOWN",
+        "availabilityConfidence: freshness UNKNOWN",
+        "contentValue: freshness UNKNOWN",
+        "costs.shipping: freshness UNKNOWN",
+        "economics: UNKNOWN inputs; missing values are never zero",
+        "timeToSellDays: UNKNOWN",
+        "purchaseExposure: UNKNOWN",
+        "purchaseExposure: required acquisition and logistics costs UNKNOWN",
+        "editorial: contentValue 0.8; independent of commercial gates",
+        "commercial score weights: net contribution margin 30%, authenticity safety 20%, return safety 15%, liquidity 20%, availability 15%",
+        "All sourcing requires live recheck, customer prefunding/payment confirmation, and manual authorization. This desk cannot transact."
+      ],
+      "editorialScore": 80,
+      "commercialScore": null,
+      "economics": {
+        "currency": "EUR",
+        "acquisitionPrice": 229,
+        "referencePrice": null,
+        "costBreakdown": {
+          "fees": null,
+          "shipping": 24.95,
+          "tax": null,
+          "customs": null,
+          "packaging": null,
+          "returnReserve": null
+        },
+        "totalCosts": null,
+        "grossProfit": null,
+        "scenarioGrossMargin": null,
+        "netContribution": null,
+        "scenarioNetContributionMargin": null,
+        "storedExpectedGrossMargin": null,
+        "derivation": [
+          "grossProfit = referencePrice - acquisitionPrice",
+          "scenarioGrossMargin = grossProfit / referencePrice (positive reference only)",
+          "netContribution = grossProfit - fees - shipping - tax - customs - packaging - returnReserve",
+          "scenarioNetContributionMargin = netContribution / referencePrice (positive reference only)"
+        ],
+        "caveat": "Scenario only. Reference price is not a realized sale; VERIFIED means page observation, not authentication, ownership, demand or profit proof.",
+        "minimumPurchaseExposure": null
+      },
+      "routes": {
+        "editorial": "Manual coffee ritual: explain the tool before proposing sourcing.",
+        "sourcing": "Interest-stage research candidate only; no quote, contact, payment or procurement authorized.",
+        "productCandidate": "Internal candidate only; not sellable catalog inventory or listing."
+      },
+      "nextAction": "Draft editorial internally; obtain opt-in interest only under future authorization; recheck exact SKU, price, stock, authenticity, total costs and return terms before any quote.",
+      "requiredBeforePurchase": [
+        "liveRecheck",
+        "customerPrefundingPaymentConfirmation",
+        "manualAuthorization"
+      ]
+    },
+    {
+      "id": "EU-002",
+      "product": {
+        "name": "Paris. Portrait of a City — ISBN 978-3-8365-0293-1",
+        "category": "books-art"
+      },
+      "country": "DE",
+      "validation": {
+        "valid": true,
+        "errors": []
+      },
+      "commercialStatus": "HOLD",
+      "gates": [
+        "acquisitionPrice: unverified commercial price (UNKNOWN)",
+        "referencePrice: unverified commercial price (UNKNOWN)",
+        "authenticityRisk: freshness UNKNOWN",
+        "returnRisk: freshness UNKNOWN",
+        "liquidity: freshness UNKNOWN",
+        "availabilityConfidence: freshness UNKNOWN",
+        "contentValue: freshness UNKNOWN",
+        "economics: UNKNOWN inputs; missing values are never zero",
+        "timeToSellDays: UNKNOWN",
+        "purchaseExposure: UNKNOWN",
+        "purchaseExposure: required acquisition and logistics costs UNKNOWN"
+      ],
+      "reasons": [
+        "acquisitionPrice: unverified commercial price (UNKNOWN)",
+        "referencePrice: unverified commercial price (UNKNOWN)",
+        "authenticityRisk: freshness UNKNOWN",
+        "returnRisk: freshness UNKNOWN",
+        "liquidity: freshness UNKNOWN",
+        "availabilityConfidence: freshness UNKNOWN",
+        "contentValue: freshness UNKNOWN",
+        "economics: UNKNOWN inputs; missing values are never zero",
+        "timeToSellDays: UNKNOWN",
+        "purchaseExposure: UNKNOWN",
+        "purchaseExposure: required acquisition and logistics costs UNKNOWN",
+        "editorial: contentValue 0.9; independent of commercial gates",
+        "commercial score weights: net contribution margin 30%, authenticity safety 20%, return safety 15%, liquidity 20%, availability 15%",
+        "All sourcing requires live recheck, customer prefunding/payment confirmation, and manual authorization. This desk cannot transact."
+      ],
+      "editorialScore": 90,
+      "commercialScore": null,
+      "economics": {
+        "currency": "EUR",
+        "acquisitionPrice": null,
+        "referencePrice": null,
+        "costBreakdown": {
+          "fees": null,
+          "shipping": null,
+          "tax": null,
+          "customs": null,
+          "packaging": null,
+          "returnReserve": null
+        },
+        "totalCosts": null,
+        "grossProfit": null,
+        "scenarioGrossMargin": null,
+        "netContribution": null,
+        "scenarioNetContributionMargin": null,
+        "storedExpectedGrossMargin": null,
+        "derivation": [
+          "grossProfit = referencePrice - acquisitionPrice",
+          "scenarioGrossMargin = grossProfit / referencePrice (positive reference only)",
+          "netContribution = grossProfit - fees - shipping - tax - customs - packaging - returnReserve",
+          "scenarioNetContributionMargin = netContribution / referencePrice (positive reference only)"
+        ],
+        "caveat": "Scenario only. Reference price is not a realized sale; VERIFIED means page observation, not authentication, ownership, demand or profit proof.",
+        "minimumPurchaseExposure": null
+      },
+      "routes": {
+        "editorial": "Paris as a visual archive: editorial connection to music and city imagery.",
+        "sourcing": "Interest-stage research candidate only; no quote, contact, payment or procurement authorized.",
+        "productCandidate": "Internal candidate only; not sellable catalog inventory or listing."
+      },
+      "nextAction": "Draft editorial internally; obtain opt-in interest only under future authorization; recheck exact SKU, price, stock, authenticity, total costs and return terms before any quote.",
+      "requiredBeforePurchase": [
+        "liveRecheck",
+        "customerPrefundingPaymentConfirmation",
+        "manualAuthorization"
+      ]
+    },
+    {
+      "id": "EU-003",
+      "product": {
+        "name": "Duralex Picardie — 25cl transparent 80 ans, lot de 4",
+        "category": "design-objects"
+      },
+      "country": "FR",
+      "validation": {
+        "valid": true,
+        "errors": []
+      },
+      "commercialStatus": "HOLD",
+      "gates": [
+        "referencePrice: unverified commercial price (UNKNOWN)",
+        "returnRisk: fails maximum 0.5",
+        "liquidity: fails minimum 0.4",
+        "availabilityConfidence: fails minimum 0.5",
+        "authenticityRisk: freshness UNKNOWN",
+        "returnRisk: freshness UNKNOWN",
+        "liquidity: freshness UNKNOWN",
+        "availabilityConfidence: freshness UNKNOWN",
+        "contentValue: freshness UNKNOWN",
+        "economics: UNKNOWN inputs; missing values are never zero",
+        "timeToSellDays: UNKNOWN",
+        "purchaseExposure: UNKNOWN",
+        "purchaseExposure: required acquisition and logistics costs UNKNOWN"
+      ],
+      "reasons": [
+        "referencePrice: unverified commercial price (UNKNOWN)",
+        "returnRisk: fails maximum 0.5",
+        "liquidity: fails minimum 0.4",
+        "availabilityConfidence: fails minimum 0.5",
+        "authenticityRisk: freshness UNKNOWN",
+        "returnRisk: freshness UNKNOWN",
+        "liquidity: freshness UNKNOWN",
+        "availabilityConfidence: freshness UNKNOWN",
+        "contentValue: freshness UNKNOWN",
+        "economics: UNKNOWN inputs; missing values are never zero",
+        "timeToSellDays: UNKNOWN",
+        "purchaseExposure: UNKNOWN",
+        "purchaseExposure: required acquisition and logistics costs UNKNOWN",
+        "editorial: contentValue 0.85; independent of commercial gates",
+        "commercial score weights: net contribution margin 30%, authenticity safety 20%, return safety 15%, liquidity 20%, availability 15%",
+        "All sourcing requires live recheck, customer prefunding/payment confirmation, and manual authorization. This desk cannot transact."
+      ],
+      "editorialScore": 85,
+      "commercialScore": null,
+      "economics": {
+        "currency": "EUR",
+        "acquisitionPrice": 6.9,
+        "referencePrice": null,
+        "costBreakdown": {
+          "fees": null,
+          "shipping": null,
+          "tax": null,
+          "customs": null,
+          "packaging": null,
+          "returnReserve": null
+        },
+        "totalCosts": null,
+        "grossProfit": null,
+        "scenarioGrossMargin": null,
+        "netContribution": null,
+        "scenarioNetContributionMargin": null,
+        "storedExpectedGrossMargin": null,
+        "derivation": [
+          "grossProfit = referencePrice - acquisitionPrice",
+          "scenarioGrossMargin = grossProfit / referencePrice (positive reference only)",
+          "netContribution = grossProfit - fees - shipping - tax - customs - packaging - returnReserve",
+          "scenarioNetContributionMargin = netContribution / referencePrice (positive reference only)"
+        ],
+        "caveat": "Scenario only. Reference price is not a realized sale; VERIFIED means page observation, not authentication, ownership, demand or profit proof.",
+        "minimumPurchaseExposure": null
+      },
+      "routes": {
+        "editorial": "Anniversary table object: discuss design, with no scarcity claim.",
+        "sourcing": "Interest-stage research candidate only; no quote, contact, payment or procurement authorized.",
+        "productCandidate": "Internal candidate only; not sellable catalog inventory or listing."
+      },
+      "nextAction": "Draft editorial internally; obtain opt-in interest only under future authorization; recheck exact SKU, price, stock, authenticity, total costs and return terms before any quote.",
+      "requiredBeforePurchase": [
+        "liveRecheck",
+        "customerPrefundingPaymentConfirmation",
+        "manualAuthorization"
+      ]
+    }
+  ],
+  "editorialRanking": [
+    "EU-002",
+    "EU-003",
+    "EU-001"
+  ],
+  "commercialRanking": [],
+  "rejected": []
+}
