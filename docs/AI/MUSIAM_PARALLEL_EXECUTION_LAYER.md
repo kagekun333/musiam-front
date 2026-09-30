@@ -227,7 +227,15 @@ Secrets and local environment files are not copied into the worktree.
 
 ---
 
-## 7. Validation receipt
+## 7. Post-merge lane reuse
+
+A lane whose HEAD is already an ancestor of Canonical is treated as **already integrated**, not as a sync conflict.
+
+`parallel-lanes.mjs sync <lane>` will fast-forward that lane to the current Canonical HEAD, update the lane `baseCommit`, clear stale validation, and make the worktree reusable.
+
+`merge-next` also updates the merged lane's `baseCommit` automatically after a successful fast-forward merge. This prevents a completed lane from appearing to conflict with its own already-merged changes.
+
+## 8. Validation receipt
 
 A lane cannot enter the merge queue merely because an agent says “done.”
 
@@ -258,7 +266,7 @@ If the lane HEAD changes, the validation receipt becomes stale automatically.
 
 ---
 
-## 8. Scope guard
+## 9. Scope guard
 
 Before queueing, the Control Plane compares every committed changed path against:
 
@@ -277,7 +285,7 @@ This guard exists specifically to stop “I was asked to fix German and rewrote 
 
 ---
 
-## 9. Cross-lane collision detection
+## 10. Cross-lane collision detection
 
 ```bash
 node scripts/control-plane/parallel-lanes.mjs status
@@ -301,7 +309,7 @@ The goal is to make it impossible for shared work to be invisible.
 
 ---
 
-## 10. Sync / rebase policy
+## 11. Sync / rebase policy
 
 Parallel lanes may share a starting base.
 
@@ -330,7 +338,7 @@ It must be tested again.
 
 ---
 
-## 11. Merge queue
+## 12. Merge queue
 
 After validation:
 
@@ -369,7 +377,7 @@ Production still follows the normal Preview → smoke → promote → receipt pa
 
 ---
 
-## 12. Remote branch policy
+## 13. Remote branch policy
 
 Lane branches are **not** pushed merely because the worktree was created.
 

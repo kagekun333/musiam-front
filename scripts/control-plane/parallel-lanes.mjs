@@ -325,11 +325,38 @@ function syncLane(lane) {
   if (!state) throw new Error("Lane is not bootstrapped: " + lane.id);
   if (trackedDirty(target).length) throw new Error("Lane has tracked dirty files: " + lane.id);
   const canonicalHead = currentHead(CANONICAL);
-  if (state.baseCommit === canonicalHead) {
+  const laneHead = currentHead(target);
+  if (state.baseCommit === canonicalHead && laneHead === canonicalHead) {
     console.log(JSON.stringify({ synced: false, reason: "ALREADY_CURRENT", lane: lane.id, baseCommit: state.baseCommit }, null, 2));
     return;
   }
-  const laneFiles = changedPaths(target, state.baseCommit, currentHead(target));
+
+  // If the lane HEAD has already been integrated into Canonical, the lane is not
+  // divergent work: it is simply stale after merge. Fast-forward the lane branch
+  // to Canonical and reset its base so the worktree can be reused safely.
+  if (gitMaybe(target, ["merge-base", "--is-ancestor", laneHead, canonicalHead]).ok) {
+    const result = spawnSync("git", ["-C", target, "merge", "--ff-only", canonicalHead], { encoding: "utf8" });
+    if (result.status !== 0) {
+      process.stdout.write(result.stdout ?? "");
+      process.stderr.write(result.stderr ?? "");
+      process.exitCode = result.status ?? 1;
+      return;
+    }
+    state.baseCommit = canonicalHead;
+    state.syncedAt = new Date().toISOString();
+    writeLaneState(lane, state);
+    clearValidation(lane);
+    console.log(JSON.stringify({
+      synced: true,
+      lane: lane.id,
+      mode: "FAST_FORWARD_ALREADY_INTEGRATED",
+      baseCommit: canonicalHead,
+      head: currentHead(target),
+    }, null, 2));
+    return;
+  }
+
+  const laneFiles = changedPaths(target, state.baseCommit, laneHead);
   const canonicalFiles = changedPaths(CANONICAL, state.baseCommit, canonicalHead);
   const canonicalSet = new Set(canonicalFiles);
   const conflicts = laneFiles.filter((file) => canonicalSet.has(file));
@@ -420,10 +447,18 @@ function mergeNext(push = false) {
   if (snap.scopeViolations.length) throw new Error("Lane scope violation: " + snap.scopeViolations.join(", "));
 
   execFileSync("git", ["-C", CANONICAL, "merge", "--ff-only", lane.branch], { stdio: "inherit" });
+  const mergedHead = currentHead(CANONICAL);
+  const state = loadLaneState(lane);
+  if (state) {
+    state.baseCommit = mergedHead;
+    state.syncedAt = new Date().toISOString();
+    writeLaneState(lane, state);
+    clearValidation(lane);
+  }
   queue.entries.shift();
   saveQueue(queue);
   if (push) execFileSync("git", ["-C", CANONICAL, "push"], { stdio: "inherit" });
-  console.log(JSON.stringify({ merged: true, lane: lane.id, head: currentHead(CANONICAL), pushed: push, remainingQueue: queue.entries.length }, null, 2));
+  console.log(JSON.stringify({ merged: true, lane: lane.id, head: mergedHead, pushed: push, laneBaseUpdated: Boolean(state), remainingQueue: queue.entries.length }, null, 2));
 }
 
 function publishLane(lane) {

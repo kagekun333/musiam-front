@@ -60,6 +60,8 @@ for (const token of [
   "MERGE_QUEUE_PATH_CONFLICT",
   "VALIDATION_REQUIRED_FOR_CURRENT_HEAD",
   "SYNC_CONFLICT_REQUIRES_REVIEW",
+  "FAST_FORWARD_ALREADY_INTEGRATED",
+  "laneBaseUpdated",
 ]) {
   assert.ok(script.includes(token), `parallel-lanes.mjs missing guard/command: ${token}`);
 }
