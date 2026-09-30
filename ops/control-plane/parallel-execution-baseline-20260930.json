@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "gate": "MUSIAM_PARALLEL_EXECUTION_LAYER",
+  "date": "2026-09-30",
+  "verdict": "PASS_LOCAL_BOOTSTRAP",
+  "canonical": {
+    "repo": "/Users/kagekun/Desktop/musiam-front-clean",
+    "branch": "recovery/musiam-clean-20260920",
+    "head": "f35bb1c5e46cf60a10fbde5dbd058516bfae97c8",
+    "remote": "origin",
+    "remoteSynced": true
+  },
+  "worktreeRoot": "/Users/kagekun/Desktop/MUSIAM_WORKTREES",
+  "lanes": [
+    {
+      "id": "knowledge-v2",
+      "branch": "lane/knowledge-v2",
+      "worktree": "/Users/kagekun/Desktop/MUSIAM_WORKTREES/knowledge-v2",
+      "preferredTool": "codex"
+    },
+    {
+      "id": "analytics-spine",
+      "branch": "lane/analytics-spine",
+      "worktree": "/Users/kagekun/Desktop/MUSIAM_WORKTREES/analytics-spine",
+      "preferredTool": "codex"
+    },
+    {
+      "id": "media-os",
+      "branch": "lane/media-os",
+      "worktree": "/Users/kagekun/Desktop/MUSIAM_WORKTREES/media-os",
+      "preferredTool": "work"
+    },
+    {
+      "id": "europe-opportunity",
+      "branch": "lane/europe-opportunity",
+      "worktree": "/Users/kagekun/Desktop/MUSIAM_WORKTREES/europe-opportunity",
+      "preferredTool": "work"
+    },
+    {
+      "id": "sales-arena",
+      "branch": "lane/sales-arena",
+      "worktree": "/Users/kagekun/Desktop/MUSIAM_WORKTREES/sales-arena",
+      "preferredTool": "codex"
+    }
+  ],
+  "checks": {
+    "allFiveWorktreesRegistered": true,
+    "commonBootstrapHead": true,
+    "remoteLaneBranchesCreated": false,
+    "remoteLaneBranchesPolicy": "ON_FIRST_MEANINGFUL_COMMIT",
+    "crossLaneSimultaneousLease": "PASS",
+    "sameLaneSecondLeaseRejected": "PASS",
+    "initialCollisionCount": 0,
+    "initialMergeQueueLength": 0,
+    "initialLaneTrackedDirtyCount": 0,
+    "canonicalHumanOwnedDirtyUntouched": [
+      "ops/continuous-operation/experiments.json",
+      "ops/continuous-operation/state.json"
+    ],
+    "productionMutationDuringBootstrap": false
+  },
+  "next": [
+    "OWNER_SOURCE_KNOWLEDGE_COVERAGE_V2",
+    "MUSIAM_GROWTH_ANALYTICS_SPINE_V1",
+    "MUSIAM_MEDIA_OS_MVP",
+    "MUSIAM_EUROPE_OPPORTUNITY_DESK_V1",
+    "COUNT_CHAT_SALES_ARENA_V1"
+  ]
+}
