@@ -180,7 +180,7 @@ function loadLetters(): Letter[] {
   const output = {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
-    status: "COVERAGE_V1_LOCAL",
+    status: "COVERAGE_V2_LOCAL",
     snapshotDate: "2026-09-30",
     coverage: {
       editorialRows: (editorial.items ?? []).length,

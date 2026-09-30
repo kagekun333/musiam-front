@@ -62,7 +62,7 @@ function letterMap() {
   };
   const items = data.items ?? [];
   assert.equal(data.schemaVersion, 1);
-  assert.equal(items.length, 38);
+  assert.equal(items.length, 52);
 
   const byId = new Map<string, any>();
   for (const item of items) {

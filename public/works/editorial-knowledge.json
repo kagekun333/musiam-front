@@ -591,6 +591,197 @@
         "spotify-album-2DMwcXtZzZaeazATCTW5Xx",
         "house-in-the-world-131"
       ]
+    },
+    {
+      "workId": "abi9pro-216",
+      "title": "ABI9PRO",
+      "summaryJa": "自分自身を製品のように突き放して見る一曲。自己肯定のMain Character Energyと対になる自意識の表現として紹介されている。",
+      "facets": [
+        "自己像",
+        "対比"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "0b35c31bf9069ef3cb0a92bcf3a96ab8826b4f8f4d4938364b5cbd3269ff8deb",
+      "sourceHref": "/letters/four-songs-and-the-hottest-summer",
+      "ownerIntentSummaryJa": "両極端な自意識を並べ、記録的な夏を生き延びた高揚と疲労の両方を反映したと本人が書いている。"
+    },
+    {
+      "workId": "pan-143",
+      "title": "Pan",
+      "summaryJa": "ギリシャ神話の牧神パンを主題に、自然と野性をめぐる神話の現代的再話として紹介されている。",
+      "facets": [
+        "神話",
+        "野性"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "bd50dc8dfc8e9f0014c4f3798023bf7ae399d654557f86b4af688822db582a0a",
+      "sourceHref": "/letters/pan-the-flute-of-the-wild",
+      "ownerIntentSummaryJa": "AIによる音楽であえて最も野性的な神を主題に選び、機械で野性を作る挑戦と本人が書いている。"
+    },
+    {
+      "workId": "spotify-single-1fMyrxxtfUI8eIIUgDQ5Yc",
+      "title": "Holy God",
+      "summaryJa": "神聖さから哲学、社会風刺から癒やしまでを束ねた十四曲の同日公開の一作。Letterは一連の作品を館のテーマの縮図として紹介している。",
+      "facets": [
+        "同日公開",
+        "館のテーマ"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "f73df559f94435778847bcdd3eb3ccc5e1c28127e6efd6e46e3601e98ac70eea",
+      "sourceHref": "/letters/fourteen-songs-in-one-breath"
+    },
+    {
+      "workId": "main-character-energy-218",
+      "title": "Main Character Energy",
+      "summaryJa": "自分を主人公として全肯定する一曲。自分を製品のように見るABI9PROと対になる自意識の表現として紹介されている。",
+      "facets": [
+        "自己肯定",
+        "対比"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "0b35c31bf9069ef3cb0a92bcf3a96ab8826b4f8f4d4938364b5cbd3269ff8deb",
+      "sourceHref": "/letters/four-songs-and-the-hottest-summer",
+      "ownerIntentSummaryJa": "両極端な自意識を並べ、記録的な夏を生き延びた高揚と疲労の両方を反映したと本人が書いている。"
+    },
+    {
+      "workId": "item-215",
+      "title": "流れ往くままに！",
+      "summaryJa": "流れに任せるという美徳を、感謝と謙譲を扱うDanke&Bitteと並べた一曲。",
+      "facets": [
+        "流れ",
+        "美徳"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "bb27a5f254266350052d2e2cb8b6d2fdc4554c7b684cead60b91610b623a03d3",
+      "sourceHref": "/letters/danke-bitte-and-the-flow",
+      "ownerIntentSummaryJa": "人とのやり取りでは礼儀を尽くし、抗えない大きな流れには身を任せるという使い分けを、二曲に込めたと本人が書いている。"
+    },
+    {
+      "workId": "spotify-album-1vLThFMjRi4noudDkGwf5f",
+      "title": "BALIAN",
+      "summaryJa": "バリ島の儀式から量子物理学まで振れ幅を広げた六曲の同日公開の一作。Letterは科学と神秘を、説明しきれないものへの畏怖という共通の文脈で語っている。",
+      "facets": [
+        "同日公開",
+        "科学と神秘"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "f95b79f0185a938544a3d94a84ab5e43afe5bcfe97fd6f7cda90bd0be146cdf4",
+      "sourceHref": "/letters/six-songs-where-speed-erases-shape"
+    },
+    {
+      "workId": "drey-fugen-harmonia-mundi-211",
+      "title": "Drey Fugen: Harmonia Mundi",
+      "summaryJa": "世界の調和を、WE ARE THE TRIBEの部族としての結束と対比して紹介した作品。Letterは調和を対話から生まれるものとして語っている。",
+      "facets": [
+        "調和",
+        "対話"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "7898bbb08d1ff736f785049a7148e19a352d19d1d039a5309eb3817ce2f65aed",
+      "sourceHref": "/letters/drey-fugen-and-the-tribe"
+    },
+    {
+      "workId": "coffee-love-161",
+      "title": "Coffee Love",
+      "summaryJa": "十八曲を公開した翌日に、REFLECTIONS / 鏡界とともに置かれた静かな二曲の一作。",
+      "facets": [
+        "静けさ",
+        "緩急"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "4c949c2b443a4fbe500c5aaa3947db65d02572a8ba1ecc25e48ac465351b0e63",
+      "sourceHref": "/letters/coffee-love-and-the-mirror",
+      "ownerIntentSummaryJa": "賑やかな日の翌日に静けさを置き、十八曲と二曲の落差で両方を生かす緩急の設計を本人が語っている。"
+    },
+    {
+      "workId": "spotify-album-3f4tKu7hRTK4QvMglr0Vp6",
+      "title": "ENGINE",
+      "summaryJa": "力強い作品として、脱力した『それでもポテチは湿気る』と同日に紹介されている。Letterは壮大さと日常の可笑しみが同居する振れ幅を語っている。",
+      "facets": [
+        "対比",
+        "日常"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "fa896ab400e902139a2110c91f1ead8210fc002788b49a1ee1311474511977f7",
+      "sourceHref": "/letters/engine-and-the-damp-chips"
+    },
+    {
+      "workId": "og-43",
+      "title": "アマテラスOG短編集",
+      "summaryJa": "日本神話の神々を現代の感覚で語り直す短編集。LetterからリンクされたKindle版とカタログは同じASINを持つ。",
+      "facets": [
+        "神話",
+        "再解釈",
+        "短編"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "e8833a4402470cf7c0b75b0e89b2264d1c68347550be55a52662ea8e21b19b79",
+      "sourceHref": "/letters/amateras-and-the-void-sword",
+      "ownerIntentSummaryJa": "神話を誰もが再解釈できる共通の物語として選び、AIとともに令和向けに語り直して新しい世界観へ接続すると本人が説明している。"
+    },
+    {
+      "workId": "spotify-single-43CyheqfBIFgDSRmB4ZfAt",
+      "title": "사인 주세요",
+      "summaryJa": "韓国語の「サインください」という素朴な願いを、代官山オシャレファンクと並べた軽やかな一曲として紹介されている。",
+      "facets": [
+        "素朴な願い",
+        "軽やかさ"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "dbe44fb5c400f0997c566c6c051e9c981548c26347c8e84d43cf67d3303410bd",
+      "sourceHref": "/letters/daikanyama-and-a-sign-request"
+    },
+    {
+      "workId": "spotify-single-67DToKxvWonpGDlwwtVhyJ",
+      "title": "カーボンネガティブプロジェクト",
+      "summaryJa": "神聖さ、哲学、社会風刺、癒やしなど館のテーマを束ねた十四曲の同日公開の一作。Letterは一連の作品に共通する公開の文脈を語っている。",
+      "facets": [
+        "同日公開",
+        "館のテーマ"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "NOT_EXPLICIT",
+      "sourceFileHash": "f73df559f94435778847bcdd3eb3ccc5e1c28127e6efd6e46e3601e98ac70eea",
+      "sourceHref": "/letters/fourteen-songs-in-one-breath"
+    },
+    {
+      "workId": "eagle-eye-183",
+      "title": "Eagle Eye",
+      "summaryJa": "Digital ExorcismやTivoli Parkなどとともに、異なる国や気分を旅する五曲の一作として紹介されている。",
+      "facets": [
+        "旅",
+        "軽やかさ"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "eeb162883c2af1eeba2652ca7de54e2f51fd4a5747f8c04508ec439509c9404d",
+      "sourceHref": "/letters/five-songs-and-a-fragile-ceasefire",
+      "ownerIntentSummaryJa": "五曲を異なる国や気分を旅するように作り、世界が少しでも軽くなる日に軽やかな旅の音を重ねたかったと本人が書いている。"
+    },
+    {
+      "workId": "spotify-single-1xHCXzgoJ7SLYL78n3IDrZ",
+      "title": "ME",
+      "summaryJa": "「私」という最小限の主語へ立ち返る一曲。大きな政治の物語が続く中で、個人的な一語を題に選んだと紹介されている。",
+      "facets": [
+        "自己",
+        "私"
+      ],
+      "sourceClass": "OWNER_PUBLISHED_MEDIA",
+      "ownerIntentStatus": "EXPLICIT",
+      "sourceFileHash": "7e89cfb5556ed807574c2d215cae9ba123c34cb1fb4444fe7dd12e70a1c3afcd",
+      "sourceHref": "/letters/me",
+      "ownerIntentSummaryJa": "大きな出来事が続く中だからこそ、一人の人間としての自分に立ち返る曲を作りたいと思ったと本人が書いている。"
     }
   ]
 }

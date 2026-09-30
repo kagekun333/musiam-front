@@ -35,8 +35,8 @@
     {
       "path": "public/works/editorial-knowledge.json",
       "role": "EDITORIAL",
-      "sha256": "747983aa6b78b699f34c15acb455b17066d38d3b1cfcfaa9d18e3dd8d0e91acb",
-      "itemCount": 38
+      "sha256": "c56ecaaa1281acd3ad5d7b284306bc64fcdaf9814667d3428853169173a09b33",
+      "itemCount": 52
     },
     {
       "path": "public/works/drone-exhibition.json",
