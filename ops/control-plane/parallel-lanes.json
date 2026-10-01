@@ -52,7 +52,13 @@
         "src/pages/api/chat-experience-v3.ts",
         "src/app/works/",
         "src/pages/exhibition.tsx",
-        "src/pages/chat.tsx"
+        "src/pages/chat.tsx",
+        "src/pages/_app.tsx",
+        "src/app/layout.tsx",
+        "src/app/vip-metal-print/page.tsx",
+        "src/app/api/metal-print/consultation/route.ts",
+        "src/app/api/metal-print/checkout/route.ts",
+        "src/app/api/metal-print/webhook/route.ts"
       ]
     },
     {

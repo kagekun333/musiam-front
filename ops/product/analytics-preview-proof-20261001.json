@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "milestone": "ANALYTICS_PREVIEW_FOUNDATION_PROOF",
-  "verdict": "PARTIAL_BROWSER_RETRY_UNRUN",
+  "verdict": "PASS_PREVIEW_FOUNDATION_UI_RETRY",
   "canonicalHeadBeforeReceipt": "03dd7f5818f10b5b656b53a6c69387d180742751",
   "runtimeSourceSha": "cf68373c876a21bd3f39ee0e5f176af7c27a1118",
   "deploymentId": "dpl_8dquwRjRYochsp4ZLeGV1GF2NZfQ",
@@ -62,8 +62,48 @@
       "newsletterLeadUiStillVisible": true,
       "assertion": "Response respects no-sales in this one smoke case; not general Sales quality proof."
     },
-    "retryAfterLostResponse": "UNRUN",
-    "retryBlocker": "Supported CUA browser API exposes no network response interception/fault injection; read-only evaluate cannot patch fetch. No unrelated browser controller or network setting was used."
+    "retryAfterLostResponse": "PASS",
+    "retryProof": {
+      "verdict": "PASS_PREVIEW_PUPPETEER_LOST_RESPONSE_RETRY",
+      "deployment": "dpl_8dquwRjRYochsp4ZLeGV1GF2NZfQ",
+      "sourceSha": "cf68373c876a21bd3f39ee0e5f176af7c27a1118",
+      "dropPoint": "Preview API returned 200 and persisted telemetry; local proxy sent partial HTTP response then closed; browser body read failed",
+      "requestsForLogicalTurn": 2,
+      "stableDeliveryId": true,
+      "stableCreatedAt": true,
+      "stableMessages": true,
+      "stableAssistantOutput": true,
+      "eventReadback": "PASS",
+      "events": [
+        {
+          "event": "chat_first_request",
+          "eventId": "2d77dc73-40f8-5677-8a80-278b37bfd9a1",
+          "requestId": "2994c372-ea50-564f-8a1e-4e9eeda8ccc5",
+          "occurredAt": 1790862438301,
+          "trafficClass": "synthetic_test"
+        }
+      ],
+      "previewBudgetDelta": 2,
+      "productionWrites": 0,
+      "stripeCalls": 0,
+      "uiConsoleErrors": [],
+      "networkFailures": [
+        {
+          "error": "net::ERR_CONTENT_LENGTH_MISMATCH",
+          "method": "POST"
+        }
+      ],
+      "uiErrorVisibleBeforeRetry": true,
+      "userRetryClickExecuted": true,
+      "assistantFullTextRendered": true
+    },
+    "retryHarnessCorrection": {
+      "beforeHeadersDrop": "Chrome transparently replayed transport; no UI error was raised",
+      "partialBodyDrop": "ERR_CONTENT_LENGTH_MISMATCH reaches UI, explicit retry observed",
+      "waitFunctionArguments": "Corrected Puppeteer options/argument order",
+      "finalErrorAssertion": "Checks remaining retry button, not an empty common alert node",
+      "applicationCodeChanged": false
+    }
   },
   "privacy": {
     "strictSchemaRejectionAssertions": "RESTORED_PASS",
@@ -85,7 +125,6 @@
   "rollbackDeployment": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
   "protectedRootIncident": "UNKNOWN; no new protected-root inspection",
   "remaining": [
-    "Controlled browser welcome/reply retry test and same logical-delivery metadata verification",
     "Required click/work/product/quote/checkout/settled semantics remain beyond this foundation repair",
     "Production env enablement/action readback/health/receipt Gate has not run"
   ],
