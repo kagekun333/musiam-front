@@ -112,3 +112,15 @@ The validator checks:
 - successful API paths routed through the observer
 
 V1 is instrumentation only. It does not claim funnel performance yet.
+
+## Foundation repair candidate (2026-10-01)
+
+This section describes isolated candidate code, not current deployed behavior.
+
+The client sends `{id, createdAt}` once per logical request. Network retransmission of the same serialized request and the explicit retry button retain both fields. A new chat request receives a new UUID even when its text matches. Opening requests also carry delivery metadata. No automatic retry is introduced, and reload/cross-client recovery is not supported. Missing, invalid, expired or future delivery metadata skips telemetry without invalidating chat. No raw delivery UUID, content, personal/session/conversation identity is persisted. Event identity derives from the random delivery UUID, immutable timestamp and event name; crossing midnight during a retry retains the original namespace day.
+
+The candidate uses one authoritative Redis event row per derived event ID: `growth:v1:{environment:count-chat:YYYY-MM-DD}:event:UUID`. `SET NX EXAT` writes the event and its absolute expiry together. There is no independent dedupe marker. A daily budget key shares the hash slot and bounds accepted rows to 100,000. Lua checks key types and existing rows before writes. Redis scripting isolates concurrent callers but does not roll back command effects: failure after a budget increment can consume a capacity slot, while failure after a row SET leaves a complete, expiring row that a retry recognizes. Both the budget and event expire at the delivery day's midnight plus 31 days (about 30–31 days retention). Readback uses the known event key; legacy daily-list readback is not compatible with this candidate layout.
+
+Production smoke requests possessing the existing private `CRON_SECRET` bearer credential are labeled `synthetic_test`, using the existing production verification credential solely for telemetry classification. No credential is sent by the browser or stored in Analytics; no chat/payment permission is granted by the label. Missing/wrong credentials cannot assert human or payment authority. Non-production is synthetic; recognized User-Agent bot patterns are heuristically bot; every other Production request remains unknown. Raw User-Agent and Authorization headers are not stored. `human_verified` is reserved and never emitted. Bot/unknown detection remains incomplete, so downstream KPI extraction must exclude synthetic/bot and keep unknown distinct from verified humans.
+
+Behavior contracts cover byte-identical transport replay across midnight, fresh requests, omitted/invalid metadata, privacy, authenticated test classification, retention plans, partial batch retries, corrupted/wrong-type keys and injected failures against an explicitly labeled in-memory contract model. That model does not execute Lua. Actual Redis wrong-type/command-failure/expiry tests and hosted Preview readback remain UNRUN because no permitted Redis test runtime was available. Do not call this gate PASS on the strength of model tests.

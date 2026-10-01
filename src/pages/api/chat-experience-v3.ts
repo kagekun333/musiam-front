@@ -9,7 +9,7 @@
 
 import type { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
-import { observeChatResponse } from "@/lib/analytics/chat.server";
+import { classifyGrowthTraffic, observeChatResponse } from "@/lib/analytics/chat.server";
 import { chat as llmChat } from "@/lib/llm-router";
 import { rateLimit, ipFromRequest, gcExpired } from "@/lib/rate";
 import { loadStoredDistributionReleases } from "@/lib/loadMergedWorksServer";
@@ -85,7 +85,8 @@ type Cta = { href: string; label: string; productId: string };
 type Work = CatalogWork;
 
 const BodySchema = z.object({
-  entryId: z.string().optional(), // 互換のため受けるが未使用（門は一つ）
+  entryId: z.string().optional(), // legacy field; does not establish analytics identity.
+  analyticsDelivery: z.unknown().optional(), // Invalid telemetry cannot invalidate chat.
   lang: z.enum(SUPPORTED_LANG_VALUES).default("ja"),
   timeTone: z.enum(SALON_TIME_TONE_VALUES).optional(),
   entryContext: z.object({
@@ -676,14 +677,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const parsed = BodySchema.safeParse(req.body ?? {});
     if (!parsed.success) return res.status(400).json({ ok: false, v: 3, error: "invalid_body", trace });
 
-    const { messages, entryContext } = parsed.data;
+    const { messages, entryContext, analyticsDelivery } = parsed.data;
     let lang = parsed.data.lang;
     const timeTone = normalizeSalonTimeTone(parsed.data.timeTone ?? getSalonTimeTone());
     let timeCopy = getLocalizedSalonTimeCopy(lang, timeTone);
     const userTurns = countUserTurns(messages);
     // Observe only validated successful responses; never pass request text to analytics.
+    const userAgent = typeof req.headers["user-agent"] === "string" ? req.headers["user-agent"] : "";
+    const trafficClass = classifyGrowthTraffic(process.env.VERCEL_ENV, userAgent, typeof req.headers.authorization === "string" ? req.headers.authorization : undefined);
     const respond = async (payload: Record<string, unknown>) => {
-      await observeChatResponse(payload, userTurns);
+      await observeChatResponse(payload, userTurns, undefined, analyticsDelivery, trafficClass);
       return res.status(200).json(payload);
     };
 

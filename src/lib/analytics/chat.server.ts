@@ -1,8 +1,30 @@
-import { randomUUID } from "node:crypto";
+import { createHash, timingSafeEqual } from "node:crypto";
 import { GrowthEventSchema, type GrowthEvent } from "./schema";
 import { persistGrowthEvents } from "./store.server";
 
 type Sink = (events: GrowthEvent[]) => Promise<unknown>;
+
+export type AnalyticsDelivery = { id: string; createdAt: number };
+export function parseAnalyticsDelivery(value: unknown, now = Date.now()): AnalyticsDelivery | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const row = value as Record<string, unknown>;
+  if (Object.keys(row).some(key => !["id", "createdAt"].includes(key))) return null;
+  if (typeof row.id !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(row.id)) return null;
+  if (typeof row.createdAt !== "number" || !Number.isSafeInteger(row.createdAt) || row.createdAt < now - 30 * 86400000 || row.createdAt > now + 300000) return null;
+  return { id: row.id.toLowerCase(), createdAt: row.createdAt };
+}
+export function classifyGrowthTraffic(vercelEnv: string | undefined, userAgent: string, authorization?: string, cronSecret = process.env.CRON_SECRET): NonNullable<GrowthEvent["properties"]["trafficClass"]> {
+  // Reuse the existing server-side production verification credential solely to
+  // label authenticated test requests. This grants no chat/payment permissions.
+  const expected = cronSecret ? `Bearer ${cronSecret}` : "";
+  const suppliedBytes = Buffer.from(authorization && authorization.length <= 4096 ? authorization : "");
+  const expectedBytes = Buffer.from(expected);
+  const authenticatedTest = Boolean(expectedBytes.length && suppliedBytes.length === expectedBytes.length
+    && timingSafeEqual(suppliedBytes, expectedBytes));
+  if (vercelEnv !== "production" || authenticatedTest) return "synthetic_test";
+  if (/bot|crawler|spider|slurp|bingpreview|facebookexternalhit|monitoring|uptime/i.test(userAgent)) return "bot";
+  return "unknown";
+}
 
 const object = (value: unknown): Record<string, unknown> | null =>
   value !== null && typeof value === "object" && !Array.isArray(value)
@@ -14,22 +36,31 @@ const object = (value: unknown): Record<string, unknown> | null =>
  * Never serializes the request, response body, user text, URLs, work titles, IPs,
  * email addresses, names or arbitrary identifiers.
  */
-export function chatResponseEvents(payload: unknown, userTurns: number): GrowthEvent[] {
+export function chatResponseEvents(payload: unknown, userTurns: number, deliveryInput?: unknown, trafficClass: GrowthEvent["properties"]["trafficClass"] = "unknown", now = Date.now()): GrowthEvent[] {
   const response = object(payload);
-  if (response?.ok !== true || !Number.isInteger(userTurns) || userTurns < 0) return [];
-
-  const requestId = randomUUID();
-  const occurredAt = Date.now();
+  const delivery = parseAnalyticsDelivery(deliveryInput, now);
+  // Missing/invalid telemetry must neither change chat validation nor fabricate
+  // an identity that would count a transport retry as a new request.
+  if (response?.ok !== true || !Number.isInteger(userTurns) || userTurns < 0 || !delivery) return [];
+  const stableUuid = (purpose: string) => {
+    const bytes = createHash("sha256").update(`count-chat-v1:${delivery.id}:${delivery.createdAt}:${purpose}`).digest().subarray(0, 16);
+    bytes[6] = (bytes[6] & 0x0f) | 0x50;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    const hex = bytes.toString("hex");
+    return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+  };
+  const requestId = stableUuid("request");
+  const occurredAt = delivery.createdAt;
   const events: GrowthEvent[] = [];
   const add = (event: GrowthEvent["event"], properties: GrowthEvent["properties"] = {}) => {
     events.push(GrowthEventSchema.parse({
       schemaVersion: 1,
       event,
-      eventId: randomUUID(),
+      eventId: stableUuid(event),
       requestId,
       occurredAt,
       source: "count_chat_server",
-      properties,
+      properties: { ...properties, trafficClass },
     }));
   };
 
@@ -83,9 +114,11 @@ export async function observeChatResponse(
   payload: unknown,
   userTurns: number,
   sink: Sink = persistGrowthEvents,
+  deliveryInput?: unknown,
+  trafficClass: GrowthEvent["properties"]["trafficClass"] = "unknown",
 ): Promise<void> {
   try {
-    const events = chatResponseEvents(payload, userTurns);
+    const events = chatResponseEvents(payload, userTurns, deliveryInput, trafficClass);
     if (events.length) await sink(events);
   } catch {
     console.warn("[growth-analytics-v1] event_store_unavailable");

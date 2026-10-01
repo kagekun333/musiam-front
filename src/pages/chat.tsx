@@ -238,7 +238,8 @@ export default function ChatPage() {
   const historyRestoreAttemptRef = useRef(0);
   const historyRestoreBlockedRef = useRef(false);
   const historyQueueRef = useRef(Promise.resolve());
-  const lastFailedRequestRef = useRef<{ messages: ChatMsg[]; userMessageIndex: number; userTurn: number } | null>(null);
+  const openingDeliveryRef = useRef<{ id: string; createdAt: number } | null>(null);
+  const lastFailedRequestRef = useRef<{ messages: ChatMsg[]; userMessageIndex: number; userTurn: number; analyticsDelivery: { id: string; createdAt: number } } | null>(null);
   const metalFunnelActivatedRef = useRef(false);
   const interestBridgePendingRef = useRef<string | null>(null);
   const conversationIdRef = useRef("");
@@ -514,8 +515,11 @@ export default function ChatPage() {
     if (restoreWasBlocked) await begin(lang, timeTone);
   }
 
-  async function begin(l: Lang = lang, tone: SalonTimeTone = timeTone) {
+  async function begin(l: Lang = lang, tone: SalonTimeTone = timeTone, retryOpening = false) {
     if (historyRestoreBlockedRef.current) return;
+    const analyticsDelivery = retryOpening ? openingDeliveryRef.current : { id: newConversationId(), createdAt: Date.now() };
+    if (!analyticsDelivery) return;
+    openingDeliveryRef.current = analyticsDelivery;
     const requestId = ++replyRequestIdRef.current;
     sendInFlightRef.current = false;
     setStarted(false);
@@ -530,6 +534,7 @@ export default function ChatPage() {
         body: JSON.stringify({
           lang: l,
           timeTone: tone,
+          analyticsDelivery,
           messages: [],
           entryContext: params.get("intent") === "music-work" && params.get("workId") && params.get("work")
             ? { intent: "music-work", workId: params.get("workId"), workTitle: params.get("work") }
@@ -539,6 +544,7 @@ export default function ChatPage() {
       const json = await res.json();
       if (requestId !== replyRequestIdRef.current) return;
       if (!res.ok || json?.ok === false) throw new Error(String(json?.error || timeCopy.error));
+      openingDeliveryRef.current = null;
       const reply = normalizeChatUiReply(json);
       const text = reply.assistantText;
       startTransition(() => {
@@ -567,12 +573,13 @@ export default function ChatPage() {
     }
   }
 
-  async function requestAssistantReply(next: ChatMsg[]): Promise<AssistantReply> {
+  async function requestAssistantReply(next: ChatMsg[], analyticsDelivery: { id: string; createdAt: number }): Promise<AssistantReply> {
     const res = await fetch("/api/chat-experience-v3", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         lang,
         timeTone,
+        analyticsDelivery,
         messages: next,
         entryContext: musicWorkEntry && campaignWorkId && campaignWork
           ? { intent: "music-work", workId: campaignWorkId, workTitle: campaignWork }
@@ -604,6 +611,7 @@ export default function ChatPage() {
     if (musicWorkEntry && userTurn === 1) recordMetalFunnelEvent("metal_music_affinity_entry", metalAttribution);
     if (metalPrintEntry && userTurn === 1) recordMetalFunnelEvent("metal_first_message", metalAttribution);
     const userMessageIndex = next.length - 1;
+    const analyticsDelivery = { id: newConversationId(), createdAt: Date.now() };
     const requestId = replyRequestIdRef.current + 1;
     replyRequestIdRef.current = requestId;
     lastFailedRequestRef.current = null;
@@ -614,14 +622,14 @@ export default function ChatPage() {
     sendInFlightRef.current = true;
     setReplyPhase("awaitingRead");
     setReadReceiptMessageIndex(null);
-    const pending = requestAssistantReply(next)
+    const pending = requestAssistantReply(next, analyticsDelivery)
       .then((reply): PendingReplyResult => ({ ok: true, reply }))
       .catch((error): PendingReplyResult => ({ ok: false, error }));
     capture("salon_send", { len: content.length, lang, userTurn });
-    void runReplyFlow(requestId, userMessageIndex, userTurn, next, pending);
+    void runReplyFlow(requestId, userMessageIndex, userTurn, next, pending, analyticsDelivery);
   }
 
-  async function runReplyFlow(requestId: number, userMessageIndex: number, userTurn: number, requestMessages: ChatMsg[], pending: Promise<PendingReplyResult>) {
+  async function runReplyFlow(requestId: number, userMessageIndex: number, userTurn: number, requestMessages: ChatMsg[], pending: Promise<PendingReplyResult>, analyticsDelivery: { id: string; createdAt: number }) {
     await wait(READ_RECEIPT_DELAY_MS);
     if (requestId !== replyRequestIdRef.current) return;
 
@@ -641,7 +649,7 @@ export default function ChatPage() {
       setReplyPhase("idle");
       setSending(false);
       sendInFlightRef.current = false;
-      lastFailedRequestRef.current = { messages: requestMessages, userMessageIndex, userTurn };
+      lastFailedRequestRef.current = { messages: requestMessages, userMessageIndex, userTurn, analyticsDelivery };
       return;
     }
 
@@ -721,10 +729,10 @@ export default function ChatPage() {
     setSending(true);
     setReplyPhase("awaitingRead");
     setReadReceiptMessageIndex(null);
-    const pending = requestAssistantReply(failed.messages)
+    const pending = requestAssistantReply(failed.messages, failed.analyticsDelivery)
       .then((reply): PendingReplyResult => ({ ok: true, reply }))
       .catch((error): PendingReplyResult => ({ ok: false, error }));
-    void runReplyFlow(requestId, failed.userMessageIndex, failed.userTurn, failed.messages, pending);
+    void runReplyFlow(requestId, failed.userMessageIndex, failed.userTurn, failed.messages, pending, failed.analyticsDelivery);
   }
 
   function onSubmit() {
@@ -1062,7 +1070,7 @@ export default function ChatPage() {
               </button>
             )}
             {!lastFailedRequestRef.current && messages.length === 0 && (
-              <button type="button" onClick={() => void begin(lang, timeTone)} disabled={sending}>
+              <button type="button" onClick={() => void begin(lang, timeTone, true)} disabled={sending}>
                 {lang === "ja" ? "案内を再読み込み" : "Reload the welcome"}
               </button>
             )}

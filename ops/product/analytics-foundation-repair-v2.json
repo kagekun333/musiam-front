@@ -1,0 +1,74 @@
+{
+  "task": "ANALYTICS_FOUNDATION_REPAIR_V2",
+  "status": "CANDIDATE_LOCAL_CONTRACTS_PASS_REDIS_UNVERIFIED",
+  "productionGate": "NOT_PASS",
+  "startingHead": "983e09023eee51216d0ccae7edda64a0f9955921",
+  "branch": "lane/analytics-spine",
+  "committed": false,
+  "previewMutation": false,
+  "productionMutation": false,
+  "checks": {
+    "behaviorValidator": "PASS_LOCAL_CONTRACTS_REDIS_UNVERIFIED",
+    "localHttpResponseLossReplay": "PASS",
+    "privacy": "PASS",
+    "authenticatedSyntheticClassification": "PASS",
+    "namespaceAndRetentionPlans": "PASS",
+    "failureContractModel": "PASS_MODEL_ONLY_NOT_LUA",
+    "actualRedisLua": "UNRUN",
+    "hostedRedis": "UNRUN",
+    "targetedRuntimeLint": "PASS",
+    "diffCheck": "PASS",
+    "candidateTypecheck": "FAIL_2_MATCHING_BASELINE_DIAGNOSTICS",
+    "baselineTypecheck": "FAIL_2_DIAGNOSTICS"
+  },
+  "baseline": {
+    "source": "git archive 983e09023eee51216d0ccae7edda64a0f9955921 to isolated /tmp directory",
+    "dependencies": "same canonical node_modules symlink",
+    "config": "committed tsconfig.json unchanged",
+    "diagnostics": [
+      "scripts/owner-source/build-owner-source-index.ts(191,7): TS2322 unknown[] not assignable to string[]",
+      "scripts/owner-source/validate-knowledge-coverage-v2.ts(52,46): TS2488 string[] | undefined not iterable"
+    ],
+    "protectedAndHumanOwnedPaths": "excluded from extraction"
+  },
+  "remainingBlockers": [
+    "Actual Redis Lua wrong-type/failure/expiry/cap/replay testing unavailable: redis-server absent; Docker socket permission denied; no Redis connection vars in execution env",
+    "Local source-parity utility still fails GitHub DNS; external parent ref proof does not waive it",
+    "Parent review of candidate storage row layout and reuse of existing CRON_SECRET verification solely for telemetry test classification",
+    "UI browser retry behavior has not been exercised by a browser automation test; local HTTP replay exercises server identity/store orchestration against a model backend"
+  ],
+  "storage": {
+    "authority": "complete expiring event row; no separate dedupe marker",
+    "keys": "growth:v1:{environment:count-chat:delivery-day}:event:event-uuid",
+    "atomicRecordWrite": "SET NX EXAT",
+    "failureSemantics": "Redis script isolation is not rollback; budget slot can be consumed before failed row SET, but no absent row is marked delivered",
+    "budgetLimit": 100000,
+    "expiry": "delivery-day UTC midnight + 31 days",
+    "readback": "GET known event key; legacy daily LRANGE is incompatible"
+  },
+  "traffic": {
+    "trustedProductionSynthetic": "Bearer credential equal to existing CRON_SECRET; grants no chat/payment authority",
+    "clientLabelAuthority": "NONE",
+    "normalProduction": "unknown",
+    "humanVerified": "RESERVED_NEVER_EMITTED",
+    "rawHeadersStored": false
+  },
+  "delivery": {
+    "identity": "random per-logical-request UUID + immutable createdAt + event name",
+    "supportedReplay": "same serialized POST; explicit assistant and welcome retries while page remains mounted",
+    "automaticRetryAdded": false,
+    "reloadOrCrossClientRecovery": false,
+    "missingOrInvalid": "skip telemetry; chat body remains valid",
+    "conversationOrVisitorIdentityStored": false
+  },
+  "files": {
+    "src/lib/analytics/schema.ts": "f6e22eef0fb9fe0d444dc4595bdf281e5b25494fd897e874c6992c1301c93a01",
+    "src/lib/analytics/store.server.ts": "1e05643df164e11f3177a6601712f4727f62d8b4369346a936e94f5b7b60ee3b",
+    "src/lib/analytics/chat.server.ts": "2b8b39068f2b591b65e7a6ab3a8f64a626eddec4e08d8d83b101b6b7e3c424b9",
+    "src/pages/api/chat-experience-v3.ts": "7ab2c2b07a51b1fcabf9413aae5ad000ea5208bde7ac4a91241dfcee81893848",
+    "src/pages/chat.tsx": "a9c4a49a2c60fc124f4d7f8099632384468758f065c30f0579ce844fdd703bf4",
+    "scripts/analytics/validate-spine.ts": "ae0eccaf565400c7c1f6415fc6b4efa9ae2efc30a2a2465d8a4c850c7145008a",
+    "docs/AI/ANALYTICS_SPINE_V1.md": "0cb3dd315e9fc0f3dc9c540d8074dc790a9fc16dcfebf84e02031c1d7ad8296a"
+  },
+  "canonicalSharedPathRegistration": "ops/control-plane/parallel-lanes.json adds only src/pages/chat.tsx; remains uncommitted; human-owned files untouched"
+}

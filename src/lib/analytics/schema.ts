@@ -30,6 +30,7 @@ export const GrowthEventSchema = z.object({
     actionKind: ActionKind.optional(),
     bridgeAction: z.enum(["explore", "offer", "decline"]).optional(),
     linkCount: z.number().int().min(1).max(8).optional(),
+    trafficClass: z.enum(["human_verified", "bot", "synthetic_test", "unknown"]).optional(),
   }).strict(),
 }).strict();
 
