@@ -6,6 +6,8 @@ import { getMetalPrintStripe } from "@/lib/metal-print-stripe.server";
 import { siteUrl } from "@/lib/site-url";
 import { METAL_PRINT_VERIFIED_SHIPPING_COUNTRIES } from "@/lib/metal-print-shipping-policy";
 
+import { observeCommerceGrowthEvent, requestGrowthTraffic } from "@/lib/analytics/action.server";
+
 export const runtime = "nodejs";
 const CHECKOUT_LIFETIME_MS = 30 * 60 * 1000;
 const PAYMENT_CONFIRMATION_GRACE_MS = 72 * 60 * 60 * 1000;
@@ -92,6 +94,7 @@ export async function POST(request: Request) {
         metadata: { product: "vip-metal-print", editionId, orderId, serial: reservation.serial, consultationId, offerApprovalToken, offerApprovedAt, reservationGraceUntil: reservationGraceUntil.toISOString(), ...acceptanceEvidence, ...attribution },
         payment_intent_data: { metadata: { product: "vip-metal-print", editionId, orderId, serial: reservation.serial, consultationId, offerApprovalToken, offerApprovedAt, reservationGraceUntil: reservationGraceUntil.toISOString(), ...acceptanceEvidence, ...attribution } },
       }, { idempotencyKey: orderId });
+      await observeCommerceGrowthEvent("checkout_started", session.id, session.created * 1000, requestGrowthTraffic(request));
       return NextResponse.json({ ok: true, checkoutUrl: session.url, orderId, expiresAt: checkoutExpiresAt.toISOString() });
     } catch (error) {
       await releaseMetalPrintReservation(editionId, orderId);

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import GlobalBackground from "@/components/GlobalBackground";
 import Nav from "@/components/Nav";
+import GrowthPageView from "@/lib/analytics/GrowthPageView";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GlobalBackground />
       <Nav />
+      <GrowthPageView />
       <Component {...pageProps} />
     </>
   );

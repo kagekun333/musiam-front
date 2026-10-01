@@ -1,0 +1,40 @@
+{
+  "task": "ANALYTICS_ACTION_AUTHORITIES_V1",
+  "startingHead": "9041d3321f3bb89137a25e31a1ff423162d0e2bc",
+  "status": "CANDIDATE_LOCAL_VERIFIED",
+  "scope": "First-party page/action events and isolated observers after existing business authority",
+  "humanOwnedPaths": "ZERO_TOUCH",
+  "protectedRoots": "ZERO_TOUCH",
+  "productionMutation": false,
+  "stripeCalls": 0,
+  "clientSettlementAuthority": "FORBIDDEN",
+  "repeatVisit": "RESERVED_NOT_IMPLEMENTED",
+  "repeatPurchase": "RESERVED_NOT_IMPLEMENTED",
+  "externalLoadOrListenCompletion": "UNKNOWN_NOT_OBSERVABLE",
+  "browserFixture": {
+    "verdict": "PASS_BROWSER_ACTION_CONTEXT_PRIVACY_ISOLATION",
+    "observedContext": true,
+    "openerNull": true,
+    "noReferrer": true,
+    "blockedOpenDoesNotClaimCompletionOrPreventNativeFallback": true,
+    "telemetryFailureDoesNotBlockNavigation": true,
+    "events": [
+      "cta_clicked",
+      "work_action",
+      "listen_link_opened",
+      "cta_clicked",
+      "work_action"
+    ],
+    "externalLoadingOrPlaybackClaimed": false,
+    "productionWrites": 0,
+    "stripeCalls": 0
+  },
+  "checks": {
+    "typecheck": "PASS",
+    "targetedLint": "PASS_WITH_EXISTING_ESLINTIGNORE_NOTICE",
+    "analyticsPrivacyAndIdempotency": "PASS",
+    "metalPrintSalesRegression": "PASS",
+    "metalPrintConsultationRegression": "PASS"
+  },
+  "next": "Formal lane validation and queue; safe committed Preview; namespace/readback/invalid-client-settlement/Count Chat regression; approved Production Gate"
+}

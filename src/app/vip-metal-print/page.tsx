@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GrowthPageView from "@/lib/analytics/GrowthPageView";
 import { METAL_PRINT_CATALOG_WORK_COUNT, METAL_PRINT_FEATURED_EDITIONS, METAL_PRINT_TOTAL_EDITION_COUNT, METAL_PRINT_VIP_EDITIONS, METAL_PRINT_VIP_PRICE_POLICY } from "@/lib/metal-print-vip";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./vip-metal-print.css";
@@ -28,6 +29,7 @@ export default function VipMetalPrintPage() {
   );
   return (
     <main className="vip-metal-page">
+      <GrowthPageView event="product_view" surface="metal_print" />
       <section className="vip-metal-hero">
         <p className="vip-metal-eyebrow">PRIVATE COLLECTOR DOSSIER · JULY 2026</p>
         <h1>ジャケットを、<br />壁に残る一点へ。</h1>

@@ -20,6 +20,8 @@ import { siteUrl } from "@/lib/site-url";
 import { createMetalPrintContactVerificationToken } from "@/lib/metal-print-contact-verification.server";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 
+import { observeCommerceGrowthEvent, requestGrowthTraffic } from "@/lib/analytics/action.server";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -90,6 +92,8 @@ export async function POST(request: NextRequest) {
     const message = error instanceof Error ? error.message : "save_failed";
     return NextResponse.json({ ok: false, error: /not configured/.test(message) ? "consultation_storage_unavailable" : "save_failed" }, { status: 503 });
   }
+
+  await observeCommerceGrowthEvent("quote_requested", consultationId, createdAtDate.getTime(), requestGrowthTraffic(request));
 
   const verificationToken = createMetalPrintContactVerificationToken({ consultationId, expiresAt });
   const verificationUrl = new URL("/api/metal-print/consultation/verify", siteUrl());

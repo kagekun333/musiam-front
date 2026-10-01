@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 import BroadcastBar from "@/components/broadcast/BroadcastBar";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import AnalyticsInit from "@/components/AnalyticsInit";
+import GrowthPageView from "@/lib/analytics/GrowthPageView";
 import { organizationJsonLd, webSiteJsonLd } from "@/lib/entity";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BroadcastBar />
         <ServiceWorkerRegistration />
         <AnalyticsInit />
+        <GrowthPageView />
       </body>
     </html>
   );

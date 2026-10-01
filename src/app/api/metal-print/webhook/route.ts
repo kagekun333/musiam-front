@@ -7,6 +7,8 @@ import { getMetalPrintStripe, verifyMetalPrintStripeEvent } from "@/lib/metal-pr
 import { isMetalPrintRefundMetadata, routeMetalPrintCheckoutWebhook } from "@/lib/metal-print-webhook-identity";
 import { SITE_CONFIG } from "@/lib/site-config";
 
+import { observeCommerceGrowthEvent } from "@/lib/analytics/action.server";
+
 export const runtime = "nodejs";
 
 function sessionMetadata(session: Stripe.Checkout.Session) {
@@ -63,6 +65,7 @@ export async function POST(request: Request) {
       const paidAt = new Date(event.created * 1000).toISOString();
       const confirmation = await confirmMetalPrintPayment({ editionId, orderId, consultationId, eventId: event.id, paymentIntentId, amountJpy: offer.amountJpy, paidAt, source, medium, campaign, content, dossierAcceptedAt, purchaseIntentConfirmedAt, proofDisclosureAcceptedAt, madeToOrderTermsAcceptedAt });
       if (confirmation === "confirmed") {
+        await observeCommerceGrowthEvent("paid", event.id, event.created * 1000, process.env.VERCEL_ENV === "production" && event.livemode ? "unknown" : "synthetic_test");
         const notification = await sendEmail({
           to: process.env.METAL_PRINT_OPS_ALERT_EMAIL || SITE_CONFIG.contactEmail,
           subject: `【Metal Print入金】vendor発注を開始 — ${editionId}`,

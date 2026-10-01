@@ -10,6 +10,7 @@ import { siteUrl } from "@/lib/site-url";
 import { isHyperfollowUrl } from "@/lib/work-links";
 import WorkLinks, { type WorkLinkItem } from "./WorkLinks";
 import DonationCTA from "@/components/cta/DonationCTA";
+import GrowthPageView from "@/lib/analytics/GrowthPageView";
 import { getMetalPrintEditionIdForWork, METAL_PRINT_VIP_EDITIONS } from "@/lib/metal-print-vip";
 import { getApprovedMetalPrintOffer } from "@/lib/metal-print-offers.server";
 import "./work-page.css";
@@ -88,7 +89,7 @@ function buildLinks(work: CatalogWork): WorkLinkItem[] {
     const url = map[key];
     if (url && !isHyperfollowUrl(url) && !seen.has(url)) {
       seen.add(url);
-      items.push({ label, url, primary: items.length === 0 });
+      items.push({ label, url, primary: items.length === 0, kind: key === "itunesBuy" ? "buy" : isMusic ? "listen" : isFilm ? "open" : "read" });
     }
   }
   // フォールバック: salesHref / primaryHref / href (HyperFollow/DistroKidは除外)
@@ -97,9 +98,9 @@ function buildLinks(work: CatalogWork): WorkLinkItem[] {
   );
   const fallback = fallbackCandidates[0];
   if (items.length === 0 && fallback) {
-    items.push({ label: isMusic ? "聴く" : isFilm ? "観る" : "読む・購入", url: fallback, primary: true });
+    items.push({ label: isMusic ? "聴く" : isFilm ? "観る" : "読む・購入", url: fallback, primary: true, kind: isMusic ? "listen" : "open" });
   } else if (work.salesHref && !isHyperfollowUrl(work.salesHref) && !seen.has(work.salesHref)) {
-    items.push({ label: "購入する", url: work.salesHref });
+    items.push({ label: "購入する", url: work.salesHref, kind: "buy" });
   }
   return items;
 }
@@ -224,6 +225,7 @@ export default async function WorkPage(
 
   return (
     <main className="work-main">
+      <GrowthPageView event="work_view" surface="work_detail" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

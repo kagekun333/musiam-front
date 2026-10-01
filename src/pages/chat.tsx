@@ -1,5 +1,6 @@
 import React, { startTransition, useEffect, useMemo, useRef, useState } from "react";
 import styles from "./chat.module.css";
+import { observeGrowthWorkLink, recordGrowthClientEvent } from "@/lib/analytics/client";
 import MetalPrintConsultationForm from "@/components/MetalPrintConsultationForm";
 import type { MetalPrintAttribution } from "@/lib/metal-print-consultation";
 import { recordMetalFunnelEvent } from "@/lib/metal-print-funnel-client";
@@ -933,7 +934,7 @@ export default function ChatPage() {
                             rel="noopener noreferrer"
                             className={styles.linkButton}
                             style={{ background: colors.bg, color: colors.fg }}
-                            onClick={() => capture("salon_work_action_click", { workId: work.workId, kind: link.kind, lang })}
+                            onClick={(event) => { capture("salon_work_action_click", { workId: work.workId, kind: link.kind, lang }); observeGrowthWorkLink(event, link.kind, "chat"); }}
                           >
                             {linkLabel(link.kind, ui, lang, link.url)}
                           </a>
@@ -975,11 +976,11 @@ export default function ChatPage() {
             target="_blank"
             rel="noreferrer"
             className={styles.commerceCta}
-            onClick={() => capture("salon_cta_click", {
+            onClick={() => { recordGrowthClientEvent("cta_clicked", {surface:"chat",observation:"anchor_click"}); capture("salon_cta_click", {
               productId: cta.productId ?? "unknown",
               lang,
               userTurn: messages.filter((message) => message.role === "user").length,
-            })}
+            }); }}
           >
             {cta.label} →
           </a>
