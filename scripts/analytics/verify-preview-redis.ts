@@ -8,7 +8,7 @@ async function main(){
   assert.equal(process.env.MUSIAM_TEST_SCOPE,'preview','explicit Preview-only authority required');
   const url=process.env.KV_REST_API_URL, token=process.env.KV_REST_API_TOKEN;
   assert(url&&token,'existing Preview Redis required');
-  const client=new Redis({url,token,retry:false,signal:AbortSignal.timeout(10000)});
+  const client=new Redis({url,token,retry:false,signal:()=>AbortSignal.timeout(10000)});
   const nonce=randomUUID(), now=Date.now();
   const row=chatResponseEvents({ok:true},0,{id:randomUUID(),createdAt:now},'synthetic_test',now)[0];
   const plan=growthEventWrite(row,'preview',now);
