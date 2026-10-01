@@ -51,7 +51,8 @@
       "sharedIntegrationPaths": [
         "src/pages/api/chat-experience-v3.ts",
         "src/app/works/",
-        "src/pages/exhibition.tsx"
+        "src/pages/exhibition.tsx",
+        "src/pages/chat.tsx"
       ]
     },
     {
