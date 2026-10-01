@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "milestone": "ANALYTICS_PREVIEW_FOUNDATION_PROOF",
+  "verdict": "PARTIAL_BROWSER_RETRY_UNRUN",
+  "canonicalHeadBeforeReceipt": "03dd7f5818f10b5b656b53a6c69387d180742751",
+  "runtimeSourceSha": "cf68373c876a21bd3f39ee0e5f176af7c27a1118",
+  "deploymentId": "dpl_8dquwRjRYochsp4ZLeGV1GF2NZfQ",
+  "deploymentState": "READY",
+  "deploymentUrl": "https://musiam-front-ql87mrbnx-hakusyakus-projects.vercel.app",
+  "sourceManifestSha256": "25f3c84c856b9a6abadd71fac1524d4d4d63b5b3e07050ec954d28ebcf54b32f",
+  "payloadManifestSha256": "41daa7f590ff03a87b912cd2e01699d08b4898e9a67fd67f3aa89d60838c4061",
+  "localBuild": "FAILED_NETWORK_FETCH",
+  "cloudBuild": {
+    "compile": "PASS",
+    "typecheck": "PASS",
+    "staticPages": "1228/1228",
+    "completedAt": "2026-10-01T12:40:33.515Z",
+    "cliInspectionExit": 0
+  },
+  "coordinatorDecision": "Use verified exact-source cloud build for isolated Preview proof; retain local failure; no Production release authorized in this unit.",
+  "isolatedRedis": {
+    "verdict": "PASS_ACTUAL_PREVIEW_REDIS_ISOLATED",
+    "testNonce": "f863b6d0-6c14-4b7a-ac7a-555f3fca8a16",
+    "writeReadbackReplay": "PASS",
+    "wrongTypesCorruptRows": "PASS",
+    "cap": "PASS",
+    "commandFailureAfterBudgetBeforeRow": "PASS",
+    "lostReplyAfterRow": "PASS",
+    "retentionTtlSeconds": 2632365,
+    "actualShortExatExpiry": "PASS",
+    "cleanup": "Only nonce-owned test keys; child exit0 including finally cleanup"
+  },
+  "hostedRoute": {
+    "verdict": "PASS_HOSTED_PREVIEW_ACTION_READBACK_REPLAY",
+    "deployment": "dpl_8dquwRjRYochsp4ZLeGV1GF2NZfQ",
+    "sourceSha": "cf68373c876a21bd3f39ee0e5f176af7c27a1118",
+    "requests": 3,
+    "logicalRequests": 2,
+    "failureIsolation": "PASS_REAL_PREVIEW_ROUTE_STORAGE_WRONG_TYPE",
+    "byteIdenticalRequestReplay": true,
+    "events": [
+      {
+        "event": "chat_start",
+        "eventId": "4b293e21-298a-525c-b3e3-0daf71e1694f",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:4b293e21-298a-525c-b3e3-0daf71e1694f",
+        "ttl": 2631887,
+        "trafficClass": "synthetic_test"
+      }
+    ],
+    "responseBodyChanged": true,
+    "productionWrites": 0,
+    "paymentCalls": 0,
+    "secretValuesStored": 0
+  },
+  "browser": {
+    "surface": "Codex in-app browser, existing authenticated access",
+    "hostedChatWelcome": "PASS",
+    "explicitNoSales": {
+      "input": "Please stop trying to sell me anything.",
+      "reply": "承知しました。こちらから購入や販売の案内はしません。作品については、ご希望があればお話しできます。",
+      "purchaseCtaVisible": false,
+      "newsletterLeadUiStillVisible": true,
+      "assertion": "Response respects no-sales in this one smoke case; not general Sales quality proof."
+    },
+    "retryAfterLostResponse": "UNRUN",
+    "retryBlocker": "Supported CUA browser API exposes no network response interception/fault injection; read-only evaluate cannot patch fetch. No unrelated browser controller or network setting was used."
+  },
+  "privacy": {
+    "strictSchemaRejectionAssertions": "RESTORED_PASS",
+    "rawMessageOrPiiStoredInAnalytics": false,
+    "rawUserAgentStored": false,
+    "rawCredentialStored": false,
+    "trafficClass": "synthetic_test",
+    "testIdentity": "Random logical-request UUID; derived event IDs, no persistent visitor identity"
+  },
+  "preview5xxCount": 0,
+  "previewUnexpectedErrorFatalCount": 0,
+  "logSince": "2026-10-01T12:42:00Z",
+  "logEvidence": "Vercel deployment-scoped grouped logs; no matching rows",
+  "productionNamespaceWrites": 0,
+  "stripeCalls": 0,
+  "productionPromotion": false,
+  "productionReceiptChanged": false,
+  "productionDeployment": "dpl_4LNUvTF58ofVXp8MaPXnRJZvYNp8",
+  "rollbackDeployment": "dpl_GBVtBTqpxjgr1DFCFYk2U631Eiga",
+  "protectedRootIncident": "UNKNOWN; no new protected-root inspection",
+  "remaining": [
+    "Controlled browser welcome/reply retry test and same logical-delivery metadata verification",
+    "Required click/work/product/quote/checkout/settled semantics remain beyond this foundation repair",
+    "Production env enablement/action readback/health/receipt Gate has not run"
+  ],
+  "explicitProductionLocalBuildRule": "No explicit requirement for local next build PASS found in MUSIAM_CONTROL_PLANE_RUNBOOK.md safe deploy sections; local result remains FAILED_NETWORK_FETCH, not waived into PASS."
+}
