@@ -183,7 +183,7 @@ function listMarkdownFiles(root: string) {
       candidateSummary: { total: 0, ownerMessageCandidates: 0, aiMessageCandidates: 0, wrapperCandidates: 0, mixedCandidates: 0 },
       candidates: [],
     };
-    const classes = Array.from(new Set((packet.sources ?? []).map((source: any) => String(source.class ?? "")).filter(Boolean)));
+    const classes = Array.from(new Set<string>((packet.sources ?? []).map((source: any) => String(source.class ?? "")).filter(Boolean)));
     row.reviewedPacket = {
       evidenceStrength: String(packet.evidenceStrength ?? "UNKNOWN"),
       ownerIntentStatus: String(packet.ownerIntentStatus ?? "UNKNOWN"),

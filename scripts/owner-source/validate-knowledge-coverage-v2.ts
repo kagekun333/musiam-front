@@ -49,7 +49,7 @@ import { projectExhibitionWorks } from '../../src/lib/exhibition-projection';
   assert.equal(ranking.coverage.editorialRows, 52);
   const ids = new Set<string>();
   for (const row of editorial.items) {
-    for (const id of new Set([row.workId, ...('workIds' in row ? row.workIds : [])])) {
+    for (const id of new Set([row.workId, ...('workIds' in row ? row.workIds ?? [] : [])])) {
       assert.ok(!ids.has(id), `ID shared across editorial rows: ${id}`);
       ids.add(id);
     }
