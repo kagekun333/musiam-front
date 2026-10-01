@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "milestone": "ANALYTICS_ACTION_PREVIEW_COMPLETE",
+  "verdict": "PASS_PREVIEW_REQUIRED_ACTION_BOUNDARIES",
+  "runtimeSourceSha": "716288fa9d8012c76d95f87e157aa832eb5fadaf",
+  "deploymentId": "dpl_7B5gfi5ifTMGd31D7fcxnuDfcUaF",
+  "deploymentUrl": "https://musiam-front-l2ss595eq-hakusyakus-projects.vercel.app",
+  "safeSourceManifestSha256": "858acfc58260d82aeea69b18a00ce718f02b83ae42d9a3158aa93ca56ab151ef",
+  "cloudBuild": {
+    "compile": "PASS",
+    "typecheck": "PASS",
+    "staticPages": "1229/1229",
+    "exit": 0
+  },
+  "foundationEvidenceReused": {
+    "receipt": "ops/product/analytics-preview-proof-20261001.json",
+    "actualRedisLuaFailureReplayExpiryCap": "PASS_UNCHANGED_STORE_IMPLEMENTATION",
+    "storeFileSha256": "1e05643df164e11f3177a6601712f4727f62d8b4369346a936e94f5b7b60ee3b"
+  },
+  "hostedActions": {
+    "verdict": "PASS_HOSTED_ACTION_PERSISTENCE_REPLAY_PRIVACY_ISOLATION",
+    "deployment": "dpl_7B5gfi5ifTMGd31D7fcxnuDfcUaF",
+    "sourceSha": "716288fa9d8012c76d95f87e157aa832eb5fadaf",
+    "events": [
+      {
+        "event": "visit",
+        "eventId": "f31f3d89-a76e-520b-9413-a9d8945b1ec6",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:f31f3d89-a76e-520b-9413-a9d8945b1ec6",
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "work_view",
+        "eventId": "a587de1f-9b91-5704-8d17-d51c37bbd7a6",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:a587de1f-9b91-5704-8d17-d51c37bbd7a6",
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "product_view",
+        "eventId": "1606539f-5e8e-57d5-b264-02f7ac11df96",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:1606539f-5e8e-57d5-b264-02f7ac11df96",
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "cta_clicked",
+        "eventId": "e52130ec-3212-5411-8616-5f1e267acdc1",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:e52130ec-3212-5411-8616-5f1e267acdc1",
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "listen_link_opened",
+        "eventId": "239d2926-0dc9-5442-a508-d67cfbf3febc",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:239d2926-0dc9-5442-a508-d67cfbf3febc",
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "read_open_action",
+        "eventId": "387615e5-c76d-5fc1-a6c9-c2e6633ab3d8",
+        "key": "growth:v1:{preview:count-chat:2026-10-01}:event:387615e5-c76d-5fc1-a6c9-c2e6633ab3d8",
+        "trafficClass": "synthetic_test"
+      }
+    ],
+    "paidIngressRejected": true,
+    "clientTrafficOverrideRejected": true,
+    "piiRejected": true,
+    "actualRedisWrongTypeFailureResponse": 204,
+    "syntheticExcludedFromHumanKpi": true,
+    "productionWrites": 0,
+    "stripeCalls": 0,
+    "cleanup": "Only own unique wrong-type Preview event row",
+    "openInputs": "Synthetic endpoint fixtures; actual browser-context proof is separate"
+  },
+  "uiRegression": {
+    "verdict": "PASS_PREVIEW_UI_RETRY_AND_COUNT_CHAT_RENDERING",
+    "deployment": "dpl_7B5gfi5ifTMGd31D7fcxnuDfcUaF",
+    "sourceSha": "716288fa9d8012c76d95f87e157aa832eb5fadaf",
+    "cases": [
+      {
+        "case": "stop",
+        "input": "Please stop trying to sell me anything.",
+        "assistantText": "Understood. I will stop sales and purchase prompts. We can still discuss works if you ask.",
+        "cardTitle": null,
+        "ctaVisible": false,
+        "httpStatus": 200,
+        "fullUiRendered": true,
+        "retry": {
+          "sameDelivery": true,
+          "sameMessages": true,
+          "sameAssistantHash": "e0c7d0c1eb047b1c3418ec0e5582e7b3524854873cec830ef3d7c57d05797665",
+          "redisEvents": [
+            {
+              "event": "chat_first_request",
+              "eventId": "652ae71f-ad69-58c2-8468-45b388cf5b59",
+              "requestId": "eb8d07d8-302b-5ad4-b7af-954344d57d98",
+              "occurredAt": 1790865491151,
+              "trafficClass": "synthetic_test"
+            }
+          ]
+        }
+      },
+      {
+        "case": "recall",
+        "input": "瀬底島の曲なんだっけ？",
+        "assistantText": "それは「Sesoko Island」ですね。聴きますか？",
+        "cardTitle": "Sesoko Island",
+        "ctaVisible": false,
+        "httpStatus": 200,
+        "fullUiRendered": true
+      },
+      {
+        "case": "owner-source",
+        "input": "「Sun Without a Map」を作るきっかけになった具体的な出来事を教えて。伯爵本人の根拠は？",
+        "assistantText": "率直に申しますと、この場で確認できる制作メモや本人の発言がないため、「Sun Without a Map」のきっかけになった具体的な出来事は、事実としてお答えできません。題名から「地図なしで進む」心情を読み取ることはできますが、それは解釈であって、伯爵本人の根拠ではありません。制作時の記録や歌詞をお持ちでしたら、事実と読み取りを分けてご一緒に確かめます。",
+        "cardTitle": null,
+        "ctaVisible": false,
+        "httpStatus": 200,
+        "fullUiRendered": true
+      }
+    ],
+    "clientActionReadback": [
+      {
+        "event": "visit",
+        "eventId": "60ba972c-19e3-5a33-807c-10c4bcb83866",
+        "requestId": "f5a0e8a8-d888-5fac-90ca-4f27ab084d4f",
+        "occurredAt": 1790865475007,
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "visit",
+        "eventId": "1d54cfba-24b1-5faa-a229-7d2f5ad01ce1",
+        "requestId": "c2dc9c69-c2d8-5935-9a81-03c12d6d36e6",
+        "occurredAt": 1790865509226,
+        "trafficClass": "synthetic_test"
+      },
+      {
+        "event": "visit",
+        "eventId": "eb0dcad9-5089-552c-840f-9338643e9e88",
+        "requestId": "7037d955-1319-51ce-a87a-15062873b4ac",
+        "occurredAt": 1790865537145,
+        "trafficClass": "synthetic_test"
+      }
+    ],
+    "browserErrors": [],
+    "networkFailures": [
+      "net::ERR_CONTENT_LENGTH_MISMATCH"
+    ],
+    "productionWrites": 0,
+    "stripeCalls": 0,
+    "ownerSourceInterpretationReview": "PASS_NO_OWNER_FACT_ATTRIBUTION"
+  },
+  "actualViewAndClick": {
+    "verdict": "PASS_PREVIEW_ACTUAL_VIEW_CLICK_CONTEXT_READBACK",
+    "deployment": "dpl_7B5gfi5ifTMGd31D7fcxnuDfcUaF",
+    "sourceSha": "716288fa9d8012c76d95f87e157aa832eb5fadaf",
+    "workTitle": "Sesoko Island",
+    "events": [
+      {
+        "event": "work_view",
+        "eventId": "a1a4a90b-774e-5f62-a8aa-bf5395b37f8e",
+        "trafficClass": "synthetic_test",
+        "observation": "page_visible"
+      },
+      {
+        "event": "visit",
+        "eventId": "0d093a90-98c0-5732-bdda-61ca0de52bc5",
+        "trafficClass": "synthetic_test",
+        "observation": "page_visible"
+      },
+      {
+        "event": "cta_clicked",
+        "eventId": "867755c6-39bf-5e62-8068-d1001364611b",
+        "trafficClass": "synthetic_test",
+        "observation": "anchor_click"
+      },
+      {
+        "event": "work_action",
+        "eventId": "d2420a21-9134-50ed-99e9-e4b25e81ec6b",
+        "trafficClass": "synthetic_test",
+        "observation": "anchor_click"
+      },
+      {
+        "event": "listen_link_opened",
+        "eventId": "7fbe2843-1542-527d-ad7c-9c32f38bfe81",
+        "trafficClass": "synthetic_test",
+        "observation": "browser_context_created"
+      },
+      {
+        "event": "product_view",
+        "eventId": "ac7dc4db-7863-5055-9855-90e9c5cc75b7",
+        "trafficClass": "synthetic_test",
+        "observation": "page_visible"
+      },
+      {
+        "event": "visit",
+        "eventId": "b23745fc-62cd-5549-9a1a-33b762c22fff",
+        "trafficClass": "synthetic_test",
+        "observation": "page_visible"
+      }
+    ],
+    "productionCounterpartRowsAbsent": true,
+    "externalLoadOrPlaybackClaimed": false,
+    "productionWrites": 0,
+    "stripeCalls": 0
+  },
+  "contextSafetyFixture": {
+    "verdict": "PASS_BROWSER_ACTION_CONTEXT_PRIVACY_ISOLATION",
+    "observedContext": true,
+    "openerNull": true,
+    "noReferrer": true,
+    "blockedOpenDoesNotClaimCompletionOrPreventNativeFallback": true,
+    "telemetryFailureDoesNotBlockNavigation": true,
+    "events": [
+      "cta_clicked",
+      "work_action",
+      "listen_link_opened",
+      "cta_clicked",
+      "work_action"
+    ],
+    "externalLoadingOrPlaybackClaimed": false,
+    "productionWrites": 0,
+    "stripeCalls": 0
+  },
+  "privacy": "PASS_STRICT_SCHEMA_NO_RAW_TEXT_PII_URL_OR_IDENTITY",
+  "traffic": "PASS_SYNTHETIC_BOT_EXCLUDED_UNKNOWN_SEPARATE_NO_HUMAN_CLAIM",
+  "health": {
+    "deploymentScopedSince": "2026-10-01T14:25:00Z",
+    "status5xxCount": 0,
+    "unexpectedApplicationErrorFatalCount": 0
+  },
+  "commerce": {
+    "existingLedgerCommercialPaidNonRefunded": 0,
+    "stripeCalls": 0,
+    "quoteAuthority": "AFTER_EXISTING_CONSULTATION_SAVE",
+    "checkoutAuthority": "AFTER_EXISTING_STRIPE_SESSION_CREATE",
+    "paidAuthority": "AFTER_EXISTING_VERIFIED_WEBHOOK_AND_CONFIRMED_PAYMENT",
+    "actualCommerceFixtures": "IN_MEMORY_ONLY_NO_LIVE_PAID_CLAIM",
+    "paymentSecurityAndBusinessGuards": "UNCHANGED"
+  },
+  "repeatVisit": "RESERVED_NOT_IMPLEMENTED",
+  "repeatPurchase": "RESERVED_NOT_IMPLEMENTED",
+  "externalLoadOrListenCompletion": "UNKNOWN_NOT_OBSERVABLE",
+  "productionGate": "NOT_APPLIED_YET",
+  "productionWrites": 0,
+  "executionIncident": {
+    "kind": "CLI_INLINE_COMMAND_MISPARSED_AS_DEPLOY",
+    "result": "FAILED_INVALID_ENV_KEY_BEFORE_DEPLOYMENT_CREATION",
+    "newDeploymentsFromAttempt": 0,
+    "productionCanonicalDomainFresh": "dpl_4LNUvTF58ofVXp8MaPXnRJZvYNp8_READY",
+    "productionFlagFresh": false,
+    "remediation": "FILE_BASED_RUNNERS_ONLY_SAFE_COMMITTED_DEPLOY_SOURCE",
+    "protectedRootTraversalDuringFailedCliAttempt": "UNKNOWN_NO_ROOT_INSPECTION_PERFORMED",
+    "sourceExportProtectedTreesTraversed": 0,
+    "sourceExportHumanOwnedFilesRead": 0
+  }
+}
