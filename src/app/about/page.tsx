@@ -158,6 +158,27 @@ export default function AboutPage() {
         </section>
       )}
 
+      {/* Space Bαr はMUSIAMの別世界。外部の公開実態を誇張しない。 */}
+      <section style={{ marginBottom: "2.5rem" }} aria-labelledby="spacebar-crosslink-title">
+        <h2 id="spacebar-crosslink-title" style={{ fontFamily: "var(--font-serif), serif", fontSize: "1.15rem", marginBottom: "0.85rem" }}>
+          館主の別世界 — Space Bαr Hakusyaku
+        </h2>
+        <p style={{ fontSize: "0.88rem", lineHeight: 1.85, opacity: 0.88, marginBottom: "1rem" }}>
+          国境を超えて集う、宇宙のバー。誰でも無料で楽しめるブラウザ版3D散策ツアーを公開中です。
+          VRChat版はPC・Quest向けの制作を終え、ワールド公開と実機確認を準備しています。
+        </p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+          <a href="https://spacebar-hakusyaku-world.vercel.app/" target="_blank" rel="noopener noreferrer"
+            style={{ display: "inline-block", padding: "0.55rem 1rem", fontSize: "0.85rem", border: "1px solid var(--color-border-subtle)", borderRadius: 999, textDecoration: "none" }}>
+            宇宙バー公式サイト ↗
+          </a>
+          <a href="https://spacebar-hakusyaku-browser.vercel.app/" target="_blank" rel="noopener noreferrer"
+            style={{ display: "inline-block", padding: "0.55rem 1rem", fontSize: "0.85rem", border: "1px solid var(--color-border-subtle)", borderRadius: 999, textDecoration: "none" }}>
+            無料3Dツアーを体験 ↗
+          </a>
+        </div>
+      </section>
+
       <section>
         <h2 style={{ fontFamily: "var(--font-serif), serif", fontSize: "1.15rem", marginBottom: "1rem" }}>
           館をめぐる

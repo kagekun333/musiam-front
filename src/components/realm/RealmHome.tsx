@@ -306,6 +306,12 @@ export default function RealmHome({ regions, counts }: { regions: Region[]; coun
               </Link>
             </li>
           ))}
+          <li>
+            <a href="https://spacebar-hakusyaku-world.vercel.app/" target="_blank" rel="noopener noreferrer"
+              onClick={() => metric("home_quicklink", { id: "spacebar_external" })}>
+              宇宙バー〈Space Bαr Hakusyaku・別世界〉 ↗
+            </a>
+          </li>
         </ul>
 
         <h2 className="rlm-index-title rnv-display">領土の索引</h2>
