@@ -45,10 +45,7 @@ const WORLD = { w: 1300, h: 820 };
 type Facility = { id: string; ja: string; sub: string; href: string; glyph: string; x: number; y: number };
 const FACILITIES: Facility[] = [
   { id: "showcase", ja: "国の意匠", sub: "ショーケース", href: "/showcase", glyph: "❖", x: 1190, y: 150 },
-  { id: "shop", ja: "交易所", sub: "ショップ", href: "/shop", glyph: "⚖", x: 1210, y: 360 },
   { id: "letters", ja: "伯爵の手紙", sub: "書簡・年代記", href: "/letters", glyph: "✉", x: 1210, y: 580 },
-  { id: "atelier", ja: "弟子入り", sub: "講座", href: "/atelier", glyph: "✎", x: 95, y: 200 },
-  { id: "business", ja: "工房依頼", sub: "法人・楽曲制作", href: "/business", glyph: "⚒", x: 95, y: 470 },
 ];
 
 // 近道メニュー（モバイル＆SEO用・常時テキストで提示）。
@@ -56,9 +53,6 @@ const QUICKLINKS: { id: string; ja: string; href: string }[] = [
   { id: "chat", ja: "伯爵と話す", href: "/chat" },
   { id: "works", ja: "展示（全作品）", href: "/works" },
   { id: "letters", ja: "伯爵の手紙〈書簡・年代記〉", href: "/letters" },
-  { id: "shop", ja: "交易所〈ショップ〉", href: "/shop" },
-  { id: "business", ja: "工房依頼〈法人・楽曲制作〉", href: "/business" },
-  { id: "atelier", ja: "弟子入り〈講座〉", href: "/atelier" },
 ];
 
 export default function RealmHome({ regions, counts }: { regions: Region[]; counts: Counts }) {
